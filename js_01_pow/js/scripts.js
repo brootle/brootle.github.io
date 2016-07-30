@@ -20,6 +20,8 @@ if ((a != null && b != null) && (a != '' && b != ''))
 }
 else
 {
+    a = null;
+    b = null;
     result = 'base number or exponent number or both of them were not provided!';
 }
 
