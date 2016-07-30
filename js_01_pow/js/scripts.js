@@ -12,7 +12,16 @@ do {
 } while ((b % 1) || isNaN(b));
     
 
-var result = myPow(a, b);
+var result;
+
+if (a != null && b != null)
+{
+    result = myPow(a, b);
+}
+else
+{
+    result = 'base number or exponent number or both of them were not provided!';
+}
 
 console.log(result);
 
@@ -38,5 +47,5 @@ function myPow(a, b) {
 showResult();
 
 function showResult() {
-    document.getElementById("powerResult").innerHTML = 'Our result is: ' + a + '<sup>' + b + '</sup>' + '=' + result;
+    document.getElementById("powerResult").innerHTML = 'Our result is: ' + a + '<sup>' + b + '</sup>' + ' = ' + result;
 }
