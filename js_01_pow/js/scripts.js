@@ -29,16 +29,20 @@ console.log(result);
 
 function myPow(a, b) {
 
-    var result = 1;
-
     if (b >= 0) {
-        for (var i = 0; i < b; i++) {
+
+        var result = a;
+
+        for (var i = 1; i < b; i++) {
             result = result * a;
         }
 
         return result;
     }
     else {
+
+        var result = a;
+
         b = b * (-1);
         result = 1 / myPow(a, b);
         return result;
