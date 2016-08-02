@@ -14,7 +14,7 @@ var testPage = {
             // create ordered list item
             // add ordered list item to the list
             var orderedListItem = document.createElement('li');
-            orderedListItem.innerHTML = questionsText + ' #' + i;
+            orderedListItem.innerHTML = questionsText + ' ¹' + i;
             orderedList.appendChild(orderedListItem);
 
             // add answer options
@@ -29,7 +29,7 @@ var testPage = {
                 newParagraph.appendChild(checkboxOption);
 
                 var newLabel = document.createElement('label');
-                newLabel.innerHTML = answerOption + ' #' + j;
+                newLabel.innerHTML = answerOption + ' ¹' + j;
                 newLabel.htmlFor = checkboxOption.id;
 
                 newParagraph.appendChild(newLabel);
