@@ -29,7 +29,7 @@ console.log(result);
 
 function myPow(a, b) {
 
-    if (b >= 0) {
+    if (b > 0) {
 
         var result = a;
 
@@ -39,13 +39,17 @@ function myPow(a, b) {
 
         return result;
     }
-    else {
+    else if (b < 0) {
 
         var result = a;
 
         b = b * (-1);
         result = 1 / myPow(a, b);
         return result;
+    }
+
+    else {
+        return 1;
     }
 
 }
