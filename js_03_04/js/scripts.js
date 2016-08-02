@@ -39,15 +39,18 @@ var testPage = {
             }
         }
     },
-    addButton: function () {
-
+    addButton: function (buttonText) {
+        var newButon = document.createElement('button');
+        newButon.type = 'button';
+        newButon.innerHTML = buttonText;
+        document.body.insertBefore(newButon, document.body.lastChild);
     }
 }
 
 testPage.addTittle('Тест по программированию');
 
-console.log(document.body.lastChild);
-
 testPage.addQuestions('Вопрос', 3, 3, 'Вариант ответа');
+
+testPage.addButton('Проверить мои результаты');
 
 
