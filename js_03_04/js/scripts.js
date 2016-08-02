@@ -40,10 +40,10 @@ var testPage = {
         }
     },
     addButton: function (buttonText) {
-        var newButon = document.createElement('button');
-        newButon.type = 'button';
-        newButon.innerHTML = buttonText;
-        document.body.insertBefore(newButon, document.body.lastChild);
+        var newButton = document.createElement('button');
+        newButton.type = 'button';
+        newButton.innerHTML = buttonText;
+        document.body.insertBefore(newButton, document.body.lastChild);
     }
 }
 
