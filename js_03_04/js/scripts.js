@@ -14,7 +14,7 @@ var testPage = {
             // create ordered list item
             // add ordered list item to the list
             var orderedListItem = document.createElement('li');
-            orderedListItem.innerHTML = questionsText + ' №' + i;
+            orderedListItem.innerHTML = questionsText + ' #' + i;
             orderedList.appendChild(orderedListItem);
 
             // add answer options
@@ -29,7 +29,7 @@ var testPage = {
                 newParagraph.appendChild(checkboxOption);
 
                 var newLabel = document.createElement('label');
-                newLabel.innerHTML = answerOption + ' №' + j;
+                newLabel.innerHTML = answerOption + ' #' + j;
                 newLabel.htmlFor = checkboxOption.id;
 
                 newParagraph.appendChild(newLabel);
@@ -47,10 +47,10 @@ var testPage = {
     }
 }
 
-testPage.addTittle('Тест по программированию');
+testPage.addTittle('Exam on programming');
 
-testPage.addQuestions('Вопрос', 3, 3, 'Вариант ответа');
+testPage.addQuestions('Question', 3, 3, 'Answer variant');
 
-testPage.addButton('Проверить мои результаты');
+testPage.addButton('Check my result');
 
 
