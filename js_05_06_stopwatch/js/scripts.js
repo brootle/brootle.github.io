@@ -9,8 +9,7 @@ var hours = document.querySelector('.hours');
 
 function updateStopwatch() {
 
-    //milliseconds.innerHTML = millisecondsCounter % 1000;
-
+    //var currentTimestamp = Date.now() + 199937654; // here we add time
 
     var currentTimestamp = Date.now();
 
