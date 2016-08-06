@@ -13,8 +13,6 @@ var hours = document.querySelector('.hours');
 
 function updateStopwatch() {
 
-    //var currentTimestamp = Date.now() + 199937654; // here we add time
-
     currentTimestamp = Date.now() + timeCounted;
 
     timecounter.innerHTML = currentTimestamp - initialTimestamp;
