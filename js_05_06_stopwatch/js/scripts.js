@@ -1,5 +1,9 @@
 var initialTimestamp = Date.now();
 
+var timeCounted = 0;
+
+var currentTimestamp;
+
 var timecounter = document.querySelector('.timecounter');
 
 var milliseconds = document.querySelector('.milliseconds');
@@ -11,7 +15,7 @@ function updateStopwatch() {
 
     //var currentTimestamp = Date.now() + 199937654; // here we add time
 
-    var currentTimestamp = Date.now();
+    currentTimestamp = Date.now() + timeCounted;
 
     timecounter.innerHTML = currentTimestamp - initialTimestamp;
 
@@ -36,4 +40,63 @@ function updateStopwatch() {
     hours.innerHTML = stopwatchHours;
 }
 
-setInterval(updateStopwatch, 1);
+var startButton = document.querySelector('.buttons__start');
+var stopButton; // this button doesn't exist untill we press start button
+
+var intervalPointer;
+
+function startStopwatch() {
+    initialTimestamp = Date.now(); // get current timestamp
+    intervalPointer = setInterval(updateStopwatch, 1); // start updating time
+
+    // change srat button to stop button
+    startButton.classList.remove('buttons__start');
+    startButton.classList.add('buttons__stop');
+    startButton.innerHTML = 'Stop';
+    stopButton = document.querySelector('.buttons__stop');
+
+    startButton.removeEventListener('click', startStopwatch);
+    stopButton.addEventListener('click', stopStopwatch);
+}
+
+function stopStopwatch() {
+    clearInterval(intervalPointer); // stops repeating function
+
+    // we must save current time that was already counted
+    timeCounted = currentTimestamp - initialTimestamp;
+
+    stopButton.classList.remove('buttons__stop');
+    stopButton.classList.add('buttons__start');
+    stopButton.innerHTML = 'Start';
+    startButton = document.querySelector('.buttons__start');
+
+    stopButton.removeEventListener('click', stopStopwatch);
+    startButton.addEventListener('click', startStopwatch);
+}
+
+startButton.addEventListener('click', startStopwatch);
+
+var resetButton = document.querySelector('.button__reset');
+
+function resetStopwatch() {
+    // here we must stop the function
+    clearInterval(intervalPointer); // stops repeating function
+    // zero all numbers
+    timeCounted = 0;
+    initialTimestamp = Date.now();
+    updateStopwatch();
+
+    // if button is STOP we must change it to START
+    if (startButton.innerHTML === 'Stop') {
+
+        stopButton.classList.remove('buttons__stop');
+        stopButton.classList.add('buttons__start');
+        stopButton.innerHTML = 'Start';
+        startButton = document.querySelector('.buttons__start');
+
+        stopButton.removeEventListener('click', stopStopwatch);
+        startButton.addEventListener('click', startStopwatch);
+    }
+}
+
+resetButton.addEventListener('click', resetStopwatch);
