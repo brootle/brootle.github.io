@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     var initialTimestamp = Date.now();
 
