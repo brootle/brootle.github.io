@@ -101,4 +101,34 @@
 
     resetButton.addEventListener('click', resetStopwatch);
 
+    ///////////////////////////////////////////////////////////
+
+    var defaultColor = 'white';
+
+    var invertButton = document.querySelector('.invert-button');
+
+    var bodyTag = document.querySelector('body');
+
+    invertButton.addEventListener('click', invertColors);
+
+    function invertColors() {
+        
+        if (defaultColor === 'white') {
+            defaultColor = 'black';
+            invertButton.style.backgroundColor = 'white';
+            invertButton.style.color = 'black';
+
+            bodyTag.style.backgroundColor = 'black';
+            bodyTag.style.color = 'white';
+        }
+        else {
+            defaultColor = 'white';
+            invertButton.style.backgroundColor = 'black';
+            invertButton.style.color = 'white';
+
+            bodyTag.style.backgroundColor = 'white';
+            bodyTag.style.color = 'black';
+        }
+    }
+
 })();
