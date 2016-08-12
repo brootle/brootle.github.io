@@ -4,10 +4,14 @@ $(function () {
     // get all links in tab menu
     var nabigationTabLinks = $('.tabs__navigation a');
 
+    // get all DIVs with text
+    var tabTexts = $('.tabs__text');
+
     // set selected tab by default to 0
     var selectedTab = 0;
     // show text of selected tab
-    $('#tabs-' + selectedTab).show();
+    var selectedText = tabTexts.get(selectedTab);
+    $(selectedText).show();
 
     // remove href from selected tab
     $(nabigationTabLinks.get(selectedTab)).removeAttr('href');
@@ -19,7 +23,9 @@ $(function () {
         // when we click link in a tab
 
         // 1. hide text of selected tab
-        $('#tabs-' + selectedTab).hide();
+        selectedText = tabTexts.get(selectedTab);
+        $(selectedText).hide();
+
         // 2. add href to selected tab
         $(nabigationTabLinks.get(selectedTab)).attr('href', '#tabs-' + selectedTab);
 
@@ -28,6 +34,10 @@ $(function () {
         // 4. remove href for this tab
         $(nabigationTabLinks.get(selectedTab)).removeAttr('href');
         // 5. show text assosiated with this tab
-        $('#tabs-' + selectedTab).show();
+        selectedText = tabTexts.get(selectedTab);
+        $(selectedText).show();
+
+        // OK we can also remove IDs and just access N-th DIV with text
+        // according to N-th navigation tab
     });
 });
