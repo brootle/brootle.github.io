@@ -17,7 +17,7 @@ $(function () {
     var tabTexts = $('.tabs__text');
 
     // set selected tab by default to 0
-    var selectedTab = 0;
+    var selectedTab = 3;
     // show text of selected tab
     var selectedText = tabTexts.get(selectedTab);
     $(selectedText).show();
