@@ -4,6 +4,10 @@ $(function () {
     // get all links in tab menu
     var nabigationTabLinks = $('.tabs__navigation a');
 
+    $(nabigationTabLinks).hover(function () {
+        $(this).toggleClass('tabs__link--hovered');
+    });
+
     // get all DIVs with text
     var tabTexts = $('.tabs__text');
 
@@ -16,10 +20,14 @@ $(function () {
     // remove href from selected tab
     $(nabigationTabLinks.get(selectedTab)).removeAttr('href');
 
-    $(nabigationTabLinks.get(selectedTab)).css({
-        backgroundColor: 'white',
-        color: 'black'
-    });
+    $(nabigationTabLinks.get(selectedTab)).attr('class', 'tabs__link--selected');
+
+    //$(nabigationTabLinks.get(selectedTab)).toggleClass('tabs__link--selected');
+
+    //$(nabigationTabLinks.get(selectedTab)).css({
+    //    backgroundColor: 'white',
+    //    color: 'black'
+    //});
 
     nabigationTabLinks.on('click', function (e) {
         e.preventDefault(); // prevent default behavior of the link
@@ -33,10 +41,11 @@ $(function () {
 
         // 2. add href to selected tab
         $(nabigationTabLinks.get(selectedTab)).attr('href', '#tabs-' + selectedTab);
-        $(nabigationTabLinks.get(selectedTab)).css({
-            backgroundColor: '#d89407',
-            color:'white'
-        });
+        $(nabigationTabLinks.get(selectedTab)).attr('class', 'tabs__link--default');
+        //$(nabigationTabLinks.get(selectedTab)).css({
+        //    backgroundColor: '#d89407',
+        //    color:'white'
+        //});
 
         // 3. save the ID of the tab we selected now
         selectedTab = nabigationTabLinks.index(this);
@@ -45,9 +54,10 @@ $(function () {
         // 5. show text assosiated with this tab
         selectedText = tabTexts.get(selectedTab);
         $(selectedText).show();
-        $(nabigationTabLinks.get(selectedTab)).css({
-            backgroundColor: 'white',
-            color: 'black'
-        });
+        $(nabigationTabLinks.get(selectedTab)).attr('class', 'tabs__link--selected');
+        //$(nabigationTabLinks.get(selectedTab)).css({
+        //    backgroundColor: 'white',
+        //    color: 'black'
+        //});
     });
 });
