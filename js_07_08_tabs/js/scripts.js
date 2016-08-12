@@ -16,6 +16,11 @@ $(function () {
     // remove href from selected tab
     $(nabigationTabLinks.get(selectedTab)).removeAttr('href');
 
+    $(nabigationTabLinks.get(selectedTab)).css({
+        backgroundColor: 'white',
+        color: 'black'
+    });
+
     nabigationTabLinks.on('click', function (e) {
         e.preventDefault(); // prevent default behavior of the link
         // e is the event that called our function
@@ -28,6 +33,10 @@ $(function () {
 
         // 2. add href to selected tab
         $(nabigationTabLinks.get(selectedTab)).attr('href', '#tabs-' + selectedTab);
+        $(nabigationTabLinks.get(selectedTab)).css({
+            backgroundColor: '#d89407',
+            color:'white'
+        });
 
         // 3. save the ID of the tab we selected now
         selectedTab = nabigationTabLinks.index(this);
@@ -36,5 +45,9 @@ $(function () {
         // 5. show text assosiated with this tab
         selectedText = tabTexts.get(selectedTab);
         $(selectedText).show();
+        $(nabigationTabLinks.get(selectedTab)).css({
+            backgroundColor: 'white',
+            color: 'black'
+        });
     });
 });
