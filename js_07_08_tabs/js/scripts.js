@@ -36,8 +36,5 @@ $(function () {
         // 5. show text assosiated with this tab
         selectedText = tabTexts.get(selectedTab);
         $(selectedText).show();
-
-        // OK we can also remove IDs and just access N-th DIV with text
-        // according to N-th navigation tab
     });
 });
