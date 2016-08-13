@@ -33,12 +33,13 @@ $(function () {
 
     $('.help-button').on('click', function () {
         console.log('clicked');
+        // remove all tooltips in case they were created already
+        $('.tooltip').remove();
         // make a loop
         // in the loop we add tooltip
         inputsList.each(function () {
             tooltip = $(this).attr('title');
             $('<a class=' + 'tooltip' + '>' + tooltip + '</a>').insertAfter(this);
-            //console.log($(this).attr('title'));
         });
     });
 });
