@@ -7,4 +7,7 @@ $(function () {
     $('.jcarousel').jcarousel({
         // Configuration goes here
     });
+
+    // initiate Select2 plugin
+    $('select').select2();
 });
