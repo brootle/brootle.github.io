@@ -8,10 +8,9 @@
                     width = carousel.innerWidth();
                 console.log(width);
 
-                // here we determine how many photos will be displayed
-                if (width >= 960) {
+                if (width >= 600) {
                     width = width / 3;
-                } else if (width >= 768) {
+                } else if (width >= 350) {
                     width = width / 2;
                 }
 
