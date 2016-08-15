@@ -6,10 +6,12 @@
             .on('jcarousel:reload jcarousel:create', function () {
                 var carousel = $(this),
                     width = carousel.innerWidth();
+                console.log(width);
 
-                if (width >= 600) {
+                // here we determine how many photos will be displayed
+                if (width >= 960) {
                     width = width / 3;
-                } else if (width >= 350) {
+                } else if (width >= 768) {
                     width = width / 2;
                 }
 
