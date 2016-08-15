@@ -1,19 +1,24 @@
-﻿.custom-checkbox{
+﻿.jQuery-checkbox label{
+    display:block;
+}
+
+.custom-checkbox{
 	width: 16px;
 	height: 16px;
 	display: inline-block;
 	position: relative;
 	z-index: 1;
 	top: 3px;
-	background: url("../images/checkbox.png") no-repeat;
-}
-.custom-checkbox:hover{
-	background: url("../images/checkbox-hover.png") no-repeat;
-}
-.custom-checkbox.selected{
-	background: url("../images/checkbox-selected.png") no-repeat;
+	background:url(../images/checkbox-sprite.png) 0px -1px no-repeat;
 }
 
+.custom-checkbox.selected{
+	background:url(../images/checkbox-sprite.png) 0px -17px no-repeat;
+}
+
+.custom-checkbox.disabled{
+	background:url(../images/checkbox-sprite.png) 0px -49px no-repeat;
+}
 
 .custom-checkbox input[type="checkbox"]{
 	margin: 0;
@@ -22,10 +27,4 @@
 	cursor: pointer;
 	outline: none;
 	opacity: 0;
-	/* CSS hacks for older browsers */
-	_noFocusLine: expression(this.hideFocus=true); 
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	-khtml-opacity: 0;
-	-moz-opacity: 0;
 }

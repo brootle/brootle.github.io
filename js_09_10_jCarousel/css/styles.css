@@ -31,6 +31,10 @@ main{
     padding: 2px 0;
 }*/
 
+.css-checkbox label{
+    display:block;
+}
+
 .css-checkbox input[type="checkbox"] {
     display:none;
 }
@@ -44,12 +48,16 @@ main{
     z-index: 1;
     top: 3px;
 
-    background:url(../images/checkbox.png) left top no-repeat;
+    background:url(../images/checkbox-sprite.png) 0px -1px no-repeat;
     cursor:pointer;
 }
 
 .css-checkbox input[type="checkbox"]:checked + span {
-    background:url(../images/checkbox-selected.png) 0px top no-repeat;
+    background:url(../images/checkbox-sprite.png) 0px -17px no-repeat;
+}
+
+.css-checkbox input[type="checkbox"]:disabled + span {
+    background:url(../images/checkbox-sprite.png) 0px -49px no-repeat;
 }
 
 /*.css-checkbox input[type="checkbox"]:hover + span {

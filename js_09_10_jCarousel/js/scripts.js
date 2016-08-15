@@ -21,6 +21,9 @@ $(function () {
             if ($(this).is(':checked')) {
                 $(this).parent().addClass("selected");
             }
+            if ($(this).is(':disabled')) {
+                $(this).parent().addClass("disabled");
+            }
         });
         $(checkBox).click(function () {
             $(this).parent().toggleClass("selected");
