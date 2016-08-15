@@ -11,6 +11,9 @@ $(function () {
     // initiate Select2 plugin
     $('select').select2();
 
+
+    // customize checkbox http://www.tutorialrepublic.com/faq/how-to-create-custom-checkboxes-using-css-and-jquery.php
+
     function customCheckbox(checkboxName) {
         var checkBox = $('input[name="' + checkboxName + '"]');
         $(checkBox).each(function () {
@@ -25,4 +28,5 @@ $(function () {
     };
 
     customCheckbox("sport[]");
+
 });
