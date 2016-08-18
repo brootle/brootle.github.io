@@ -35,6 +35,33 @@
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '>LEFT</div>');
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '>RIGHT</div>');
 
+        // now we need to add even listener of LEFT and RIGHT
+
+        //moveCarousel();
+
+        $('.alexcarousel-navigation--right').on('click',{direction: 'right'}, moveCarousel);
+        $('.alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
+
+        var currentCarouselShift = 0;
+
+        function moveCarousel(event)
+        {
+            //direction = 'hgjgj';
+            //$('.alexcarousel ul').css('left', images.outerWidth() * (-2) + 'px');
+           
+            if(event.data.direction === 'right')
+            {
+                currentCarouselShift--;
+                $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
+                console.log(event.data.direction);
+            }
+
+            if (event.data.direction === 'left') {
+                currentCarouselShift++;
+                $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
+                console.log(event.data.direction);
+            }
+        }
 
         function updateSizes() {
             // if need size of scrollbar check this https://davidwalsh.name/detect-scrollbar-width
