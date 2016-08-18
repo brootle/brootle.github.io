@@ -30,6 +30,8 @@
         });
 
 
+        //we need to calculate the total width of all images
+
         // add navigation at the bottom
 
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '>LEFT</div>');
@@ -37,6 +39,9 @@
 
 
         function updateSizes() {
+            // if need size of scrollbar check this https://davidwalsh.name/detect-scrollbar-width
+
+            // calculate border width based of carouselWrapper width
             borderWidth = carouselWrapper.width() / 100 * 1.5 + 'px';
 
             // here we set the border width for images
