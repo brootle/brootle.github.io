@@ -22,15 +22,13 @@
         //var borderWidth = '15px';
 
         var borderWidth;
+        var carouselWidth;
 
         updateSizes();
 
         $(window).resize(function () {
             updateSizes();
         });
-
-
-        //we need to calculate the total width of all images
 
         // add navigation at the bottom
 
@@ -66,6 +64,13 @@
             else {
                 console.log('Scrollbar is there');
             }
+
+            // we need to calculate the total width of all images
+            console.log(images.length);
+            carouselWidth = images.length * images.outerWidth();
+            console.log(carouselWidth);
+            // set actual carousel width
+            $('.alexcarousel ul').css('width', carouselWidth + 'px');
         }
 
         return this;
