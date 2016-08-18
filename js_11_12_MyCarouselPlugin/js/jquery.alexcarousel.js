@@ -19,30 +19,15 @@
         // image left border and minus width of right border
 
         // we must calculate the border width bases on .alexcarousel-wrapper width
-        var borderWidth = '15px';
+        //var borderWidth = '15px';
 
-        // here we set the border width for images
-        images.css("borderWidth", borderWidth);
+        var borderWidth;
 
-        console.log(carouselWrapper.width());
+        updateSizes();
 
-        // set width that includes the borders
-        images.outerWidth(carouselWrapper.width() / 3);
-
-        console.log(images.outerWidth());
-
-        if($('body').get(0).scrollHeight !== $('body').get(0).clientHeight) {
-            console.log('No scrollbar');
-            // if there is no scrollbar we need to recalculate image width 
-            // because real width of carousel container is bigger
-
-            images.outerWidth(carouselWrapper.width() / 3);
-
-            console.log(images.outerWidth());
-        }
-        else {
-            console.log('Scrollbar is there');
-        }
+        $(window).resize(function () {
+            updateSizes();
+        });
 
 
         // add navigation at the bottom
@@ -50,44 +35,33 @@
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '>LEFT</div>');
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '>RIGHT</div>');
 
-        // set width of the UL 
 
-        //// set default option in an object
-        //var defaults = {
-        //    overlayColor:'black'
-        //}
+        function updateSizes() {
+            borderWidth = carouselWrapper.width() / 100 * 1.5 + 'px';
 
-        //var settings = $.extend(defaults, options); // extend combines two obects
-        
-        //var link = this; // get element that called the function
-        //var body = $('body');
-        //var overlay;
-        //var modal;
+            // here we set the border width for images
+            images.css("borderWidth", borderWidth);
 
-        //function showModal(e) {
-        //    e.preventDefault();
+            console.log(carouselWrapper.width());
 
-        //    overlay = $('<div class="fancybox-overlay"></div>');
+            // set width that includes the borders
+            images.outerWidth(carouselWrapper.width() / 3);
 
-        //    overlay.css({
-        //        backgroundColor: settings.overlayColor
-        //    });
+            console.log(images.outerWidth());
 
-        //    var href = link.attr('href');
-        //    modal = $('<div class="fancybox-modal"><img src="' + href + '"></div>');
+            if ($('body').get(0).scrollHeight !== $('body').get(0).clientHeight) {
+                console.log('No scrollbar');
+                // if there is no scrollbar we need to recalculate image width 
+                // because real width of carousel container is bigger
 
-        //    overlay.one('click', hideModal); // add on click event to run 1 time only
+                images.outerWidth(carouselWrapper.width() / 3);
 
-        //    body.append(overlay);
-        //    body.append(modal);
-        //}
-
-        //function hideModal() {
-        //    modal.remove();
-        //    overlay.remove();
-        //}
-
-        //link.on('click', showModal); // add on click event
+                console.log(images.outerWidth());
+            }
+            else {
+                console.log('Scrollbar is there');
+            }
+        }
 
         return this;
     }
