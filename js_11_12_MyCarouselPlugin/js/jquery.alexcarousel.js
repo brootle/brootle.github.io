@@ -25,12 +25,25 @@
         images.css("borderWidth", borderWidth);
 
         console.log(carouselWrapper.width());
-        console.log(carouselWrapper.outerWidth());
 
         // set width that includes the borders
         images.outerWidth(carouselWrapper.width() / 3);
 
         console.log(images.outerWidth());
+
+        if($('body').get(0).scrollHeight !== $('body').get(0).clientHeight) {
+            console.log('No scrollbar');
+            // if there is no scrollbar we need to recalculate image width 
+            // because real width of carousel container is bigger
+
+            images.outerWidth(carouselWrapper.width() / 3);
+
+            console.log(images.outerWidth());
+        }
+        else {
+            console.log('Scrollbar is there');
+        }
+
 
         // add navigation at the bottom
 
