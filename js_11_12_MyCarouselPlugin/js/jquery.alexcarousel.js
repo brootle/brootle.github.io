@@ -102,7 +102,7 @@
             //border-radius: 10px; //borderRadius
 
             // calculate border width based of carouselWrapper width
-            borderWidth = carouselWrapper.width() / 100 * 0.5 + 'px';
+            borderWidth = carouselWrapper.width() / 100 * 0.2 + 'px';
 
             // here we set the border width for images
             images.css("borderWidth", borderWidth);
