@@ -35,8 +35,8 @@
 
         // add navigation at the bottom
 
-        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '>LEFT</div>');
-        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '>RIGHT</div>');
+        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '><</div>');
+        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '>></div>');
 
         // now we need to add even listener of LEFT and RIGHT
 
@@ -95,9 +95,9 @@
             // if need size of scrollbar check this https://davidwalsh.name/detect-scrollbar-width
 
             // set new wrapper border width - carouselWrapper - carouselWrapperBorderWidth
-            carouselWrapperBorderWidth = carouselWrapper.width() / 100 * 2 + 'px';
+            carouselWrapperBorderWidth = carouselWrapper.width() / 100 * 1 + 'px';
             carouselWrapper.css("borderWidth", carouselWrapperBorderWidth);
-            carouselWrapper.css("borderRadius", carouselWrapper.width() / 100 * 2 / 3 + 'px');
+            carouselWrapper.css("borderRadius", carouselWrapper.width() / 100 * 1 / 2 + 'px');
 
             //border-radius: 10px; //borderRadius
 
