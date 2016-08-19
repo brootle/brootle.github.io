@@ -79,17 +79,18 @@
 
             console.log(images.outerWidth());
 
-            if ($('body').get(0).scrollHeight !== $('body').get(0).clientHeight) {
+            if ($('main').get(0).scrollHeight !== $('main').get(0).clientHeight) {
                 console.log('No scrollbar');
                 // if there is no scrollbar we need to recalculate image width 
                 // because real width of carousel container is bigger
 
-                images.outerWidth(carouselWrapper.width() / 3);
+                images.outerWidth((carouselWrapper.width()) / 3);
 
                 console.log(images.outerWidth());
             }
             else {
                 console.log('Scrollbar is there');
+                images.outerWidth((carouselWrapper.width()) / 3);
             }
 
             // we need to calculate the total width of all images
