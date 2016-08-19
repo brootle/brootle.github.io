@@ -24,6 +24,7 @@
         var carouselWrapperBorderWidth;
         var borderWidth;
         var carouselWidth;
+        var numberOfImages = 3;
 
         updateSizes();
 
@@ -39,26 +40,51 @@
 
         // now we need to add even listener of LEFT and RIGHT
 
-        //moveCarousel();
-
         $('.alexcarousel-navigation--right').on('click',{direction: 'right'}, moveCarousel);
         $('.alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
+
+        // if ul left is zero we switch .alexcarousel-navigation--left to .alexcarousel-navigation--leftDisabled
+        console.log($('.alexcarousel ul').css('left'));
+        //set default state to .alexcarousel-navigation--leftDisabled;
+        $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
 
         var currentCarouselShift = 0;
 
         function moveCarousel(event)
         {
-            //direction = 'hgjgj';
-            //$('.alexcarousel ul').css('left', images.outerWidth() * (-2) + 'px');
            
             if(event.data.direction === 'right')
             {
+                // switch on event listener for LEFT and change CLASS
+                // basically we activate LEFT navigation when we click RIGHT navigation
+                if (currentCarouselShift === 0) {
+                    $('.alexcarousel-navigation--leftDisabled').removeClass('alexcarousel-navigation--leftDisabled').addClass('alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
+                }
+
+                // if we reached the end we must disable RIGHT
+                if (currentCarouselShift - numberOfImages + images.length === 1) {
+                    console.log('DISABLE RIGHT');
+                    $('.alexcarousel-navigation--right').removeClass('alexcarousel-navigation--right').addClass('alexcarousel-navigation--rightDisabled').off('click');
+                }
+
                 currentCarouselShift--;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
                 console.log(event.data.direction);
             }
 
             if (event.data.direction === 'left') {
+                // enable RIGHT if we start moving back
+                if (currentCarouselShift + numberOfImages === 0) {
+                    $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: 'right' }, moveCarousel);
+                }
+
+                console.log(currentCarouselShift);
+                // here we must disable LEFT when ul left is 0
+                if (currentCarouselShift === -1) {
+                    $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
+                    console.log('disable LEFT');
+                }
+
                 currentCarouselShift++;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
                 console.log(event.data.direction);
@@ -79,7 +105,7 @@
             images.css("borderWidth", borderWidth);
 
             // set width that includes the borders
-            images.outerWidth(carouselWrapper.width() / 3);
+            images.outerWidth(carouselWrapper.width() / numberOfImages);
 
 
 
@@ -90,15 +116,15 @@
                 // if there is no scrollbar we need to recalculate image width 
                 // because real width of carousel container is bigger
 
-                images.outerWidth((carouselWrapper.width()) / 3);
+                images.outerWidth((carouselWrapper.width()) / numberOfImages);
 
-                console.log(images.outerWidth());
+                //console.log(images.outerWidth());
             }
             else {
-                console.log('Scrollbar is there');
+                //console.log('Scrollbar is there');
                 // if there is scroll bar we plus it to carouselWrapper.width
 
-                images.outerWidth(((carouselWrapper.width())) / 3);
+                images.outerWidth(((carouselWrapper.width())) / numberOfImages);
             }
 
             // we need to calculate the total width of all images
