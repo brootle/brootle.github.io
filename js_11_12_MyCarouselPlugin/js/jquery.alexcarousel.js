@@ -54,7 +54,7 @@
         {
            
             if(event.data.direction === 'right')
-            {
+            {               
                 // switch on event listener for LEFT and change CLASS
                 // basically we activate LEFT navigation when we click RIGHT navigation
                 if (currentCarouselShift === 0) {
@@ -63,31 +63,31 @@
 
                 // if we reached the end we must disable RIGHT
                 if (currentCarouselShift - numberOfImages + images.length === 1) {
-                    console.log('DISABLE RIGHT');
                     $('.alexcarousel-navigation--right').removeClass('alexcarousel-navigation--right').addClass('alexcarousel-navigation--rightDisabled').off('click');
                 }
 
                 currentCarouselShift--;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
-                console.log(event.data.direction);
             }
 
             if (event.data.direction === 'left') {
                 // enable RIGHT if we start moving back
-                if (currentCarouselShift + numberOfImages === 0) {
+                // we simply enable RIGHT if it was disabled, that's all
+                //if (currentCarouselShift + numberOfImages === 0) {
+                //    $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: 'right' }, moveCarousel);
+                //}
+
+                if ($('.alexcarousel-navigation--rightDisabled').length === 1) {
                     $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: 'right' }, moveCarousel);
                 }
 
-                console.log(currentCarouselShift);
                 // here we must disable LEFT when ul left is 0
                 if (currentCarouselShift === -1) {
                     $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
-                    console.log('disable LEFT');
                 }
 
                 currentCarouselShift++;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
-                console.log(event.data.direction);
             }
         }
 
