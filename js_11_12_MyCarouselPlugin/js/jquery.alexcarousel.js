@@ -35,8 +35,8 @@
 
         // add navigation at the bottom
 
-        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '><</div>');
-        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '>></div>');
+        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '><i class="fa fa-arrow-left" aria-hidden="true"></i></div>');
+        carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '><i class="fa fa-arrow-right" aria-hidden="true"></i></div>');
 
         // now we need to add even listener of LEFT and RIGHT
 
