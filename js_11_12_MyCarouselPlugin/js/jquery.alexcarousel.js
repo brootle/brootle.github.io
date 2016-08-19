@@ -97,6 +97,9 @@
             // set new wrapper border width - carouselWrapper - carouselWrapperBorderWidth
             carouselWrapperBorderWidth = carouselWrapper.width() / 100 * 2 + 'px';
             carouselWrapper.css("borderWidth", carouselWrapperBorderWidth);
+            carouselWrapper.css("borderRadius", carouselWrapper.width() / 100 * 2 / 3 + 'px');
+
+            //border-radius: 10px; //borderRadius
 
             // calculate border width based of carouselWrapper width
             borderWidth = carouselWrapper.width() / 100 * 0.5 + 'px';
