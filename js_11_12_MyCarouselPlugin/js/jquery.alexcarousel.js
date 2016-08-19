@@ -30,6 +30,7 @@
             updateSizes();
         });
 
+
         // add navigation at the bottom
 
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '>LEFT</div>');
@@ -79,6 +80,9 @@
 
             console.log(images.outerWidth());
 
+
+            // this doesn't work, i forced scroll to be shown in CSS
+            // need to find solution
             if ($('main').get(0).scrollHeight !== $('main').get(0).clientHeight) {
                 console.log('No scrollbar');
                 // if there is no scrollbar we need to recalculate image width 
@@ -90,7 +94,9 @@
             }
             else {
                 console.log('Scrollbar is there');
-                images.outerWidth((carouselWrapper.width()) / 3);
+                // if there is scroll bar we plus it to carouselWrapper.width
+
+                images.outerWidth(((carouselWrapper.width())) / 3);
             }
 
             // we need to calculate the total width of all images
