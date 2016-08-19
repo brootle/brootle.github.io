@@ -7,6 +7,7 @@
     $.fn.alexcarousel = function (options) {
 
         // get width of wrapper and make each image 33% of it's width
+        $(this).wrap("<div class='alexcarousel-wrapper'></div>");
 
         var carouselWrapper = $('.alexcarousel-wrapper');
 
