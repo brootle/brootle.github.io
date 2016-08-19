@@ -21,6 +21,7 @@
         // we must calculate the border width bases on .alexcarousel-wrapper width
         //var borderWidth = '15px';
 
+        var carouselWrapperBorderWidth;
         var borderWidth;
         var carouselWidth;
 
@@ -67,18 +68,19 @@
         function updateSizes() {
             // if need size of scrollbar check this https://davidwalsh.name/detect-scrollbar-width
 
+            // set new wrapper border width - carouselWrapper - carouselWrapperBorderWidth
+            carouselWrapperBorderWidth = carouselWrapper.width() / 100 * 2 + 'px';
+            carouselWrapper.css("borderWidth", carouselWrapperBorderWidth);
+
             // calculate border width based of carouselWrapper width
-            borderWidth = carouselWrapper.width() / 100 * 1.5 + 'px';
+            borderWidth = carouselWrapper.width() / 100 * 0.5 + 'px';
 
             // here we set the border width for images
             images.css("borderWidth", borderWidth);
 
-            console.log(carouselWrapper.width());
-
             // set width that includes the borders
             images.outerWidth(carouselWrapper.width() / 3);
 
-            console.log(images.outerWidth());
 
 
             // this doesn't work, i forced scroll to be shown in CSS
@@ -100,9 +102,7 @@
             }
 
             // we need to calculate the total width of all images
-            console.log(images.length);
             carouselWidth = images.length * images.outerWidth();
-            console.log(carouselWidth);
             // set actual carousel width
             $('.alexcarousel ul').css('width', carouselWidth + 'px');
         }
