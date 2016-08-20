@@ -20,16 +20,17 @@
         // image left border and minus width of right border
 
         // we must calculate the border width bases on .alexcarousel-wrapper width
-        //var borderWidth = '15px';
 
         var carouselWrapperBorderWidth;
-        var borderWidth;
-        var carouselWidth;
-        var numberOfImages = 3;
+        var borderWidth; // border of the images
+        var carouselWidth; // width of all images that are in the carousel
+        var numberOfImages = 3; // number of images to be displayed in carousel
+        var currentCarouselShift = 0; // use this to track carousel shift
 
-        updateSizes();
+        updateSizes(); // set sizes
 
         $(window).resize(function () {
+            // when window is resized we recalculate sizes
             updateSizes();
         });
 
@@ -44,18 +45,16 @@
         $('.alexcarousel-navigation--right').on('click',{direction: 'right'}, moveCarousel);
         $('.alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
 
-        // if ul left is zero we switch .alexcarousel-navigation--left to .alexcarousel-navigation--leftDisabled
-        console.log($('.alexcarousel ul').css('left'));
         //set default state to .alexcarousel-navigation--leftDisabled;
         $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
 
-        var currentCarouselShift = 0;
-
         function moveCarousel(event)
         {
+            $('.alexcarousel ul').css('transition', 'left 1s');
            
             if(event.data.direction === 'right')
-            {               
+            {
+                
                 // switch on event listener for LEFT and change CLASS
                 // basically we activate LEFT navigation when we click RIGHT navigation
                 if (currentCarouselShift === 0) {
@@ -69,9 +68,12 @@
 
                 currentCarouselShift--;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
+
+                
             }
 
             if (event.data.direction === 'left') {
+                
                 // enable RIGHT if we start moving back
                 // we simply enable RIGHT if it was disabled, that's all
                 //if (currentCarouselShift + numberOfImages === 0) {
@@ -89,6 +91,8 @@
 
                 currentCarouselShift++;
                 $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
+
+               
             }
         }
 
@@ -111,30 +115,19 @@
             // set width that includes the borders
             images.outerWidth(carouselWrapper.width() / numberOfImages);
 
-
-
-            // this doesn't work, i forced scroll to be shown in CSS
-            // need to find solution
-            if ($('main').get(0).scrollHeight !== $('main').get(0).clientHeight) {
-                console.log('No scrollbar');
-                // if there is no scrollbar we need to recalculate image width 
-                // because real width of carousel container is bigger
-
-                images.outerWidth((carouselWrapper.width()) / numberOfImages);
-
-                //console.log(images.outerWidth());
-            }
-            else {
-                //console.log('Scrollbar is there');
-                // if there is scroll bar we plus it to carouselWrapper.width
-
-                images.outerWidth(((carouselWrapper.width())) / numberOfImages);
-            }
-
             // we need to calculate the total width of all images
             carouselWidth = images.length * images.outerWidth();
+
             // set actual carousel width
             $('.alexcarousel ul').css('width', carouselWidth + 'px');
+
+
+            // when we resize, we also need to recalculate position of the carousel
+            // first set transition to 0
+            $('.alexcarousel ul').css('transition', 'left 0s');
+            // update left of UL
+            $('.alexcarousel ul').css('left', currentCarouselShift * images.outerWidth() + 'px');
+            // transition will be set back when we click LEFT or RIGHT
         }
 
         return this;
