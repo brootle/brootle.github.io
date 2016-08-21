@@ -24,10 +24,15 @@
         var carouselWrapperBorderWidth;
         var borderWidth; // border of the images
         var carouselWidth; // width of all images that are in the carousel
-        var numberOfImages = 3; // number of images to be displayed in carousel
+
+        var numberOfImages = 3; // number of images to be displayed in carousel can get via parameter
+        // must add check if the user tries to display more images that are available
+        if (numberOfImages > images.length) {
+            numberOfImages = images.length;
+        }
+
         var currentCarouselShift = 0; // use this to track carousel shift
         var selectedImage = 0; // currently selected image
-        //var currentCarouselPosition = 0;
 
         updateSizes(); // set sizes
 
@@ -48,13 +53,19 @@
         // add buttons inside buttons block
         $('.round-buttons-block').html(roundButtonsHTML);
 
+
         // $(this).index()
         // we need to put event handler on buttons, we pass index of clicked button
         $('.button').on('click', { direction: '0' }, updateCarouselPosition);
 
+        // we trigger the click to disable RIGHT button
+        if (numberOfImages === images.length) {
+            $('.button').trigger('click');
+        }
 
         // set 1st button as active by defauls
         $('.button').eq(0).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
+        $('.round-buttons-block__button--active').off('click');
 
         // position buttons block in the center of carousel wrapper
         var buttonsBlockPosition = carouselWrapper.width() / 2 - $('.round-buttons-block').width() / 2 + 'px';
@@ -81,10 +92,11 @@
         });
 
         function setActiveRoundButton() {
-            console.log(currentCarouselShift);
-            $('.round-buttons-block__button--active').removeClass('round-buttons-block__button--active').addClass('round-buttons-block__button');
-            $('.button').on('click', { direction: '0' }, updateCarouselPosition);
-            $('.button').eq(currentCarouselShift).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
+            //console.log(currentCarouselShift);
+            // need to add event handler to the button that was ACTIVE
+            $('.round-buttons-block__button--active').on('click', { direction: '0' }, updateCarouselPosition).removeClass('round-buttons-block__button--active').addClass('round-buttons-block__button');
+            // we also must remove event handler from selected button
+            $('.button').eq(currentCarouselShift).off('click').removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
         }
 
         function updateCarouselPosition(event) {
@@ -93,6 +105,7 @@
             if (parseInt(event.data.direction) !== 0) {
                 currentCarouselShift += parseInt(event.data.direction);
             } else {
+                // round button was clicked
                 currentCarouselShift = $(this).index();
             }
 
