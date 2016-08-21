@@ -26,75 +26,91 @@
         var carouselWidth; // width of all images that are in the carousel
         var numberOfImages = 3; // number of images to be displayed in carousel
         var currentCarouselShift = 0; // use this to track carousel shift
+        var selectedImage = 0; // currently selected image
+        //var currentCarouselPosition = 0;
 
         updateSizes(); // set sizes
 
-        $(window).resize(function () {
-            // when window is resized we recalculate sizes
-            updateSizes();
-        });
-
-
-        // add navigation at the bottom
+        // add navigation arrows LEFT and RIGHT at the bottom
 
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--left' + '><i class="fa fa-arrow-left" aria-hidden="true"></i></div>');
         carouselWrapper.append('<div class=' + 'alexcarousel-navigation--right' + '><i class="fa fa-arrow-right" aria-hidden="true"></i></div>');
 
-        // now we need to add even listener of LEFT and RIGHT
+        // add round navigation buttons block
+        carouselWrapper.append("<div class='round-buttons-block'></div>");
 
-        $('.alexcarousel-navigation--right').on('click',{direction: 'right'}, moveCarousel);
-        $('.alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
+        // set a string with all HTML elements for round buttons
+        var roundButtonsHTML = '';
+        for (var i = 0; i < images.length - numberOfImages + 1; i++) {
+            roundButtonsHTML += "<div class='button round-buttons-block__button'></div>"
+        }
+
+        // add buttons inside buttons block
+        $('.round-buttons-block').html(roundButtonsHTML);
+
+        // $(this).index()
+        // we need to put event handler on buttons, we pass index of clicked button
+        $('.button').on('click', { direction: '0' }, updateCarouselPosition);
+
+
+        // set 1st button as active by defauls
+        //$('.button').eq(0).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
+
+        // position buttons block in the center of carousel wrapper
+        var buttonsBlockPosition = carouselWrapper.width() / 2 - $('.round-buttons-block').width() / 2 + 'px';
+        $('.round-buttons-block').css('left', buttonsBlockPosition);
+
+
+        // now we need to add even listener of LEFT and RIGHT
+        $('.alexcarousel-navigation--right').on('click', { direction: '1' }, updateCarouselPosition);
+        $('.alexcarousel-navigation--left').on('click', { direction: '-1' }, updateCarouselPosition);
 
         //set default state to .alexcarousel-navigation--leftDisabled;
         $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
 
-        function moveCarousel(event)
-        {
+        $(window).resize(function () {
+            // when window is resized we recalculate sizes
+            updateSizes();
+
+            // position buttons block in the center of carousel wrapper
+            var buttonsBlockPosition = carouselWrapper.width() / 2 - $('.round-buttons-block').width() / 2 + 'px';
+            $('.round-buttons-block').css('left', buttonsBlockPosition);
+
+            // update carouselPosition
+            $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift * (-1) + 'px');
+        });
+
+        function updateCarouselPosition(event) {
+            console.log($(this).index());
+
+            if (parseInt(event.data.direction) !== 0) {
+                currentCarouselShift += parseInt(event.data.direction);
+                //console.log('position via LEFT-RIGHT', currentCarouselShift);
+            } else {
+                currentCarouselShift = $(this).index();
+            }
+
             $('.alexcarousel ul').css('transition', 'left 1s');
-           
-            if(event.data.direction === 'right')
-            {
-                
-                // switch on event listener for LEFT and change CLASS
-                // basically we activate LEFT navigation when we click RIGHT navigation
-                if (currentCarouselShift === 0) {
-                    $('.alexcarousel-navigation--leftDisabled').removeClass('alexcarousel-navigation--leftDisabled').addClass('alexcarousel-navigation--left').on('click', { direction: 'left' }, moveCarousel);
-                }
+            $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift * (-1) + 'px');
 
-                // if we reached the end we must disable RIGHT
-                if (currentCarouselShift - numberOfImages + images.length === 1) {
-                    $('.alexcarousel-navigation--right').removeClass('alexcarousel-navigation--right').addClass('alexcarousel-navigation--rightDisabled').off('click');
-                }
-
-                currentCarouselShift--;
-                $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
-
-                
+            if (currentCarouselShift === 0) {
+                // if 0 image selected we disable LEFT navigation
+                $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
+            } else {
+                // we enable LEFT navigation
+                $('.alexcarousel-navigation--leftDisabled').removeClass('alexcarousel-navigation--leftDisabled').addClass('alexcarousel-navigation--left').on('click', { direction: '-1' }, updateCarouselPosition);
             }
 
-            if (event.data.direction === 'left') {
-                
-                // enable RIGHT if we start moving back
-                // we simply enable RIGHT if it was disabled, that's all
-                //if (currentCarouselShift + numberOfImages === 0) {
-                //    $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: 'right' }, moveCarousel);
-                //}
-
-                if ($('.alexcarousel-navigation--rightDisabled').length === 1) {
-                    $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: 'right' }, moveCarousel);
-                }
-
-                // here we must disable LEFT when ul left is 0
-                if (currentCarouselShift === -1) {
-                    $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
-                }
-
-                currentCarouselShift++;
-                $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift + 'px');
-
-               
+            if (currentCarouselShift === (images.length - numberOfImages)) {
+                // if 6-3+1 image selected we disable RIGHT navigation
+                $('.alexcarousel-navigation--right').removeClass('alexcarousel-navigation--right').addClass('alexcarousel-navigation--rightDisabled').off('click');
+            } else {
+                // we enable RIGHT navigation
+                $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: '+1' }, updateCarouselPosition);
             }
+
         }
+
 
         function updateSizes() {
             // if need size of scrollbar check this https://davidwalsh.name/detect-scrollbar-width
