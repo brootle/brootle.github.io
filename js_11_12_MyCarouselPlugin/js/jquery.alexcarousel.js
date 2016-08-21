@@ -54,7 +54,7 @@
 
 
         // set 1st button as active by defauls
-        //$('.button').eq(0).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
+        $('.button').eq(0).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
 
         // position buttons block in the center of carousel wrapper
         var buttonsBlockPosition = carouselWrapper.width() / 2 - $('.round-buttons-block').width() / 2 + 'px';
@@ -80,12 +80,18 @@
             $('.alexcarousel ul').css('left', images.outerWidth() * currentCarouselShift * (-1) + 'px');
         });
 
+        function setActiveRoundButton() {
+            console.log(currentCarouselShift);
+            $('.round-buttons-block__button--active').removeClass('round-buttons-block__button--active').addClass('round-buttons-block__button');
+            $('.button').on('click', { direction: '0' }, updateCarouselPosition);
+            $('.button').eq(currentCarouselShift).removeClass('round-buttons-block__button').addClass('round-buttons-block__button--active');
+        }
+
         function updateCarouselPosition(event) {
-            console.log($(this).index());
+            // here at the end we must also set active button and make previous button inactive
 
             if (parseInt(event.data.direction) !== 0) {
                 currentCarouselShift += parseInt(event.data.direction);
-                //console.log('position via LEFT-RIGHT', currentCarouselShift);
             } else {
                 currentCarouselShift = $(this).index();
             }
@@ -108,6 +114,8 @@
                 // we enable RIGHT navigation
                 $('.alexcarousel-navigation--rightDisabled').removeClass('alexcarousel-navigation--rightDisabled').addClass('alexcarousel-navigation--right').on('click', { direction: '+1' }, updateCarouselPosition);
             }
+
+            setActiveRoundButton();
 
         }
 
