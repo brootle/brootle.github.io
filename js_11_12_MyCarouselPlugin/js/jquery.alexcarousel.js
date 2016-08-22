@@ -26,7 +26,7 @@
         var carouselWidth; // width of all images that are in the carousel
 
         var numberOfImages = 3; // number of images to be displayed in carousel can get via parameter
-        // must add check if the user tries to display more images that are available
+        // must add check if the user tries to display more images that are available and disable RIGHT button
         if (numberOfImages > images.length) {
             numberOfImages = images.length;
         }
