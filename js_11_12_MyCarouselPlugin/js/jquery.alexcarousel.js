@@ -79,6 +79,16 @@
         //set default state to .alexcarousel-navigation--leftDisabled;
         $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
 
+        // make our carousel to run itself
+        setInterval(function () {
+            currentCarouselShift++;
+            if (currentCarouselShift > images.length - numberOfImages) {
+                currentCarouselShift = 0;
+            }
+            $('.button').eq(currentCarouselShift).trigger('click');
+        }, 6000);
+
+
         $(window).resize(function () {
             // when window is resized we recalculate sizes
             updateSizes();

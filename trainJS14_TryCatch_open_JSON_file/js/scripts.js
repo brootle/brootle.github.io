@@ -11,10 +11,13 @@ $(function () {
         console.log('end of try');
     }
 
-    $.getJSON("test.json", function (data) {
+    $.getJSON("https://brootle.github.io/trainJS14_TryCatch/test.json", function (data) {
+
+        console.log(data);      // data is an Object we get from JSON file
+
         var items = [];
         $.each(data, function (key, val) {
-            items.push("<li id='" + key + "'>" + val + "</li>");
+            items.push("<li id='" + key + "'>" + val + "</li>");    // here we get key and value from Object
         });
 
         $("<ul/>", {
