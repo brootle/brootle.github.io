@@ -6,6 +6,13 @@
     // we can give object that will have a list of parameters to our function-plugin
     $.fn.alexcarousel = function (options) {
 
+        // set default option in an object
+        var defaults = {
+            numberOfImages: '3'
+        }
+
+        var settings = $.extend(defaults, options); // extend combines two obects
+
         // get width of wrapper and make each image 33% of it's width
         $(this).wrap("<div class='alexcarousel-wrapper'></div>");
 
@@ -25,7 +32,8 @@
         var borderWidth; // border of the images
         var carouselWidth; // width of all images that are in the carousel
 
-        var numberOfImages = 3; // number of images to be displayed in carousel can get via parameter
+        //var numberOfImages = 3; // number of images to be displayed in carousel can get via parameter
+        var numberOfImages = settings.numberOfImages; // number of images to be displayed in carousel can get via parameter
         // must add check if the user tries to display more images that are available and disable RIGHT button
         if (numberOfImages > images.length) {
             numberOfImages = images.length;
