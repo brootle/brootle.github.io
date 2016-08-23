@@ -13,6 +13,7 @@
         
 
         <script src="js/scripts.js"></script>
+        <script src="js/js-template.js"></script>
 
 
         <title>Test loaded from localStorage as JSON string</title>
@@ -24,53 +25,31 @@
             </header>
             <main>
 
-                <form action="" method="get">
-                    <fieldset>
-                        <legend>Exam on programming</legend>
+                <script type="text/template" id="exam">
 
-                        <div class="question">
-                            <div class="question__tittle">What is your name</div>
+                    <form action="" method="get">
+                        <fieldset>
+                            <legend>Exam on programming</legend>
 
+                            <% var keys = Object.keys(data);
+                               for (var i = 0; i < keys.length; i++) { %>
+                            <div class="question__tittle"><%= keys[i] %></div>
+                            <%  var replies = data[keys[i]];
+                                keys_replies = Object.keys(replies);
+                                for (var j = 0; j < keys_replies.length; j++) { %>
                             <div class="question__reply">
-                                <input type="checkbox" id="checkbox_1_1" name="question_1" value="1">
-                                <label for="checkbox_1_1">Answer variant #1</label>
+                                <input type="checkbox" id="checkbox_<%= i %>_<%= j %>" name="question_<%= i %>" value="<%= i %>">
+                                <label for="checkbox_<%= i %>_<%= j %>"><%= keys_replies[j] %></label>
                             </div>
+                            <%   } 
+                               } %>
 
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_1_2" name="question_1" value="2">
-                                <label for="checkbox_1_2">Answer variant #2</label>
-                            </div>
+                            <input type="submit" value="Submit">
 
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_1_3" name="question_1" value="3">
-                                <label for="checkbox_1_3">Answer variant #3</label>
-                            </div>
-                        </div>
+                        </fieldset>
+                    </form>
 
-                        <div class="question">
-                            <div class="question__tittle">What is your last</div>
-
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_2_1" name="question_2" value="1">
-                                <label for="checkbox_2_1">Answer variant #1</label>
-                            </div>
-
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_2_2" name="question_2" value="2">
-                                <label for="checkbox_2_2">Answer variant #2</label>
-                            </div>
-
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_2_3" name="question_2" value="3">
-                                <label for="checkbox_2_3">Answer variant #3</label>
-                            </div>
-                        </div>
-
-                        
-                        <input type="submit" value="Submit">
-
-                    </fieldset>
-                   </form>
+                </script>
 
 
             </main>
