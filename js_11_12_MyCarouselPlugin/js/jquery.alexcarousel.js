@@ -88,14 +88,26 @@
         $('.alexcarousel-navigation--left').removeClass('alexcarousel-navigation--left').addClass('alexcarousel-navigation--leftDisabled').off('click');
 
         // make our carousel to run itself
-        setInterval(function () {
+        var carouselShiftInterval = setInterval(triggerCarouselShift, 6000);
+
+        // stop carousel when mouse is over it
+        // why? because when the user points Carousel it means he wants to take control over it
+        $('.alexcarousel-wrapper').hover(
+            function () {
+                clearInterval(carouselShiftInterval);
+            },
+            function () {
+                carouselShiftInterval = setInterval(triggerCarouselShift, 6000);
+            });
+
+        // triggers carousel shift
+        function triggerCarouselShift () {
             currentCarouselShift++;
             if (currentCarouselShift > images.length - numberOfImages) {
                 currentCarouselShift = 0;
             }
             $('.button').eq(currentCarouselShift).trigger('click');
-        }, 6000);
-
+        }
 
         $(window).resize(function () {
             // when window is resized we recalculate sizes
