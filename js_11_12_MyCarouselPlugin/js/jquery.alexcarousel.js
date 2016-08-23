@@ -8,7 +8,8 @@
 
         // set default option in an object
         var defaults = {
-            numberOfImages: '3'
+            numberOfImages: '3',
+            backgroundColor: 'rgba(255,255,255,0.1)'
         }
 
         var settings = $.extend(defaults, options); // extend combines two obects
@@ -22,6 +23,12 @@
 
         // get all images in the list
         var images = $('.alexcarousel img');
+
+        // set background color
+        //$('.alexcarousel img').css("background-color", settings.backgroundColor);
+        //$('.alexcarousel img').css("border-color", settings.backgroundColor);
+        //$('.alexcarousel img').css("border-color", 'rgba(0,0,255,0.0)');
+        $('.alexcarousel-wrapper').css("background-color",settings.backgroundColor);
 
         // set width to all images to be 33% of the alexcarousel-wrapper and width of
         // image left border and minus width of right border
