@@ -1,13 +1,6 @@
 $(function () {
     console.log('DOM loaded with jQuery - short version');
 
-    //$('.alexcarousel').alexcarousel({
-    //    numberOfImages: '3',
-    //    backgroundColor: 'rgba(255,255,255,0.5)'
-    //});
-
-
-
     $.getJSON("https://brootle.github.io/js_13_14_Test_localStorage/test.json", function (data) {
         // get JSON data from a file as an object and save it to local storage as JSON
         localStorage.setItem('examQuestions', JSON.stringify(data));
@@ -22,7 +15,7 @@ $(function () {
 
     var html = $('#exam').html();
 
-    // this code we use in html document
+    // this code we use in html document as a template
     var keys = Object.keys(softwareTest);
 
     for (var i = 0; i < keys.length; i++) {
@@ -37,7 +30,7 @@ $(function () {
         }
     }
 
-
+    // using template to put data in our page
     var content = tmpl(html, {
         data: softwareTest
     });
