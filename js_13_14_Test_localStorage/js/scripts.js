@@ -182,6 +182,10 @@ $(function () {
         } else {
             // if there are errors we need to say how many and give a list of questions
             messageToDisplay = "You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer";
+
+            for (var i = 0; i < errors.errorsList.length; i++) {
+                messageToDisplay += "<p>" + errors.errorsList[i] + "</p>";
+            }
         }
 
         overlay = $('<div class="modal-window-overlay"></div>');
