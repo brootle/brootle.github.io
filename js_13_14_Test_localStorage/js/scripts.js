@@ -124,11 +124,15 @@ $(function () {
 
                 //console.log(replies[keys_replies[j]] + ' : ' + validReplies[valid_keys_replies[j]]);
 
-                if (replies[keys_replies[j]] == 'false') {
+                if (validReplies[valid_keys_replies[j]] === '1') {
                     numberOfErrors++;
+                    console.log(true);
                 }
 
-                console.log(validReplies[valid_keys_replies[j]]);
+                //console.log(validReplies[valid_keys_replies[j]]);
+                //console.log(Boolean(validReplies[valid_keys_replies[j]]));
+
+                //console.log(Boolean(0));
             }
         }
 
