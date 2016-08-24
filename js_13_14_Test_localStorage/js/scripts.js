@@ -186,7 +186,7 @@ $(function () {
 
         overlay = $('<div class="modal-window-overlay"></div>');
 
-        modal = $('<div class="modal-window">' + messageToDisplay + '</div>');
+        modal = $('<div class="modal-window"><h2>' + messageToDisplay + '</h2></div>');
 
         overlay.one('click', hideModal); // add on click event to run 1 time only
 
