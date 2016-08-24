@@ -33,18 +33,20 @@
 
                             <% var keys = Object.keys(data);
                                for (var i = 0; i < keys.length; i++) { %>
-                            <div class="question__tittle"><%= keys[i] %></div>
-                            <%  var replies = data[keys[i]];
+                            <div class="question">
+                                <div class="question__tittle"><%= keys[i] %></div>
+                                <%  var replies = data[keys[i]];
                                 keys_replies = Object.keys(replies);
                                 for (var j = 0; j < keys_replies.length; j++) { %>
-                            <div class="question__reply">
-                                <input type="checkbox" id="checkbox_<%= i %>_<%= j %>" name="question_<%= i %>" value="<%= j %>">
-                                <label for="checkbox_<%= i %>_<%= j %>"><%= keys_replies[j] %></label>
+                                <div class="question__reply">
+                                    <input type="checkbox" id="checkbox_<%= i %>_<%= j %>" name="question_<%= i %>" value="<%= j %>">
+                                    <label for="checkbox_<%= i %>_<%= j %>"><%= keys_replies[j] %></label>
+                                </div>
+                                <% } %>
                             </div>
-                            <%   } 
-                               } %>
+                            <% } %>
 
-                            <input type="submit" value="Submit">
+                            <input type="submit" class="submit-button" value="Check my results">
 
                         </fieldset>
                     </form>
