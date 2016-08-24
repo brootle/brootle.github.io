@@ -100,7 +100,12 @@ $(function () {
     }
 
     function compareTestResults(userResults, validResults) {
-        var numberOfErrors = 0;
+
+        // we count errors and also send questions where there was wrong reply
+        var errors = {
+            numberOfErrors: 0,
+            errorsList: []
+        };
 
         // this code we use in html document as a template
         var keys = Object.keys(userResults);
@@ -124,20 +129,26 @@ $(function () {
 
                 //console.log(replies[keys_replies[j]] + ' : ' + validReplies[valid_keys_replies[j]]);
 
-                if (validReplies[valid_keys_replies[j]] === '1') {
-                    numberOfErrors++;
-                    console.log(true);
+                // manualy convert 'true' or 'false' to true or false 
+                if (validReplies[valid_keys_replies[j]] === 'true') {
+                    validReplies[valid_keys_replies[j]] = true;
                 }
 
-                //console.log(validReplies[valid_keys_replies[j]]);
-                //console.log(Boolean(validReplies[valid_keys_replies[j]]));
+                if (validReplies[valid_keys_replies[j]] === 'false') {
+                    validReplies[valid_keys_replies[j]] = false;
+                }
 
-                //console.log(Boolean(0));
+                if (validReplies[valid_keys_replies[j]] !== replies[keys_replies[j]]) {
+                    errors.numberOfErrors++;
+                    errors.errorsList.push(keys[i]);
+                    //console.log(keys[i] + ':' + keys_replies[j] + ':' + replies[keys_replies[j]]);
+                }
+
             }
         }
 
 
-        return numberOfErrors;
+        return errors;
     }
 
 
