@@ -175,12 +175,6 @@ $(function () {
 
     function showModal(errors) {
 
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
-        var boxHeight = $('.modal-window').height();
-        var boxWidth = $('.modal-window').width();
-        $('.modal-window').css({ 'left': ((windowWidth - boxWidth) / 2), 'top': ((windowHeight - boxHeight) / 2) });
-
         var messageToDisplay;
 
         if (errors.numberOfErrors === 0) {
