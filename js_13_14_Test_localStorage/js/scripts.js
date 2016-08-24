@@ -140,7 +140,12 @@ $(function () {
 
                 if (validReplies[valid_keys_replies[j]] !== replies[keys_replies[j]]) {
                     errors.numberOfErrors++;
-                    errors.errorsList.push(keys[i]);
+                    
+
+                    if (hasDuplicateValue(errors.errorsList, keys[i]) === false) {
+                        errors.errorsList.push(keys[i]);
+                    }
+                    
                     //console.log(keys[i] + ':' + keys_replies[j] + ':' + replies[keys_replies[j]]);
                 }
 
@@ -151,5 +156,15 @@ $(function () {
         return errors;
     }
 
+    function hasDuplicateValue(array, value) {
+
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 });
