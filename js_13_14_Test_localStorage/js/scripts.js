@@ -1,6 +1,10 @@
 $(function () {
     console.log('DOM loaded with jQuery - short version');
 
+    var body = $('body');
+    var overlay;
+    var modal;
+
     // we get test questions with reply options and save to localStorage, but correct replies are not defined
     $.getJSON("https://brootle.github.io/js_13_14_Test_localStorage/test.json", function (data) {
         // get JSON data from a file as an object and save it to local storage as JSON
@@ -94,6 +98,7 @@ $(function () {
         console.log(errors);
 
         // now we should show modal window with results to the user
+        showModal(errors);
 
         // after we compare resuts - remove correct from memory
         localStorage.removeItem('examQuestionsAndReplies');
@@ -165,6 +170,39 @@ $(function () {
         }
 
         return false;
+    }
+
+
+    function showModal(errors) {
+
+        var windowHeight = $(window).height();
+        var windowWidth = $(window).width();
+        var boxHeight = $('.modal-window').height();
+        var boxWidth = $('.modal-window').width();
+        $('.modal-window').css({ 'left': ((windowWidth - boxWidth) / 2), 'top': ((windowHeight - boxHeight) / 2) });
+
+        var messageToDisplay;
+
+        if (errors.numberOfErrors === 0) {
+            messageToDisplay = "Congratulations! You didn't make any mistake in the test!";
+        } else {
+            // if there are errors we need to say how many and give a list of questions
+            messageToDisplay = "You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer";
+        }
+
+        overlay = $('<div class="modal-window-overlay"></div>');
+
+        modal = $('<div class="modal-window">' + messageToDisplay + '</div>');
+
+        overlay.one('click', hideModal); // add on click event to run 1 time only
+
+        body.append(overlay);
+        body.append(modal);
+    }
+
+    function hideModal() {
+        modal.remove();
+        overlay.remove();
     }
 
 });
