@@ -161,6 +161,10 @@ $(function () {
         return errors;
     }
 
+    function clearCheckBoxes(){
+        $("input").prop('checked', false);
+    }
+
     function hasDuplicateValue(array, value) {
 
         for (var i = 0; i < array.length; i++) {
@@ -175,13 +179,14 @@ $(function () {
 
     function showModal(errors) {
 
-        var messageToDisplay;
+        var messageToDisplay = '';
+        var messageTittle;
 
         if (errors.numberOfErrors === 0) {
-            messageToDisplay = "Congratulations! You didn't make any mistake in the test!";
+            messageTittle = "Congratulations! You didn't make any mistake in the test!";
         } else {
             // if there are errors we need to say how many and give a list of questions
-            messageToDisplay = "You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer";
+            messageTittle = "<h2>You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer</h2>";
 
             for (var i = 0; i < errors.errorsList.length; i++) {
                 messageToDisplay += "<p>" + errors.errorsList[i] + "</p>";
@@ -190,7 +195,7 @@ $(function () {
 
         overlay = $('<div class="modal-window-overlay"></div>');
 
-        modal = $('<div class="modal-window"><h2>' + messageToDisplay + '</h2></div>');
+        modal = $('<div class="modal-window">' + messageTittle + messageToDisplay + '</div>');
 
         overlay.one('click', hideModal); // add on click event to run 1 time only
 
@@ -201,6 +206,8 @@ $(function () {
     function hideModal() {
         modal.remove();
         overlay.remove();
+
+        clearCheckBoxes();
     }
 
 });
