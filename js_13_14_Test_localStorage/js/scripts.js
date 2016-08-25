@@ -186,10 +186,10 @@ $(function () {
             messageTittle = "Congratulations! You didn't make any mistake in the test!";
         } else {
             // if there are errors we need to say how many and give a list of questions
-            messageTittle = "<h2>You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer</h2>";
+            messageTittle = "<a class='modal-tittle'>You made " + errors.numberOfErrors + " mistakes in the test! Below are questions where you gave wrong answer</a>";
 
             for (var i = 0; i < errors.errorsList.length; i++) {
-                messageToDisplay += "<p>" + errors.errorsList[i] + "</p>";
+                messageToDisplay += "<p class='modal-list'>" + errors.errorsList[i] + "</p>";
             }
         }
 
