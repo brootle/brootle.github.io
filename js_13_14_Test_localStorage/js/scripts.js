@@ -1,4 +1,7 @@
 $(function () {
+
+    'use strict'
+
     console.log('DOM loaded with jQuery - short version');
 
     var body = $('body');
@@ -27,7 +30,7 @@ $(function () {
 
         var replies = softwareTest[keys[i]];
 
-        keys_replies = Object.keys(replies);
+        var keys_replies = Object.keys(replies);
 
         for (var j = 0; j < keys_replies.length; j++) {
             //console.log(keys_replies[j]);
@@ -124,9 +127,9 @@ $(function () {
 
             var validReplies = validResults[validKeys[i]];
 
-            keys_replies = Object.keys(replies);
+            var keys_replies = Object.keys(replies);
 
-            valid_keys_replies = Object.keys(validReplies);
+            var valid_keys_replies = Object.keys(validReplies);
 
             for (var j = 0; j < keys_replies.length; j++) {
                 //console.log(keys_replies[j] + ':' + replies[keys_replies[j]]);
