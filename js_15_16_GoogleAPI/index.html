@@ -26,6 +26,21 @@
                 <input type="text" />
                 <input type="submit" value="Submit" />
 
+                <div id="content"></div>
+
+                <script>
+                      function hndlr(response) {
+                          for (var i = 0; i < response.items.length; i++) {
+                            var item = response.items[i];
+                            // in production code, item.htmlTitle should have the HTML entities escaped.
+                            document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
+                          }
+                        }
+                </script>
+
+                <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyAHIsWIFjkev1zQdgRWXSA4-oD-aWmlSOg&cx=004155958433879807615:oz0xev5kykc&q=cars&callback=hndlr">
+                </script>
+
             </main>
             <footer>
                 <div class="footer-copyright">

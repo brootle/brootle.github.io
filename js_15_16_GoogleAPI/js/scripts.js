@@ -10,23 +10,28 @@ $(function () {
 
     //GET https://www.googleapis.com/customsearch/v1?key=AIzaSyAHIsWIFjkev1zQdgRWXSA4-oD-aWmlSOg&cx=004155958433879807615:oz0xev5kykc&q=goit
 
+    
 
-    // callback function
-    function GoogleCallback(func, data) {
-        window[func](data);
-    }
+    //function search() {
+    //    //console.log(query);
 
-    // change key!!!
-    $.getJSON("https://www.googleapis.com/customsearch/v1?key=AIzaSyAHIsWIFjkev1zQdgRWXSA4-oD-aWmlSOg&cx=004155958433879807615:oz0xev5kykc&q=goit&callback=GoogleCallback&context=?",
-    function (data) {
-        var ul = document.createElement("ul");
-        $.each(data.results, function (i, val) {
-            var li = document.createElement("li");
-            li.innerHTML = '<a href="' + val.url + '" title="' + val.url + '" target="_blank">' + val.title + "</a> - " + val.content;
-            ul.appendChild(li);
-        });
-        $('body').html(ul);
-    });
+    //    // get places matching query (asynchronously)
+
+    //    $.getJSON("https://www.googleapis.com/customsearch/v1?key=AIzaSyAHIsWIFjkev1zQdgRWXSA4-oD-aWmlSOg&cx=004155958433879807615:oz0xev5kykc&q=goit")
+    //    .done(function (data, textStatus, jqXHR) {
+
+    //        // call typeahead's callback with search results (i.e., places)
+    //        //cb(data);
+    //        console.log(data);
+    //    })
+    //    .fail(function (jqXHR, textStatus, errorThrown) {
+
+    //        // log error to browser's console
+    //        console.log(errorThrown.toString());
+    //    });
+    //}
+
+    //search();
 
 
 });
