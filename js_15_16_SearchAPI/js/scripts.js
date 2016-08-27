@@ -2,6 +2,36 @@ $(function () {
 
     'use strict'
 
+    $('.search__button').on('click', update);
+
+    function update() {
+
+        var parameters = {
+            q: $("#q").val(),
+            format: 'json'
+        };
+        $.getJSON("http://api.duckduckgo.com/?", parameters)
+        .done(function (data, textStatus, jqXHR) {
+
+            console.log(data);
+
+            console.log($(data).data('RelatedTopics'));
+
+            // here we must look through our data
+            //for (var i = 0; i < data.RelatedTopics.lengh; i++) {
+            //    console.log(data[i]);
+            //}
+        })
+         .fail(function (jqXHR, textStatus, errorThrown) {
+
+             // log error to browser's console
+             console.log(errorThrown.toString());
+         });
+    }
+
+    //http://www.programmableweb.com/api/duck-duck-go
+    //http://api.duckduckgo.com/?q=Lugansk&format=json
+
     //$.ajax({
     //    // AJAX-specified URL
     //    // callback function with parameters must be in url
