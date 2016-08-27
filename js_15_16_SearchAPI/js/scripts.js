@@ -13,9 +13,7 @@ $(function () {
         $.getJSON("https://api.duckduckgo.com/", parameters)
         .done(function (data, textStatus, jqXHR) {
 
-            console.log(data);
-
-            console.log($(data).data('RelatedTopics'));
+            console.log(data['RelatedTopics'].length);
 
             // here we must look through our data
             //for (var i = 0; i < data.RelatedTopics.lengh; i++) {
