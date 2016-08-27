@@ -13,12 +13,20 @@ $(function () {
         $.getJSON("https://api.duckduckgo.com/", parameters)
         .done(function (data, textStatus, jqXHR) {
 
-            console.log(data['RelatedTopics'].length);
+            //console.log(data);
+
+            var RelatedTopics = data['RelatedTopics'];
 
             // here we must look through our data
-            //for (var i = 0; i < data.RelatedTopics.lengh; i++) {
-            //    console.log(data[i]);
-            //}
+            for (var i = 0; i < RelatedTopics.length; i++) {
+
+                // add data to the page
+
+                //console.log(RelatedTopics[i]['Result']);
+
+                $("main").append(RelatedTopics[i]['Result']);
+            }
+
         })
          .fail(function (jqXHR, textStatus, errorThrown) {
 
