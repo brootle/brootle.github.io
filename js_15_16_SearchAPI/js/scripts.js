@@ -10,7 +10,7 @@ $(function () {
             q: $("#q").val(),
             format: 'json'
         };
-        $.getJSON("http://api.duckduckgo.com/?", parameters)
+        $.getJSON("https://api.duckduckgo.com/?", parameters)
         .done(function (data, textStatus, jqXHR) {
 
             console.log(data);
