@@ -7,25 +7,42 @@ $(function () {
     function update() {
 
         var parameters = {
-            q: $("#q").val(),
-            format: 'json'
+            token: 'dc2e336c-0244-4317-be31-3b93bd72fc3c',
+            format: 'json',
+            q: $("#q").val()
         };
-        $.getJSON("https://api.duckduckgo.com/", parameters)
+        $.getJSON("https://webhose.io/search", parameters)
         .done(function (data, textStatus, jqXHR) {
 
-            //console.log(data);
+            // here we analyze data and add search results to the page
+            console.log(data);
 
-            var RelatedTopics = data['RelatedTopics'];
+            var totalResults = data['totalResults'];
+            $("main").append('<p>Total results: ' + totalResults + '</p>');
+            console.log(totalResults);
+
+            var posts = data['posts'];
 
             // here we must look through our data
-            for (var i = 0; i < RelatedTopics.length; i++) {
+            for (var i = 0; i < posts.length; i++) {
+
+                if (posts[i].language === 'english') {
+                    //console.log(posts[i].title);
+                    if (posts[i].title === '') {
+                        $("main").append('<p>' + 'No tittle' + '</p>');
+                    } else {
+                        $("main").append('<p>' + posts[i].title + '</p>');
+                    }
+                    
+                }
 
                 // add data to the page
 
                 //console.log(RelatedTopics[i]['Result']);
 
-                $("main").append(RelatedTopics[i]['Result']);
+                //$("main").append('<p>'+RelatedTopics[i]['Result']+'</p>');
             }
+
 
         })
          .fail(function (jqXHR, textStatus, errorThrown) {
@@ -34,6 +51,37 @@ $(function () {
              console.log(errorThrown.toString());
          });
     }
+
+    //function update() {
+
+    //    var parameters = {
+    //        q: $("#q").val(),
+    //        format: 'json'
+    //    };
+    //    $.getJSON("https://api.duckduckgo.com/", parameters)
+    //    .done(function (data, textStatus, jqXHR) {
+
+    //        //console.log(data);
+
+    //        var RelatedTopics = data['RelatedTopics'];
+
+    //        // here we must look through our data
+    //        for (var i = 0; i < RelatedTopics.length; i++) {
+
+    //            // add data to the page
+
+    //            //console.log(RelatedTopics[i]['Result']);
+
+    //            $("main").append('<p>'+RelatedTopics[i]['Result']+'</p>');
+    //        }
+
+    //    })
+    //     .fail(function (jqXHR, textStatus, errorThrown) {
+
+    //         // log error to browser's console
+    //         console.log(errorThrown.toString());
+    //     });
+    //}
 
     //http://www.programmableweb.com/api/duck-duck-go
     //http://api.duckduckgo.com/?q=Lugansk&format=json
