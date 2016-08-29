@@ -2,24 +2,69 @@ $(function () {
 
     'use strict'
 
+    var tsNext = '';
+    var tsPrevious = '';
+    var ts = '';
+    var position = 0;
+
     $('.search__button').on('click', update);
+
+    $('.results-navigation__next').on('click', function () {
+
+        $('.results').remove();
+        $('.results__title').remove();
+
+        position++;
+
+        ts = tsNext;
+
+        update();
+
+        $('.results-navigation__previous').show();
+    });
+
+    $('.results-navigation__previous').on('click', function () {
+
+        $('.results').remove();
+        $('.results__title').remove();
+
+        position--;
+
+        ts = tsPrevious;
+
+        update();
+
+        if (position === 0) {
+            $('.results-navigation__previous').hide();
+        }
+    });
+
+
 
     function update() {
 
         var parameters = {
             token: 'dc2e336c-0244-4317-be31-3b93bd72fc3c',
             format: 'json',
+            ts: ts,
             q: $("#q").val()
         };
+
         $.getJSON("https://webhose.io/search", parameters)
         .done(function (data, textStatus, jqXHR) {
 
             // here we analyze data and add search results to the page
             console.log(data);
 
-            var totalResults = data['totalResults'];
-            $("main").append('<p>Total results: ' + totalResults + '</p>');
-            console.log(totalResults);
+            tsNext = getParameterByName('ts', data['next']);
+
+            console.log(tsNext);
+
+            if (data['moreResultsAvailable'] === 0) {
+                $('.results-navigation__next').hide();
+            } else {
+                $('.results-navigation__next').show();
+            }
 
             var posts = data['posts'];
 
@@ -29,20 +74,15 @@ $(function () {
                 if (posts[i].language === 'english') {
                     //console.log(posts[i].title);
                     if (posts[i].title === '') {
-                        $("main").append('<p>' + 'No tittle' + '</p>');
+                        var title = posts[i].text.slice(0, 100) + '...';
+                        $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
                     } else {
-                        $("main").append('<p>' + posts[i].title + '</p>');
+                        $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + posts[i].title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
                     }
                     
                 }
 
-                // add data to the page
-
-                //console.log(RelatedTopics[i]['Result']);
-
-                //$("main").append('<p>'+RelatedTopics[i]['Result']+'</p>');
             }
-
 
         })
          .fail(function (jqXHR, textStatus, errorThrown) {
@@ -52,63 +92,13 @@ $(function () {
          });
     }
 
-    //function update() {
-
-    //    var parameters = {
-    //        q: $("#q").val(),
-    //        format: 'json'
-    //    };
-    //    $.getJSON("https://api.duckduckgo.com/", parameters)
-    //    .done(function (data, textStatus, jqXHR) {
-
-    //        //console.log(data);
-
-    //        var RelatedTopics = data['RelatedTopics'];
-
-    //        // here we must look through our data
-    //        for (var i = 0; i < RelatedTopics.length; i++) {
-
-    //            // add data to the page
-
-    //            //console.log(RelatedTopics[i]['Result']);
-
-    //            $("main").append('<p>'+RelatedTopics[i]['Result']+'</p>');
-    //        }
-
-    //    })
-    //     .fail(function (jqXHR, textStatus, errorThrown) {
-
-    //         // log error to browser's console
-    //         console.log(errorThrown.toString());
-    //     });
-    //}
-
-    //http://www.programmableweb.com/api/duck-duck-go
-    //http://api.duckduckgo.com/?q=Lugansk&format=json
-
-    //$.ajax({
-    //    // AJAX-specified URL
-    //    // callback function with parameters must be in url
-    //    url: "http://ajax.googleapis.com/ajax/services/search/web",
-    //    data: {
-    //        abc: 123
-    //    },
-    //    method: 'POST',
-    //    dataType: "jsonp",
-    //    // Handle the success event
-    //    success: function (data) {
-    //        // equal to previuos example
-    //        // ...
-
-    //        console.log('connected to server');
-    //    },
-    //    error: function () {
-
-    //    }
-    //});
-
-    //function GoogleCallback(jQueryObject, data) {
-    //    console.log(data);
-    //}
-
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 });
