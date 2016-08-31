@@ -3,7 +3,7 @@ $(function () {
     'use strict'
 
     var selectedPage = 0;
-    var posts;
+    var posts = [];
     var numberOfPostsOnPage = 10;
     var next10Pages = '';
     var previous10Pages = '';
@@ -26,7 +26,7 @@ $(function () {
         $('.search__button').on('click', { direction: 'search button' }, UpdateResultsPage);
     }
 
-    function AddResultsToPage(data) {
+    function AddNavigationLinks(data) {
         // add pevious 1 2 3 4 5 6 7 8 9 10 next navigation
         // get total results number
 
@@ -177,7 +177,7 @@ $(function () {
             // here we analyze data and add search results to the page
             console.log(data);
 
-            AddResultsToPage(data);
+            AddNavigationLinks(data);
 
         })
          .fail(function (jqXHR, textStatus, errorThrown) {
