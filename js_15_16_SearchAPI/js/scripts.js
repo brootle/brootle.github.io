@@ -46,6 +46,7 @@ $(function () {
         var parameters = {
             token: 'dc2e336c-0244-4317-be31-3b93bd72fc3c',
             format: 'json',
+            language: 'english',
             ts: ts,
             q: $("#q").val()
         };
@@ -70,20 +71,13 @@ $(function () {
 
             // here we must look through our data
             for (var i = 0; i < posts.length; i++) {
-
-                if (posts[i].language === 'english') {
-                    //console.log(posts[i].title);
-                    if (posts[i].title === '') {
-                        var title = posts[i].text.slice(0, 100) + '...';
-                        $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
-                    } else {
-                        $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + posts[i].title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
-                    }
-                    
+                if (posts[i].title === '') {
+                    var title = posts[i].text.slice(0, 100) + '...';
+                    $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
+                } else {
+                    $("main").append('<div class="results"><a href="' + posts[i].url + '" target="_blank">' + posts[i].title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
                 }
-
             }
-
         })
          .fail(function (jqXHR, textStatus, errorThrown) {
 
