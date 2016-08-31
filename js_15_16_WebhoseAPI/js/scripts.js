@@ -5,6 +5,10 @@ $(function () {
     var selectedPage = 0;
     var posts;
     var numberOfPostsOnPage = 10;
+    var next10Pages = '';
+    var previous10Pages = '';
+    var next10PagesCounter = 0;
+    var timeStampParameter;
 
     AddSearchNavigation();
 
@@ -19,7 +23,7 @@ $(function () {
         $('.search').append('<input class="search__button" type="button" value="Search" />');
 
         // add event listener to search button
-        $('.search__button').on('click', RequestData);
+        $('.search__button').on('click', { direction: 'search button' }, UpdateResultsPage);
     }
 
     function AddResultsToPage(data) {
@@ -29,29 +33,31 @@ $(function () {
         if ($('.search-navigation-links').length) {
             $('.search-navigation-links').remove();
             selectedPage = 0;
+
+            console.log('clear navigation links');
         }
 
-        console.log('total results: ', data['totalResults']);
+        //console.log('total results: ', data['totalResults']);
 
         posts = data['posts'];
 
         var postsNumber = data['posts'].length;
-        console.log('posts: ', postsNumber);
+        //console.log('posts: ', postsNumber);
 
         var totalResults = data['totalResults'];
 
         var numberOfPages = Math.ceil(totalResults / numberOfPostsOnPage);
-        console.log('number of pages: ', numberOfPages);
+        //console.log('number of pages: ', numberOfPages);
 
         // add navigation div
         $('.search').append('<div class="search-navigation-links"></div>');
 
         // here we add pages and event listeners
         // add 1st page as selected by default
-        $('.search-navigation-links').append('<a class="search-navigation-links__numbers--selected">' + 1 + '</a>');
+        $('.search-navigation-links').append('<a class="search-navigation-links__numbers--selected">' + (1 + next10PagesCounter * numberOfPostsOnPage) + '</a>');
         var pageCounter = 1;
         while (pageCounter < numberOfPages && pageCounter < numberOfPostsOnPage) {
-            $('.search-navigation-links').append('<a class="search-navigation-links__numbers">' + (pageCounter + 1) + '</a>');
+            $('.search-navigation-links').append('<a class="search-navigation-links__numbers">' + (pageCounter + 1 + next10PagesCounter * numberOfPostsOnPage) + '</a>');
             pageCounter++;
         }
         $('.search-navigation-links__numbers').on('click', { direction: 'number clicked' }, UpdateResultsPage);
@@ -60,18 +66,73 @@ $(function () {
         $('.search-navigation-links__numbers--selected').on('click', { direction: 'initiate' }, UpdateResultsPage);
         $('.search-navigation-links__numbers--selected').trigger('click');
 
+        // if next button was clicked at least once we must add previous button
+        if (next10PagesCounter > 0) {
+            $('.search-navigation-links').prepend('<a class="search-navigation-links__previous">' + 'previous 10 pages' + '</a>');
+            $('.search-navigation-links__previous').on('click', { direction: 'previous clicked' }, UpdateResultsPage);
+        }
+
+        // if there are more than 10 pages we must add next 10 pages button
+        if (numberOfPages > 10) {
+            next10Pages = getParameterByName('ts', data['next']);
+            timeStampParameter = next10Pages;
+            $('.search-navigation-links').append('<a class="search-navigation-links__next">' + 'next 10 pages' + '</a>');
+            $('.search-navigation-links__next').on('click', { direction: 'next clicked' }, UpdateResultsPage);
+        }
+
+    }
+
+    function clearResults() {
+
+        $('.search-results').remove();
+
+        console.log('clear search results');
     }
 
     function UpdateResultsPage(event) {
 
         if (event.data.direction === 'initiate') {
             selectedPage = 0;
-        } else {
-            // round button was clicked
-            selectedPage = $(this).index();
+        } else if (event.data.direction === 'next clicked') {
+            next10PagesCounter++;
+
+            previous10Pages = next10Pages;
+
+            clearResults();
+
+            RequestData();
+        } else if (event.data.direction === 'previous clicked') {
+            next10PagesCounter--;
+
+            if (next10PagesCounter === 0) {
+                previous10Pages = '';
+            }
+
+            timeStampParameter = previous10Pages;
+
+            clearResults();
+
+            RequestData();
+        } else if (event.data.direction === 'search button') {
+            // if search button was clicked
+
+            selectedPage = 0;
+            next10Pages = '';
+            previous10Pages = '';
+            next10PagesCounter = 0;
+            timeStampParameter = '';
+
+            
+
+            RequestData();
+
+        }
+        else {
+            // number link was clicked
+            // get index of selected page
+            selectedPage = ($(this).html() - 1 - (next10PagesCounter * numberOfPostsOnPage)); 
         }
 
-        console.log('selected page: ', selectedPage);
         setActivePage();
 
         if ($('.search-results').length) {
@@ -106,6 +167,7 @@ $(function () {
             token: 'dc2e336c-0244-4317-be31-3b93bd72fc3c',
             format: 'json',
             language: 'english',
+            ts: timeStampParameter,
             q: $("#q").val()
         };
 
