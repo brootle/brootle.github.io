@@ -34,7 +34,7 @@ $(function () {
             $('.search-navigation-links').remove();
             selectedPage = 0;
 
-            console.log('clear navigation links');
+            //console.log('clear navigation links');
         }
 
         //console.log('total results: ', data['totalResults']);
@@ -119,8 +119,9 @@ $(function () {
             // number link was clicked
             // get index of selected page
             selectedPage = ($(this).html() - 1 - (next10PagesCounter * numberOfPostsOnPage));
-            setActivePage();
         }
+
+        setActivePage();
 
         if ($('.search-results').length) {
             $('.search-results').remove();
