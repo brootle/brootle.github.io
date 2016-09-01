@@ -27,6 +27,11 @@ $(function () {
         
         $(".search__textfield").keyup(function (e) {
             if (e.keyCode == 13) {
+                selectedPage = 0;
+                next10Pages = '';
+                previous10Pages = '';
+                next10PagesCounter = 0;
+                timeStampParameter = '';
                 RequestData();
             }
         });
@@ -43,6 +48,16 @@ $(function () {
             //console.log('clear navigation links');
         }
 
+        if ($('.search__summary').length) {
+            $('.search__summary').remove();
+        }
+
+        // add search data
+        if (data['moreResultsAvailable'] === 0) {
+            $('.search').append('<div class="search__summary">There are ' + data['totalResults'] + ' results in total</div>');
+        } else {
+            $('.search').append('<div class="search__summary">There are ' + data['moreResultsAvailable'] + ' more results available</div>');
+        }
         //console.log('total results: ', data['totalResults']);
 
         posts = data['posts'];
