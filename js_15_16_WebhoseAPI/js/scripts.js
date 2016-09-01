@@ -23,18 +23,27 @@ $(function () {
         $('.search').append('<input class="search__button" type="button" value="Search" />');
 
         // add event listener to search button and search textfield
-        $('.search__button').on('click', { direction: 'search button' }, UpdateResultsPage);
+        //$('.search__button').on('click', { direction: 'search button' }, UpdateResultsPage);
+
+        $('.search__button').on('click', function () {
+                selectedPage = 0;
+                resetSearch()
+        });
         
         $(".search__textfield").keyup(function (e) {
             if (e.keyCode == 13) {
-                selectedPage = 0;
-                next10Pages = '';
-                previous10Pages = '';
-                next10PagesCounter = 0;
-                timeStampParameter = '';
-                RequestData();
+                resetSearch()
             }
         });
+    }
+
+    function resetSearch() {
+        selectedPage = 0;
+        next10Pages = '';
+        previous10Pages = '';
+        next10PagesCounter = 0;
+        timeStampParameter = '';
+        RequestData();
     }
 
     function AddNavigationLinks(data) {
@@ -106,10 +115,11 @@ $(function () {
 
     function UpdateResultsPage(event) {
 
-        if (event.data.direction === 'initiate') {
-            selectedPage = 0;
+        //if (event.data.direction === 'initiate') {
+        //    selectedPage = 0;
 
-        } else if (event.data.direction === 'next clicked') {
+        //} else if (event.data.direction === 'next clicked') {
+        if (event.data.direction === 'next clicked') {
             next10PagesCounter++;
 
             previous10Pages = next10Pages;
