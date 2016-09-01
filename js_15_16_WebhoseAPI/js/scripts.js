@@ -68,7 +68,7 @@ $(function () {
 
         // if next button was clicked at least once we must add previous button
         if (next10PagesCounter > 0) {
-            $('.search-navigation-links').prepend('<a class="search-navigation-links__previous">' + 'previous 10 pages' + '</a>');
+            $('.search-navigation-links').prepend('<a class="search-navigation-links__previous">' + 'Previous 10' + '</a>');
             $('.search-navigation-links__previous').on('click', { direction: 'previous clicked' }, UpdateResultsPage);
         }
 
@@ -76,18 +76,12 @@ $(function () {
         if (numberOfPages > 10) {
             next10Pages = getParameterByName('ts', data['next']);
             timeStampParameter = next10Pages;
-            $('.search-navigation-links').append('<a class="search-navigation-links__next">' + 'next 10 pages' + '</a>');
+            $('.search-navigation-links').append('<a class="search-navigation-links__next">' + 'Next 10' + '</a>');
             $('.search-navigation-links__next').on('click', { direction: 'next clicked' }, UpdateResultsPage);
         }
 
     }
 
-    function clearResults() {
-
-        $('.search-results').remove();
-
-        console.log('clear search results');
-    }
 
     function UpdateResultsPage(event) {
 
@@ -97,8 +91,6 @@ $(function () {
             next10PagesCounter++;
 
             previous10Pages = next10Pages;
-
-            clearResults();
 
             RequestData();
         } else if (event.data.direction === 'previous clicked') {
@@ -110,8 +102,6 @@ $(function () {
 
             timeStampParameter = previous10Pages;
 
-            clearResults();
-
             RequestData();
         } else if (event.data.direction === 'search button') {
             // if search button was clicked
@@ -122,32 +112,32 @@ $(function () {
             next10PagesCounter = 0;
             timeStampParameter = '';
 
-            
-
             RequestData();
 
         }
         else {
             // number link was clicked
             // get index of selected page
-            selectedPage = ($(this).html() - 1 - (next10PagesCounter * numberOfPostsOnPage)); 
+            selectedPage = ($(this).html() - 1 - (next10PagesCounter * numberOfPostsOnPage));
+            setActivePage();
         }
-
-        setActivePage();
 
         if ($('.search-results').length) {
             $('.search-results').remove();
         }
 
-        // add results to the page!
-        // here we must look through our data
-        for (var i = selectedPage * numberOfPostsOnPage; i < ((selectedPage +1) * numberOfPostsOnPage); i++) {
+        addSearchResultsToPage();
+
+    }
+
+    function addSearchResultsToPage() {
+        for (var i = selectedPage * numberOfPostsOnPage; i < ((selectedPage + 1) * numberOfPostsOnPage) ; i++) {
             if (i < posts.length) {
                 if (posts[i].title === '') {
                     var title = posts[i].text.slice(0, 100) + '...';
-                    $(".search").append('<div class="search-results"><a href="' + posts[i].url + '" target="_blank">' + title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
+                    $(".search").append('<div class="search-results"><a href="' + posts[i].url + '" target="_blank">' + title + '</a>' + '<p class="search-results__text">' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
                 } else {
-                    $(".search").append('<div class="search-results"><a href="' + posts[i].url + '" target="_blank">' + posts[i].title + '</a>' + '<p>' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
+                    $(".search").append('<div class="search-results"><a href="' + posts[i].url + '" target="_blank">' + posts[i].title + '</a>' + '<p class="search-results__text">' + posts[i].text.slice(0, 200) + '...' + '</p>' + '</div>');
                 }
             }
         }
