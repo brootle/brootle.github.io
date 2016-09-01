@@ -22,8 +22,14 @@ $(function () {
         $('.search').append('<input id="q" class="search__textfield" type="text" placeholder="Search for..."  />');
         $('.search').append('<input class="search__button" type="button" value="Search" />');
 
-        // add event listener to search button
+        // add event listener to search button and search textfield
         $('.search__button').on('click', { direction: 'search button' }, UpdateResultsPage);
+        
+        $(".search__textfield").keyup(function (e) {
+            if (e.keyCode == 13) {
+                RequestData();
+            }
+        });
     }
 
     function AddNavigationLinks(data) {
@@ -87,6 +93,7 @@ $(function () {
 
         if (event.data.direction === 'initiate') {
             selectedPage = 0;
+
         } else if (event.data.direction === 'next clicked') {
             next10PagesCounter++;
 
