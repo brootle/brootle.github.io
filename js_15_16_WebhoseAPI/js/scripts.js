@@ -197,6 +197,8 @@ $(function () {
         $.getJSON("https://webhose.io/search", parameters)
         .done(function (data, textStatus, jqXHR) {
 
+            // read more about parameters at https://webhose.io/documentation
+
             // here we analyze data and add search results to the page
             console.log(data);
 
