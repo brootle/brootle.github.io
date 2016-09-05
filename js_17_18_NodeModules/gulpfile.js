@@ -12,9 +12,22 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+    concatCss = require('gulp-concat-css'),
+    cleanCSS = require('gulp-clean-css');
 
+// concat CSS and minify
+gulp.task('concat-min-styles', function () {
+    return gulp.src('src/styles/**/*.css')
+      .pipe(concatCss("main.css"))
+      .pipe(gulp.dest('dist/assets/css'))
+      .pipe(cleanCSS({ compatibility: 'ie8' }))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(gulp.dest('dist/assets/css'))
+      .pipe(notify({ message: 'Concat CSS task complete' }));
+});
 
+// this converts scss to css and creates minimized version also
 gulp.task('styles', function () {
     return sass('src/styles/main.scss', { style: 'expanded' })
       .pipe(autoprefixer('last 2 version'))
