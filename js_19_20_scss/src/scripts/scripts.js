@@ -17,4 +17,15 @@ $(function () {
         }
     );
 
+    $('.slide figure').hover(
+        function () {
+            $(this).children('.slide-image-hover').css("display", "block");
+            $(this).children('figcaption').css("color", "#f6b60e");
+        },
+        function () {
+            $(this).children('.slide-image-hover').css("display", "none");
+            $(this).children('figcaption').css("color", "white");
+        }
+    );
+
 });
