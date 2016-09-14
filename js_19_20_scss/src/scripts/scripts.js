@@ -17,14 +17,16 @@ $(function () {
         }
     );
 
-    $('.slide figure').hover(
+    $('.slide').hover(
         function () {
-            $(this).children('.slide-image-hover').css("display", "block");
-            $(this).children('figcaption').css("color", "#f6b60e");
+            $(this).children('figure').children('.image-container').children('.slide-image-hover').css("display", "block");
+            $(this).children('figure').children('.image-container').children('.slide-image-hover__cross').css("display", "block");
+            $(this).children('figure').children('figcaption').css("color", "#f6b60e");
         },
         function () {
-            $(this).children('.slide-image-hover').css("display", "none");
-            $(this).children('figcaption').css("color", "white");
+            $(this).children('figure').children('.image-container').children('.slide-image-hover').css("display", "none");
+            $(this).children('figure').children('.image-container').children('.slide-image-hover__cross').css("display", "none");
+            $(this).children('figure').children('figcaption').css("color", "white");
         }
     );
 
