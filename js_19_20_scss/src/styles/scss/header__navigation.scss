@@ -1,0 +1,80 @@
+@import 'variables__navigation';
+@import 'variables__global';
+
+.navigation-bar{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $topMenuColor;
+    margin-bottom:35px;
+    margin-top:35px;
+}
+
+.navigation-bar__menu{
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+        li {
+            float: left;
+
+            a {
+                display: block;
+                color: $menuLinkDefaultColor;
+                text-align: center;
+                padding-left:40px;
+                padding-right:40px;
+                text-decoration: none;
+                border-right: $topMenuDelimeter;
+                line-height:55px;
+                font-size:13px;
+                text-transform: uppercase;
+            }            
+
+            a:hover:not(.active) {
+                color: $menuLinkHoverColor;
+            }      
+
+            .active {
+                background-color: $topMenuActiveColor;
+                cursor: default;
+            }                  
+        }        
+    }
+}
+
+.navigation-bar__search{
+
+    display:flex;
+    padding-right:10px;   
+
+    i{
+        display:block;
+        border: $searchBorder;
+        border-left: none;
+        cursor:pointer;
+        padding: 6px 7px 6px 0px;
+
+        background-color: $searchBackgroundColor;
+        color: $searchTextColor; 
+    }    
+
+    input[type=text] {
+        width: 240px;
+        box-sizing: border-box;
+        border: $searchBorder;
+        border-right: none;
+        font-size: 14px;
+        padding: 6px 5px 6px 14px;
+
+        background-color: $searchBackgroundColor;
+        color: $searchTextColor;         
+    }    
+
+    input:focus {
+        outline:none;
+    }    
+}
+
