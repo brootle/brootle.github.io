@@ -2,7 +2,7 @@ $(function () {
 
     function RequestData() {
 
-        $.getJSON("../data.json")
+        $.getJSON("https://brootle.github.io/js_19_20_lodash/data.json")
         .done(function (data, textStatus, jqXHR) {
 
             // read more about parameters at https://webhose.io/documentation
