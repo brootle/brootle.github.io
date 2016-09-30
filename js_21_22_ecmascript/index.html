@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet"/>
+
+        <link href="css/font-awesome.css" rel="stylesheet" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        
+
+        <script src="dist/main.js"></script>
+        <script src="js/js-template.js"></script>
+
+
+        <title>Test loaded from localStorage as JSON string and John Resig's template used</title>
+    </head>
+    <body>    
+        <div class="wrapper">
+            <header>
+                <h1>Test loaded from localStorage as JSON string and John Resig's template used</h1>
+            </header>
+            <main>
+
+                <script type="text/template" id="exam">
+
+                    <form action="" method="get">
+                        <fieldset>
+                            <legend>Space exploration test</legend>
+
+                            <% var keys = Object.keys(data);
+                               for (var i = 0; i < keys.length; i++) { %>
+                            <div class="question">
+                                <div class="question__tittle"><%= keys[i] %></div>
+                                <%  var replies = data[keys[i]];
+                                keys_replies = Object.keys(replies);
+                                for (var j = 0; j < keys_replies.length; j++) { %>
+                                <div class="question__reply">
+                                    <input type="checkbox" id="checkbox_<%= i %>_<%= j %>" name="question_<%= i %>" value="<%= j %>">
+                                    <label for="checkbox_<%= i %>_<%= j %>"><%= keys_replies[j] %></label>
+                                </div>
+                                <% } %>
+                            </div>
+                            <% } %>
+
+                            <input type="submit" class="submit-button" value="Check my results">
+
+                        </fieldset>
+                    </form>
+
+                </script>
+
+
+            </main>
+            <footer>
+                <div class="footer-copyright">
+                    <a class="footer-text">Designed by</a>
+                    <a class="footer-link" href="https://www.facebook.com/Lugansk.Alex"
+                       target="_blank">Alex</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
