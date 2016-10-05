@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet"/>
+
+        <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+        <script data-main="scripts/main" src="scripts/require.js"></script>
+
+        <title>Using MVC to create TODO app</title>
+    </head>
+    <body>    
+        <div class="wrapper">
+            <header>
+                <h1>Using MVC to create TODO app</h1>
+            </header>
+            <main>
+
+                <script type="text/template" id="todo-template">
+
+                    <ul class="todo-list"></ul>
+
+                    <div class="controlls">
+                        <input type="text" class="controlls__value">
+                        <input type="button" class="controlls__add" value="add">
+                    </div>
+
+                </script>                
+                
+                <script type="text/template" id="list-template">
+
+                    <% for (var i = 0; i < data.length; i++) { %>
+                        <li><%= data[i] %> <span class="todo-list__delete">x</span></li>
+                    <% } %>
+
+                </script>                
+
+            </main>
+            <footer>
+                <div class="footer-copyright">
+                    <a class="footer-text">Designed by</a>
+                    <a class="footer-link" href="https://www.facebook.com/Lugansk.Alex"
+                       target="_blank">Alex</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
