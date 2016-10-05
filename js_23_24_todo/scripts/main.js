@@ -27,8 +27,5 @@ require(
         view.Init(model.data);  // initialize view with data that we get from model
 
         var controller = new Controller(model, view);
-
-        //model.editItem('Check email', 'Check google')
-        //console.log(model.data);
     }
 );
