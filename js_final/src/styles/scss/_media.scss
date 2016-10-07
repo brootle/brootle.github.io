@@ -17,10 +17,117 @@
     }      
 
     .header__middle{
-
       padding-left: (($wrapperWidthTablet - 500)/2);
       padding-right: (($wrapperWidthTablet - 500)/2);  
     }
 
   }
+}
+
+@media screen and (max-width: 768px){
+  .wrapper{
+      width: $wrapperWidthTablet480;
+  }
+
+  .header-container {
+
+    .header__top {
+        padding-left: 15px;
+        padding-right: 15px;
+    }      
+
+    .header__middle{
+      width: 400px;
+
+      padding-left: (($wrapperWidthTablet480 - 400)/2);
+      padding-right: (($wrapperWidthTablet480 - 400)/2);
+
+        h1{
+            font-size: 44px;   
+        }        
+    }  
+
+  }  
+
+}
+
+@media screen and (max-width: 480px){
+
+header{
+    height:  $headerHightPhone;
+}
+
+  .wrapper{
+      width: $wrapperWidthPhone; //305
+  }
+
+  .header-container {
+
+    height: $headerHightPhone;
+
+    .header__top {
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+        .company-name{
+            padding-top: 110px;
+            float: none;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 36px;
+            text-align: center;
+        }    
+
+        .authentication{
+            float: none;
+            text-align: center;
+
+            .authentication__button{
+                display: inline-block;
+                box-sizing: content-box;
+                border:  2px solid transparent;
+                border-radius: 25px;
+                line-height: 36px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .authentication__button:hover{
+                cursor:pointer;
+                border:  2px solid white;
+            }
+            
+        }    
+
+    }      
+
+    .header__middle{
+      width: 295px;
+
+      //height: 250px;
+      padding-top: 35px;
+      padding-bottom: 0px;      
+
+      padding-left: (($wrapperWidthPhone - 295)/2);
+      padding-right: (($wrapperWidthPhone - 295)/2);
+
+        h1{
+            font-size: 32px;   
+        }    
+
+        p{
+            font-size: 17px;   
+            padding-bottom: 15px;
+            padding-top: 15px;             
+        }              
+    }  
+
+  }  
+}
+
+@media screen and (max-width: 320px){
+
+
 }
