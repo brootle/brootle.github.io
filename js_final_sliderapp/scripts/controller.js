@@ -9,6 +9,8 @@ define(
             view.goLeft.addEventListener("click",glidePrevious);     
 
             function glideNext() {
+                // we also must stop event listener to prevent click while slider is moving
+                view.goRight.removeEventListener("click",glideNext); 
                 var elem = view.silderContainer.firstChild; 
                 var pos = view.silderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 5);
@@ -17,6 +19,8 @@ define(
                         clearInterval(id);
                         nextImage();
                         elem.style.left = view.silderContainer.offsetWidth * (-1) + 'px';
+                        // here we must return event listener
+                        view.goRight.addEventListener("click",glideNext); 
                     } else {
                         pos--; 
                         elem.style.left = pos + 'px'; 
@@ -25,6 +29,7 @@ define(
             }       
 
             function glidePrevious() {
+                view.goLeft.removeEventListener("click",glidePrevious); 
                 var elem = view.silderContainer.firstChild; 
                 var pos = view.silderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 5);
@@ -33,6 +38,7 @@ define(
                         clearInterval(id);
                         previousImage();
                         elem.style.left = view.silderContainer.offsetWidth * (-1) + 'px';
+                        view.goLeft.addEventListener("click",glidePrevious);
                     } else {
                         pos++; 
                         elem.style.left = pos + 'px'; 
