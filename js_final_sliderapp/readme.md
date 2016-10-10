@@ -1,0 +1,1 @@
+ok, this is going to be carousel (slider) app that can be used many times on same page
