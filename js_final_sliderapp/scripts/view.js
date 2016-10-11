@@ -8,6 +8,9 @@ define(
             this.Init = function(id, model){
                 // here we must initiate slider and add all navigation buttons
                 var images = model.images;
+                var texts = model.texts;
+
+                console.log(texts);
 
                 // 1. create container inside id-element
                 this.silderContainer = document.createElement('div');
@@ -25,16 +28,33 @@ define(
                 // 3. now we must add 3 <li> elements with pictures set as backgounds
                 // there must be at least 1 image, but we still add 3 <li>
                 // add last image to 1st <li>
+
+                // here we just create empty div used as a filter for background image of li
+                // plus we make empty div for text block
+                var textBlock = "<div style='width: 100%; height:100%; padding:0;margin:0; background-color: rgba(0, 0, 0, 0.2);'></div>";
+                textBlock+="<div></div>";                       
+
                 var liElement1 = document.createElement('li');
                 liElement1.style.width = this.silderContainer.offsetWidth + 'px';
                 liElement1.style.background = "url('"+ images[images.length-1] +"') no-repeat center center";   
                 liElement1.style.backgroundSize = "cover";
+                liElement1.innerHTML = textBlock;
+
+                // add image counter to text block
+                var divWithText1 = liElement1.childNodes[1];  
+                divWithText1.innerHTML = "<a>photo "+ (images.length) +"</a>";
+
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
                 var liElement2 = document.createElement('li');
                 liElement2.style.width = this.silderContainer.offsetWidth + 'px';
                 liElement2.style.background = "url('"+ images[0] +"') no-repeat center center";   
                 liElement2.style.backgroundSize = "cover";
+                liElement2.innerHTML = textBlock;
+
+                var divWithText2 = liElement2.childNodes[1];  
+                divWithText2.innerHTML = "<a>photo "+ 1 +"</a>";
+
                 ulElement.appendChild(liElement2);                   
                 // add 2nd, last of 1st image to 3rd <li>
                 switch (images.length) {
@@ -47,8 +67,13 @@ define(
                         liElement3.style.width = this.silderContainer.offsetWidth + 'px';
                         liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
+                        liElement3.innerHTML = textBlock;
+
+                        var divWithText3 = liElement3.childNodes[1];  
+                        divWithText3.innerHTML = "<a>photo "+ 2 +"</a>";
+
                         ulElement.appendChild(liElement3);                          
-                }              
+                }                         
 
                 // 4. Add navigation buttons Left and Right
                 //    Event listeners will be added in Controllers
@@ -67,28 +92,40 @@ define(
             // the index of central image must be changed by Controller
             this.render = function(id, images, centralImageIndex){
 
+                // centralImageIndex + 1 will be the actual number of the image
+                console.log(centralImageIndex);
+
                 var liElements = document.getElementById('slider-container-'+id).firstChild.childNodes;
-                //console.log(liElements);
 
                 // in any case we set cetral image based on centralImageIndex
                 liElements[1].style.background = "url('"+ images[centralImageIndex] +"') no-repeat center center";
-                liElements[1].style.backgroundSize = "cover";     
+                liElements[1].style.backgroundSize = "cover";  
+
+                liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
 
                 if(centralImageIndex >= images.length - 1){
                     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
-                    liElements[2].style.backgroundSize = "cover";                       
+                    liElements[2].style.backgroundSize = "cover";        
+
+                    liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1);            
                 } else {
                     liElements[2].style.background = "url('"+ images[centralImageIndex+1] +"') no-repeat center center";
-                    liElements[2].style.backgroundSize = "cover";                                        
+                    liElements[2].style.backgroundSize = "cover";   
+
+                    liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1 + 1);                                      
                 }
 
                 if(centralImageIndex-1 < 0){
                     liElements[0].style.background = "url('"+ images[images.length-1] +"') no-repeat center center";
                     liElements[0].style.backgroundSize = "cover";  
+
+                    liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (images.length);
                 } else {
                     liElements[0].style.background = "url('"+ images[centralImageIndex-1] +"') no-repeat center center";
-                    liElements[0].style.backgroundSize = "cover";                      
-                }                      
+                    liElements[0].style.backgroundSize = "cover";  
+
+                    liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex);                
+                }                  
              
             }
 

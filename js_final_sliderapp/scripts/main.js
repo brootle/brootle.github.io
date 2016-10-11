@@ -26,8 +26,45 @@ require(
             'images/5.jpg',
             'images/6.jpg']; 
 
+        var texts = [
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            }                                                           
+        ];
+
+        // var images = { 
+        //     src: [
+        //     'images/1.jpg',
+        //     'images/2.jpg',
+        //     'images/3.jpg',
+        //     'images/4.jpg',
+        //     'images/5.jpg',
+        //     'images/6.jpg']
+        // };           
+
         var model = new Model;
-        model.Init(images);       // initialize model with a list of the images
+        model.Init(images, texts);       // initialize model with a list of the images
 
         var view = new View;
         view.Init('slider1', model);  // initialize view with images that we get from model
@@ -46,8 +83,23 @@ require(
             'images/6.jpg'
             ];   
 
+        var texts2 = [
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            }                                                          
+        ];            
+
         var model2 = new Model;
-        model2.Init(images2);       // initialize model with a list of the images       
+        model2.Init(images2, texts2);       // initialize model with a list of the images       
 
         var view2 = new View;
         view2.Init('slider2', model2);  // initialize view with images that we get from model
@@ -59,12 +111,18 @@ require(
         ////////////////////////////////////////////////////////////
 
         var images3 = [
-            'images/2.jpg',
-            'images/3.jpg'
+            'images/2.jpg'
             ];   
 
+        var texts3 = [
+            {
+                tittle : "Warm sunny days in Egypt",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            }                                                         
+        ];              
+
         var model3 = new Model;
-        model3.Init(images3);       // initialize model with a list of the images       
+        model3.Init(images3, texts3);       // initialize model with a list of the images       
 
         var view3 = new View;
         view3.Init('slider3', model3);  // initialize view with images that we get from model

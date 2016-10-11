@@ -4,9 +4,10 @@ define(
 
         function Model() {
 
-            this.Init = function(images){
+            this.Init = function(images, texts){
                 this.images = images;
                 this.centralImageIndex = 0;
+                this.texts = texts;
             }            
 
         }

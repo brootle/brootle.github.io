@@ -8,7 +8,7 @@ define(
             view.goRight.addEventListener("click",glideNext);   
             view.goLeft.addEventListener("click",glidePrevious);   
 
-            var animationSpeed = 3;  
+            var animationSpeed = 2;  
 
             function glideNext() {
                 // we also must stop event listener to prevent click while slider is moving
