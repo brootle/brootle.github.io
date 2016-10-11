@@ -32,23 +32,23 @@ require(
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Relax at the best beach",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Leave all troubles behind",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Invite your friends",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Take great photos",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Join our training center",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             }                                                           
         ];
@@ -70,7 +70,7 @@ require(
         view.Init('slider1', model);  // initialize view with images that we get from model
 
         // let's say we want 2nd image to be in the center, so we send 2 to render function
-        view.render('slider1', model.images, model.centralImageIndex);
+        view.render('slider1', model.images, model.centralImageIndex, model.texts);
 
         var controller = new Controller('slider1', model, view);
 
@@ -85,15 +85,15 @@ require(
 
         var texts2 = [
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Fun activities everyday",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Best disco music",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             },
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Beutiful women",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             }                                                          
         ];            
@@ -103,7 +103,7 @@ require(
 
         var view2 = new View;
         view2.Init('slider2', model2);  // initialize view with images that we get from model
-        view2.render('slider2', model2.images, model2.centralImageIndex);  
+        view2.render('slider2', model2.images, model2.centralImageIndex, model2.texts);  
 
         var controller2 = new Controller('slider2', model2, view2);     
 
@@ -116,7 +116,7 @@ require(
 
         var texts3 = [
             {
-                tittle : "Warm sunny days in Egypt",
+                tittle : "Snow and ice forever",
                 description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
             }                                                         
         ];              
@@ -128,7 +128,36 @@ require(
         view3.Init('slider3', model3);  // initialize view with images that we get from model
         view3.render('slider3', model3.images, model3.centralImageIndex);  
 
-        var controller3 = new Controller('slider3', model3, view3);               
+        var controller3 = new Controller('slider3', model3, view3);             
+
+
+        ////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////
+
+        var images4 = [
+            'images/2.jpg',
+            'images/3.jpg'                       
+            ];   
+
+        var texts4 = [
+            {
+                tittle : "Snow and ice forever",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            },
+            {
+                tittle : "Sun, sea and palm trees",
+                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+            }                                                                      
+        ];              
+
+        var model4 = new Model;
+        model4.Init(images4, texts4);       // initialize model with a list of the images       
+
+        var view4 = new View;
+        view4.Init('slider4', model4);  // initialize view with images that we get from model
+        view4.render('slider4', model4.images, model4.centralImageIndex);  
+
+        var controller4 = new Controller('slider4', model4, view4);           
                     
     }
 );

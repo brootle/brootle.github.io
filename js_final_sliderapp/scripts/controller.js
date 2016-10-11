@@ -8,7 +8,7 @@ define(
             view.goRight.addEventListener("click",glideNext);   
             view.goLeft.addEventListener("click",glidePrevious);   
 
-            var animationSpeed = 2;  
+            var animationSpeed = 0.5;  
 
             function glideNext() {
                 // we also must stop event listener to prevent click while slider is moving
@@ -56,7 +56,7 @@ define(
                     model.centralImageIndex = 0;
                 }
 
-                view.render(id, model.images, model.centralImageIndex);               
+                view.render(id, model.images, model.centralImageIndex, model.texts);               
             }
 
             function previousImage(){
@@ -66,7 +66,7 @@ define(
                     model.centralImageIndex = model.images.length - 1;
                 }
 
-                view.render(id, model.images, model.centralImageIndex);                 
+                view.render(id, model.images, model.centralImageIndex, model.texts);                 
             }            
 
 
