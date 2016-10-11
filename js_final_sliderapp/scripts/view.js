@@ -20,9 +20,7 @@ define(
 
                 // 2. calculate width of inside <ul> must be 3 widths of slider-container width
                 var ulElement = document.createElement('ul');
-                //console.log(this);
                 ulElement.style.width = this.silderContainer.offsetWidth * 3 + 'px';
-                console.log(this);
                 // shift position of <ul> to left so the central image will be in the middle
                 ulElement.style.left = this.silderContainer.offsetWidth * (-1) + 'px';
                 this.silderContainer.appendChild(ulElement);
@@ -45,7 +43,7 @@ define(
                 // add image counter to text block
                 var divWithText1 = liElement1.childNodes[1];  
                 divWithText1.innerHTML = "<a>photo "+ (images.length) +"</a>";
-                //divWithText1.innerHTML+= "<h1>"+ texts[texts.length - 1].tittle +"</h1>";
+                divWithText1.innerHTML+= "<h1>"+ texts[texts.length - 1].tittle +"</h1>";
 
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
@@ -57,7 +55,7 @@ define(
 
                 var divWithText2 = liElement2.childNodes[1];  
                 divWithText2.innerHTML = "<a>photo "+ 1 +"</a>";
-                //divWithText2.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
+                divWithText2.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
 
                 ulElement.appendChild(liElement2);                   
                 // add 2nd, last of 1st image to 3rd <li>                           
@@ -110,7 +108,7 @@ define(
                 liElements[1].style.backgroundSize = "cover";  
 
                 liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
-                //liElements[1].childNodes[1].childNodes[1].innerHTML = texts[0].tittle;
+                liElements[1].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex].tittle;
 
                 if(centralImageIndex >= images.length - 1){
                     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
@@ -131,13 +129,14 @@ define(
                     liElements[0].style.backgroundSize = "cover";  
 
                     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (images.length);
-                    //liElements[0].childNodes[1].childNodes[1].innerHTML = texts[images.length].tittle;   
+                    liElements[0].childNodes[1].childNodes[1].innerHTML = texts[texts.length-1].tittle;  
+                    //console.log(texts[texts.length-1].tittle);
                 } else {
                     liElements[0].style.background = "url('"+ images[centralImageIndex-1] +"') no-repeat center center";
                     liElements[0].style.backgroundSize = "cover";  
 
                     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex);  
-                    //liElements[0].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-1].tittle;               
+                    liElements[0].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-1].tittle;               
                 }                  
              
             }
