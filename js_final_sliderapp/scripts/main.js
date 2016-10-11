@@ -70,6 +70,7 @@ require(
         view3.Init('slider3', model3);  // initialize view with images that we get from model
         view3.render('slider3', model3.images, model3.centralImageIndex);  
 
-        var controller3 = new Controller('slider3', model3, view3);                       
+        var controller3 = new Controller('slider3', model3, view3);               
+                    
     }
 );

@@ -92,6 +92,10 @@ define(
              
             }
 
+            this.updateDimentions = function(id, images, centralImageIndex){
+                
+            }
+
         }
         
         return View;
