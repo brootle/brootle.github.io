@@ -126,7 +126,7 @@ require(
 
         var view3 = new View;
         view3.Init('slider3', model3);  // initialize view with images that we get from model
-        view3.render('slider3', model3.images, model3.centralImageIndex);  
+        view3.render('slider3', model3.images, model3.centralImageIndex, model3.texts);  
 
         var controller3 = new Controller('slider3', model3, view3);             
 
@@ -155,7 +155,7 @@ require(
 
         var view4 = new View;
         view4.Init('slider4', model4);  // initialize view with images that we get from model
-        view4.render('slider4', model4.images, model4.centralImageIndex);  
+        view4.render('slider4', model4.images, model4.centralImageIndex, model4.texts);  
 
         var controller4 = new Controller('slider4', model4, view4);           
                     

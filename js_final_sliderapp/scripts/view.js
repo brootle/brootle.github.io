@@ -10,7 +10,7 @@ define(
                 var images = model.images;
                 var texts = model.texts;
 
-                console.log(texts);
+                //console.log(texts);
 
                 // 1. create container inside id-element
                 this.silderContainer = document.createElement('div');
@@ -20,7 +20,9 @@ define(
 
                 // 2. calculate width of inside <ul> must be 3 widths of slider-container width
                 var ulElement = document.createElement('ul');
+                //console.log(this);
                 ulElement.style.width = this.silderContainer.offsetWidth * 3 + 'px';
+                console.log(this);
                 // shift position of <ul> to left so the central image will be in the middle
                 ulElement.style.left = this.silderContainer.offsetWidth * (-1) + 'px';
                 this.silderContainer.appendChild(ulElement);
@@ -43,9 +45,7 @@ define(
                 // add image counter to text block
                 var divWithText1 = liElement1.childNodes[1];  
                 divWithText1.innerHTML = "<a>photo "+ (images.length) +"</a>";
-                divWithText1.innerHTML+= "<h1>"+ texts[texts.length - 1].tittle +"</h1>";
-
-                //<h1>Join us for the perfect vacation</h1>
+                //divWithText1.innerHTML+= "<h1>"+ texts[texts.length - 1].tittle +"</h1>";
 
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
@@ -57,7 +57,7 @@ define(
 
                 var divWithText2 = liElement2.childNodes[1];  
                 divWithText2.innerHTML = "<a>photo "+ 1 +"</a>";
-                divWithText2.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
+                //divWithText2.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
 
                 ulElement.appendChild(liElement2);                   
                 // add 2nd, last of 1st image to 3rd <li>                           
@@ -76,7 +76,7 @@ define(
 
                         var divWithText3 = liElement3.childNodes[1];  
                         divWithText3.innerHTML = "<a>photo "+ 2 +"</a>";
-                        console.log(images.length);
+                        //console.log(images.length);
                         //divWithText3.innerHTML+= "<h1>"+ texts[1].tittle +"</h1>";
 
                         ulElement.appendChild(liElement3);   
@@ -142,9 +142,6 @@ define(
              
             }
 
-            this.updateDimentions = function(id, images, centralImageIndex){
-                
-            }
 
         }
         
