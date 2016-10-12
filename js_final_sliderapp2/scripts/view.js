@@ -13,17 +13,17 @@ define(
                 //console.log(texts);
 
                 // 1. create container inside id-element
-                this.silderContainer = document.createElement('div');
-                this.silderContainer.className = 'slider-container';
-                this.silderContainer.id = 'slider-container-' + id;
-                document.getElementById(id).appendChild(this.silderContainer);
+                this.sliderContainer = document.createElement('div');
+                this.sliderContainer.className = 'slider-container';
+                this.sliderContainer.id = 'slider-container-' + id;
+                document.getElementById(id).appendChild(this.sliderContainer);
 
                 // 2. calculate width of inside <ul> must be 3 widths of slider-container width
                 var ulElement = document.createElement('ul');
-                ulElement.style.width = this.silderContainer.offsetWidth * 3 + 'px';
+                ulElement.style.width = this.sliderContainer.offsetWidth * 3 + 'px';
                 // shift position of <ul> to left so the central image will be in the middle
-                ulElement.style.left = this.silderContainer.offsetWidth * (-1) + 'px';
-                this.silderContainer.appendChild(ulElement);
+                ulElement.style.left = this.sliderContainer.offsetWidth * (-1) + 'px';
+                this.sliderContainer.appendChild(ulElement);
 
                 // 3. now we must add 3 <li> elements with pictures set as backgounds
                 // there must be at least 1 image, but we still add 3 <li>
@@ -35,7 +35,7 @@ define(
                 textBlock+="<div></div>";                       
 
                 var liElement1 = document.createElement('li');
-                liElement1.style.width = this.silderContainer.offsetWidth + 'px';
+                liElement1.style.width = this.sliderContainer.offsetWidth + 'px';
                 liElement1.style.background = "url('"+ images[images.length-1] +"') no-repeat center center";   
                 liElement1.style.backgroundSize = "cover";
                 liElement1.innerHTML = textBlock;
@@ -49,7 +49,7 @@ define(
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
                 var liElement2 = document.createElement('li');
-                liElement2.style.width = this.silderContainer.offsetWidth + 'px';
+                liElement2.style.width = this.sliderContainer.offsetWidth + 'px';
                 liElement2.style.background = "url('"+ images[0] +"') no-repeat center center";   
                 liElement2.style.backgroundSize = "cover";
                 liElement2.innerHTML = textBlock;
@@ -67,7 +67,7 @@ define(
                     case 1:
                         ulElement.appendChild(liElement1);
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.silderContainer.offsetWidth + 'px';
+                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
                         liElement3.style.background = "url('"+ images[0] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
@@ -81,7 +81,7 @@ define(
                     case 2:
                         ulElement.appendChild(liElement2);
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.silderContainer.offsetWidth + 'px';
+                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
                         liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
@@ -94,7 +94,7 @@ define(
                         break;
                     default:
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.silderContainer.offsetWidth + 'px';
+                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
                         liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
@@ -112,11 +112,11 @@ define(
                 //    Event listeners will be added in Controllers
                 this.goRight = document.createElement('div');
                 this.goRight.className = 'slider-container__navigation--right';
-                this.silderContainer.appendChild(this.goRight);       
+                this.sliderContainer.appendChild(this.goRight);       
 
                 this.goLeft = document.createElement('div');
                 this.goLeft.className = 'slider-container__navigation--left';
-                this.silderContainer.appendChild(this.goLeft);                           
+                this.sliderContainer.appendChild(this.goLeft);                                          
             }
 
 
@@ -172,6 +172,23 @@ define(
              
             }
 
+            // this will allow to re-size dimentions of slider if parent element is not fixed
+            // so we just change dimentions here, that's all
+            this.updateDimensions = function(id){
+
+                var sliderContainer = document.getElementById('slider-container-'+id);
+                var ulElement = sliderContainer.firstChild;
+                var liElements = sliderContainer.firstChild.childNodes;
+
+                // recalculate ul width and position
+                ulElement.style.width = sliderContainer.offsetWidth * 3 + 'px';
+                ulElement.style.left = sliderContainer.offsetWidth * (-1) + 'px';
+                
+                // we also need to recalculate li width
+                for(var i = 0; i < liElements.length; i++){
+                    liElements[i].style.width = sliderContainer.offsetWidth + 'px';
+                }
+            }          
 
         }
         
