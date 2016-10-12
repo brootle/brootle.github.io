@@ -13,7 +13,7 @@ define(
             view.goRight.addEventListener("click",glideNext);   
             view.goLeft.addEventListener("click",glidePrevious);   
 
-            var animationSpeed = 3;  
+            var animationSpeed = view.sliderContainer.offsetWidth / 24;  
 
             function glideNext() {
                 // we also must stop event listener to prevent click while slider is moving
@@ -21,7 +21,7 @@ define(
                 view.goLeft.removeEventListener("click",glidePrevious); 
                 var elem = view.sliderContainer.firstChild; 
                 var pos = view.sliderContainer.offsetWidth * (-1);
-                var id = setInterval(frame, 5);
+                var id = setInterval(frame, 15);
                 function frame() {
                     if (pos <= view.sliderContainer.offsetWidth * (-2)) {
                         clearInterval(id);
@@ -42,7 +42,7 @@ define(
                 view.goRight.removeEventListener("click",glideNext); 
                 var elem = view.sliderContainer.firstChild; 
                 var pos = view.sliderContainer.offsetWidth * (-1);
-                var id = setInterval(frame, 5);
+                var id = setInterval(frame, 15);
                 function frame() {
                     if (pos >= 0) {
                         clearInterval(id);
