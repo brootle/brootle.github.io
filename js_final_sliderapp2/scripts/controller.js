@@ -23,7 +23,7 @@ define(
                 var pos = view.sliderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 15);
                 function frame() {
-                    if (pos <= view.sliderContainer.offsetWidth * (-2)) {
+                    if (pos - animationSpeed <= view.sliderContainer.offsetWidth * (-2)) {
                         clearInterval(id);
                         nextImage();
                         elem.style.left = view.sliderContainer.offsetWidth * (-1) + 'px';
@@ -44,7 +44,7 @@ define(
                 var pos = view.sliderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 15);
                 function frame() {
-                    if (pos >= 0) {
+                    if (pos + animationSpeed >= 0) {
                         clearInterval(id);
                         previousImage();
                         elem.style.left = view.sliderContainer.offsetWidth * (-1) + 'px';
