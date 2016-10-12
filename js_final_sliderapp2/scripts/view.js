@@ -44,6 +44,7 @@ define(
                 var divWithText1 = liElement1.childNodes[1];  
                 divWithText1.innerHTML = "<a>photo "+ (images.length) +"</a>";
                 divWithText1.innerHTML+= "<h1>"+ texts[texts.length - 1].tittle +"</h1>";
+                divWithText1.innerHTML+= "<p>"+ texts[texts.length - 1].description +"</>";
 
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
@@ -56,6 +57,7 @@ define(
                 var divWithText2 = liElement2.childNodes[1];  
                 divWithText2.innerHTML = "<a>photo "+ 1 +"</a>";
                 divWithText2.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
+                divWithText2.innerHTML+= "<p>"+ texts[0].description +"</p>";
 
                 ulElement.appendChild(liElement2);                   
                 // add 2nd, last of 1st image to 3rd <li>                           
@@ -73,6 +75,7 @@ define(
                         var divWithText3 = liElement3.childNodes[1];  
                         divWithText3.innerHTML = "<a>photo "+ 1 +"</a>";
                         divWithText3.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
+                        divWithText3.innerHTML+= "<p>"+ texts[0].description +"</p>";
                         ulElement.appendChild(liElement3); 
                         break;
                     case 2:
@@ -86,6 +89,7 @@ define(
                         var divWithText3 = liElement3.childNodes[1];  
                         divWithText3.innerHTML = "<a>photo "+ 2 +"</a>";
                         divWithText3.innerHTML+= "<h1>"+ texts[1].tittle +"</h1>";
+                        divWithText3.innerHTML+= "<p>"+ texts[1].description +"</p>";
                         ulElement.appendChild(liElement3);                         
                         break;
                     default:
@@ -98,6 +102,7 @@ define(
                         var divWithText3 = liElement3.childNodes[1];  
                         divWithText3.innerHTML = "<a>photo "+ 2 +"</a>";
                         divWithText3.innerHTML+= "<h1>"+ texts[1].tittle +"</h1>";
+                        divWithText3.innerHTML+= "<p>"+ texts[1].description +"</p>";
 
                         ulElement.appendChild(liElement3);   
                        
@@ -131,19 +136,22 @@ define(
 
                 liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
                 liElements[1].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex].tittle;
+                liElements[1].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex].description;
 
                 if(centralImageIndex >= images.length - 1){
                     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
                     liElements[2].style.backgroundSize = "cover";        
 
                     liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1); 
-                    liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;           
+                    liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;  
+                    liElements[2].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex-(images.length-1)].description;           
                 } else {
                     liElements[2].style.background = "url('"+ images[centralImageIndex+1] +"') no-repeat center center";
                     liElements[2].style.backgroundSize = "cover";   
 
                     liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1 + 1); 
-                    liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex + 1].tittle;                                     
+                    liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex + 1].tittle; 
+                    liElements[2].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex + 1].description;                                     
                 }
 
                 if(centralImageIndex-1 < 0){
@@ -152,12 +160,14 @@ define(
 
                     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (images.length);
                     liElements[0].childNodes[1].childNodes[1].innerHTML = texts[texts.length-1].tittle;  
+                    liElements[0].childNodes[1].childNodes[2].innerHTML = texts[texts.length-1].description; 
                 } else {
                     liElements[0].style.background = "url('"+ images[centralImageIndex-1] +"') no-repeat center center";
                     liElements[0].style.backgroundSize = "cover";  
 
                     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex);  
-                    liElements[0].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-1].tittle;               
+                    liElements[0].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-1].tittle;    
+                    liElements[0].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex-1].description;             
                 }                  
              
             }

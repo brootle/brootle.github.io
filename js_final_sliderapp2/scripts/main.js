@@ -33,23 +33,23 @@ require(
             },
             {
                 tittle : "Relax at the best beach",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "White sand, sunny days, palm trees and a lot of fresh fruits will make your vacation fantastic"
             },
             {
                 tittle : "Leave all troubles behind",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Don't worry about problems at work, forget about noisy neighbores, just enjoy life"
             },
             {
                 tittle : "Invite your friends",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Why stay home? Just go to the beach and take your friends with you!"
             },
             {
                 tittle : "Take great photos",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Feel the moment and take best shots that you can share with family later"
             },
             {
                 tittle : "Join our training center",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "It's easy to get some weight when the food is so good! So come to our gym"
             }                                                           
         ];
 
@@ -69,9 +69,6 @@ require(
         var view = new View;
         view.Init('slider1', model);  // initialize view with images that we get from model
 
-        // let's say we want 2nd image to be in the center, so we send 2 to render function
-        //view.render('slider1', model.images, model.centralImageIndex, model.texts);
-
         var controller = new Controller('slider1', model, view);
 
         ////////////////////////////////////////////////////////////
@@ -86,15 +83,15 @@ require(
         var texts2 = [
             {
                 tittle : "Fun activities everyday",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Foodball, baseball, tennis, anything you want is here!"
             },
             {
                 tittle : "Best disco music",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Modern music at our nightclubs will help you to relax at night"
             },
             {
                 tittle : "Beutiful women",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Women at the beach are friendly and pretty, just have fun with them"
             }                                                          
         ];            
 
@@ -102,8 +99,7 @@ require(
         model2.Init(images2, texts2);       // initialize model with a list of the images       
 
         var view2 = new View;
-        view2.Init('slider2', model2);  // initialize view with images that we get from model
-        //view2.render('slider2', model2.images, model2.centralImageIndex, model2.texts);  
+        view2.Init('slider2', model2);  // initialize view with images that we get from model 
 
         var controller2 = new Controller('slider2', model2, view2);     
 
@@ -117,7 +113,7 @@ require(
         var texts3 = [
             {
                 tittle : "Snow and ice forever",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Don't forget to take some warm clothes with you"
             }                                                         
         ];              
 
@@ -125,8 +121,7 @@ require(
         model3.Init(images3, texts3);       // initialize model with a list of the images       
 
         var view3 = new View;
-        view3.Init('slider3', model3);  // initialize view with images that we get from model
-        //view3.render('slider3', model3.images, model3.centralImageIndex, model3.texts);  
+        view3.Init('slider3', model3);  // initialize view with images that we get from model 
 
         var controller3 = new Controller('slider3', model3, view3);             
 
@@ -142,7 +137,7 @@ require(
         var texts4 = [
             {
                 tittle : "Snow and ice forever",
-                description : "When you first come to this beautiful place you want to stay here forever and we will help you to have a lot of fun here"
+                description : "Don't forget to take some warm clothes with you"
             },
             {
                 tittle : "Sun, sea and palm trees",
@@ -155,7 +150,6 @@ require(
 
         var view4 = new View;
         view4.Init('slider4', model4);  // initialize view with images that we get from model
-        //view4.render('slider4', model4.images, model4.centralImageIndex, model4.texts);  
 
         var controller4 = new Controller('slider4', model4, view4);           
                     
