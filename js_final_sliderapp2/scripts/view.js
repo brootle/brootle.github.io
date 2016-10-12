@@ -126,7 +126,7 @@ define(
             this.render = function(id, images, centralImageIndex, texts){
 
                 // centralImageIndex + 1 will be the actual number of the image
-                console.log(centralImageIndex);
+                //console.log(centralImageIndex);
 
                 var liElements = document.getElementById('slider-container-'+id).firstChild.childNodes;
 
