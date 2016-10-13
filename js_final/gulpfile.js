@@ -31,13 +31,14 @@ gulp.task('concat-min-styles', ['scss-css'], function () {
     return stream;
 });
 
-gulp.task('sprite', function () {
-  var spriteData = gulp.src('src/images/main__sprite/*.png').pipe(spritesmith({
-    imgName: 'main__sprite.png',
-    cssName: 'main__sprite.css'
-  }));
-  return spriteData.pipe(gulp.dest('src/images/'));
-});
+// gulp.task('sprite', function () {
+//   var spriteData = gulp.src('src/images/main__sprite/*.png').pipe(spritesmith({
+//     imgName: 'main__sprite.png',
+//     cssName: 'main__sprite.css',
+//     padding: 16
+//   }));
+//   return spriteData.pipe(gulp.dest('src/images/'));
+// });
 
 // concat and munify JavaScripts
 // gulp.task('scripts', function () {
