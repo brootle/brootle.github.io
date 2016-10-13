@@ -195,10 +195,100 @@ header {
 
 .slider {
   float: left;
-  width: 29%;
+  width: 31.33%;
   height: 400px;
-  margin: 20px 2%;
-  background-color: pink;
-  border: 20px solid red;
   box-sizing: border-box;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  height: 100%;
+}
+
+.slider-container ul li {
+  float: left;
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.slider-container ul li div {
+  position: absolute;
+  padding: 15px;
+  bottom: 0px;
+  color: white;
+}
+
+.slider-container__navigation--right {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  margin-right: 10px;
+  margin-top: -15px;
+  background: url("../../images/navigation.png") 0px 47px;
+  width: 27px;
+  height: 46px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.slider-container__navigation--right:hover {
+  opacity: 1;
+}
+
+.slider-container__navigation--left {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  margin-left: 10px;
+  margin-top: -15px;
+  background: url("../../images/navigation.png") 0px 0px;
+  width: 27px;
+  height: 46px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.slider-container__navigation--left:hover {
+  opacity: 1;
+}
+
+.slider-container ul li div a {
+  font-weight: bold;
+  letter-spacing: 3px;
+  display: inline-block;
+  box-sizing: content-box;
+  background-color: #ff4e50;
+  border-radius: 17px;
+  line-height: 24px;
+  padding-left: 11px;
+  padding-right: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.slider-container ul li div h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.slider-container ul li div p {
+  margin: 0;
+  padding: 0;
+  word-spacing: 0px;
+  line-height: 18px;
 }

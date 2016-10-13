@@ -31,18 +31,19 @@ gulp.task('concat-min-styles', ['scss-css'], function () {
 });
 
 // concat and munify JavaScripts
-gulp.task('scripts', function () {
-    var stream = gulp.src('src/scripts/**/*.js')
-      .pipe(concat('main.js'))
-      .pipe(gulp.dest('dist/assets/scripts'))
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(uglify())
-      .pipe(gulp.dest('dist/assets/scripts'))
-      .pipe(notify({ message: 'Scripts task complete' }));
-    return stream;
-});
+// gulp.task('scripts', function () {
+//     var stream = gulp.src('src/scripts/**/*.js')
+//       .pipe(concat('main.js'))
+//       .pipe(gulp.dest('dist/assets/scripts'))
+//       .pipe(rename({ suffix: '.min' }))
+//       .pipe(uglify())
+//       .pipe(gulp.dest('dist/assets/scripts'))
+//       .pipe(notify({ message: 'Scripts task complete' }));
+//     return stream;
+// });
 
-gulp.task('build', ['concat-min-styles', 'scripts']); // these tasks will run parallel
+//gulp.task('build', ['concat-min-styles', 'scripts']); // these tasks will run parallel
+gulp.task('build', ['concat-min-styles']); // these tasks will run parallel
 
 gulp.task('default', ['build']);
 
@@ -52,7 +53,7 @@ gulp.task('watch', function () {
     gulp.watch('src/styles/scss/**/*.scss', ['concat-min-styles']);
 
     // Watch .js files
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
+    //gulp.watch('src/scripts/**/*.js', ['scripts']);
 
     // Create LiveReload server
     livereload.listen();
