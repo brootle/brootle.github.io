@@ -187,10 +187,14 @@ header {
     padding-top: 15px;
   }
 }
+main {
+  padding-top: 40px;
+}
+
 .main__section {
   clear: both;
   overflow: hidden;
-  padding: 45px 0px 45px 0px;
+  padding: 40px 0px 40px 0px;
 }
 
 .main__section h2 {
@@ -209,6 +213,27 @@ header {
   overflow: hidden;
 }
 
+.main__section .faces-container__block {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+
+.main__section .faces-container__block div {
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+  background-color: pink;
+  width: 125px;
+  height: 125px;
+}
+
+@media screen and (max-width: 960px) {
+  .main__section .faces-container__block {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .main__section .slider {
     float: none;
@@ -220,6 +245,11 @@ header {
     margin-bottom: 10px;
     border-radius: 10px;
     overflow: hidden;
+  }
+
+  .main__section .faces-container__block {
+    float: none;
+    width: 100%;
   }
 }
 

@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    spritesmith = require('gulp.spritesmith');
 
 // this converts all scss to css
 gulp.task('scss-css', function () {
@@ -28,6 +29,14 @@ gulp.task('concat-min-styles', ['scss-css'], function () {
       .pipe(gulp.dest('dist/assets/styles'))
       .pipe(notify({ message: 'Concat CSS task complete' }));
     return stream;
+});
+
+gulp.task('sprite', function () {
+  var spriteData = gulp.src('src/images/sprite__main_section/*.png').pipe(spritesmith({
+    imgName: 'sprite__main.png',
+    cssName: 'sprite__main.css'
+  }));
+  return spriteData.pipe(gulp.dest('src/images/'));
 });
 
 // concat and munify JavaScripts
