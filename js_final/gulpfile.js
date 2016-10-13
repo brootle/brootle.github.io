@@ -32,9 +32,9 @@ gulp.task('concat-min-styles', ['scss-css'], function () {
 });
 
 gulp.task('sprite', function () {
-  var spriteData = gulp.src('src/images/sprite__main_section/*.png').pipe(spritesmith({
-    imgName: 'sprite__main.png',
-    cssName: 'sprite__main.css'
+  var spriteData = gulp.src('src/images/main__sprite/*.png').pipe(spritesmith({
+    imgName: 'main__sprite.png',
+    cssName: 'main__sprite.css'
   }));
   return spriteData.pipe(gulp.dest('src/images/'));
 });
