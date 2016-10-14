@@ -1,6 +1,5 @@
 define(
     'view',
-    ['jquery'],  // dependency on jquery module and js-template
     function() {
 
         function View() {
