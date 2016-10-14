@@ -47,56 +47,42 @@ main{
         cursor: pointer;
       }
 
-      .photo-icon--1{
+      .photo-icon{
         position: absolute;
         bottom: 0px;
         right: 0px;  
         border: 3px solid white;  
+        width: 32px;
+        height: 32px;  
+        box-sizing: content-box;
+      }         
+
+      .photo-icon--1{
+        @extend .photo-icon;
         background-color: #ff4e50;
         background-image: url(../images/main__sprite.png);
         background-position: -8px -42px;
-        width: 32px;
-        height: 32px;  
-        box-sizing: content-box;
       }    
 
-      .photo-icon--2{
-        position: absolute;
-        bottom: 0px;
-        right: 0px;   
-        border: 3px solid white;  
+      .photo-icon--2{ 
+        @extend .photo-icon;
         background-color: #1cd7ad;
         background-image: url(../images/main__sprite.png);
         background-position: -8px -89px;
-        width: 32px;
-        height: 32px;  
-        box-sizing: content-box;
       }   
 
       .photo-icon--3{
-        position: absolute;
-        bottom: 0px;
-        right: 0px;   
-        border: 3px solid white;  
+        @extend .photo-icon;         
         background-color: #ffa507;
         background-image: url(../images/main__sprite.png);
         background-position: -38px -40px;
-        width: 32px;
-        height: 32px;  
-        box-sizing: content-box;
       }   
 
       .photo-icon--4{
-        position: absolute;
-        bottom: 0px;
-        right: 0px;  
-        border: 3px solid white;  
+        @extend .photo-icon;         
         background-color: #4e73db;
         background-image: url(../images/main__sprite.png);
         background-position: -42px -7px;
-        width: 32px;
-        height: 32px;  
-        box-sizing: content-box;
       }                     
     }
 
