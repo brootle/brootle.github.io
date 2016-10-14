@@ -1,22 +1,32 @@
-// requirejs.config({
-//     paths: {
-//         'jquery' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery'
-//     },
-//     shim:{
-//         'jquery' : {
-//             exports: 'jQuery'
-//         }
-//     }
-// });
+
+requirejs( [
+  'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
+], function(Masonry) {
+  //new Masonry( '.grid', {...});
+
+    var elem = document.querySelector('.grid');
+    var msnry = new Masonry( elem, {
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 200
+    });
+
+    // element argument can be a selector string
+    //   for an individual element
+    // var msnry = new Masonry( '.grid', {
+    //     itemSelector: '.grid-item',
+    //     columnWidth: '.grid-sizer',
+    //     percentPosition: true
+    // });
+
+});
 
 require(
     [   
         'model',
         'view',
         'controller'
-        //'jquery'
     ],
-    //function(Model,View,Controller,$){
     function(Model,View,Controller){
 
         var images = [
