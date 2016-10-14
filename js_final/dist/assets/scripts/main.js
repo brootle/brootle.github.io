@@ -19,12 +19,12 @@ require(
     function(Model,View,Controller,$){
 
         var images = [
-            'src/images/1.jpg',
-            'src/images/2.jpg',
-            'src/images/3.jpg',
-            'src/images/4.jpg',
-            'src/images/5.jpg',
-            'src/images/6.jpg']; 
+            'dist/assets/images/1.jpg',
+            'dist/assets/images/2.jpg',
+            'dist/assets/images/3.jpg',
+            'dist/assets/images/4.jpg',
+            'dist/assets/images/5.jpg',
+            'dist/assets/images/6.jpg']; 
 
         var texts = [
             {
@@ -65,9 +65,9 @@ require(
         ////////////////////////////////////////////////////////////
 
         var images2 = [
-            'src/images/4.jpg',
-            'src/images/5.jpg',
-            'src/images/6.jpg'
+            'dist/assets/images/4.jpg',
+            'dist/assets/images/5.jpg',
+            'dist/assets/images/6.jpg'
             ];   
 
         var texts2 = [
@@ -97,7 +97,7 @@ require(
         ////////////////////////////////////////////////////////////
 
         var images3 = [
-            'src/images/2.jpg'
+            'dist/assets/images/2.jpg'
             ];   
 
         var texts3 = [
