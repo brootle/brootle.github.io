@@ -8,6 +8,33 @@ main{
     clear: both;
     overflow: hidden;
     padding: $mainSectionPadding;
+    text-align: center;
+
+    .faces-container{
+      padding-bottom: 25px;
+    }
+    //faces-container has float elements so we need to fix it, otherwise it will collapse
+    .faces-container:after { 
+      content: "."; 
+      visibility: hidden; 
+      display: block; 
+      height: 0; 
+      clear: both;
+    }  
+
+    .red-button--middle{
+        font-weight: bold;
+        display: inline-block;
+        box-sizing: content-box;
+        border: 2px solid #ff4e50;
+        color: #ff4e50;
+        border-radius: 25px;
+        line-height: 36px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 14px;       
+        cursor:pointer;   
+    }       
 
     h2{
       text-align: center;
@@ -92,9 +119,9 @@ main{
 
     p{
       font-size: 14px;
-    }    
+    }     
 
-  }
+  }  
 
 }
 
