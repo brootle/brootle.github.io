@@ -2,22 +2,14 @@
 requirejs( [
   'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
 ], function(Masonry) {
-  //new Masonry( '.grid', {...});
 
     var elem = document.querySelector('.grid');
     var msnry = new Masonry( elem, {
-    // options
-    itemSelector: '.grid-item',
-    columnWidth: 200
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
     });
-
-    // element argument can be a selector string
-    //   for an individual element
-    // var msnry = new Masonry( '.grid', {
-    //     itemSelector: '.grid-item',
-    //     columnWidth: '.grid-sizer',
-    //     percentPosition: true
-    // });
 
 });
 
