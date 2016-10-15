@@ -1,9 +1,11 @@
 
-/* ---- grid ---- */
+@import 'variables__global';
+
+// /* ---- grid ---- */
 
 .grid {
   background: #EEE;
-  max-width: 940px;
+  max-width: $wrapperWidth;
   box-sizing: border-box;
 }
 
@@ -19,7 +21,7 @@
 
 .grid-sizer,
 .grid-item {
-  width: 33.33%;
+  width: 32.6%;
   box-sizing: border-box;
 }
 
@@ -31,6 +33,39 @@
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
   box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-.grid-item--width2 { width:  66.66%; box-sizing: border-box;}
+.grid-item--width2 { width:  66.2%; box-sizing: border-box;}
+
+@media screen and (max-width: 960px){
+
+    .grid-sizer,
+    .grid-item {
+    width: 32.42%;
+    box-sizing: border-box;
+    }
+
+    .grid-item--width2 { width:  66.3%; box-sizing: border-box;}
+
+}
+
+@media screen and (max-width: 768px){
+
+    .grid-sizer,
+    .grid-item {
+    width: 100%;
+    box-sizing: border-box;
+    }
+
+    .grid-item--width2 { width: 100%; box-sizing: border-box;}
+
+}
+
+@media screen and (max-width: 480px){
+
+    .grid-item {
+    height: 115px;
+    }
+
+}
