@@ -51,9 +51,7 @@ requirejs( [
         //console.log(data.hits[0].webformatURL);
         var items = document.getElementsByClassName("grid-item");
 
-        //console.log(items[0].childNodes[0].childNodes[0].innerHTML);
-
-        for(var i = 0; i < items.length; i++){
+        for(var i = 0; i < data.hits.length; i++){
             // add photos to masonry layout
             items[i].style.background = "url('"+ data.hits[i].webformatURL +"') no-repeat center center"; 
             items[i].style.backgroundSize = "cover";
@@ -61,8 +59,6 @@ requirejs( [
             // here we also must add text
             items[i].childNodes[0].childNodes[0].innerHTML = data.hits[i].tags;
             // after text added top property must be calculated and set
-            //console.log(items[i].childNodes[0].childNodes[0].offsetHeight);
-            //console.log(items[i].offsetHeight);
             items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
         }
 
