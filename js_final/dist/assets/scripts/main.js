@@ -68,7 +68,7 @@ requirejs( [
 
     }
     
-    sendRequest("vacation+travel");
+    sendRequest("vacation+travel+sea");
 
     window.addEventListener("resize", function(){
         // updating text position on window size changed;
