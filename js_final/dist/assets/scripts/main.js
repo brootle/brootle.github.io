@@ -67,8 +67,16 @@ requirejs( [
         }
 
     }
-
+    
     sendRequest("vacation+travel");
+
+    window.addEventListener("resize", function(){
+        // updating text position on window size changed;
+        var items = document.getElementsByClassName("grid-item");
+        for(var i = 0; i < items.length; i++){
+            items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
+        }
+    });      
 
 
     ////////////////////////////////////////////////////////////
