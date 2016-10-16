@@ -47,8 +47,11 @@ requirejs( [
 
 
     function updatePhotos(data){
+        //console.log(data.hits[0].tags);
         //console.log(data.hits[0].webformatURL);
         var items = document.getElementsByClassName("grid-item");
+
+        //console.log(items[0].childNodes[0].childNodes[0].innerHTML);
 
         for(var i = 0; i < items.length; i++){
             // add photos to masonry layout
@@ -56,12 +59,13 @@ requirejs( [
             items[i].style.backgroundSize = "cover";
 
             // here we also must add text
+            items[i].childNodes[0].childNodes[0].innerHTML = data.hits[i].tags;
             // after text added top property must be calculated and set
         }
 
     }
 
-    sendRequest("cats");
+    sendRequest("vacation+travel");
 
     ////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////
