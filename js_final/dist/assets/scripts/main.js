@@ -81,7 +81,7 @@ requirejs( [
     document.getElementById("search-block__button").addEventListener("click", function(){
         var key = document.getElementById("search-block__query").value;
         sendRequest(key);
-        console.log(key);
+        document.getElementById("search-block__query").value = "";
     });
 
     // and add listener on Enter in text field
@@ -89,6 +89,7 @@ requirejs( [
         if (e.keyCode == 13) {
             var key = document.getElementById("search-block__query").value;
             sendRequest(key);
+            document.getElementById("search-block__query").value = "";
         }
     });       
   
