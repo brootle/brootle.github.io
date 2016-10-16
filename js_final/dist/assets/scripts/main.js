@@ -78,9 +78,15 @@ requirejs( [
         }
     });      
 
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////
+    // now we should add event listener on seach button click
+    document.getElementById("search-block__button").addEventListener("click", function(){
+        var key = document.getElementById("search-block__query").value;
+        sendRequest(key);
+        console.log(key);
+    });
 
 });
 
