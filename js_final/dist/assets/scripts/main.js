@@ -88,6 +88,15 @@ requirejs( [
         console.log(key);
     });
 
+    // and add listener on Enter in text field
+    document.getElementById("search-block__query").addEventListener("keyup", function (e) {
+        if (e.keyCode == 13) {
+            var key = document.getElementById("search-block__query").value;
+            sendRequest(key);
+        }
+    });       
+  
+
 });
 
 require(
