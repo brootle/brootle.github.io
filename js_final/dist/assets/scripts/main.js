@@ -12,6 +12,60 @@ requirejs( [
         percentPosition: true
     });
 
+    // Add filter to all grid-item elements
+
+    var items = document.getElementsByClassName("grid-item");
+    //console.log(items);
+    for(var i = 0; i < items.length; i++){
+        items[i].innerHTML = '<div><a>Some text will be placed here</a></div>';
+    }
+
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    // https://pixabay.com/api/docs/
+    // https://pixabay.com/api/?key=3531240-ec0d55581e7ceac4acc8e28c0&q=kiev&image_type=photo&pretty=true&per_page=7&orientation=horizontal
+
+    function sendRequest(key){
+        var request;
+        var url = "https://pixabay.com/api/?key=3531240-ec0d55581e7ceac4acc8e28c0&image_type=photo&pretty=true&per_page=7&orientation=horizontal&q=" + key;
+        
+        if (window.XMLHttpRequest) {
+            request = new XMLHttpRequest();
+        } else {
+            // code for older browsers
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        request.onreadystatechange = function(data) {
+            if (this.readyState == 4 && this.status == 200) {
+                data = JSON.parse(this.responseText);
+                updatePhotos(data);
+            }
+        };
+        request.open("GET", url, true);
+        request.send();
+    }
+
+
+    function updatePhotos(data){
+        //console.log(data.hits[0].webformatURL);
+        var items = document.getElementsByClassName("grid-item");
+
+        for(var i = 0; i < items.length; i++){
+            // add photos to masonry layout
+            items[i].style.background = "url('"+ data.hits[i].webformatURL +"') no-repeat center center"; 
+            items[i].style.backgroundSize = "cover";
+
+            // here we also must add text
+            // after text added top property must be calculated and set
+        }
+
+    }
+
+    sendRequest("cats");
+
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+
 });
 
 require(
