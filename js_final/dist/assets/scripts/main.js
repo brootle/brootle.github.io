@@ -17,7 +17,7 @@ requirejs( [
     var items = document.getElementsByClassName("grid-item");
     //console.log(items);
     for(var i = 0; i < items.length; i++){
-        items[i].innerHTML = '<div><a>Some text will be placed here</a></div>';
+        items[i].innerHTML = '<div><a></a></div>';
     }
 
     ////////////////////////////////////////////////////////
