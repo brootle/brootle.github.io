@@ -5,7 +5,6 @@ requirejs( [
 ], function(Masonry) {
 
     var elem = document.querySelector('.grid');
-    alert(elem);
     var msnry = new Masonry( elem, {
         // options
         itemSelector: '.grid-item',
