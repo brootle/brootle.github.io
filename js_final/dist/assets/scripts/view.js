@@ -139,11 +139,17 @@ define(
                 liElements[1].style.backgroundSize = "cover";
 
                 var sliderDIV = liElements[1].childNodes[1];
-                sliderDIV.childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
+                var photoCounter = sliderDIV.childNodes[0];
+                var photoTittle = sliderDIV.childNodes[1];
+                var photoDescr = sliderDIV.childNodes[2];
+
+                photoCounter.innerHTML = "photo "+ (centralImageIndex + 1);
+                photoTittle.innerHTML = texts[centralImageIndex].tittle;
+                photoDescr.innerHTML = texts[centralImageIndex].description;
+
                 //liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
-                //sliderDIV.childNodes[1].innerHTML = texts[centralImageIndex].tittle;
                 //liElements[1].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex].tittle;
-                liElements[1].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex].description;
+                //liElements[1].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex].description;
 
                 if(centralImageIndex >= images.length - 1){
                     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
