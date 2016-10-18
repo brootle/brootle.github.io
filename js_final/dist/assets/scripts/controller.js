@@ -6,19 +6,44 @@ define(
         function Controller(id, model, view) {
 
             // this will be checking for screen size changes and will call function in View
-            window.addEventListener("resize", function(){
-                view.updateDimensions(id); 
-            });            
-          
-            view.goRight.addEventListener("click",glideNext);   
-            view.goLeft.addEventListener("click",glidePrevious);   
+            // window.addEventListener("resize", function(){
+            //     view.updateDimensions(id); 
+            // });            
+
+            // view.goRight.addEventListener("click",glideNext);   
+            // view.goLeft.addEventListener("click",glidePrevious);            
+
+            if(window.addEventListener)
+                window.addEventListener("resize", function(){
+                    view.updateDimensions(id); 
+                });
+            else
+                window.attachEvent("onresize", function(){
+                    view.updateDimensions(id); 
+                });            
+           
+           if(view.goRight.addEventListener){
+                view.goRight.addEventListener("click",glideNext);   
+                view.goLeft.addEventListener("click",glidePrevious);                
+           }
+           else{
+                view.goRight.attachEvent("onclick",glideNext);   
+                view.goLeft.attachEvent("onclick",glidePrevious);                   
+           }
+             
 
             var animationSpeed = view.sliderContainer.offsetWidth / 24;  
 
             function glideNext() {
                 // we also must stop event listener to prevent click while slider is moving
-                view.goRight.removeEventListener("click",glideNext); 
-                view.goLeft.removeEventListener("click",glidePrevious); 
+                if(view.goRight.removeEventListener){
+                    view.goRight.removeEventListener("click",glideNext); 
+                    view.goLeft.removeEventListener("click",glidePrevious);              
+                }
+                else{
+                    view.goRight.detachEvent("onclick",glideNext);   
+                    view.goLeft.detachEvent("onclick",glidePrevious);                   
+                }                
                 var elem = view.sliderContainer.firstChild; 
                 var pos = view.sliderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 15);
@@ -28,8 +53,14 @@ define(
                         nextImage();
                         elem.style.left = view.sliderContainer.offsetWidth * (-1) + 'px';
                         // here we must return event listener
-                        view.goRight.addEventListener("click",glideNext); 
-                        view.goLeft.addEventListener("click",glidePrevious);
+                        if(view.goRight.addEventListener){
+                            view.goRight.addEventListener("click",glideNext);   
+                            view.goLeft.addEventListener("click",glidePrevious);                
+                        }
+                        else{
+                            view.goRight.attachEvent("onclick",glideNext);   
+                            view.goLeft.attachEvent("onclick",glidePrevious);                   
+                        }
                     } else {
                         pos = pos - animationSpeed; 
                         elem.style.left = pos + 'px'; 
@@ -38,8 +69,14 @@ define(
             }       
 
             function glidePrevious() {
-                view.goLeft.removeEventListener("click",glidePrevious); 
-                view.goRight.removeEventListener("click",glideNext); 
+                if(view.goRight.removeEventListener){
+                    view.goRight.removeEventListener("click",glideNext); 
+                    view.goLeft.removeEventListener("click",glidePrevious);              
+                }
+                else{
+                    view.goRight.detachEvent("onclick",glideNext);   
+                    view.goLeft.detachEvent("onclick",glidePrevious);                   
+                }    
                 var elem = view.sliderContainer.firstChild; 
                 var pos = view.sliderContainer.offsetWidth * (-1);
                 var id = setInterval(frame, 15);
@@ -48,8 +85,14 @@ define(
                         clearInterval(id);
                         previousImage();
                         elem.style.left = view.sliderContainer.offsetWidth * (-1) + 'px';
-                        view.goRight.addEventListener("click",glideNext); 
-                        view.goLeft.addEventListener("click",glidePrevious);
+                        if(view.goRight.addEventListener){
+                                view.goRight.addEventListener("click",glideNext);   
+                                view.goLeft.addEventListener("click",glidePrevious);                
+                        }
+                        else{
+                                view.goRight.attachEvent("onclick",glideNext);   
+                                view.goLeft.attachEvent("onclick",glidePrevious);                   
+                        }
                     } else {
                         pos = pos + animationSpeed;  
                         elem.style.left = pos + 'px'; 
