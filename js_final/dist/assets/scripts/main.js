@@ -1,6 +1,7 @@
 
 requirejs( [
-  'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
+  //'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
+  'https://libraries.cdnhttps.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
 ], function(Masonry) {
 
     var elem = document.querySelector('.grid');
@@ -22,8 +23,6 @@ requirejs( [
 
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
-    // https://pixabay.com/api/docs/
-    // https://pixabay.com/api/?key=3531240-ec0d55581e7ceac4acc8e28c0&q=kiev&image_type=photo&pretty=true&per_page=7&orientation=horizontal
 
     function sendRequest(key){
         var request;
