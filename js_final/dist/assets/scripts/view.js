@@ -138,10 +138,10 @@ define(
                 liElements[1].style.background = "url('"+ images[centralImageIndex] +"') no-repeat center center";
                 liElements[1].style.backgroundSize = "cover";
 
-                var sliderDIV = liElements[1].childNodes[1];
-                var photoCounter = sliderDIV.childNodes[0];
-                var photoTittle = sliderDIV.childNodes[1];
-                var photoDescr = sliderDIV.childNodes[2];
+                var sliderDIV = liElements[1].children[1];
+                var photoCounter = sliderDIV.children[0];
+                var photoTittle = sliderDIV.children[1];
+                var photoDescr = sliderDIV.children[2];
 
                 photoCounter.innerHTML = "photo "+ (centralImageIndex + 1);
                 photoTittle.innerHTML = texts[centralImageIndex].tittle;
