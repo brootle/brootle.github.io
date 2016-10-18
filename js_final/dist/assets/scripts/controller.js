@@ -86,12 +86,12 @@ define(
                         previousImage();
                         elem.style.left = view.sliderContainer.offsetWidth * (-1) + 'px';
                         if(view.goRight.addEventListener){
-                                view.goRight.addEventListener("click",glideNext);   
-                                view.goLeft.addEventListener("click",glidePrevious);                
+                            view.goRight.addEventListener("click",glideNext);   
+                            view.goLeft.addEventListener("click",glidePrevious);                
                         }
                         else{
-                                view.goRight.attachEvent("onclick",glideNext);   
-                                view.goLeft.attachEvent("onclick",glidePrevious);                   
+                            view.goRight.attachEvent("onclick",glideNext);   
+                            view.goLeft.attachEvent("onclick",glidePrevious);                   
                         }
                     } else {
                         pos = pos + animationSpeed;  
