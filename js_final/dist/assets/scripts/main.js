@@ -1,99 +1,99 @@
 
-requirejs( [
-  //'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
-  'https://libraries.cdnhttps.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
-], function(Masonry) {
+// requirejs( [
+//   //'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
+//   'https://libraries.cdnhttps.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
+// ], function(Masonry) {
 
-    var elem = document.querySelector('.grid');
-    var msnry = new Masonry( elem, {
-        // options
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        gutter: 10,
-        percentPosition: true
-    });
+//     var elem = document.querySelector('.grid');
+//     var msnry = new Masonry( elem, {
+//         // options
+//         itemSelector: '.grid-item',
+//         columnWidth: '.grid-sizer',
+//         gutter: 10,
+//         percentPosition: true
+//     });
 
-    // Add filter to all grid-item elements
+//     // Add filter to all grid-item elements
 
-    var items = document.getElementsByClassName("grid-item");
-    //console.log(items);
-    for(var i = 0; i < items.length; i++){
-        items[i].innerHTML = '<div><a></a></div>';
-    }
+//     var items = document.getElementsByClassName("grid-item");
+//     //console.log(items);
+//     for(var i = 0; i < items.length; i++){
+//         items[i].innerHTML = '<div><a></a></div>';
+//     }
 
-    ////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////
+//     ////////////////////////////////////////////////////////
+//     ////////////////////////////////////////////////////////
 
-    function sendRequest(key){
-        var request;
-        var url = "https://pixabay.com/api/?key=3531240-ec0d55581e7ceac4acc8e28c0&image_type=photo&pretty=true&per_page=7&orientation=horizontal&q=" + key;
+//     function sendRequest(key){
+//         var request;
+//         var url = "https://pixabay.com/api/?key=3531240-ec0d55581e7ceac4acc8e28c0&image_type=photo&pretty=true&per_page=7&orientation=horizontal&q=" + key;
         
-        if (window.XMLHttpRequest) {
-            request = new XMLHttpRequest();
-        } else {
-            // code for older browsers
-            request = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        request.onreadystatechange = function(data) {
-            if (this.readyState == 4 && this.status == 200) {
-                data = JSON.parse(this.responseText);
-                updatePhotos(data);
-            }
-        };
-        request.open("GET", url, true);
-        request.send();
-    }
+//         if (window.XMLHttpRequest) {
+//             request = new XMLHttpRequest();
+//         } else {
+//             // code for older browsers
+//             request = new ActiveXObject("Microsoft.XMLHTTP");
+//         }
+//         request.onreadystatechange = function(data) {
+//             if (this.readyState == 4 && this.status == 200) {
+//                 data = JSON.parse(this.responseText);
+//                 updatePhotos(data);
+//             }
+//         };
+//         request.open("GET", url, true);
+//         request.send();
+//     }
 
 
-    function updatePhotos(data){
-        //console.log(data.hits[0].tags);
-        //console.log(data.hits[0].webformatURL);
-        var items = document.getElementsByClassName("grid-item");
+//     function updatePhotos(data){
+//         //console.log(data.hits[0].tags);
+//         //console.log(data.hits[0].webformatURL);
+//         var items = document.getElementsByClassName("grid-item");
 
-        for(var i = 0; i < data.hits.length; i++){
-            // add photos to masonry layout
-            items[i].style.background = "url('"+ data.hits[i].webformatURL +"') no-repeat center center"; 
-            items[i].style.backgroundSize = "cover";
+//         for(var i = 0; i < data.hits.length; i++){
+//             // add photos to masonry layout
+//             items[i].style.background = "url('"+ data.hits[i].webformatURL +"') no-repeat center center"; 
+//             items[i].style.backgroundSize = "cover";
 
-            // here we also must add text
-            items[i].childNodes[0].childNodes[0].innerHTML = data.hits[i].tags;
-            // after text added top property must be calculated and set
-            items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
-        }
+//             // here we also must add text
+//             items[i].childNodes[0].childNodes[0].innerHTML = data.hits[i].tags;
+//             // after text added top property must be calculated and set
+//             items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
+//         }
 
-    }
+//     }
     
-    sendRequest("vacation+travel+sea");
+//     sendRequest("vacation+travel+sea");
 
-    window.addEventListener("resize", function(){
-        // updating text position on window size changed;
-        var items = document.getElementsByClassName("grid-item");
-        for(var i = 0; i < items.length; i++){
-            items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
-        }
-    });      
+//     window.addEventListener("resize", function(){
+//         // updating text position on window size changed;
+//         var items = document.getElementsByClassName("grid-item");
+//         for(var i = 0; i < items.length; i++){
+//             items[i].childNodes[0].childNodes[0].style.top = (items[i].offsetHeight - items[i].childNodes[0].childNodes[0].offsetHeight) / 2 + "px";
+//         }
+//     });      
 
-    ////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////
+//     ////////////////////////////////////////////////////////////
+//     ////////////////////////////////////////////////////////////
 
-    // now we should add event listener on seach button click
-    document.getElementById("search-block__button").addEventListener("click", function(){
-        var key = document.getElementById("search-block__query").value;
-        sendRequest(key);
-        document.getElementById("search-block__query").value = "";
-    });
+//     // now we should add event listener on seach button click
+//     document.getElementById("search-block__button").addEventListener("click", function(){
+//         var key = document.getElementById("search-block__query").value;
+//         sendRequest(key);
+//         document.getElementById("search-block__query").value = "";
+//     });
 
-    // and add listener on Enter in text field
-    document.getElementById("search-block__query").addEventListener("keyup", function (e) {
-        if (e.keyCode == 13) {
-            var key = document.getElementById("search-block__query").value;
-            sendRequest(key);
-            document.getElementById("search-block__query").value = "";
-        }
-    });       
+//     // and add listener on Enter in text field
+//     document.getElementById("search-block__query").addEventListener("keyup", function (e) {
+//         if (e.keyCode == 13) {
+//             var key = document.getElementById("search-block__query").value;
+//             sendRequest(key);
+//             document.getElementById("search-block__query").value = "";
+//         }
+//     });       
   
 
-});
+// });
 
 require(
     [   
