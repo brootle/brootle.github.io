@@ -136,9 +136,11 @@ define(
 
                 // in any case we set cetral image based on centralImageIndex
                 liElements[1].style.background = "url('"+ images[centralImageIndex] +"') no-repeat center center";
-                liElements[1].style.backgroundSize = "cover";  
+                liElements[1].style.backgroundSize = "cover";
 
-                liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
+                var sliderDIV = liElements[1].childNodes[1];
+                var photoCounter = sliderDIV.childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
+                //liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
                 liElements[1].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex].tittle;
                 liElements[1].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex].description;
 
