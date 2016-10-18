@@ -1,3 +1,4 @@
+@import 'variables__global';
 
 .slider-container{
     overflow: hidden;
@@ -68,18 +69,21 @@
     letter-spacing: 3px;
     display: inline-block;
     box-sizing: content-box;
-    background-color: #ff4e50;
+    background-color: $elementsContrastColor;
     border-radius: 17px;
     line-height: 24px;
     padding-left: 11px;
     padding-right: 10px;
     font-size: 11px;
     text-transform: uppercase;
+
+    @include sliderButtonFont;
 }
 
 .slider-container ul li div h1{
-    padding-top:10px;
-    padding-bottom:10px;
+    font-size: 28px;
+    
+    @include tittlesFont;
 }
 
 .slider-container ul li div p{
@@ -87,6 +91,8 @@
     padding: 0;
     word-spacing: 0px;
     line-height: 18px;    
+
+    @include generalTextFont;
 }
 
 @media screen and (max-width: 960px){

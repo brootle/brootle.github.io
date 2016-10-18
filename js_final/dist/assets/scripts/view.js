@@ -18,10 +18,15 @@ define(
                 document.getElementById(id).appendChild(this.sliderContainer);
 
                 // 2. calculate width of inside <ul> must be 3 widths of slider-container width
+                var sliderContainer = document.getElementById('slider-container-'+id);
+                var containerWidth = sliderContainer.offsetWidth;
+                // console.log(id);
+                // console.log(sliderContainer);
+                // console.log(sliderContainer.offsetWidth);
                 var ulElement = document.createElement('ul');
-                ulElement.style.width = this.sliderContainer.offsetWidth * 3 + 'px';
+                ulElement.style.width = containerWidth * 3 + 'px';
                 // shift position of <ul> to left so the central image will be in the middle
-                ulElement.style.left = this.sliderContainer.offsetWidth * (-1) + 'px';
+                ulElement.style.left = containerWidth* (-1) + 'px';
                 this.sliderContainer.appendChild(ulElement);
 
                 // 3. now we must add 3 <li> elements with pictures set as backgounds
@@ -34,7 +39,7 @@ define(
                 textBlock+="<div></div>";                       
 
                 var liElement1 = document.createElement('li');
-                liElement1.style.width = this.sliderContainer.offsetWidth + 'px';
+                liElement1.style.width = containerWidth + 'px';
                 liElement1.style.background = "url('"+ images[images.length-1] +"') no-repeat center center";   
                 liElement1.style.backgroundSize = "cover";
                 liElement1.innerHTML = textBlock;
@@ -48,7 +53,7 @@ define(
                 ulElement.appendChild(liElement1);             
                 // add 1st image to 2nd <li>
                 var liElement2 = document.createElement('li');
-                liElement2.style.width = this.sliderContainer.offsetWidth + 'px';
+                liElement2.style.width = containerWidth + 'px';
                 liElement2.style.background = "url('"+ images[0] +"') no-repeat center center";   
                 liElement2.style.backgroundSize = "cover";
                 liElement2.innerHTML = textBlock;
@@ -66,7 +71,7 @@ define(
                     case 1:
                         ulElement.appendChild(liElement1);
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
+                        liElement3.style.width = containerWidth + 'px';
                         liElement3.style.background = "url('"+ images[0] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
@@ -80,7 +85,7 @@ define(
                     case 2:
                         ulElement.appendChild(liElement2);
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
+                        liElement3.style.width = containerWidth + 'px';
                         liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
@@ -93,7 +98,7 @@ define(
                         break;
                     default:
                         var liElement3 = document.createElement('li');
-                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
+                        liElement3.style.width = containerWidth + 'px';
                         liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
                         liElement3.style.backgroundSize = "cover";
                         liElement3.innerHTML = textBlock;
