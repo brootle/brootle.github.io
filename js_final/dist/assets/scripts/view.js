@@ -152,25 +152,16 @@ define(
                 photoDescr.innerHTML = texts[centralImageIndex].description;
 
                 if(centralImageIndex >= images.length - 1){
-                    // liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
-                    // liElements[2].style.backgroundSize = "cover";    
+                    liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
+                    liElements[2].style.backgroundSize = "cover";    
                       
-                    // liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1); 
-                    // liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;  
-                    // liElements[2].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex-(images.length-1)].description;           
+                    liElements[2].children[1].children[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1); 
+                    liElements[2].children[1].children[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;  
+                    liElements[2].children[1].children[2].innerHTML = texts[centralImageIndex-(images.length-1)].description;           
                 } else {
                     liElements[2].style.background = "url('"+ images[centralImageIndex+1] +"') no-repeat center center";
                     liElements[2].style.backgroundSize = "cover";   
-
-                    // var sliderDIV2 = liElements[2].children[1];
-                    
-                    // var photoCounter2 = sliderDIV.children[0];
-                    // var photoTittle2 = sliderDIV.children[1];
-                    // var photoDescr2 = sliderDIV.children[2];       
-
-                    // photoCounter2.innerHTML = "photo "+ (centralImageIndex + 1 + 1);
-                    // photoTittle2.innerHTML = texts[centralImageIndex + 1].tittle;
-                    // photoDescr2.innerHTML = texts[centralImageIndex + 1].description;                               
+                            
 
                     liElements[2].children[1].children[0].innerHTML = "photo "+ (centralImageIndex + 1 + 1); 
                     liElements[2].children[1].children[1].innerHTML = texts[centralImageIndex + 1].tittle; 
