@@ -63,7 +63,10 @@ requirejs( [
 
     }
     
-    sendRequest("vacation+travel+sea");
+    // when we load the page we upload random pics out 10 queries
+    var randomKey = ["vacation", "travel", "sea", "beach", "mountains", "new york", "japan", "ukraine","england","france"];
+    var index = Math.floor(Math.random() * 10);
+    sendRequest(randomKey[index]);
 
     window.addEventListener("resize", function(){
         // updating text position on window size changed;
