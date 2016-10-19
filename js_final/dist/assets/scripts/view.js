@@ -172,37 +172,37 @@ define(
                 liElements[1].children[1].children[1].innerHTML = texts[centralImageIndex].tittle;
                 liElements[1].children[1].children[2].innerHTML = texts[centralImageIndex].description;
 
-                // if(centralImageIndex >= images.length - 1){
-                //     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
-                //     liElements[2].style.backgroundSize = "cover";    
+                if(centralImageIndex >= images.length - 1){
+                    liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
+                    liElements[2].style.backgroundSize = "cover";    
                       
-                //     liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1); 
-                //     liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;  
-                //     liElements[2].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex-(images.length-1)].description;           
-                // } else {
-                //     liElements[2].style.background = "url('"+ images[centralImageIndex+1] +"') no-repeat center center";
-                //     liElements[2].style.backgroundSize = "cover";   
+                    liElements[2].children[1].children[0].innerHTML = "photo "+ (centralImageIndex-(images.length-1) + 1); 
+                    liElements[2].children[1].children[1].innerHTML = texts[centralImageIndex-(images.length-1)].tittle;  
+                    liElements[2].children[1].children[2].innerHTML = texts[centralImageIndex-(images.length-1)].description;           
+                } else {
+                    liElements[2].style.background = "url('"+ images[centralImageIndex+1] +"') no-repeat center center";
+                    liElements[2].style.backgroundSize = "cover";   
 
-                //     liElements[2].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1 + 1); 
-                //     liElements[2].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex + 1].tittle; 
-                //     liElements[2].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex + 1].description;                                     
-                // }
+                    liElements[2].children[1].children[0].innerHTML = "photo "+ (centralImageIndex + 1 + 1); 
+                    liElements[2].children[1].children[1].innerHTML = texts[centralImageIndex + 1].tittle; 
+                    liElements[2].children[1].children[2].innerHTML = texts[centralImageIndex + 1].description;                                     
+                }
 
-                // if(centralImageIndex-1 < 0){
-                //     liElements[0].style.background = "url('"+ images[images.length-1] +"') no-repeat center center";
-                //     liElements[0].style.backgroundSize = "cover";  
+                if(centralImageIndex-1 < 0){
+                    liElements[0].style.background = "url('"+ images[images.length-1] +"') no-repeat center center";
+                    liElements[0].style.backgroundSize = "cover";  
 
-                //     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (images.length);
-                //     liElements[0].childNodes[1].childNodes[1].innerHTML = texts[texts.length-1].tittle;  
-                //     liElements[0].childNodes[1].childNodes[2].innerHTML = texts[texts.length-1].description; 
-                // } else {
-                //     liElements[0].style.background = "url('"+ images[centralImageIndex-1] +"') no-repeat center center";
-                //     liElements[0].style.backgroundSize = "cover";  
+                    liElements[0].children[1].children[0].innerHTML = "photo "+ (images.length);
+                    liElements[0].children[1].children[1].innerHTML = texts[texts.length-1].tittle;  
+                    liElements[0].children[1].children[2].innerHTML = texts[texts.length-1].description; 
+                } else {
+                    liElements[0].style.background = "url('"+ images[centralImageIndex-1] +"') no-repeat center center";
+                    liElements[0].style.backgroundSize = "cover";  
 
-                //     liElements[0].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex);  
-                //     liElements[0].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex-1].tittle;    
-                //     liElements[0].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex-1].description;             
-                // }                  
+                    liElements[0].children[1].children[0].innerHTML = "photo "+ (centralImageIndex);  
+                    liElements[0].children[1].children[1].innerHTML = texts[centralImageIndex-1].tittle;    
+                    liElements[0].children[1].children[2].innerHTML = texts[centralImageIndex-1].description;             
+                }                  
              
             }
 
