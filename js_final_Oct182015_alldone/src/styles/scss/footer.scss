@@ -1,0 +1,97 @@
+@import 'variables__global';
+
+footer{
+    border-top: 4px solid$elementsContrastColor;
+    padding-top:35px;
+    padding-bottom: 35px;
+
+    .footer-container:after { 
+        content: "."; 
+        visibility: hidden; 
+        display: block; 
+        height: 0; 
+        clear: both;
+    }   
+
+    .footer-container{
+
+        .footer__block{
+            float: left;
+            padding-left: 45px;
+            padding-right: 45px;
+
+            .footer-company-tittle{
+                color: $elementsContrastColor;
+                font-weight: bold;
+                letter-spacing: 1px;
+                font-size: 14px;
+                @include tittlesFont;
+            }
+
+            .footer-company-logo{
+                color: #cccccc;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-size: 12px;
+                text-align: right;
+                @include tittlesFont;
+            }            
+
+            .footer-company-logo-text{
+                display: inline-block;
+                text-align: center;
+
+                .logo-link{
+                    color: $elementsContrastColor;
+                    text-transform: uppercase;
+                    letter-spacing: 10px;       
+                    font-size: 16px;    
+                    margin-top: 0px;            
+                    @include tittlesFont;     
+                }   
+
+                .logo-link-extra{
+                    color: $elementsContrastColor;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;       
+                    font-size: 9px;   
+                    margin: 0;padding: 0;           
+                    @include tittlesFont;          
+                }     
+
+            }
+
+
+            h3{
+                padding: 0; margin: 0;
+                font-size: 14px;
+                margin-bottom: 10px;
+                color: $tittlesTextColor;
+                @include tittlesFont;
+            }
+          
+
+            a{
+                display: block;
+                font-size: 14px;
+                text-decoration: none;
+                margin-top: 5px;
+                color: $generalTextColor;
+                cursor: pointer;
+                @include generalTextFont;
+            }
+        }  
+
+        .footer__block:first-of-type{
+            padding-left: 0px;
+        }         
+
+        .footer__block:last-of-type{
+            float: right;
+            padding-right: 0px;
+        }          
+
+    }
+}
+
+@import 'media__footer';

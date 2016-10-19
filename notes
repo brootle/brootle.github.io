@@ -44,3 +44,25 @@ Yuriy Syryh [12:22 PM]
 
 Denys Kozhokar [12:24 PM]  
 Да можно использовать @media screen но есть ограничение, сайт нужно запускать на сервере (локальном или внешнем, не важно)
+
+concat png files in one http://stackoverflow.com/questions/1397377/combine-2-3-transparent-png-images-on-top-of-each-other-with-php
+
+AJAX requests http://blog.garstasio.com/you-dont-need-jquery/ajax/
+and this https://davidwalsh.name/xmlhttprequest
+https://gist.github.com/Xeoncross/7663273 - some ajax function
+
+
+// сделал такой миксин
+@mixin background {
+    background: {
+        position: center center;
+        size: cover;
+    }
+}
+
+// теперь можно писать так
+
+.some_class {
+    background: url(some-img.png);
+    @include background;
+}

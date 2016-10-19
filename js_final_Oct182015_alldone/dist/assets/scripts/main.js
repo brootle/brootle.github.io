@@ -1,7 +1,7 @@
 
 requirejs( [
   //'https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.js',
-  'https://libraries.cdnhttps.com/ajax/libs/masonry/3.2.2/masonry.pkgd.js',
+  'https://libraries.cdnhttps.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
 ], function(Masonry) {
 
     var elem = document.querySelector('.grid');
