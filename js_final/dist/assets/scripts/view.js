@@ -168,9 +168,9 @@ define(
                     liElements[2].children[1].children[2].innerHTML = texts[centralImageIndex + 1].description;                                     
                 }                
 
-                // liElements[1].childNodes[1].childNodes[0].innerHTML = "photo "+ (centralImageIndex + 1);
-                // liElements[1].childNodes[1].childNodes[1].innerHTML = texts[centralImageIndex].tittle;
-                // liElements[1].childNodes[1].childNodes[2].innerHTML = texts[centralImageIndex].description;
+                liElements[1].children[1].children[0].innerHTML = "photo "+ (centralImageIndex + 1);
+                liElements[1].children[1].children[1].innerHTML = texts[centralImageIndex].tittle;
+                liElements[1].children[1].children[2].innerHTML = texts[centralImageIndex].description;
 
                 // if(centralImageIndex >= images.length - 1){
                 //     liElements[2].style.background = "url('"+ images[centralImageIndex-(images.length-1)] +"') no-repeat center center";
