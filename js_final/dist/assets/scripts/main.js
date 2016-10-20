@@ -100,7 +100,7 @@
 
 requirejs.config({
     paths: {
-        'masonry' : 'https://libraries.cdnhttps.com/ajax/libs/masonry/3.2.2/masonry.pkgd'
+        'masonry' : 'masonry.pkgd'
     },
     shim:{
         'masonry' : {
@@ -115,7 +115,7 @@ require(
         'model',
         'view',
         'controller',
-        'masonry'
+        'masonry.pkgd'
     ],
     function(Model,View,Controller,Masonry){
 
