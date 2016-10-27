@@ -66,3 +66,17 @@ https://gist.github.com/Xeoncross/7663273 - some ajax function
     background: url(some-img.png);
     @include background;
 }
+
+gulp.task('sprite:build', function() {
+    var spriteData =
+    gulp.src(path.src.sprites)
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(spritesmith({
+        imgName: 'sprite.png',
+            cssName: 'sprite.scss',
+            imgPath: '../img/sprite/sprite.png',
+            padding: 2
+    }));
+    spriteData.img.pipe(gulp.dest(path.build.spritesImg));
+    spriteData.css.pipe(gulp.dest(path.build.spritesSCSS));
+});
