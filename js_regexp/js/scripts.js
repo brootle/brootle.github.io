@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded with JavaScript');
 
     // https://www.codecademy.com/en/courses/javascript-intermediate-en-NJ7Lr/1/4#
-    
+
     var text = document.getElementById("text").innerText;
     console.log(text);
 
@@ -26,4 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return domains;
                
     }    
+
+    // takes a string and returns true if it starts with a consonant and false otherwise. 
+    // (For our purposes, a consonant is any letter other than A, E, I, O, U.)
 });

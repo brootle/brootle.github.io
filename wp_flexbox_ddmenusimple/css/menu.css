@@ -1,0 +1,55 @@
+/*http://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_navbar*/
+
+.menu a{
+  display: block;
+  color: white;
+  text-decoration: none;
+  line-height: 30px;
+  padding: 5px 10px 5px 10px;
+  background-color: #333;
+}
+
+.menu a:hover{
+  background-color:black;
+}
+
+.sub-menu a{
+  display: block;
+  color: white;
+  text-decoration: none;
+  line-height: 30px;
+  padding: 5px;
+  padding: 5px 10px 5px 10px;
+  background-color:#333;
+}
+
+.sub-menu a:hover{
+  background-color:darkgray;
+  color:black;
+}
+
+.menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+    display: flex;
+    background-color: #333;
+}
+
+.sub-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-menu {
+    display: none;
+    flex-direction:column;    
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.menu-item-has-children:hover .sub-menu {
+    display: flex;
+}
