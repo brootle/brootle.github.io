@@ -1,0 +1,44 @@
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+}
+
+.navigation {
+  background: #232323;
+  display: flex;
+  font-size: 16px;
+}
+
+.navigation a {
+  background: #232323;
+  color: white;
+  text-decoration: none;
+  line-height: 35px;
+  display: block;
+  padding: 0 25px;
+}
+.navigation a:hover {
+  background-color: #2e2e2e;
+}
+
+.navigation li {
+  position: relative;
+}
+.navigation li:not(:last-child) {
+  border-right: 1px solid #2e2e2e;
+}
+.navigation li:hover .subnav {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.navigation .subnav {
+  position: absolute;
+  right: -46px;
+  transform: translateY(10px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s, transform .2s;
+}
