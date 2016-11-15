@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     livereload = require('gulp-livereload'),
-    spritesmith = require('gulp.spritesmith');
+    spritesmith = require('gulp.spritesmith'),
+    imagemin = require('gulp-imagemin');
 
 // this converts all scss to css
 gulp.task('scss-css', function () {
@@ -31,14 +32,25 @@ gulp.task('concat-min-styles', ['scss-css'], function () {
     return stream;
 });
 
-// gulp.task('sprite', function () {
-//   var spriteData = gulp.src('src/images/main__sprite/*.png').pipe(spritesmith({
-//     imgName: 'main__sprite.png',
-//     cssName: 'main__sprite.css',
-//     padding: 16
-//   }));
-//   return spriteData.pipe(gulp.dest('src/images/'));
-// });
+// optimize image files
+gulp.task('imagemin', () =>
+    gulp.src('src/images/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/images'))
+);
+
+// this will put images together into 1 sprite and will create scss with details for it
+gulp.task('sprites', function() {
+    var spriteData = gulp.src('src/images/main__sprite/*.png')
+    .pipe(spritesmith({
+        imgName: 'main__sprite.png',
+            cssName: '_main__sprite.scss',
+            imgPath: '../images/main__sprite.png',
+            padding: 16
+    }));
+    spriteData.img.pipe(gulp.dest('src/images/'));
+    spriteData.css.pipe(gulp.dest('src/styles/scss/'));
+});
 
 // concat and munify JavaScripts
 // gulp.task('scripts', function () {

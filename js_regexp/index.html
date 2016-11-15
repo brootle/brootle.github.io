@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet"/>
+     
+        <script src="js/scripts.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>     
+
+        <title>Using regular expressions in JavaScript</title>
+    </head>
+    <body>
+
+        <script>hljs.initHighlightingOnLoad();</script>   
+
+        <div class="wrapper">
+            <header>
+                <h1>Using regular expressions in JavaScript</h1>
+            </header>
+            <main>
+
+              <h2>Text to analyze. Need to get domains from email addresses</h2>
+              <p id="text">
+                <i>I get a mail from meth@gmail.com (by the way I thought its domain was experience.all), 
+                it was sent to joe@cesi.fr, but the guys of gmail.com said we could only trust the 
+                joe@buisness.com adress</i>
+              </p>
+
+              <p>
+                Regular Expression for made for this task is <strong>/[a-z0-9._%+-]+@([a-z0-9.-]+\.[a-z]{2,4})/</strong>
+                And below is JavaScript function that returns a list of all domains that we find in emails used
+                in a text. Check console to see how it works.
+              </p>
+
+              <div>
+<pre><code>document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM loaded with JavaScript');
+
+    // https://www.codecademy.com/en/courses/javascript-intermediate-en-NJ7Lr/1/4#
+    
+    var text = document.getElementById("text").innerText;
+    console.log(text);
+
+    console.log(getDomainsOfEmails(text));
+
+    function getDomainsOfEmails(text) {
+        //complete the function to return an array containing 
+        //all the domains of the emails inside "text" parameter
+        var regDomain = /[a-z0-9._%+-]+@([a-z0-9.-]+\.[a-z]{2,4})/;
+        var result;
+        var domains = [];
+
+        do{
+            result = text.match(regDomain);
+            if(result){
+                text = text.substr(result.index+result[0].length, text.length);
+                domains.push(result[1]);
+            }
+        } while (result)
+        
+        return domains;
+            
+    }    
+});</code></pre>      
+              </div>
+
+            </main>
+            <footer>
+                <div class="footer-copyright">
+                    <a class="footer-text">Designed by</a>
+                    <a class="footer-link" href="https://www.facebook.com/Lugansk.Alex"
+                       target="_blank">Alex</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

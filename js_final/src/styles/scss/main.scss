@@ -1,5 +1,7 @@
 @import 'variables__global';
 
+@import 'main__sprite';
+
 main{
   padding-top: $mainPaddingTop;
 }
@@ -91,38 +93,32 @@ main{
         position: absolute;
         bottom: 0px;
         right: 0px;  
-        border: 3px solid white;  
-        width: 32px;
-        height: 32px;  
+        border: 3px solid white;   
         box-sizing: content-box;
       }         
 
       .photo-icon--1{
         @extend .photo-icon;
         background-color: #ff4e50;
-        background-image: url(../images/main__sprite.png);
-        background-position: -8px -42px;
+        @include sprite($tv); 
       }    
 
       .photo-icon--2{ 
         @extend .photo-icon;
         background-color: #1cd7ad;
-        background-image: url(../images/main__sprite.png);
-        background-position: -8px -89px;
+        @include sprite($cup); 
       }   
 
       .photo-icon--3{
         @extend .photo-icon;         
         background-color: #ffa507;
-        background-image: url(../images/main__sprite.png);
-        background-position: -38px -40px;
+        @include sprite($flask); 
       }   
 
       .photo-icon--4{
         @extend .photo-icon;         
         background-color: #4e73db;
-        background-image: url(../images/main__sprite.png);
-        background-position: -42px -7px;
+        @include sprite($plane);       
       }                     
     }
 

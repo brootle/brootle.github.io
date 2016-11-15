@@ -1,4 +1,4 @@
-
+﻿
 Gennadiy Gorbulin [4:31 PM]  
 В ES6 очень прикольная штука дескрипторы. Это когда значения переменным присваиваешь из какого-то объекта. 
 На практике - заходит JSON с вопросами как в работе 3-4 или 13-14 . В одну строку присваваем все переменные значениями из этого вошедшего JSON .
@@ -24,6 +24,10 @@ Gennadiy Gorbulin [10:18 PM]
 
 [10:23]  
 Поверьте на слово - по этой теме объявлений не много. Потому что рекрутеры сами находят. Если есть сертификат по Мадженто - к вам в личку будут писать :slightly_smiling_face: (edited)
+
+Сейчас, по итогам курсов, уровень подготовки достаточный чтобы на кусок хлеба зарабоать. 
+Но для хлеба с маслом надо еще таким же рывком за месяца два осилить Ангуляр2 и какой-то фреймверк типа Sumphony / Yii
+Вариант попроще - CMS WordPress или что-то из топовых.
 
 
 Yuriy Syryh [11:25 AM]  
@@ -66,3 +70,17 @@ https://gist.github.com/Xeoncross/7663273 - some ajax function
     background: url(some-img.png);
     @include background;
 }
+
+gulp.task('sprite:build', function() {
+    var spriteData =
+    gulp.src(path.src.sprites)
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(spritesmith({
+        imgName: 'sprite.png',
+            cssName: 'sprite.scss',
+            imgPath: '../img/sprite/sprite.png',
+            padding: 2
+    }));
+    spriteData.img.pipe(gulp.dest(path.build.spritesImg));
+    spriteData.css.pipe(gulp.dest(path.build.spritesSCSS));
+});
