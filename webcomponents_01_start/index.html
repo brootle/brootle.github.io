@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet"/>
+        
+        <script src="js/main.js"></script>
+
+
+
+        <title>Webcomponents - the 1st one!</title>
+    </head>
+    <body>    
+        <div class="wrapper">
+            <header>
+                <h1>Webcomponents - the 1st one!</h1>
+            </header>
+            <main>
+
+                <div>
+                    Everything about WebComponents here <a href="https://www.w3.org/wiki/WebComponents/">https://www.w3.org/wiki/WebComponents/</a>
+                </div>                
+
+                <div>
+                    Based on the tutorial here <a href="https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/</a>
+                </div>
+
+                <h2>Going to the shadow</h2>
+                
+                <button>Hello, world!</button>
+                <script>
+                    var host = document.querySelector('button');
+                    var root = host.createShadowRoot();
+                    root.textContent = 'こんにちは、影の世界!';
+                </script>                
+                
+                <h2>Using template</h2>
+
+                <div id="nameTag">Bob</div>
+
+                <template id="nameTagTemplate">
+                    <style>
+                        .outer {
+                        border: 2px solid brown;
+                        border-radius: 1em;
+                        background: red;
+                        font-size: 20pt;
+                        width: 12em;
+                        height: 7em;
+                        text-align: center;
+                        }
+                        .boilerplate {
+                        color: white;
+                        font-family: sans-serif;
+                        padding: 0.5em;
+                        }
+                        .name {
+                        color: black;
+                        background: white;
+                        font-family: "Marker Felt", cursive;
+                        font-size: 45pt;
+                        padding-top: 0.2em;
+                        }
+                    </style>
+                    <div class="outer">
+                    <div class="boilerplate">
+                        Hi! My name is
+                    </div>
+                    <div class="name">
+                        <content></content>
+                    </div>
+                    </div>
+                </template>    
+
+                <script>
+                    var shadow = document.querySelector('#nameTag').createShadowRoot();
+                    var template = document.querySelector('#nameTagTemplate');
+                    var clone = document.importNode(template.content, true);
+                    shadow.appendChild(clone);
+                </script>                     
+
+                <script>
+                    document.querySelector('#nameTag').textContent = 'Shellie';
+                </script>       
+
+            </main>
+            <footer>
+                <div class="footer-copyright">
+                    <a class="footer-text">Designed by</a>
+                    <a class="footer-link" href="https://www.facebook.com/Lugansk.Alex"
+                       target="_blank">Alex</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
