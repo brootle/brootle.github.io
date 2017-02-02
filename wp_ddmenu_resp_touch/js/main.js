@@ -5,4 +5,6 @@ $(function () {
 
     $( '#nav li:has(ul)' ).doubleTapToGo();
 
+    $( '#touchnav li:has(ul)' ).doubleTapToGo();
+
 });
