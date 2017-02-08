@@ -8,7 +8,6 @@ $(function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       coordinates+=position.coords.latitude + ',' + position.coords.longitude;
-      console.log(coordinates);
       
       url = 'https://api.wunderground.com/api/7f0451b8da14a202/conditions/forecast/q/' + coordinates + '.json'     
       
@@ -17,14 +16,28 @@ $(function () {
         url: url,
         success: function(data) {
 
-          $("#temp").html(data.current_observation.temp_c);
-          console.log(data.current_observation.temp_c);
+          var temperature_c = data.current_observation.temp_c + " <a id='temp_unit_c'>C</a>"
+          $("#temp_c").html(temperature_c);
 
-          $("#city").html(data.current_observation.observation_location.city);    
-          console.log(data.current_observation.observation_location.city);      
+          $("#temp_unit_c").on('click', function(){
+            $("#temp_c").toggle();
+            $("#temp_f").toggle();
+          });
 
-          $("#icon").html(data.current_observation.icon);    
-          console.log(data.current_observation.icon); 
+          var temperature_f = data.current_observation.temp_f + " <a id='temp_unit_f'>F</a>"
+          $("#temp_f").html(temperature_f);
+
+          $("#temp_unit_f").on('click', function(){
+            $("#temp_c").toggle();
+            $("#temp_f").toggle();
+          });          
+
+          $("#city").html(data.current_observation.observation_location.city);          
+
+          var iconSrc = "images/icons/black/" + data.current_observation.icon +".svg" ;
+          $( "#icon" ).attr( "src", iconSrc );
+
+          $("#weather").html(data.current_observation.weather); 
 
         },
         cache: false
