@@ -1,66 +1,31 @@
 $(function () {
-  
-  //var url = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix&callback=?";
-  //var url = "https://en.wikipedia.org/w/api.php?action=query&titles=alex&format=json&callback=?";
 
-// with images and text https://en.wikipedia.org/w/api.php?format=xml&action=query&generator=search&gsrnamespace=0&gsrsearch=alex&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max
+  // https://en.wikipedia.org/wiki/Reverse_Polish_notation
+  // https://en.wikipedia.org/wiki/Finite-state_machine
+  // Math functions https://www.w3schools.com/js/js_math.asp
 
-// with titles and snippets https://en.wikipedia.org/w/api.php?action=query&list=search&format=xml&srsearch=alex&srnamespace=0&srprop=snippet&srlimit=10
+  // STRATEGY
+  // use replace function to convert string for eval function
 
-// with full url https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=alex&format=xml&gsrprop=snippet&prop=info&inprop=url
+  // source = source.replace(/sin/ig,"Math.sin");
 
-// title + url + desctiption https://en.wikipedia.org/w/api.php?action=opensearch&search=alex&format=xml&limit=20
+  var x = 2;
+  var y = 3;
+  var z = 5;
+  var a = eval("2+x / y");
 
+  //console.log(a);
 
-  $('.search-button').on('click', function () {
-          wikiSearch()
-  });
-  
-  $("#search-field").keyup(function (e) {
-      if (e.keyCode == 13) {
-          wikiSearch()
-      }
-  });
+  //console.log(eval("sin(2) + 3")); // Math.sin(3)
 
-  function wikiSearch(){
+  console.log(eval("Math.sin(2) + 3")); // Math.sin(3)
+  console.log(eval("Math.pow(2,3)")); // Math.sin(3)
+  // "x^4".replace(/(.*)\^(.*)/g, "Math.pow($1, $2)")
 
-    var query = $("#search-field").val();
-    if (query === ''){
-      query = "null";
-    }
+  console.log(eval("12 % 10")); //
 
-    var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + query + "&format=json&limit=20&callback=?";
+  console.log(eval("1.111111111111111e+40 + 33333333333333333333333333333333333333333333333333333333333333333"));
 
-    $.getJSON({
-      type: "POST",
-      url: url,
-      dataType: "json"
-    })
-    .done(function(data, textStatus, jqXHR) {
-
-      console.log(data);
-
-      var html = '';
-
-      for(var i = 0; i < data[1].length; i++){
-        
-        html += "<a href='" + data[3][i] + "' target='_blank'>";
-
-        html +="<h2>" + data[1][i] + "</h2>";
-
-        html +="<p>" + data[2][i] + "</p>";
-
-        html += "</a>";
-
-      }
-
-      $(".search-result").html(html);
-
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      // log error to browser's console
-      console.log(errorThrown.toString());
-    });
-  }   
+  //console.log(eval("2^2"));
 
 });
