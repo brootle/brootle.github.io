@@ -26,9 +26,12 @@ $(function () {
 
   var resultValue = "0";
   var history = "";
+  var previousResult = "";
 
   $(".buttons-row div").on("click",function(){
     console.log($(this).text() + "-clicked");
+
+    $("#history").text(previousResult);
 
     if($("#result").text() === "Error" || $("#result").text() === "Infinity"){
       console.log($("#result").text());
@@ -104,6 +107,7 @@ $(function () {
           
       }      
 
+      previousResult = "Ans = " + calculationsResult;
 
       $("#result").text(calculationsResult);
     
