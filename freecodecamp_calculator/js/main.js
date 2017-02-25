@@ -35,24 +35,46 @@ $(function () {
   $(".buttons-row div").on("click",function(){
     console.log($(this).text() + "-clicked");
 
+    // it's better to make CASE here to do some actions depending on what was clicked
+
+    // if '=' clicked
     if($(this).text() === '='){
 
       console.log("EVALUATE!");
       // here we must also catch error
+
+      $("#history").text(resultValue+" =");
+
+      // before we evaluate we need to replace '×' and '÷' with '*' and '/'
+      resultValue = resultValue.replace(/×/ig,"*");
+      resultValue = resultValue.replace(/÷/ig,"/");
+
       var calculationsResult = eval(resultValue);
       $("#result").text(calculationsResult);
-      $("#history").text(resultValue+"=");
+    
 
       resultValue = calculationsResult;
 
-    } else{
+    } 
 
-      // here we must check if there is something in the result or not
+    // if '0-9' clicked
+    // console.log(/[0-9]/.test($(this).text()));
+    if(/[0-9]/.test($(this).text())){
 
       resultValue += $(this).text();
       $("#result").text(resultValue);
 
     }
+
+    // check for + - * / % 
+    if(/[+−×÷]/.test($(this).text())){
+
+      // we also need to replace long '−' with standard minus '-'
+      resultValue += ' ' + $(this).text().replace(/−/ig,"-") + ' ';
+      $("#result").text(resultValue);
+      
+    }    
+    
 
   });
 
