@@ -31,6 +31,8 @@ $(function () {
   $(".buttons-row div").on("click",function(){
     console.log($(this).text() + "-clicked");
 
+    //$('.history-math-line--next').css("class", 'history-math-line');
+
     $("#history").text(previousResult);
 
     if($("#result").text() === "Error" || $("#result").text() === "Infinity"){
@@ -142,6 +144,55 @@ $(function () {
     
 
       resultValue = calculationsResult.toString();
+
+      // SLIDE RESULTS! ///////////////////////////////////////////////////////////////////////////
+      // pure JavaScript
+      /////////////////////////////////////////////////////////////////////////////////////////////
+      var box = document.querySelector('.history-math-line');
+      box.style.bottom = '-20px';
+
+      var boxResult = document.querySelector('.history-math-result');
+      boxResult.style.bottom = '-30px';      
+
+      function slideResult(element, duration) {
+
+          var bottomPosition = parseInt(element.style.bottom) || -20; // if element.style.left exists we use it, otherwise we use 0
+          // var opacity = element.style.opacity || '1';
+          // var time = 0;
+          var fps = 50;
+
+          var interval = setInterval(function () {
+
+              // stop calling functuon after certain amount of time
+              // if (time > duration) {
+              //     clearInterval(interval);
+              // }
+
+              // time += (duration / fps);
+              //bottomPosition += (slideDistance / (duration / fps)); // move few px each itteration
+              bottomPosition += 2;
+              element.style.bottom = bottomPosition + 'px';
+
+              //console.log(element.style.bottom);
+              // stop when we get to position 0px
+              if(element.style.bottom === "0px"){
+                clearInterval(interval);
+              }
+
+          }, duration / fps);
+      }
+      
+      
+      slideResult(box, 500);
+
+      slideResult(boxResult, 400);
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+
+    
 
     } 
 
