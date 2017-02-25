@@ -29,4 +29,31 @@ $(function () {
   console.log(eval("2 + 2")); //
   //console.log(eval("2^2"));
 
+  var resultValue = "";
+  var history = "";
+
+  $(".buttons-row div").on("click",function(){
+    console.log($(this).text() + "-clicked");
+
+    if($(this).text() === '='){
+
+      console.log("EVALUATE!");
+      // here we must also catch error
+      var calculationsResult = eval(resultValue);
+      $("#result").text(calculationsResult);
+      $("#history").text(resultValue+"=");
+
+      resultValue = calculationsResult;
+
+    } else{
+
+      // here we must check if there is something in the result or not
+
+      resultValue += $(this).text();
+      $("#result").text(resultValue);
+
+    }
+
+  });
+
 });
