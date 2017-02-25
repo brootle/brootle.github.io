@@ -30,7 +30,7 @@ $(function () {
   $(".buttons-row div").on("click",function(){
     console.log($(this).text() + "-clicked");
 
-    if($("#result").text() === "Error"){
+    if($("#result").text() === "Error" || $("#result").text() === "Infinity"){
       console.log($("#result").text());
       resultValue = "0";
       $("#result").text(resultValue);
