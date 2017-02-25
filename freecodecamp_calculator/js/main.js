@@ -40,15 +40,44 @@ $(function () {
     }
 
     if($(this).text() === '.'){
-      var lastSymbol = resultValue[resultValue.length-1];
+      //var lastSymbol = resultValue[resultValue.length-1];
       //console.log(lastSymbol);
-      if(lastSymbol == '.'){
-        // do nothing
-      }else{
+      // simply check if '.' already exists
+      // var n = str.indexOf("welcome");
+
+      // if(resultValue.indexOf('.') === -1){
+      //   resultValue += '.';
+      //   $("#result").text(resultValue);
+      //   $("#reset").text("CE");        
+      // }
+
+      // 34.54 + 34.3 + 43434.34 + 3343.4.3
+      // 343.4.3 - catch this!
+      // slice all based on " "
+      // if last element 3343.4 already has a dot we do nothing!
+
+      var slicedValues = resultValue.split(" ");
+      //console.log(slicedValues);
+      var lastSlicedValue = slicedValues[slicedValues.length-1];
+      // console.log(lastSlicedValue);
+      // console.log(lastSlicedValue.indexOf('.'));
+
+
+      if(lastSlicedValue.indexOf('.') === -1){
+
         resultValue += '.';
         $("#result").text(resultValue);
-        $("#reset").text("CE");
-      }      
+        $("#reset").text("CE");   
+
+      }
+
+      // if(lastSymbol == '.'){
+      //   // do nothing
+      // }else{
+      //   resultValue += '.';
+      //   $("#result").text(resultValue);
+      //   $("#reset").text("CE");
+      // }         
 
     }    
 
@@ -120,7 +149,7 @@ $(function () {
     // console.log(/[0-9]/.test($(this).text()));
     if(/[0-9]/.test($(this).text())){
 
-      console.log(resultValue);
+      //console.log(resultValue);
 
       if($("#reset").text() ==  "AC"){
         resultValue = '';
