@@ -29,7 +29,7 @@ $(function () {
   console.log(eval("2 + 2")); //
   //console.log(eval("2^2"));
 
-  var resultValue = "";
+  var resultValue = "0";
   var history = "";
 
   $(".buttons-row div").on("click",function(){
@@ -60,7 +60,9 @@ $(function () {
     // if '0-9' clicked
     // console.log(/[0-9]/.test($(this).text()));
     if(/[0-9]/.test($(this).text())){
-
+      if(resultValue == 0){
+        resultValue = '';
+      }
       resultValue += $(this).text();
       $("#result").text(resultValue);
 
@@ -69,9 +71,24 @@ $(function () {
     // check for + - * / % 
     if(/[+−×÷]/.test($(this).text())){
 
+      // make operator that we are going to add to result string
       // we also need to replace long '−' with standard minus '-'
-      resultValue += ' ' + $(this).text().replace(/−/ig,"-") + ' ';
-      $("#result").text(resultValue);
+      var addOperator = $(this).text().replace(/−/ig,"-");
+
+      // if last char is not equal to symbol that we enter we add symbol
+      // better idea, if the end of string match operator, replace it with entered operator
+      var regex = new RegExp("[ ][" + addOperator + "][ ]$");
+      if(regex.test(resultValue) === false){
+        // so we don't add duplicate operatos
+        var lastOperator = resultValue[resultValue.length-2];
+        // if lastOperator is  [ + - × ÷ ] we must delete last 3 symbols from the string
+        if(lastOperator === '-' || lastOperator === '+' || lastOperator === '×' || lastOperator === '÷'){
+          resultValue = resultValue.substring(0, resultValue.length - 3);
+        }
+        resultValue += ' ' + addOperator + ' ';
+        $("#result").text(resultValue);
+      }
+
       
     }    
     
