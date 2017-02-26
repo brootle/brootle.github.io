@@ -42,6 +42,13 @@ $(function () {
     }
 
     if($(this).text() === '.'){
+
+      // make sure we reset if "=" was clicked
+      if($("#reset").text() === 'AC'){
+        resultValue = "0";
+        $("#result").text(resultValue); 
+      }     
+
       //var lastSymbol = resultValue[resultValue.length-1];
       //console.log(lastSymbol);
       // simply check if '.' already exists
@@ -227,11 +234,15 @@ $(function () {
       // if last char is not equal to symbol that we enter we add symbol
       // better idea, if the end of string match operator, replace it with entered operator
       var regex = new RegExp("[ ][" + addOperator + "][ ]$");
+      
       if(regex.test(resultValue) === false){
         // so we don't add duplicate operatos
         var lastOperator = resultValue[resultValue.length-2];
-        // if lastOperator is  [ + - × ÷ ] we must delete last 3 symbols from the string
-        if(lastOperator === '-' || lastOperator === '+' || lastOperator === '×' || lastOperator === '÷'){
+
+        // if lastOperator is  [ + - × ÷ ] and last char is ' ' we must delete last 3 symbols from the string
+        if((lastOperator === '-' || lastOperator === '+' || lastOperator === '×' || lastOperator === '÷')
+        && resultValue[resultValue.length-1] === ' '){
+          
           resultValue = resultValue.substring(0, resultValue.length - 3);
         }
         resultValue += ' ' + addOperator + ' ';
