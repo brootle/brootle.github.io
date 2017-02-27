@@ -4,24 +4,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function playSound(e){
 
-      //console.log(e.keyCode);
+      var keyCode = undefined;
 
-      //console.log(e.currentTarget.getAttribute("data-key"));
+      // get the value for keyCode if button was clicked
+      try{
+        keyCode = e.currentTarget.getAttribute("data-key");
+      } catch(err) {
 
-      // it can be MouseEvent or KeyBoardEvent
+      }
 
-
-      //console.log(e);
-
-      // here we must catch clicked key also by mouse
-      var keyCode;
+      // if keyCode got no value it means we got here from keyboard click
+      if(keyCode === undefined){
+        keyCode = e.keyCode;
+      }
       
       // select audio element
-      const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
+      const audio = document.querySelector(`audio[data-key="${keyCode}"`);
       //console.log(audio);
 
       // select corresponding div element, so we can apply animation to it 
-      const key = document.querySelector(`.xylophone-key[data-key="${e.keyCode}"`);
+      const key = document.querySelector(`.xylophone-key[data-key="${keyCode}"`);
       //console.log(key);
 
       if(!audio) return; // if we don't find audio with key that we press - just stop
@@ -57,33 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('keydown', playSound);
 
-    keys.forEach(key => key.addEventListener('click', playSoundTouch));
-
-    function playSoundTouch(e){
-      //console.log(e);
-      //console.log(e.currentTarget.getAttribute("data-key"));
-
-      // here we must catch clicked key also by mouse
-      var keyCode = e.currentTarget.getAttribute("data-key");
-      
-      // select audio element
-      const audio = document.querySelector(`audio[data-key="${keyCode}"`);
-      //console.log(audio);
-
-      // select corresponding div element, so we can apply animation to it 
-      const key = document.querySelector(`.xylophone-key[data-key="${keyCode}"`);
-      //console.log(key);
-
-      if(!audio) return; // if we don't find audio with key that we press - just stop
-
-      // now if found this audio component we just play it
-
-      audio.currentTime = 0; // rewind audio to the start
-
-      audio.play();
-
-      // when we play add class .play that will change the look of corresponding div
-      key.classList.add("playing")           
-    }
+    // add click event to catch the button click
+    keys.forEach(key => key.addEventListener('click', playSound));
 
 });
