@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="css/main.css" rel="stylesheet" /> 
+
+    <script src="js/main.js"></script>
+
+    <title>Pomodoro Clock | freeCodeCamp Project</title>
+</head>
+<body>
+
+    <h1>Pomodoro Clock</h1>
+
+    <div class="container">
+
+        <div class="pomodoro-controllers">
+            <div>
+                <h2 data-controller="break" class="controller-title selected-break">Break length</h2>
+                <span data-controller="break" data-operation="decrement" class="operation">−</span>
+                <span data-timer="break" data-value="300000" class="controller-timer">5</span>
+                <span data-controller="break" data-operation="increment"  class="operation">+</span>
+            </div>
+            <div>
+                <h2 data-controller="session" class="controller-title selected-session">Session length</h2>
+                <span data-controller="session" data-operation="decrement" class="operation">−</span>
+                <span data-timer="session" data-value="1500000" class="controller-timer">25</span>
+                <span data-controller="session" data-operation="increment" class="operation">+</span>
+            </div>
+        </div>
+
+        <div class="pomodoro-timer selected-session">
+            <!--<h3>Session</h3>-->
+            <span data-active-timer="session" data-timer-status="paused" data-value="1500000">25</span>
+            <audio data-sound="timer" src="sounds/telephone-ring-old-german-w48.mp3"></audio>
+        </div>        
+    
+
+    </div>
+
+    <p>
+        Pomodoro Clock made with pure JavaScript aka VanillaJS.
+    </p>
+    <p>
+        Designed by <a href="https://www.facebook.com/Lugansk.Alex" target="_blank">Alexander Cherednichenko</a>
+    </p>
+
+
+</body>
+</html>
