@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var ballRadius = 15;
     var ballPositionX = 0;
     var ballPositionY = 0;
+    var ballColor = "#ffce4e";
+
+    var fieldColor = "black";
 
     var shiftX = 0;
     var shiftY = 0;    
@@ -116,10 +119,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // draw field
       // context.fillStyle = "black";
       // context.fillRect(0,0,canvas.width,canvas.height);    
-      drawColoredRectangle(0,0,canvas.width,canvas.height,"black");
+      drawColoredRectangle(0,0,canvas.width,canvas.height,fieldColor);
 
       // draw circle ball
-      drawColoredCircle(ballPositionX,ballPositionY,ballRadius,"red");
+      drawColoredCircle(ballPositionX,ballPositionY,ballRadius,ballColor);
 
       // draw red ball
       // context.fillStyle = "red";
