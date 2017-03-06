@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var player1Score = 0;
     var player2Score = 0;
 
+    const WINNING_SCORE = 5;
+
+    var showWinScreen = false;
+
 
     //drawField();
 
@@ -58,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
           
     },frameRate);
 
+    canvas.addEventListener('mousedown',handleMouseClick);        
+
     canvas.addEventListener('mousemove',function(e){
       var mousePosition = calculateMousePosition(e);
 
@@ -66,7 +72,22 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(`mouse position X: ${mousePosition.x} | mouse position Y: ${mousePosition.y}`);
     });    
 
+    function handleMouseClick(e){
+      if(showWinScreen){
+        player1Score = 0;
+        player2Score = 0;
+        showWinScreen = false;
+      }
+    }
+
     function resetBallPosition(){
+      // check the score, if WIN - reset score
+      if(player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE){
+        // player1Score = 0;
+        // player2Score = 0;
+        showWinScreen = true;
+      }
+
       shiftX = 0;
       shiftY = 0;    
 
@@ -148,6 +169,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function calculateObjects(){
 
+      // basically if someone WIN we do nothing
+      if(showWinScreen){
+        return;
+      }
+
       computerMovement();
 
       // if ball touches the border we stop calling this function
@@ -166,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function () {
           ballSpeedY = deltaY * 0.25
         }else{
           ballSpeedX = -ballSpeedX;
-          resetBallPosition();
           player2Score++;
+          resetBallPosition();
         }        
       }
 
@@ -179,8 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
           ballSpeedY = deltaY * 0.25;          
         }else{
           ballSpeedX = -ballSpeedX;
-          resetBallPosition();
           player1Score++;
+          resetBallPosition();
         }        
       }      
 
@@ -204,12 +230,42 @@ document.addEventListener('DOMContentLoaded', function () {
       //ballPositionY = canvas.height/2 - ballRadius/2;
     }
 
+    function drawNet(){
+      for(var i = 10; i < canvas.height; i+=40){
+        drawColoredRectangle(canvas.width/2-1,i,2,20,'white');
+      }
+    }
+
     function drawFrame(){
       // draw field
       // context.fillStyle = "black";
       // context.fillRect(0,0,canvas.width,canvas.height);    
       drawColoredRectangle(0,0,canvas.width,canvas.height,fieldColor);
 
+
+      // basically if someone WIN we do nothing
+      if(showWinScreen){
+        context.fillStyle = "white";
+        context.font = "30px Arial";
+
+        if(player1Score >= WINNING_SCORE){
+          context.fillText("Human Win!",canvas.width/2 - 65,100); 
+        }else if (player2Score >= WINNING_SCORE){
+          context.fillText("Robot Win!",canvas.width/2 - 65,100); 
+        }            
+
+        context.font = "20px Arial";
+        context.fillText("Click to continue!",canvas.width/2 - 65,canvas.height - 50);      
+        //context.fillText(player2Score,canvas.width-100,50);  
+
+        // here we also need to enable cursor
+        //canvas.style.cursor("pointer");
+
+        return;
+      }     
+
+      // draw NET
+      drawNet();
 
       // draw paddle 1
       drawColoredRectangle(0,paddle1Y,PADDLE_WIDTH,PADDLE_HEIGHT,paddleColor);
@@ -221,8 +277,8 @@ document.addEventListener('DOMContentLoaded', function () {
       // context.fillText(player1Score,100,100,)
       // context.fillText(player2Score,400,100,)
       context.font = "30px Arial";
-      context.fillText(player1Score,100,50);      
-      context.fillText(player2Score,canvas.width-100,50);     
+      context.fillText("Human Score : "+player1Score,50,50);      
+      context.fillText("Robot Score : "+player2Score,canvas.width-250,50);           
 
       // draw circle ball
       drawColoredCircle(ballPositionX,ballPositionY,ballRadius,ballColor);
