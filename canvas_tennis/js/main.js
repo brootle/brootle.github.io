@@ -174,25 +174,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playGameWin(){
-      const audio = document.querySelector(`audio[data-game="win"`);
+      const audio = document.querySelector('audio[data-game='+'win');
       audio.currentTime = 0; // rewind audio to the start
       audio.play();        
     }    
 
     function playBallBounce(){
-      const audio = document.querySelector(`audio[data-ball="bounce"`);
+      const audio = document.querySelector('audio[data-ball='+'bounce');
       audio.currentTime = 0; // rewind audio to the start
       audio.play();        
     }
 
     function playPaddleBounce(){
-      const audio = document.querySelector(`audio[data-ball="paddle"`);
+      const audio = document.querySelector('audio[data-ball='+'paddle');
       audio.currentTime = 0; // rewind audio to the start
       audio.play();        
     }    
 
     function playBallLost(){
-      const audio = document.querySelector(`audio[data-ball="lost"`);
+      const audio = document.querySelector('audio[data-ball='+'lost');
       audio.currentTime = 0; // rewind audio to the start
       audio.play();        
     }    
