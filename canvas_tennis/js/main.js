@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
 
-    var ballRadius = 5;
+    var ballRadius = 6;
     var ballPositionX = 0;
     var ballPositionY = 0;
     var ballColor = "#ffce4e";
 
-    var fieldColor = "black";
+    var fieldColor = "#12081b";
 
     var shiftX = 0;
     var shiftY = 0;    
@@ -32,8 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var paddle1Y = 250;
     var paddle2Y = 250;
     const PADDLE_HEIGHT = 100;
-    const PADDLE_WIDTH = 10;
-    var paddleColor = "white";
+    const PADDLE_WIDTH = 12;
+    // var paddleColor = "white";
+    var paddle1Color = "#bad64e";
+    var paddle2Color = "#f26d22";
+
+    const PADDLE_OFFSET = 20;
 
     var player1Score = 0;
     var player2Score = 0;
@@ -52,15 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
     //var intervalPointer = setInterval(callBoth,frameRate);
 
 
-    var intervalPointer = setInterval(function(){
+    var intervalPointer = setInterval(drawFrames,frameRate);
 
-      //console.log(ballPositionX + ":" + shiftX);
-
+    function drawFrames(){
       drawFrame();
-      calculateObjects();  
-      
-          
-    },frameRate);
+      calculateObjects();        
+    }
 
     canvas.addEventListener('mousedown',handleMouseClick);        
 
@@ -69,13 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
       paddle1Y = mousePosition.y - PADDLE_HEIGHT/2;
       //paddle2Y = mousePosition.y - PADDLE_HEIGHT/2;
-      console.log(`mouse position X: ${mousePosition.x} | mouse position Y: ${mousePosition.y}`);
+      // console.log(`mouse position X: ${mousePosition.x} | mouse position Y: ${mousePosition.y}`);
     });    
 
     function handleMouseClick(e){
       if(showWinScreen){
         player1Score = 0;
         player2Score = 0;
+        // stop all audio
+        var sounds = document.getElementsByTagName('audio');
+        for(i=0; i<sounds.length; i++) sounds[i].pause();        
+        // start playing frames again
+        intervalPointer = setInterval(drawFrames,frameRate);
         showWinScreen = false;
       }
     }
@@ -104,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var mouseX = e.clientX - rect.left - root.scrollLeft;
       var mouseY = e.clientY - rect.top - root.scrollTop;
     
-      console.log(`clientY: ${e.clientY}`)
+      //console.log(`clientY: ${e.clientY}`)
       return {
         x:mouseX,
         y:mouseY
@@ -167,6 +173,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    function playGameWin(){
+      const audio = document.querySelector(`audio[data-game="win"`);
+      audio.currentTime = 0; // rewind audio to the start
+      audio.play();        
+    }    
+
+    function playBallBounce(){
+      const audio = document.querySelector(`audio[data-ball="bounce"`);
+      audio.currentTime = 0; // rewind audio to the start
+      audio.play();        
+    }
+
+    function playPaddleBounce(){
+      const audio = document.querySelector(`audio[data-ball="paddle"`);
+      audio.currentTime = 0; // rewind audio to the start
+      audio.play();        
+    }    
+
+    function playBallLost(){
+      const audio = document.querySelector(`audio[data-ball="lost"`);
+      audio.currentTime = 0; // rewind audio to the start
+      audio.play();        
+    }    
+
     function calculateObjects(){
 
       // basically if someone WIN we do nothing
@@ -183,30 +213,40 @@ document.addEventListener('DOMContentLoaded', function () {
       //   //clearInterval(intervalPointer);
       // }            
 
-      if(ballPositionX < PADDLE_WIDTH){
+      if(ballPositionX < (PADDLE_WIDTH * 2 + PADDLE_OFFSET)){
         // check if the ball hits paddle
         if(ballPositionY > paddle1Y && ballPositionY < paddle1Y + PADDLE_HEIGHT){
           ballSpeedX = -ballSpeedX;
           // get the angle after ball hits the paddle --need to fix the logic
           var deltaY = ballPositionY - (paddle1Y + PADDLE_HEIGHT/2);
+          playPaddleBounce();
           ballSpeedY = deltaY * 0.25
         }else{
-          ballSpeedX = -ballSpeedX;
-          player2Score++;
-          resetBallPosition();
+          // continue to move the ball till it touches the net-border
+          // and reset it only after that
+          if(ballPositionX < 0){
+            ballSpeedX = -ballSpeedX;
+            player2Score++;
+            playBallLost();
+            resetBallPosition();
+          }
         }        
       }
 
-      if(ballPositionX > canvas.width - PADDLE_WIDTH){
+      if(ballPositionX > (canvas.width - PADDLE_WIDTH * 2 - PADDLE_OFFSET)){
         // check if the ball hits paddle
         if(ballPositionY > paddle2Y && ballPositionY < paddle2Y + PADDLE_HEIGHT){
           ballSpeedX = -ballSpeedX;
           var deltaY = ballPositionY - (paddle2Y + PADDLE_HEIGHT/2);
+          playPaddleBounce();
           ballSpeedY = deltaY * 0.25;          
         }else{
-          ballSpeedX = -ballSpeedX;
-          player1Score++;
-          resetBallPosition();
+          if(ballPositionX > canvas.width){
+            ballSpeedX = -ballSpeedX;
+            player1Score++;
+            playBallLost();
+            resetBallPosition();
+          }
         }        
       }      
 
@@ -216,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // }        
 
       if(roundBallTouchBorderY()){
+        playBallBounce();
         ballSpeedY = -ballSpeedY;
         //clearInterval(intervalPointer);
       }          
@@ -245,6 +286,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // basically if someone WIN we do nothing
       if(showWinScreen){
+
+        clearInterval(intervalPointer); // stops repeating function - pause
+
+        playGameWin();
+
+        // and we also must stop drawing frames!
+
         context.fillStyle = "white";
         context.font = "30px Arial";
 
@@ -268,14 +316,15 @@ document.addEventListener('DOMContentLoaded', function () {
       drawNet();
 
       // draw paddle 1
-      drawColoredRectangle(0,paddle1Y,PADDLE_WIDTH,PADDLE_HEIGHT,paddleColor);
+      drawColoredRectangle(PADDLE_OFFSET,paddle1Y,PADDLE_WIDTH,PADDLE_HEIGHT,paddle1Color);
 
       // draw paddle 2
-      drawColoredRectangle(canvas.width - PADDLE_WIDTH,paddle2Y,PADDLE_WIDTH,PADDLE_HEIGHT,paddleColor);
+      drawColoredRectangle(canvas.width - PADDLE_WIDTH - PADDLE_OFFSET,paddle2Y,PADDLE_WIDTH,PADDLE_HEIGHT,paddle2Color);
 
       // draw Players score
       // context.fillText(player1Score,100,100,)
       // context.fillText(player2Score,400,100,)
+      context.fillStyle = "white";
       context.font = "30px Arial";
       context.fillText("Human Score : "+player1Score,50,50);      
       context.fillText("Robot Score : "+player2Score,canvas.width-250,50);           
