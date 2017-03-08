@@ -19,11 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(state);
       player = state;
       computer = player === "X" ? "O" : "X";
-      //console.log(player + " : " + computer);
+      console.log(player + " : " + computer);
 
       // hide info windo
       // this.classList.toggle('open');
       document.querySelector('.info-window').classList.toggle('hide');
+
+      // X always makes 1st move
+      if(computer==="X"){
+        computerMove();
+      }
+
     }
 
 
