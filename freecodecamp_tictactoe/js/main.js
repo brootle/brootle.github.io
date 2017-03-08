@@ -73,9 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
           // show start window
           document.querySelector('.win-message span').textContent = `${player} win!`;
           document.querySelector('.info-window').classList.toggle('hide');
-        }           
+        }                   
        
       }
+
+      // check if it's a draw
+      if(isDraw()){
+        console.log("it's a draw check function true");
+        document.querySelector('.win-message span').textContent = `draw!`;
+        document.querySelector('.info-window').classList.toggle('hide');           
+      }
+
     }
 
     function isDraw(){
@@ -115,12 +123,21 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.info-window').classList.toggle('hide');         
       }
 
+      // after computer moves 
+
       // check if computer wins
       if(whoWin() === computer){
         console.log("show start window");
         document.querySelector('.win-message span').textContent = `${computer} win!`;
         document.querySelector('.info-window').classList.toggle('hide');
       }      
+
+      // check if it's a draw
+      if(isDraw()){
+        console.log("it's a draw check function true");
+        document.querySelector('.win-message span').textContent = `draw!`;
+        document.querySelector('.info-window').classList.toggle('hide');           
+      }
      
     }
 
