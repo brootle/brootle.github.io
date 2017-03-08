@@ -23,6 +23,7 @@ $(function () {
 
   //console.log(eval("2 + .4")); //
   //console.log(eval("2^2"));
+  console.log(eval("0.02*100"));
 
   var resultValue = "0";
   var history = "";

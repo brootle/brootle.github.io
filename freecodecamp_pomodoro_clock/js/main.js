@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var intervalPointer;
 
-    var beepedCounter = 9;
+    // var beepedCounter = 9;
 
     function updateStopwatch(){
 
