@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
         emptyBlocks[randomPosition].setAttribute("data-state",computer);  
       }
       
-
       // after computer moves 
 
       // check if computer wins
