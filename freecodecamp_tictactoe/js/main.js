@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
         //console.log(randomPosition);
         emptyBlocks[randomPosition].textContent = computer;
         emptyBlocks[randomPosition].setAttribute("data-state",computer);
+      } else{
+        console.log("it's a draw!");
+        document.querySelector('.win-message span').textContent = `draw!`;
+        document.querySelector('.info-window').classList.toggle('hide');        
       }
     }
 
