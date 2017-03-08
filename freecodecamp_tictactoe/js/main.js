@@ -44,14 +44,21 @@ document.addEventListener('DOMContentLoaded', function () {
       if(state==="empty"){
         e.currentTarget.textContent = player;
 
+        // change font-size from 0 to 7 for animation
+        e.currentTarget.style.fontSize = "7em";
+
         // change state to X
         e.currentTarget.setAttribute("data-state",player);
         // check who win after we make a move
         console.log(whoWin());
+      
 
         // let computer make a move only if we didn't  win already
+        // and it it's not a DRAW
         if(whoWin() === undefined){
-          computerMove();
+          // make a move after transition ended and remove it in reset function
+          e.currentTarget.addEventListener('transitionend',computerMove);
+          //computerMove();
           // check who win after we make a move
           console.log(whoWin()); 
           if(whoWin() === computer){
@@ -66,9 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
           // show start window
           document.querySelector('.win-message span').textContent = `${player} win!`;
           document.querySelector('.info-window').classList.toggle('hide');
-        }
+        }           
        
       }
+    }
+
+    function isDraw(){
+      const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
+      if(emptyBlocks.length < 1){
+        return true;
+      }
+      return false;
     }
 
     function resetGameData(){
@@ -77,23 +92,74 @@ document.addEventListener('DOMContentLoaded', function () {
       blocks.forEach(function(block) {
           block.setAttribute("data-state", "empty");
           block.textContent = "";
+          block.style.fontSize = "0";
+          block.removeEventListener('transitionend',computerMove);
       });      
     }
 
     function computerMove(){
-      const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
-      if(emptyBlocks.length > 0){
-        //console.log(emptyBlocks.length);
+      if(isDraw() === false){
+        console.log("computer moves");
+
+        const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
         const randomPosition = Math.floor(Math.random() * emptyBlocks.length);
         //console.log(randomPosition);
         emptyBlocks[randomPosition].textContent = computer;
-        emptyBlocks[randomPosition].setAttribute("data-state",computer);
+        // increase font-size for animation font-size: 0em; -> font-size: 7em;
+        emptyBlocks[randomPosition].style.fontSize = "7em";
+        emptyBlocks[randomPosition].setAttribute("data-state",computer);  
+
       } else{
-        console.log("it's a draw!");
+        console.log("it's a draw check function true");
         document.querySelector('.win-message span').textContent = `draw!`;
-        document.querySelector('.info-window').classList.toggle('hide');        
+        document.querySelector('.info-window').classList.toggle('hide');         
       }
+
+      // check if computer wins
+      if(whoWin() === computer){
+        console.log("show start window");
+        document.querySelector('.win-message span').textContent = `${computer} win!`;
+        document.querySelector('.info-window').classList.toggle('hide');
+      }      
+     
     }
+
+    // function computerMove(){
+    //     // console.log("reset");
+    //     // document.querySelector('.win-message span').textContent = `draw!`;
+    //     // document.querySelector('.info-window').classList.toggle('hide');  
+
+
+    //   const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
+    //   if(emptyBlocks.length > 0){
+    //     //console.log(emptyBlocks.length);
+    //     const randomPosition = Math.floor(Math.random() * emptyBlocks.length);
+    //     //console.log(randomPosition);
+    //     emptyBlocks[randomPosition].textContent = computer;
+    //     // increase font-size for animation font-size: 0em; -> font-size: 7em;
+    //     emptyBlocks[randomPosition].style.fontSize = "7em";
+    //     emptyBlocks[randomPosition].setAttribute("data-state",computer);
+    //   } else{
+    //     console.log("it's a draw in computer move!");
+    //     document.querySelector('.win-message span').textContent = `draw!`;
+    //     document.querySelector('.info-window').classList.toggle('hide');        
+    //   }
+
+    //   // check if computer win after he made a move
+    //   if(whoWin() === computer){
+    //     console.log("show start window");
+    //     document.querySelector('.win-message span').textContent = `${computer} win!`;
+    //     document.querySelector('.info-window').classList.toggle('hide');
+    //   }
+
+    //   // check it it's a draw after computer moved
+    //   if(isDraw()){
+    //     console.log("it's a draw check function true");
+    //     document.querySelector('.win-message span').textContent = `draw!`;
+    //     document.querySelector('.info-window').classList.toggle('hide');   
+    //   }      
+
+    // }
 
     function whoWin(){
       // check horizontal
