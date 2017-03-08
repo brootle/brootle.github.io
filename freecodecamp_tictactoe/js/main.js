@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     blocks.forEach(block => block.addEventListener('click', playerMove));
 
     function playerMove(e){
-      console.log("player moves");
+      //console.log("player moves");
 
       // 1. make move
       const state = e.currentTarget.getAttribute("data-state");
@@ -54,70 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // 2. check for draw
       if(isDraw()){
-        console.log("Player moved and it's a draw");
-        document.querySelector('.win-message span').textContent = `draw!`;
-        document.querySelector('.info-window').classList.toggle('hide');   
+        showStartWindow(`draw!`); 
       }      
 
       // 3. check for win
       if(whoWin() === player){
-        console.log("show start window");
-        document.querySelector('.win-message span').textContent = `${player} win!`;
-        document.querySelector('.info-window').classList.toggle('hide');
+        showStartWindow(`${player} win!`);
       }         
 
       // 4. give move to computer
-      computerMove();
+      if(whoWin() === undefined){
+        // let computer move after our animation ended
+        e.currentTarget.addEventListener('transitionend',computerMove);
+      }
+
     }
 
-    // function putXO(e){
-    //   const state = e.currentTarget.getAttribute("data-state");
-    //   //console.log(state);
-
-    //   if(state==="empty"){
-    //     e.currentTarget.textContent = player;
-
-    //     // change font-size from 0 to 7 for animation
-    //     e.currentTarget.style.fontSize = "7em";
-
-    //     // change state to X
-    //     e.currentTarget.setAttribute("data-state",player);
-    //     // check who win after we make a move
-    //     //console.log(whoWin());
-      
-
-    //     // let computer make a move only if we didn't  win already
-    //     // and it it's not a DRAW
-    //     if(whoWin() === undefined){
-    //       // make a move after transition ended and remove it in reset function
-    //       e.currentTarget.addEventListener('transitionend',computerMove);
-    //       //computerMove();
-    //       // check who win after we make a move
-    //       console.log(whoWin()); 
-    //       if(whoWin() === computer){
-    //         console.log("show start window");
-    //         document.querySelector('.win-message span').textContent = `${computer} win!`;
-    //         document.querySelector('.info-window').classList.toggle('hide');
-    //       }
-    //     } else {
-    //       // reset all values in the field
-    //       console.log("show start window");
-    //       // update who win
-    //       // show start window
-    //       document.querySelector('.win-message span').textContent = `${player} win!`;
-    //       document.querySelector('.info-window').classList.toggle('hide');
-    //     }                   
-       
-    //   }
-
-    //   // check if it's a draw
-    //   if(isDraw()){
-    //     console.log("it's a draw check function true");
-    //     document.querySelector('.win-message span').textContent = `draw!`;
-    //     document.querySelector('.info-window').classList.toggle('hide');           
-    //   }
-
-    // }
+    function showStartWindow(message){
+        //console.log("show start window");
+        document.querySelector('.win-message span').textContent = message;
+        document.querySelector('.info-window').classList.toggle('hide');      
+    }
 
     function isDraw(){
       const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
@@ -139,37 +96,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function computerMove(){
-      if(isDraw() === false){
-        console.log("computer moves");
 
-        const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
+      const emptyBlocks = document.querySelectorAll('span[data-state="empty"]');
+      if(emptyBlocks.length > 0){
         const randomPosition = Math.floor(Math.random() * emptyBlocks.length);
         //console.log(randomPosition);
         emptyBlocks[randomPosition].textContent = computer;
         // increase font-size for animation font-size: 0em; -> font-size: 7em;
         emptyBlocks[randomPosition].style.fontSize = "7em";
         emptyBlocks[randomPosition].setAttribute("data-state",computer);  
-
-      } else{
-        console.log("it's a draw check function true");
-        document.querySelector('.win-message span').textContent = `draw!`;
-        document.querySelector('.info-window').classList.toggle('hide');         
       }
+      
 
       // after computer moves 
 
       // check if computer wins
       if(whoWin() === computer){
-        console.log("show start window");
-        document.querySelector('.win-message span').textContent = `${computer} win!`;
-        document.querySelector('.info-window').classList.toggle('hide');
+        showStartWindow(`${computer} win!`);
       }      
 
       // check if it's a draw
       if(isDraw()){
-        console.log("it's a draw check function true");
-        document.querySelector('.win-message span').textContent = `draw!`;
-        document.querySelector('.info-window').classList.toggle('hide');           
+        showStartWindow(`draw!`);         
       }
      
     }
