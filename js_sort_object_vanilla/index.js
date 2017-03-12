@@ -65,18 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
           },
         ]
       },
-      {
-        "text": "VM5",
-        "nodes": [
-          {
-            "text": "NIC5",
-            "aws": {
-              "availability_zone" : "us-west-2d",
-              "subnet": "10.10.50.0/24"
-            }
-          },
-        ]
-      },      
+     
     ]
   }
 
