@@ -68,6 +68,9 @@ var data = {
 
 $(function () {
 
+  // wrap to move scroll bar to the left
+  $( ".main" ).wrap( "<div class='scroll col-md-2'></div>" );
+
   // inital data
   $('#tree').treeview({data: data.instances});
 
@@ -104,6 +107,10 @@ $(function () {
 
   // initially group by subnet
   groupBy("subnet");
+
+  function drawSelectionBrackets(){
+    
+  }
 
   function groupByAvailabilityZoneAndSubnet(keys){
     console.log("group by: " + keys);

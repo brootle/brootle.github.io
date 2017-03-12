@@ -10,29 +10,48 @@
     <link 
       rel="stylesheet"
       href="index.css" />
+
+    <!-- styles needed by jScrollPane -->
+    <link type="text/css" href="jquery.jscrollpane.css" rel="stylesheet" media="all" />      
+
   </head>
   <body>
     <h1>Reference for task</h1>
 
-    <div><span>Group by</span></div>
+    <div class="group">
+      <div><span>Group by</span></div>
 
-    <select>
-      <option value="subnet">Subnet</option>
-      <option value="availability_zone">Availability zone</option>
-      <option value="availability_zone/subnet">Availability zone/Subnet</option>
-    </select>    
+      <select>
+        <option value="subnet">Subnet</option>
+        <option value="availability_zone">Availability zone</option>
+        <option value="availability_zone/subnet">Availability zone/Subnet</option>
+      </select>    
+    </div>
 
-    <div class=row>
+    <div>
+      <div class="main">
+        <div class="inside">
+          <div id="tree"></div>
+        </div>
+      </div>    
+    </div>
+      
+    <!--<div class="row">
       <div class="scrollbox col-md-2">
         <div id="tree"></div>
       </div>
-    </div>
+    </div>-->
+
+  
+
 
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script src="bootstrap-treeview.js"></script>
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="jquery.jscrollpane.min.js"></script>    
     <script src="index.js"></script>
   </body>
 </html>
