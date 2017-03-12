@@ -65,6 +65,18 @@ document.addEventListener('DOMContentLoaded', function () {
           },
         ]
       },
+      {
+        "text": "VM5",
+        "nodes": [
+          {
+            "text": "NIC5",
+            "aws": {
+              "availability_zone" : "us-west-2d",
+              "subnet": "10.10.50.0/24"
+            }
+          },
+        ]
+      },      
     ]
   }
 
@@ -78,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // initially group by subnet
   groupBy("subnet");    
   console.log(sortedData);
-  buildTree(sortedData.instances);
+  buildTree(sortedData.instances,"subnet");
 
   // add event listenter to open and close
   var navInstances = document.querySelectorAll(".instance-nav");
@@ -122,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if(this.value === "subnet" || this.value === "availability_zone"){
         groupBy(this.value);
         // refresh tree after data changed     
+        buildTree(sortedData.instances,this.value);
       }
       
       if(this.value === "availability_zone/subnet"){
@@ -132,12 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
     
       // build the tree
       console.log(sortedData.instances);
-      buildTree(sortedData.instances);
+      //buildTree(sortedData.instances);
   
 
   });
 
-  function buildTree(arrayOfObjects){
+  function buildTree(arrayOfObjects, key){
     console.log("building a tree");
     var root = document.getElementById("tree");
     
@@ -159,38 +172,42 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="instance-nodes">`
 
             var borderType;
-            if(i === 0){
-              borderType = "border-start";
-            }
             if(i > 0){
               borderType = "border-middle";
             }   
             if(i === arrayOfObjects.length-1){
-              borderType = "border-end";
+              borderType += " border-end";
             }                         
 
             //console.log(arrayOfObjects[i].nodes[0].aws.subnet);
             // if next subnet is different current border is end
             if(i<arrayOfObjects.length-1){
-              if(arrayOfObjects[i].nodes[0].aws.subnet !== arrayOfObjects[i+1].nodes[0].aws.subnet){
+              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key]){
                 borderType = "border-end";
               }
             }
 
             // if previous is different start new
             if(i > 0 && i<arrayOfObjects.length-1){
-              if(arrayOfObjects[i].nodes[0].aws.subnet !== arrayOfObjects[i-1].nodes[0].aws.subnet){
+              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
                 borderType = "border-start";
               }
             }         
 
             // if previous and next a different border is start and end
             if(i > 0 && i<arrayOfObjects.length-1){
-              if((arrayOfObjects[i].nodes[0].aws.subnet !== arrayOfObjects[i-1].nodes[0].aws.subnet)
-                  && (arrayOfObjects[i].nodes[0].aws.subnet !== arrayOfObjects[i+1].nodes[0].aws.subnet)){
+              if((arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key])
+                  && (arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key])){
                 borderType = "border-start border-end";
               }
             }      
+
+            // if last one is different put start border there
+            if(i === arrayOfObjects.length-1){
+              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
+                borderType += " border-start";
+              }              
+            }
 
 
             // here we must put another loop to add nodes
@@ -198,6 +215,11 @@ document.addEventListener('DOMContentLoaded', function () {
               HTML+=`<span class="node">${arrayOfObjects[i].nodes[j].text}</span>`
               //console.log(arrayOfObjects[i].nodes[j].aws.subnet);
             }
+
+            // add border start to the 1st element by default
+            if(i === 0){
+              borderType += " border-start";
+            }            
 
       HTML+= `              
             </div>
