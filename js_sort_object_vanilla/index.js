@@ -127,7 +127,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       
       if(this.value === "availability_zone/subnet"){
+        // sort data by two parameters
         groupByAvailabilityZoneAndSubnet("availability_zone/subnet");
+        // draw brackets for subnet
+        //buildTree(sortedData.instances,"subnet");
+        // draw brackets for av zone
+        buildTreeAvzoneAndSubnet(sortedData.instances);
       }
 
       //$('#tree').treeview({data: sortedData.instances}); 
@@ -138,6 +143,138 @@ document.addEventListener('DOMContentLoaded', function () {
   
 
   });
+
+  function buildTreeAvzoneAndSubnet(arrayOfObjects){
+    console.log("building data by available zone and subnet...");
+    var root = document.getElementById("tree");
+
+    var HTML = ""; // here we will put everything and will insert it into root
+
+    // make not sorted list of AvZones
+    var availabilityZoneList = getRangeOfValuesByKey("availability_zone");    
+
+    // Group by Subnet for Zone 1 => "availability_zone" : "us-west-2c" availabilityZoneList[0]
+    var key = "subnet";
+
+    var selectedGroupValues = getRangeOfValuesByKey(key);
+    selectedGroupValues.sort(); // sort values as we will need that    
+
+    for(var k = 0; k < availabilityZoneList.length; k++){
+      filter = availabilityZoneList[k];
+      //console.log(availabilityZoneList);
+
+      HTML+= `
+      
+          <div class="avzone-container">
+
+            <div class="border-avzone"></div>
+
+            <div class="instances">
+
+              <span class="avzone-title">${availabilityZoneList[k]}</span>`
+
+          // run through all array of instance and add only those that are equal to filter
+
+          //console.log(selectedGroupValues); // => ["10.10.10.0/24", "10.10.20.0/24", "10.10.30.0/24"]
+          // filter = us-west-2c - 1st round
+          // filter = us-west-2a - 2ns round
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+          for(var i = 0; i < arrayOfObjects.length; i++){
+
+            if(arrayOfObjects[i].nodes[0].aws.availability_zone === filter){
+
+            HTML+= `
+              <div class="instance-container">
+
+                <div class="instance">
+                  <div class="instance-nav visible">
+                    <span class="nav">−</span>
+                    <span class="title">${arrayOfObjects[i].text}</span> 
+                    <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
+                  </div>
+                  <div class="instance-nodes">`
+
+                  var borderType;
+                  if(i > 0){
+                    borderType = "border-middle";
+                  }   
+                  if(i === arrayOfObjects.length-1){
+                    borderType += " border-end";
+                  }                         
+
+                  //console.log(arrayOfObjects[i].nodes[0].aws.subnet);
+                  // if next subnet is different current border is end
+                  if(i<arrayOfObjects.length-1){
+                    if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key]){
+                      borderType = "border-end";
+                    }
+                  }
+
+                  // if previous is different start new
+                  if(i > 0 && i<arrayOfObjects.length-1){
+                    if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
+                      borderType = "border-start";
+                    }
+                  }         
+
+                  // if previous and next a different border is start and end
+                  if(i > 0 && i<arrayOfObjects.length-1){
+                    if((arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key])
+                        && (arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key])){
+                      borderType = "border-start border-end";
+                    }
+                  }      
+
+                  // if last one is different put start border there
+                  if(i === arrayOfObjects.length-1){
+                    if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
+                      borderType += " border-start";
+                    }              
+                  }
+
+
+                  // here we must put another loop to add nodes
+                  for(var j = 0; j < arrayOfObjects[i].nodes.length; j++){
+                    HTML+=`<span class="node">${arrayOfObjects[i].nodes[j].text}</span>`
+                    //console.log(arrayOfObjects[i].nodes[j].aws.subnet);
+                  }
+
+                  // add border start to the 1st element by default
+                  if(i === 0){
+                    borderType += " border-start";
+                  }            
+
+            HTML+= `              
+                  </div>
+                </div>
+
+                <div class="${borderType}"></div>
+
+              </div>
+            `
+            }
+          }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      HTML+= `   
+            </div>
+
+          </div>    
+      
+      `;      
+    
+    }    
+
+    root.innerHTML = HTML;
+
+    // because there were no instances, we need to add event listenters again
+
+    navInstances = document.querySelectorAll(".instance-nav");
+    navInstances.forEach(instance => instance.addEventListener('click',switchNav));      
+  }
 
   function buildTree(arrayOfObjects, key){
     console.log("building a tree");
