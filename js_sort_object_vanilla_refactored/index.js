@@ -122,9 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // "availability_zone" : "us-west-2c",
       // "subnet": "10.10.10.0/24"
       if(this.value === "subnet" || this.value === "availability_zone"){
-        groupBy(this.value);
+        //groupBy(this.value);
         // refresh tree after data changed     
-        buildTree(sortedData.instances,this.value);
+        //buildTree(sortedData.instances,this.value);
+        buildHtmlTree(data.instances,this.value);
       }
       
       if(this.value === "availability_zone/subnet"){
@@ -241,9 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //////////////////////////////////////////////////////////////////////////////////
 
-  function htmlByKey(key){
+  function htmlByKey(key,value){
 
-    console.log(".............",key);
+    console.log(".............",key,value);
 
     var HTML = '';
 
@@ -255,9 +256,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //console.log("::::::::",data.instances[i].nodes[j].aws.subnet);
 
-        if(data.instances[i].nodes[j].aws.subnet=== key){
+        if(data.instances[i].nodes[j].aws[key] === value){
            // we got our node!
-           console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text,key);
+           console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text,value);
            // here we create object with VMs and arrays of NICs for each of VM 
            var vm_name = data.instances[i].text;
            var vm_node = data.instances[i].nodes[j].text;
@@ -312,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function buildHtmlTree(arrayOfObjects,key){
     console.log("..............building HTML tree by key.............");
+    console.log("KEY:",key);
 
     var root = document.getElementById("tree");
 
@@ -335,13 +337,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // and here we also need to run through all nodes in each instance
         for(var m = 0; m < arrayOfObjects[i].nodes.length; m++){
-          if(arrayOfObjects[i].nodes[m].aws.subnet === selectedGroupValues[j]){
+          if(arrayOfObjects[i].nodes[m].aws[key] === selectedGroupValues[j]){
 
             // check if this is new subnet
             // if subnet is new - create new subnet-container
-            if(usedSubnets.includes(arrayOfObjects[i].nodes[m].aws.subnet)===false){
+            if(usedSubnets.includes(arrayOfObjects[i].nodes[m].aws[key])===false){
               console.log("new subnet");
-              usedSubnets.push(arrayOfObjects[i].nodes[m].aws.subnet);
+              usedSubnets.push(arrayOfObjects[i].nodes[m].aws[key]);
 
               HTML+=`
                 <div class="subnet-container">
@@ -355,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function () {
               // arrayOfObjects[i].nodes[m].aws.subnet => 10.10.10.0/24
               // availabilityZoneList[k] => us-west-2c
 
-              HTML+=htmlByKey(arrayOfObjects[i].nodes[m].aws.subnet);
+              HTML+=htmlByKey(key,arrayOfObjects[i].nodes[m].aws[key]);
 
 
               HTML+=`
@@ -364,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="subnet-border"></div>
 
                   <div class="subnet-text">
-                    <span>${arrayOfObjects[i].nodes[m].aws.subnet}</span>
+                    <span>${arrayOfObjects[i].nodes[m].aws[key]}</span>
                   </div>                          
 
                 </div>                 
