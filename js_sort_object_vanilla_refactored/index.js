@@ -73,14 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////
   
-  // we will keep it global as data, original data will not be changed
-  var sortedData = {"instances": []};
-
-  // initially group by subnet
-  groupBy("subnet");    
-  console.log(sortedData);
   buildHtmlTree(data.instances,"subnet");
-  //buildTree(sortedData.instances,"subnet");
 
   // add event listenter to open and close
   var navInstances = document.querySelectorAll(".instance-nav");
@@ -115,136 +108,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   dropDown.addEventListener('change', function() {
     console.log(this.value);
-
-      // reset data
-      sortedData = {"instances": []};         
-
+    
       // "availability_zone" : "us-west-2c",
       // "subnet": "10.10.10.0/24"
       if(this.value === "subnet" || this.value === "availability_zone"){
-        //groupBy(this.value);
         // refresh tree after data changed     
-        //buildTree(sortedData.instances,this.value);
         buildHtmlTree(data.instances,this.value);
       }
       
       if(this.value === "availability_zone/subnet"){
-        // sort data by two parameters
-        groupByAvailabilityZoneAndSubnet("availability_zone/subnet");
-        // draw brackets for subnet
-        //buildTree(sortedData.instances,"subnet");
-        // draw brackets for av zone
-        buildTreeAvzoneAndSubnet(sortedData.instances);
+        buildTreeAvzoneAndSubnet(data.instances);
       }
-
-      //$('#tree').treeview({data: sortedData.instances}); 
-    
-      // build the tree
-      console.log(sortedData.instances);
-      //buildTree(sortedData.instances);
-  
 
   });
 
 
-  function buildTree(arrayOfObjects, key){
-    console.log("building a tree");
-    var root = document.getElementById("tree");
-    
-    var HTML = ""; // here we will put everything and will insert it into root
 
-    // put 1st instanse
-
-    // go through instances
-    for(var i = 0; i < arrayOfObjects.length; i++){
-      HTML+= `
-        <div class="instance-container">
-
-          <div class="instance">
-            <div class="instance-nav visible">
-              <span class="nav">−</span>
-              <span class="title">${arrayOfObjects[i].text}</span> 
-              <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
-            </div>
-            <div class="instance-nodes">`
-
-            var borderType;
-            if(i > 0){
-              borderType = "border-middle";
-            }   
-            if(i === arrayOfObjects.length-1){
-              borderType += " border-end";
-            }                         
-
-            //console.log(arrayOfObjects[i].nodes[0].aws.subnet);
-            // if next subnet is different current border is end
-            if(i<arrayOfObjects.length-1){
-              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key]){
-                borderType = "border-end";
-              }
-            }
-
-            // if previous is different start new
-            if(i > 0 && i<arrayOfObjects.length-1){
-              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
-                borderType = "border-start";
-              }
-            }         
-
-            // if previous and next a different border is start and end
-            if(i > 0 && i<arrayOfObjects.length-1){
-              if((arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key])
-                  && (arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key])){
-                borderType = "border-start border-end";
-              }
-            }      
-
-            // if last one is different put start border there
-            if(i === arrayOfObjects.length-1){
-              if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
-                borderType += " border-start";
-              }              
-            }
-
-
-            // here we must put another loop to add nodes
-            for(var j = 0; j < arrayOfObjects[i].nodes.length; j++){
-              HTML+=`<span class="node">${arrayOfObjects[i].nodes[j].text}</span>`
-              //console.log(arrayOfObjects[i].nodes[j].aws.subnet);
-            }
-
-            // add border start to the 1st element by default
-            if(i === 0){
-              borderType += " border-start";
-            }            
-
-      HTML+= `              
-            </div>
-          </div>
-
-          <div class="${borderType}"></div>
-
-        </div>
-      `
-    }
-
-
-
-
-    root.innerHTML = HTML;
-
-    // because there were no instances, we need to add event listenters again
-
-    navInstances = document.querySelectorAll(".instance-nav");
-    navInstances.forEach(instance => instance.addEventListener('click',switchNav));    
-
-  }
 
   //////////////////////////////////////////////////////////////////////////////////
 
   function htmlByKey(key,value){
-
-    console.log(".............",key,value);
 
     var HTML = '';
 
@@ -254,11 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
       // scan nodes
       for(var j = 0; j < data.instances[i].nodes.length; j++){
 
-        //console.log("::::::::",data.instances[i].nodes[j].aws.subnet);
-
         if(data.instances[i].nodes[j].aws[key] === value){
            // we got our node!
-           console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text,value);
            // here we create object with VMs and arrays of NICs for each of VM 
            var vm_name = data.instances[i].text;
            var vm_node = data.instances[i].nodes[j].text;
@@ -277,11 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // now we can finally make HTML based on VM_list object
 
-    console.log("---------",VM_list);
-    //console.log(Object.keys(VM_list)[0]);
-
     for(var i = 0; i < Object.keys(VM_list).length; i++){
-      console.log("BUIDING NODES..........");
       var vm_name = Object.keys(VM_list)[i];
       HTML += `
           <div class="instance-container">
@@ -312,9 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function buildHtmlTree(arrayOfObjects,key){
-    console.log("..............building HTML tree by key.............");
-    console.log("KEY:",key);
-
+    
     var root = document.getElementById("tree");
 
     var HTML = ""; // here we will put everything and will insert it into root
@@ -323,10 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
     selectedGroupValues.sort(); // sort values as we will need that - list of subnets
 
     var usedSubnets = [];
-
-    console.log("selected group values: ",selectedGroupValues);
-
-
 
     for(var j = 0; j < selectedGroupValues.length; j++){
 
@@ -342,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // check if this is new subnet
             // if subnet is new - create new subnet-container
             if(usedSubnets.includes(arrayOfObjects[i].nodes[m].aws[key])===false){
-              console.log("new subnet");
+
               usedSubnets.push(arrayOfObjects[i].nodes[m].aws[key]);
 
               HTML+=`
@@ -397,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     }    
 
-    console.log(usedSubnets);
+    //console.log(usedSubnets);
 
     root.innerHTML = HTML;
 
@@ -410,14 +280,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function htmlBySubnetAndAvzone(avzone, subnet){
+    //console.log("availability_zone/subnet");
     var HTML = '';
 
     var VM_list = {};
-
-// |---> VM1 NIC1.1 
-// |---> VM2 NIC1 
-// |---> VM2 NIC2     
- 
 
     for(var i = 0; i < data.instances.length; i++){
       // scan nodes
@@ -426,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if((data.instances[i].nodes[j].aws.availability_zone === avzone) &&
          (data.instances[i].nodes[j].aws.subnet === subnet)){
            // we got our node!
-           console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text, avzone,subnet);
+           //console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text, avzone,subnet);
            // here we create object with VMs and arrays of NICs for each of VM 
            var vm_name = data.instances[i].text;
            var vm_node = data.instances[i].nodes[j].text;
@@ -444,9 +310,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // now we can finally make HTML based on VM_list object
-
-    console.log("---------",VM_list);
-    //console.log(Object.keys(VM_list)[0]);
 
     for(var i = 0; i < Object.keys(VM_list).length; i++){
       var vm_name = Object.keys(VM_list)[i];
@@ -479,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   function buildTreeAvzoneAndSubnet(arrayOfObjects){
-    console.log("building data by available zone and subnet...");
+
     var root = document.getElementById("tree");
 
     var HTML = ""; // here we will put everything and will insert it into root
@@ -495,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var usedSubnets = [];
 
-    console.log("selected group values: ",selectedGroupValues);
+    //console.log("selected group values: ",selectedGroupValues);
 
     for(var k = 0; k < availabilityZoneList.length; k++){
       filter = availabilityZoneList[k];
@@ -532,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // check if this is new subnet
                     // if subnet is new - create new subnet-container
                     if(usedSubnets.includes(arrayOfObjects[i].nodes[m].aws.subnet)===false){
-                      console.log("new subnet");
+                      //console.log("new subnet");
                       usedSubnets.push(arrayOfObjects[i].nodes[m].aws.subnet);
 
                       HTML+=`
@@ -595,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     }    
 
-    console.log(usedSubnets);
+    //console.log(usedSubnets);
 
     root.innerHTML = HTML;
 
@@ -605,149 +468,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navInstances.forEach(instance => instance.addEventListener('click',switchNav));      
   }
 
-
-
-  // function buildTree(arrayOfObjects, key){
-  //   console.log("building a tree");
-  //   var root = document.getElementById("tree");
-    
-  //   var HTML = ""; // here we will put everything and will insert it into root
-
-  //   // put 1st instanse
-
-  //   // go through instances
-  //   for(var i = 0; i < arrayOfObjects.length; i++){
-  //     HTML+= `
-  //       <div class="instance-container">
-
-  //         <div class="instance">
-  //           <div class="instance-nav visible">
-  //             <span class="nav">−</span>
-  //             <span class="title">${arrayOfObjects[i].text}</span> 
-  //             <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
-  //           </div>
-  //           <div class="instance-nodes">`
-
-  //           var borderType;
-  //           if(i > 0){
-  //             borderType = "border-middle";
-  //           }   
-  //           if(i === arrayOfObjects.length-1){
-  //             borderType += " border-end";
-  //           }                         
-
-  //           //console.log(arrayOfObjects[i].nodes[0].aws.subnet);
-  //           // if next subnet is different current border is end
-  //           if(i<arrayOfObjects.length-1){
-  //             if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key]){
-  //               borderType = "border-end";
-  //             }
-  //           }
-
-  //           // if previous is different start new
-  //           if(i > 0 && i<arrayOfObjects.length-1){
-  //             if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
-  //               borderType = "border-start";
-  //             }
-  //           }         
-
-  //           // if previous and next a different border is start and end
-  //           if(i > 0 && i<arrayOfObjects.length-1){
-  //             if((arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key])
-  //                 && (arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i+1].nodes[0].aws[key])){
-  //               borderType = "border-start border-end";
-  //             }
-  //           }      
-
-  //           // if last one is different put start border there
-  //           if(i === arrayOfObjects.length-1){
-  //             if(arrayOfObjects[i].nodes[0].aws[key] !== arrayOfObjects[i-1].nodes[0].aws[key]){
-  //               borderType += " border-start";
-  //             }              
-  //           }
-
-
-  //           // here we must put another loop to add nodes
-  //           for(var j = 0; j < arrayOfObjects[i].nodes.length; j++){
-  //             HTML+=`<span class="node">${arrayOfObjects[i].nodes[j].text}</span>`
-  //             //console.log(arrayOfObjects[i].nodes[j].aws.subnet);
-  //           }
-
-  //           // add border start to the 1st element by default
-  //           if(i === 0){
-  //             borderType += " border-start";
-  //           }            
-
-  //     HTML+= `              
-  //           </div>
-  //         </div>
-
-  //         <div class="${borderType}"></div>
-
-  //       </div>
-  //     `
-  //   }
-
-
-
-
-  //   root.innerHTML = HTML;
-
-  //   // because there were no instances, we need to add event listenters again
-
-  //   navInstances = document.querySelectorAll(".instance-nav");
-  //   navInstances.forEach(instance => instance.addEventListener('click',switchNav));    
-
-  // }
-
-
-  function groupByAvailabilityZoneAndSubnet(keys){
-    console.log("group by: " + keys);
-    // get the keys in separate variables
-    keys = keys.split('/');
-    var keyAvZone = keys[0]; // => availability_zone
-    var keySubnet = keys[1]; // => subnet
-
-    // make not sorted list of AvZones
-    var availabilityZoneList = getRangeOfValuesByKey(keyAvZone);
-    console.log(availabilityZoneList);
-
-    // Group by Subnet for Zone 1 => "availability_zone" : "us-west-2c" availabilityZoneList[0]
-    var key = keySubnet;
-
-    var selectedGroupValues = getRangeOfValuesByKey(key);
-    selectedGroupValues.sort(); // sort values as we will need that
-
-    var filter;
-
-    // add filtered nodes sorted by subnet for each available zone
-    for(var j = 0; j < availabilityZoneList.length; j++){
-      filter = availabilityZoneList[j];
-      //console.log(filter);
-      for(var i = 0; i < selectedGroupValues.length; i++){
-        pushFilteredInstancesToData(key,selectedGroupValues[i],filter);
-      }         
-    }
-
-
-  }
-
-  function groupBy(key){
-
-    // get all values of subnet
-
-    var selectedGroupValues = getRangeOfValuesByKey(key);
-
-    selectedGroupValues.sort(); // sort values as we will need that
-    console.log(selectedGroupValues);
-
-    //pushInstancesToData("10.10.10.0/24");
-    
-    for(var i = 0; i < selectedGroupValues.length; i++){
-      pushInstancesToData(key,selectedGroupValues[i]);
-    }    
-
-  }
 
   function getRangeOfValuesByKey(key){
     // get all values of subnet
@@ -765,84 +485,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //console.log(selectedGroupValues);    
     return selectedGroupValues;
   }
-
-
-  // need to refactor two functions below as they duplicate a lot
-
-  function pushFilteredInstancesToData(key,value,filter){
-
-    for(var j = 0, length = data.instances.length; j < length; j++){
-      var obj = data.instances[j];
-
-      // now let's return only elements of obj that have aws.subnet = "10.10.10.0/24"
-      for(var i = 0; i < obj.nodes.length; i++){
-
-        if(obj.nodes[i].aws[key] === value && obj.nodes[i].aws.availability_zone === filter){
-          var textValue = data.instances[j].text;
-          var sortedObject = {};    
-
-          // if such textValue already exists
-          // and aws.subnet = "10.10.10.0/24"
-          // we must push node to existing      
-
-          var index = hasKeyAlready(textValue);
-          if(index!==false && obj.nodes[index].aws[key] === value){
-            sortedData.instances[index].nodes.push(obj.nodes[i]);
-          } else{
-            // otherwise create new object and push it to instances
-            sortedObject.text = textValue;
-            sortedObject.nodes = [obj.nodes[i]];
-            sortedData.instances.push(sortedObject);
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-  function pushInstancesToData(key,value){
-    for(var j = 0, length = data.instances.length; j < length; j++){
-      var obj = data.instances[j];
-
-      // now let's return only elements of obj that have aws.subnet = "10.10.10.0/24"
-      for(var i = 0; i < obj.nodes.length; i++){
-
-        if(obj.nodes[i].aws[key] === value){
-          var textValue = data.instances[j].text;
-          var sortedObject = {};    
-
-          // if such textValue already exists
-          // and aws.subnet = "10.10.10.0/24"
-          // we must push node to existing      
-
-          var index = hasKeyAlready(textValue);
-          if(index!==false && obj.nodes[index].aws[key] === value){
-            sortedData.instances[index].nodes.push(obj.nodes[i]);
-          } else{
-            // otherwise create new object and push it to instances
-            sortedObject.text = textValue;
-            sortedObject.nodes = [obj.nodes[i]];
-            sortedData.instances.push(sortedObject);
-          }
-
-        }
-
-      }
-
-    }
-  }
-
-  function hasKeyAlready(text){
-      for(var i = 0; i < sortedData.instances.length; i++){
-        if(sortedData.instances[i].text === text){
-          return i;
-        }
-      }  
-      return false;
-  }        
+    
 
 
 });
