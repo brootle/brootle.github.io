@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // initially group by subnet
   groupBy("subnet");    
   console.log(sortedData);
+  buildHtmlTree(data.instances,"subnet");
   //buildTree(sortedData.instances,"subnet");
 
   // add event listenter to open and close
@@ -238,6 +239,173 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  //////////////////////////////////////////////////////////////////////////////////
+
+  function htmlByKey(key){
+
+    console.log(".............",key);
+
+    var HTML = '';
+
+    var VM_list = {};
+
+    for(var i = 0; i < data.instances.length; i++){
+      // scan nodes
+      for(var j = 0; j < data.instances[i].nodes.length; j++){
+
+        //console.log("::::::::",data.instances[i].nodes[j].aws.subnet);
+
+        if(data.instances[i].nodes[j].aws.subnet=== key){
+           // we got our node!
+           console.log("|--->", data.instances[i].text, data.instances[i].nodes[j].text,key);
+           // here we create object with VMs and arrays of NICs for each of VM 
+           var vm_name = data.instances[i].text;
+           var vm_node = data.instances[i].nodes[j].text;
+
+           if(VM_list[vm_name] === undefined){
+             VM_list[vm_name] = [vm_node];
+           }else if(VM_list[vm_name] !== undefined){
+             VM_list[vm_name].push(vm_node);
+           }           
+
+         }
+
+      }
+
+    }
+
+    // now we can finally make HTML based on VM_list object
+
+    console.log("---------",VM_list);
+    //console.log(Object.keys(VM_list)[0]);
+
+    for(var i = 0; i < Object.keys(VM_list).length; i++){
+      console.log("BUIDING NODES..........");
+      var vm_name = Object.keys(VM_list)[i];
+      HTML += `
+          <div class="instance-container">
+
+            <div class="instance">
+              <div class="instance-nav visible">
+                <span class="nav">−</span>
+                <span class="title">${vm_name}</span> 
+                <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
+              </div>
+              <div class="instance-nodes">`
+
+        for(var j = 0; j < VM_list[vm_name].length; j++){
+          HTML +=`<span class="node">${VM_list[vm_name][j]}</span>`
+        }
+
+     HTML +=`
+              </div>
+            </div>
+
+
+          </div>       
+      `;      
+    }
+
+    return HTML;
+
+  }
+
+  function buildHtmlTree(arrayOfObjects,key){
+    console.log("..............building HTML tree by key.............");
+
+    var root = document.getElementById("tree");
+
+    var HTML = ""; // here we will put everything and will insert it into root
+
+    var selectedGroupValues = getRangeOfValuesByKey(key);
+    selectedGroupValues.sort(); // sort values as we will need that - list of subnets
+
+    var usedSubnets = [];
+
+    console.log("selected group values: ",selectedGroupValues);
+
+
+
+    for(var j = 0; j < selectedGroupValues.length; j++){
+
+      // here we filter instances
+      // OK, now we loop through all the data and filter only those that match zone and subnet
+      for(var i = 0; i < arrayOfObjects.length; i++){
+
+
+        // and here we also need to run through all nodes in each instance
+        for(var m = 0; m < arrayOfObjects[i].nodes.length; m++){
+          if(arrayOfObjects[i].nodes[m].aws.subnet === selectedGroupValues[j]){
+
+            // check if this is new subnet
+            // if subnet is new - create new subnet-container
+            if(usedSubnets.includes(arrayOfObjects[i].nodes[m].aws.subnet)===false){
+              console.log("new subnet");
+              usedSubnets.push(arrayOfObjects[i].nodes[m].aws.subnet);
+
+              HTML+=`
+                <div class="subnet-container">
+                  
+                  <div class="subnet-instances">              
+              `;
+
+              // and here we should start writting data?
+              // make a function that will return HTML with all given subnet
+              // the function should take subnet and availability_zone
+              // arrayOfObjects[i].nodes[m].aws.subnet => 10.10.10.0/24
+              // availabilityZoneList[k] => us-west-2c
+
+              HTML+=htmlByKey(arrayOfObjects[i].nodes[m].aws.subnet);
+
+
+              HTML+=`
+                  </div>
+
+                  <div class="subnet-border"></div>
+
+                  <div class="subnet-text">
+                    <span>${arrayOfObjects[i].nodes[m].aws.subnet}</span>
+                  </div>                          
+
+                </div>                 
+              `;                  
+
+
+            }
+
+          }
+        }
+
+
+      }
+
+
+
+
+           
+     HTML+=`
+          </div>
+
+        </div>      
+      
+      
+      `;
+
+
+    
+    }    
+
+    console.log(usedSubnets);
+
+    root.innerHTML = HTML;
+
+    // because there were no instances, we need to add event listenters again
+
+    navInstances = document.querySelectorAll(".instance-nav");
+    navInstances.forEach(instance => instance.addEventListener('click',switchNav));  
+
+
+  }
 
   function htmlBySubnetAndAvzone(avzone, subnet){
     var HTML = '';
@@ -410,52 +578,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
 
-            // <div class="subnet-container">
-              
-            //   <div class="subnet-instances">
 
-            //     <div class="instance-container">
-
-            //       <div class="instance">
-            //         <div class="instance-nav visible">
-            //           <span class="nav">−</span>
-            //           <span class="title">VM1</span> 
-            //           <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
-            //         </div>
-            //         <div class="instance-nodes">
-            //           <span class="node">NIC1.1</span>
-            //           <span class="node">NIC2</span>
-            //         </div>
-            //       </div>
-
-            //     </div>
-
-            //     <div class="instance-container">
-
-            //       <div class="instance">
-            //         <div class="instance-nav visible">
-            //           <span class="nav">−</span>
-            //           <span class="title">VM0</span> 
-            //           <span class="indicator"><i class="fa fa-circle opened" aria-hidden="true"></i></span> 
-            //         </div>
-            //         <div class="instance-nodes">
-            //           <span class="node">NIC1.1</span>
-            //           <span class="node">NIC2</span>
-            //         </div>
-            //       </div>
-
-            //     </div>
-
-            //   </div>
-
-            //   <div class="subnet-border"></div>
-
-            //   <div class="subnet-text">
-            //     <span>10.10.10.0/24</span>
-            //     <span>us-west-2c</span>
-            //   </div>
-
-            // </div>
 
            
      HTML+=`
