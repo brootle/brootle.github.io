@@ -236,8 +236,12 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="subnet-border"></div>
 
                   <div class="subnet-text">
-                    <span>${arrayOfObjects[i].nodes[m].aws[key]}</span>
-                  </div>                          
+                    <span>${arrayOfObjects[i].nodes[m].aws[key]}</span>`;
+              if(key === "subnet"){
+                HTML+=`<span>${arrayOfObjects[i].nodes[m].aws.availability_zone}</span>`;
+              }
+
+              HTML+=`</div>                          
 
                 </div>                 
               `;                  
