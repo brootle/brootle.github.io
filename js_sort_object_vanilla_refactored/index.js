@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
   navInstances.forEach(instance => instance.addEventListener('click',switchNav));
 
   function switchNav(e){
+    drawLines();
 
     if(e.currentTarget.classList.contains("visible")){
 
@@ -122,7 +123,65 @@ document.addEventListener('DOMContentLoaded', function () {
 
   });
 
+////////////////////////////////////////////////////////////////////////////////////////
+  // http://stackoverflow.com/a/5912283/6261255
+  function createLineElement(x, y, length, angle) {
+      var line = document.createElement("div");
+      var styles = 'border: 1px solid black; '
+                + 'width: ' + length + 'px; '
+                + 'height: 0px; '
+                + '-moz-transform: rotate(' + angle + 'rad); '
+                + '-webkit-transform: rotate(' + angle + 'rad); '
+                + '-o-transform: rotate(' + angle + 'rad); '  
+                + '-ms-transform: rotate(' + angle + 'rad); '  
+                + 'position: absolute; '
+                + 'top: ' + y + 'px; '
+                + 'left: ' + x + 'px; ';
+      line.setAttribute('style', styles);  
+      line.setAttribute('id', "line1"); 
+      return line;
+  }
 
+  function createLine(x1, y1, x2, y2) {
+      var a = x1 - x2,
+          b = y1 - y2,
+          c = Math.sqrt(a * a + b * b);
+
+      var sx = (x1 + x2) / 2,
+          sy = (y1 + y2) / 2;
+
+      var x = sx - c / 2,
+          y = sy;
+
+      var alpha = Math.PI - Math.atan2(-b, a);
+
+      return createLineElement(x, y, c, alpha);
+  }
+
+  document.body.appendChild(createLine(247, 188, 340, 220));
+
+
+  var scrolledArea = document.querySelector(".scroll");
+  scrolledArea.addEventListener("scroll", drawLines);
+  
+  function drawLines(){
+    console.log("scrolling............");
+    // var rect = element.getBoundingClientRect();
+    // console.log(rect.top, rect.right, rect.bottom, rect.left);    
+
+    // get all span elements that have a line
+    var spanLines = document.querySelectorAll('.subnet-text span:first-child');
+    
+    // get coordinates
+    var rect = spanLines[0].getBoundingClientRect();
+    console.log(rect.top, rect.right, rect.bottom, rect.left);   
+    // 170.375 246.5 189.375 146.5   
+    // .removeChild(elem)
+    var element = document.getElementById("line1");
+    element.outerHTML = "";
+    delete element;    
+    document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220));
+  }
 
 
   //////////////////////////////////////////////////////////////////////////////////
