@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
   navInstances.forEach(instance => instance.addEventListener('click',switchNav));
 
   function switchNav(e){
-    drawLines();
+    //drawLines();
 
     if(e.currentTarget.classList.contains("visible")){
 
@@ -100,7 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
       e.currentTarget.getElementsByClassName("nav")[0].innerHTML = "−";
       e.currentTarget.getElementsByClassName("indicator")[0].innerHTML = `<i class="fa fa-circle opened" aria-hidden="true"></i>`;
 
-    }      
+    }    
+
+    drawLines();  
 
   }
 
@@ -115,10 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if(this.value === "subnet" || this.value === "availability_zone"){
         // refresh tree after data changed     
         buildHtmlTree(data.instances,this.value);
+        drawLines();
       }
       
       if(this.value === "availability_zone/subnet"){
         buildTreeAvzoneAndSubnet(data.instances);
+        drawLines();
       }
 
   });
@@ -158,11 +162,16 @@ document.addEventListener('DOMContentLoaded', function () {
       return createLineElement(x, y, c, alpha);
   }
 
-  document.body.appendChild(createLine(247, 188, 340, 220));
+  //document.body.appendChild(createLine(247, 188, 340, 220));
 
 
   var scrolledArea = document.querySelector(".scroll");
   scrolledArea.addEventListener("scroll", drawLines);
+
+  // draw lines initially
+  var spanLines = document.querySelectorAll('.subnet-text span:first-child');
+  var rect = spanLines[0].getBoundingClientRect();
+  document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220));
   
   function drawLines(){
     console.log("scrolling............");
@@ -170,10 +179,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log(rect.top, rect.right, rect.bottom, rect.left);    
 
     // get all span elements that have a line
-    var spanLines = document.querySelectorAll('.subnet-text span:first-child');
+    //var spanLines = document.querySelectorAll('.subnet-text span:first-child');
     
     // get coordinates
-    var rect = spanLines[0].getBoundingClientRect();
+    spanLines = document.querySelectorAll('.subnet-text span:first-child');
+    rect = spanLines[0].getBoundingClientRect();
     console.log(rect.top, rect.right, rect.bottom, rect.left);   
     // 170.375 246.5 189.375 146.5   
     // .removeChild(elem)
