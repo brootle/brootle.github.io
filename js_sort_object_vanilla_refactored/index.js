@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
           x = x + (340-x) - (340-x) * (y - 233) / (lineY - 233);
 
           scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
-          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+          //giconsole.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
       }         
      
 
