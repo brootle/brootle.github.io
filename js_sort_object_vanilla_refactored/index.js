@@ -189,12 +189,24 @@ document.addEventListener('DOMContentLoaded', function () {
     lineID = i;  
     // here we must check if we get out of scroll container
     // so we don't draw line below scroll
-    scrollRect = scrollContainer.getBoundingClientRect();
-    console.log("scroll: ",scrollRect.bottom+window.scrollY);
-    console.log("line: ", rect.top+18+window.scrollY);
-    if(rect.top+18+window.scrollY <= scrollRect.bottom+window.scrollY && rect.top+18+window.scrollY >= scrollRect.top+window.scrollY){
-      scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID));
-    }    
+      scrollRect = scrollContainer.getBoundingClientRect();
+      var y = rect.top+20+window.scrollY;
+      var x = rect.right;
+      if(y <= scrollRect.bottom+window.scrollY && y >= scrollRect.top+window.scrollY){
+        scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+        console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);
+      } else if(y >= scrollRect.top+window.scrollY){
+        // here we calculate line which is out of border
+        // this one goes below y        
+          y = scrollRect.bottom+window.scrollY;
+          scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+      } else if(y <= scrollRect.bottom+window.scrollY){
+        // this one is goes up above limits 
+          y = scrollRect.top+window.scrollY;
+          scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+      }  
     //scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID))
   }
   
@@ -224,11 +236,24 @@ document.addEventListener('DOMContentLoaded', function () {
       // here we must check if we get out of scroll container
       // so we don't draw line below scroll    
       scrollRect = scrollContainer.getBoundingClientRect();
-      console.log("scroll: ",scrollRect.bottom+window.scrollY);
-      console.log("line: ", rect.top+18+window.scrollY);
-      if(rect.top+18+window.scrollY <= scrollRect.bottom+window.scrollY && rect.top+18+window.scrollY >= scrollRect.top+window.scrollY){
-        scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
-      }
+      var y = rect.top+18+window.scrollY;
+      var x = rect.right;
+      if(y <= scrollRect.bottom+window.scrollY && y >= scrollRect.top+window.scrollY){
+        scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+        console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);
+      } else if(y >= scrollRect.top+window.scrollY){
+        // here we calculate line which is out of border
+        // this one goes below y        
+          y = scrollRect.bottom+window.scrollY;
+          scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+      } else if(y <= scrollRect.bottom+window.scrollY){
+        // this one is goes up above limits 
+          y = scrollRect.top+window.scrollY;
+          scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
+          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+      }         
+     
 
       //scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
     }
