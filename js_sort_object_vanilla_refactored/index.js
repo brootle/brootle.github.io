@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 ////////////////////////////////////////////////////////////////////////////////////////
   // http://stackoverflow.com/a/5912283/6261255
-  function createLineElement(x, y, length, angle) {
+  function createLineElement(x, y, length, angle,lineID) {
       var line = document.createElement("div");
       var styles = 'border: 1px solid black; '
                 + 'width: ' + length + 'px; '
@@ -142,11 +142,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 + 'top: ' + y + 'px; '
                 + 'left: ' + x + 'px; ';
       line.setAttribute('style', styles);  
-      line.setAttribute('id', "line1"); 
+      line.setAttribute('id', "line"+lineID);
+      line.setAttribute('class', "line"); 
       return line;
   }
 
-  function createLine(x1, y1, x2, y2) {
+  function createLine(x1, y1, x2, y2,lineID) {
       var a = x1 - x2,
           b = y1 - y2,
           c = Math.sqrt(a * a + b * b);
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var alpha = Math.PI - Math.atan2(-b, a);
 
-      return createLineElement(x, y, c, alpha);
+      return createLineElement(x, y, c, alpha,lineID);
   }
 
   //document.body.appendChild(createLine(247, 188, 340, 220));
@@ -168,29 +169,53 @@ document.addEventListener('DOMContentLoaded', function () {
   var scrolledArea = document.querySelector(".scroll");
   scrolledArea.addEventListener("scroll", drawLines);
 
+  //var scrolledY = window.scrollY;
+
   // draw lines initially
   var spanLines = document.querySelectorAll('.subnet-text span:first-child');
-  var rect = spanLines[0].getBoundingClientRect();
-  document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220));
+  var rect;
+  var lineID;
+  //document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220,lineID));
+  // var root = document.documentElement;
+  // console.log(root.scrollTop);
+  //console.log(window.scrollY);
+
+  var scrollContainer = document.querySelector(".scroll");
+  //var scrollContainer = document.querySelector("#tree");
+
+  for(var i = 0; i < spanLines.length; i++){
+    rect = spanLines[i].getBoundingClientRect();
+    lineID = i;  
+    scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID))
+    //document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220,lineID));
+  }
   
   function drawLines(){
-    console.log("scrolling............");
-    // var rect = element.getBoundingClientRect();
-    // console.log(rect.top, rect.right, rect.bottom, rect.left);    
 
     // get all span elements that have a line
-    //var spanLines = document.querySelectorAll('.subnet-text span:first-child');
     
     // get coordinates
     spanLines = document.querySelectorAll('.subnet-text span:first-child');
     rect = spanLines[0].getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);   
+    //console.log(rect.top, rect.right, rect.bottom, rect.left);   
     // 170.375 246.5 189.375 146.5   
-    // .removeChild(elem)
-    var element = document.getElementById("line1");
-    element.outerHTML = "";
-    delete element;    
-    document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220));
+
+    // delete all lines
+    var lines = document.querySelectorAll(".line")
+    //console.log(lines);
+    for(var i = 0; i < lines.length; i++){
+      var element = lines[i];
+      element.outerHTML = "";
+      delete element;  
+    }    
+
+    // draw new lines
+    for(var i = 0; i < spanLines.length; i++){
+      rect = spanLines[i].getBoundingClientRect();
+      lineID = i;
+      scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
+    }
+
   }
 
 
