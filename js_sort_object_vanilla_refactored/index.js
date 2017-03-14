@@ -198,7 +198,12 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if(y >= scrollRect.top+window.scrollY){
         // here we calculate line which is out of border
         // this one goes below y        
-          y = scrollRect.bottom+window.scrollY;
+          y = scrollRect.bottom+window.scrollY; // this fixex y to 353
+
+          var lineY = rect.top+18+window.scrollY;
+          // let's recalculate X
+          x = x + (340-x) - (340-x) * (y - 233) / (lineY - 233);
+
           scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
           console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
       } else if(y <= scrollRect.bottom+window.scrollY){
@@ -244,12 +249,22 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if(y >= scrollRect.top+window.scrollY){
         // here we calculate line which is out of border
         // this one goes below y        
-          y = scrollRect.bottom+window.scrollY;
+          y = scrollRect.bottom+window.scrollY; // this fixex y to 353
+
+          var lineY = rect.top+18+window.scrollY;
+          // let's recalculate X
+          x = x + (340-x) - (340-x) * (y - 233) / (lineY - 233);
+
           scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
-          console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
+          //console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
       } else if(y <= scrollRect.bottom+window.scrollY){
         // this one is goes up above limits 
           y = scrollRect.top+window.scrollY;
+
+          var lineY = rect.top+18+window.scrollY;
+          // let's recalculate X
+          x = x + (340-x) - (340-x) * (y - 233) / (lineY - 233);
+
           scrollContainer.appendChild(createLine(x, y, 340, 233,lineID));
           console.log(`line-${i}`,"x=",x,"y=",y, "x-top=",340,"y-top",233);         
       }         
