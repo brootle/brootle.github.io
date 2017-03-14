@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // var root = document.documentElement;
   // console.log(root.scrollTop);
   //console.log(window.scrollY);
+  var scrollRect;
 
   var scrollContainer = document.querySelector(".scroll");
   //var scrollContainer = document.querySelector("#tree");
@@ -186,8 +187,15 @@ document.addEventListener('DOMContentLoaded', function () {
   for(var i = 0; i < spanLines.length; i++){
     rect = spanLines[i].getBoundingClientRect();
     lineID = i;  
-    scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID))
-    //document.body.appendChild(createLine(rect.right, rect.top+17, 340, 220,lineID));
+    // here we must check if we get out of scroll container
+    // so we don't draw line below scroll
+    scrollRect = scrollContainer.getBoundingClientRect();
+    console.log("scroll: ",scrollRect.bottom+window.scrollY);
+    console.log("line: ", rect.top+18+window.scrollY);
+    if(rect.top+18+window.scrollY <= scrollRect.bottom+window.scrollY && rect.top+18+window.scrollY >= scrollRect.top+window.scrollY){
+      scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID));
+    }    
+    //scrollContainer.appendChild(createLine(rect.right, rect.top+20+window.scrollY, 340, 233,lineID))
   }
   
   function drawLines(){
@@ -213,7 +221,16 @@ document.addEventListener('DOMContentLoaded', function () {
     for(var i = 0; i < spanLines.length; i++){
       rect = spanLines[i].getBoundingClientRect();
       lineID = i;
-      scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
+      // here we must check if we get out of scroll container
+      // so we don't draw line below scroll    
+      scrollRect = scrollContainer.getBoundingClientRect();
+      console.log("scroll: ",scrollRect.bottom+window.scrollY);
+      console.log("line: ", rect.top+18+window.scrollY);
+      if(rect.top+18+window.scrollY <= scrollRect.bottom+window.scrollY && rect.top+18+window.scrollY >= scrollRect.top+window.scrollY){
+        scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
+      }
+
+      //scrollContainer.appendChild(createLine(rect.right, rect.top+18+window.scrollY, 340, 233,lineID));
     }
 
   }
