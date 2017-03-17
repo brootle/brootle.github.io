@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM loaded with JavaScript');    
 
   // ABOUT SOUNDS READ HERE https://modernweb.com/creating-sound-with-the-web-audio-api-and-oscillators/
+  // FIX CLICK AT THE END OF SOUND http://alemangui.github.io/blog//2015/12/26/ramp-to-value.html
 
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   var audioContext = new AudioContext();
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var buttons = document.querySelectorAll(".button");
   buttons.forEach(button => button.addEventListener('mousedown',startPlayingSound));
   buttons.forEach(button => button.addEventListener('mouseup',stopPlayingSound));
+  
+  // make sure we stop sound if we move mouse out of button but it is still pressed
   buttons.forEach(button => button.addEventListener('mouseout',stopPlayingSound));
 
 
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     playing = true;
+    e.currentTarget.classList.toggle('pressed');
 
     
     oscillator = audioContext.createOscillator();
@@ -59,10 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Stop playing sound....",e.currentTarget);
 
     if(playing){
-       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
+       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
        //oscillator.stop();
        //gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.3);
        playing = false;
+       e.currentTarget.classList.toggle('pressed');
     }
 
   }
