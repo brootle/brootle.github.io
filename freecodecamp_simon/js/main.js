@@ -30,8 +30,30 @@ document.addEventListener('DOMContentLoaded', function () {
     blue:600
   }
 
+  const error = {
+    frequency: 90,
+    volume: 3,
+    length: 0.6
+  }
+
   var melody = ["green", "red", "red", "green", "blue", "yellow", "red"];
 
+  activateButtons();
+
+  playError();
+
+  function playError(){
+      oscillator = audioContext.createOscillator();
+      oscillator.frequency.value = error.frequency;        
+
+      gainNode.gain.setValueAtTime(error.volume, audioContext.currentTime);
+      
+      oscillator.connect(gainNode);
+
+      oscillator.start(0);   
+
+      gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + error.length);  
+  }
 
   function activateButtons(){
     // add event listenter to catch when we start playing and stop playing
@@ -52,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     buttons.forEach(button => button.removeEventListener('mouseout',stopPlayingSound));    
   }
 
-  playSong(melody);
+  //playSong(melody);
 
   function playSong(melody){
     // disable buttons
