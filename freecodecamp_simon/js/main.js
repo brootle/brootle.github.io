@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
   //o.type = e.currentTarget.id;
   var playing = false;
 
+  const tone = {
+    green:300,
+    red:350,
+    yellow:400,
+    blue:450
+  }
+
   // add event listenter to catch when we start playing and stop playing
   var buttons = document.querySelectorAll(".button");
   buttons.forEach(button => button.addEventListener('mousedown',startPlayingSound));
@@ -24,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function startPlayingSound(e){
     console.log("Srart playing sound....",e.currentTarget);
 
-    const tone = e.currentTarget.getAttribute("data-tone");
+    const button = e.currentTarget.getAttribute("data-button");
 
     if(!playing){
       // if sound is playing we must stop it
@@ -42,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     oscillator = audioContext.createOscillator();
     oscillator.type = 'sine';
-    oscillator.frequency.value = tone;        
+    oscillator.frequency.value = tone[button];        
 
     // Adding a gain node just to lower the volume a bit and to make the
     // sound less ear-piercing. It will also allow us to mute and replay
@@ -63,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Stop playing sound....",e.currentTarget);
 
     if(playing){
-       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
+       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
        //oscillator.stop();
        //gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.3);
        playing = false;
