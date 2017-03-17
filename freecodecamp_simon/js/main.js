@@ -162,9 +162,9 @@ document.addEventListener('DOMContentLoaded', function () {
       // OR
       // OPTION 2
       var button = e.currentTarget;
-      (function(button){
+      (function(btn){
         setTimeout(function(){ 
-          button.classList.toggle('pressed');
+          btn.classList.toggle('pressed');
         },0.1 * 1000); // this is a little delay after we unpress the button
       })(button);      
     }
