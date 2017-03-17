@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const tone = {
     green:300,
-    red:350,
-    yellow:400,
-    blue:450
+    red:400,
+    yellow:500,
+    blue:600
   }
 
   var melody = ["green", "red", "red", "green", "blue", "yellow", "red"];
