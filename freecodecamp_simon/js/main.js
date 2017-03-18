@@ -36,42 +36,57 @@ document.addEventListener('DOMContentLoaded', function () {
     length: 0.6
   }
 
-  var melody = ["green", "red", "red", "green", "blue", "yellow", "red"];
+  const pause = 2000;
 
-  activateButtons();
+  //var melody = ["green", "red", "red", "green", "blue", "yellow", "red"];
+  var melody = [];
+  var userMelody = [];
+  var notesCounter = 0;
 
-  playError();
+  var userMadeError = false;
 
-  function playError(){
-      oscillator = audioContext.createOscillator();
-      oscillator.frequency.value = error.frequency;        
+  // add event listenter to catch when we start playing and stop playing
+  var buttons = document.querySelectorAll(".button");
+  buttons.forEach(button => button.addEventListener('mousedown',startPlayingSound));
+  buttons.forEach(button => button.addEventListener('mouseup',stopPlayingSound));
+  
+  // make sure we stop sound if we move mouse out of button but it is still pressed
+  buttons.forEach(button => button.addEventListener('mouseout',stopPlayingSound));  
 
-      gainNode.gain.setValueAtTime(error.volume, audioContext.currentTime);
-      
-      oscillator.connect(gainNode);
+  //activateButtons();
 
-      oscillator.start(0);   
 
-      gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + error.length);  
+  var centralButton = document.querySelector(".central-controller");
+  centralButton.addEventListener('click',continueGame);
+
+  function continueGame(){
+    if(!userMadeError){
+      addRandomSoundToMelody();
+    }
+    playSong(melody); 
+    // reser user melody
+    userMelody = [];
+    notesCounter = 0;
+    //playSong(userMelody);    
+  }
+
+  function addToUserMelody(sound){
+    userMelody.push(sound);
+    notesCounter++;
+  }
+
+  function addRandomSoundToMelody(){
+    // we must add random sound to melody
+    const randomIndex = Math.floor(Math.random() * Object.keys(tone).length);
+    melody.push(Object.keys(tone)[randomIndex]);
   }
 
   function activateButtons(){
-    // add event listenter to catch when we start playing and stop playing
-    var buttons = document.querySelectorAll(".button");
-    buttons.forEach(button => button.addEventListener('mousedown',startPlayingSound));
-    buttons.forEach(button => button.addEventListener('mouseup',stopPlayingSound));
-    
-    // make sure we stop sound if we move mouse out of button but it is still pressed
-    buttons.forEach(button => button.addEventListener('mouseout',stopPlayingSound));
+    buttons.forEach(button => button.classList.toggle('disabled'));
   }
 
   function disableButtons(){
-    var buttons = document.querySelectorAll(".button");
-    buttons.forEach(button => button.removeEventListener('mousedown',startPlayingSound));
-    buttons.forEach(button => button.removeEventListener('mouseup',stopPlayingSound));
-    
-    // make sure we stop sound if we move mouse out of button but it is still pressed
-    buttons.forEach(button => button.removeEventListener('mouseout',stopPlayingSound));    
+    buttons.forEach(button => button.classList.toggle('disabled'));    
   }
 
   //playSong(melody);
@@ -133,10 +148,41 @@ document.addEventListener('DOMContentLoaded', function () {
       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + sound.length);     
   }
 
+  function melodiesMatch(){
+    console.log(notesCounter,userMelody,melody);
+    // just compare last elements to corresponding note in melody
+    return userMelody[userMelody.length-1] === melody[notesCounter-1];
+    //return true;
+  }
+
   function startPlayingSound(e){
     console.log("Srart playing sound....",e.currentTarget);
 
     const button = e.currentTarget.getAttribute("data-button");
+
+    addToUserMelody(button);
+
+    var soundTone = tone[button];
+    var soundVolume = sound.volume;
+
+    // compare melody and user melody
+    if(melodiesMatch()){
+      userMadeError = false;
+      console.log("melodies match");
+    } else{
+      soundTone = error.frequency;
+      soundVolume = error.volume;    
+      userMadeError = true;
+      // reset melodies if strict mode
+      // melody = [];
+      // userMelody = [];
+      // notesCounter = 0;   
+      // play again if not strict mode  
+      userMelody = [];
+      notesCounter = 0;      
+      // we must play melody after we played wrong button
+    }
+    
 
     if(!playing){
       // if sound is playing we must stop it
@@ -153,13 +199,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     oscillator = audioContext.createOscillator();
 
-    oscillator.frequency.value = tone[button];        
+    oscillator.frequency.value = soundTone;        
 
     // Adding a gain node just to lower the volume a bit and to make the
     // sound less ear-piercing. It will also allow us to mute and replay
     // our sound on demand
     //var gainNode = audioContext.createGain();
-    gainNode.gain.setValueAtTime(sound.volume, audioContext.currentTime);
+    gainNode.gain.setValueAtTime(soundVolume, audioContext.currentTime);
     
     oscillator.connect(gainNode);
 
@@ -172,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Stop playing sound....",e.currentTarget);
 
     if(playing){
+      
       // change sound volume to 0, so when we stop it we avoid ugly click bug
       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
       //gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.3);   
@@ -186,9 +233,16 @@ document.addEventListener('DOMContentLoaded', function () {
       var button = e.currentTarget;
       (function(btn){
         setTimeout(function(){ 
-          btn.classList.toggle('pressed');
+          btn.classList.toggle('pressed');                
         },0.1 * 1000); // this is a little delay after we unpress the button
       })(button);      
+
+      // if it was the last button we must continue game
+      if(melody.length === userMelody.length || userMadeError){
+        setTimeout(continueGame,pause); // make a 2 seconds pause before continue  
+        //continueGame();
+      }
+
     }
 
   }
