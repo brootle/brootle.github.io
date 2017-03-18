@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // make sure we stop sound if we move mouse out of button but it is still pressed
   buttons.forEach(button => button.addEventListener('mouseout',stopPlayingSound));  
 
-  //activateButtons();
+  //disableButtons(); // disable buttons initially
 
 
   var centralButton = document.querySelector(".central-controller");
@@ -82,11 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function activateButtons(){
-    buttons.forEach(button => button.classList.toggle('disabled'));
+    // remove disabled class
+    buttons.forEach(button => button.classList.remove('disabled')); 
   }
 
   function disableButtons(){
-    buttons.forEach(button => button.classList.toggle('disabled'));    
+    // let's just add disabled class  
+    buttons.forEach(button => button.classList.add('disabled'));  
   }
 
   //playSong(melody);
@@ -102,8 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (var i = 0; i < melody.length; i++) {
         (function(index) {
             setTimeout(function() {              
-              playSound(melody[index]); 
-              console.log("just played: ",melody[index]);            
+              playSound(melody[index]);           
             }, i * (sound.length * 1000 + sound.interval)); // we add 100 milliseconds just to make sure sounds won't overlap
         })(i);
     }
@@ -124,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // make button pressed
       var pressedButton = document.querySelector(`.${button}`);   
-      console.log(pressedButton);
       pressedButton.classList.toggle('pressed');
 
       // make button not pressed after sound finished 
@@ -149,14 +149,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function melodiesMatch(){
-    console.log(notesCounter,userMelody,melody);
     // just compare last elements to corresponding note in melody
     return userMelody[userMelody.length-1] === melody[notesCounter-1];
-    //return true;
   }
 
   function startPlayingSound(e){
-    console.log("Srart playing sound....",e.currentTarget);
 
     const button = e.currentTarget.getAttribute("data-button");
 
@@ -164,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var soundTone = tone[button];
     var soundVolume = sound.volume;
-
+  
     // compare melody and user melody
     if(melodiesMatch()){
       userMadeError = false;
@@ -173,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
       soundTone = error.frequency;
       soundVolume = error.volume;    
       userMadeError = true;
+      disableButtons(); // when user made error we imidiatelly disable buttons
       // reset melodies if strict mode
       // melody = [];
       // userMelody = [];
@@ -201,10 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     oscillator.frequency.value = soundTone;        
 
-    // Adding a gain node just to lower the volume a bit and to make the
-    // sound less ear-piercing. It will also allow us to mute and replay
-    // our sound on demand
-    //var gainNode = audioContext.createGain();
     gainNode.gain.setValueAtTime(soundVolume, audioContext.currentTime);
     
     oscillator.connect(gainNode);
@@ -215,15 +209,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function stopPlayingSound(e){
-    console.log("Stop playing sound....",e.currentTarget);
+    //console.log("Stop playing sound....",e.currentTarget);
 
     if(playing){
+      disableButtons();
       
       // change sound volume to 0, so when we stop it we avoid ugly click bug
       gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
       //gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.3);   
       playing = false;
-
+      
       //make button not pressed after sound finished       
       // we can do
       // OPTION 1
@@ -233,15 +228,21 @@ document.addEventListener('DOMContentLoaded', function () {
       var button = e.currentTarget;
       (function(btn){
         setTimeout(function(){ 
-          btn.classList.toggle('pressed');                
+          btn.classList.toggle('pressed');  
+          // activate buttons only if we didn't put all tones of if no error by user
+          if((melody.length !== userMelody.length) && (userMadeError == false)){
+            activateButtons();  
+          }            
         },0.1 * 1000); // this is a little delay after we unpress the button
       })(button);      
 
       // if it was the last button we must continue game
       if(melody.length === userMelody.length || userMadeError){
+        //disableButtons();        
         setTimeout(continueGame,pause); // make a 2 seconds pause before continue  
         //continueGame();
       }
+  
 
     }
 
