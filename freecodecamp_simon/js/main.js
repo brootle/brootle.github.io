@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var strictButton = document.querySelector(".strict");
   strictButton.addEventListener('click',function(){
-    //this.classList.toggle('mode');
+    this.classList.toggle('mode-on');
   });  
 
   function continueGame(){
