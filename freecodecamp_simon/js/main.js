@@ -56,8 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
   //disableButtons(); // disable buttons initially
 
 
-  var centralButton = document.querySelector(".central-controller");
-  centralButton.addEventListener('click',continueGame);
+  // var centralButton = document.querySelector(".central-controller");
+  // centralButton.addEventListener('click',continueGame);
+
+  var switchButton = document.querySelector(".switch-btn");
+  switchButton.addEventListener('click',function(){
+    this.classList.toggle('on');
+  });
+
+  var strictButton = document.querySelector(".strict");
+  strictButton.addEventListener('click',function(){
+    //this.classList.toggle('mode');
+  });  
 
   function continueGame(){
     if(!userMadeError){
