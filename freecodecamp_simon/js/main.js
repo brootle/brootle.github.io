@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }  
 
   // WIN score
-  const WIN = 5;
+  const WIN = 20;
 
   var gainNode = audioContext.createGain();
   gainNode.connect(audioContext.destination);
