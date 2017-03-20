@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     interval: 200
   }  
 
+  // WIN score
+  const WIN = 5;
+
   var gainNode = audioContext.createGain();
   gainNode.connect(audioContext.destination);
   gainNode.gain.value = sound.volume;  
@@ -45,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var userMadeError = false;
 
+  var flags = {
+    on:false,
+    strict:false
+  };
+
   // add event listenter to catch when we start playing and stop playing
   var buttons = document.querySelectorAll(".button");
   buttons.forEach(button => button.addEventListener('mousedown',startPlayingSound));
@@ -59,25 +67,82 @@ document.addEventListener('DOMContentLoaded', function () {
   // var centralButton = document.querySelector(".central-controller");
   // centralButton.addEventListener('click',continueGame);
 
-  var switchButton = document.querySelector(".switch-btn");
-  switchButton.addEventListener('click',function(){
-    this.classList.toggle('on');
-  });
-
   var strictButton = document.querySelector(".strict");
   strictButton.addEventListener('click',function(){
     this.classList.toggle('mode-on');
+    flags.strict = !flags.strict;
+    console.log("strict mode: ", flags.strict);
   });  
 
-  function continueGame(){
-    if(!userMadeError){
-      addRandomSoundToMelody();
-    }
-    playSong(melody); 
-    // reser user melody
-    userMelody = [];
+  var startButton = document.querySelector(".start");
+  startButton.addEventListener('click',function(){
+    console.log("start button clicked");
+    // when we click start button we restart the game
+    melody = [];
+    userMadeError = false;
     notesCounter = 0;
-    //playSong(userMelody);    
+    setTimeout(continueGame,1000);
+  });     
+
+  var switchButton = document.querySelector(".switch-btn");
+  switchButton.addEventListener('click',function(){
+    this.classList.toggle('on');
+
+    flags.on = !flags.on;
+    // turn off strict mode when switch is off
+    if(!flags.on){
+      // disable all buttons and reset game data
+      disableButtons();
+      // reset game data
+      melody = [];
+      userMadeError = false;
+      notesCounter = 0;       
+
+      flags.strict = false;
+      // remove 'mode-on' class
+      document.querySelector(".strict").classList.remove('mode-on');
+
+      // set count value to nothing when ON is off 
+      document.querySelector(".count > span").textContent = '';
+
+      // disable START and STRICT buttons
+      strictButton.classList.add('disabled');
+      startButton.classList.add('disabled');
+       
+    } else{
+      // set some values when ON is on
+      document.querySelector(".count > span").textContent = '- -';
+      // enable START and STRICT buttons
+      strictButton.classList.remove('disabled');
+      startButton.classList.remove('disabled');      
+    }
+
+    console.log("game on: ", flags.on);
+    console.log("strict mode: ", flags.strict);
+  });
+
+ 
+  function continueGame(){
+
+    // only if game is ON
+    if(flags.on){
+      if(!userMadeError){
+        addRandomSoundToMelody();
+      }
+      playSong(melody); 
+      // reser user melody
+      userMelody = [];
+      notesCounter = 0;
+      //playSong(userMelody);    
+      if(melody.length < 10){
+        document.querySelector(".count > span").textContent = `0${melody.length}`;
+      } else{
+        document.querySelector(".count > span").textContent = melody.length;
+      }
+    }
+
+
+  
   }
 
   function addToUserMelody(sound){
@@ -94,11 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function activateButtons(){
     // remove disabled class
     buttons.forEach(button => button.classList.remove('disabled')); 
+    startButton.classList.remove('disabled');
   }
 
   function disableButtons(){
     // let's just add disabled class  
     buttons.forEach(button => button.classList.add('disabled'));  
+    startButton.classList.add('disabled');
   }
 
   //playSong(melody);
@@ -107,21 +174,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // disable buttons
     disableButtons();
 
+    
+
     console.log("Playing melody..........");
+
+    var timeouts = [];
 
     // using http://stackoverflow.com/a/5226335/6261255
     // an immediately-invoked function expression (IIFE) to create a closure around setTimeout
     for (var i = 0; i < melody.length; i++) {
+
+      // if switch was turned OFF stop playing and 
+      
         (function(index) {
-            setTimeout(function() {              
-              playSound(melody[index]);           
-            }, i * (sound.length * 1000 + sound.interval)); // we add 100 milliseconds just to make sure sounds won't overlap
-        })(i);
+
+            timeouts.push(setTimeout(function() {   
+                console.log("index:", index,"game on:",flags.on,"timeouts number:",timeouts);
+                if(!flags.on){
+                  timeouts.forEach(timeout => clearTimeout(timeout));
+                  disableButtons();
+                }else{
+                  playSound(melody[index]);                  
+                }  
+            }, i * (sound.length * 1000 + sound.interval))); 
+
+        })(i);      
+        // we add 100 milliseconds just to make sure sounds won't overlap
+
+        // (function(index) {
+        //     setTimeout(function() {   
+
+        //         playSound(melody[index]);   
+            
+        //     }, i * (sound.length * 1000 + sound.interval)); // we add 100 milliseconds just to make sure sounds won't overlap
+        // })(i);
+
     }
 
-    // avtivate buttons only after melody is finished
+    // avtivate buttons only after melody is finished and only if game is ON
+
+    // console.log("activate buttons after melody played");
     var melodyTime =  (sound.length * 1000 + sound.interval) * melody.length;
-    setTimeout(activateButtons,melodyTime);    
+    // it's timesetout is created before buttons, but we add it so we can clean it
+    timeouts.push(setTimeout(activateButtons,melodyTime));    
+
   }
 
   function playSound(button){ 
@@ -142,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function(){
           pressedButton = document.querySelector(`.${btn}`);   
           pressedButton.classList.toggle('pressed');
+          //activateButtons();
         },sound.length * 1000);
       })(button);
 
@@ -246,11 +343,27 @@ document.addEventListener('DOMContentLoaded', function () {
         },0.1 * 1000); // this is a little delay after we unpress the button
       })(button);      
 
+      // here we must check if we reach win score
+      if(melody.length === userMelody.length && melody.length === WIN){
+        // reset game
+        document.querySelector(".count > span").textContent = 'WIN';
+        console.log("restart game");
+        melody = [];
+        userMadeError = false;
+        notesCounter = 0; 
+        setTimeout(continueGame,pause); 
+      }
+
       // if it was the last button we must continue game
       if(melody.length === userMelody.length || userMadeError){
-        //disableButtons();        
+        console.log("strict mode ",flags.strict);
+        // if strict mode = true -> reset
+        if(flags.strict && userMadeError){
+          melody = [];
+          userMadeError = false;
+          notesCounter = 0;          
+        }
         setTimeout(continueGame,pause); // make a 2 seconds pause before continue  
-        //continueGame();
       }
   
 
