@@ -143,11 +143,15 @@ document.addEventListener('DOMContentLoaded', function () {
         singleChannelObj.followers = data.follows[i].channel.followers;
         singleChannelObj.game = data.follows[i].channel.game;
         singleChannelObj.url = data.follows[i].channel.url;
-        singleChannelObj.video_banner = data.follows[i].channel.video_banner;
+        if(data.follows[i].channel.video_banner !== null){
+          singleChannelObj.video_banner = data.follows[i].channel.video_banner;
+        }else{
+          singleChannelObj.video_banner = 'http://techgirl.co.za/wp-content/uploads/2016/08/Twitch-logo-720p.jpg'
+        }
         channelObjArray.push(singleChannelObj);
       }
 
-      console.log(channelObjArray);
+      console.log("channelObjArray",channelObjArray);
       buildInitialHTML(channelObjArray);
 
       console.log(channels);
