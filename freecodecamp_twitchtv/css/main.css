@@ -1,61 +1,172 @@
 :root{
-    --scale: 1;
-    --base: #6390cb;
-    --buttonsMargin: calc(var(--scale) * 15px);
-    --containerWidth: calc(var(--scale) * 500px);
+    --width: 580px;
+    /*--height: 360px;*/
+    --height: calc(360px / calc(640/580));
 }
 
-/*.h1{
-    color: var(--base);
-}*/
-
-
-html{
-    background-color: #241235;;    
+body{
+    background-color: #222222;
 }
-
-h1{
-    text-align: center;
-    color: white;
-    text-shadow: 3px 3px black;
-}
-
-h3{
-    font-size: 25px;
-}
-
-p{
-    text-align: center;
-    /*width: 530px;*/
-    margin: auto;
-    color: white;    
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-a{
-    color: white;
-}
-
 
 .container{
-    width: var(--containerWidth);
-    height: var(--containerWidth);
+    padding: 2% 1% 2% 1%;
+}
+
+.wikipedia-reader-box{
+    top: 10px;
+    position: fixed;
+    /*white-space: nowrap;
+    justify-content: center;
+    display: flex;*/
+    width: 100%;
+    left: 0;
+    background-color: rgba(34, 34, 34, 0.85);
+    padding-top: 15px;
+    padding-bottom: 15px; 
+
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin: auto;
-    margin-top: 26px;
-    margin-bottom: 26px;
+}
+
+.search-container{
+    white-space: nowrap;
+    justify-content: center;
+    display: flex;    
+}
+
+.warning-message{
+    display: none;
+    padding-top:10px;
+    font-size: 12px;
+    color: #d0cec9;
+    text-transform: uppercase;
+}
+
+.show{
+    display: block;
+}
+
+.wikipedia-reader-box input{
+    background-color: #4a4a4a;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    line-height: 34px;
+    box-sizing: content-box;
+
+    border-radius: 5px;
+    color: #d0cec9;
+    font-family: 'Roboto', sans-serif; 
+
+    box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.71);
+    border: 2px solid rgb(119, 115, 115);    
+}
+
+.wikipedia-reader-box input:focus {
+    box-shadow: 0px 0px 21px 2px rgba(76, 73, 73, 0.71);
+    border-color: rgb(202, 196, 196);    
+}
+
+.wikipedia-reader-box a{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    display: inline-block;
+    box-sizing: content-box;
+    border: 2px solid #777373;
+    background-color: #4a4a4a;
+    border-radius: 25px;
+    line-height: 36px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #d0cec9;   
+}
+
+.wikipedia-reader-box a:hover{
+    border-color: rgb(202, 196, 196);
+}
+
+.search-result{
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.search-result a{
+    box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.71);
+    text-decoration: none;
+    color: #d0cece;
+    border-radius: 5px;
+    border: 2px solid rgb(119, 115, 115);
+    display: block;
+    background-color: rgb(74, 74, 74);
+    
+    margin: 15px 10px 15px 10px;
+    padding: 10px;
+    /*width: 640px;*/
+    width: var(--width);
+    height: var(--height);  
+    background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/towelliee-channel_offline_image-3150e70fb21cd00f-640x360.jpeg);    
+ 
+}
+
+.search-result a:hover{
+    box-shadow: 0px 0px 21px 2px rgba(76, 73, 73, 0.71);
+    border-color: rgb(202, 196, 196);
     color: white;
-    /* padding: 20px; */
-    box-sizing: border-box;
-    background-color: #453a7d;
-     border-radius: 5px; 
-    /*border-radius: 50%;*/
-    box-shadow: 3px 3px black;
-    border: calc(var(--buttonsMargin) * 2) solid #453a7d;
-    overflow: hidden;
-    position: relative;
+    background-color: rgb(56, 52, 52);
+}
+
+.search-result a p{
+    font-family: 'Noto Sans', sans-serif;
+    padding: 0;
+    margin: 0;    
+    margin-top: 10px;
+}
+
+.search-result a h2{
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;    
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .wikipedia-reader-box input{
+        width: 140px;
+    }
+}
+
+
+@media screen and (max-width: 480px){
+    .wikipedia-reader-box{
+        flex-direction: column;
+    }
+
+    .wikipedia-reader-box a {
+        margin: auto;
+        width: 124px;
+        margin-bottom: 10px;
+    }
+
+    .wikipedia-reader-box input{
+        width: 140px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .search-result {
+        padding-top: 180px;
+    }    
 }
