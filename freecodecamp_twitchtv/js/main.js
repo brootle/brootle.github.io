@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="result-title">
                 <span>${channelsArray[i].game}</span>
             </div>
-            <div id="${channelsArray[i].name}_result-footer" class="result-footer offline">
-                <span class="result-footer-status">offline</span>
+            <div id="${channelsArray[i].name}_result-footer" class="result-footer loading">
+                <span class="result-footer-status">Loading...</span>
             </div>
         </a>    
       `;
@@ -56,6 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
     footerToUpdate.innerHTML = `
       <span class="result-footer-status">online</span><span class="result-footer-viewers">${dataObject.viewers} viewers</span>
     `;
+  }
+
+  function changeLoadingToOffline(){
+    var allLoadingElements = document.querySelectorAll('.loading');
+    console.log("allLoadingElements",allLoadingElements);
+    // allLoadingElements[0].className = 'result-footer offline';
+    // allLoadingElements[0].innerHTML = `<span class="result-footer-status">offline</span>`;
+    allLoadingElements.forEach(element => {
+      element.className = 'result-footer offline';
+      element.innerHTML = `<span class="result-footer-status">offline</span>`;      
+    });
+    // buttons.forEach(button => button.classList.remove('disabled')); 
+    // get all elements with 'loading' class
+    // change class to 'offline' and innerHTML to 'offline'    
   }
 
   function streamDataByChannelsList(channels){
@@ -95,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         updateChannelHTML(channelName,dataObject);
       }
+
+      changeLoadingToOffline();
 
 
     })
