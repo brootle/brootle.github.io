@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // this user doesn't follow anyone - dfsfsdf
 
-  function streamDataByChannelsList(channel){
+  function streamDataByChannelsList(channels){
 
     // WORKS https://api.twitch.tv/kraken/streams?channel=twitchpresents,rocketbeanstv,freecodecamp,ognglobal,basetradetv,lck1
 
     // Works for 1 stream - https://api.twitch.tv/kraken/streams/lck1    
 
-    const myRequest = new Request(`https://api.twitch.tv/kraken/streams/${channel}`, myInit);                
+    const myRequest = new Request(`https://api.twitch.tv/kraken/streams?channel=${channels}`, myInit);                
 
     fetch(myRequest)
     .then(function(response) {
@@ -36,6 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(function(data) {
       console.log("STREAM: ",data); // iliakan
       
+      // data has array of online streams
+      // so we get data-channel="twitchpresents"
+      // and get
+      //    viewers : 26142
+      //    game : "League of Legends"
+      //    preview.large : "https://static-cdn.jtvnw.net/previews-ttv/live_user_lck1-640x360.jpg"
+
       // for(var i = 0; i < data.follows.length; i++){
       //   console.log(data.follows[i].channel.name);
       // }
@@ -69,22 +76,35 @@ document.addEventListener('DOMContentLoaded', function () {
         throw new Error("User doesn't follow anyone"); 
       }
       
+      var channels = [];
+
       for(var i = 0; i < data.follows.length; i++){
-        console.log(data.follows[i].channel.name);
+        channels.push(data.follows[i].channel.name);
       }
+
+      console.log(channels);
+      // after we got channels we can build elements on a page
+      // and after we got info on streams we just update elements
 
       // we must make request putting all channels in the list
       // if nothing for some channel, it means channel is offline
       // and we put other data
-      streamDataByChannelsList("twitchpresents");
+      
+      //streamDataByChannelsList("twitchpresents");
+      streamDataByChannelsList(channels);
+
       // inside channel ->
       //    name : "towelliee"
       //    url : "https://www.twitch.tv/towelliee"
       //    display_name : "Towelliee"
+      //    game : "League of Legends"
+      //    status : "EU REEEESET Day! NH Clear ALL Raids | $500 PayPal !giveaway Follow @towelthetank"
       //    followers : 532333
       //    video_banner : "https://static-cdn.jtvnw.net/jtv_user_pictures/towelliee-channel_offline_image-3150e70fb21cd00f-640x360.jpeg"
 
       // get stream data by channel name
+      //    viewers : 26142
+      //    preview.large : "https://static-cdn.jtvnw.net/previews-ttv/live_user_lck1-640x360.jpg"      
 
       // get past broadcasts https://api.twitch.tv/kraken/channels/george/videos?broadcasts=true
 
