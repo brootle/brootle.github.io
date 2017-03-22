@@ -14,6 +14,26 @@ document.addEventListener('DOMContentLoaded', function () {
     channelsByUser(user);
   })
 
+  document.getElementById('search-field').addEventListener('keyup',function(e){
+
+    if (e.keyCode == 13) {
+      console.log("searching....");
+      // remove any error message
+      document.querySelector('.warning-message').classList.remove('show');      
+      var user = this.value;
+      channelsByUser(user);
+    }    
+
+  })  
+
+  //object.addEventListener("keyup", myScript);
+
+  // $("#search-field").keyup(function (e) {
+  //     if (e.keyCode == 13) {
+  //         wikiSearch()
+  //     }
+  // });  
+
   //channelsByUser('brootletv');
 
   // this user doesn't follow anyone - dfsfsdf
