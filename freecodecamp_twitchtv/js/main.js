@@ -18,6 +18,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // this user doesn't follow anyone - dfsfsdf
 
+  function buildInitialHTML(channelsArray){
+    var searchResult = document.querySelector('.search-result');
+
+    var html = '';
+
+    for(var i = 0; i < channelsArray.length; i++){
+      html+=`
+        <a id="${channelsArray[i].name}" href="${channelsArray[i].url}" target="_blank" data-channel="twitchpresents" data-status="online"
+            style="background-image: url(${channelsArray[i].video_banner});">
+            <div class="result-header">
+                <span class="result-header-name">${channelsArray[i].display_name}</span><span class="result-header-followers">${channelsArray[i].followers} followers</span>
+            </div>
+            <div class="result-title">
+                <span>${channelsArray[i].game}</span>
+            </div>
+            <div id="${channelsArray[i].name}_result-footer" class="result-footer offline">
+                <span class="result-footer-status">offline</span>
+            </div>
+        </a>    
+      `;
+    }    
+
+
+    searchResult.innerHTML = html;
+  }
+
+  function updateChannelHTML(channel,dataObject){
+    var channelHTML = document.getElementById(channel);
+    var footerToUpdate = document.getElementById(channel+'_result-footer');
+
+    channelHTML.style.backgroundImage = `url('${dataObject.preview}')`;
+
+    // just set class without loading or offline
+    footerToUpdate.className = "result-footer";
+
+    footerToUpdate.innerHTML = `
+      <span class="result-footer-status">online</span><span class="result-footer-viewers">${dataObject.viewers} viewers</span>
+    `;
+  }
+
   function streamDataByChannelsList(channels){
 
     // WORKS https://api.twitch.tv/kraken/streams?channel=twitchpresents,rocketbeanstv,freecodecamp,ognglobal,basetradetv,lck1
@@ -46,6 +86,16 @@ document.addEventListener('DOMContentLoaded', function () {
       // for(var i = 0; i < data.follows.length; i++){
       //   console.log(data.follows[i].channel.name);
       // }
+
+      for(var i = 0; i < data.streams.length; i++){
+        var channelName = data.streams[i].channel.name;
+        var dataObject = {};
+        dataObject.viewers = data.streams[i].viewers;
+        dataObject.preview = data.streams[i].preview.large;
+
+        updateChannelHTML(channelName,dataObject);
+      }
+
 
     })
     .catch(function(error) {
@@ -78,9 +128,22 @@ document.addEventListener('DOMContentLoaded', function () {
       
       var channels = [];
 
+      var channelObjArray = [];
+      
       for(var i = 0; i < data.follows.length; i++){
         channels.push(data.follows[i].channel.name);
+        var singleChannelObj = {};
+        singleChannelObj.name = data.follows[i].channel.name;
+        singleChannelObj.display_name =  data.follows[i].channel.display_name;
+        singleChannelObj.followers = data.follows[i].channel.followers;
+        singleChannelObj.game = data.follows[i].channel.game;
+        singleChannelObj.url = data.follows[i].channel.url;
+        singleChannelObj.video_banner = data.follows[i].channel.video_banner;
+        channelObjArray.push(singleChannelObj);
       }
+
+      console.log(channelObjArray);
+      buildInitialHTML(channelObjArray);
 
       console.log(channels);
       // after we got channels we can build elements on a page
