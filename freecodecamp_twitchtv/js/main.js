@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     for(var i = 0; i < channelsArray.length; i++){
       html+=`
-        <a id="${channelsArray[i].name}" href="${channelsArray[i].url}" target="_blank" data-channel="twitchpresents" data-status="online"
+        <a id="${channelsArray[i].name}" href="${channelsArray[i].url}" target="_blank" 
             style="background-image: url(${channelsArray[i].video_banner});">
             <div class="result-header">
                 <span class="result-header-name">${channelsArray[i].display_name}</span><span class="result-header-followers">${channelsArray[i].followers} followers</span>
