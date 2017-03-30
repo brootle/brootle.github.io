@@ -1,7 +1,7 @@
     # // 2016 passwords
-    # // caesar:50zPJlUFIYY0o - 13 - 0 seconds to break
-    # // eli:50MxVjGD7EfY6 - yale - 1 second to break if use small letters only
-    # // hdan:50z2Htq2DN2qs - boola - 3 seconds to break if use small letters only
+    # // caesar:50zPJlUFIYY0o - 13 - Time spent: 0:00:00.049747 
+    # // eli:50MxVjGD7EfY6 - yale - Time spent: 0:00:18.639414
+    # // hdan:50z2Htq2DN2qs - boola - Time spent: 0:04:31.237291
     # // andi:HALRCq0IBXEPM - Berkely
     # // skroob:50Bpa7n/23iug - 12345 - 0 seconds if checking for numbers only
     # // zamyla:HAYRs6vZAb4wo - password - program killed after 4 min 25 sec even using small letters only

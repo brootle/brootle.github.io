@@ -108,8 +108,17 @@ $(function () {
   // initially group by subnet
   groupBy("subnet");
 
+  drawSelectionBrackets();
+
   function drawSelectionBrackets(){
-    
+
+    var listItems = $( ".list-group-item" );
+    console.log(listItems);
+    // $(listItems[0]).wrap( "<div class='li-container'>d</div>" );
+    //$( ".list-group-item" ).wrapAll( "<div class='li-container' />" );
+    console.log(listItems[0].innerHTML);
+    //listItems[0].innerHTML = "fsdfsd";
+
   }
 
   function groupByAvailabilityZoneAndSubnet(keys){

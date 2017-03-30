@@ -46,3 +46,6 @@ Install flask in virtualenv
 # $ export FLASK_DEBUG=1
 # $ flask run --host=0.0.0.0 --port=8080
 # it will be at http://127.0.0.1:8080/
+
+# run command to exit flask enviroment
+#  $ deactivate
