@@ -1,0 +1,303 @@
+:root{
+    --scale: 1;
+    --base: #6390cb;
+    --buttonsMargin: calc(var(--scale) * 15px);
+    --containerWidth: calc(var(--scale) * 500px);
+}
+
+/*.h1{
+    color: var(--base);
+}*/
+
+
+html{
+    background-color: #241235;;    
+}
+
+h1{
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px black;
+}
+
+h3{
+    font-size: 25px;
+}
+
+p{
+    text-align: center;
+    /*width: 530px;*/
+    margin: auto;
+    color: white;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+a{
+    color: white;
+}
+
+
+.container{
+    width: var(--containerWidth);
+    height: var(--containerWidth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 26px;
+    margin-bottom: 26px;
+    color: white;
+    /* padding: 20px; */
+    box-sizing: border-box;
+    background-color: #453a7d;
+    /* border-radius: 5px; */
+    border-radius: 50%;
+    box-shadow: 3px 3px black;
+    border: calc(var(--buttonsMargin) * 2) solid #453a7d;
+    overflow: hidden;
+    position: relative;
+}
+
+.inner-shadow{
+    box-shadow: inset 0px 0px 10px #241239;
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    border-radius: 50%;
+    /* border: 2px solid white; */
+    border: 1px solid #241235;
+}
+
+.central-controller{
+    padding: 10px;
+    z-index: 999;
+    box-sizing: border-box;
+    width: 53%;
+    position: absolute;
+    height: 53%;
+    background-color: wheat;
+    border-radius: 50%;
+    background-color: rgb(150, 135, 224);
+    border: calc(var(--buttonsMargin) * 1.7) solid #453a7d;;
+    /* box-shadow: 0px 0px 5px #8256b5; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.logo{
+    padding-top: 10px;
+    text-transform: capitalize;
+    font-size: 40px;  
+    font-family: 'Russo One', sans-serif;
+}
+
+.controller-buttons{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    align-content: center;
+    justify-content: center;
+
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;    
+
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.controller-buttons > div{
+    width: calc(100%/3);
+    text-align: center;
+    height: 55px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controller-buttons > div > span{
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 3px;
+    font-size: 13px;
+    letter-spacing: 1px;   
+}
+
+.count{
+    font-size: 22px;
+    border: 3px solid black;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: #42130d;
+    color: red;
+    display: inline-block;
+    border-radius: 6px;
+
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.start{
+    box-shadow: 1px 1px 0px #232323;
+    box-sizing: border-box;
+    border: 3px solid #585858;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #ff0000;
+    margin-bottom: 5px;
+
+    cursor: pointer;
+}
+
+.strict{
+    box-shadow: 1px 1px 0px #232323;
+    box-sizing: border-box;
+    border: 3px solid #585858;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #fdff20;
+    margin-bottom: 5px;   
+
+    cursor: pointer; 
+
+    position: relative;    
+}
+
+.strict > div{
+    position: absolute;
+    top: -16px;
+    left: 5px;    
+
+    box-sizing: border-box;
+    border: 2px solid #42130d;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #42130d;   
+}
+
+.mode-on > div{
+    background-color: #ff0000;
+}
+
+.on-off-switch{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.on-off-switch span{
+    width: 40px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.on-off-switch span:nth-of-type(1){
+    text-align: right;
+    margin-right: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;    
+}
+
+.on-off-switch span:nth-of-type(2){
+    text-align: left;
+    margin-left: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;     
+}
+
+.switch-btn{
+    text-align: left;
+    padding: 2px;
+    height: 20px;
+    width: 40px;
+    background-color: #241235;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.switch-btn div{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background-color: #bb4030;
+}
+
+.on{ text-align: right; }
+.on div { background-color: #1f7c2e; }
+
+.buttons-row{
+    width: 100%;
+    flex: 1;
+    display: flex;
+}
+
+.button {
+    border-radius: 9px;
+    flex: 1;
+    box-shadow: 0px 0px 12px rgba(49, 40, 95, 0.55);
+    cursor: pointer;
+    border: 1px solid rgba(36, 18, 53, 0.67);
+}
+
+.button:focus{outline:none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+
+/*http://www.cssmatic.com/gradient-generator*/
+
+.red{
+    border-top-right-radius: 100%;
+    background-color: #bb4030;
+    margin-bottom: var(--buttonsMargin);
+    margin-left: var(--buttonsMargin);    
+
+/*background: linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 36%, rgba(246,41,12,1) 62%, rgba(240,47,23,1) 81%, rgba(203,43,28,1) 99%, rgba(201,43,28,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#c92b1c', GradientType=1 );
+*/
+
+}
+
+.green{
+    border-top-left-radius: 100%;
+    background-color: #1f7c2e;
+    margin-bottom: var(--buttonsMargin);
+    margin-right: var(--buttonsMargin);   
+}
+
+.yellow{
+    border-bottom-left-radius: 100%;
+    background-color: #b0b13f;
+    margin-top: var(--buttonsMargin);
+    margin-right: var(--buttonsMargin);     
+}
+
+.blue{
+    border-bottom-right-radius: 100%;
+    background-color: #308fbf;
+    margin-top: var(--buttonsMargin);
+    margin-left: var(--buttonsMargin);     
+}
+
+.pressed{
+    filter: brightness(1.5);
+}
+
+.disabled{
+    pointer-events: none;
+}

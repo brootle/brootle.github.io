@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Short+Stack" rel="stylesheet">-->
+
+    <link href="css/main.css" rel="stylesheet" /> 
+
+    <script src="js/main.js"></script>
+
+    <title>Custom Video Player</title>
+</head>
+<body>
+
+    <h1>Custom Video Player</h1>
+    
+    <button id="capture">Capture</button>
+    <canvas id="canvas"></canvas>
+
+    <div class="container">  
+
+        <div class="player">
+
+            <!--Content Type for MOV videos are video/quicktime in my case. Adding type="video/mp4" to MOV video file solved issue in my case.
+
+            <video width="400" controls Autoplay=autoplay>
+            <source src="D:/mov1.mov" type="video/mp4">
+            </video>            -->
+            
+            <!--<video controls class="player__video viewer" src="/home/alex/Downloads/11 - Custom HTML5 Video Player.mp4"></video>-->
+
+            <!--<video class="player__video viewer" src="/home/alex/Downloads/11 - Custom HTML5 Video Player.mp4"></video>-->
+
+            <video class="player__video viewer" src="/home/alex/Downloads/MVI_6008.MOV"></video>
+
+            
+
+            <div class="player__controls">
+
+                <div class="progress">
+                    <div class="progress__filled"></div>
+                </div>
+
+                <button class="player__button toggle" title="Toggle Play">play</button>
+                <input type="range" name="volume" class="player__slider" min=0 max="1" step="0.05" value="1">
+                <input type="range" name="playbackRate" class="player__slider" min=0 max="2" step="0.1" value="1">
+                <button data-skip="-10" class="player__button">back 10s</button>
+                <button data-skip="25" class="player__button">next 25s</button>
+                <button class="player__button fullscreen">full screen</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <p>
+        Custom Video Player. Based on <a href="https://javascript30.com" target="_blank">JavaScript30</a> tutorial.
+    </p>
+    <p>
+        Designed by <a href="https://www.facebook.com/Lugansk.Alex" target="_blank">Alexander Cherednichenko</a>
+    </p>
+
+
+</body>
+</html>
