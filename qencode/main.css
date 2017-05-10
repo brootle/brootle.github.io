@@ -96,7 +96,6 @@ header{
 
     /*padding-right: 20px;*/
     /*padding-left: 5px;   */
-    padding-left: 0.4%;
     padding-right:1.3vw; 
     padding-left: 0.2vw;  
 
@@ -189,6 +188,7 @@ main h1{
     text-align: center;
     text-transform: capitalize;  
     font-size: 4vw;
+    margin-top: 6vw;
 }
 
 main h1 span{
@@ -429,7 +429,6 @@ main h1 span{
 
     border-radius: 2vw;
 
-    padding-left: 0.4%;
     padding-right:1.3vw; 
     padding-left: 0.2vw;  
 
@@ -451,3 +450,152 @@ main h1 span{
     border-radius: 2vw;
     font-variant: small-caps;
 }
+
+/*============CONTACT=============*/
+
+.contact-container{
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;    
+}
+
+
+.contact-container > div:nth-child(1) {
+    padding-right: 2%;
+    width: 35%;
+}
+
+.contact-container > div:nth-child(2) {
+    padding-left: 2%;
+    width: 65%;
+}
+
+.contact-container p {
+    color: #73767d;
+    font-size: 1.4vw;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    text-align: justify;
+}
+
+form fieldset{
+    border: none;
+}
+
+form button{
+    background: #1451a1;
+    font-weight: bold;
+    border: none;
+
+    white-space: nowrap;
+
+    border-radius: 2vw;
+
+    padding-right:2.3vw; 
+    padding-left: 2.3vw;  
+
+    font-size: 1.3vw;
+    line-height: 3.4vw;
+
+    color: white;
+    text-decoration: none;  
+
+    border: none;
+    outline:none;      
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vw;
+}
+
+.form-group > input:nth-child(1){
+    margin-right: 1vw;
+}
+
+form textarea {
+    border: 2px solid #eeeeee;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 10vw;
+    padding:1.3vw; 
+
+    color: #73767d;
+    font-size: 1.4vw;
+
+    resize: none;
+    border-radius: 2vw;
+    outline:none;
+}
+
+form input{
+    border: 2px solid #eeeeee;
+    flex: 1;
+
+    padding:1.3vw; 
+
+    color: #73767d;
+    font-size: 1.4vw;
+
+    border-radius: 2vw;    
+
+    outline:none;
+}
+
+/*============ CUSTOM SELECT ==========*/
+
+form .custom-select{
+    position: relative;
+    /*border: none;
+    outline:none; */
+    background: white;
+    border: 2px solid #eeeeee;
+    border-radius: 2vw;
+
+    padding:1.3vw; 
+}
+
+form .custom-select{
+    flex: 1;
+}
+
+
+form .custom-select select:invalid { color: #c1c2c5; }
+
+form .custom-select select {
+    /*for firefox*/
+    -moz-appearance: none;
+    /*for chrome*/
+    -webkit-appearance:none;
+
+    display: flex;
+    width: 100%;
+    border: none;
+    background: none;   
+    outline:none; 
+
+    /*color: #c1c2c5;*/
+    color: #73767d;
+    font-size: 1.4vw;    
+}
+
+/*for IE10*/
+form .custom-select select::-ms-expand {
+    display: none;
+}
+
+form .custom-select::after{
+    padding: 1.3vw;
+    position: absolute;
+    right: 0;
+    content: attr(data-background-icon);
+    font-family: "FontAwesome";
+    color: #1451a1;
+    font-size: 1.8vw;
+    top: 0;
+    pointer-events: none;
+}
+
+/*============ CUSTOM SELECT END ==========*/
