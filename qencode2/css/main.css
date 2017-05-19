@@ -72,33 +72,27 @@ nav{
 
 .menu-links--bordered{
     white-space: nowrap;
-
     border-radius: 2vw;
-
-    padding-left:1.3vw; 
-    padding-right: 0.2vw;  
-
-    /*margin-left: 7px;*/
+    padding-left: 1.4vw;
+    padding-right: 0.4vw;
     margin-right: 7px;
-
-    font-size: 1.3vw;
+    font-size: 1.1vw;
     line-height: 3.4vw;
-
     color: white;
-    text-decoration: none;   
-
+    text-decoration: none;
     border: 2px solid #5eb4cb;
 }
 
 .menu-links--bordered > span{
-    margin-left: 0.6vw;
-
+    margin-left: 0.8vw;
     padding: 0.6vw;
-
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
     background: #093a97;
-
     border-radius: 2vw;
     font-variant: small-caps;
+    font-weight: 900;
+    font-size: 1.3vw;
 }
 
 
@@ -353,21 +347,41 @@ main h1{
     margin-left: 0.5vw;
 }
 
-.main-card_logo--hand{
-    /*width: 25vw;
-    height: 25vw;
+/*BUTTON AT THE END OF THE MAIN............START*/
 
-    border-radius: 50%;
-    box-shadow: -4vw 4vw 10vw -1vw rgba(0, 0, 0, 0.37);
-
-    background: url("main_hand.png");
-    background-repeat: no-repeat;
-    background-size: contain;    
-    background-position: center;
-    background-size: 85%;
-
-    background-color: white;*/
+.main-button-container {
+    display: flex;
+    justify-content: center;
 }
+
+.main-button--bordered{
+    white-space: nowrap;
+    border-radius: 4vw;
+    padding-left: 2vw;
+    padding-right: 0.7vw;
+    font-size: 1.1vw;
+    line-height: 4.5vw;
+    font-weight: 700;
+    text-decoration: none;
+    background: #022992;
+    color: white;
+}
+
+.main-button--bordered > span{
+    margin-left: 1.4vw;
+    padding: 0.8vw;
+    padding-left: 1.3vw;
+    padding-right: 1.3vw;
+    border-radius: 2vw;
+    font-variant: small-caps;
+    background: #6196c2;
+    font-size: 1.6vw;
+    font-weight: 900;
+}
+
+/*BUTTON AT THE END OF THE MAIN..........EDN*/
+
+
 
 .main-card_logo--clock{
     width: 25vw;
@@ -480,27 +494,30 @@ main h1{
 
 .contact-container{
     display: flex;
-    padding-left: 10%;
-    padding-right: 10%;    
+    /*padding-left: 16%;
+    padding-right: 16%;*/
+    margin-left: 16%;
+    margin-right: 16%;    
 }
 
 
 .contact-container > div:nth-child(1) {
-    padding-right: 2%;
-    width: 35%;
+    /*padding-right: 13%;*/
+    /*width: 40%;*/
 }
 
 .contact-container > div:nth-child(2) {
-    padding-left: 2%;
-    width: 65%;
+    /*padding-left: 2%;*/
+    /*width: 60%;*/
 }
 
 .contact-container p {
-    color: #73767d;
-    font-size: 1.4vw;
+    padding-right: 13%;
     margin-bottom: 1vw;
     margin-top: 1vw;
     text-align: justify;
+    line-height: 1.8vw;
+    font-size: 1vw;
 }
 
 form fieldset{
@@ -508,22 +525,18 @@ form fieldset{
 }
 
 form button{
-    background: #1451a1;
-    font-weight: bold;
-    border: none;
-
+    display: inline-block;
     white-space: nowrap;
-
     border-radius: 2vw;
+    padding-right: 3.3vw;
+    padding-left: 3.3vw;
+    font-size: 1.1vw;
+    line-height: 3.3vw;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: capitalize;
 
-    padding-right:2.3vw; 
-    padding-left: 2.3vw;  
-
-    font-size: 1.3vw;
-    line-height: 3.4vw;
-
-    color: white;
-    text-decoration: none;  
+    cursor: pointer;
 
     border: none;
     outline:none;      
@@ -531,13 +544,69 @@ form button{
 
 .form-group{
     display: flex;
+    margin-bottom: 3%;
+}
+
+.two-fields{
+    width:50%;
+}
+
+.one-field{
+    width:100%;
+}
+
+.form-group .two-fields:nth-child(2){
+    margin-left: 3%;
+}
+
+.contact-form{
+    padding-left: 15.6%;
+    padding-right: 15.6%;    
+    display: flex;
+    width: 100%;    
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.align-center{
+    text-align: center;
+}
+
+.contact-title{
+    margin-top: 4.5vw;
+    margin-bottom: 1vw;    
+}
+
+.contact-text-block{
+    width: 48%;
+}
+
+.contact-text-block p{
+    padding-right: 27%;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    text-align: justify;
+    line-height: 1.8vw;
+    font-size: 1vw;    
+}
+
+.contact-form-block{
+    width: 52%;
+}
+
+form{
+    margin-top: 0.7vw;
+}
+
+/*.form-group{
+    display: flex;
     justify-content: center;
     margin-bottom: 1vw;
 }
 
-.form-group > input:nth-child(1){
-    margin-right: 1vw;
-}
+.form-group > input:nth-child(2){
+    margin-left: 1vw;
+}*/
 
 form textarea {
     border: 2px solid #eeeeee;
@@ -545,28 +614,27 @@ form textarea {
     box-sizing: border-box;
     width: 100%;
     height: 10vw;
-    padding:1.3vw; 
 
+    padding: 0.9vw;
+    padding-left: 1.3vw;
     color: #73767d;
-    font-size: 1.4vw;
+    font-size: 1vw;
 
     resize: none;
-    border-radius: 2vw;
+    border-radius: 1.4vw;
     outline:none;
 }
 
 form input{
+    box-sizing: border-box;
     border: 2px solid #eeeeee;
     flex: 1;
-
-    padding:1.3vw; 
-
+    padding: 0.9vw;
+    padding-left: 1.3vw;
     color: #73767d;
-    font-size: 1.4vw;
-
-    border-radius: 2vw;    
-
-    outline:none;
+    font-size: 1vw;
+    border-radius: 2vw;
+    outline: none;
 }
 
 /*============ CUSTOM SELECT ==========*/
