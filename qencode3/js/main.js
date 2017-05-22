@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var navMenuFlaf = false;
   
     window.addEventListener('scroll', function(){
-        console.log(window.scrollY);
-   
+        //console.log(window.scrollY);
         changeNavBackground();
         moveBackgrounds();
     });
@@ -28,7 +27,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // change transparency relative to scroll
         var transformIndex = window.scrollY/menuHeight/1.5;
-        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;  
+        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`; 
+
+        // change shadow to nav menu when bottom line is equal to block bottom line
+        // get coordinates of the menu
+        menuCoordinates = menu.getBoundingClientRect(); 
+        // console.log(menuCoordinates.bottom);
+
+        // get coordinates of the header card
+        headerCoordinates = headerCard.getBoundingClientRect();
+        // console.log(headerCoordinates.bottom);
+
+        // add shadow
+        if(headerCoordinates.bottom <= menuCoordinates.bottom){
+            menu.style.boxShadow = "0px 0px 23px 4px rgba(22,14,84,0.6)";
+        }
+
+        // remove shadow
+        if(headerCoordinates.bottom >= menuCoordinates.bottom){
+            menu.style.boxShadow = "";
+        }        
+
     }
 
 
