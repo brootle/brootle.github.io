@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded with JavaScript');
 
     var headerCard = document.querySelector(".header-card");
+    // var headerCard = document.querySelector(".pink");
     var headerCardHeight = headerCard.clientHeight; // 180
 
     console.log(document.querySelector(".header-card").clientHeight);
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var initialY = [78,1];
+    //var initialY = [47,70];
 
     moveBackgrounds();
 
