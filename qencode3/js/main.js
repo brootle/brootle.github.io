@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var menuHeight = menu.clientHeight;
 
         // change transparency relative to scroll
-        var transformIndex = window.scrollY/menuHeight/3;
+        var transformIndex = window.scrollY/menuHeight/1.5;
         menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;  
     }
 
