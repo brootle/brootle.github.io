@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // get menu
     var menu = document.querySelector('.header-menu');  
-    var menuHeight = menu.clientHeight;    
+    var menuHeight = menu.clientHeight;  
+
+    // set background in case user refresh page when it's already scrolled down a lot
+    changeNavBackground();  
 
     window.addEventListener("resize", function(){
         if(window.innerWidth <= 480){
