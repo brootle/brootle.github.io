@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showMenuButton.addEventListener('click', function(){
 
+        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;  
         this.style.display = "none";
         closeMenuButton.style.display = "inline-block";
         subMenu.classList.toggle("hide-menu");
