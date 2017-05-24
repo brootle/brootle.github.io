@@ -49,8 +49,20 @@ body{
     font-family: 'Lato', sans-serif, sans-serif;
 }
 
-#menu-button{
+/*#menu-button{
     display: none;
+}
+
+#сlose-button{
+    display: none;
+}*/
+
+.menu-nav-buttons{
+    display: none;
+}
+
+.menu-nav-items{
+    display: flex;
 }
 
 nav{
@@ -121,6 +133,8 @@ nav{
     text-transform: capitalize;  
 
     transition: background .3s ease;
+
+    cursor: pointer;
 }
 
 .menu-links > i{
@@ -859,6 +873,82 @@ footer{
 
 @media screen and (max-width: 480px) {
 
+    .solid-color{
+        background: linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%);
+    }    
+
+    .align-right{
+        align-items: flex-end;
+    }
+
+    .header-menu_logo {
+        align-items: flex-start;
+        padding-top: 1.5vw;
+    }    
+
+
+    nav .header-menu_items {
+        flex-direction: column;
+    }
+
+    .menu-nav-buttons{
+        display: flex;
+    }    
+
+    .menu-nav-items{
+        /*display: none;*/
+        /*display: flex;*/
+        flex-direction: column;
+    }
+
+    .show-menu{
+        display: flex;
+        flex-direction: column;  
+    }
+
+    .menu-links{
+        /*display: none;*/
+
+        text-align: center;
+        border-radius: 7vw;
+        font-size: 4vw;
+        padding: 4vw;
+        padding-left: 6vw;
+        padding-right: 6vw;
+        box-sizing: border-box;       
+
+        margin-left: 0;
+        margin-right: 0;     
+        margin-bottom: 1vw;     
+    }    
+
+    .hide-button{
+        display: none;
+    }
+
+    .hide-menu{
+        display: none;
+    }    
+
+    .show-button{
+        display: inline-block;
+    }
+
+    #menu-button{
+        display: inline-block;
+    }
+
+
+    #сlose-button {
+        padding-left: 4.42vw;
+        padding-right: 4.42vw;       
+    }    
+
+    #сlose-button > i {
+        margin-right: 0;
+    }    
+
+
     .header-menu_items {
         justify-content: space-between;
     }    
@@ -879,10 +969,6 @@ footer{
 
 
     .header-main_logo{
-        display: none;
-    }
-
-    .menu-links{
         display: none;
     }
 
@@ -941,16 +1027,6 @@ footer{
         font-size: 7vw;
     }    
 
-    #menu-button {
-        display: inline-block;
-        text-align: center;
-        border-radius: 7vw;
-        font-size: 4vw;
-        padding: 4vw;
-        padding-left: 6vw;
-        padding-right: 6vw;
-        box-sizing: border-box;
-    }
 
     /*TOP ENDED..................*/
 
@@ -1199,6 +1275,13 @@ footer{
 }
 
 @media screen and (max-width: 320px) {
+    .menu-nav-items {
+        height: 90vw;
+    }
+
+    .header-menu_logo {
+        padding-top: 1.3vw;
+    }    
 
     .header-menu_items {
         flex-direction: column;

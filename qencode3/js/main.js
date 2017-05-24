@@ -12,27 +12,34 @@ document.addEventListener('DOMContentLoaded', function () {
     var initialY = initialYPositions();
 
     var navMenuFlaf = false;
+
+    // get menu
+    var menu = document.querySelector('.header-menu');  
+    var menuHeight = menu.clientHeight;    
+
+    window.addEventListener("resize", function(){
+        if(window.innerWidth <= 480){
+            // just make sure we set background menu solid color
+            menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+        } 
+
+        // we need to recalculate background for header
+        if(window.innerWidth >= 780){
+            changeNavBackground();
+            moveBackgrounds();            
+        }
+
+    });    
   
     window.addEventListener('scroll', function(){
         //console.log(window.scrollY);
-        changeNavBackground();
-        moveBackgrounds();
-    });
+        // make sure we do effects only if screen size more than 480
+        if(window.innerWidth > 480){
+            changeNavBackground();
+            moveBackgrounds();
+        }
 
-    
-    function changeNavBackground(){
-        // get menu
-        var menu = document.querySelector('.header-menu');  
-        var menuHeight = menu.clientHeight;
-
-        // change transparency relative to scroll
-        var transformIndex = window.scrollY/menuHeight/1.5;
-        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`; 
-
-        // change shadow to nav menu when bottom line is equal to block bottom line
-        // get coordinates of the menu
-        menuCoordinates = menu.getBoundingClientRect(); 
-        // console.log(menuCoordinates.bottom);
+        var menuCoordinates = menu.getBoundingClientRect();         
 
         // get coordinates of the header card
         headerCoordinates = headerCard.getBoundingClientRect();
@@ -46,8 +53,38 @@ document.addEventListener('DOMContentLoaded', function () {
         // remove shadow
         if(headerCoordinates.bottom >= menuCoordinates.bottom){
             menu.style.boxShadow = "";
-        }        
+        }   
 
+    });
+
+    var showMenuButton = document.querySelector("#menu-button");
+    var closeMenuButton = document.querySelector("#сlose-button");
+    var subMenu = document.querySelector(".menu-nav-items");
+
+    showMenuButton.addEventListener('click', function(){
+
+        this.style.display = "none";
+        closeMenuButton.style.display = "inline-block";
+        subMenu.classList.toggle("hide-menu");
+        // subMenu.style.display = "flex";
+        // menu-nav-items
+
+    });
+
+    closeMenuButton.addEventListener('click', function(){
+
+        this.style.display = "none";
+        showMenuButton.style.display = "inline-block";
+        subMenu.classList.toggle("hide-menu");
+        // subMenu.style.display = "none";
+
+    });    
+
+    
+    function changeNavBackground(){
+        // change transparency relative to scroll
+        var transformIndex = window.scrollY/menuHeight/1.5;
+        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;      
     }
 
 
