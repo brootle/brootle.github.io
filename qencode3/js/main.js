@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
             moveBackgrounds();            
         }
 
+        toggleMenuShadow();
+
     });    
   
     window.addEventListener('scroll', function(){
@@ -39,6 +41,36 @@ document.addEventListener('DOMContentLoaded', function () {
             moveBackgrounds();
         }
 
+        toggleMenuShadow();
+
+    });
+
+    var showMenuButton = document.querySelector("#menu-button");
+    var closeMenuButton = document.querySelector("#сlose-button");
+    var subMenu = document.querySelector(".menu-nav-items");
+
+    showMenuButton.addEventListener('click', function(){
+
+        this.style.display = "none";
+        closeMenuButton.style.display = "inline-block";
+        subMenu.classList.toggle("hide-menu");
+        // subMenu.style.display = "flex";
+        // menu-nav-items
+        toggleMenuShadow();
+
+    });
+
+    closeMenuButton.addEventListener('click', function(){
+
+        this.style.display = "none";
+        showMenuButton.style.display = "inline-block";
+        subMenu.classList.toggle("hide-menu");
+        // subMenu.style.display = "none";
+        toggleMenuShadow();
+
+    });    
+
+    function toggleMenuShadow(){
         var menuCoordinates = menu.getBoundingClientRect();         
 
         // get coordinates of the header card
@@ -54,31 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if(headerCoordinates.bottom >= menuCoordinates.bottom){
             menu.style.boxShadow = "";
         }   
-
-    });
-
-    var showMenuButton = document.querySelector("#menu-button");
-    var closeMenuButton = document.querySelector("#сlose-button");
-    var subMenu = document.querySelector(".menu-nav-items");
-
-    showMenuButton.addEventListener('click', function(){
-
-        this.style.display = "none";
-        closeMenuButton.style.display = "inline-block";
-        subMenu.classList.toggle("hide-menu");
-        // subMenu.style.display = "flex";
-        // menu-nav-items
-
-    });
-
-    closeMenuButton.addEventListener('click', function(){
-
-        this.style.display = "none";
-        showMenuButton.style.display = "inline-block";
-        subMenu.classList.toggle("hide-menu");
-        // subMenu.style.display = "none";
-
-    });    
+    }
 
     
     function changeNavBackground(){
