@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // just make sure we set background menu solid color
             menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
         } 
-
+ 
         // we need to recalculate background for header
         if(window.innerWidth >= 780){
             changeNavBackground();
@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', function(){
         //console.log(window.scrollY);
         // make sure we do effects only if screen size more than 480
-        if(window.innerWidth > 480){
+        // only recalculate in the visible area
+        var menuCoordinates = menu.getBoundingClientRect(); 
+        headerCoordinates = headerCard.getBoundingClientRect();
+        if(window.innerWidth > 480 && headerCoordinates.bottom >= menuCoordinates.bottom){
             changeNavBackground();
             moveBackgrounds();
         }
