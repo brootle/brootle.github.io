@@ -20,28 +20,50 @@ document.addEventListener('DOMContentLoaded', function () {
     var menuCoordinates = menu.getBoundingClientRect(); 
 
 
+    var background;
+    var linerGradient;
+    // get initial background on page loaded
+    background = window.getComputedStyle(menu, null).getPropertyValue("background");
+    linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];   
+    //console.log(linerGradient); 
+
     // set background in case user refresh page when it's already scrolled down a lot
-    // changeNavBackground();  
 
-    if(window.innerWidth <= 480){
-        // just make sure we set background menu solid color
-        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
-    } else{
+    // make sure if user refresh page in the middle we make color solid
+    menuCoordinates = menu.getBoundingClientRect(); 
+    headerCoordinates = headerCard.getBoundingClientRect();
 
-        // make sure if user refresh page in the middle we make color solid
-        menuCoordinates = menu.getBoundingClientRect(); 
-        headerCoordinates = headerCard.getBoundingClientRect();
+    // console.log(headerCoordinates.bottom);
+    // console.log(menuCoordinates.bottom);
 
-        if(headerCoordinates.bottom <= menuCoordinates.bottom){
-            menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
-        }        
-
-    }
+    if(headerCoordinates.bottom <= menuCoordinates.bottom){
+        
+        //menu.style.background = "linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%)"
+        // THERE IS A BUG - when scrolled to bottom      
+        // headerCoordinates.bottom is > menuCoordinates.bottom
+        menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+        //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+    }        
+         
 
     window.addEventListener("resize", function(){
         if(window.innerWidth <= 480){
             // just make sure we set background menu solid color
-            menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+            // menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+            menuCoordinates = menu.getBoundingClientRect(); 
+            headerCoordinates = headerCard.getBoundingClientRect();
+
+            // console.log(headerCoordinates.bottom);
+            // console.log(menuCoordinates.bottom);
+
+            if(headerCoordinates.bottom <= menuCoordinates.bottom){
+                
+                //menu.style.background = "linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%)"
+                // THERE IS A BUG - when scrolled to bottom      
+                // headerCoordinates.bottom is > menuCoordinates.bottom
+                menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+                //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+            }             
         } 
  
         // we need to recalculate background for header
@@ -60,9 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // only recalculate in the visible area
         menuCoordinates = menu.getBoundingClientRect(); 
         headerCoordinates = headerCard.getBoundingClientRect();
-        if(window.innerWidth > 480 && headerCoordinates.bottom >= menuCoordinates.bottom){
+        //if(window.innerWidth > 480 && headerCoordinates.bottom >= menuCoordinates.bottom){
+        if(headerCoordinates.bottom >= menuCoordinates.bottom){
             changeNavBackground();
             moveBackgrounds();
+        } else {
+            // just make sure we make background solid when scroll bellow header
+            menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);             
         }
 
         toggleMenuShadow();
@@ -75,7 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showMenuButton.addEventListener('click', function(){
 
-        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;  
+        menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+        //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;  
         this.style.display = "none";
         closeMenuButton.style.display = "inline-block";
         subMenu.classList.toggle("hide-menu");
@@ -86,12 +113,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     closeMenuButton.addEventListener('click', function(){
-
         this.style.display = "none";
         showMenuButton.style.display = "inline-block";
-        subMenu.classList.toggle("hide-menu");
+        subMenu.classList.toggle("hide-menu"); 
+
+        toggleMenuShadow();       
+
+        menuCoordinates = menu.getBoundingClientRect(); 
+        headerCoordinates = headerCard.getBoundingClientRect();
+
+        // console.log(headerCoordinates.bottom);
+        // console.log(menuCoordinates.bottom);
+
+        if(headerCoordinates.bottom <= menuCoordinates.bottom){
+            
+            //menu.style.background = "linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%)"
+            // THERE IS A BUG - when scrolled to bottom      
+            // headerCoordinates.bottom is > menuCoordinates.bottom
+            menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+            //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, 1) 0%, rgba(56, 167, 192, 1) 100%)`;
+        } else {
+            // change transparency relative to scroll
+        
+            //menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.01);
+
+            // change transparency relative to scroll
+            var transformIndex = Math.round(window.scrollY/menuHeight/1.5*100)/100;
+            // /[\d\.]+\)$/g
+            var updatedBackground;
+            // if the transparency index is > 1 we set it to 0.99
+            // because if it gets to 1 and more it transforms from rgba to rgb
+            if(transformIndex < 1){
+                updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, transformIndex);
+                //console.log(updatedBackground);
+
+                //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;  
+                menu.style.background = updatedBackground; 
+                //menu.style.background = `linear-gradient(45deg, rgba(126, 47, 182, 1) 0%, rgba(126, 47, 182, 1) 25%, rgba(249, 71, 157, 1) 80%, rgba(249, 71, 157, 1) 100%)`; 
+                // rgba(0, 0, 0,1.5934959349593496) linear-gradient(to right, rgb(4, 42,1.5934959349593496) 0%, rgb(56, 167,1.5934959349593496) repeat scroll 0% 0% / auto padding-box border-box
+            } else{
+                updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+                menu.style.background = updatedBackground;             
+            }
+
+        }     
+
+
+    
         // subMenu.style.display = "none";
-        toggleMenuShadow();
+
 
     });    
 
@@ -115,9 +185,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
     function changeNavBackground(){
+
+        // You got the string, replace whatever
+        // 'rgba(1,1,1,0.3)'.replace(/[^,]+(?=\))/, '0.5')
+    
+        // get current background and change it's transparency
+        // if background is null we get computed background
+        // var background;
+        // var linerGradient;
+        // only get computed value if there is no background set
+        if(menu.style.background == false){
+            background = window.getComputedStyle(menu, null).getPropertyValue("background");
+            linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];
+        }else{
+            //console.log("ELSE");
+            linerGradient = menu.style.background;
+        }
+        // console.log(computedBackground);
+        // => rgba(0, 0, 0, 0) linear-gradient(45deg, rgba(126, 47, 182, 0) 0%, rgba(126, 47, 182, 0) 25%, rgba(249, 71, 157, 0) 80%, rgba(249, 71, 157, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box
+        // now we should only change transparency
+
+        // => linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)
+        // var linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];
+        //console.log(linerGradient);
+
         // change transparency relative to scroll
-        var transformIndex = window.scrollY/menuHeight/1.5;
-        menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;      
+        var transformIndex = Math.round(window.scrollY/menuHeight/1.5*100)/100;
+        // /[\d\.]+\)$/g
+        var updatedBackground;
+        // if the transparency index is > 1 we set it to 0.99
+        // because if it gets to 1 and more it transforms from rgba to rgb
+        if(transformIndex < 1){
+            updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, transformIndex);
+            //console.log(updatedBackground);
+
+            //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;  
+            menu.style.background = updatedBackground; 
+            //menu.style.background = `linear-gradient(45deg, rgba(126, 47, 182, 1) 0%, rgba(126, 47, 182, 1) 25%, rgba(249, 71, 157, 1) 80%, rgba(249, 71, 157, 1) 100%)`; 
+            // rgba(0, 0, 0,1.5934959349593496) linear-gradient(to right, rgb(4, 42,1.5934959349593496) 0%, rgb(56, 167,1.5934959349593496) repeat scroll 0% 0% / auto padding-box border-box
+        } else{
+            updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
+            menu.style.background = updatedBackground;             
+        }
+
     }
 
 
