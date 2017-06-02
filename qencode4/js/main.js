@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var linerGradient;
     // get initial background on page loaded
     background = window.getComputedStyle(menu, null).getPropertyValue("background");
+    // bug -> returns NULL in firefox
+    console.log(background);
     linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];   
     //console.log(linerGradient); 
 

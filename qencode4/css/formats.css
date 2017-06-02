@@ -1,11 +1,6 @@
-/*We just load this CSS after main.css and overide styles*/
+/*MODIFICATORS or LOCALS*/
 
-.header-card {
-    padding-bottom: 7vw;
-    padding-top: 10.1vw;    
-}
-
-.pink {
+.header-card--formats{
     background: url("../img/el_9.png"), url("../img/el_10.png"), linear-gradient(45deg, rgba(126,47,182,1) 0%, rgba(126,47,182,1) 25%, rgba(249,71,157,1) 80%, rgba(249,71,157,1) 100%);
     background-repeat: no-repeat;
 
@@ -13,76 +8,37 @@
     background-position: 15% 78%, 84% 67%, 0% 0%;
 }
 
-.fixed-background{
-    background-attachment: fixed;
-}
-   
-
-.header-menu{
+.header-menu--formats{
     background: linear-gradient(45deg, rgba(126,47,182,0) 0%, rgba(126,47,182,0) 25%, rgba(249,71,157,0) 80%, rgba(249,71,157,0) 100%);
 }
 
-footer{
+.footer--formats{
     background: linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%);
 }
 
-.active{
+.active--formats {
     background: rgba(255, 167, 210, 0.5);
 }
 
-.header-menu_items a:hover{
+.header-menu--formats .menu-links:hover {
+    background: rgb(254, 140, 195);
+}
+
+.footer--formats .menu-links:hover {
     background: rgb(254, 140, 195);
 }
 
 
-.header-main_area {
-    padding-left: 8.7%;
-    padding-top: 0;
-}
-
-.main-message{
-    padding-left: 21.3%;
-    padding-right: 21.3%;
-    padding-top: 3vw;
-    padding-bottom: 2.5vw;
-    display: block;
-    font-size: 1.2vw;
-    line-height: 1.7vw; 
-}
-
-.features-box{
-    width: 70.5%;
-    margin: auto;
-    padding: 3vw;
-    box-sizing: border-box;
-    border-radius: 3vw;
-    position: relative;
-    overflow: hidden;
-}
-
-.features-box-header{
-    display: flex;
-}
-
-.features-box-main{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3vw;
-}
-
-.features-title{
-    font-size: 2.8vw;
-    font-weight: 900; 
-    padding-left: 3.4vw;
-    margin: 0;   
-}
-
-.features-box-header div:first-of-type{
+.features-box-header--formats div:first-of-type{
     width: 34%;
 }
 
-.features-box-header div:nth-of-type(2){
+.features-box-header--formats div:nth-of-type(2){
     width: 26%;
+}
+
+.features-box-header--formats div:nth-of-type(3){
+    width: 40%;
 }
 
 .features-box-header ul{
@@ -92,147 +48,48 @@ footer{
     line-height: 2.1vw;
 }
 
-.features-box-header li{
-    position: relative;
-}
-
-.features-box-header li::before{
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    left: -1.8vw;
-    top: 0.16vw;
+.features-box-header--formats li::before{
     border-color: #ffa5fd;
-    border-style: solid;
-    border-width: 0 0.2vw 0.2vw 0;
-    height: 1.1vw;
-    transform: rotate(45deg);
-    width: 0.65vw;   
 }
 
-.features-box-header li::after{
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    left: -2.4vw;
-    top: 0.3vw;
+.features-box-header--formats li::after{
     border-color: #ffa5fd;
-    border-style: solid;
-    border-width: 0 0.2vw 0.2vw 0.2vw;
-    border-radius: 5vw;
-    height: 1.5vw;
-    width: 1.5vw;
-    transform: rotate(60deg);
 }
 
-.features-box-main > div{
-    background-color: white;
-    width: 30.5%;
-    border-radius: 3vw;
-    padding: 1.4vw 3vw;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;  
+.features-box-main--formats > div{
     height: 20vw;  
-    box-shadow: 0px 57px 101px -37px rgba(43, 8, 61, 0.93);
 }
 
-.features-box-main > div:first-of-type{
+.features-box-main--formats > div:first-of-type{
     height: 100%;
 }
 
-.features-box-main ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    line-height: 2.1vw;
-    font-size: 1.1vw;
-}
 
-.features-box-main h3{
-    margin: 0;
-    font-size: 1.77vw;    
-    margin-bottom: 0.7vw;
-}
-
-.get-quote{
+.get-quote--formats{
     position: absolute;
     top: 39vw;
     left: 25vw;
     padding-left: 6vw;
 
-    background: url("../img/discount.png");
-    background-repeat: no-repeat;
-
-    background-size: 4vw;
-    background-position: 1% 0%;
+    display: block;
+    margin-top: 0; 
+    margin-left: 0;     
 }
 
-.features-box-main li{
-    position: relative;
-    padding-left: 1.6vw;
-}
 
-.features-box-main li::before{
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    border-color: #c1d0e5;
-    border-style: solid;
-    border-width: 0.3vw;
-    background: #1b74d0;
-    width: 0.9vw;
-    height: 0.9vw;
-    border-radius: 5vw;
-    left: 0;
-    top: 0.57vw;   
-}
-
-.get-quote h3{
-    font-size: 2.1vw;
-    margin: 0;
-    padding: 0;    
-}
-
-.get-quote p{
-    font-size: 1.1vw;
-    margin: 0;
-    margin-bottom: 1.5vw;
-}
-
-.get-quote-button{
-    padding-top: 1vw;
-    padding-bottom: 0.8vw;
-    white-space: nowrap;
-    border-radius: 5vw;
-    padding-left: 2.2vw;
-    padding-right: 0.4vw;
-    font-size: 1vw;
-    line-height: 3.4vw;
-    color: white;
-    text-decoration: none;
+.get-quote-button--formats{
     border: 0.2vw solid #b96fc6;
-    transition: background .3s ease;
-    font-weight: 900;  
+    margin-left: 0;
 }
 
-.get-quote-button i{
-    padding-right: 1.2vw;
-    margin-left: 1vw;
-}
 
-.get-quote-button:hover{
+.get-quote-button--formats:hover{
     background: rgb(195, 60, 168);
 }
 
-@media screen and (max-width: 960px) {
-    .header-main_area {
-        padding-left: 0;
-    }
-}
 
 @media screen and (max-width: 780px) {
-    .header-card {     
+    .header-card--formats {     
         background: linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%);  
     }  
 }
