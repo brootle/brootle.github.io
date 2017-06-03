@@ -23,11 +23,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var background;
     var linerGradient;
     // get initial background on page loaded
-    background = window.getComputedStyle(menu, null).getPropertyValue("background");
+    //background = window.getComputedStyle(menu, null).getPropertyValue("background");
+    background = window.getComputedStyle(menu, null).getPropertyValue("background-image");
+    // => linear-gradient(45deg, rgba(126, 47, 182, 0) 0%, rgba(126, 47, 182, 0) 25%, rgba(249, 71, 157, 0) 80%, rgba(249, 71, 157, 0) 100%)
     // bug -> returns NULL in firefox
+    // padding-bottom
     console.log(background);
-    linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];   
+    //linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0]; 
+    linerGradient = background; 
     //console.log(linerGradient); 
+  
 
     // set background in case user refresh page when it's already scrolled down a lot
 
@@ -90,7 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
             moveBackgrounds();
         } else {
             // just make sure we make background solid when scroll bellow header
-            menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);             
+             menu.style.background = linerGradient.replace(/[^,]+(?=\))/g, 0.99);  
+            //console.log(linerGradient.replace(/[^,]+(?=\))/g, 0.99));
+            //var solidGradient = linerGradient.replace(/[^,]+(?=\))/g, 0.99);   
+            //solidGradient = "red";
+
+            //menu.setAttribute('style', `background: ${solidGradient} none repeat scroll 0% 0%;`);        
         }
 
         toggleMenuShadow();
@@ -141,6 +151,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // change transparency relative to scroll
             var transformIndex = Math.round(window.scrollY/menuHeight/1.5*100)/100;
+            if(transformIndex <= 0){
+                transformIndex = 0.01;
+            }            
             // /[\d\.]+\)$/g
             var updatedBackground;
             // if the transparency index is > 1 we set it to 0.99
@@ -196,13 +209,19 @@ document.addEventListener('DOMContentLoaded', function () {
         // var background;
         // var linerGradient;
         // only get computed value if there is no background set
-        if(menu.style.background == false){
-            background = window.getComputedStyle(menu, null).getPropertyValue("background");
-            linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];
-        }else{
-            //console.log("ELSE");
-            linerGradient = menu.style.background;
-        }
+
+
+        // if(menu.style.background == false){
+        //     // background = window.getComputedStyle(menu, null).getPropertyValue("background");
+        //     background = window.getComputedStyle(menu, null).getPropertyValue("background-image");
+        //     linerGradient = background.match(/linear-gradient\([^(]*(\([^)]*\)[^(]*)*[^)]*\)/g)[0];
+        // }else{
+        //     //console.log("ELSE");
+        //     linerGradient = menu.style.background;
+        // }
+        linerGradient = window.getComputedStyle(menu, null).getPropertyValue("background-image");
+
+
         // console.log(computedBackground);
         // => rgba(0, 0, 0, 0) linear-gradient(45deg, rgba(126, 47, 182, 0) 0%, rgba(126, 47, 182, 0) 25%, rgba(249, 71, 157, 0) 80%, rgba(249, 71, 157, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box
         // now we should only change transparency
@@ -213,7 +232,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // change transparency relative to scroll
         var transformIndex = Math.round(window.scrollY/menuHeight/1.5*100)/100;
+        // always keep transformIndex !=0
+        // otherwise in Mozilla 'rgba(126, 47, 182, 0.00)' will be 'transparent'
+        if(transformIndex <= 0){
+            transformIndex = 0.01;
+        }
         // /[\d\.]+\)$/g
+        //console.log(transformIndex);
         var updatedBackground;
         // if the transparency index is > 1 we set it to 0.99
         // because if it gets to 1 and more it transforms from rgba to rgb
@@ -221,13 +246,18 @@ document.addEventListener('DOMContentLoaded', function () {
             updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, transformIndex);
             //console.log(updatedBackground);
 
+            //console.log(linerGradient);
+
             //menu.style.background = `linear-gradient(to right, rgba(4, 42, 146, ${transformIndex}) 0%, rgba(56, 167, 192, ${transformIndex}) 100%)`;  
             menu.style.background = updatedBackground; 
             //menu.style.background = `linear-gradient(45deg, rgba(126, 47, 182, 1) 0%, rgba(126, 47, 182, 1) 25%, rgba(249, 71, 157, 1) 80%, rgba(249, 71, 157, 1) 100%)`; 
             // rgba(0, 0, 0,1.5934959349593496) linear-gradient(to right, rgb(4, 42,1.5934959349593496) 0%, rgb(56, 167,1.5934959349593496) repeat scroll 0% 0% / auto padding-box border-box
         } else{
+            //console.log(updatedBackground);
             updatedBackground = linerGradient.replace(/[^,]+(?=\))/g, 0.99);
-            menu.style.background = updatedBackground;             
+            menu.style.background = updatedBackground;     
+
+             //menu.style.background = "linear-gradient(45deg, rgba(126, 47, 182, 0.5) 0%, rgba(126, 47, 182, 0.5) 25%, rgba(249, 71, 157, 0.5) 80%, rgba(249, 71, 157, 0.5) 100%) 0% 0%";        
         }
 
     }
