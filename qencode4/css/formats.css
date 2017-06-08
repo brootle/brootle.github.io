@@ -36,25 +36,9 @@
     background: rgb(254, 140, 195);
 }
 
-
-/*.features-box-header--formats div:first-of-type{
-    width: 34%;
-}*/
-
-/*.features-box-header--formats div:nth-of-type(2){
-    width: 26%;
+.features-box-main--formats h3 {
+    text-align: left;
 }
-
-.features-box-header--formats div:nth-of-type(3){
-    width: 40%;
-}*/
-
-/*.features-box-header ul{
-    margin: 0;
-    list-style-type: none;
-    font-size: 1.13vw;
-    line-height: 2.1vw;
-}*/
 
 .features-box-header--formats li::before{
     border-color: #ffa5fd;
@@ -113,6 +97,19 @@
         height: 37vw;
     }
 
+    .features-box-main--formats > div {
+        padding-left: 2.7vw;
+        padding-right: 2.7vw;
+    }
+
+    .features-box-main--formats .main-list li::before {
+        left: 0; 
+    }    
+
+    .features-box-main--formats .main-list li {
+        padding-left: 3vw;
+    }    
+
     .get-quote--formats {
         top: 64.4vw;
         left: 37vw;
@@ -142,13 +139,71 @@
         background-size: 50vw, cover;
         background-position: 107% 95%;
         background-attachment: fixed;
-    }    
+    }        
 
 }
 
 
 @media screen and (max-width: 780px) {
-    .header-card--formats {     
-        background: linear-gradient(45deg, rgba(126,47,182,0.99) 0%, rgba(126,47,182,0.99) 25%, rgba(249,71,157,0.99) 80%, rgba(249,71,157,0.99) 100%);  
-    }  
+    .header-card--formats {
+        background: url(../img/formats/el_2.png), linear-gradient(45deg, rgba(126,47,182,1) 0%, rgba(126,47,182,1) 25%, rgba(249,71,157,1) 80%, rgba(249,71,157,1) 100%);
+        background-repeat: no-repeat;
+        background-size: 60vw, cover;
+        background-position: 98% 85%, 0% 0%;
+    }
+
+    .features-box-main--formats h3 {
+        font-size: 3.7vw;
+    }
+
+    .features-box-main--formats > div {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }    
+
+    .features-box-main--formats {
+        position: relative;
+    }    
+
+    .features-box-main--formats > div:nth-of-type(2) {
+        height: 44vw;
+    }    
+
+    .features-box-main--formats > div:nth-of-type(3) {
+        position: absolute;
+        left: 48vw;
+        top: 49vw;
+        height: 48vw;   
+    }    
+
+    .get-quote--formats {
+        position: static;
+        margin-top: 2vw;
+        margin-bottom: 12vw;
+        padding-left: 12vw;
+        background: url(../img/discount.png);
+        background-repeat: no-repeat;
+        background-size: 9vw;
+        background-position: 0% 6%;        
+    }    
+
+    .get-quote--formats h3 {
+        font-size: 4.5vw;
+    }    
+
+    .get-quote--formats p {
+        font-size: 2.4vw;
+        margin-top: 0.5vw;
+        margin-bottom: 4vw;
+    }    
+
+    .pink--api {
+        background: url(../img/formats/el_3.png),linear-gradient(45deg, rgba(126,47,182,1) 0%, rgba(126,47,182,1) 25%, rgba(249,71,157,1) 80%, rgba(249,71,157,1) 100%);
+        background-repeat: no-repeat;
+        background-size: 60vw, cover;
+        background-position: 98% 96%;
+        background-attachment: fixed;
+    }    
+ 
+
 }
