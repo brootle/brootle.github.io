@@ -52,20 +52,16 @@
     text-align: center;
 }
 
-.recreate-app-id form .input-fields {
+.input-fields {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.3vw;
 }
 
-.recreate-app-id form .input-label{
+.input-label{
     display: flex;
     justify-content: space-between;
     font-size: 1vw;
-}
-
-
-.recreate-app-id form label{
     font-weight: 900;
 }
 
@@ -87,13 +83,20 @@
     width: 46%;
 }
 
-.recreate-app-id input[type=text] {
+input[type=text] {
     width: 100%;
     padding: 0.9vw 1.5vw;
     margin: 0.5vw 0;
     display: inline-block;
     border-radius: 0.5vw;
     box-sizing: border-box;
+    outline: none; 
+}
+
+.input-container{
+    margin-top: 0.7vw; /*same as form in main css*/
+    color: #73767d;
+    font-size: 1vw;   
 }
 
 /*override button as in API.html*/
@@ -126,6 +129,9 @@
 .main-info-box > span{
     font-size: 1.2vw;
 }
+
+
+/*TABLE.........................START*/
 
 #transfer_table {
     border-collapse: collapse;
@@ -213,6 +219,97 @@ table.dataTable tbody td {
 
 #transfer_table th:nth-of-type(3) {
     width: 15%;
+}
+
+/*TABLE.........................END*/
+
+/*modification of '.main-button > i' located in main.css*/
+.main-button > i{
+    margin-left: 0;
+    margin-right: 0.5vw;
+}
+
+.two-columns-content{
+    display: flex;
+    justify-content: space-between;    
+}
+
+.two-columns-content > div{
+    width: 45%;
+}
+
+
+/*custom select.....START*/
+
+select{
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+
+    -webkit-appearance: none; /*remove default arrow*/
+}
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select:after {
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 1.6vw;
+    padding-right: 1.5vw;
+    font-size: 1.1vw;
+    pointer-events: none; /*to make arrow look clickable*/
+}
+
+/*custom select.....END*/
+
+.accordion-container{
+    margin-top: 0.7vw;
+}
+
+.accordion-button{
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    margin: 0.2vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;  
+    cursor: pointer;  
+    position: relative;
+}
+
+.accordion-button:after{
+    content: "+";
+    color: #1976d2;
+    position: absolute;
+    right: 0;
+    top: 0.4vw;
+    padding-right: 1.5vw;
+    font-size: 1.8vw;
+    pointer-events: none; /*to make arrow look clickable*/ 
+}
+
+.accordion-button.active-accordion:after {
+    content: "\2212";
+}
+
+.accordion-panel{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.accordion-panel p{
+    padding-left: 2vw;
+    padding-right: 2vw;    
 }
 
 
