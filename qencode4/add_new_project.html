@@ -11,16 +11,23 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script src="js/datatable.js"></script>
+    <script src="js/menu.js"></script>
+
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/inner_pages.css" rel="stylesheet" />
-
-    <script src="js/menu.js"></script>
+    <link href="css/api.css" rel="stylesheet" />
 
     <title>Qencode: Add New Project</title>
 </head>
 <body>
 
-    <header>
+    <header class="header--inner-pages">
 
         <nav id="top-menu" class="header-menu container header-menu--inner-pages">
             <div class="header-menu_logo">
@@ -44,16 +51,137 @@
 
     </header>
 
-    <main>
+    <main class="container main-content">
 
-        <div class="container">
+        <section>
 
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="title-and-buttons">
+                <h1 class="text-blue">Add New Project</h2>
+
+                <div class="title-buttons">
+                    <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                    <a class="main-button blue-backgound blue-border text-white" href="">Save all</a>
+                </div>
+            </div>        
 
 
-        </div>
+            <h3 class="text-blue">General Info</h3>
+
+            <div class="recreate-app-id">
+                <form action="/recreate-app-id" method="POST">
+                    <div class="input-fields">
+                        <div>
+                            <div class="input-label text-gray">
+                                <label for="project_name">Project name</label>
+                            </div>                            
+                            <input id="project_name" class="gray-border" autocomplete="off" name="project[name]" placeholder="Enter the project name" type="text"/>
+                        </div>
+                        <div>
+                            <div class="input-label text-gray">
+                                <label for="api_key">API Key</label>
+                                <span class="text-light-gray">Will be shown after project is created</span>
+                            </div>
+                            <input disabled id="api_key" autocomplete="off" name="project[key]" placeholder="" type="text"/>
+                        </div> 
+                    </div>
+                    <div class="button-field">
+                        <button disabled class="text-white blue-backgound" type="submit">Recreate App ID & Secret</button>   
+                    </div>  
+                </form>   
+            </div>
+
+
+            <h3 class="text-blue">Transfer methods</h3>           
+
+            <div class="main-info-box">
+                <div>  
+                    <span class="text-gray">You have no transfer methods defined, click the button to create one.</span>
+                    <a class="button text-white light-green-grass-background">+ Add transfer method</a>
+                </div>
+            </div>       
+
+            <table id="transfer_table" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">Transfer Name</th>
+                        <th class="gray-border">Type</th>
+                        <th class="gray-border">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">BBC_Live1</td>
+                        <td class="gray-border">Amazon S3 1</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live2</td>
+                        <td class="gray-border">Amazon S3 2</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live8</td>
+                        <td class="gray-border">Amazon S3 8</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>                    
+                    <tr>
+                        <td class="gray-border">BBC_Live3</td>
+                        <td class="gray-border">Amazon S3 3</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live4</td>
+                        <td class="gray-border">Amazon S3 4</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live5</td>
+                        <td class="gray-border">Amazon S3 5</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live8</td>
+                        <td class="gray-border">Amazon S3 8</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>                    
+                    <tr>
+                        <td class="gray-border">BBC_Live6</td>
+                        <td class="gray-border">Amazon S3 6</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live7</td>
+                        <td class="gray-border">Amazon S3 7</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live8</td>
+                        <td class="gray-border">Amazon S3 8</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live9</td>
+                        <td class="gray-border">Amazon S3 9</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">BBC_Live10</td>
+                        <td class="gray-border">Amazon S3 10</td>
+                        <td class="gray-border">buttons</td>
+                    </tr>                                                                                                                                                                                    
+                </tbody>
+            </table>            
+
+            <h3 class="text-blue">Encoding profiles</h3>
+
+            <div class="main-info-box">
+                <div>  
+                    <span class="text-gray">You have no Encoding Profiles yet, click the button to create one.</span>
+                    <a class="button text-white light-green-grass-background">+ Add New Encoding Profile</a>
+                </div>
+            </div>   
+
+        </section>            
 
 
     </main>
