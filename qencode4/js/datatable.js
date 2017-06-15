@@ -20,7 +20,7 @@ $(document).ready(function(){
                 }
             },
             // see https://datatables.net/reference/option/language.info
-            info: "<span class='transparent-green'>_START_ - _END_</span> of _PAGE_"
+            info: "<span class='transparent-green'>_START_ - _END_</span> of _TOTAL_"
         },
 
         "iDisplayLength": 5,
