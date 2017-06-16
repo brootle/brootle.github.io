@@ -11,8 +11,13 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
     <script src="js/menu.js"></script>
-    <script src="js/accordion.js"></script>
+
 
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/inner_pages.css" rel="stylesheet" />
@@ -205,6 +210,115 @@
             </div>            
 
         </section>            
+
+        <section>
+            <table id="demo_details_table" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">Type</th>
+                        <th class="gray-border">Tag</th>
+                        <th class="gray-border">Status</th>
+                        <th class="gray-border">Encode Begin</th>
+                        <th class="gray-border">Encode End</th>
+                        <th class="gray-border">Size</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">Video</td>
+                        <td class="gray-border">1080</td>
+                        <td class="gray-border">Encode</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">8.0292</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">Image</td>
+                        <td class="gray-border">1/size1</td>
+                        <td class="gray-border">Saved</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">0.007266</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">Image</td>
+                        <td class="gray-border">1/size2</td>
+                        <td class="gray-border">Saved</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">0.007266</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">Image</td>
+                        <td class="gray-border">2/size1</td>
+                        <td class="gray-border">Saved</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">0.007266</td>
+                    </tr>   
+                    <tr>
+                        <td class="gray-border">Audio</td>
+                        <td class="gray-border">audio/0</td>
+                        <td class="gray-border">Encode</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">2017-06-01 14:20:25</td>
+                        <td class="gray-border">0</td>
+                    </tr>                                                                                                                                                                                                
+                </tbody>
+            </table>        
+            <script>
+                // Disable search and ordering by default
+                $.extend( $.fn.dataTable.defaults, {
+                    searching: false
+                } );
+
+                $('#demo_details_table').dataTable({
+                    "aaSorting": [], // Disable initial sort                   
+                    "dom": '' // initiate without any pagination or other details
+                });  
+            </script>     
+
+            <h3 class="text-blue">Url</h3>
+
+            <table id="demo_details_url" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">Link</th>
+                        <th class="gray-border">Action</th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">http://s3.qencode.com:8000/test/vodeos/720/f9c7b76046f611e7a6423282f0584bf0.mp4</td>
+                        <td class="gray-border">
+                            <a class="action-button--copy"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">http://s3.qencode.com:8000/test/vodeos/480/f9c7b76046f611e7a6423282f0584bf0.mp4</td>
+                        <td class="gray-border">
+                            <a class="action-button--copy"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>                                                                                                                                                                                           
+                </tbody>
+            </table>         
+            <script>
+                // Disable search and ordering by default
+                $.extend( $.fn.dataTable.defaults, {
+                    searching: false
+                } );
+
+                $('#demo_details_url').dataTable({
+                    "aaSorting": [], // Disable initial sort                   
+                    "dom": '', // initiate without any pagination or other details
+                    "aoColumns": [
+                        null,
+                        { "bSortable": false } // disable sorting of last column
+                    ]                     
+                });  
+            </script>                      
+
+        </section>
 
 
     </main>
