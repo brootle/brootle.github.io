@@ -69,7 +69,18 @@
                             <span class="text-light-gray">or</span>
                             <span class="text-gray">Click to Upload File</span>
                             <div class="buttons-below">
-                                <a class="button text-white light-green-grass-background">Upload File</a>
+
+                                <input type="file" name="file" id="file" class="inputfile" />
+                                <label class="button text-white light-green-grass-background" for="file">Upload File</label>
+                                <script>
+                                    var input = document.querySelector('#file');
+                                    var label = input.nextElementSibling;
+
+                                    input.addEventListener( 'change', function(e){
+                                        fileName = e.target.value.split( '\\' ).pop();
+                                        label.innerHTML = fileName;
+                                    });                                    
+                                </script>
                             </div>
                         </div>
                     </div>                    
