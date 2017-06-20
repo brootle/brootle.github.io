@@ -148,7 +148,7 @@ input[type=text] {
 
 /*TABLE.........................START*/
 
-#transfer_table, #demo_details_table, #demo_details_url {
+#transfer_table, #demo_details_table, #demo_details_url, #overdue_invoices {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1vw;
@@ -433,6 +433,113 @@ select{
     padding-top: 1vw;
     box-sizing: border-box;
     color: #e5e5e5;
+}
+
+
+/*TABS for BILLING...............START*/
+
+.tab{
+    border-bottom: 1px solid #dbdad6;
+    box-sizing: border-box;
+}
+
+/* Style the buttons inside the tab */
+.tablinks {
+    line-height: 2.5vw;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.1vw;
+    font-weight: 600;
+    margin-right: 2vw;
+    border-bottom: 2px solid white;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.tablinks--active{
+    border-bottom: 2px solid #4bc232;
+}
+
+.tabcontent--active{
+    display: block;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/*TABS for BILLING...............END*/
+
+.danger-warning{
+    font-weight: 600;
+}
+
+.danger-warning-icon{
+    width: 1.5vw;
+    height: 1.5vw;
+    border: 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.6vw;
+    margin-right: 0.3vw;  
+}
+
+.after-text{
+    margin-left: 0.3vw;
+}
+
+.billing-details{
+    display: flex;
+    justify-content: space-between;    
+    margin-top: 1vw;
+}
+
+.balance-label{
+    width: 20%;
+    background: #f1f1f1;
+    border-radius: 0.3vw;
+    padding: 0.8vw 2vw;
+    height: 100%;
+}
+
+.balance-label span{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 0.8vw;    
+}
+
+.balance-label p{
+    font-size: 2.1vw;
+    font-weight: 900;
+    margin-bottom: 0.3vw;
+}
+
+.usage-details{
+    padding: 1vw 2vw;
+    width: 32%;
+    border-radius: 0.7vw;
+    height: 173px;
+    box-sizing: border-box;
+}
+
+.usage-details h3{
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 960px) {
