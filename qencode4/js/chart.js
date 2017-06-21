@@ -53,6 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
             scales: {              
 
+                xAxes: [{
+                    gridLines: {
+                    drawOnChartArea: false
+                    }
+                }],
+
                 yAxes: [{
                     ticks: {
                         // beginAtZero:true,
@@ -65,6 +71,49 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+
+
+    // it is possible to have charts with multiple x and y axes. The sample config below will 
+    // create 2 x axes, 2 y axes and then bind each dataset to one pair of axes.
+    // see https://github.com/chartjs/Chart.js/issues/1544
+
+    // var config = {
+    //     data: {
+    //         datasets: [{
+    //             label: "My First dataset",
+    //             xAxisID: "x-axis-1", // bottom axis
+    //             yAxisID: "y-axis-1", // left axis
+    //         data: []
+    //         }, {
+    //             label: "My Second dataset",
+    //             xAxisID: "x-axis-2", // top axis
+    //             yAxisID: "y-axis-2", // right axis
+    //             data: []
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             xAxes: [{
+    //                 position: "bottom",
+    //                 type: "time", // gives us a date axis
+    //                 id: "x-axis-1"
+    //             }, {
+    //                 position: "top",
+    //                 type: "time",
+    //                 id: "x-axis-2"
+    //             }],
+    //             yAxes: [{
+    //                 type: "linear",
+    //                 position: "left",
+    //                 id: "y-axis-1",
+    //             }, {
+    //                 type: "linear",
+    //                 position: "right",
+    //                 id: "y-axis-2",
+    //             }],
+    //         }
+    //     }
+    // }    
 
 
 
