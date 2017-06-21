@@ -44,8 +44,8 @@ CanvasJS.addColorSet('greenShades',
         lineThickness:0,
         valueFormatString: "MMM" ,
         interval: 1,
-        intervalType: "month"
-
+        intervalType: "month",
+        tickLength: 4
       },
     //   axisY: {
     //     title: "Downloads"
