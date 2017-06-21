@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // using ChartJS 2 - http://www.chartjs.org/docs/latest/
 
     var chartDataSD = [
-        { date: 'Feb 1, 2016', bill: 32.4, minutes: 34.43}
+        { date: 'Feb 1, 2016', bill: 32.4, minutes: 34.43},
+        { date: 'Feb 13, 2016', bill: 4.4, minutes: 10.12},
     ];
 
     var ctx = document.getElementById("chart").getContext('2d');
@@ -28,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],            
+            //labels: [new Date(2012, 00, 1),new Date(2012, 01, 1),new Date(2012, 02, 1),new Date(2012, 03, 1),new Date(2012, 04, 1),new Date(2012, 05, 1),new Date(2012, 06, 1),new Date(2012, 07, 1),new Date(2012, 08, 1),new Date(2012, 09, 1),new Date(2012, 10, 1),new Date(2012, 11, 1)], 
+            labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],                       
             datasets: [{
                 label: 'SD',
                 data: [56, 46, 75, 65, 53, 48, 52, 42, 71, 52, 38, 46],
@@ -57,7 +59,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     gridLines: {
                     drawOnChartArea: false
                     }
-                }],
+                }
+
+                // to display only months from data http://jsfiddle.net/prfd1m8q/
+
+                // ,
+                // {
+                //     type: "time",
+                //     display: true,
+                //     scaleLabel: {
+                //         display: true,
+                //         labelString: 'Date'
+                //     }
+                // }                
+                ],
 
                 yAxes: [{
                     ticks: {
