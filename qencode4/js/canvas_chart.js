@@ -13,7 +13,8 @@ CanvasJS.addColorSet('greenShades',
     {
 
         toolTip: {
-			    content: "{x} <br> <strong>{label}</strong> min <br>  <strong>{name}: $ {y}</strong>",
+          animationEnabled: false,
+			    content: "{x} <br> <strong>{name}</strong> min <br>  <strong>{label}: $ {y}</strong>",
           cornerRadius:0,
           fontFamily: "'Lato', sans-serif, sans-serif",
           fontStyle:"normal",
@@ -52,7 +53,7 @@ CanvasJS.addColorSet('greenShades',
 
       data: [
       { 
-        name: "SD",
+        label: "SD",
         indexLabelFontColor: "green",
         type: "area",
         fillOpacity: .3,
@@ -66,26 +67,26 @@ CanvasJS.addColorSet('greenShades',
         mouseover: onMouseover,
         dataPoints: [//array
 
-        { x: new Date(2016, 00, 1), y: 22.04, label: "10023" },
-        { x: new Date(2016, 00, 26), y: 40.34, label: "10023" },
-        { x: new Date(2016, 01, 15), y: 65.00, label: "10023" },
-        { x: new Date(2016, 02, 3), y: 58.78, label: "10023" },
-        { x: new Date(2016, 03, 17), y: 40.03, label: "10023" },
-        { x: new Date(2016, 04, 20), y: 35.12, label: "10023" },
-        { x: new Date(2016, 05, 12), y: 45.97, label: "10023"},
-        { x: new Date(2016, 06, 18), y: 57.22, label: "10023" },
-        { x: new Date(2016, 07, 5), y: 68.55, label: "10023" },
-        { x: new Date(2016, 07, 26), y: 60.72, label: "10023" },
-        { x: new Date(2016, 08, 13), y: 63.22, label: "10023"},
-        { x: new Date(2016, 09, 1), y: 61.12, label: "10023"},
-        { x: new Date(2016, 09, 14), y: 53.86, label: "10023"},
-        { x: new Date(2016, 09, 28), y: 48.12, label: "10023"},
-        { x: new Date(2016, 11, 1), y: 35.34, label: "10023"}
+        { x: new Date(2016, 00, 1), y: 22.04, name: "10023" },
+        { x: new Date(2016, 00, 26), y: 40.34, name: "10023" },
+        { x: new Date(2016, 01, 15), y: 65.00, name: "10023" },
+        { x: new Date(2016, 02, 3), y: 58.78, name: "10023" },
+        { x: new Date(2016, 03, 17), y: 40.03, name: "10023" },
+        { x: new Date(2016, 04, 20), y: 35.12, name: "10023" },
+        { x: new Date(2016, 05, 12), y: 45.97, name: "10023"},
+        { x: new Date(2016, 06, 18), y: 57.22, name: "10023" },
+        { x: new Date(2016, 07, 5), y: 68.55, name: "10023" },
+        { x: new Date(2016, 07, 26), y: 60.72, name: "10023" },
+        { x: new Date(2016, 08, 13), y: 63.22, name: "10023"},
+        { x: new Date(2016, 09, 1), y: 61.12, name: "10023"},
+        { x: new Date(2016, 09, 14), y: 53.86, name: "10023"},
+        { x: new Date(2016, 09, 28), y: 48.12, name: "10023"},
+        { x: new Date(2016, 11, 1), y: 35.34, name: "10023"}
         ]
       },
 
       {
-        name: "UHD",
+        label: "UHD",
         indexLabelFontColor: "blue",
         type: "area",
         lineColor: "#1a74d4",
@@ -98,22 +99,22 @@ CanvasJS.addColorSet('greenShades',
         mouseover: onMouseover,
         dataPoints: [//array
 
-        { x: new Date(2016, 00, 1), y: 14.33, label: "34023"},
-        { x: new Date(2016, 00, 22), y: 20.21, label: "10023" },
-        { x: new Date(2016, 01, 5), y: 50.11, label: "3023" },
-        { x: new Date(2016, 02, 1), y: 40.75, label: "10023" },
-        { x: new Date(2016, 02, 13), y: 43.34, label: "10023" },
-        { x: new Date(2016, 03, 3), y: 51.44, label: "10023" },
-        { x: new Date(2016, 05, 12), y: 20.90, label: "10023"},
-        { x: new Date(2016, 06, 18), y: 30.22, label: "10023" },
-        { x: new Date(2016, 06, 25), y: 38.45, label: "10023" },
-        { x: new Date(2016, 07, 12), y: 59.65, label: "10023"},
-        { x: new Date(2016, 08, 3), y: 64.21, label: "10023"},
-        { x: new Date(2016, 08, 24), y: 57.64, label: "10023"},
-        { x: new Date(2016, 09, 4), y: 47.43, label: "10023"},
-        { x: new Date(2016, 09, 19), y: 36.22, label: "10023"},
-        { x: new Date(2016, 10, 5), y: 34.78, label: "32023"},
-        { x: new Date(2016, 11, 1), y: 44.77, label: "34023"}
+        { x: new Date(2016, 00, 1), y: 14.33, name: "34023"},
+        { x: new Date(2016, 00, 22), y: 20.21, name: "10023" },
+        { x: new Date(2016, 01, 5), y: 50.11, name: "3023" },
+        { x: new Date(2016, 02, 1), y: 40.75, name: "10023" },
+        { x: new Date(2016, 02, 13), y: 43.34, name: "10023" },
+        { x: new Date(2016, 03, 3), y: 51.44, name: "10023" },
+        { x: new Date(2016, 05, 12), y: 20.90, name: "10023"},
+        { x: new Date(2016, 06, 18), y: 30.22, name: "10023" },
+        { x: new Date(2016, 06, 25), y: 38.45, name: "10023" },
+        { x: new Date(2016, 07, 12), y: 59.65, name: "10023"},
+        { x: new Date(2016, 08, 3), y: 64.21, name: "10023"},
+        { x: new Date(2016, 08, 24), y: 57.64, name: "10023"},
+        { x: new Date(2016, 09, 4), y: 47.43, name: "10023"},
+        { x: new Date(2016, 09, 19), y: 36.22, name: "10023"},
+        { x: new Date(2016, 10, 5), y: 34.78, name: "32023"},
+        { x: new Date(2016, 11, 1), y: 44.77, name: "34023"}
         ]
       }
 
