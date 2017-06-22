@@ -207,13 +207,42 @@
                     </div>
 
                     <div class="title-and-buttons">
-                        <h3 class="text-gray">Total</h3>
+                        <h3 class="text-gray">Total: $ 1200.25 USD</h3>
 
                         <div class="title-buttons">
                             <a class="main-button white-background blue-border text-blue" href=""><i class="fa fa-download" aria-hidden="true"></i>Download CSV</a>
                             <a class="main-button white-background blue-border text-blue" href=""><i class="fa fa-print" aria-hidden="true"></i>Print</a>
+                            <a class="main-button white-background white-border text-blue has-submenu" href="">Expand All</a>
                         </div>
-                    </div>                    
+                    </div>       
+
+                    <div class="filter-form">
+                        <form action="/filter" method="POST">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label class="text-gray">Show by period:</label>
+                                    <input class="text-gray" autocomplete="off" name="date[start]" placeholder="Choose date" type="text"/>
+                                    <span class="text-gray">‒</span>
+                                    <input class="text-gray" autocomplete="off" name="date[end]" placeholder="Choose date" type="text"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-gray">Project:</label>
+                                    <div class="custom-select">
+                                        <select class="gray-border text-gray" id="transfer_type" required="" name="transfer[type]">
+                                            <option value="all_projects">All Projects</option>
+                                            <option value="project2">Project 2</option>
+                                            <option value="project3">Project 3</option>
+                                        </select>                          
+                                    </div>
+                                </div>
+
+                                <button class="text-white blue-backgound" type="submit">Filter</button>                            
+                                    
+                            </fieldset>
+                        </form>                        
+                    </div>             
 
                 </div>
 
