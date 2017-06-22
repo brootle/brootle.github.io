@@ -24,13 +24,11 @@ CanvasJS.addColorSet('greenShades',
         },      
 
         colorSet: "greenShades",
-    //   title: {
-    //     text: "Monthly Downloads",
-    //     fontSize: 25
-    //   },
+
 
       axisY:{
-        maximum: 125,
+        // ideally we can get max from data and set 'maximum' + 25 to look like in design
+        // maximum: 125,
         tickThickness:1,
         gridThickness: 1,
         lineThickness:0,
@@ -58,9 +56,6 @@ CanvasJS.addColorSet('greenShades',
         intervalType: "month",
         tickLength: 4
       },
-    //   axisY: {
-    //     title: "Downloads"
-    //   },
 
       data: [
       { 
@@ -131,9 +126,6 @@ CanvasJS.addColorSet('greenShades',
 
       ]
     });    
-
-
-    //chart.options.label = chart.options.label.toUpperCase();
 
     chart.render();
 
