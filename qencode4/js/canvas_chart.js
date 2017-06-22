@@ -31,8 +31,9 @@ CanvasJS.addColorSet('greenShades',
         // maximum: 125,
         tickThickness:1,
         gridThickness: 1,
+        gridColor: "#eeeeee",
         lineThickness:0,
-        interval:25,
+        interval:15,
       //  title: "axisY Title",
       //  interlacedColor: "#F8F1E4",
         tickLength: 0
@@ -54,7 +55,8 @@ CanvasJS.addColorSet('greenShades',
 
         interval: 1,
         intervalType: "month",
-        tickLength: 4
+        tickLength: 10,
+        tickColor: "white"
       },
 
       data: [
