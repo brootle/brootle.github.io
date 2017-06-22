@@ -42,7 +42,18 @@ CanvasJS.addColorSet('greenShades',
 
       axisX:{
         lineThickness:0,
-        valueFormatString: "MMM" ,
+        
+        // use this to get month number as show relevant month in uppercase
+        labelFormatter: function(e){
+          var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+              "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+          ];
+          return  monthNames[e.value.getMonth()];
+        },        
+
+        // this will automaticall format date to show it as month -> APR
+        // valueFormatString: "MMM" ,
+
         interval: 1,
         intervalType: "month",
         tickLength: 4
@@ -121,74 +132,8 @@ CanvasJS.addColorSet('greenShades',
       ]
     });    
 
-    // var chart = new CanvasJS.Chart("chartContainer",
-    // {
-    //   title:{
-    //   text: "Multi-Series Line Chart"  
-    //   },
-    //   data: [
-    //   {        
-    //     type: "line",
-    //     dataPoints: [
-    //     { x: 10, y: 21 },
-    //     { x: 20, y: 25},
-    //     { x: 30, y: 20 },
-    //     { x: 40, y: 25 },
-    //     { x: 50, y: 27 },
-    //     { x: 60, y: 28 },
-    //     { x: 70, y: 28 },
-    //     { x: 80, y: 24 },
-    //     { x: 90, y: 26}
-      
-    //     ]
-    //   },
-    //     {        
-    //     type: "line",
-    //     dataPoints: [
-    //     { x: 10, y: 31 },
-    //     { x: 25, y: 35},
-    //     { x: 33, y: 30 },
-    //     { x: 40, y: 35 },
-    //     { x: 50, y: 35 },
-    //     { x: 60, y: 38 },
-    //     { x: 70, y: 38 },
-    //     { x: 80, y: 34 },
-    //     { x: 90, y: 44}
-      
-    //     ]
-    //   },
-    //     {        
-    //     type: "line",
-    //     dataPoints: [
-    //     { x: 10, y: 45 },
-    //     { x: 20, y: 50},
-    //     { x: 30, y: 40 },
-    //     { x: 40, y: 45 },
-    //     { x: 50, y: 45 },
-    //     { x: 60, y: 48 },
-    //     { x: 70, y: 43 },
-    //     { x: 80, y: 41 },
-    //     { x: 90, y: 28}
-      
-    //     ]
-    //   },
-    //     {        
-    //     type: "line",
-    //     dataPoints: [
-    //     { x: 10, y: 71 },
-    //     { x: 20, y: 55},
-    //     { x: 30, y: 50 },
-    //     { x: 40, y: 65 },
-    //     { x: 50, y: 95 },
-    //     { x: 60, y: 68 },
-    //     { x: 70, y: 28 },
-    //     { x: 80, y: 34 },
-    //     { x: 90, y: 14}
-      
-    //     ]
-    //   }
-    //   ]
-    // });
+
+    //chart.options.label = chart.options.label.toUpperCase();
 
     chart.render();
 
