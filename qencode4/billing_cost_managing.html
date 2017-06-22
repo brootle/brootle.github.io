@@ -16,6 +16,10 @@
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>-->
     <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
@@ -225,11 +229,21 @@
                                 <div class="form-group">
                                     <label class="text-gray">Show by period:</label>
                                     <div class="filter-date">
-                                        <input class="text-gray" autocomplete="off" name="date[start]" placeholder="Choose date" type="text"/>
+                                        <input id="date_start" class="text-gray" autocomplete="off" name="date[start]" placeholder="Choose date" type="text"/>
+                                        <script>
+                                            $( function() {
+                                                $( "#date_start" ).datepicker();
+                                            } );
+                                        </script>                                        
                                     </div>
                                     <span class="text-gray">‒</span>
                                     <div class="filter-date">
-                                        <input class="text-gray" autocomplete="off" name="date[end]" placeholder="Choose date" type="text"/>
+                                        <input id="date_end" class="text-gray" autocomplete="off" name="date[end]" placeholder="Choose date" type="text"/>
+                                        <script>
+                                            $( function() {
+                                                $( "#date_end" ).datepicker();
+                                            } );
+                                        </script>                                            
                                     </div>
                                 </div>
 
