@@ -869,6 +869,123 @@ select{
     min-width: 16vw;
 }
 
+.main-content h4 {
+    font-size: 1.1vw;
+    font-weight: 900;
+    margin-top: 1vw;
+    margin-bottom: 0;
+}
+
+.project-header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vw;
+    border-bottom: 1px solid #8bbae8;
+    padding-bottom: 0.6vw; 
+    cursor: pointer;
+}
+
+.expand-details{
+    position: relative;
+    padding-left: 2vw;
+    font-size: 1vw;
+}
+
+.expand-details:after {
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0.5vw;
+    top: 0.05vw;
+    padding-right: 1.5vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+    color: #bdbdbd;
+}
+
+.active-project .expand-details:after {
+    content: "\f0d8";
+}
+
+.project-total{
+    font-size: 1vw;
+    font-weight: 900;
+}
+
+.project-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-summary, .project-details-table{
+    margin-top: 1vw;
+    width: 46%;
+}
+
+.project-format-numbers{
+    display: flex;
+}
+
+.format-label{
+    color: white;
+    font-size: 0.8vw;
+    font-weight: 600;
+    padding: 0.2vw 0.3vw;
+    border-radius: 0.3vw;
+    display: inline-block;    
+}
+
+.sd-label{
+    background: #1976d3;
+}
+
+.hd-label{
+    background: #f34761;
+}
+
+.uhd-label{
+    background: #4bc232;
+}
+
+.project-time{
+    font-size: 1vw;
+    font-weight: 900;    
+}
+
+.project-units{
+    font-size: 1vw;
+}
+
+.project-format-numbers span{
+    margin-right: 0.5vw;    
+}
+
+.project-stats-line{
+    display: flex;
+    margin-top: 0.6vw;
+}
+
+.project-stats-line .sd-label{
+    width: 245px;
+    height: 3px;
+    box-sizing: border-box;
+}
+
+.project-stats-line .hd-label{
+    width: 61px;
+    height: 3px;
+    box-sizing: border-box;
+}
+
+.project-stats-line .uhd-label{
+    width: 102px;
+    height: 3px;
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 960px) {
     .header--inner-pages{
         height: 8vw;
