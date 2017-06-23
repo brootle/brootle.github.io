@@ -43,6 +43,10 @@
     padding-top: 0.1vw;
 }
 
+.collapse-button:after{
+    content: "\f0d8";
+}
+
 /*FILTER FORM................START*/
 .filter-form input[type=text], .filter-form .custom-select{
     width: 12vw;
@@ -919,17 +923,34 @@ select{
     font-weight: 900;
 }
 
+.project-content-container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.1s ease-out;
-    display: flex;
-    justify-content: space-between;
+    /*border-bottom: 1px solid #e6e6e6;  */
 }
 
 .project-summary, .project-details-table{
     margin-top: 1vw;
     width: 46%;
+}
+
+.project-details-table table{
+    width: 100%;
+    font-size: 1vw;
+    margin-top: 0.3vw;
+    line-height: 1.5vw;    
+    text-align: left;
+}
+
+.project-details-table table td {
+    padding: 0;
+    vertical-align: text-top;
 }
 
 .project-format-numbers{
@@ -976,21 +997,19 @@ select{
 }
 
 .project-stats-line .sd-label{
-    width: 245px;
     height: 3px;
-    box-sizing: border-box;
 }
 
 .project-stats-line .hd-label{
-    width: 61px;
     height: 3px;
-    box-sizing: border-box;
 }
 
 .project-stats-line .uhd-label{
-    width: 102px;
     height: 3px;
-    box-sizing: border-box;
+}
+
+.hidden{
+    display: none;
 }
 
 @media screen and (max-width: 960px) {

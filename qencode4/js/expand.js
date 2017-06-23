@@ -24,6 +24,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+    var expandAllButton = document.querySelector('#expand_all');
+    var collapseAllButton = document.querySelector('#collapse_all');
+
+    expandAllButton.addEventListener('click', function(){
+
+        collapseAllButton.classList.remove("hidden");
+        expandAllButton.classList.add("hidden");
+
+        var headers = document.querySelectorAll(".project-header");
+        headers.forEach(header => {
+            header.classList.add("active-project");
+
+            var currentpanel = header.nextElementSibling;
+            // 2. show panel
+            currentpanel.style.maxHeight = currentpanel.scrollHeight + "px";
+
+        })
+    })
+
+    collapseAllButton.addEventListener('click', function(){
+
+        collapseAllButton.classList.add("hidden");
+        expandAllButton.classList.remove("hidden");        
+
+        var headers = document.querySelectorAll(".project-header");
+        headers.forEach(header => {
+            header.classList.remove("active-project");
+
+            var currentpanel = header.nextElementSibling;
+            // 2. hide panel
+            currentpanel.style.maxHeight = null;
+
+        })
+    })    
 
 
 });

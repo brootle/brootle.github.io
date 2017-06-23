@@ -140,7 +140,7 @@
             <div class="tab-menu-and-content">
 
                 <div class="tab text-blue">
-                    <span class="tablinks tablinks--active" data-tabcontent="billing">Billing and Const Managing</span>
+                    <span class="tablinks tablinks--active" data-tabcontent="billing">Billing and Cost Managing</span>
                     <span class="tablinks" data-tabcontent="methods">Payment Methods</span>
                     <span class="tablinks" data-tabcontent="history">Payment History</span>
                     <span class="tablinks" data-tabcontent="invoices">Invoices</span>
@@ -217,7 +217,8 @@
                         <div class="title-buttons">
                             <a class="main-button white-background blue-border text-blue" href=""><i class="fa fa-download" aria-hidden="true"></i>Download CSV</a>
                             <a class="main-button white-background blue-border text-blue" href=""><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                            <a class="main-button white-background white-border text-blue has-submenu" href="">Expand All</a>
+                            <a id="expand_all" class="main-button white-background white-border text-blue has-submenu">Expand All</a>
+                            <a id="collapse_all" class="main-button white-background white-border text-blue has-submenu collapse-button hidden">Collapse All</a>
                         </div>
                     </div>       
 
@@ -274,19 +275,38 @@
                     </div>   
 
                     <div class="project-content">
-                        <div class="project-summary">
-                            <div class="project-format-numbers">
-                                <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
-                                <div><span class="format-label hd-label">HD</span><span class="project-time">54</span><span class="project-units">min</span></div>
-                                <div><span class="format-label uhd-label">UHD</span><span class="project-time">90</span><span class="project-units">min</span></div>
+                        <div class="project-content-container">
+                            <div class="project-summary">
+                                <div class="project-format-numbers">
+                                    <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
+                                    <div><span class="format-label hd-label">HD</span><span class="project-time">54</span><span class="project-units">min</span></div>
+                                    <div><span class="format-label uhd-label">UHD</span><span class="project-time">90</span><span class="project-units">min</span></div>
+                                </div>
+                                <div class="project-stats-line">
+                                    <div class="sd-label" style="width: 245px;"></div>
+                                    <div class="hd-label" style="width: 61px;"></div>
+                                    <div class="uhd-label" style="width: 102px;"></div>
+                                </div>
                             </div>
-                            <div class="project-stats-line">
-                                <div class="sd-label"></div><div class="hd-label"></div><div class="uhd-label"></div>
+                            <div class="project-details-table">
+                                <table class="text-gray">
+                                    <thead>
+                                        <tr>
+                                            <th>Project created at</th>
+                                            <th>Quality</th>
+                                            <th>Time</th>
+                                            <th></th>                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td rowspan="3">22-05-2017 00:26:47</td><td>SD</td><td>11:45:02</td><td>$08.30</td></tr>
+                                        <tr><td>HD</td><td>00:45:43</td><td>$21.05</td></tr>
+                                        <tr><td>UHD</td><td>00:55:00</td><td>$15.05</td></tr>
+                                    </tbody>                             
+                                </table>                        
                             </div>
                         </div>
-                        <div class="project-details-table">
-                            table with data
-                        </div>
+                        <hr>
                     </div>
 
                     <div class="project-header text-gray">
@@ -295,15 +315,35 @@
                     </div>   
 
                     <div class="project-content">
-                        <div class="project-summary">
-                            <div class="project-format-numbers">
-                                <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
-                                <div><span class="format-label hd-label">HD</span><span class="project-time">54</span><span class="project-units">min</span></div>
+                        <div class="project-content-container">
+                            <div class="project-summary">
+                                <div class="project-format-numbers">
+                                    <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
+                                    <div><span class="format-label hd-label">HD</span><span class="project-time">54</span><span class="project-units">min</span></div>
+                                </div>
+                                <div class="project-stats-line">
+                                    <div class="sd-label" style="width: 326px;"></div>
+                                    <div class="hd-label" style="width: 83px;"></div>
+                                </div>                            
+                            </div>
+                            <div class="project-details-table">
+                                <table class="text-gray">
+                                    <thead>
+                                        <tr>
+                                            <th>Project created at</th>
+                                            <th>Quality</th>
+                                            <th>Time</th>
+                                            <th></th>                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td rowspan="2">22-05-2017 00:26:47</td><td>SD</td><td>11:45:02</td><td>$08.30</td></tr>
+                                        <tr><td>HD</td><td>00:45:43</td><td>$21.05</td></tr>
+                                    </tbody>                             
+                                </table> 
                             </div>
                         </div>
-                        <div class="project-details-table">
-                            table with data
-                        </div>
+                        <hr>
                     </div>
 
                     <div class="project-header text-gray">
@@ -312,14 +352,33 @@
                     </div>   
 
                     <div class="project-content">
-                        <div class="project-summary">
-                            <div class="project-format-numbers">
-                                <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
+
+                        <div class="project-content-container">
+                            <div class="project-summary">
+                                <div class="project-format-numbers">
+                                    <div><span class="format-label sd-label">SD</span><span class="project-time">214</span><span class="project-units">min</span></div>
+                                </div>
+                                <div class="project-stats-line">
+                                    <div class="sd-label" style="width: 409px;"></div>
+                                </div>                            
+                            </div>
+                            <div class="project-details-table">
+                                <table class="text-gray">
+                                    <thead>
+                                        <tr>
+                                            <th>Project created at</th>
+                                            <th>Quality</th>
+                                            <th>Time</th>
+                                            <th></th>                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>22-05-2017 00:26:47</td><td>SD</td><td>11:45:02</td><td>$08.30</td></tr>
+                                    </tbody>                             
+                                </table> 
                             </div>
                         </div>
-                        <div class="project-details-table">
-                            table with data
-                        </div>
+                        <hr>
                     </div>                                        
 
                 </div>
