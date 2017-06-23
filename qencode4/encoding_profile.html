@@ -11,6 +11,11 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>    
+
     <script src="js/menu.js"></script>
     <script src="js/accordion.js"></script>
 
@@ -127,7 +132,263 @@
                     <span class="text-gray">Click Add to start with new video settings.</span>
                     <a class="button text-white light-green-grass-background">+ Add</a>
                 </div>
-            </div>            
+            </div>           
+            
+            <table id="video_settings_table" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">Disabled</th>
+                        <th class="gray-border">Output Resolution</th>
+                        <th class="gray-border">Quality</th>
+                        <th class="gray-border">Tag</th>
+                        <th class="gray-border">Bitrate</th>
+                        <th class="gray-border">Action</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="res1080" type="checkbox" name="resolution" value="1080">
+                                <label for="res1080"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">1080p</td>
+                        <td class="gray-border">20</td>
+                        <td class="gray-border">1080</td>
+                        <td class="gray-border"></td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="res720" type="checkbox" name="resolution" value="720">
+                                <label for="res720"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">720p</td>
+                        <td class="gray-border">20</td>
+                        <td class="gray-border">720</td>
+                        <td class="gray-border"></td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="res480" type="checkbox" name="resolution" value="480">
+                                <label for="res480"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">480p</td>
+                        <td class="gray-border">20</td>
+                        <td class="gray-border">480</td>
+                        <td class="gray-border"></td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="res320" type="checkbox" name="resolution" value="320">
+                                <label for="res320"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">360p</td>
+                        <td class="gray-border">20</td>
+                        <td class="gray-border">360</td>
+                        <td class="gray-border"></td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="res240" type="checkbox" name="resolution" value="240">
+                                <label for="res240"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">240p</td>
+                        <td class="gray-border">20</td>
+                        <td class="gray-border">240</td>
+                        <td class="gray-border"></td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>                                                                                                                                                                                              
+                </tbody>
+            </table>        
+            <script>
+                // Disable search and ordering by default
+                $.extend( $.fn.dataTable.defaults, {
+                    searching: false
+                } );
+
+                $('#video_settings_table').dataTable({
+                    "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    { "bSortable": false }
+                    ],                      
+                    "aaSorting": [], // Disable initial sort,                                      
+                    "dom": '' // initiate without any pagination or other details
+                });  
+            </script>               
+            
+            <h3 class="text-blue">Audio settings</h3> 
+
+            <div class="two-columns-content">
+                <div>            
+
+                    <div class="input-container">
+                        <div class="input-label text-gray">
+                            <label for="max_audio_bitrate">Max Audio bitrate <i class="fa fa-question-circle after-text text-transparent-gray" aria-hidden="true"></i></label>
+                        </div>                            
+                        <input id="max_audio_bitrate" class="gray-border text-gray" autocomplete="off" name="profile[max_audio_bitrate]" placeholder="" type="text">      
+                    </div>   
+
+                </div>       
+
+            </div>       
+
+            <h3 class="text-blue">Sizes</h3>
+
+            <div class="main-info-box">
+                <div>  
+                    <span class="text-gray">Click Add to start with new video settings.</span>
+                    <a class="button text-white light-green-grass-background">+ Add</a>
+                </div>
+            </div>        
+
+            <table id="video_settings_sizes" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">WxH</th>
+                        <th class="gray-border">Output Resolution</th>
+                        <th class="gray-border">Action</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">640x360</td>
+                        <td class="gray-border">Size1</td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">640x360</td>
+                        <td class="gray-border">Size2</td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>                                                                                                                                                                                           
+                </tbody>
+            </table>        
+            <script>
+                // Disable search and ordering by default
+                $.extend( $.fn.dataTable.defaults, {
+                    searching: false
+                } );
+
+                $('#video_settings_sizes').dataTable({
+                    "aoColumns": [
+                    null,
+                    null,
+                    { "bSortable": false }
+                    ],                      
+                    "aaSorting": [], // Disable initial sort,                                      
+                    "dom": '' // initiate without any pagination or other details
+                });  
+            </script>                         
+
+            <h3 class="text-blue">Thumbnail Settings</h3>
+
+            <div class="main-info-box">
+                <div>  
+                    <span class="text-gray">Click Add to start with new video settings.</span>
+                    <a class="button text-white light-green-grass-background">+ Add</a>
+                </div>
+            </div>                
+
+            <table id="thumbnail_settings_table" class="text-gray gray-border">
+                <thead>
+                    <tr>
+                        <th class="gray-border">Disabled</th>
+                        <th class="gray-border">Time</th>
+                        <th class="gray-border">Tag</th>
+                        <th class="gray-border">Action</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="thumnail1" type="checkbox" name="thumbnail" value="1">
+                                <label for="thumnail1"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">0s</td>
+                        <td class="gray-border">0</td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-border">
+                            <div class="custom-checkbox">
+                                <input id="thumnail2" type="checkbox" name="thumnail" value="2">
+                                <label for="thumnail2"></label>                                
+                            </div>
+                        </td>
+                        <td class="gray-border">1s</td>
+                        <td class="gray-border">1</td>
+                        <td class="gray-border">
+                            <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>                                                                                                                                                                                       
+                </tbody>
+            </table>        
+            <script>
+                // Disable search and ordering by default
+                $.extend( $.fn.dataTable.defaults, {
+                    searching: false
+                } );
+
+                $('#thumbnail_settings_table').dataTable({
+                    "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    { "bSortable": false }
+                    ],                      
+                    "aaSorting": [], // Disable initial sort,                                      
+                    "dom": '' // initiate without any pagination or other details
+                });  
+            </script>              
+
+            <div class="title-buttons title-buttons--below_content">
+                <a class="main-button white-background blue-border text-blue" href=""><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to project</a>
+                <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                <a class="main-button blue-backgound blue-border text-white" href="">Save</a>
+            </div>           
 
         </section>          
 

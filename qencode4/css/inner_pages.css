@@ -229,13 +229,29 @@ input[type=text] {
 
 /*TABLE.........................START*/
 
-#transfer_table, #demo_details_table, #demo_details_url, #overdue_invoices {
+#transfer_table, #demo_details_table, #demo_details_url, 
+#overdue_invoices, #video_settings_table, #video_settings_sizes, #thumbnail_settings_table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1vw;
     text-align: left;
     font-size: 1vw;
 }
+
+#video_settings_sizes th:nth-last-of-type(1){
+    width: 6vw;
+}
+
+#video_settings_table th:first-of-type,
+#video_settings_table th:nth-last-of-type(1){
+    width: 6vw;
+}
+
+#thumbnail_settings_table th:first-of-type,
+#thumbnail_settings_table th:nth-last-of-type(1){
+    width: 6vw;
+}
+
 
 .inner-pages-table {
     border-collapse: collapse;
@@ -714,6 +730,11 @@ select{
     margin-right: 0;
 }
 
+.title-buttons--below_content{
+    text-align: right;
+    margin-top: 2vw;    
+}
+
 .format-choice{
     display: flex;
     align-items: center;    
@@ -777,6 +798,60 @@ select{
     border-radius: 0.5vw;
 }
 /*CUSTOM RADIO BUTTONS................END*/
+
+/*CUSTOM CHECKBOX BUTTON................START*/
+
+.custom-checkbox input[type="checkbox"]{
+    display:none;
+}
+
+.custom-checkbox label {
+    position: relative;
+    padding-left: 2vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;    
+}
+
+.custom-checkbox input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #e5e5e5;  
+    border-radius: 0.5vw;
+}
+
+.custom-checkbox input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.7vw;
+    top: 0.16vw;
+    border-style: solid;
+    border-width: 0 0.2vw 0.2vw 0;
+    border-color:  white;  
+    height: 1.1vw;
+    transform: rotate(45deg);
+    width: 0.65vw;
+}
+
+.custom-checkbox input[type=checkbox]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #4bc232;  
+    background: #4bc232;
+    border-radius: 0.5vw;
+}
+/*CUSTOM CHECKBOX BUTTON................END*/
 
 .input-container input{
     border-color: #eeeeee;
