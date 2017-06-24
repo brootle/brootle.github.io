@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    console.log("payment history table script loaded");
+
     // Disable search and ordering by default
     $.extend( $.fn.dataTable.defaults, {
         searching: false
@@ -23,7 +25,7 @@ $(document).ready(function(){
             info: `
                 <div id='info-container'>
 
-                    <div id="rows_number_selector" class="rows-number-selector-box">
+                    <div id="rows_number_selector" class="rows-number-selector-box rows-number-selector-box--big">
                         <label class="input-label"><span>Rows:</span></label>
                         <a><span>10</span></a>
                         <a><span>20</span></a>
@@ -31,7 +33,7 @@ $(document).ready(function(){
                         <a><span>100</span></a>
                     </div>
 
-                    <span id='rows_number' class='transparent-green records-table-general'>_START_ - _END_</span> of _TOTAL_
+                    <label class="table-label">Show on page:</label> <span id='rows_number' class='records-table-number'>_START_ - _END_</span> of _TOTAL_
                 </div>
                 <script>
                     // control table after it was initiates
@@ -73,5 +75,41 @@ $(document).ready(function(){
         { "bSortable": false }
         ] } 
     );
+
+    // wrap top info bar and add date range
+    $( ".top" ).wrap( "<div class='table-with-time-range'></div>" );
+    $( ".table-with-time-range" ).prepend( `
+
+        <div class="filter-form">
+            <form action="/filter" method="POST">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="text-gray">Show by period:</label>
+                        <div class="filter-date" id="start_date">
+                                                            
+                        </div>
+                        <span class="text-gray">‒</span>
+                        <div class="filter-date" id="end_date">
+                                                            
+                        </div>
+                    </div>
+
+                    <button class="text-white blue-backgound" type="submit">Filter</button>                            
+                        
+                </fieldset>
+            </form>                        
+        </div>    
+
+    
+    ` );
+ 
+    function createDateInput() {
+        $('<input type="text" id="history_date_start"  name="date[start]" autocomplete="off" placeholder="Choose date" />').appendTo("#start_date").datepicker();
+        $('<input type="text" id="history_date_end"  name="date[end]" autocomplete="off" placeholder="Choose date" />').appendTo("#end_date").datepicker();
+    };
+
+    $(createDateInput);    
+
 
 });

@@ -123,6 +123,7 @@ hr{
 }
 
 .title-and-buttons{
+    margin-top: 2vw;
     display: flex;
     justify-content: space-between;   
     align-items: center; 
@@ -307,19 +308,21 @@ table.dataTable tbody tr:hover {
 .top {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     /*font-size: 1.1vw;
     color: #73767d;*/
 }
 
-#transfer_table_info{
+
+.dataTables_wrapper .dataTables_info {
+    padding-top: 0; 
     font-size: 1.1vw;
     color: #73767d;
-    margin-right: 0.5vw;
+    margin-right: 0.5vw;    
 }
 
-#transfer_table_info span{
-    padding: 0.2vw 0.7vw;
-    cursor: pointer;
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 0; 
 }
 
 #info-container{
@@ -327,7 +330,7 @@ table.dataTable tbody tr:hover {
     z-index: 9999;
 }
 
-#rows_number_selector{
+.rows-number-selector-box{
     display: none;
     width: 8.5vw;
     position: absolute;
@@ -340,13 +343,41 @@ table.dataTable tbody tr:hover {
     box-shadow: 0px 3px 13px -4px rgba(0,0,0,0.75);
 }
 
-#rows_number_selector a{
+.rows-number-selector-box span{
+    padding: 0.2vw 0.7vw;
+}
+
+.table-label{
+    margin-right: 0.5vw;
+    font-weight: 600;
+    font-size: 1vw;
+}
+
+.rows-number-selector-box--big{
+    width: 10vw; 
+    padding-top: 4.3vw;
+    top: -0.1vw;  
+    left: 6.6vw;
+}
+
+.table-with-time-range{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.table-with-time-range fieldset{
+    margin: 0;
+    padding: 0;    
+}
+
+.rows-number-selector-box a{
     display: block;
     line-height: 1.7vw;
     cursor: pointer;
 }
 
-#rows_number_selector a:hover{
+.rows-number-selector-box a:hover{
     background: #e4f2fd;
 }
 
@@ -646,10 +677,11 @@ select{
     font-size: 0.8vw;    
 }
 
-.balance-label p{
+#balance-label-total {
     font-size: 2.1vw;
     font-weight: 900;
     margin-bottom: 0.3vw;
+    margin-top: 1vw;
 }
 
 /*CARD usage-details...................START*/
@@ -1026,7 +1058,7 @@ select{
     display: flex;
 }
 
-.preferences-container p{
+.tabcontent p{
     font-size: 1vw;
     margin-top: 0.2vw;
     margin-bottom: 0.2vw;    
@@ -1052,6 +1084,24 @@ select{
 
 .preferences-container form{
     margin-left: 3.3vw;    
+}
+
+.records-table-number{
+    padding: 0.9vw 1.5vw;
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 0.2vw solid #eeeeee;
+    color: #73767d;
+    font-size: 1vw;    
+    cursor: pointer;
+}
+
+.records-table-general{
+    padding: 0.2vw 0.7vw;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 960px) {
