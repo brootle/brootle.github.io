@@ -7,7 +7,7 @@ $(document).ready(function(){
         searching: false
     } );
 
-    $('#transfer_table').dataTable( {
+    $('#payment_history_table').dataTable( {
 
         // see https://datatables.net/reference/option/language.aria.paginate.next
         language: {
@@ -38,7 +38,7 @@ $(document).ready(function(){
                 <script>
                     // control table after it was initiates
 
-                    var table = $('#transfer_table').DataTable();
+                    var table = $('#payment_history_table').DataTable();
 
                     // handle events when we click 'rows_number' to change number of rows displayed
                     $('#rows_number').on('click', function(){
@@ -65,19 +65,15 @@ $(document).ready(function(){
                 </script>
             `
         },
-
+        "order": [],                // disable sort at the start
         "iDisplayLength": 5,
         "pagingType": "simple",     // see https://datatables.net/examples/basic_init/alt_pagination.html
-        "dom": '<"top"ip>',         // see https://datatables.net/examples/basic_init/dom.html
-        "aoColumns": [
-        null,
-        null,
-        { "bSortable": false }
-        ] } 
-    );
+        "dom": '<"top"ip>'         // see https://datatables.net/examples/basic_init/dom.html
+    });
 
     // wrap top info bar and add date range
     $( ".top" ).wrap( "<div class='table-with-time-range'></div>" );
+    // incert date range filter
     $( ".table-with-time-range" ).prepend( `
 
         <div class="filter-form">
@@ -103,7 +99,8 @@ $(document).ready(function(){
 
     
     ` );
- 
+    
+    // insert date input fields and initiate datepicker
     function createDateInput() {
         $('<input type="text" id="history_date_start"  name="date[start]" autocomplete="off" placeholder="Choose date" />').appendTo("#start_date").datepicker();
         $('<input type="text" id="history_date_end"  name="date[end]" autocomplete="off" placeholder="Choose date" />').appendTo("#end_date").datepicker();
