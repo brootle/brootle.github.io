@@ -393,6 +393,86 @@
 
                 <div id="invoices" class="tabcontent">
                     <h3 class="text-gray">Invoices</h3>
+                    <table id="all_invoices" class="text-gray gray-border">
+                        <thead>
+                            <tr>
+                                <th class="gray-border">Invoice Date</th>
+                                <th class="gray-border">Invoice ID</th>
+                                <th class="gray-border">Type</th>
+                                <th class="gray-border">Due Date</th>
+                                <th class="gray-border">Status</th>
+                                <th class="gray-border">Amount</th>     
+                                <th class="gray-border">Actions</th>                     
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="gray-border">03-02-2016</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">91224623</a></td>
+                                <td class="gray-border">Payment</td>
+                                <td class="gray-border">02-03-16</td>
+                                <td class="gray-border">Past Due</td>
+                                <td class="gray-border text-right">$47.67</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                            </tr>  
+                            <tr>
+                                <td class="gray-border">03-02-2017</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">19224623</a></td>
+                                <td class="gray-border">Payment</td>
+                                <td class="gray-border">02-03-17</td>
+                                <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
+                                <td class="gray-border text-right">$12.48</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                            </tr>     
+                            <tr>
+                                <td class="gray-border">13-02-2016</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">77224623</a></td>
+                                <td class="gray-border">Payment</td>
+                                <td class="gray-border">05-03-16</td>
+                                <td class="gray-border">Past Due</td>
+                                <td class="gray-border text-right">$23.67</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                            </tr>  
+                            <tr>
+                                <td class="gray-border">07-05-2017</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">11224623</a></td>
+                                <td class="gray-border">Payment</td>
+                                <td class="gray-border">07-07-17</td>
+                                <td class="gray-border">Past Due</td>
+                                <td class="gray-border text-right">$221.07</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                            </tr>        
+                            <tr>
+                                <td class="gray-border">06-02-2017</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">71224623</a></td>
+                                <td class="gray-border">Payment</td>
+                                <td class="gray-border">09-03-17</td>
+                                <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
+                                <td class="gray-border text-right">$82.48</td>
+                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                            </tr>                                                                                                                                                                                                                                                                                             
+                        </tbody>
+                    </table>        
+                    <script>
+                        // Disable search and ordering by default
+                        $.extend( $.fn.dataTable.defaults, {
+                            searching: false
+                        } );
+
+                        $('#all_invoices').dataTable({
+                            "aoColumns": [
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            { "bSortable": false }
+                            ],                      
+                            "aaSorting": [], // Disable initial sort,                                      
+                            "dom": '' // initiate without any pagination or other details
+                        });  
+                    </script>                          
                 </div>
 
                 <div id="preferences" class="tabcontent">
