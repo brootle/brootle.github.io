@@ -243,12 +243,20 @@ input[type=text] {
 
 #transfer_table, #demo_details_table, #demo_details_url, 
 #overdue_invoices, #video_settings_table, #video_settings_sizes, #thumbnail_settings_table,
-#all_invoices, #payment_history_table {
+#all_invoices, #payment_history_table, #payment_methods {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1vw;
     text-align: left;
     font-size: 1vw;
+}
+
+#payment_methods thead th {
+    padding: 10px 18px;
+}
+
+#payment_methods tr:hover{
+    background: #fafafa;
 }
 
 #video_settings_sizes th:nth-last-of-type(1){
@@ -1124,6 +1132,17 @@ select{
     background-repeat: no-repeat;
     background-size: 5vw;
 }
+
+.action-text-link{
+    float: left;
+    line-height: 2vw;    
+    font-weight: 600;
+}
+
+.action-buttons-with-text-link{
+    float: right;
+}
+
 
 @media screen and (max-width: 960px) {
     .header--inner-pages{
