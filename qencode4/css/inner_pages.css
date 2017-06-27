@@ -252,7 +252,7 @@ input[type=text] {
 }
 
 #payment_methods thead th {
-    padding: 10px 18px;
+    padding: 1vw 2vw;
 }
 
 #payment_methods tr:hover{
@@ -404,6 +404,7 @@ table.dataTable tbody tr:hover {
 
 table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
     border-bottom: 2px solid #e5e5e5;
+    padding: 1vw 2vw;
 }
 
 #transfer_table_next, #transfer_table_previous{
@@ -802,6 +803,54 @@ select{
 }
 
 
+/*CUSTOM RADIO BUTTONS VERTICAL................START*/
+.radio-button--round{
+    margin-top: 0.8vw;  
+    margin-bottom: 0.8vw;  
+}
+
+.radio-button--round input[type="radio"]{
+    display:none;
+}
+
+.radio-button--round label {
+    position: relative;
+    margin-right: 3vw;
+}
+
+.radio-button--round input[type=radio] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.8vw;
+    height: 1.8vw;
+    border: 3px solid #4bc232;
+    border-radius: 50%;
+}
+
+.radio-button--round input[type=radio]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.5vw;
+    top: 0.3vw;
+    height: 0.8vw;
+    width: 0.8vw;
+    background: #4bc232;
+    border-radius: 50%;
+}
+
+.radio-button--round input[type=radio]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+}
+/*CUSTOM RADIO BUTTONS VERTICAL................END*/
+
 /*CUSTOM RADIO BUTTONS................START*/
 .radio-buttons{
     display: flex;
@@ -1143,6 +1192,119 @@ select{
     float: right;
 }
 
+/*MODAL WINDOW - PAY INVOICE..........................START*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100000; /* Sit on top */
+    padding-top: 1.5vw; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */  
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s 
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.modal-container{
+    padding-left: 4%;
+    padding-right: 4%;    
+    padding-bottom: 2vw;
+    padding-top: 2vw
+}
+
+.modal-container .title-and-buttons{
+    margin-top: 0;
+}
+
+.title-info{
+    font-size: 1.1vw;
+}
+
+.margin-left{
+    margin-left: 0.8vw;
+}
+
+.modal-content table{
+    text-align: left;
+    font-size: 1.1vw;    
+}
+
+.modal-content table td, .modal-content table th{
+    padding: 0.5vw 0.8vw;
+}
+
+.modal-content table tr td:first-of-type, .modal-content table tr th:first-of-type{
+    padding-left: 0;
+}
+
+.modal-content input[type=text]{
+    margin: 0;
+}
+
+.card-input{
+    padding: 0.9vw 1.5vw;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 0.2vw solid #eeeeee;
+    color: #73767d;
+    font-size: 1vw;    
+}
+
+.card-input .fa-credit-card{
+    font-size: 1.1vw
+}
+
+.card-input input[type=text]{
+    padding: 0;
+    margin: 0;
+    border: none;
+    margin-left: 1vw;
+}
+
+.card-input input[type=text]:first-of-type{
+    width: 11vw;
+}
+
+.card-input input[type=text]:nth-of-type(2){
+    width: 4vw;
+}
+
+.card-input input[type=text]:nth-of-type(3){
+    width: 2vw;
+}
+
+/*MODAL WINDOW - PAY INVOICE..........................END*/
 
 @media screen and (max-width: 960px) {
     .header--inner-pages{

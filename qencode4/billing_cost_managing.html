@@ -28,6 +28,7 @@
     <script src="js/canvasjs.min.js"></script>
     <script src="js/canvas_chart.js"></script>
     <!--<script src="js/chart.js"></script>-->
+    <script src="js/modal.js"></script>
     <script src="js/payment_history_table.js"></script>
     <script src="js/expand.js"></script>
     <script src="js/billing.js"></script>
@@ -40,6 +41,104 @@
     <title>Qencode: Billing</title>
 </head>
 <body>
+
+    <!-- The Modal -->
+    <div id="payInvoice" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content main-content">
+            <div class="modal-container">
+                <h1 class="text-blue">Billing</h1>
+                <div class="title-and-buttons">
+                    <div class="title-info">
+                        <span class="danger-warning text-red"> <a class="danger-warning-icon"><i class="fa fa-exclamation" aria-hidden="true"></i></a> You got 2 invoice(s) overdue</span>
+                        <a href="" class="main-link text-blue margin-left">91224623</a>
+                        <a class="main-link text-blue has-modal margin-left">Pay Now</a>
+                    </div>
+                    <div class="title-buttons">
+                        <a id="see_payment_history" class="main-button blue-backgound blue-border text-white">See Payment History</a>
+                    </div>
+                </div>   
+                <h3 class="text-gray">Invoice</h3>
+                <hr>
+                <table class="text-gray">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Invoice Data</th>
+                            <th>Due date</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="" class="main-link text-blue">91224623</a></td>
+                            <td>03-02-2016</td>
+                            <td>02-03-2016</td>
+                            <td>Up-to-date</td>                                                        
+                            <td>$47.67</td>
+                        </tr>
+                    </tbody>                              
+                </table>
+                <hr>
+                <h4 class="text-gray text-right">Total: $47.67 USD</h4>
+                <h3 class="text-gray">Payment Methods</h3>         
+                <div class="preferences-container">
+                    <div class="radio-button--round text-gray">
+                        <input id="pay_by_card" type="radio" name="format" value="pay_by_card" checked>
+                        <label for="pay_by_card"></label>
+                    </div>
+                    <div>
+                        <label for="pay_by_card"><h4 class="text-gray">Credit / Debit card</h4>
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>           
+                        </label>     
+
+                        <div class="gray-border text-gray card-input">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <input autocomplete="off" name="credit_card[number]" placeholder="4242 4242 4242 4242" type="text">
+                            <input autocomplete="off" name="credit_card[valid_date]" placeholder="MM / YY" type="text">
+                            <input autocomplete="off" name="credit_card[cvc]" placeholder="CVC" type="text">
+                            <i class="fa fa-question-circle after-text text-transparent-gray" aria-hidden="true"></i>
+                        </div>    
+                    
+                    </div>
+                </div>
+                <div class="preferences-container">
+                    <div class="radio-button--round text-gray">
+                        <input id="pay_by_paypal" type="radio" name="format" value="pay_by_paypal">
+                        <label for="pay_by_paypal">
+                    </div>                        
+                    <div>
+                        <label for="pay_by_paypal">
+                            <h4 class="text-gray">PayPal</h4>
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>         
+                        </label>      
+
+                        <input id="paypal_amount" class="gray-border text-gray" autocomplete="off" name="exceeded_amout" placeholder="$47.67" type="text">
+
+                    </div>
+                </div>        
+                
+                
+                                                 
+                <div class="buttons-below">
+                    <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                    <a class="main-button blue-backgound blue-border text-white" href="">Proceed the Payment</a>
+                </div>                    
+                   
+            </div>
+        </div>
+
+    </div>    
 
     <header class="header--inner-pages">
 
@@ -96,7 +195,7 @@
                         <td class="gray-border">02-03-16</td>
                         <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
                         <td class="gray-border text-right">$47.67</td>
-                        <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a></td>
+                        <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a></td>
                     </tr>  
                     <tr>
                         <td class="gray-border">03-02-2017</td>
@@ -105,7 +204,7 @@
                         <td class="gray-border">02-03-17</td>
                         <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
                         <td class="gray-border text-right">$12.48</td>
-                        <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a></td>
+                        <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a></td>
                     </tr>                                                                                                                                                                                                                  
                 </tbody>
             </table>        
@@ -629,7 +728,7 @@
                                 <td class="gray-border">02-03-16</td>
                                 <td class="gray-border">Past Due</td>
                                 <td class="gray-border text-right">$47.67</td>
-                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                                <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
                             </tr>  
                             <tr>
                                 <td class="gray-border">03-02-2017</td>
@@ -638,7 +737,7 @@
                                 <td class="gray-border">02-03-17</td>
                                 <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
                                 <td class="gray-border text-right">$12.48</td>
-                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                                <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
                             </tr>     
                             <tr>
                                 <td class="gray-border">13-02-2016</td>
@@ -647,7 +746,7 @@
                                 <td class="gray-border">05-03-16</td>
                                 <td class="gray-border">Past Due</td>
                                 <td class="gray-border text-right">$23.67</td>
-                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                                <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
                             </tr>  
                             <tr>
                                 <td class="gray-border">07-05-2017</td>
@@ -656,7 +755,7 @@
                                 <td class="gray-border">07-07-17</td>
                                 <td class="gray-border">Past Due</td>
                                 <td class="gray-border text-right">$221.07</td>
-                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                                <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
                             </tr>        
                             <tr>
                                 <td class="gray-border">06-02-2017</td>
@@ -665,7 +764,7 @@
                                 <td class="gray-border">09-03-17</td>
                                 <td class="gray-border"><span class="danger-warning text-red">Overdue <a class="danger-warning-icon after-text"><i class="fa fa-exclamation" aria-hidden="true"></i></a></span></td>
                                 <td class="gray-border text-right">$82.48</td>
-                                <td class="gray-border"><a href="" class="main-link text-blue">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
+                                <td class="gray-border"><a class="main-link text-blue has-modal">Pay Now</a> <a class="action-button--file"><i class="fa fa-file-o" aria-hidden="true"></i></a></td>
                             </tr>                                                                                                                                                                                                                                                                                             
                         </tbody>
                     </table>        
