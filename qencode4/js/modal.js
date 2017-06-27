@@ -1,28 +1,65 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Modal loaded with JavaScript');
 
-    const modal = document.querySelector('#payInvoice');
+    // Pay Invoice clicked
+    const payInvoiceModal = document.querySelector('#payInvoice');
 
-    const payNowButtons = document.querySelectorAll('.has-modal');
+    const payNowButtons = document.querySelectorAll('.pay-now-modal');
 
     const seePaymentHistory = document.querySelector("#see_payment_history");
 
-    payNowButtons.forEach(link => link.addEventListener('click', showModal));
+    payNowButtons.forEach(link => link.addEventListener('click', showPayInvoiceModal));
 
-    function showModal(){
-        console.log("show modal");
-        modal.style.display = "block";
+    function showPayInvoiceModal(){
+        payInvoiceModal.style.display = "block";
         // add modal-open class to body
         document.querySelector("body").classList.add("modal-open");
     }
 
+
+    // Show Invoice clicked
+    const showInvoiceModal = document.querySelector('#showInvoice');
+
+    const shoInvoiceButtons = document.querySelectorAll('.show-invoice-modal');  
+
+    shoInvoiceButtons.forEach(link => link.addEventListener('click', showInvoiceInfoModal));  
+
+    function showInvoiceInfoModal(){
+        showInvoiceModal.style.display = "block";
+        // add modal-open class to body
+        document.querySelector("body").classList.add("modal-open");
+
+        // expand all details
+        var headers = document.querySelectorAll(".project-header");
+        headers.forEach(header => {
+            header.classList.add("active-project");
+
+            var currentpanel = header.nextElementSibling;
+            // 2. show panel
+            currentpanel.style.maxHeight = currentpanel.scrollHeight + "px";
+
+        })        
+    }    
+
     // When the user clicks anywhere outside of the modal, close it
     // or when user clicks 'see payment history' button
     window.onclick = function(event) {
-        if (event.target == modal || event.target == seePaymentHistory) {
-            modal.style.display = "none";
+        if (event.target == payInvoiceModal || event.target == showInvoiceModal || event.target == seePaymentHistory) {
+            payInvoiceModal.style.display = "none";
+            showInvoiceModal.style.display = "none";
             // remove 'modal open' from body
             document.querySelector("body").classList.remove("modal-open");
+
+            // close all details on projects
+            var headers = document.querySelectorAll(".project-header");
+            headers.forEach(header => {
+                header.classList.remove("active-project");
+
+                var currentpanel = header.nextElementSibling;
+                // 2. hide panel
+                currentpanel.style.maxHeight = null;
+
+            })            
         }
     }    
 
