@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function showModal(){
         console.log("show modal");
         modal.style.display = "block";
+        // add modal-open class to body
+        document.querySelector("body").classList.add("modal-open");
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -19,13 +21,15 @@ document.addEventListener('DOMContentLoaded', function () {
     window.onclick = function(event) {
         if (event.target == modal || event.target == seePaymentHistory) {
             modal.style.display = "none";
+            // remove 'modal open' from body
+            document.querySelector("body").classList.remove("modal-open");
         }
     }    
 
 
     //////////////////////////////////////////////////////////////////////////
     // this is to handle the click on "See Payment History" in modal window //
-    
+
     seePaymentHistory.addEventListener('click', showPaymentHistoryTab);
 
     function showPaymentHistoryTab(){
@@ -47,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // after we showed the tab we scroll to it
         document.getElementById("history").scrollIntoView();
+
+        // remove 'modal open' from body
+        document.querySelector("body").classList.remove("modal-open");        
     }
     //////////////////////////////////////////////////////////////////////////////////
 
