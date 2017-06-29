@@ -173,7 +173,7 @@ form button:disabled {
     width: 46%;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     width: 100%;
     padding: 0.9vw 1.5vw;
     margin: 0.5vw 0;
@@ -241,9 +241,18 @@ input[type=text] {
 
 /*TABLE.........................START*/
 
-#transfer_table, #demo_details_table, #demo_details_url, 
-#overdue_invoices, #video_settings_table, #video_settings_sizes, #thumbnail_settings_table,
+/*#transfer_table, #demo_details_table, #demo_details_url, 
+ #video_settings_table, #video_settings_sizes, #thumbnail_settings_table,
 #all_invoices, #payment_history_table, #payment_methods {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1vw;
+    text-align: left;
+    font-size: 1vw;
+}*/
+
+/*override style for dataTable class of DataTables*/
+table.dataTable{
     border-collapse: collapse;
     width: 100%;
     margin-top: 1vw;
@@ -485,6 +494,7 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
 }
 
 .two-columns-content{
+    width: 100%;
     display: flex;
     justify-content: space-between;    
 }
@@ -664,6 +674,10 @@ select{
 
 .after-text{
     margin-left: 0.3vw;
+}
+
+.before-text{
+    margin-right: 0.3vw;
 }
 
 .billing-details{
@@ -962,6 +976,65 @@ select{
     border-radius: 0.5vw;
 }
 /*CUSTOM CHECKBOX BUTTON................END*/
+
+/*CUSTOM CHECKBOX SMALL GRAY..............START*/
+.custom-checkbox--small-gray{
+    margin-right: 0.7vw;
+    margin-left: 0.5vw;
+}
+
+.custom-checkbox--small-gray input[type="checkbox"]{
+    display:none;
+}
+
+.custom-checkbox--small-gray label {
+    position: relative;
+    padding-left: 1.5vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;    
+}
+
+.custom-checkbox--small-gray input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5vw;
+    height: 1.5vw;
+    border: 1px solid #ebebeb;
+    border-radius: 0.3vw;
+    background: #ebebeb;
+}
+
+.custom-checkbox--small-gray input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.5vw;
+    top: 0.1vw;
+    border-style: solid;
+    border-width: 0 0.2vw 0.2vw 0;
+    border-color: #84767d;
+    height: 1vw;
+    transform: rotate(45deg);
+    width: 0.5vw;
+}
+
+.custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-radius: 0.3vw;
+    background: white;
+    border-color: #b4b4b4;
+}
+/*CUSTOM CHECKBOX SMALL GRAY..............END*/
 
 .input-container input{
     border-color: #eeeeee;
@@ -1332,6 +1405,40 @@ select{
 }
 
 /*MODAL WINDOW - PAY INVOICE..........................END*/
+
+.confirm-checkbox-and-text{
+    display: flex;
+    align-items: center;
+    font-size: 1.1vw;    
+    margin-top: 0.4vw;
+    margin-bottom: 1.4vw;
+}
+
+/*.confirm-checkbox-and-text [type="checkbox"]{
+    margin-right: 0.6vw;
+    margin-left: 0.6vw;
+    width: 1.4vw;
+    height: 1.4vw;    
+}*/
+
+.no-width > div{
+    width: initial;
+}
+
+.toggle-pass-visibility{
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
+
+.toggle-pass-visibility i{
+    font-size: 1.2vw;
+}
+
+
+.toggle-pass-visibility span{
+    width: 3vw;
+    display: inline-block;    
+}
 
 @media screen and (max-width: 960px) {
     .header--inner-pages{
