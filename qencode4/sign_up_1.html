@@ -16,6 +16,7 @@
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+    <script src="js/sticky_footer.js"></script>
     <script src="js/menu.js"></script>
 
 
@@ -26,6 +27,7 @@
     <title>Qencode: Sign Up 1</title>
 </head>
 <body>
+
 
     <header class="header--inner-pages">
 
@@ -51,7 +53,8 @@
 
     </header>
 
-    <main class="container main-content">
+
+    <main class="container main-content has-sticky-footer">
 
         <section>
     
@@ -72,47 +75,7 @@
                             </div>                            
                             <input id="email_address" class="gray-border text-gray" name="profile[email]" placeholder="" type="text">      
                         </div>        
-
-                        <div class="input-container">
-                            <div class="input-label text-gray">
-                                    <label for="username">Username</label>
-                            </div>                            
-                            <input id="username" class="gray-border text-gray" name="profile[username]" placeholder="" type="text">      
-                        </div>        
-
-                        <div class="input-container">
-                            <div class="two-columns-content no-width">
-                                <div class="input-label text-gray">
-                                        <label for="password">Password</label>
-                                </div>  
-                                <div id="showPass" class="toggle-pass-visibility text-blue">
-                                    <i class="fa fa-eye-slash before-text" aria-hidden="true"></i>
-                                    <span>Show</span>  
-                                </div>    
-                                <div id="hidePass" class="toggle-pass-visibility text-blue hidden">
-                                    <i class="fa fa-eye before-text" aria-hidden="true"></i>
-                                    <span>Hide</span>  
-                                </div>                                       
-                            </div>         
-                            
-                            <input id="password" class="gray-border text-gray" name="profile[password]" placeholder="" type="password" data-toggle="password">     
-                            
-                            <script>
-                                var showPass = document.querySelector('#showPass');
-                                var hidePass = document.querySelector('#hidePass');   
-                                showPass.addEventListener('click', function(){
-                                    hidePass.classList.remove("hidden");
-                                    showPass.classList.add("hidden");
-                                    document.getElementById('password').type = 'text';
-                                });     
-                                hidePass.addEventListener('click', function(){
-                                    showPass.classList.remove("hidden");
-                                    hidePass.classList.add("hidden");
-                                    document.getElementById('password').type = 'password';
-                                });                                                                                                     
-                            </script>      
-
-                        </div>                         
+                     
 
                         <div class="confirm-checkbox-and-text">
                             
@@ -211,6 +174,31 @@
     </main>
 
 
+    <footer class="container sticky-footer">
+
+        <nav class="header-menu in-footer">
+            <div class="header-menu_logo">
+                <a href="">Qencode</a>
+            </div>
+            <div class="header-menu_items">
+                <a class="menu-links" href="">features</a>
+                <a class="menu-links" href="">pricing</a>
+                <a class="menu-links" href="">resource</a>
+                <a class="menu-links" href="">contact</a>
+            </div>
+        </nav>  
+
+
+        <div class="footer-copyright-block">
+            <div class="footer-copyright">@ 2017 Qencode Inc. All Rights Reserved.</div>
+            <div class="footer-links-block">
+                <a class="footer-links" href="">Privacy Policy</a>
+                <a class="footer-links" href="">Website Terms</a>
+                <a class="footer-links" href="">Sitemap</a>
+            </div>
+        </div>            
+    
+    </footer>
 
 
 </body>

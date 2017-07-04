@@ -14,3 +14,7 @@ http://www.chartjs.org/samples/latest/charts/line/basic.html
 https://stackoverflow.com/questions/34403510/chart-js-straight-lines-instead-of-curves
 https://stackoverflow.com/questions/38222345/chartjs-line-charts-remove-color-underneath-lines
 http://jsfiddle.net/4vobe59a/
+
+REPLACE GRAPH WITH THIS ONE! because the one used now is licensed version
+https://plot.ly/javascript/line-charts/
+https://codepen.io/plotly/pen/WvPgPP
