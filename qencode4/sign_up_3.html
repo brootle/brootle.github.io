@@ -16,6 +16,9 @@
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+
     <script src="js/sticky_footer.js"></script>
     <script src="js/menu.js"></script>
 
@@ -84,17 +87,27 @@
 
                         <div class="input-container">
                             <div class="input-label text-gray">
-                                    <label for="first_name">First name</label>
+                                    <label for="name">Name</label>
                             </div>                            
-                            <input id="first_name" class="gray-border text-gray" name="user[first_name]" placeholder="" type="text">      
+                            <input id="name" class="gray-border text-gray" name="user[name]" placeholder="" type="text">      
                         </div>        
 
                         <div class="input-container">
                             <div class="input-label text-gray">
-                                    <label for="last_name">Last name</label>
+                                    <label for="phone">Phone</label>
                             </div>                            
-                            <input id="last_name" class="gray-border text-gray" name="user[last_name]" placeholder="" type="text">      
-                        </div>        
+                            <input id="phone" class="gray-border text-gray" placeholder="" name="user[phone]" type="tel">      
+                            <script src="build/js/intlTelInput.js"></script>     
+                            <script src="build/js/utils.js"></script>    
+                            <script>
+                                // https://github.com/jackocnr/intl-tel-input
+                                // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                $("#phone").intlTelInput({
+                                    // nationalMode: false,
+                                    autoPlaceholder: "polite"
+                                })
+                            </script>
+                        </div>                                                   
 
                         <div class="input-container">
                             <div class="two-columns-content no-width">
