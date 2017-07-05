@@ -59,7 +59,7 @@
     
             <div class="two-columns-content">
                 <div>
-                    <h2 class="text-blue no-text-transform">Add your address</h2>
+                    <h2 class="text-blue no-text-transform">Billing Info</h2>
 
                     <div class="steps-progress">
                         <div class="progress-circle progress-circle__checked"></div>
@@ -79,8 +79,7 @@
 
                     <p class="text-gray">
                         <strong>
-                        Select your preferred payment method and enter your details.
-                        We use this info for account verification.
+                        Choose your billing preferences and payment method
                         </strong>
                     </p>           
 
@@ -93,17 +92,36 @@
 
                             <div class="custom-select">
                                 <select class="gray-border text-gray" id="billing_type" required="" name="user[billing_type]">
-                                    <option value="automatic">Automatic</option>
-                                    <option value="manual">Manual</option>
+                                    <option value="automatic" data-selectcontent="automatic">Automatic</option>
+                                    <option value="manual" data-selectcontent="manual">Manual</option>
+                                    <option value="free" data-selectcontent="free">Free</option>
                                 </select>                          
                             </div>            
 
-                            <span class="input-info-text text-gray">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur laborum 
-                                porro consectetur non maiores explicabo amet nostrum nisi reprehenderit 
-                                perspiciatis voluptas quod blanditiis esse nulla nobis est, dignissimos 
-                                delectus ab.
-                            </span>                                        
+                            <span id="automatic" class="input-info-text text-gray selectcontent selectcontent--active">
+                                Prevent interruption of service by automatically paying invoices at the end of the month.
+                            </span>          
+
+                            <span id="manual" class="input-info-text text-gray selectcontent">
+                                Pay each invoice through the website in the billing section of your account.
+                            </span>  
+
+                            <span id="free" class="input-info-text text-gray selectcontent">
+                                Get a free 500 minutes every month. You will never be charged while this setting is selected.
+                            </span>        
+
+                            <script>
+                                const selectBillingType = document.querySelector('#billing_type');
+                                selectBillingType.addEventListener("change", function(){
+
+                                    const activeSelectedContent = document.querySelector('.selectcontent--active');
+                                    activeSelectedContent.classList.remove('selectcontent--active');
+                                 
+                                    const selectedContent = document.querySelector(`#${this.value}`);
+                                    selectedContent.classList.add('selectcontent--active');       
+                                                              
+                                });
+                            </script>                                                                                
         
                         </div>   
 
