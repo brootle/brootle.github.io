@@ -9,6 +9,10 @@
 }
 /*CUSTOM FILE UPLOAD BUTTON...........END*/
 
+#mobile_card_data{
+    display: none;
+}
+
 .header--inner-pages{
     height: 6vw;
 }
@@ -181,7 +185,7 @@ form button:disabled {
     width: 46%;
 }
 
-input[type=text], input[type=password], input[type=tel] {
+input[type=text], input[type=password], input[type=tel], textarea {
     width: 100%;
     padding: 0.9vw 1.5vw;
     margin: 0.5vw 0;
@@ -190,8 +194,29 @@ input[type=text], input[type=password], input[type=tel] {
     box-sizing: border-box;
     outline: none; 
     border: 0.2vw solid #eeeeee;
+    /*border: 0.2vw solid;*/
     color: #73767d;
     font-size: 1vw;    
+}
+
+form textarea{
+    resize: none;
+    outline: none    
+}
+
+.message-comment .input-container{
+    display: flex;
+    flex-direction: column;    
+    height: 100%;
+    width: 100%;
+    margin: 0; 
+    box-sizing: border-box;
+    padding-top: 0.7vw;
+    padding-bottom: 1vw;    
+}
+
+.message-comment .input-container textarea{
+    height: 100%;
 }
 
 .input-container{
@@ -541,6 +566,7 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
 /*custom select.....START*/
 
 select{
+    border: 0.2vw solid;
     width: 100%;
     padding: 0.9vw 1.5vw;
     /*margin: 0.5vw 0;*/
@@ -1626,13 +1652,182 @@ select{
         margin-left: 2.5vw;
     }    
     
+
+    /*CONTACT FORM INPUTS*/
+    .input-label{
+        font-size: 1.5vw;
+        font-weight: 600;
+        align-items: baseline;
+    }
+
+    .after-text {
+        margin-left: 0.4vw;
+    }    
+
+    .input-info-text {
+        font-size: 1.3vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        border-width:  0.3vw;
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;   
+        margin: 1vw 0;    
+    }
+    /*CONTACT FORM INPUTS*/    
+
+    /*DROP DOWN SELECT*/
+    select{
+        border-width:  0.3vw;
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0 !important;
+    }    
+
+    .custom-select:after {
+        top: 2.55vw;
+        font-size: 1.7vw;
+    }    
+    /*DROP DOWN SELECT*/
+
+    /*CARD INPUT*/
+    .card-input {
+        border-width:  0.3vw;
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0;        
+    }
+
+    .card-input .fa-credit-card {
+        font-size: 1.8vw;
+    }
+
+    .card-input input[type=text] {
+        margin-left: 1.5vw;
+    }    
+
+    .card-input input[type=text]:first-of-type {
+        width: 19vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(2) {
+        width: 6.7vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(3) {
+        width: 4vw;
+    }    
+
+    .card-input .fa-question-circle {
+        font-size: 1.6vw;
+    }    
+    /*CARD INPUT*/
+
+    .tablinks {
+        font-size: 1.8vw;
+        line-height: 3.5vw;
+    }    
+
 }
 
 @media screen and (max-width: 780px) {
     .header--inner-pages {
         height: 9vw;
     }
+
+    .message-comment .input-container textarea {
+        height: 21vw;
+    }
+
+    .two-columns-content {
+        flex-direction: column;
+    }    
+
+    .two-columns-content > div {
+        width: 100%;
+    }    
+
+    .two-columns-content .two-columns-content{
+        flex-direction: row;
+    }
     
+    .tablinks {
+        font-size: 2.3vw;
+        line-height: 5.5vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;
+    }
+
+    .card-input {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;
+    }    
+
+    .card-input input[type=text] {
+        margin-left: 2.5vw;
+    }    
+
+    .card-input .fa-credit-card {
+        font-size: 2.2vw;
+    }    
+
+    .card-input input[type=text]:first-of-type {
+        width: 40vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(2) {
+        width: 8.7vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(3) {
+        width: 5vw;
+    }    
+
+    .card-input .fa-question-circle {
+        font-size: 1.9vw;
+    }    
+
+    select {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0 !important; 
+    }    
+
+    .custom-select:after {
+        top: 3.55vw;
+        font-size: 2.2vw;
+        padding-right: 2.5vw;
+    }    
+
+    .input-label {
+        font-size: 1.8vw;
+    }    
+
+    .input-info-text {
+        font-size: 1.6vw;
+    }    
+
+    .after-text {
+        margin-left: 0.6vw;
+    }    
+
 }
 
 @media screen and (max-width: 480px) {
@@ -1653,10 +1848,136 @@ select{
     .has-submenu:after {
         padding-right: 3.5vw;
     }    
+
+    .tablinks {
+        font-size: 3.3vw;
+        line-height: 8.5vw;
+    }
+
+    .two-columns-content .two-columns-content{
+        flex-direction: column;
+    }
+
+    .two-columns-content--not-equal > div:first-of-type {
+        width: 100%;
+    }    
+
+    .two-columns-content--not-equal > div:last-of-type {
+        width: 100%;
+    }    
+
+    .two-columns-content--not-equal-reversed > div:first-of-type {
+        width: 100%;
+    }    
+
+    .two-columns-content--not-equal-reversed > div:last-of-type {
+        width: 100%;
+    }    
+
+    .input-container {
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }
+
+    .card-input {
+        border: 0.5vw solid #EEEEED;
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 4vw;
+        font-size: 5.4vw;
+        margin-bottom: 0vw;
+    }    
+
+    #mobile_card_data{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #mobile_card_data input[type=text]{
+        margin: 0;
+    }
+
+    #mobile_card_data > div{
+        width: 47%;
+    }
+
+    .card-input .fa-credit-card {
+        font-size: 6.2vw;
+    }
+
+    .card-input input[type=text]:first-of-type {
+        width: 54vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(2) {
+        display: none;
+    }    
+
+    .card-input .fa-question-circle {
+        font-size: 5.9vw;
+    }    
+
+    .card-input input[type=text] {
+        margin-left: 3.5vw;
+    }    
+
+    .card-input input[type=text]:nth-of-type(3) {
+        display: none;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        border: 0.5vw solid #EEEEED;
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 4vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+    }
+
+    select {
+        border: 0.5vw solid #EEEEED;
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 4vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw !important;
+    }    
+
+    .custom-select:after {
+        top: 6vw;
+        font-size: 4.5vw;
+        padding-right: 4.5vw;
+    }    
+
+    .message-comment .input-container textarea {
+        height: 34vw;
+    }    
+
+    .input-label {
+        font-size: 4.4vw;
+    }
+
+    .input-info-text {
+        font-size: 3.3vw;
+    }    
+
+    .after-text {
+        margin-left: 1.3vw;
+    }    
+
 }
 
 @media screen and (max-width: 320px) {
     .header--inner-pages {
         height: 32vw;
     }
+
+    .input-info-text {
+        font-size: 4.3vw;
+    }    
+
+    .tablinks {
+        font-size: 4.3vw;
+        line-height: 11.5vw;
+    }    
 }
