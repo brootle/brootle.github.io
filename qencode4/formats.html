@@ -156,38 +156,58 @@
         </div>
 
 
-        <h1 class="text-blue contact-title">Keep in touch</h1> 
+        <h1 class="text-blue contact-title">Talk to Us</h1> 
 
-        <div class="contact-form container">
-            <div class="contact-text-block">
-                <p class="text-gray">
-                    Our cloud transcoding solution is designed to drastically cut your transcoding
-                    costs without sacrificing speed or quality.
-                </p>
-                <p class="text-gray">
-                    Weather you are just starting out or have been using a transcoding service for
-                    a long time, we are sure we can save you a lot of money with our solution.
-                </p>
-            </div>
-            <div class="contact-form-block">
-                <form action="/contact" method="POST">
-                    <fieldset>
-                        <div class="form-group">
-                            <input class="two-fields" autocomplete="off" class="form-control" name="contact[name]" placeholder="Name" type="text"/>
-                            <input class="two-fields" autocomplete="off" class="form-control" name="contact[phone]" placeholder="Phone" type="text"/>
+        <div class="main-content container">
+
+            <p class="text-gray">
+                Our cloud transcoding solution is designed to drastically cut your transcoding
+                costs without sacrificing speed or quality.
+            </p>   
+             <p class="text-gray">   
+                Weather you are just starting out or have been using a transcoding service for
+                a long time, we are sure we can save you a lot of money with our solution.
+            </p>        
+
+            <form action="send_message">
+                <div class="two-columns-content">
+                    <div>
+                        <div class="input-container">
+                            <div class="input-label text-gray">
+                                    <label for="author_name">Name</label>
+                            </div>                            
+                            <input id="author_name" class="gray-border text-gray" autocomplete="off" name="message[name]" placeholder="" type="text">      
                         </div>
-                        <div class="form-group">
-                            <input class="one-field" name="contact[email]" placeholder="Email" type="email"/>        
+                        <div class="input-container">
+                            <div class="input-label text-gray">
+                                    <label for="email_address">Email</label>
+                            </div>                            
+                            <input id="email_address" class="gray-border text-gray" name="message[email]" placeholder="" type="text">      
+                        </div>  
+                        <div class="input-container">
+                            <div class="input-label input-label--align-start text-gray">
+                                <label for="phone">Phone</label>
+                                <span class="input-info-text after-text text-gray">
+                                    (Optional)
+                                </span>                                      
+                            </div>                            
+                            <input id="phone" class="gray-border text-gray" name="message[phone]" placeholder="" type="text">    
+                        </div>                                      
+                    </div>
+                    <div class="message-comment">
+                        <div class="input-container">
+                            <div class="input-label input-label--align-start text-gray">
+                                <label for="comment">Comment</label>                                 
+                            </div>                            
+                            <textarea id="comment" class="gray-border text-gray" name="message[comment]" placeholder=""></textarea>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="contact[comment]" placeholder="Comment"></textarea>
-                        </div>                        
-                        <div class="align-center">
-                            <button class="text-white blue-backgound" type="submit">Send</button>                            
-                        </div>
-                    </fieldset>
-                </form>   
-            </div>
+                    </div>
+                </div>     
+                <div class="text-right">
+                    <button class="text-white blue-backgound long-button" type="submit">Send Message</button>
+                </div>
+            </form> 
+
         </div>
 
 
