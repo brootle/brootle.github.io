@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Billing loaded with JavaScript');
 
-
-
     /////////////////////////////////////////////////////////////////
     // below is the function to swith between tabs //////////////////
 

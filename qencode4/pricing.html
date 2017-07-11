@@ -102,7 +102,7 @@
                             <a class="main-button blue-backgound" href="">Try today <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
-                    <div>
+                    <div class="features-box--pre-selected">
                         <div>
                             <h3 class="text-blue">Classic</h3>
                             <div class="inbox-delimeter"></div>
@@ -130,7 +130,18 @@
                             <a class="main-button blue-backgound" href="">Apply now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
-                </div>            
+                </div>    
+                <script>
+                    const plansBoxes = document.querySelectorAll('.features-box-main--pricing > div');
+                    console.log(plansBoxes);
+                    plansBoxes.forEach(planBox => {
+                        planBox.addEventListener('mouseover', () => {
+                            if(document.querySelector(".features-box--pre-selected")){
+                                document.querySelector(".features-box--pre-selected").classList.remove('features-box--pre-selected');
+                            }
+                        });
+                    });
+                </script>        
                 <div class="get-quote get-quote--pricing text-white">
                     <div>
                         <h3>Interested in getting started?</h3>
