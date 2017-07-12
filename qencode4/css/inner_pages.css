@@ -272,6 +272,7 @@ form textarea{
     margin-left: 2.5vw;
     margin-right: 2.5vw;
     line-height: 1.5vw;
+    font-size: 1.2vw;
 }
 
 .main-info-box > span{
@@ -464,11 +465,20 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
     margin-right: 0.5vw;
 }
 
-.action-buttons-group a{
-    margin-right: 0.3vw;
+.action-buttons-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;    
 }
 
-.action-buttons-group a:nth-last-of-type(){
+.action-buttons-group a{
+    margin-right: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.action-buttons-group a:last-of-type{
     margin-right: 0;
 }
 
@@ -1678,7 +1688,41 @@ select{
         margin-bottom: 1.5vw;
     }    
 
+    .main-info-box span {
+        line-height: 2.5vw;
+        font-size: 2.1vw;
+    }    
+
+    /*.long-button {
+        min-width: 29vw;
+    }    */
+
     /*table-related styles..........................start*/
+    .action-buttons-group a {
+        margin-right: 0.5vw;
+        width: 3.5vw;
+        height: 3.5vw;
+    }
+
+    .rows-number-selector-box {
+        width: 10.5vw;
+        padding-bottom: 0.5vw;
+        padding-top: 3.3vw;
+    }
+
+    .records-table-general {
+        padding: 0.3vw 0.8vw;
+    }    
+
+    .rows-number-selector-box span {
+        padding: 0.5vw 0.7vw;
+    }    
+
+    .rows-number-selector-box a {
+        line-height: 2.3vw;
+    }    
+
+
     .dataTables_wrapper .dataTables_info {
         font-size: 1.6vw;
     }    
@@ -1905,6 +1949,12 @@ select{
 
 }
 
+@media screen and (max-width: 767px){
+    .dataTables_wrapper .dataTables_paginate {
+        margin-top: 0; 
+    }
+}
+
 @media screen and (max-width: 780px) {
     .header--inner-pages {
         height: 9vw;
@@ -1921,6 +1971,50 @@ select{
         margin-top: 6vw;
         margin-bottom: 6vw;
     }    
+
+
+    .long-button {
+        min-width: initial;
+    }
+
+    .main-info-box span {
+        line-height: 2.2vw;
+    }    
+
+
+    /*table-related styles..........................start*/
+    .dataTables_wrapper .dataTables_info {
+        font-size: 2vw;
+    }
+    table.dataTable {
+        font-size: 2.3vw;
+    }    
+    table.dataTable tbody td {
+        padding: 1.6vw 2.7vw;
+    }    
+    #transfer_table th, td {
+        padding: 1.6vw 2.7vw;
+    }    
+    .action-buttons-group a {
+        margin-right: 1vw;
+        width: 4.5vw;
+        height: 4.5vw;
+    }    
+    .records-table-general {
+        padding: 0.6vw 1.2vw;
+    }    
+    .rows-number-selector-box span {
+        padding: 0.6vw 1.2vw;
+    }    
+    .rows-number-selector-box a {
+        line-height: 3vw;
+    }    
+    .rows-number-selector-box {
+        width: 14vw;
+        padding-bottom: 0.7vw;
+        padding-top: 4vw;
+    }    
+    /*table-related styles..........................end*/    
 
     /*green checkbox......................................start*/
     .two-columns-content .preferences-container .custom-checkbox {
@@ -2157,6 +2251,58 @@ select{
         margin-top: 9vw;
         margin-bottom: 9vw;
     }    
+
+    .input-fields {
+        flex-direction: column;
+    }    
+
+    .recreate-app-id form .input-fields > div {
+        width: 100%;
+    }    
+
+    .main-info-box > div {
+        flex-direction: column;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+    }    
+
+    .main-info-box span {
+        line-height: 5.2vw;
+        font-size: 4vw;
+        text-align: center;  
+        margin-bottom: 2vw;      
+    }    
+    
+
+    /*table-related styles..........................start*/
+    .dataTables_wrapper .dataTables_info {
+        font-size: 3.2vw;
+        margin-right: 1.5vw;
+    }
+    .records-table-general {
+        padding: 1vw 1.6vw;
+    }    
+    .rows-number-selector-box span {
+        padding: 1vw 1.6vw;
+    }    
+    .rows-number-selector-box {
+        width: 21vw;
+        padding-bottom: 1vw;
+        padding-top: 6vw;
+        text-align: left;
+    }    
+    .rows-number-selector-box a {
+        line-height: 5vw;
+    }    
+    table.dataTable {
+        font-size: 3.3vw;
+    }    
+    .action-buttons-group a {
+        margin-right: 1vw;
+        width: 6vw;
+        height: 6vw;
+    }    
+    /*table-related styles..........................end*/        
 
     /*green checkbox......................................start*/
     .two-columns-content .preferences-container .custom-checkbox {
@@ -2419,7 +2565,7 @@ select{
     }    
 
     .input-label {
-        font-size: 4.4vw;
+        font-size: 4vw;
     }
 
     .input-info-text {
@@ -2447,6 +2593,50 @@ select{
         margin-bottom: 4.5vw;
         height: 1.2vw;
     }    
+
+    /*table-related styles..........................start*/
+    .dataTables_wrapper .dataTables_info {
+        font-size: 4.2vw;
+    }
+    .records-table-general {
+        padding: 1.3vw 1.9vw;
+    }    
+    .rows-number-selector-box {
+        width: 26vw;
+        padding-bottom: 1vw;
+        padding-top: 8vw;
+    }    
+    .rows-number-selector-box a {
+        line-height: 7vw;
+    }    
+    table.dataTable {
+        font-size: 4.3vw;
+    }    
+    .action-buttons-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }     
+    .action-buttons-group a {
+        margin-right: 0;
+        margin-bottom: 1.5vw;
+        width: 8vw;
+        height: 8vw;        
+    }     
+    .action-buttons-group a:last-of-type {
+        margin-bottom: 0;     
+    }      
+    /*table-related styles..........................end*/     
+
+    .main-info-box > div {
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+    }
+    .main-info-box span {
+        line-height: 6.5vw;
+        font-size: 5.5vw;
+        margin-bottom: 4vw;
+    }      
 
     /*green checkbox......................................start*/
     .two-columns-content .preferences-container .custom-checkbox {
