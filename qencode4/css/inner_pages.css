@@ -13,6 +13,10 @@
     display: none;
 }
 
+.radio-buttons label:last-of-type{
+    margin-right: 0;
+}
+
 .header--inner-pages{
     height: 6vw;
 }
@@ -466,7 +470,7 @@ table.dataTable tbody tr:hover {
 }
 
 table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
-    border-bottom: 2px solid #e5e5e5;
+    /*border-bottom: 2px solid #e5e5e5;*/
     padding: 1vw 2vw;
 }
 
@@ -1710,9 +1714,29 @@ select{
         font-size: 2.1vw;
     }    
 
-    /*.long-button {
-        min-width: 29vw;
-    }    */
+    /*green square checkbox and label..........start*/
+    .radio-buttons label {
+        font-size: 2.2vw;
+        padding-left: 4.5vw;
+    }    
+
+    .radio-buttons input[type=radio] + label:before {
+        width: 3vw;
+        height: 3vw;
+    }    
+
+    .radio-buttons input[type=radio]:checked + label:before {
+        width: 3vw;
+        height: 3vw;;
+    }  
+
+    .radio-buttons input[type=radio]:checked + label:after {
+        left: 1vw;
+        top: 0vw;
+        height: 2.1vw;
+        width: 1vw;
+    }    
+    /*green square checkbox and label..........end*/
 
     /*table-related styles..........................start*/    
     .action-buttons-group a {
@@ -1747,6 +1771,10 @@ select{
     table.dataTable {
         font-size: 1.8vw;
     }    
+
+    table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
+        padding: 1.4vw 2.2vw;
+    }
 
     table.dataTable tbody td {
         padding: 1.4vw 2.2vw;
@@ -2011,6 +2039,44 @@ select{
         margin-bottom: 6vw;
     }    
 
+    .title-and-buttons {
+        align-items: flex-start;
+        flex-direction: column;
+    }    
+
+    .title-buttons{
+        margin-top: 2vw;        
+    }
+
+    /*green square checkbox and label........start*/
+    .format-choice {
+        flex-direction: column;
+        align-items: flex-start;
+    }    
+    .radio-buttons {
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }    
+    .radio-buttons label {
+        font-size: 3vw;
+        padding-left: 6vw;
+        margin-right: 5vw;
+    }    
+    .radio-buttons input[type=radio] + label:before {
+        width: 4vw;
+        height: 4vw;
+    }    
+    .radio-buttons input[type=radio]:checked + label:before {
+        width: 4vw;
+        height: 4vw;
+    }    
+    .radio-buttons input[type=radio]:checked + label:after {
+        left: 1.1vw;
+        top: -0.3vw;
+        height: 3vw;
+        width: 1.7vw;
+    }    
+    /*green square checkbox and label..........end*/
 
     .long-button {
         min-width: initial;
@@ -2032,6 +2098,9 @@ select{
         font-size: 2.3vw;
     }    
     table.dataTable tbody td {
+        padding: 1.6vw 2.7vw;
+    }    
+    table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
         padding: 1.6vw 2.7vw;
     }    
     #transfer_table th, td {
@@ -2311,6 +2380,32 @@ select{
         flex-direction: column;
     }    
 
+    /*green square checkbox and label........start*/
+    .radio-buttons label {
+        font-size: 4.6vw;
+        padding-left: 10vw;
+        margin-right: 5vw;
+    }    
+    .radio-buttons {
+        margin-top: 4vw;
+        margin-bottom: 4vw;
+    }    
+    .radio-buttons input[type=radio] + label:before {
+        width: 6vw;
+        height: 6vw;
+    }    
+    .radio-buttons input[type=radio]:checked + label:before {
+        width: 6vw;
+        height: 6vw;
+    }    
+    .radio-buttons input[type=radio]:checked + label:after {
+        left: 1.6vw;
+        top: -0.4vw;
+        height: 4.6vw;
+        width: 2.5vw;
+    }    
+    /*green square checkbox and label..........end*/
+
     .recreate-app-id form .input-fields > div {
         width: 100%;
     }    
@@ -2365,6 +2460,20 @@ select{
     }      
     #demo_details_url th:last-of-type {
         width: 20%;
+    }    
+
+    #video_settings_table .action-buttons-group {
+        flex-direction: column;
+    }    
+    #video_settings_table .action-buttons-group a {
+        margin-right: 0;
+        margin-bottom: 1.5vw;
+    }    
+    #video_settings_table .action-buttons-group a:last-of-type {
+        margin-bottom: 0;
+    }    
+    #video_settings_table th{
+        font-size: 2.6vw;
     }    
     /*table-related styles..........................end*/        
 
@@ -2658,6 +2767,11 @@ select{
         height: 1.2vw;
     }    
 
+    .title-buttons a:last-of-type, .buttons-below a:nth-of-type(3) {
+        margin-top: 3vw;
+        margin-right: 0.7vw;
+    }    
+
     /*table-related styles..........................start*/
     .dataTables_wrapper .dataTables_info {
         font-size: 4.2vw;
@@ -2696,6 +2810,20 @@ select{
     #demo_details_url th:last-of-type {
         width: 25%;
     }    
+    #video_settings_table {
+        font-size: 2.3vw;
+    }    
+    #video_settings_table .action-buttons-group {
+        font-size: 4.3vw;
+    }    
+    #video_settings_table th {
+        padding: 1vw 1vw;
+        font-size: 3.1vw;
+    }    
+    #video_settings_table tbody td {
+        padding: 1vw 1vw;
+        font-size: 3.1vw;
+    }
     /*table-related styles..........................end*/     
 
     .main-info-box > div {
