@@ -25,6 +25,7 @@
     <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
 
     <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+
     <script src="js/canvasjs.min.js"></script>
     <script src="js/canvas_chart.js"></script>
     <!--<script src="js/chart.js"></script>-->
@@ -253,21 +254,75 @@
                             <label for="pay_by_card"></label>
                         </div>
                         <div>
-                            <label for="pay_by_card"><h4 class="text-gray">Credit / Debit card</h4>
-                                <p class="text-gray">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
-                                    uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
-                                    reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
-                                </p>           
-                            </label>     
+                            <label for="pay_by_card"><h4 class="text-gray">Credit / Debit card</h4></label>    
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>                                 
+                       
 
-                            <div class="gray-border text-gray card-input">
-                                <i class="fa fa-credit-card text-gray" aria-hidden="true"></i>
-                                <input autocomplete="off" name="credit_card[number]" placeholder="4242 4242 4242 4242" type="text">
-                                <input autocomplete="off" name="credit_card[valid_date]" placeholder="MM / YY" type="text">
-                                <input autocomplete="off" name="credit_card[cvc]" placeholder="CVC" type="text">
-                                <i class="fa fa-question-circle after-text text-transparent-gray" aria-hidden="true"></i>
-                            </div>    
+                            <div id="selectSavedCardBox" class="card-and-buttons">
+                                <div id="showSavedCardsButton" class="input-container">   
+                                    <div id="selectedCard" class="card-input">
+                                        <span class="mastercard">**** **** **** 4231</span>  
+                                    </div>                                           
+                                </div> 
+                                <div class="title-info">
+                                    <span class="margin-left text-gray"><strong>or</strong></span>
+                                    <a id="addNewCardButton" class="main-link text-blue pay-now-modal margin-left">Add Credit / Debit Card</a> 
+                                </div>  
+
+                                <div id="cardsList" class="saved-cards hidden">
+                                    <ul>
+                                        <li><span class="mastercard">**** **** **** 4242</span></li>
+                                        <li><span class="visa">**** **** **** 4253</span></li>
+                                        <li><span class="visa">**** **** **** 4264</span></li>
+                                        <li><span class="mastercard">**** **** **** 4275</span></li>
+                                        <li><span class="mastercard">**** **** **** 4286</span></li>
+                                        <li><span class="visa">**** **** **** 4297</span></li>
+                                    </ul>
+                                </div>                                                          
+                            </div>
+
+                            <script>
+                                const cardsList = document.querySelector('#cardsList');
+                                const showSavedCardsButton = document.querySelector('#showSavedCardsButton');
+                                const selectedCard = document.querySelector('#selectedCard');
+
+                                showSavedCardsButton.addEventListener('click', () => {
+                                    cardsList.classList.toggle('hidden');
+                                });
+
+                                const cards = document.querySelectorAll('.saved-cards ul li');
+                                cards.forEach(card => card.addEventListener('click', () => {
+                                    selectedCard.innerHTML = card.innerHTML;
+                                    cardsList.classList.toggle('hidden');
+                                }));  
+
+                            </script>
+
+                            <div id="newCardInput" class="card-and-buttons hidden">
+                                <div class="gray-border text-gray card-input">
+                                    <i class="fa fa-credit-card text-gray" aria-hidden="true"></i>
+                                    <input autocomplete="off" name="credit_card[number]" placeholder="4242 4242 4242 4242" type="text">
+                                    <input autocomplete="off" name="credit_card[valid_date]" placeholder="MM / YY" type="text">
+                                    <input autocomplete="off" name="credit_card[cvc]" placeholder="CVC" type="text">
+                                    <i class="fa fa-question-circle after-text text-transparent-gray" aria-hidden="true"></i>
+                                </div>                                  
+                                <div class="title-buttons">
+                                    <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                                    <a class="main-button blue-backgound blue-border text-white" href="">Add</a>
+                                </div>                                
+                            </div>  
+
+                            <script>
+                                const addNewCardButton = document.querySelector('#addNewCardButton');
+                                addNewCardButton.addEventListener('click', () => {
+                                    document.querySelector('#newCardInput').classList.remove('hidden');
+                                    document.querySelector('#selectSavedCardBox').classList.add('hidden');
+                                });                                
+                            </script>
                         
                         </div>
                     </div>
@@ -277,14 +332,12 @@
                             <label for="pay_by_paypal">
                         </div>                        
                         <div>
-                            <label for="pay_by_paypal">
-                                <h4 class="text-gray">PayPal</h4>
-                                <p class="text-gray">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
-                                    uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
-                                    reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
-                                </p>         
-                            </label>      
+                            <label for="pay_by_paypal"><h4 class="text-gray">PayPal</h4></label>      
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>                              
 
                             <input id="paypal_amount" class="gray-border text-gray" autocomplete="off" name="exceeded_amout" placeholder="$47.67" type="text">
 

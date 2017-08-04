@@ -9,6 +9,73 @@
 }
 /*CUSTOM FILE UPLOAD BUTTON...........END*/
 
+.card-and-buttons{
+    display: flex;
+    align-items: center;    
+    position: relative;
+    margin-bottom: 1vw;
+}
+
+.card-and-buttons > .title-buttons{
+    margin-left: 1vw;
+}
+
+.card-and-buttons > .input-container{
+    margin: 0;
+    cursor: pointer;
+}
+
+.card-and-buttons .card-input{
+    position: relative;  
+}
+
+#selectedCard{
+    width: 16vw;
+}
+
+#selectedCard span:after{
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;;
+    padding-left: 1.5vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+    color: #bdbdbd;    
+}
+
+.saved-cards{
+    position: absolute;
+    z-index: 99999;
+    background: white;
+    width: 16vw;
+    top: 3.3vw;
+}
+
+.saved-cards ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    max-height: 200px;
+    overflow-y: scroll;    
+}
+
+.saved-cards ul li{
+    padding: 0.9vw 1.5vw;
+    box-sizing: border-box;
+    color: #73767d;
+    font-size: 1vw;
+    margin: 0.5vw 0;
+    text-align: left;    
+
+    cursor: pointer;
+}
+
+.saved-cards ul li:hover{
+    background: #fafafa;
+}
+
+
 .main-login-img{
     width: 100%;
 }
@@ -1584,7 +1651,7 @@ select{
 
     margin: 0.5vw 0;
 
-    text-align: right;
+    text-align: left;
 }
 
 .card-input .fa-credit-card{
