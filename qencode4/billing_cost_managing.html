@@ -270,7 +270,7 @@
                                 </div> 
                                 <div class="title-info">
                                     <span class="margin-left text-gray"><strong>or</strong></span>
-                                    <a id="addNewCardButton" class="main-link text-blue pay-now-modal margin-left">Add Credit / Debit Card</a> 
+                                    <a id="addNewCardButton" class="main-link text-blue margin-left">Add Credit / Debit Card</a> 
                                 </div>  
 
                                 <div id="cardsList" class="saved-cards hidden">
@@ -294,7 +294,7 @@
                                     cardsList.classList.toggle('hidden');
                                 });
 
-                                const cards = document.querySelectorAll('.saved-cards ul li');
+                                const cards = document.querySelectorAll('#cardsList ul li');
                                 cards.forEach(card => card.addEventListener('click', () => {
                                     selectedCard.innerHTML = card.innerHTML;
                                     cardsList.classList.toggle('hidden');
@@ -348,7 +348,7 @@
                                                     
                     <div class="buttons-below">
                         <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
-                        <a class="main-button blue-backgound blue-border text-white" href="">Proceed the Payment</a>
+                        <a class="main-button blue-backgound blue-border text-white no-text-transform" href="">Proceed the Payment</a>
                     </div>                    
                     
                 </div>
@@ -691,48 +691,108 @@
                 </div>
 
                 <div id="methods" class="tabcontent">
-                    <h3 class="text-gray">Payment Methods</h3>
-                    <table id="payment_methods" class="dataTable text-gray gray-border">
-                        <thead>
-                            <tr>
-                                <th class="gray-border">Credit card</th>
-                                <th class="gray-border">Name on card</th>
-                                <th class="gray-border">Experies on</th>  
-                                <th class="gray-border">Actions</th>                     
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="gray-border"><span class="mastercard">4242 **** **** 4242</span></td>
-                                <td class="gray-border">Benjamin Franklin</td>
-                                <td class="gray-border">7/2020</td>
-                                <td class="gray-border">
-                                    <a href="" class="main-link text-blue action-text-link">Make Default</a>
-                                    <div class="action-buttons-with-text-link">
-                                        <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>    
-                                    </div>                                    
-                                </td>
-                            </tr>  
-                            <tr>
-                                <td class="gray-border"><span class="visa">4242 **** **** 4242</span></td>
-                                <td class="gray-border">Abraham Linkoln</td>
-                                <td class="gray-border">8/2022</td>
-                                <td class="gray-border">
-                                    <a class="text-gray action-text-link">Current Default</a>
-                                    <div class="action-buttons-with-text-link">
-                                        <a class="action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a class="action-button--delete"><i class="fa fa-times" aria-hidden="true"></i></a>    
-                                    </div>                                
-                                </td>
-                            </tr>                                                                                                                                                                                                                  
-                        </tbody>
-                    </table>                      
-                    <div class="main-info-box">
-                        <div>  
-                            <a class="button long-button text-white light-green-grass-background">+ Add Credt / Debit Card</a>
+                    <h3 class="text-gray">Payment Methods</h3>         
+
+ 
+                    <div class="preferences-container">
+                        <div class="radio-button--round text-gray">
+                            <input id="methods_pay_by_card" type="radio" name="payment_method" value="methods_pay_by_card" checked>
+                            <label for="methods_pay_by_card"></label>
                         </div>
-                    </div>                    
+                        <div>
+                            <label for="methods_pay_by_card"><h4 class="text-gray">Credit / Debit card</h4></label>    
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>                                 
+                        
+                            <div id="methods_selectSavedCardBox" class="card-and-buttons">
+                                <div id="methods_showSavedCardsButton" class="input-container">   
+                                    <div id="methods_selectedCard" class="card-input">
+                                        <span class="mastercard">**** **** **** 4231</span>  
+                                    </div>                                           
+                                </div> 
+                                <div class="title-info">
+                                    <span class="margin-left text-gray"><strong>or</strong></span>
+                                    <a id="methods_addNewCardButton" class="main-link text-blue margin-left">Add Credit / Debit Card</a>
+                                </div>  
+
+                                <div id="methods_cardsList" class="saved-cards hidden">
+                                    <ul>
+                                        <li><span class="mastercard">**** **** **** 4242</span></li>
+                                        <li><span class="visa">**** **** **** 4253</span></li>
+                                        <li><span class="visa">**** **** **** 4264</span></li>
+                                        <li><span class="mastercard">**** **** **** 4275</span></li>
+                                        <li><span class="mastercard">**** **** **** 4286</span></li>
+                                        <li><span class="visa">**** **** **** 4297</span></li>
+                                    </ul>
+                                </div>                                                          
+                            </div>
+
+                            <script>
+                                const methods_cardsList = document.querySelector('#methods_cardsList');
+                                const methods_showSavedCardsButton = document.querySelector('#methods_showSavedCardsButton');
+                                const methods_selectedCard = document.querySelector('#methods_selectedCard');
+
+                                methods_showSavedCardsButton.addEventListener('click', () => {
+                                    methods_cardsList.classList.toggle('hidden');
+                                });
+
+                                const methods_cards = document.querySelectorAll('#methods_cardsList ul li');
+                                methods_cards.forEach(methods_card => methods_card.addEventListener('click', () => {
+                                    methods_selectedCard.innerHTML = methods_card.innerHTML;
+                                    methods_cardsList.classList.toggle('hidden');
+                                }));  
+
+                            </script>
+
+                            <div id="methods_newCardInput" class="card-and-buttons hidden">
+                                <div class="gray-border text-gray card-input">
+                                    <i class="fa fa-credit-card text-gray" aria-hidden="true"></i>
+                                    <input autocomplete="off" name="credit_card[number]" placeholder="4242 4242 4242 4242" type="text">
+                                    <input autocomplete="off" name="credit_card[valid_date]" placeholder="MM / YY" type="text">
+                                    <input autocomplete="off" name="credit_card[cvc]" placeholder="CVC" type="text">
+                                    <i class="fa fa-question-circle after-text text-transparent-gray" aria-hidden="true"></i>
+                                </div>                                  
+                                <div class="title-buttons">
+                                    <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                                    <a class="main-button blue-backgound blue-border text-white" href="">Add</a>
+                                </div>                                
+                            </div>  
+
+                            <script>
+                                const methods_addNewCardButton = document.querySelector('#methods_addNewCardButton');
+                                methods_addNewCardButton.addEventListener('click', () => {
+                                    document.querySelector('#methods_newCardInput').classList.remove('hidden');
+                                    document.querySelector('#methods_selectSavedCardBox').classList.add('hidden');
+                                });                                
+                            </script>                            
+
+                        </div>
+                    </div>
+                    <div class="preferences-container">
+                        <div class="radio-button--round text-gray">
+                            <input id="methods_pay_by_paypal" type="radio" name="payment_method" value="pay_by_paypal">
+                            <label for="methods_pay_by_paypal">
+                        </div>                        
+                        <div>
+                            <label for="methods_pay_by_paypal"><h4 class="text-gray">PayPal</h4></label>      
+                            <p class="text-gray">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. S
+                                uscipit quibusdam, eligendi sit atque tempore aliquam qui, facere adipisci error quas 
+                                reiciendis, voluptatibus omnis voluptates eius dolores dicta id accusantium eveniet. 
+                            </p>                              
+
+                        </div>
+                    </div>                        
+                    
+                                                    
+                    <div class="buttons-below">
+                        <a class="main-button white-background blue-border text-blue" href="">Cancel</a>
+                        <a class="main-button blue-backgound blue-border text-white" href="">Save Changes</a>
+                    </div>   
+                  
                 </div>
 
                 <div id="history" class="tabcontent">
