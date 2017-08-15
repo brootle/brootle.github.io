@@ -1,0 +1,35 @@
+trigger ProbabilityGotHigh on Opportunity (after insert, after update) {
+	List<Project__c> projectsList = new List<Project__c>();
+    
+    // Get a list of opportunities that were updated if the probability got higher 80%
+    // and make sure there are no project for this oportunity already
+    for (Opportunity opp : [SELECT Id, Name, OwnerId, Description, AccountId
+                            FROM Opportunity 
+                            WHERE (Id IN :Trigger.New AND Probability>80 AND Id NOT IN (SELECT Opportunity__c FROM Project__c) )]) {
+        System.debug(opp.Name);
+        System.debug(opp.AccountId);
+                                
+        Account masterOpportunityAccount = [SELECT Primary_Contact__c FROM Account WHERE Id=:opp.AccountId LIMIT 1];
+                                
+        // Add new Project to projects list
+        projectsList.add(new Project__c(
+        	Name = opp.Name + ' Project',
+        	OwnerId__c = opp.OwnerId,
+        	Description__c = opp.Description,
+        	Opportunity__c = opp.Id,
+        	Primary_Contact__c = masterOpportunityAccount.Primary_Contact__c           
+        ));             
+    }    
+    
+    try {
+        // Perform DML on a collection
+        if (projectsList.size() > 0) {
+            insert projectsList;
+        }    
+    } catch (DmlException e) {
+        System.debug('A DML exception has occurred: ' +
+                    e.getMessage());
+    }    
+    
+    
+}
