@@ -12,6 +12,16 @@ body {
     padding-right: 15.7%;
 }
 
+.hamburger{
+    display: none;
+    border: none;
+    outline: none;    
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: #316fea;
+}
+
 nav{
     display: flex;
     background: white;
@@ -583,3 +593,27 @@ footer{
 }
 
 /*----------------------------------------------------------*/
+/*----------------------------------------------------------*/
+
+@media screen and (max-width: 780px){
+    .container {
+        padding-left: 4%;
+        padding-right: 4%;
+    }    
+    nav {
+        height: 8.2vw;
+        justify-content: space-between;
+    }    
+    nav .top-menu {
+        display: none;
+    }
+
+    .hamburger{
+        display: inline-block;
+        padding-right: 0;
+    }
+    nav .logo img {
+        width: 20vw;
+        padding-top: 1.3vw;
+    }    
+}

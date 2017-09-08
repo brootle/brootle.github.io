@@ -11,8 +11,7 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />-->
-
+    <link href="css/hamburgers.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
 
     <title>Qencode - Better Cloud Transcoding</title>
@@ -37,6 +36,18 @@
                 <button class="button-default text-green">Create Account</button>
             </div>
         </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
     </nav>    
 
     <header class="container">
