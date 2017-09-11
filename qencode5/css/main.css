@@ -3,6 +3,7 @@
    src: url(../fonts/Graphik/Graphik-Regular.otf);
 }
 
+
 body {
     font-family: GraphikRegular, sans-serif;
 }
@@ -91,7 +92,7 @@ nav .top-menu .menu-items--right{
     margin-bottom: 0;
     font-size: 1vw;
 
-    line-height: 1.4vw;
+    line-height: 1.5vw;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -157,6 +158,16 @@ header .header-message .button-and-text > span{
     font-size: 1.4vw;
     font-weight: 600;
     padding: 0.8vw 3vw;
+}
+
+/*----------------------------------------------------------*/
+
+.dark-grey{
+    background: #ebebed;
+}
+
+.light-grey{
+    background: #f8f8f8;    
 }
 
 /*----------------------------------------------------------*/
@@ -248,7 +259,6 @@ hr {
 /*----------------------------------------------------------*/
 .get-started{
     margin-top: 3.4vw;
-    margin-bottom: 3.4vw;
 }
 
 .get-started h3{
@@ -268,7 +278,6 @@ hr {
 }
 
 .get-started-message{
-    background: #f8f8f8;
     padding-left: 4vw;
     padding-right: 4vw;
     padding-top: 1.8vw;
@@ -283,14 +292,14 @@ hr {
 }
 
 /*----------------------------------------------------------*/
-.contact h1{
+/*.contact h1{
     margin: 0;
     margin-top: 4vw;
     margin-bottom: 2vw;    
     font-size: 3vw;
     font-weight: 600;
     text-align: center;     
-}
+}*/
 
 .contact > div{
     padding-left: 4vw;
@@ -411,7 +420,189 @@ footer{
 }
 
 .copyright-and-socials a:hover{
-    color: #316fea;;
+    color: #316fea;
+}
+
+
+.pricing-message > .q-paragraph{
+    text-align: center;
+    margin-bottom: 3vw;
+    margin-top: 3vw;
+}
+
+.pricing-message--big{
+    padding-left: 4vw;
+    padding-right: 4vw;
+    text-align: center;
+    margin: 0;
+    font-size: 1.4vw;
+    color: #6d6f6e;
+    line-height: 1.9vw;    
+}
+
+
+.q-h1-tittle{
+    margin: 0;
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;    
+}
+
+/*----------------------------------------------------------*/
+
+.no-header{
+    padding-top: 5vw;
+}
+
+.no-top-margin{
+    margin-top: 0;
+}
+
+/*----------------------------------------------------------*/
+
+.plans-switcher{
+    margin-top: 1.8vw;
+    margin-bottom: 1.8vw;    
+    text-align: center;
+}
+
+.plans-switcher > div{
+    display: inline-block;
+    border: 1px solid #3270eb;
+    border-radius: 4px; 
+    padding: 0.3vw 0.4vw;
+}
+
+.plans-switcher > div > span{
+    border-radius: 4px; 
+    font-size: 1.1vw;
+    line-height: 1.5vw;
+    padding: 0.6vw 1.4vw;
+    display: inline-block; 
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.plans-switcher--active{
+    background: #3270eb;
+    color: white;    
+}
+
+.switchercontent{
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.switchercontent--active{
+    display: flex;
+    justify-content: center;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    box-sizing: border-box;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+}
+
+.pricing-plan-block{
+    background: white;
+    padding: 1.5vw 2.7vw 2.5vw 2.7vw;
+    width: 46%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    transition: 0.3s;
+    height: 35.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+
+.pricing-plan-block + .pricing-plan-block {
+    margin-left: 4vw;
+}
+
+.pricing-plan-block:hover{
+    -webkit-box-shadow: 0px 20px 37px -3px rgba(0,0,0,0.13);
+    -moz-box-shadow: 0px 20px 37px -3px rgba(0,0,0,0.13);
+    box-shadow: 0px 20px 37px -3px rgba(0,0,0,0.13);
+}
+
+.pricing-plan-block .long-button{
+    width: 100%;
+}
+
+.pricing-plan-block h3{
+    margin: 0;
+    font-size: 2.2vw;
+    color: #343d5c;    
+}
+
+.pricing-plan-block--amount{
+    margin: 0;
+    margin-top: 1vw;
+    font-size: 3.5vw;    
+}
+
+.pricing-plan-block pricing-plan-block--amount > span{
+    font-size: 1.8vw;
+    padding-right: 0.1vw;
+}
+
+.pricing-plan-block--units{
+    margin: 0;
+    font-size: 1.4vw;
+    margin-bottom: 1vw;    
+}
+
+.pricing-plan-block--title{
+    color: #343d5c;
+    font-weight: 600;
+    font-size: 1.2vw;
+    margin-top: 1.7vw;
+    margin-bottom: 0.6vw;   
+}
+
+.pricing-plan-block ul{
+    margin: 0;
+    padding-left: 2vw;
+    list-style-type: none;
+    font-size: 1.13vw;
+    line-height: 2.1vw;    
+}
+
+.pricing-plan-block li{
+    position: relative;
+}
+
+.pricing-plan-block li::before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: -1.6vw;
+    top: 0.6vw;
+    height: 0.5vw;
+    width: 0.7vw;
+    border-bottom: 2px solid #6ec656;
+    border-left: 2px solid #6ec656;
+    transform: rotate(-49deg);
+}
+
+.pricing-plan--enterprise{
+    margin-top: 2vw;
+    margin-bottom: 2vw;    
 }
 
 /*----------------------------------------------------------*/
@@ -449,7 +640,7 @@ footer{
         font-size: 5vw;
     }    
 
-    header .header-message > p {
+    header .header-message > p, .pricing-message--big {
         font-size: 2vw;
         line-height: 2.6vw;
     }    
@@ -521,9 +712,10 @@ footer{
         padding: 1.3vw 3vw;
     }   
 
-    .contact h1 {
-        margin-top: 5vw;
-        margin-bottom: 3vw;
+    .q-h1-tittle {
+        margin: 0;
+        padding-top: 5vw;
+        padding-bottom: 3vw;
         font-size: 4vw;
     }     
 
@@ -590,6 +782,14 @@ footer{
         margin-left: 2vw;
     }    
 
+    .no-header{
+        padding-top: 7vw;
+    }
+
+    .no-top-margin {
+        margin-top: 0;
+    }    
+
 }
 
 /*----------------------------------------------------------*/
@@ -633,7 +833,7 @@ footer{
         font-size: 6.5vw;
     }  
 
-    header .header-message > p {
+    header .header-message > p, .pricing-message--big {
         font-size: 2.8vw;
         line-height: 3.6vw;
     }    
@@ -688,9 +888,9 @@ footer{
         font-size: 2.4vw;
     }    
 
-    .contact h1 {
-        margin-top: 6vw;
-        margin-bottom: 4vw;
+    .q-h1-tittle {
+        padding-top: 6vw;
+        padding-bottom: 4vw;
         font-size: 6.5vw;
     }    
 
@@ -749,6 +949,14 @@ footer{
     .footer-menu__block h3 {
         font-size: 1.8vw;
     }    
+
+    .no-header{
+        padding-top: 8.2vw;
+    }    
+
+    .no-top-margin {
+        margin-top: 0;
+    }    
   
 }
 
@@ -800,10 +1008,16 @@ footer{
         font-size: 9.5vw;
     }    
 
-    header .header-message > p {
+    header .header-message > p, .pricing-message--big {
         font-size: 4.8vw;
         line-height: 6.8vw;
     }    
+
+    .pricing-message--big{
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;        
+    }
 
     header .header-message .button-and-text {
         align-items: flex-start;
@@ -874,8 +1088,9 @@ footer{
 
     .get-started {
         margin-top: 6.4vw;
-        margin-bottom: 6.4vw;
         background: #f8f8f8;
+        padding-left: 0;
+        padding-right: 0;        
     }    
 
     .get-started-message {
@@ -899,9 +1114,10 @@ footer{
         margin-bottom: 3vw;
     }
 
-    .contact h1 {
-        margin-top: 8vw;
+    .q-h1-tittle {
+        padding-top: 8vw;
         font-size: 9.5vw;
+        text-align: left;
     }
 
     .contact-message > p:last-child{
@@ -997,6 +1213,18 @@ footer{
         margin-top: 3vw;
     }
 
+    .no-header {
+        padding-top: 14.2vw;
+    }    
+
+    .no-top-margin {
+        margin-top: 0;
+    }    
+
+    .pricing-message{
+        display: none;
+    }
+
 }
 
 /*----------------------------------------------------------*/
@@ -1028,7 +1256,7 @@ footer{
         line-height: 16vw;
     }    
 
-    header .header-message > p {
+    header .header-message > p, .pricing-message--big {
         font-size: 5.8vw;
         line-height: 9vw;
         margin-top: 4vw;
@@ -1081,11 +1309,15 @@ footer{
 
     .get-started {
         margin-top: 10.4vw;
+        padding-left: 0;
+        padding-right: 0;        
     }    
 
     .get-started-message {
         padding-bottom: 8.8vw;
         padding-top: 8.8vw;
+        padding-left: 5%;
+        padding-right: 5%;        
     }
 
     .get-started h3 {
@@ -1114,11 +1346,9 @@ footer{
         padding: 2.3vw 3vw;
     }    
 
-    .contact h1 {
-        margin-top: 14vw;
+    .q-h1-tittle {
+        padding-top: 14vw;
         font-size: 13.5vw;
-        text-align: left;
-        margin-bottom: -1vw;
     }
 
     .contact > div {
@@ -1192,6 +1422,14 @@ footer{
 
     .copyright-and-socials i {
         font-size: 6.2vw;
+    }    
+
+    .no-header {
+        padding-top: 27vw;
+    }    
+
+    .no-top-margin {
+        margin-top: 0;
     }    
 
 }
