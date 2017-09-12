@@ -3,6 +3,9 @@
    src: url(../fonts/Graphik/Graphik-Regular.otf);
 }
 
+.show{
+    display: block;
+}
 
 body {
     font-family: GraphikRegular, sans-serif;
@@ -475,7 +478,7 @@ footer{
     padding: 0.3vw 0.4vw;
 }
 
-.plans-switcher > div > span{
+/*.plans-switcher > div > span{
     border-radius: 4px; 
     font-size: 1.1vw;
     line-height: 1.5vw;
@@ -483,6 +486,16 @@ footer{
     display: inline-block; 
     cursor: pointer;
     transition: 0.3s;
+}*/
+
+.switcher-button{
+    border-radius: 4px; 
+    font-size: 1.1vw;
+    line-height: 1.5vw;
+    padding: 0.6vw 1.4vw;
+    display: inline-block; 
+    cursor: pointer;
+    transition: 0.3s;    
 }
 
 .plans-switcher--active{
@@ -790,7 +803,7 @@ footer{
         margin-top: 0;
     }    
 
-    .plans-switcher > div > span {
+    .switcher-button {
         font-size: 1.6vw;
         line-height: 1.6vw;
         padding: 0.9vw 1.6vw;
@@ -850,6 +863,11 @@ footer{
     .pricing-plan-block--amount > span {
         font-size: 2.8vw;
         padding-right: 0.5vw;
+    }    
+
+    .pricing-plan--enterprise {
+        margin-top: 3vw;
+        margin-bottom: 3vw;
     }    
 
 }
@@ -1019,7 +1037,106 @@ footer{
     .no-top-margin {
         margin-top: 0;
     }     
-  
+
+    .plans-switcher--inactive{
+        display: none;
+    }    
+
+    .switcher-button{
+        padding: 1.3vw 3vw;
+        font-size: 2vw;
+        line-height: 2vw;
+        width: 24vw;             
+    }
+
+    .switcher-button + .switcher-button{
+        margin-top: 1vw;
+    }
+
+    .switcher-button:hover{
+        background: #3270eb; 
+        color: white;       
+    }
+
+    .plans-switcher--active {
+        position: relative;
+        padding: 1.3vw 3vw;
+        padding-right: 3vw;       
+    }    
+
+
+    .plans-switcher--active:after {
+        content: "\f0d7";
+        font-family: "FontAwesome";
+        position: absolute;
+        right: 0;
+        padding-right: 1.8vw;
+        font-size: 1.8vw;
+    }    
+
+    .plans-switcher {
+        position: relative;
+        height: 5.5vw;
+        margin-top: 3.8vw;
+        margin-bottom: 5.8vw;        
+    }
+
+    .plans-switcher > div {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        background: #f8f8f8;
+    }    
+
+    .switchercontent--active {
+        margin-top: 7vw;
+    }    
+
+    .pricing-plan-block h3 {
+        font-size: 5vw;
+    }   
+
+    .pricing-plan-block--amount {
+        font-size: 6.5vw;
+    }     
+
+    .pricing-plan-block--units {
+        font-size: 3.4vw;
+    }    
+
+    .switchercontent--active {
+        padding-left: 0;
+        padding-right: 0;
+    }    
+
+    .pricing-plan-block--title {
+        font-size: 2.4vw;
+    }    
+
+    .pricing-plan-block ul {
+        font-size: 2.2vw;
+        line-height: 3.7vw;
+    }    
+
+    .pricing-plan-block {
+        width: 50%;
+        height: 67.5vw;
+    }    
+
+    .pricing-plan-block + .pricing-plan-block {
+        margin-left: 5vw;
+    }   
+
+    .pricing-plan-block--amount > span {
+        font-size: 3vw;
+        padding-right: 0.8vw;
+    }     
+
+    .pricing-plan--enterprise {
+        margin-top: 4vw;
+        margin-bottom: 4vw;
+    }    
+
 }
 
 /*----------------------------------------------------------*/

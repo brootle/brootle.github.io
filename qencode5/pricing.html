@@ -68,10 +68,36 @@
 
                 <div class="plans-switcher">
                     <div>
-                        <span class="text-gray switcherbuttons plans-switcher--active" data-switcher="individual_plans">Individual Plans</span>
-                        <span class="text-gray switcherbuttons" data-switcher="business_plans">Business Plans</span>
+                        <span class="text-gray switcher-button plans-switcher--active" data-switcher="individual_plans">Individual Plans</span>
+                        <span class="text-gray switcher-button plans-switcher--inactive" data-switcher="business_plans">Business Plans</span>
                     </div>
                 </div>
+                <script>
+                    // const activeButton = document.querySelector('.plans-switcher > div');
+                    // activeButton.addEventListener('click', (e) =>{
+                    //     if(!e.target.matches('span')) return; // only catch when spans clicked
+
+                    //     // check if screen size is <= 780
+                    //     // if yes, it means we have drop down and show the hidden button
+                    //     if(window.innerWidth <=780){
+                    //         console.log("active button clicked");
+
+                    //         const buttonBelow = e.target.nextElementSibling;
+                        
+                    //         if(buttonBelow){
+                    //             buttonBelow.classList.add('show');
+                    //             // element.classList.contains(class);
+                    //         } 
+
+                    //         const buttonAbove = e.target.previousElementSibling;
+                            
+                    //         if(buttonAbove){
+                    //             buttonAbove.classList.remove('show');
+                    //         }          
+
+                    //     }
+                    // });
+                </script>
 
                 <div id="individual_plans" class="switchercontent switchercontent--active">
                     <div class="pricing-plan-block">
@@ -132,27 +158,67 @@
                 
 
                 <script>
-                    const switcherButtons = document.querySelectorAll('.switcherbuttons');
+                    const switcherButtons = document.querySelectorAll('.switcher-button');
 
                     switcherButtons.forEach(button => button.addEventListener('click', switchPlan));
 
                     function switchPlan(e){
 
-                        // find active elements and remove -> tablinks--active tabcontent--active
-                        const activePlan = document.querySelector('.plans-switcher--active');
-                        const activeContent = document.querySelector('.switchercontent--active');
+                        if(window.innerWidth <=780){
+                            const activeButton = document.querySelector('.plans-switcher--active');
+                            const inactiveButton = document.querySelector('.plans-switcher--inactive');
+                            // if active button clicked -> show inactive button
+                            if(e.target === activeButton){
+                                if(inactiveButton.style.display === "block"){
+                                    inactiveButton.style.display = "none";
+                                } else{
+                                    inactiveButton.style.display = "block";
+                                }
+                            }
+                            // if inactive button clicked -> make it active button
+                            // and make active button inactive button
+                            if(e.target === inactiveButton){
 
-                        activePlan.classList.remove('plans-switcher--active');
-                        activeContent.classList.remove('switchercontent--active');
+                                inactiveButton.classList.remove("plans-switcher--inactive");
+                                inactiveButton.classList.add("plans-switcher--active");
 
-                        // find what tab link was clicked and show tab content with that ID
-                        const clickedButton = e.currentTarget;
-                        clickedButton.classList.add('plans-switcher--active');
+                                activeButton.classList.remove("plans-switcher--active");
+                                activeButton.classList.add("plans-switcher--inactive");
+                                activeButton.style.display = "none";
+                                
+                                // swap active and inactive buttons
+                                // childNode[4].parentNode.insertBefore(childNode[4], childNode[3]);
+                                inactiveButton.parentNode.insertBefore(inactiveButton,activeButton);
 
-                        const switcherID = clickedButton.getAttribute("data-switcher");
+                                // display plans
+                                const activeContent = document.querySelector('.switchercontent--active');
+                                activeContent.classList.remove('switchercontent--active');
+                                const switcherID = inactiveButton.getAttribute("data-switcher");
+                                const switcherContent = document.querySelector(`#${switcherID}`);
+                                switcherContent.classList.add('switchercontent--active');                                
+                            }                            
+                        } else {
+                            // for screen sizes > 780
+                            // find active elements and remove -> tablinks--active tabcontent--active
+                            const activePlan = document.querySelector('.plans-switcher--active');
+                            const activeContent = document.querySelector('.switchercontent--active');
 
-                        const switcherContent = document.querySelector(`#${switcherID}`);
-                        switcherContent.classList.add('switchercontent--active');
+
+                            activePlan.classList.remove('plans-switcher--active');
+                            activePlan.classList.add('plans-switcher--inactive')
+                            activeContent.classList.remove('switchercontent--active');
+
+                            // find what tab link was clicked and show tab content with that ID
+                            const clickedButton = e.currentTarget;
+                            clickedButton.classList.add('plans-switcher--active');
+                            clickedButton.classList.remove('plans-switcher--inactive')
+
+                            const switcherID = clickedButton.getAttribute("data-switcher");
+
+                            const switcherContent = document.querySelector(`#${switcherID}`);
+                            switcherContent.classList.add('switchercontent--active');
+                        }
+
                     }                    
                 </script>
 
