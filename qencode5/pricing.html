@@ -72,35 +72,16 @@
                         <span class="text-gray switcher-button plans-switcher--inactive" data-switcher="business_plans">Business Plans</span>
                     </div>
                 </div>
-                <script>
-                    // const activeButton = document.querySelector('.plans-switcher > div');
-                    // activeButton.addEventListener('click', (e) =>{
-                    //     if(!e.target.matches('span')) return; // only catch when spans clicked
 
-                    //     // check if screen size is <= 780
-                    //     // if yes, it means we have drop down and show the hidden button
-                    //     if(window.innerWidth <=780){
-                    //         console.log("active button clicked");
-
-                    //         const buttonBelow = e.target.nextElementSibling;
-                        
-                    //         if(buttonBelow){
-                    //             buttonBelow.classList.add('show');
-                    //             // element.classList.contains(class);
-                    //         } 
-
-                    //         const buttonAbove = e.target.previousElementSibling;
-                            
-                    //         if(buttonAbove){
-                    //             buttonAbove.classList.remove('show');
-                    //         }          
-
-                    //     }
-                    // });
-                </script>
 
                 <div id="individual_plans" class="switchercontent switchercontent--active">
-                    <div class="pricing-plan-block">
+
+                    <div class="tab">
+                        <span class="tablinks tablinks--active" data-tabcontent="free">Free</span>
+                        <span class="tablinks" data-tabcontent="unlimited">Unlimited</span>
+                    </div>
+
+                    <div id="free" class="pricing-plan-block tabcontent tabcontent--active">
                         <div>
                             <h3>Free</h3>
                             <p class="text-blue pricing-plan-block--amount">500</p>
@@ -120,7 +101,7 @@
                             <button class="button-default button-solid long-button">Tri It Today</button>
                         </div>
                     </div>
-                    <div class="pricing-plan-block">
+                    <div id="unlimited" class="pricing-plan-block tabcontent">
                         <div>
                             <h3>Unlimited</h3>
                             <p class="text-blue pricing-plan-block--amount"><span>$</span>0.001</p>
@@ -141,7 +122,12 @@
                 </div>
 
                 <div id="business_plans" class="switchercontent">
-                    <div class="pricing-plan-block">
+
+                    <div class="tab">
+                        <span class="tablinks tablinks--active" data-tabcontent="enterprise">Enterprise</span>
+                    </div>
+
+                    <div id="enterprise" class="pricing-plan-block tabcontent tabcontent--active">
                         <div>
                             <h3>Enterprise</h3>
                             <div class="pricing-plan--enterprise">
@@ -154,7 +140,32 @@
                             </ul>                             
                         </div>
                     </div>
-                </div>                
+                </div>          
+
+                <script>
+                    const tabLinks = document.querySelectorAll('.tablinks');
+
+                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                    function switchTab(e){
+
+                        // find active elements and remove -> tablinks--active tabcontent--active
+                        const activeLink = document.querySelector('.tablinks--active');
+                        const activeContent = document.querySelector('.tabcontent--active');
+
+                        activeLink.classList.remove('tablinks--active');
+                        activeContent.classList.remove('tabcontent--active');
+
+                        // find what tab link was clicked and show tab content with that ID
+                        const clickedLink = e.currentTarget;
+                        clickedLink.classList.add('tablinks--active');
+
+                        const tabID = clickedLink.getAttribute("data-tabcontent");
+
+                        const tabContent = document.querySelector(`#${tabID}`);
+                        tabContent.classList.add('tabcontent--active');
+                    }                    
+                </script>      
                 
 
                 <script>
