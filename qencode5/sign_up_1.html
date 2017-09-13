@@ -134,7 +134,19 @@
                                         <input id="login_pass" class="text-gray" name="login_pass" placeholder="" type="password">  
                                         <div class="eye"></div>
                                     </div>    
-                                </div>                                                      
+                                </div>             
+
+                                <script>
+                                    const togglePassVisibilityButton = document.querySelector('.eye');
+
+                                    togglePassVisibilityButton.addEventListener('click', () => {
+                                        if(document.getElementById('login_pass').type === 'text'){
+                                            document.getElementById('login_pass').type = 'password';
+                                        } else{
+                                            document.getElementById('login_pass').type = 'text';
+                                        }
+                                    });                                                                                                                                        
+                                </script>                                                                           
 
                                 <div class="confirm-checkbox-and-text">
                                     
