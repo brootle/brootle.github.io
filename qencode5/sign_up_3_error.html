@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="page">
+
+    <nav class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <a href="">Speed</a>
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="no-header page-content container">
+        
+        <div class="two-columns">
+            <div>
+                <h2 class="q-h2-tittle text-blue">Welcome to Qencode</h2>
+                <div class="steps-progress">
+                    <div class="progress-circle progress-circle__current"></div>
+                    <img src="img/check_div.png" alt="">
+                    <div class="progress-circle"></div>
+                    <img src="img/check_div.png" alt="">
+                    <div class="progress-circle"></div>
+                </div>            
+                <p class="q-paragraph text-gray">
+                    Let’s set up some general information for the user of this account.
+                </p>    
+
+                <div class="q-form">
+                    <form action="/register" method="POST">
+
+                        <div class="input-container">
+                            <div class="input-label text-gray">
+                                    <label for="register_name">Name</label>
+                            </div>                         
+                            <input id="register_name" class="text-gray" name="register_name" placeholder="" type="text">      
+                        </div>       
+
+                        <div class="input-container">
+                            <div class="input-label text-gray">
+                                    <label for="phone">Phone</label>
+                            </div>                            
+                            <input id="phone" class="gray-border text-gray" placeholder="" name="user[phone]" type="tel">      
+                            <script src="build/js/intlTelInput.js"></script>     
+                            <script src="build/js/utils.js"></script>    
+                            <script>
+                                // https://github.com/jackocnr/intl-tel-input
+                                // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                $("#phone").intlTelInput({
+                                    // nationalMode: false,
+                                    autoPlaceholder: "polite"
+                                })
+                            </script>
+                        </div>                          
+
+                        <div class="input-container">
+                            <div class="two-columns">
+                                <div class="input-label text-gray">
+                                    <label for="register_pass">Password</label>
+                                </div>  
+                                <span class="text-gray input-info">8 or more charachters</span>                                                                  
+                            </div>
+                       
+                            <div class="pass-wrapper">
+                                <input id="register_pass" class="text-gray" name="register_pass" placeholder="" type="password">  
+                                <div class="eye"></div>
+                            </div>    
+                        </div>    
+
+                        <span class="error-message">
+                            If you can't find our email, please check your Spam folder.
+                        </span>                                 
+
+                        <script>
+                            const togglePassVisibilityButton = document.querySelector('.eye');
+
+                            togglePassVisibilityButton.addEventListener('click', () => {
+                                if(document.getElementById('register_pass').type === 'text'){
+                                    document.getElementById('register_pass').type = 'password';
+                                } else{
+                                    document.getElementById('register_pass').type = 'text';
+                                }
+                            });                                                                                                                                        
+                        </script>                                                                                                                                           
+
+                        <button class="button-default button-solid long-button" type="submit">Continue</button>
+
+                    </form>                    
+                </div>
+
+            </div>
+            <div></div>
+        </div>
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
