@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="page">
+
+    <nav class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <a href="">Speed</a>
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="no-header page-content container">
+        
+        <div class="two-columns">
+            <div>
+                
+            </div>
+            <div>
+                <div class="tab">
+                    <span class="tablinks tablinks--active" data-tabcontent="create_account">Create Account</span>
+                    <span class="tablinks" data-tabcontent="log_in">Log In</span>                 
+                </div>  
+
+                <div id="create_account" class="tabcontent tabcontent--active">
+                    <div>
+                        <h2 class="q-h2-tittle text-blue">Get started with a Free Account</h2>
+                        <p class="q-paragraph text-gray">
+                            Receive 500 minutes of free cloud transcoding every month for as long 
+                            as you need to try our full suite of services and let us win your business.
+                        </p>  
+
+                        <div class="contact-form">
+                            <form action="register">
+
+                                <div class="input-container">
+                                    <div class="input-label text-gray">
+                                            <label for="email_address">Email</label>
+                                    </div>                         
+                                    <input id="email_address" class="text-gray" name="email" placeholder="" type="text">      
+                                </div>                           
+
+                                <div class="confirm-checkbox-and-text">
+                                    
+                                    <div class="custom-checkbox--small-gray">
+                                        <input id="agree_signup" type="checkbox">
+                                        <label for="agree_signup"></label>                                
+                                    </div>
+
+                                    <span class="text-gray">
+                                        I agree to the <a href="" class="q-link text-blue">Terms &amp; Conditions</a> 
+                                        and <a href="" class="q-link text-blue">Privacy Policy</a>  
+                                    </span>    
+                                </div>                                                                 
+
+                                <button class="button-default button-solid long-button" type="submit">Create Account</button>
+
+                            </form>                    
+                        </div>
+
+                    </div>                     
+                </div>     
+
+                <div id="log_in" class="tabcontent">
+                    <h2 class="q-h2-tittle text-blue">Welcome back!</h2>
+                </div>       
+
+                <script>
+                    const tabLinks = document.querySelectorAll('.tablinks');
+
+                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                    function switchTab(e){
+
+                        // find active elements and remove -> tablinks--active tabcontent--active
+                        const activeLink = document.querySelector('.tablinks--active');
+                        const activeContent = document.querySelector('.tabcontent--active');
+
+                        activeLink.classList.remove('tablinks--active');
+                        activeContent.classList.remove('tabcontent--active');
+
+                        // find what tab link was clicked and show tab content with that ID
+                        const clickedLink = e.currentTarget;
+                        clickedLink.classList.add('tablinks--active');
+
+                        const tabID = clickedLink.getAttribute("data-tabcontent");
+
+                        const tabContent = document.querySelector(`#${tabID}`);
+                        tabContent.classList.add('tabcontent--active');
+                    }                    
+                </script>                                            
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>

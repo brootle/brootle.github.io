@@ -3,13 +3,23 @@
    src: url(../fonts/Graphik/Graphik-Regular.otf);
 }
 
-.tab{
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+/*.tab{
     display: none;
 }
 
 .show{
     display: block;
-}
+}*/
 
 body {
     font-family: GraphikRegular, sans-serif;
@@ -620,6 +630,130 @@ footer{
 .pricing-plan--enterprise{
     margin-top: 2vw;
     margin-bottom: 2vw;    
+}
+
+
+.two-columns{
+    display: flex;
+    justify-content: space-between;    
+    margin-top: 5vw;
+    margin-bottom: 5vw;    
+}
+
+.two-columns > div {
+    width: 47%;
+}
+
+.tab {
+    display: flex;
+    border-bottom: 1px solid #dbdad6;
+    box-sizing: border-box;
+}
+
+.tab--pricing{
+    display: none;
+}
+
+
+.tablinks {
+    line-height: 2.6vw;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.4vw;
+    font-weight: 600;
+    border-bottom: 2px solid white;
+    color: #343d5c;
+    padding-right: 1vw;
+    padding-left: 0.5vw;
+}
+
+.tablinks + .tablinks{
+    margin-left: 1vw;
+} 
+
+.tablinks--active {
+    border-bottom: 2px solid #41c186;
+}
+
+.tabcontent {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    margin-top: 1.5vw;
+}
+
+.tabcontent--active {
+    display: flex;
+}
+
+.q-h2-tittle {
+    margin: 0;
+    font-size: 1.8vw;
+    font-weight: normal;
+    text-align: left;
+}
+
+.confirm-checkbox-and-text {
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 1.4vw;
+}
+
+.custom-checkbox--small-gray {
+    margin-right: 0.7vw;
+    margin-left: 0.5vw;
+}
+
+.custom-checkbox--small-gray input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox--small-gray label {
+    position: relative;
+    padding-left: 1.5vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;
+    display: initial;
+}
+
+.custom-checkbox--small-gray input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    border: 1px solid #e6e6e6;
+    border-radius: 0.3vw;
+    background: white;
+}
+
+.custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+    border: 1px solid #41c385;
+}
+
+.custom-checkbox--small-gray input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.35vw;
+    top: 0.15vw;
+    height: 0.8vw;
+    width: 0.8vw;
+    background: #41c385;
+}
+
+.input-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    font-weight: 900;
 }
 
 /*----------------------------------------------------------*/
@@ -1496,6 +1630,7 @@ footer{
     .tab {
         border-bottom: 1px solid #dbdad6;
         box-sizing: border-box;
+        justify-content: space-between;
     }    
 
     .tablinks {
@@ -1527,10 +1662,10 @@ footer{
         display: flex;
     }
 
-    .tab{
+    .tab--pricing{
         display: flex;
-        justify-content: space-between;
     }
+
 
     .pricing-plan-block + .pricing-plan-block {
         margin-left: 0;
