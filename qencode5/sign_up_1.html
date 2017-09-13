@@ -57,7 +57,7 @@
             <div>
 
             </div>
-            <div>
+            <div class="select-tabs">
                 <div class="tab">
                     <span class="tablinks tablinks--active" data-tabcontent="create_account">Create Account</span>
                     <span class="tablinks" data-tabcontent="log_in">Log In</span>                 
@@ -71,7 +71,7 @@
                             as you need to try our full suite of services and let us win your business.
                         </p>  
 
-                        <div class="contact-form">
+                        <div class="q-form">
                             <form action="/register" method="POST">
 
                                 <div class="input-container">
@@ -107,7 +107,7 @@
                     <div>
                         <h2 class="q-h2-tittle text-blue">Welcome back!</h2>
 
-                        <div class="contact-form">
+                        <div class="q-form">
                             <form action="/login" method="POST">
 
                                 <div class="input-container">
@@ -115,7 +115,14 @@
                                             <label for="login_email_address">Email</label>
                                     </div>                         
                                     <input id="login_email_address" class="text-gray" name="login_email" placeholder="" type="text">      
-                                </div>                           
+                                </div>       
+
+                                <div class="input-container">
+                                    <div class="input-label text-gray">
+                                            <label for="login_pass">Password</label>
+                                    </div>                         
+                                    <input id="login_pass" class="text-gray" name="login_pass" placeholder="" type="password">      
+                                </div>                                                      
 
                                 <div class="confirm-checkbox-and-text">
                                     
@@ -124,9 +131,11 @@
                                         <label for="keep_logged"></label>                                
                                     </div>
 
-                                    <span class="text-gray">
-                                        Keep me logged in 
-                                    </span>    
+                                    <div class="two-columns">
+                                        <span class="text-gray">Keep me logged in</span>  
+                                        <a href="" class="q-link text-blue">Forgot Password?</a>  
+                                    </div>
+                          
                                 </div>                                                                 
 
                                 <button class="button-default button-solid long-button" type="submit">Log in</button>
