@@ -355,7 +355,7 @@ input[type=text], input[type=password], input[type=tel], textarea {
 }
 
 .input-container {
-    margin-top: 0.7vw;
+    /*margin-top: 0.7vw;*/
     font-size: 1.1vw;
     margin-bottom: 1vw;
 }
@@ -471,10 +471,6 @@ footer{
 
 .no-header{
     padding-top: 5vw;
-}
-
-.no-top-margin{
-    margin-top: 0;
 }
 
 /*----------------------------------------------------------*/
@@ -683,8 +679,12 @@ main > .two-columns{
     box-sizing: border-box;
 }
 
-main > .two-columns > div {
+.two-columns > div {
     width: 45%;
+}
+
+.input-container .two-columns{
+    align-items: center;
 }
 
 main > .one-column{
@@ -808,6 +808,56 @@ main > .one-column{
     font-weight: 900;
 }
 
+.card-input {
+    padding: 0.9vw 1.5vw;
+    /*display: inline-block;*/
+    display: flex;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 0.2vw solid #e6e6e6;
+    color: #73767d;
+    font-size: 1vw;
+    margin: 0.5vw 0;
+    text-align: left;
+
+    padding-left: 3.3vw;
+
+    justify-content: space-between;
+
+    background: url(../img/card.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 4% 49%;  
+}
+
+.card-input input[type=text] {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.card-input input[type=text]:first-of-type {
+    width: 100%;
+}
+
+.card-input input[type=text]:nth-of-type(2) {
+    width: 4vw;
+}
+
+.credit-card-container{
+    align-items: flex-end;    
+}
+
+.credit-card-container > div:last-of-type {
+    width: 22%;
+}
+
+.credit-card-container > div:first-of-type {
+    width: 73%;
+}
+
+
 .q-form{
     margin-top: 2vw;
 }
@@ -853,12 +903,26 @@ main > .one-column{
     background-position: 75% 50%;    
 }
 
-/*.confirmation-message{
-    margin-top: 6.1vw;
-    margin-bottom: 6.1vw;
-    padding-left: 2vw;
-}*/
+.cvc-wrapper{
+    position: relative;
+}
 
+.cvc-wrapper input[type=text]{
+    padding-right: 2vw;
+}
+
+.question{
+    position: absolute;
+    box-sizing: border-box;
+    width: 1.1vw;
+    height: 1.1vw;
+    background: url(../img/help.png);
+    background-repeat: no-repeat;
+    background-size: 1.1vw;
+    right: 1vw;
+    top: 1.5vw;
+    cursor: pointer; 
+}
 
 .email-sent {
     width: 7vw;
@@ -876,6 +940,7 @@ main > .one-column{
     font-weight: 600;
     display: inline-flex;
     align-items: center; 
+    box-sizing: border-box;
 }
 
 .warning-message > img{
@@ -957,6 +1022,103 @@ main > .one-column{
     background: white;
     color: #373d5d;
     border-color: #e6e6e6;    
+}
+
+.custom-select {
+    position: relative;
+}
+
+select {
+    border: 0.2vw solid #e6e6e6;
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    padding-right: 2.2vw;
+    /*margin: 0.5vw 0 !important;*/
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+}
+
+.custom-select:after {
+    content: "\f0d7";
+    color: #bcbcbc;
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 1.6vw;
+    padding-right: 1.5vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+}
+
+.selectcontent {
+    min-height: 2.3vw;
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    margin-left: 1.5vw;
+}
+
+.selectcontent--active {
+    display: block;
+}
+
+.no-space-between{
+    justify-content: flex-start;
+}
+
+.max-length{
+    width: 100%;
+}
+
+.no-top-margin {
+    margin-top: 0;
+}  
+
+.two-columns--not-equal > div:first-of-type {
+    width: 56%;
+}
+
+.two-columns--not-equal > div:last-of-type {
+    width: 39%;
+}
+
+.two-columns .two-columns .input-container {
+    margin-top: 0;
+}
+
+.two-columns--not-equal-reversed > div:first-of-type {
+    width: 32%;
+}
+
+.two-columns--not-equal-reversed > div:last-of-type {
+    width: 63%;
+}
+
+.lock-message {
+    background: #eeeeee;
+    /*color: white;*/
+    border-radius: 4px;
+    font-size: 0.91vw;
+    line-height: 1.7vw;
+    padding: 0.5vw 0.8vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.lock-message > img {
+    height: 0.96vw;
+    margin-right: 0.7vw;
+    margin-bottom: 0.2vw;
 }
 
 /*----------------------------------------------------------*/

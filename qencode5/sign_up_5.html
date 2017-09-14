@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="page">
+
+    <nav class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <a href="">Speed</a>
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="no-header page-content container">
+        
+        <div class="one-column">
+            <h2 class="q-h2-tittle text-blue">Billing Info</h2>
+            <div class="steps-progress">
+                <div class="progress-circle progress-circle__checked"></div>
+                <img src="img/check_div.png" alt="">
+                <div class="progress-circle progress-circle__checked"></div>
+                <img src="img/check_div.png" alt="">
+                <div class="progress-circle progress-circle__current"></div>
+            </div>            
+            <p class="q-paragraph text-gray">
+                Choose your billing preferences and payment method
+            </p>   
+
+            <div class="input-container">
+                <div class="input-label text-gray">
+                        <label for="billing_type">Billing Type</label>
+                </div>         
+
+                <div class="two-columns no-space-between">
+
+                    <div class="custom-select">
+                        <select class="gray-border text-gray" id="billing_type" required="" name="user[billing_type]">
+                            <option value="free" data-selectcontent="free">Free</option>
+                            <option value="unlimited" data-selectcontent="unlimited">Unlimited</option>
+                        </select>                          
+                    </div>  
+
+                    <div>
+                        <span id="unlimited" class="input-info text-gray selectcontent">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus assumenda quaerat aperiam
+                        </span>  
+
+                        <span id="free" class="input-info text-gray selectcontent selectcontent--active">
+                            Get a free 500 minutes every month. You will never be charged while this setting is selected.
+                        </span> 
+                    </div>  
+
+                </div>
+     
+
+                <script>
+                    const selectBillingType = document.querySelector('#billing_type');
+                    selectBillingType.addEventListener("change", function(){
+
+                        const activeSelectedContent = document.querySelector('.selectcontent--active');
+                        activeSelectedContent.classList.remove('selectcontent--active');
+                        
+                        const selectedContent = document.querySelector(`#${this.value}`);
+                        selectedContent.classList.add('selectcontent--active');       
+                                                    
+                    });
+                </script>                                                                                
+
+            </div>
+
+            <div>
+                <div class="tab">
+                    <span class="tablinks tablinks--active" data-tabcontent="credit_card">Credit/Debit card</span>
+                    <span class="tablinks" data-tabcontent="paypal">PayPal</span>                 
+                </div>  
+
+                <div id="credit_card" class="tabcontent tabcontent--active">
+                    <div>
+
+                        <span class="lock-message text-gray max-length">
+                            <img src="img/lock.png" alt="">
+                            Your credit card won't be charged now! We use this info for account verification.
+                        </span>
+
+                        <div class="q-form">
+                            <form action="/continue" method="POST">
+
+                                <div class="two-columns">
+                                    <div>
+
+                                        <div class="two-columns credit-card-container">
+                                            <div class="input-container">
+                                                <div class="input-label input-label--align-start text-gray">
+                                                    <label>Enter Card Details</label>                                     
+                                                </div>                                    
+                                                <div class="gray-border text-gray card-input max-length">
+                                                    <input autocomplete="off" name="credit_card_number" placeholder="Card number" type="text">
+                                                    <input autocomplete="off" name="credit_card_valid_date" placeholder="MM / YY" type="text">
+                                                </div>     
+                                            </div>     
+                                            <div class="input-container">              
+                                                <div class="cvc-wrapper">
+                                                    <input id="card_cvc" class="text-gray" name="card_cvc" placeholder="CVC" type="text">
+                                                    <div class="question"></div>
+                                                </div>              
+                                            </div>                                    
+                                        </div>
+
+
+                                        <div class="input-container">
+                                            <div class="input-label text-gray">
+                                                    <label for="first_name">First Name</label>
+                                            </div>                         
+                                            <input id="first_name" class="text-gray" name="first_name" placeholder="" type="text">      
+                                        </div>
+
+                                        <div class="input-container">
+                                            <div class="input-label text-gray">
+                                                    <label for="last_name">Last Name</label>
+                                            </div>                         
+                                            <input id="last_name" class="text-gray" name="last_name" placeholder="" type="text">      
+                                        </div>                                        
+
+                                    </div>
+                                    <div>
+                                        <div class="input-container">
+                                            <div class="two-columns">
+                                                <div class="input-label text-gray">
+                                                    <label for="address">Address</label>
+                                                </div>  
+                                                <span class="text-gray input-info">Street address or post office box</span>                                                                  
+                                            </div>                       
+                                            <input id="address" class="text-gray" name="address" placeholder="" type="text">      
+                                        </div>    
+
+                                        <div class="two-columns two-columns--not-equal">
+                                            <div class="input-container">
+                                                <div class="input-label text-gray">
+                                                    <label for="city">City</label>                                     
+                                                </div>                            
+                                                <input id="city" class="gray-border text-gray" name="city" placeholder="" type="text">                              
+                                            </div>  
+                                            <div class="input-container">
+                                                <div class="input-label text-gray">
+                                                    <label for="region">State / Region</label>                                     
+                                                </div>                            
+                                                <input id="region" class="gray-border text-gray" name="region" placeholder="" type="text">                              
+                                            </div>                              
+                                        </div>          
+
+                                        <div class="two-columns two-columns--not-equal-reversed">
+                                            <div class="input-container">
+                                                <div class="input-label text-gray">
+                                                    <label for="zip">Zip / Postal code</label>                                     
+                                                </div>                            
+                                                <input id="zip" class="gray-border text-gray" name="user[city]" placeholder="" type="text">                              
+                                            </div>  
+                                            <div class="input-container">
+                                                <div class="input-label text-gray">
+                                                    <label for="country">Country</label>                                     
+                                                </div>                            
+                                                <div class="custom-select">
+                                                    <select class="gray-border text-gray" id="country" required="" name="user[country]">
+                                                        <option value="us">United States of America</option>
+                                                        <option value="ua">Ukraine</option>
+                                                    </select>                          
+                                                </div>                                                                    
+                                            </div>                              
+                                        </div>                                                                      
+
+                                    </div>
+                                </div>                                         
+
+                                <button class="button-default button-solid long-button" type="submit">Continue</button>
+
+                            </form>                    
+                        </div>                        
+                    </div>
+                </div>     
+
+                <div id="paypal" class="tabcontent">
+
+                    <div>
+                        <div class="q-form no-top-margin">
+                            <form action="/continue" method="POST">
+
+                                <div class="two-columns">
+                                    <div class="input-container">
+                                        <div class="input-label text-gray">
+                                                <label for="paypal_address">PayPal address</label>
+                                        </div>                         
+                                        <input id="paypal_address" class="text-gray" name="paypal_address" placeholder="" type="text">      
+                                    </div>    
+                                    <div></div>                                                                        
+                                </div>
+                                    
+
+                                <button class="button-default button-solid long-button" type="submit">Continue</button>
+
+                            </form>                    
+                        </div>                          
+                    </div>
+
+                </div>       
+
+                <script>
+                    const tabLinks = document.querySelectorAll('.tablinks');
+
+                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                    function switchTab(e){
+
+                        // find active elements and remove -> tablinks--active tabcontent--active
+                        const activeLink = document.querySelector('.tablinks--active');
+                        const activeContent = document.querySelector('.tabcontent--active');
+
+                        activeLink.classList.remove('tablinks--active');
+                        activeContent.classList.remove('tabcontent--active');
+
+                        // find what tab link was clicked and show tab content with that ID
+                        const clickedLink = e.currentTarget;
+                        clickedLink.classList.add('tablinks--active');
+
+                        const tabID = clickedLink.getAttribute("data-tabcontent");
+
+                        const tabContent = document.querySelector(`#${tabID}`);
+                        tabContent.classList.add('tabcontent--active');
+                    }                    
+                </script>                                            
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
