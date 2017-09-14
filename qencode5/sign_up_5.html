@@ -74,7 +74,7 @@
                 <div class="two-columns no-space-between">
 
                     <div class="custom-select">
-                        <select class="gray-border text-gray" id="billing_type" required="" name="user[billing_type]">
+                        <select class="gray-border text-gray" id="billing_type" required="" name="billing_type">
                             <option value="free" data-selectcontent="free">Free</option>
                             <option value="unlimited" data-selectcontent="unlimited">Unlimited</option>
                         </select>                          
@@ -91,20 +91,41 @@
                     </div>  
 
                 </div>
-     
+
+                <div id="unlimited_plan" class="two-columns no-space-between unlimited-hidden">
+
+                    <div class="custom-select">
+                        <select class="gray-border text-gray" id="billing_type_ext" required="" name="billing_type_ext">
+                            <option value="automatic" data-selectcontent="automatic">Automatic</option>
+                            <option value="manual" data-selectcontent="manual">Manual</option>
+                        </select>                          
+                    </div>  
+
+                    <div>
+                        <span id="automatic" class="input-info text-gray selectcontent selectcontent--active__ext">
+                            Prevent interruption of service by automatically paying invoices at the end of the month.
+                        </span>  
+
+                        <span id="manual" class="input-info text-gray selectcontent">
+                            Pay each invoice through the website in the billing section of your account.
+                        </span> 
+                    </div>  
+
+                </div>               
 
                 <script>
-                    const selectBillingType = document.querySelector('#billing_type');
-                    selectBillingType.addEventListener("change", function(){
+                    const selectBillingType__ext = document.querySelector('#billing_type_ext');
+                    selectBillingType__ext.addEventListener("change", function(){
 
-                        const activeSelectedContent = document.querySelector('.selectcontent--active');
-                        activeSelectedContent.classList.remove('selectcontent--active');
+                        const activeSelectedContent__ext = document.querySelector('.selectcontent--active__ext');
+                        activeSelectedContent__ext.classList.remove('selectcontent--active__ext');
                         
-                        const selectedContent = document.querySelector(`#${this.value}`);
-                        selectedContent.classList.add('selectcontent--active');       
+                        const selectedContent__ext = document.querySelector(`#${this.value}`);
+                        selectedContent__ext.classList.add('selectcontent--active__ext');       
                                                     
                     });
-                </script>                                                                                
+                </script>                   
+                                                                                
 
             </div>
 
@@ -121,7 +142,7 @@
                             <img src="img/lock.png" alt="">
                             Your credit card won't be charged now! We use this info for account verification.
                         </span>
-
+                       
                         <div class="q-form">
                             <form action="/continue" method="POST">
 
@@ -217,6 +238,35 @@
                         </div>                        
                     </div>
                 </div>     
+
+                <script>
+                    const selectBillingType = document.querySelector('#billing_type');
+                    selectBillingType.addEventListener("change", function(){
+
+                        const activeSelectedContent = document.querySelector('.selectcontent--active');
+                        activeSelectedContent.classList.remove('selectcontent--active');
+                        
+                        const selectedContent = document.querySelector(`#${this.value}`);
+                        selectedContent.classList.add('selectcontent--active');       
+                        
+                        // here we should also show and hide extra plans
+                        // if unlimited selected find it by id "unlimited_plan"
+                        // and remove "unlimited-hidden" class
+                        // and hide message with class '.lock-message'
+                        // also add 'no-top-margin' class to q-form
+                        // console.log(this.value);
+                        if(this.value === "unlimited"){
+                            document.querySelector('#unlimited_plan').classList.remove('unlimited-hidden');
+                            document.querySelector('.lock-message').classList.add('unlimited-hidden');
+                            document.querySelector('#credit_card .q-form').classList.add('no-top-margin');
+                        } else{
+                            document.querySelector('#unlimited_plan').classList.add('unlimited-hidden');
+                            document.querySelector('.lock-message').classList.remove('unlimited-hidden');
+                            document.querySelector('#credit_card .q-form').classList.remove('no-top-margin');
+                        }
+
+                    });
+                </script>                    
 
                 <div id="paypal" class="tabcontent">
 
