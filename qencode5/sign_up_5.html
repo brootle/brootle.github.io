@@ -155,13 +155,33 @@
                                                     <label>Enter Card Details</label>                                     
                                                 </div>                                    
                                                 <div class="gray-border text-gray card-input max-length">
-                                                    <input autocomplete="off" name="credit_card_number" placeholder="Card number" type="text">
-                                                    <input autocomplete="off" name="credit_card_valid_date" placeholder="MM / YY" type="text">
+                                                    <input id="card_digits" autocomplete="off" name="credit_card_number" placeholder="Card number" type="text"
+                                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                    maxlength="19">
+                                                    
+                                                    <script>
+                                                        document.getElementById('card_digits').addEventListener('input', function (e) {
+                                                            e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                                        });                                                        
+                                                    </script>
+                
+                                                    <div>
+                                                        <input autocomplete="off" name="credit_card_valid_date_month" placeholder="MM" type="text"
+                                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                        maxlength="2">
+                                                        <span>/</span>
+                                                        <input autocomplete="off" name="credit_card_valid_date_year" placeholder="YY" type="text"
+                                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                        maxlength="2">
+                                                    </div>
+                
                                                 </div>     
                                             </div>     
                                             <div class="input-container">              
                                                 <div class="cvc-wrapper">
-                                                    <input id="card_cvc" class="text-gray" name="card_cvc" placeholder="CVC" type="text">
+                                                    <input id="card_cvc" class="text-gray" name="card_cvc" placeholder="CVC" type="text"
+                                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                    maxlength="3">
                                                     <div class="question"></div>
                                                 </div>              
                                             </div>                                    
