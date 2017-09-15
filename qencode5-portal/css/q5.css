@@ -1,0 +1,560 @@
+@font-face {
+   font-family: GraphikRegular;
+   src: url(../fonts/Graphik/Graphik-Regular.otf);
+}
+
+.q5-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.q5-page-content {
+  flex: 1;
+}
+
+
+body {
+    font-family: GraphikRegular, sans-serif;
+}
+
+.q5-container {
+    padding-left: 15.7%;
+    padding-right: 15.7%;
+}
+
+.hamburger{
+    display: none;
+    border: none;
+    outline: none;    
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: #316fea;
+}
+
+.q5-nav{
+    display: flex;
+    background: white;
+    align-items: center;
+    height: 5.2vw;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;    
+    z-index: 99999;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.q5-nav .q5-top-menu{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;    
+}
+
+
+.q5-nav .q5-logo img{
+    width: 10vw;
+    border-style: none;
+    padding-top: 0.8vw;  
+}
+
+.q5-nav .q5-top-menu .q5-menu-items--left{
+    margin-left: 2vw; 
+}
+
+.q5-nav .q5-top-menu .q5-menu-items--right{
+    margin-right: 1vw; 
+}
+
+.q5-top-menu a{
+    display: inline-block;
+    font-size: 1vw;
+    
+    line-height: 4.9vw;
+    transition: border .3s ease;
+    cursor: pointer;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    border-bottom: 2px solid white;
+}
+
+.q5-top-menu a:hover{
+    border-bottom: 2px solid #43c086;
+}
+
+.q5-top-menu a:hover, .q5-top-menu a:visited, .q5-top-menu a:active, .q5-top-menu a:link {
+    color: #333e5c;
+    text-decoration: none;
+}
+
+.q5-top-menu a i{
+    margin-right: 0.4vw;
+}
+
+.q5-button-default {
+    background-color: white;
+    border-color: #41c186;
+    outline: none;
+
+    display: inline-block;
+    padding: 0.5vw 1.1vw;
+    margin-bottom: 0;
+    font-size: 1vw;
+
+    line-height: 1.5vw;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    border: 1px solid #43c086;
+    border-radius: 4px;
+}
+
+/*----------------------------------------------------------*/
+
+
+.q5-button-solid {
+    background: #41c186;
+    color: white;
+    font-size: 1.4vw;
+    font-weight: 600;
+    padding: 0.8vw 3vw;
+}
+
+.q5-text-gray{
+    color: #373d5d;
+}
+
+.q5-text-inactive-gray{
+    color: #bdbec0;
+}
+
+.q5-text-blue{
+    color: #316fea;
+}
+
+.q5-text-green{
+    color: #44c285;
+}
+
+.q-link{
+    text-decoration: none; 
+}
+/*----------------------------------------------------------*/
+
+.q5-main{
+    padding-bottom: 4vw;
+}
+
+
+.q5-hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+}
+
+/*----------------------------------------------------------*/
+
+input[type=text], input[type=password], input[type=tel], textarea {
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 0.2vw solid #e6e6e6;
+    font-size: 1vw;
+}
+
+.q5-input-container {
+    /*margin-top: 0.7vw;*/
+    font-size: 1.1vw;
+    margin-bottom: 1vw;
+}
+
+.q5-input-container textarea{
+    height: 10vw;    
+    resize: none;
+    outline: none;    
+}
+
+/*----------------------------------------------------------*/
+
+.q-paragraph{
+    font-size: 1.1vw;
+    line-height: 1.6vw;    
+}
+
+.q5-long-button{
+    font-size: 1vw;
+    width: 14.2vw;
+    padding: 0.6vw 3vw;    
+}
+
+/*----------------------------------------------------------*/
+
+q5-footer{
+    border-top: 1px solid #e6e6e6;   
+    padding-top: 2.2vw; 
+}
+
+.q5-small-logo img{
+    width: 2.3vw;    
+}
+
+.q5-logo-and-menu{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4vw;    
+}
+
+.q5-footer-menu{
+    display: flex;    
+}
+
+.q5-footer-menu > div{
+    display: flex;    
+}
+
+.q5-footer-menu__block {
+    padding-left: 7vw;
+}
+
+.q5-footer-menu__block a {
+    display: block;
+    text-decoration: none;
+    font-size: 1vw;
+    line-height: 2vw;
+}
+
+.q5-footer-menu__block h3{
+    margin: 0;
+    margin-bottom: 1vw;
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+.q5-copyright-and-socials{
+    font-size: 0.94vw;
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.q5-copyright-and-socials i{
+    font-size: 1.1vw;
+    margin-left: 1vw;
+}
+
+.q5-copyright-and-socials a:hover{
+    color: #316fea;
+}
+
+.q-h1-tittle{
+    margin: 0;
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;    
+}
+
+/*----------------------------------------------------------*/
+
+.q5-no-header{
+    padding-top: 5vw;
+}
+
+/*----------------------------------------------------------*/
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.q-list{
+    margin: 0;
+    padding-left: 2vw;
+    list-style-type: none;
+    font-size: 1.1vw;
+    line-height: 1.3vw;    
+}
+
+.q-list li::before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: -1.6vw;
+    top: 0.2vw;
+    height: 0.5vw;
+    width: 0.7vw;
+    border-bottom: 2px solid #6ec656;
+    border-left: 2px solid #6ec656;
+    transform: rotate(-49deg);
+}
+
+.q-list li{
+    position: relative;
+    margin-bottom: 1.3vw;
+}
+
+.q5-main .q5-two-columns .q-list{
+    margin-top: 3vw;
+}
+
+.q5-two-columns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.q5-main > .q5-two-columns{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;
+}
+
+.q5-two-columns > div {
+    width: 45%;
+}
+
+.q5-input-container .q5-two-columns{
+    align-items: center;
+}
+
+.q5-main > .one-column{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;    
+}
+
+.q5-tab {
+    display: flex;
+    border-bottom: 1px solid #dbdad6;
+    box-sizing: border-box;
+}
+
+.q5-tab--pricing{
+    display: none;
+}
+
+
+.q5-tablinks {
+    line-height: 2.6vw;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.4vw;
+    font-weight: 600;
+    border-bottom: 2px solid white;
+    color: #343d5c;
+    padding-right: 1vw;
+    padding-left: 0.5vw;
+}
+
+.q5-tablinks + .q5-tablinks{
+    margin-left: 1vw;
+} 
+
+.q5-tablinks--active {
+    border-bottom: 2px solid #41c186;
+}
+
+.q5-tabcontent {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    margin-top: 1.5vw;
+}
+
+.q5-tabcontent > div{
+    width: 100%;
+}
+
+.q5-tabcontent--active {
+    display: flex;
+}
+
+.q-h2-tittle {
+    margin: 0;
+    font-size: 1.8vw;
+    font-weight: normal;
+    text-align: left;
+    line-height: 2.1vw;
+}
+
+.q5-confirm-checkbox-and-text {
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 1.4vw;
+}
+
+.q5-custom-checkbox--small-gray {
+    margin-right: 0.7vw;
+    margin-left: 0.5vw;
+}
+
+.q5-custom-checkbox--small-gray input[type="checkbox"] {
+    display: none;
+}
+
+.q5-custom-checkbox--small-gray label {
+    position: relative;
+    padding-left: 1.5vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;
+    display: initial;
+}
+
+.q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+
+    background: url(../img/box_empty.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;    
+}
+
+.q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+    background: url(../img/box_checked.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;       
+}
+
+.q5-input-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    font-weight: 900;
+}
+
+.q-form{
+    margin-top: 2vw;
+}
+
+.q5-main-login-img {
+    width: 87%;
+    padding-left: 1vw;
+    margin-top: 1.5vw;
+}
+
+.q5-pass-wrapper{
+    position: relative; 
+}
+
+.q5-pass-wrapper input[type=password]{
+    padding-right: 4vw;
+}
+
+.q5-eye{
+    position: absolute;
+    box-sizing: border-box;
+    width: 2.5vw;
+    height: 2.1vw;    
+
+    background: url(../img/eye.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;
+
+    right: 1vw;
+    top: 1.1vw;
+    cursor: pointer;
+    border-left: 0.2vw solid #e6e6e6;    
+
+    transition: 0.3s;
+}
+
+
+.q5-eye:hover {
+    background: url(../img/eye_over.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;    
+}
+
+
+.q5-two-columns .q5-two-columns .q5-input-container {
+    margin-top: 0;
+}
+
+.q-link-box{
+    display: flex;
+    align-items: center;
+    width: 69%;
+    border: 0.2vw solid #e6e6e6;
+    border-radius: 0.5vw;
+    padding: 0.4vw 1.4vw;
+}
+
+.q-link-box > div:first-of-type{
+    width: 93%;
+    padding-right: 1vw;    
+}
+
+.q-link-box__title{
+    font-size: 1.1vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;    
+}
+
+.q-link-box__image{
+    width: 2.8vw;    
+    height: 2.8vw;  
+
+    box-sizing: border-box;
+
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.8vw;    
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.q-link-box__image:hover{
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.8vw;    
+}
+
+.q-link-box + .q-link-box {
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+}
+
+/*----------------------------------------------------------*/
