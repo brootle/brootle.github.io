@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link href="css/q5.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button class="q5-button-default q5-green-background q5-text-white">My Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q5-container">
+
+        <div class="q5-page-tittle-box">
+            Account Settings
+        </div>        
+        
+        <div class="q5-one-column">
+
+            <div>
+
+                <div class="q5-tab">
+                    <span class="q5-tablinks q5-tablinks--active" data-tabcontent="general_info">
+                        General info
+                    </span>
+                    <span class="q5-tablinks" data-tabcontent="security">Security</span>                 
+                </div>  
+
+                <div id="general_info" class="q5-tabcontent q5-tabcontent--active">
+                    <div>                       
+                        <div class="q-form">
+                            <form action="/continue" method="POST">
+
+                                <div class="q5-two-columns">
+                                    <div>
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="user_name">Name</label>
+                                            </div>                         
+                                            <input id="user_name" class="q5-text-gray" name="user_name" placeholder="" type="text">      
+                                        </div>       
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="email_address">Email</label>
+                                            </div>                         
+                                            <input id="email_address" class="q5-text-gray" name="email" placeholder="" type="text">      
+                                        </div>                                              
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="phone">Phone</label>
+                                            </div>                            
+                                            <input id="phone" class="q5-text-gray" placeholder="" name="phone" type="tel">      
+                                            <script src="build/js/intlTelInput.js"></script>     
+                                            <script src="build/js/utils.js"></script>    
+                                            <script>
+                                                // https://github.com/jackocnr/intl-tel-input
+                                                // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                                $("#phone").intlTelInput({
+                                                    // nationalMode: false,
+                                                    autoPlaceholder: "polite"
+                                                })
+                                            </script>
+                                        </div>                                             
+
+                                    </div>
+                                    <div>
+  
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="business_name">What's the name of your business</label>
+                                            </div>                         
+                                            <input id="business_name" class="q5-text-gray" name="business_name" placeholder="" type="text">      
+                                        </div> 
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="user_website">What's your website</label>
+                                            </div>                         
+                                            <input id="user_website" class="q5-text-gray" name="user_website" placeholder="" type="text">      
+                                        </div>                                         
+                                                               
+
+                                    </div>
+                                </div>                                         
+
+                                <button class="q5-button-default q5-button-solid q5-long-button" type="submit">Update info</button>
+
+                            </form>                    
+                        </div>                        
+                    </div>
+                </div>     
+
+                <div id="security" class="q5-tabcontent">
+
+                    <div>
+                        <div class="q-form">
+                            <form action="/continue" method="POST">
+
+                                <div class="q5-two-columns">
+                                    <div>
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                    <label for="old_pass">Old Password</label>
+                                            </div>                         
+                                            <input id="old_pass" class="q5-text-gray" name="old_pass" placeholder="" type="password">      
+                                        </div>  
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                <label for="new_pass">New Password</label>
+                                            </div>                         
+                                            <div class="q5-pass-wrapper">
+                                                <input id="new_pass" class="q5-text-gray" name="new_pass" placeholder="" type="password">  
+                                                <div id="new_pass_eye" class="q5-eye"></div>
+                                            </div>    
+                                        </div>             
+
+                                        <script>
+                                            document.querySelector('#new_pass_eye').addEventListener('click', () => {
+                                                if(document.getElementById('new_pass').type === 'text'){
+                                                    document.getElementById('new_pass').type = 'password';
+                                                } else{
+                                                    document.getElementById('new_pass').type = 'text';
+                                                }
+                                            });                                                                                                                                        
+                                        </script>     
+
+                                        <div class="q5-input-container">
+                                            <div class="q5-input-label q5-text-gray">
+                                                <label for="confirm_new_pass">Confirm New Password</label>
+                                            </div>                         
+                                            <div class="q5-pass-wrapper">
+                                                <input id="confirm_new_pass" class="q5-text-gray" name="confirm_new_pass" placeholder="" type="password">  
+                                                <div id="confirm_new_pass_eye" class="q5-eye"></div>
+                                            </div>    
+                                        </div>             
+
+                                        <script>
+                                            document.querySelector('#confirm_new_pass_eye').addEventListener('click', () => {
+                                                if(document.getElementById('confirm_new_pass').type === 'text'){
+                                                    document.getElementById('confirm_new_pass').type = 'password';
+                                                } else{
+                                                    document.getElementById('confirm_new_pass').type = 'text';
+                                                }
+                                            });                                                                                                                                        
+                                        </script>                                          
+
+                                    </div>
+                                    <div></div>                                                                        
+                                </div>
+                                    
+
+                                <button class="q5-button-default q5-button-solid q5-long-button" type="submit">Change password</button>
+
+                            </form>                    
+                        </div>                          
+                    </div>
+
+                </div>       
+
+                <script>
+                    const tabLinks = document.querySelectorAll('.q5-tablinks');
+
+                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                    function switchTab(e){
+
+                        // find active elements and remove -> tablinks--active tabcontent--active
+                        const activeLink = document.querySelector('.q5-tablinks--active');
+                        const activeContent = document.querySelector('.q5-tabcontent--active');
+
+                        activeLink.classList.remove('q5-tablinks--active');
+                        activeContent.classList.remove('q5-tabcontent--active');
+
+                        // find what tab link was clicked and show tab content with that ID
+                        const clickedLink = e.currentTarget;
+                        clickedLink.classList.add('q5-tablinks--active');
+
+                        const tabID = clickedLink.getAttribute("data-tabcontent");
+
+                        const tabContent = document.querySelector(`#${tabID}`);
+                        tabContent.classList.add('q5-tabcontent--active');
+                    }                    
+                </script>                                            
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <footer class="q5-container q5-footer">
+
+        <div class="q5-logo-and-menu">
+            <div class="q5-small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="q5-footer-menu">
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="q5-text-gray" href="">About us</a>
+                        <a class="q5-text-gray" href="">Privacy policy</a>
+                        <a class="q5-text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="q5-text-gray" href="">Pricing</a>
+                        <a class="q5-text-gray" href="">Speed</a>
+                        <a class="q5-text-gray" href="">Formats</a>
+                        <a class="q5-text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="q5-text-gray" href="">Try Demo</a>
+                        <a class="q5-text-gray" href="">API</a>
+                        <a class="q5-text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="q5-text-gray" href="">Contact us</a>
+                        <a class="q5-text-gray" href="">Live chat</a>
+                        <a class="q5-text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr class="q5-hr">
+
+        <div class="q5-copyright-and-socials">
+            <div>
+                <span class="q5-text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
