@@ -18,6 +18,7 @@
     <link href="css/hamburgers.css" rel="stylesheet">
 
     <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
 
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
@@ -36,7 +37,32 @@
                 <a href="">Contact</a>
             </div>
             <div class="q5-menu-items--right">
-                <button class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="">Settings</a>
+                    <a href="">Log out</a>
+                </div>
+                <script>
+
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+
+                        this.classList.toggle("q5-opened-menu");
+
+                        // 2. show subling panel if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.display = "none";
+                        } else {
+                            authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    
+                        
+                    });
+                  
+                </script>
             </div>
         </div>
 
