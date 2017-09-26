@@ -39,18 +39,14 @@
             <div class="q5-menu-items--right">
                 <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
                 <div id="authorized-menu-fullsize" class="q5-authorized-menu">
-                    <a href="">Settings</a>
-                    <a href="">Log out</a>
+                    <a href="" class="q5-gray-background"><strong>Settings</strong></a>
+                    <a href="" class="q5-gray-background"><strong>Log out</strong></a>
                 </div>
                 <script>
-
                     document.querySelector("#menu-button").addEventListener('click', function(){
-
                         let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
-
                         this.classList.toggle("q5-opened-menu");
-
-                        // 2. show subling panel if it's not shown already 
+                        // show menu if it's not shown already 
                         if (authorizedMenu.style.maxHeight){
                             authorizedMenu.style.maxHeight = null;
                             authorizedMenu.style.display = "none";
@@ -58,10 +54,7 @@
                             authorizedMenu.style.display = "flex";
                             authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
                         }             
-                    
-                        
-                    });
-                  
+                    });   
                 </script>
             </div>
         </div>
@@ -70,11 +63,32 @@
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
-        </button>        
+        </button>     
+
+        <div id="authorized-menu-mobile" class="q5-authorized-menu">
+            <a href="" class="q5-white-background">My Projects</a>
+            <a href="" class="q5-white-background">Transcoding Jobs</a>
+            <a href="" class="q5-white-background">Billing</a>
+            <a href="" class="q5-white-background">Documentation</a>
+            <a href="" class="q5-white-background">Contact</a>            
+            <a href="" class="q5-gray-background"> <strong>Settings</strong></a>
+            <a href="" class="q5-gray-background"> <strong>Log out</strong></a>
+        </div>        
+        
+
         <script>
             const hamburger = document.querySelector('.hamburger');
             hamburger.addEventListener('click', ()=>{
-                hamburger.classList.toggle('is-active');           
+                hamburger.classList.toggle('is-active');       
+                let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                // show and hide mobile menu    
+                if (authorizedMobileMenu.style.maxHeight){
+                    authorizedMobileMenu.style.maxHeight = null;
+                    authorizedMobileMenu.style.display = "none";
+                } else {
+                    authorizedMobileMenu.style.display = "flex";
+                    authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                }                   
             });            
         </script>  
     </nav>    
