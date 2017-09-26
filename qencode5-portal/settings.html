@@ -49,9 +49,11 @@
                         // show menu if it's not shown already 
                         if (authorizedMenu.style.maxHeight){
                             authorizedMenu.style.maxHeight = null;
-                            authorizedMenu.style.display = "none";
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
                         } else {
-                            authorizedMenu.style.display = "flex";
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
                             authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
                         }             
                     });   
@@ -84,9 +86,11 @@
                 // show and hide mobile menu    
                 if (authorizedMobileMenu.style.maxHeight){
                     authorizedMobileMenu.style.maxHeight = null;
-                    authorizedMobileMenu.style.display = "none";
+                    //authorizedMobileMenu.style.display = "none";
+                    authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
                 } else {
-                    authorizedMobileMenu.style.display = "flex";
+                    //authorizedMobileMenu.style.display = "flex";
+                    authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
                     authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
                 }                   
             });            
