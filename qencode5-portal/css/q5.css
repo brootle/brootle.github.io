@@ -128,16 +128,28 @@
 /*----------------------------------------------------------*/
 
 
-.q5-button-solid {
+/*.q5-button-solid {
     background: #41c186;
     color: white;
     font-size: 1.4vw;
     font-weight: 600;
     padding: 0.8vw 3vw;
+}*/
+
+.q5-white-border{
+    border-color: white;    
+}
+
+.q5-black-border{
+    border-color: #343d5c
 }
 
 .q5-green-background{
     background: #41c186;    
+}
+
+.q5-transparent-background{
+    background: inherit;    
 }
 
 .q5-gray-background{
@@ -146,6 +158,10 @@
 
 .q5-white-background{
     background: white;    
+}
+
+.q5-blue-background{
+    background: #316fea;
 }
 
 .q5-text-white{
@@ -219,12 +235,12 @@ input[type=text], input[type=password], input[type=tel], textarea {
     font-size: 1.1vw;
     line-height: 1.6vw;    
 }
-
+/*
 .q5-long-button{
     font-size: 1vw;
     width: 14.2vw;
     padding: 0.6vw 3vw;    
-}
+}*/
 
 /*----------------------------------------------------------*/
 
@@ -681,31 +697,6 @@ input[type=text], input[type=password], input[type=tel], textarea {
     background-position: 75% 50%;
 }
 
-/*.q5-button-default {
-    background-color: white;
-    border-color: #41c186;
-    outline: none;
-    display: inline-block;
-    padding: 0.5vw 1.1vw;
-    margin-bottom: 0;
-    font-size: 1vw;
-    line-height: 1.5vw;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid #43c086;
-    border-radius: 4px;
-}*/
-
-
-
 .q5-button-solid {
     background: #41c186;
     color: white;
@@ -716,7 +707,7 @@ input[type=text], input[type=password], input[type=tel], textarea {
 
 .q5-long-button {
     font-size: 1vw;
-    width: 14.2vw;
+    min-width: 14.2vw;
     padding: 0.6vw 3vw;
 }
 
@@ -807,9 +798,9 @@ input[type=text], input[type=password], input[type=tel], textarea {
 .q5-lock-message {
     background: #eeeeee;
     border-radius: 4px;
-    font-size: 0.91vw;
-    line-height: 1.7vw;
-    padding: 0.5vw 0.8vw;
+    font-size: 1vw;
+    line-height: 1.3vw;
+    padding: 0.8vw 0.8vw;
     display: inline-block;
     font-weight: 600;
     display: inline-flex;
@@ -931,12 +922,19 @@ input[type=text], input[type=password], input[type=tel], textarea {
 
 .q5-page-tittle-box{
     background: #2c6cf2;
-    color: white;
     margin-top: 4vw;
     margin-bottom: 3vw;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.q5-page-tittle-box > h1{
+    margin: 0;
+    color: white;
     font-size: 1.8vw;
     font-weight: 900;
-    padding: 2vw;    
 }
 
 .q5-page-tittle-box + .q5-one-column{
@@ -956,6 +954,474 @@ input[type=text], input[type=password], input[type=tel], textarea {
     padding-right: 1vw;
     padding-top: 0vw;
 }
+
+/*----------------------------------------------------------*/
+
+.q5-button-link{
+    min-width: 10vw;
+    outline: none;
+    display: inline-block;
+    padding: 0.5vw 1.6vw;
+    margin-bottom: 0;
+    font-size: 1vw;
+    font-weight: 600;
+    line-height: 1.5vw;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;    
+    position: relative;
+
+    outline: none;
+
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.q5-button-link + .q5-button-link{
+    margin-left: 1vw;
+}
+
+.q5-back-link{
+    padding-left: 2.5vw;
+}
+
+.q5-back-link:after {
+    content: "\f104";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    padding-left: 1.1vw;
+    padding-top: 0vw;
+    font-size: 1.5vw;
+}
+
+.q5-info-message{
+    background: #f8f8f8;
+    border-radius: 4px;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    padding: 1vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;    
+}
+
+.q5-info-message > .q5-button-link{
+    min-width: 0;
+    margin-right: 1vw;
+}
+
+/*----------------------------------------------------------*/
+.q5-dropdown-data-block{
+    margin-bottom: 2vw;
+}
+
+.q5-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vw;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.6vw;
+    cursor: pointer;
+}
+
+.q5-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.q5-dropdown-content > div{
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+}
+/*----------------------------------------------------------*/
+
+.q5-h3-tittle{
+    margin: 0;
+    font-size: 1.3vw;
+    text-align: left;
+    line-height: 2.1vw;    
+}
+
+.q5-dropdown-header > .q5-h3-tittle{
+    position: relative;    
+    padding-right: 2vw;
+}
+
+.q5-dropdown-header > .q5-h3-tittle:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    font-size: 1vw;
+    top: 0.04vw;
+    font-weight: 100;
+    transition: all 0.2s ease;
+}
+
+.q5-active-dropdown > .q5-h3-tittle:after{
+    transform: rotate(90deg);
+}
+
+.q5-format-choice {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vw;
+}
+
+.q5-radio-buttons {
+    display: flex;
+}
+
+.q5-radio-buttons input[type="radio"] {
+    display: none;
+}
+
+.q5-radio-buttons label {
+    position: relative;
+    padding-left: 3vw;
+    margin-right: 3vw;
+    white-space: nowrap;
+    font-size: 1.2vw;
+}
+
+.q5-radio-buttons input[type=radio] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.4vw;
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.2vw;
+
+    transition: all 0.2s ease;
+}
+
+.q5-radio-buttons input[type=radio]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.7vw;
+    top: -0.1vw;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: white;
+    height: 1.1vw;
+    transform: rotate(45deg);
+    width: 0.65vw;
+}
+
+.q5-radio-buttons input[type=radio]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.4vw;
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #42c287;
+    background: #42c287;
+    border-radius: 0.2vw;
+}
+
+.q5-arrow-left{
+    position: relative;
+}
+
+.q5-arrow-left:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+    top: 1.4vw;
+    left: -0.6vw;
+    border-top: 0.7vw solid transparent;
+    border-bottom: 0.7vw solid transparent;
+    border-right: 10px solid #eeeeee;
+}
+
+.q5-input-label-with-help{
+    justify-content: flex-start;
+    align-items: center;    
+}
+
+.q5-input-label-with-help > img{
+    margin-left: 0.6vw;
+    width: 1.1vw;
+    cursor: pointer;    
+}
+
+.q5-button-block{
+    background: #f8f8f8;
+    border-radius: 4px;
+    box-sizing: border-box;    
+
+    padding-top: 1vw;
+    padding-bottom: 1vw;    
+
+    text-align: center;
+}
+
+/*----------------------------------------------------------*/
+.q5-table table.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1vw;
+    text-align: left;
+    font-size: 1vw;
+}
+
+.q5-table table.dataTable, .q5-table table.dataTable th, .q5-table table.dataTable td {
+    border: 2px solid #eeeeee;
+}
+
+.q5-table table.dataTable tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.q5-table table.dataTable tbody td {
+    padding: 1vw;
+}
+
+.q5-table table.dataTable thead th, .q5-table table.dataTable thead td, .q5-table table.dataTable.no-footer {
+    padding: 0.5vw 1vw;
+    background: #f8f8f8; 
+}
+
+.q5-table table.dataTable tbody tr td:nth-of-type(2) {
+    text-align: center;
+}
+
+.q5-table table.dataTable tbody tr td:first-of-type,
+.q5-table table.dataTable thead th:first-of-type{
+    display: none;
+}
+
+.dt-rowReorder-float .sorting_1{
+    display: none;
+}
+
+.dt-rowReorder-float tbody td:nth-of-type(2) {
+    text-align: center;
+}
+
+
+.q5-table .dataTables_length{
+    display: none;
+}
+
+.q5-table .q5-table-navigation {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1vw;
+    align-items: center;
+}
+
+.q5-table .dataTables_info{
+    padding: 0;
+    margin: 0;
+    font-size: 1.1vw;
+    padding: 0.2vw 0.6vw;
+}
+
+.q5-table .dataTables_paginate{
+    padding: 0;
+    margin: 0;    
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5vw 0.8vw;
+    border: 1px solid #e5e5e5;
+    margin-left: 0.5vw;
+    font-size: 1.1vw;
+    color: #848484 !important; 
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, 
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, 
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: #d5d5d5 !important;
+    border: 1px solid #e5e5e5;
+    background: none;
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: #f8f8f8;
+}
+
+.q5-table-visible-records{
+    background: #f8f8f8;
+    padding: 0.7vw;    
+}
+
+.q5-action-buttons-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.q5-action-buttons-group a {
+    margin-right: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw;
+}
+
+.q5-action-buttons-group a:last-of-type{
+    margin-right: 0;
+}
+
+.q5-action-button--edit, .q5-action-button--delete, .q5-action-button--drag {
+    width: 2vw;
+    height: 2vw;
+    display: inline-block;
+    text-align: center;
+    line-height: 2vw;
+    cursor: pointer;
+    box-sizing: border-box;    
+}
+
+.q5-action-button--edit, .q5-action-button--drag {
+    color: #b1b1b1;
+}
+
+.q5-action-button--edit:hover, .q5-action-button--drag:hover {
+    color: #316fea;
+}
+
+.q5-action-button--delete{
+    color: #fe8980;
+}
+
+.q5-action-button--delete:hover{
+    color: #f04237;
+}
+
+/*----------------------------------------------------------*/
+
+/*----------------------------------------------------------*/
+.q5-custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.q5-custom-checkbox label {
+    position: relative;
+    padding-left: 2vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;
+    display: initial;
+}
+
+.q5-custom-checkbox input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.6vw;
+    height: 1.6vw;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.2vw;
+    transition: all 0.2s ease;
+}
+
+.q5-custom-checkbox input[type=checkbox]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.6vw;
+    height: 1.6vw;
+    border: 1px solid #42c287;
+    background: #42c287;
+    border-radius: 0.2vw;
+}
+
+.q5-custom-checkbox input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.5vw;
+    top: 0vw;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: white;
+    height: 0.9vw;
+    transform: rotate(45deg);
+    width: 0.6vw;
+}
+/*----------------------------------------------------------*/
+
+.q5-accordion-container {
+    margin-top: 0.7vw;
+    font-size: 1vw;
+}
+
+.q5-accordion-button {
+    width: 100%;
+    padding: 1vw 1.2vw;
+    margin: 0.2vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    background: #f8f8f8;
+
+    font-size: 1vw;
+    font-weight: 900;    
+}
+
+.q5-accordion-button:after {
+    content: "+";
+    color: #316fea;
+    position: absolute;
+    right: 0;
+    top: 0.7vw;
+    padding-right: 1.2vw;
+    font-size: 1.8vw;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+.q5-accordion-button.q5-active-accordion:after {
+    content: "\2212";
+}
+
+.q5-accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.q5-accordion-panel p {
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    margin-top: 0.6vw;
+    margin-bottom: 0.6vw;
+    font-size: 1vw;
+    line-height: 1.5vw;
+}
+
+/*----------------------------------------------------------*/
 
 /*----------------------------------------------------------*/
 
@@ -1073,7 +1539,7 @@ input[type=text], input[type=password], input[type=tel], textarea {
 
     .q5-long-button {
         font-size: 1.6vw;
-        width: 19vw;
+        min-width: 19vw;
     }    
 
     .q5-footer {
@@ -1295,8 +1761,45 @@ input[type=text], input[type=password], input[type=tel], textarea {
     }    
 
     .q5-page-tittle-box {
-        font-size: 2.8vw;
         padding: 3vw;
+    }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 2.8vw;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        padding: 0.9vw 1.6vw;
+        font-size: 1.6vw;
+        line-height: 2.1vw;
+        min-width: 17vw;        
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-left: 2vw;
+    }
+
+    .q5-back-link{
+        padding-left: 3.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 2vw;
+        padding-left: 1.6vw;
+    }
+
+    /*----------------------------------------------------------*/    
+
+    .q5-info-message{
+        font-size: 1.6vw;
+        padding: 1.6vw;
+        line-height: 1.6vw;
+    }
+
+    .q5-info-message > .q5-button-link{
+        margin-right: 3vw;
     }    
 
 }
@@ -1427,7 +1930,7 @@ input[type=text], input[type=password], input[type=tel], textarea {
 
     .q5-long-button {
         font-size: 2vw;
-        width: 24vw;
+        min-width: 24vw;
     }
 
     .q5-eye {
@@ -1661,11 +2164,57 @@ input[type=text], input[type=password], input[type=tel], textarea {
     }            
 
     .q5-page-tittle-box {
-        font-size: 4.8vw;
         padding: 4vw;
         margin-top: 5vw;
         margin-bottom: 4vw;
+        flex-direction: column;
+        align-items: flex-start;        
     }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 4.8vw;
+    }
+
+    .q5-page-tittle-box > div{
+        margin-top: 3vw;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        padding: 2.2vw 4.6vw;
+        line-height: 2vw;
+        min-width: 25vw;
+        font-size: 2.2vw;       
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-left: 0vw;
+    }
+
+    .q5-back-link{
+        padding-left: 5.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 2.8vw;
+        padding-left: 2.6vw;
+    }
+
+    /*----------------------------------------------------------*/   
+
+    .q5-info-message{
+        font-size: 2.2vw;
+        padding: 2.6vw;
+        line-height: 2.2vw;
+    }
+
+    .q5-info-message > .q5-button-link{
+        margin-right: 3vw;
+    }          
 
 }
 
@@ -2148,10 +2697,60 @@ input[type=text], input[type=password], input[type=tel], textarea {
     }        
 
     .q5-page-tittle-box {
-        font-size: 7.8vw;
         padding: 5vw;
         margin-top: 7.8vw;
+        flex-direction: column;
     }
+
+    .q5-page-tittle-box > h1{
+        font-size: 7.8vw;
+    }
+
+    .q5-page-tittle-box > div{
+        margin-top: 4vw;
+        flex-direction: column;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        font-size: 4.4vw;
+        padding: 3.3vw 3vw;
+        line-height: 5.3vw;
+        width: 100%;      
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-top: 4vw;
+    }
+
+    .q5-back-link{
+        padding-left: 5.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 6.6vw;
+        padding-left: 6.6vw;
+    }
+
+    /*----------------------------------------------------------*/     
+
+    .q5-encoding-tabs > .q5-tablinks{
+        line-height: 9.5vw;
+    }    
+
+    .q5-info-message {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 3.6vw;
+        line-height: 3.6vw;
+        padding: 3.6vw;        
+    }    
+
+    .q5-info-message > .q5-button-link {
+        margin-right: 0;
+        margin-bottom: 4vw;
+    }    
 
 }
 
@@ -2467,9 +3066,45 @@ input[type=text], input[type=password], input[type=tel], textarea {
     }    
 
     .q5-page-tittle-box {
-        font-size: 8.8vw;
         padding: 6vw;
         margin-top: 9.8vw;
+    }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 8.8vw;
+    }
+
+    .q5-page-tittle-box > div {
+        margin-top: 5vw;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        font-size: 5.5vw;
+        line-height: 8vw;   
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-top: 5vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 8vw;
+        padding-left: 5.6vw;
+    }
+
+    /*----------------------------------------------------------*/  
+
+    .q5-encoding-tabs > .q5-tablinks{
+        font-size: 5.3vw;
+        line-height: 9.5vw;
+    }
+
+    .q5-info-message {
+        font-size: 5vw;
+        line-height: 7.5vw;
+        padding: 4vw;
     }    
 
 }
