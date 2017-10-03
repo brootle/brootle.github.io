@@ -36,8 +36,8 @@ $(document).ready(function(){
             { "width": "10%" },
             null,
             { "width": "10%" },
-            null,
-            { "bSortable": false },
+            { "width": "35%" },
+            { "bSortable": false, "width": "10%" },
             { "bSortable": false }
         ],
 
