@@ -5,7 +5,7 @@ $(document).ready(function(){
         searching: false
     } );
 
-    var table = $('#video_settings_table').DataTable( {  
+    var videoSettingsTable = $('#video_settings_table').DataTable( {  
     
         // see https://datatables.net/reference/option/language.aria.paginate.next
         language: {
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 
     // event listener on row reorder
-    table.on( 'row-reorder', function ( e, diff, edit ) {
+    videoSettingsTable.on( 'row-reorder', function ( e, diff, edit ) {
 
         // info on row that was moved and triggered event
         console.log(edit.triggerRow.data());
