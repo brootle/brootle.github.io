@@ -210,10 +210,137 @@
 
                                     </div> 
 
+                                    <div id="output-path-outside-form" class="q5-input-container q5-hidden">
+
+                                        <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                            <label for="add_resolution_form--output-path--outside-form">Output path *</label>
+                                            <img src="img/help.png" alt="">                                         
+                                        </div>
+                    
+                                        <input id="add_resolution_form--output-path--outside-form" class="q5-text-gray" name="add_resolution_form--output-path--outside-form" placeholder="" type="text">      
+                                    </div>                                    
+
                                     <div class="q5-button-block">
-                                        <button class="q5-button-link q5-green-background q5-green-border q5-text-white">
+
+                                        <button id="add_resolution_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
                                            + Add Resolution
                                         </button>
+
+                                        <div id="add_resolution_form" class="q-form q5-hidden q5-align-left">
+
+                                            <div>
+
+                                                <div class="q5-two-columns">   
+                                                    <div class="q5-two-columns">   
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                <label for="add_output_resolution">Output resolution</label>                                     
+                                                            </div>                            
+                                                            <div class="q5-custom-select">
+                                                                <select class="q5-select q5-text-gray" id="add_output_resolution" required="" name="add_output_resolution">
+                                                                    <option value="original_size">Original size</option>
+                                                                    <option value="1080p">1080p</option>
+                                                                    <option value="720p">720p</option>
+                                                                    <option value="480p">480p</option>
+                                                                    <option value="360p">360p</option>
+                                                                    <option value="240p">240p</option>
+                                                                </select>                          
+                                                            </div>            
+                                                        </div>
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                    <label for="add_quality">Quality</label>
+                                                            </div>                         
+                                                            <input id="add_quality" class="q5-text-gray" name="add_quality" placeholder="20" type="text">      
+                                                        </div>   
+                                                    </div>    
+                                                    <div class="q5-two-columns">   
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                    <label for="add_bitrate">Bitrate (kbps)</label>
+                                                            </div>                         
+                                                            <input id="add_bitrate" class="q5-text-gray" name="add_bitrate" placeholder="128" type="text">      
+                                                        </div>
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                    <label for="add_tag">Tag</label>
+                                                            </div>                         
+                                                            <input id="add_tag" class="q5-text-gray" name="add_tag" placeholder="Your tag" type="text">      
+                                                        </div>   
+                                                    </div>                                                                                                         
+                                                </div>
+
+                                                <div id="output-path-in-form" class="q5-input-container">
+
+                                                    <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                        <label for="add_resolution_form--output-path">Output path *</label>
+                                                        <img src="img/help.png" alt="">                                         
+                                                    </div>
+                                
+                                                    <input id="add_resolution_form--output-path" class="q5-text-gray" name="add_resolution_form--output-path--outside-form" placeholder="" type="text">      
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <button id="add_resolution_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Cancel</button>
+                                                <button id="add_resolution_settings_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                                + Add Settings
+                                                </button>                                                
+                                            </div>
+            
+                                        </div>
+                                        <script>
+                                            // hide button after it was clicked adding a class and show form removing a class
+                                            let addResolutionCancelButton = document.querySelector("#add_resolution_cancel_button");
+                                            let addResolutionSettingsButton = document.querySelector("#add_resolution_settings_button");
+                                            let addResolutionForm = document.querySelector("#add_resolution_form");
+                                            let addResolutionButton = document.querySelector("#add_resolution_button");
+
+                                            let radioButtons = document.getElementsByName("format");
+                                            console.log(radioButtons);
+
+
+                                            // show form after "Add Resolution" button clicked
+                                            addResolutionButton.addEventListener('click', function() {
+                                                this.classList.toggle("q5-hidden");
+                                                addResolutionForm.classList.toggle("q5-hidden");
+
+                                                // if mp4 format is NOT checked -> hide "output path" in form
+                                                // and show output path above the form
+                                                if(!document.getElementById("mp4").checked){
+                                                    document.querySelector("#output-path-in-form").classList.add("q5-hidden");
+                                                    document.querySelector("#output-path-outside-form").classList.remove("q5-hidden");
+                                                }else{
+                                                    document.querySelector("#output-path-in-form").classList.remove("q5-hidden");
+                                                }                                                
+
+                                                updateDropDownContentHight(this);
+                                            });
+
+                                            // hide form if "Cancel" button clicked
+                                            addResolutionCancelButton.addEventListener('click', function() {
+                                                addResolutionForm.classList.toggle("q5-hidden");
+                                                addResolutionButton.classList.toggle("q5-hidden");
+
+                                                document.querySelector("#output-path-outside-form").classList.add("q5-hidden")
+                                                updateDropDownContentHight(this);
+                                            });
+
+                                            // hide form if "Add Settings" button clicked
+                                            addResolutionSettingsButton.addEventListener('click', function() {
+                                                addResolutionForm.classList.toggle("q5-hidden");
+                                                addResolutionButton.classList.toggle("q5-hidden");
+
+                                                document.querySelector("#output-path-outside-form").classList.add("q5-hidden")
+                                                updateDropDownContentHight(this);
+                                            });                                        
+
+                                            function updateDropDownContentHight(button){
+                                                // find first parent with classname "q5-dropdown-content"
+                                                let currentDropDownContent = button.closest(".q5-dropdown-content");
+                                                currentDropDownContent.style.maxHeight = currentDropDownContent.scrollHeight + "px";                                               
+                                            }    
+                                        </script>
                                     </div>
 
                                     <div class="q5-table">
