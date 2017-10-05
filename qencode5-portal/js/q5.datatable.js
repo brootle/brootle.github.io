@@ -34,7 +34,7 @@ $(document).ready(function(){
             { "bSortable": false, "width": "8%" },
             { "width": "12%" },
             { "width": "10%" },
-            null,
+            { "width": "8%" },
             { "width": "10%" },
             { "width": "35%" },
             { "bSortable": false, "width": "10%" },
@@ -90,9 +90,9 @@ $(document).ready(function(){
         "aoColumns": [
             null,
             { "bSortable": false, "width": "8%" },
-            { "width": "12%" },
+            { "width": "14%" },
             { "width": "10%" },
-            null,
+            { "width": "51%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false,  "width": "7%" }
         ],
@@ -147,7 +147,7 @@ $(document).ready(function(){
             null,
             { "width": "15%" },
             { "width": "20%" },
-            { "width": "35%" },
+            { "width": "48%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false,  "width": "7%" }
         ],
