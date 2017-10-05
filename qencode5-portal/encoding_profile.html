@@ -297,7 +297,15 @@
                                             let addResolutionButton = document.querySelector("#add_resolution_button");
 
                                             let radioButtons = document.getElementsByName("format");
-                                            console.log(radioButtons);
+
+                                            // hide form if another format selected and show button
+                                            radioButtons.forEach(radioButton => {
+                                                radioButton.addEventListener('change', function(){
+                                                    document.querySelector("#output-path-outside-form").classList.add("q5-hidden");
+                                                    addResolutionForm.classList.add("q5-hidden");
+                                                    addResolutionButton.classList.remove("q5-hidden");
+                                                });
+                                            });                                            
 
 
                                             // show form after "Add Resolution" button clicked
