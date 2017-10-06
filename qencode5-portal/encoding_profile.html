@@ -645,9 +645,53 @@
                                 </div>      
 
                                 <div class="q5-button-block">
-                                    <button class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                    <button id="add_thumbnail_size_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
                                         + Add thumbnail size
                                     </button>
+
+                                    <div id="add_thumbnail_size_form" class="q-form q5-align-left q5-hidden">
+
+                                        <div>
+
+                                            <div class="q5-two-columns">   
+                                                <div class="q5-two-columns">   
+                                                    <div class="q5-input-container">
+                                                        <div class="q5-input-label q5-text-gray">
+                                                                <label>Size (WxH)</label>
+                                                        </div>                         
+                                                        <div class="q5-two-columns">
+                                                            <input id="add_thumbnail_size_1" class="q5-text-gray" name="add_thumbnail_size_1" placeholder="1920" type="text">     
+                                                            <span class="input-x-delimeter q5-text-gray">x</span>
+                                                            <input id="add_thumbnail_size_2" class="q5-text-gray" name="add_thumbnail_size_2" placeholder="1080" type="text">                                                            
+                                                        </div>  
+                                                    </div>   
+                                                    <div class="q5-input-container">
+                                                        <div class="q5-input-label q5-text-gray">
+                                                            <label for="add_thumbnail_size_tag">Tag</label>
+                                                        </div>                         
+                                                        <input id="add_thumbnail_size_tag" class="q5-text-gray" name="add_thumbnail_size_tag" placeholder="Your tag" type="text">      
+                                                    </div>   
+                                                </div>    
+
+                                                <div class="q5-input-container">
+                                                    <div class="q5-input-label q5-text-gray">
+                                                        <label for="add_thumbnail_size_path">Output path</label>
+                                                    </div>                         
+                                                    <input id="add_thumbnail_size_path" class="q5-text-gray" name="add_thumbnail_size_path" placeholder="" type="text">      
+                                                </div>   
+                                                                                                                                         
+                                            </div>
+
+                                        </div>
+
+                                        <div>
+                                            <button id="add_thumbnail_size_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Cancel</button>
+                                            <button id="add_thumbnail_size_add_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                            + Add Thumbnail Size
+                                            </button>                                                
+                                        </div>
+        
+                                    </div>                                    
                                 </div>     
 
 
@@ -735,6 +779,11 @@
                                 let addThumbnailCancelButton = document.querySelector("#add_thumbnail_cancel_button");
                                 let addThumbnailAddButton = document.querySelector("#add_thumbnail_add_button");
 
+                                let addThumbnailSizeButton = document.querySelector("#add_thumbnail_size_button");
+                                let addThumbnailSizeForm = document.querySelector("#add_thumbnail_size_form");
+                                let addThumbnailSizeCancelButton = document.querySelector("#add_thumbnail_size_cancel_button");
+                                let addThumbnailSizeAddButton = document.querySelector("#add_thumbnail_size_add_button");                                                                                                     
+
                                 let radioButtons = document.getElementsByName("format");
 
                                 // hide form if another format selected and show button
@@ -744,8 +793,32 @@
                                         addResolutionForm.classList.add("q5-hidden");
                                         addResolutionButton.classList.remove("q5-hidden");
                                     });
-                                });                                            
+                                });       
 
+                                //////////////////////////////////////////////////////
+                                // show form after "Add Thumbnail Size" button clicked
+                                addThumbnailSizeButton.addEventListener('click', function() {
+                                    this.classList.toggle("q5-hidden");
+                                    addThumbnailSizeForm.classList.toggle("q5-hidden");
+                                    updateDropDownContentHight(this);
+                                });    
+
+                                // hide form if "Cancel" button clicked
+                                addThumbnailSizeCancelButton.addEventListener('click', function() {
+                                    addThumbnailSizeForm.classList.toggle("q5-hidden");
+                                    addThumbnailSizeButton.classList.toggle("q5-hidden");
+                                    updateDropDownContentHight(this);
+                                });       
+
+                                // hide form if "Add Thumbnail Size" button in form clicked
+                                addThumbnailSizeAddButton.addEventListener('click', function() {
+                                    addThumbnailSizeForm.classList.toggle("q5-hidden");
+                                    addThumbnailSizeButton.classList.toggle("q5-hidden");
+                                    updateDropDownContentHight(this);
+                                });                                                              
+                                //////////////////////////////////////////////////////                                                                 
+
+                                //////////////////////////////////////////////////////
                                 // show form after "Add Thumbnail" button clicked
                                 addThumbnailButton.addEventListener('click', function() {
                                     this.classList.toggle("q5-hidden");
@@ -765,8 +838,10 @@
                                     addThumbnailForm.classList.toggle("q5-hidden");
                                     addThumbnailButton.classList.toggle("q5-hidden");
                                     updateDropDownContentHight(this);
-                                });                                  
+                                });        
+                                //////////////////////////////////////////////////////                          
 
+                                //////////////////////////////////////////////////////
                                 // show form after "Add Resolution" button clicked
                                 addResolutionButton.addEventListener('click', function() {
                                     this.classList.toggle("q5-hidden");
@@ -800,7 +875,8 @@
 
                                     document.querySelector("#output-path-outside-form").classList.add("q5-hidden")
                                     updateDropDownContentHight(this);
-                                });                                        
+                                });                     
+                                //////////////////////////////////////////////////////                   
 
                                 function updateDropDownContentHight(button){
                                     // find first parent with classname "q5-dropdown-content"
