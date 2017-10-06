@@ -125,18 +125,19 @@
             <div>
 
                 <div class="q5-tab q5-encoding-tabs">
-                    <span class="q5-tablinks" data-tabcontent="general_info">
+                    <span class="q5-tablinks q5-tablinks--active" data-tabcontent="general_info">
                         1. General Info
                     </span>
-                    <span class="q5-tablinks q5-tablinks--active" data-tabcontent="encoding_profiles">
+                    <span class="q5-tablinks" data-tabcontent="encoding_profiles">
                         2. Encoding profiles
                     </span>           
+
                     <span class="q5-tablinks" data-tabcontent="transfer_methods">
                         3. Transfer methods
                     </span>                            
                 </div>  
 
-                <div id="general_info" class="q5-tabcontent">
+                <div id="general_info" class="q5-tabcontent q5-tabcontent-with-tables q5-tabcontent--active">
                     <div>                       
                         <div class="q5-two-columns">
                             <div class="q-form q5-no-top-margin">      
@@ -163,7 +164,7 @@
                     </div>
                 </div>     
 
-                <div id="encoding_profiles" class="q5-tabcontent q5-tabcontent--active">
+                <div id="encoding_profiles" class="q5-tabcontent q5-tabcontent-with-tables">
                     <div>
 
                         <span class="q5-info-message q5-text-gray q5-max-length">
@@ -997,10 +998,47 @@
                     </div>
                 </div>       
 
-                <div id="transfer_methods" class="q5-tabcontent">
+                <div id="transfer_methods" class="q5-tabcontent q5-tabcontent-with-tables">
 
                     <div>
-                            3
+                        <div id="add_transfer_method_info_box">
+
+                            <div class="q5-button-block">
+                                <button id="add_transfer_method_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                    + Add Transfer Method
+                                </button>   
+                            </div>  
+
+                            <div class="q5-table">
+                                <table id="transfer_method_table" class="q5-text-gray" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Transfer Name</th>
+                                            <th>Type</th>
+                                            <th>Action</th>                         
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Test transfer</td>
+                                            <td>Test type transfer</td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                    <a class="q5-action-button--delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>                                                                                                                        
+                                    </tbody>
+                                </table>  
+                            </div>   
+
+                        </div>  
+                        <div id="add_transfer_method_form" class="q5-hidden">
+
+                        </div>                 
                     </div>
 
                 </div>                   
@@ -1011,7 +1049,7 @@
                     tabLinks.forEach(link => link.addEventListener('click', switchTab));
 
                     function switchTab(e){
-
+                        
                         // find active elements and remove -> tablinks--active tabcontent--active
                         const activeLink = document.querySelector('.q5-tablinks--active');
                         const activeContent = document.querySelector('.q5-tabcontent--active');
@@ -1035,10 +1073,6 @@
 
         </div>
 
-        <div class="q5-one-column">
-
-
-        </div>
 
     </main>
 
