@@ -1244,6 +1244,10 @@ input[type=text], input[type=password], input[type=tel], textarea {
     justify-content: center;
 }
 
+#transfer_method_table tbody tr td:last-of-type .q5-action-buttons-group{
+    justify-content:space-between;
+}
+
 .q5-table table.dataTable tbody tr td:first-of-type,
 .q5-table table.dataTable thead th:first-of-type{
     display: none;
@@ -1321,7 +1325,7 @@ input[type=text], input[type=password], input[type=tel], textarea {
 }
 
 .q5-action-buttons-group a {
-    margin-right: 0.3vw;
+    margin-right: 0.7vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1332,15 +1336,43 @@ input[type=text], input[type=password], input[type=tel], textarea {
     margin-right: 0;
 }
 
-.q5-action-button--edit, .q5-action-button--delete, .q5-action-button--drag {
-    width: 2vw;
-    height: 2vw;
+.q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+    width: 1.5vw;
+    height: 1.5vw;
     display: inline-block;
     text-align: center;
-    line-height: 2vw;
+    line-height: 1.5vw;
     cursor: pointer;
     box-sizing: border-box;    
 }
+
+.q5-action-button--edit{
+    background: url(../img/edit.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--copy{
+    background: url(../img/copy.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--delete{
+    background: url(../img/delete.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--drag{
+    width: 1.5vw;
+    height: 0.75vw;        
+    background: url(../img/replace.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+
 
 .q5-action-button--edit, .q5-action-button--drag {
     color: #b1b1b1;

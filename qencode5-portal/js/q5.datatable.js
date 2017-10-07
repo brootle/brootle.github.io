@@ -237,8 +237,8 @@ $(document).ready(function(){
         "aoColumns": [
             null,
             { "width": "31%" },
-            { "width": "52%" },
-            { "bSortable": false, "width": "10%" },
+            { "width": "49%" },
+            { "bSortable": false, "width": "13%" },
             { "bSortable": false,  "width": "7%" }
         ],
 
@@ -275,5 +275,9 @@ $(document).ready(function(){
     // add "q5-hidden" class to "add_encoding_profile_form" 
     // it will be shown after "add_encoding_profile_button" clicked
     document.querySelector('#add_encoding_profile_form').classList.add("q5-hidden");
+
+
+    // check this to fix columns width after table is shown
+    // https://datatables.net/reference/api/responsive.recalc()
 
 });
