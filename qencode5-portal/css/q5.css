@@ -1262,9 +1262,9 @@ input[type=text], input[type=password], input[type=tel], textarea {
     justify-content: center;
 }
 
-#transfer_method_table tbody tr td:last-of-type .q5-action-buttons-group{
+/*#transfer_method_table tbody tr td:last-of-type .q5-action-buttons-group{
     justify-content:space-between;
-}
+}*/
 
 .q5-table table.dataTable tbody tr td:first-of-type,
 .q5-table table.dataTable thead th:first-of-type{
@@ -1339,15 +1339,15 @@ input[type=text], input[type=password], input[type=tel], textarea {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .q5-action-buttons-group a {
-    margin-right: 0.7vw;
-    display: flex;
+    margin-right: 0.8vw;
+    /*display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5vw;
+    font-size: 1.5vw;*/
 }
 
 .q5-action-buttons-group a:last-of-type{
@@ -1429,12 +1429,16 @@ input[type=text], input[type=password], input[type=tel], textarea {
     box-sizing: border-box;
     position: absolute;
     left: 0;
-    top: -0.2vw;
+    /*top: -0.2vw;*/
     width: 1.6vw;
     height: 1.6vw;
     border: 2px solid #e5e5e5;
     border-radius: 0.2vw;
     transition: all 0.2s ease;
+
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);        
 }
 
 .q5-custom-checkbox input[type=checkbox]:checked + label:before {
@@ -1442,12 +1446,16 @@ input[type=text], input[type=password], input[type=tel], textarea {
     box-sizing: border-box;
     position: absolute;
     left: 0;
-    top: -0.2vw;
+    /*top: -0.2vw;*/
     width: 1.6vw;
     height: 1.6vw;
     border: 1px solid #42c287;
     background: #42c287;
     border-radius: 0.2vw;
+
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);    
 }
 
 .q5-custom-checkbox input[type=checkbox]:checked + label:after {
@@ -1999,6 +2007,71 @@ button:disabled {
 
     .q5-info-message > .q5-button-link{
         margin-right: 3vw;
+    }    
+
+
+    .q5-table table.dataTable {
+        font-size: 1.4vw;
+    }    
+
+    .q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+        width: 2.3vw;
+        height: 2.3vw;
+        background-size: 2.3vw;
+    }    
+
+    .q5-action-button--drag {
+        height: 1.1vw;
+    }    
+
+    .q5-action-buttons-group a {
+        margin-right: 0.9vw;
+    }
+
+    .q5-table table.dataTable thead th {
+        padding: 0.9vw 1.4vw;
+        background-size: 0.9vw;
+        padding-right: 0.7vw;
+    }    
+
+    .q5-table table.dataTable tbody td {
+        padding: 1.1vw 1.4vw;
+    }        
+
+    .q5-custom-checkbox input[type=checkbox] + label:before,
+    .q5-custom-checkbox input[type=checkbox]:checked + label:before {
+        width: 2vw;
+        height: 2vw;
+        border-radius: 0.4vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox]:checked + label:after {
+        left: 0.6vw;
+        top: -0.2vw;
+        height: 1.2vw;
+        width: 0.8vw;
+    }    
+
+    .q5-table .dataTables_info {
+        font-size: 1.4vw;
+    }    
+
+    .q5-table-visible-records {
+        padding: 0.8vw;
+    }    
+
+    .q5-table .q5-table-navigation {
+        margin-top: 1.5vw;
+    }    
+
+    .q5-table table.dataTable {
+        margin-top: 2vw;
+    }    
+
+    .q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0.8vw 1vw;
+        margin-left: 0.9vw;
+        font-size: 1.4vw;
     }    
 
 }
