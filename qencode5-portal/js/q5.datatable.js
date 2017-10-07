@@ -205,6 +205,65 @@ $(document).ready(function(){
         "dom": 'rt<"q5-table-navigation"ip><"clear">'
     });   
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////    
+
+    var encodingProfilesTable = $('#encoding_profiles_table').DataTable( {  
+    
+        // see https://datatables.net/reference/option/language.aria.paginate.next
+        language: {
+            paginate: {
+                previous: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                next:     '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next:     'Next'
+                }
+            },
+            info: `<span class="q5-text-gray"> <span class="q5-table-visible-records">_START_ - _END_</span> of _TOTAL_</span>`
+        },
+
+        "iDisplayLength": 5,
+        "pagingType": "simple",     // see https://datatables.net/examples/basic_init/alt_pagination.html
+
+        rowReorder: {
+            selector: 'td:last-child'
+        },
+
+        "aoColumns": [
+            null,
+            { "width": "31%" },
+            { "width": "52%" },
+            { "bSortable": false, "width": "10%" },
+            { "bSortable": false,  "width": "7%" }
+        ],
+
+        "dom": 'rt<"q5-table-navigation"ip><"clear">'
+
+    });    
+
+    // event listener on row reorder
+    encodingProfilesTable.on( 'row-reorder', function ( e, diff, edit ) {
+
+        // info on row that was moved and triggered event
+        console.log(edit.triggerRow.data());
+        
+        // info on rows that changed their positions
+        console.log(diff);
+
+
+    });        
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////    
+
+
+
     // find all "q5-tabcontent-with-tables" and remove this style
     // basically we hide inactive content after tables were initiated
     // we need to initate tables when they are displayed in order to set widths of columns
@@ -212,5 +271,9 @@ $(document).ready(function(){
     tabContentWithTables.forEach(tabContent => {
         tabContent.classList.remove("q5-tabcontent-with-tables");
     });          
+
+    // add "q5-hidden" class to "add_encoding_profile_form" 
+    // it will be shown after "add_encoding_profile_button" clicked
+    document.querySelector('#add_encoding_profile_form').classList.add("q5-hidden");
 
 });
