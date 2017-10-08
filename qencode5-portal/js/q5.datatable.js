@@ -34,9 +34,9 @@ $(document).ready(function(){
             { "bSortable": false, "width": "8%" },
             { "width": "12%" },
             { "width": "10%" },
-            { "width": "8%" },
             { "width": "10%" },
-            { "width": "35%" },
+            { "width": "10%" },
+            { "width": "33%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false, "width": "7%" }
         ],
@@ -91,8 +91,8 @@ $(document).ready(function(){
             null,
             { "bSortable": false, "width": "8%" },
             { "width": "14%" },
-            { "width": "10%" },
-            { "width": "51%" },
+            { "width": "14%" },
+            { "width": "47%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false,  "width": "7%" }
         ],
