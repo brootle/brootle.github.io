@@ -255,7 +255,59 @@ $(document).ready(function(){
         console.log(diff);
 
 
-    });        
+    });       
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////       
+
+    var projectsTable = $('#projects_table').DataTable( {  
+    
+        // see https://datatables.net/reference/option/language.aria.paginate.next
+        language: {
+            paginate: {
+                previous: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                next:     '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next:     'Next'
+                }
+            },
+            info: `<span class="q5-text-gray"> <span class="q5-table-visible-records">_START_ - _END_</span> of _TOTAL_</span>`
+        },
+
+        "iDisplayLength": 5,
+        "pagingType": "simple",     // see https://datatables.net/examples/basic_init/alt_pagination.html
+
+        rowReorder: {
+            selector: 'td:last-child'
+        },
+
+        "aoColumns": [
+            null,
+            { "width": "31%" },
+            { "width": "49%" },
+            { "bSortable": false, "width": "13%" },
+            { "bSortable": false,  "width": "7%" }
+        ],
+
+        "dom": 'rt<"q5-table-navigation"ip><"clear">'
+
+    });    
+
+    // event listener on row reorder
+    projectsTable.on( 'row-reorder', function ( e, diff, edit ) {
+
+        // info on row that was moved and triggered event
+        console.log(edit.triggerRow.data());
+        
+        // info on rows that changed their positions
+        console.log(diff);
+
+
+    });       
 
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -273,7 +325,9 @@ $(document).ready(function(){
 
     // add "q5-hidden" class to "add_encoding_profile_form" 
     // it will be shown after "add_encoding_profile_button" clicked
-    document.querySelector('#add_encoding_profile_form').classList.add("q5-hidden");
+    if(document.querySelector('#add_encoding_profile_form')){
+        document.querySelector('#add_encoding_profile_form').classList.add("q5-hidden");
+    }
 
 
     // check this to fix columns width after table is shown
