@@ -90,9 +90,9 @@ $(document).ready(function(){
         "aoColumns": [
             null,
             { "bSortable": false, "width": "8%" },
-            { "width": "14%" },
-            { "width": "14%" },
-            { "width": "47%" },
+            { "width": "20%" },
+            { "width": "20%" },
+            { "width": "35%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false,  "width": "7%" }
         ],
@@ -145,9 +145,9 @@ $(document).ready(function(){
 
         "aoColumns": [
             null,
-            { "width": "15%" },
-            { "width": "20%" },
-            { "width": "48%" },
+            { "width": "18%" },
+            { "width": "24%" },
+            { "width": "42%" },
             { "bSortable": false, "width": "10%" },
             { "bSortable": false,  "width": "7%" }
         ],
