@@ -46,7 +46,6 @@ $(document).ready(function(){
 
     });
 
-
     // event listener on row reorder
     videoSettingsTable.on( 'row-reorder', function ( e, diff, edit ) {
 
