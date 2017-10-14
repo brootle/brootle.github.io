@@ -44,7 +44,13 @@ $(document).ready(function(){
         "dom": 'rt<"q5-table-navigation"ip><"clear">'        
     } );    
 
-    $('#test_table').DataTable().ajax.reload();
+    // we can reload table after data changed in JSON file
+    // the problem is that rowReorder stops working
+    // $('#test_table').DataTable().ajax.reload();
+
+    // after data in JSON changed it's better to destroy table
+    // *$('#test_table').DataTable().destroy();
+    // after we destroy table we just initiate it again same way as above
 
     // event listener on row reorder
     testTable.on( 'row-reorder', function ( e, diff, edit ) {
