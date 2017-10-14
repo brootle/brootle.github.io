@@ -44,7 +44,7 @@ $(document).ready(function(){
         "dom": 'rt<"q5-table-navigation"ip><"clear">'        
     } );    
 
-    //testTable.ajax.reload();
+    $('#test_table').DataTable().ajax.reload();
 
     // event listener on row reorder
     testTable.on( 'row-reorder', function ( e, diff, edit ) {
