@@ -8,14 +8,9 @@ $(document).ready(function(){
     ///////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////    
 
-    // $('#example').DataTable( {
-    //     "ajax": '../ajax/data/x_test_dataTable.txt'
-    // } );    
-
-    var testTable = $('#test_table').DataTable( {  
-
+    let testTable = $('#test_table').DataTable( {
         "ajax": 'x_test_dataTable.txt',
-    
+
         // see https://datatables.net/reference/option/language.aria.paginate.next
         language: {
             paginate: {
@@ -46,9 +41,10 @@ $(document).ready(function(){
             { "bSortable": false,  "width": "7%" }
         ],
 
-        "dom": 'rt<"q5-table-navigation"ip><"clear">'
+        "dom": 'rt<"q5-table-navigation"ip><"clear">'        
+    } );    
 
-    });    
+    //testTable.ajax.reload();
 
     // event listener on row reorder
     testTable.on( 'row-reorder', function ( e, diff, edit ) {
