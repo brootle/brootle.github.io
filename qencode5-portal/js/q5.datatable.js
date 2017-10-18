@@ -337,12 +337,12 @@ $(document).ready(function(){
 
         "aoColumns": [
             null,
-            null,
-            null,
-            { "width": "15%" },
-            { "width": "10%" },
-            { "width": "19%" },
-            { "width": "15%" }
+            { "bSortable": false },
+            { "bSortable": false },
+            { "bSortable": false , "width": "15%" },
+            { "bSortable": false , "width": "10%" },
+            { "bSortable": false , "width": "19%" },
+            { "bSortable": false , "width": "15%" }
         ],
 
         "dom": 'rt<"q5-table-navigation"ip><"clear">'
