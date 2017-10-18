@@ -1263,9 +1263,9 @@ input[type=text], input[type=password], input[type=tel], textarea {
     background: #f8f8f8;
 }
 
-.q5-table table.dataTable tbody tr td:nth-of-type(2) {
+/*.q5-table table.dataTable tbody tr td:nth-of-type(2) {
     text-align: center;
-}
+}*/
 
 #thumbnail_table_size tbody tr td:nth-of-type(2) {
     text-align: left;
@@ -1559,9 +1559,6 @@ input[type=text], input[type=password], input[type=tel], textarea {
     margin-left: 0.3vw;
 }
 
-.q5-no-min-width{
-    min-width: 0;
-}
 
 .q5-align-left{
     text-align: left;
@@ -1629,10 +1626,15 @@ input[type=text], input[type=password], input[type=tel], textarea {
     width: 25%;
 }
 
-#transfer_method_table tbody tr td:nth-of-type(2),
+/*#transfer_method_table tbody tr td:nth-of-type(2),
 #encoding_profiles_table tbody tr td:nth-of-type(2),
 #projects_table tbody tr td:nth-of-type(2){
     text-align: left;
+}*/
+
+#video_settings_table tr td:nth-of-type(2),
+#thumbnail_table tr td:nth-of-type(2){
+    text-align: center;
 }
 
 .q5-tabcontent--empty{
@@ -1657,6 +1659,192 @@ button:disabled {
     display: none;
 }
 
+.q5-filter-box {
+    background: #f8f8f8;
+    border-radius: 4px;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    padding: 1vw 1.5vw;
+    display: inline-flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.q5-filter-box > div{
+    display: flex;    
+}
+
+.q5-filter-box .q5-input-container {
+    margin-bottom: 0;
+}
+
+.q5-date-filter-container{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.q5-filter-box .q5-select {
+    padding: 0.6vw 1vw;
+    width: 10vw;
+}
+
+.q5-medium-width {
+    min-width: 8vw;
+}
+
+.q5-filter-box .q5-custom-select:after {
+    top: 1.3vw;
+    padding-right: 1vw;
+}
+
+.q5-date-filter-select{
+    display: inline-flex;
+    align-items: center;     
+}
+
+.q5-filter-date {
+    display: inline-block;
+    position: relative;
+}
+
+.q5-date-filter-buttons{
+    padding-bottom: 0.6vw;    
+}
+
+.q5-filter-date input[type=text]{
+    width: 10vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+    cursor: pointer;
+    padding: 0.6vw 1vw;
+}
+
+.q5-filter-date:after {
+    content: "\f073";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 1.3vw;
+    padding-right: 1.4vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+    color: #73767d;
+}
+
+.q5-no-min-width{
+    min-width: 0;
+}
+
+#transcoding_jobs_table tbody tr td:nth-of-type(2){
+    
+}
+
+.q5-table-dropdown{
+    cursor:pointer;
+    position: relative;
+    padding-left: 1.5vw;    
+    color: #316fea;
+}
+
+.q5-table-dropdown:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    font-size: 0.8vw;
+    top: 0.16vw;
+    transition: all 0.1s ease;
+}
+
+.q5-table-dropdown--active:after{
+    transform: rotate(90deg);
+}
+
+.q5-table-dropdown-content td{
+    background: #f8f8f8;    
+
+    padding: 1vw;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: 1vw;    
+}
+
+.transcoding-jobs-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-headers{
+    width: 28%;
+}
+
+.project-logs{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-logs > div{
+    width: 48%;
+}
+
+.q5-table table.dataTable .transcoding-jobs-table{
+    margin: 0.5vw 0;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    border: 2px solid #e6e6e6;   
+    padding: 0.4vw 0;
+    background: white;     
+}
+
+.q5-table table.dataTable .transcoding-jobs-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.q5-table table.dataTable .transcoding-jobs-table thead tr:hover {
+    background-color: white;
+}
+
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr:hover,
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr:hover > td{
+    background-color: #fafafa;
+}
+
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr{
+    border-bottom: 2px solid #eeeeee;
+}
+
+.q5-table table.dataTable .transcoding-jobs-details table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table td{
+    background: white;  
+    border: none;  
+    padding: 0.6vw 1vw;
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table th{
+    padding: 0.7vw 1vw;
+    font-family: GraphikMedium;
+    font-weight: normal;
+    font-size: 1vw;
+    text-align: left;
+    background: none;
+    border: none;    
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table td:first-of-type, 
+.q5-table table.dataTable .q5-table-dropdown-content table th:first-of-type{
+    display: block; 
+}
 
 /*----------------------------------------------------------*/
 
