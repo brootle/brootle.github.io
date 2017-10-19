@@ -179,45 +179,61 @@
             </div>
 
             <div class="q5-table">
-                <table id="transcoding_jobs_table" class="q5-text-gray" width="100%">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Job ID</th>
-                            <th>Project</th>
-                            <th>Video Length</th>               
 
-                            <th>Size</th>        
-                            <th>Created at</th>    
-                            <th>Status</th>                               
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><span class="q5-table-dropdown">5423ffjsfa735ntuerotu84</span></td>
-                            <td>BBC_Sherlok_S5</td>
-                            <td>00:15:00</td>
+                <div id="transcoding_jobs_table_wrapper" class="dataTables_wrapper no-footer">
 
-                            <td>451 Mb</td>
-                            <td>2017-09-20 11:56:35</td>
-                            <td>Queed</td>
-                        </tr>            
+                    <table id="transcoding_jobs_table" class="q5-text-gray dataTable" width="100%">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th class="sorting_disabled">Job ID</th>
+                                <th>Project</th>
+                                <th>Video Length</th>               
 
-                        <tr>
-                            <td>2</td>
-                            <td><span class="q5-table-dropdown">gsdlfkg4345245l4j3l45jl34</span></td>
-                            <td>Sony_Si_Fi_2</td>
-                            <td>00:15:00</td>
+                                <th>Size</th>        
+                                <th>Created at</th>    
+                                <th>Status</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><span class="q5-table-dropdown">5423ffjsfa735ntuerotu84</span></td>
+                                <td>BBC_Sherlok_S5</td>
+                                <td>00:15:00</td>
 
-                            <td>4.21 GB</td>
-                            <td>2017-09-20 11:56:35</td>
-                            <td>Downloading</td>
-                        </tr>      
-                        
-                                                                                                                                                             
-                    </tbody>
-                </table>  
+                                <td>451 Mb</td>
+                                <td>2017-09-20 11:56:35</td>
+                                <td>Queed</td>
+                            </tr>            
+
+                            <tr>
+                                <td>2</td>
+                                <td><span class="q5-table-dropdown">gsdlfkg4345245l4j3l45jl34</span></td>
+                                <td>Sony_Si_Fi_2</td>
+                                <td>00:15:00</td>
+
+                                <td>4.21 GB</td>
+                                <td>2017-09-20 11:56:35</td>
+                                <td>Downloading</td>
+                            </tr>      
+                            
+                                                                                                                                                                
+                        </tbody>
+                    </table>  
+
+                    <div class="q5-table-navigation">
+                        <div class="dataTables_info" id="transcoding_jobs_table_info" role="status" aria-live="polite">
+                            <span class="q5-text-gray"><span class="q5-table-visible-records">1 - 2</span> of 2</span>
+                        </div>
+                        <div class="dataTables_paginate paging_simple" id="transcoding_jobs_table_paginate">
+                            <a class="paginate_button previous disabled" aria-controls="transcoding_jobs_table" aria-label="Previous" data-dt-idx="0" tabindex="0" id="transcoding_jobs_table_previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                            <a class="paginate_button next disabled" aria-controls="transcoding_jobs_table" aria-label="Next" data-dt-idx="1" tabindex="0" id="transcoding_jobs_table_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
                 <script>
                     // add empty rows after table was initiated - see q5.datatable.js
                     // and put data there from JSON
