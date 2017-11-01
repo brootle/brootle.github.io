@@ -1539,6 +1539,55 @@ p.formats-page{
 }
 /*-----------------------OCT-25-2017----FORMATS---------*/
 
+/*--------------NOV-1-2017----ADD DROPDOWN MENU---------*/
+.q5-dropdown-container{
+    display: inline-block;
+    position: relative;
+}
+
+.q5-dropdown-menu {
+    position: relative;
+    padding-right: 1vw;
+}
+
+.q5-dropdown-menu:after {
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    padding-right: 0vw;
+    padding-top: 0vw;
+}
+
+.q5-opened-menu:after {
+    content: "\f0d8";
+}
+
+.q5-submenu-content {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    max-height: 0;
+    background: white;
+    top: 5.2vw;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    flex-direction: column;
+}
+
+.q5-submenu-content > a {
+    line-height: 2.9vw;
+    height: 2.9vw;
+    margin: 0;
+    border-bottom: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    transition: border .2s ease;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+}
+/*--------------NOV-1-2017----ADD DROPDOWN MENU---------*/
+
 
 /*----------------------------------------------------------*/
 /*----------------------------------------------------------*/
@@ -1561,8 +1610,8 @@ p.formats-page{
     .top-menu a {
         font-size: 1.6vw;
         line-height: 6.9vw;
-        margin-right: 1.4vw;
-        margin-left: 1.4vw;
+        margin-right: 1vw;
+        margin-left: 1vw;
     }    
 
     .button-default {
@@ -2012,6 +2061,25 @@ p.formats-page{
 
     /*-----------------------OCT-25-2017----FORMATS---------*/    
 
+    /*--------------NOV-1-2017----ADD DROPDOWN MENU---------*/
+    nav .top-menu .menu-items--right {
+        margin-right: 0;
+    }    
+    .q5-dropdown-menu {
+        padding-right: 1.5vw;
+    }   
+    .q5-submenu-content {
+        top: 7.2vw;
+    }        
+    .q5-submenu-content > a {
+        line-height: 3.9vw;
+        height: 3.9vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        margin: 0;
+        border-bottom: 2px solid #e4e4e4;
+    }    
+    /*--------------NOV-1-2017----ADD DROPDOWN MENU---------*/    
 
 
 }

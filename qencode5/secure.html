@@ -27,7 +27,31 @@
         <div class="top-menu">
             <div class="menu-items--left">
                 <a href="">Pricing</a>
-                <a href="">Speed</a>
+                <div class="q5-dropdown-container">
+                    <a id="features-dropdown" class="q5-dropdown-menu" href="">Features</a>
+                    <div id="submenu_content" class="q5-submenu-content">
+                        <a href="" class="menu-item--speed">Speed</a>
+                        <a href="" class="menu-item--secure">Secure</a>
+                    </div>                
+                    <script>
+                        document.querySelector("#features-dropdown").addEventListener('click', function(e){
+                            e.preventDefault();
+                            console.log("clicked");
+                            let authorizedMenu = document.querySelector("#submenu_content");
+                            this.classList.toggle("q5-opened-menu");
+                            // show menu if it's not shown already 
+                            if (authorizedMenu.style.maxHeight){
+                                authorizedMenu.style.maxHeight = null;
+                                authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                                //authorizedMenu.style.display = "none";
+                            } else {
+                                //authorizedMenu.style.display = "flex";
+                                authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                                authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                            }             
+                        });   
+                    </script>    
+                </div>            
                 <a href="">Formats</a>
                 <a href="">Contact</a>
                 <a href="">Try Demo</a>
