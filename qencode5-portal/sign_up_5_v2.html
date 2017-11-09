@@ -112,21 +112,75 @@
                             </div>     
                         </div>
 
-                        <div>
+                        <div class="q5-credit-card-block">
                             <div class="q5-tab">
                                 <span class="q5-tablinks q5--tablinks-disabled">Credit/Debit card</span>                 
                             </div>       
                             <div class="q5-tabcontent q5-tabcontent--active">
-                                <div> 
-                                    sfwe         
-                                </div>  
-                            </div>                             
+                                <div class="q5-card-details-container">  
+
+                                    <h3 class="q-link-box__title q5-text-gray">Card Details</h3>  
+
+                                    <div class="q5-input-container">                      
+                                        <input class="q5-text-gray" name="name_on_card" placeholder="Name on card" type="text">      
+                                    </div>     
+
+                                    <div class="q5-input-with-message">
+
+                                        <div class="q5-input-container">                                
+                                            <div class="q5-text-gray q5-card-input q5-max-length">
+                                                <input id="card_digits" class="q5-text-gray" autocomplete="off" name="credit_card_number" placeholder="Card number" type="text" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="19">
+                                                
+                                                <script>
+                                                    document.getElementById('card_digits').addEventListener('input', function (e) {
+                                                        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                                    });                                                        
+                                                </script>
+            
+                                                <div class="q5-card-input--exp-date">
+                                                    <input class="q5-text-gray" autocomplete="off" name="credit_card_valid_date_month" placeholder="MM" type="text" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="2">
+                                                    <span>/</span>
+                                                    <input class="q5-text-gray" autocomplete="off" name="credit_card_valid_date_year" placeholder="YY" type="text" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="2">
+                                                </div>
+
+                                                <input class="q5-text-gray q5-card-input--cvc" autocomplete="off" name="credit_card_cvc" placeholder="CVC" type="text" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="3">
+
+                                                <input class="q5-text-gray q5-card-input--zip" autocomplete="off" name="credit_card_zip" placeholder="ZIP" type="text" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="5">
+            
+                                            </div>        
+                                        </div>
+
+                                        <div class="q5-message-below-card">
+                                            With Free plan, this is only used to authorise you account.
+                                        </div>
+
+                                    </div>                                    
+
+                                </div>                             
+                            </div>   
+                            <button class="q5-button-default q5-button-solid q5-long-button" type="submit">Continue</button>                          
                         </div>                        
 
                     </div>
                 </form>
             </div>
 
+            <script>
+
+                let radioButtons = document.getElementsByName("billing-type");
+
+                // hide message if unlimited plan selected
+                radioButtons.forEach(radioButton => {
+                    radioButton.addEventListener('change', function(){
+                        if(this.value === 'unlimited'){
+                            document.querySelector(".q5-message-below-card").classList.add("q5-hidden");                   
+                        } else{
+                            document.querySelector(".q5-message-below-card").classList.remove("q5-hidden");
+                        }
+                    });
+                });  
+
+            </script>
 
         </div>
 
