@@ -68,10 +68,10 @@ $(document).ready(function(){
         "pagingType": "simple",     // see https://datatables.net/examples/basic_init/alt_pagination.html
         "dom": '<"top"ip>',         // see https://datatables.net/examples/basic_init/dom.html
         "aoColumns": [
-        null,
-        null,
-        { "bSortable": false }
-        ] } 
-    );
+            null,
+            null,
+            { "bSortable": false }
+        ] 
+    });
 
 });
