@@ -30,13 +30,16 @@ $(function () {
     $(window).scroll(function() {
 
         var sidebarTopPosition = document.getElementById('help_sidebar_container').getBoundingClientRect().top;
+        var sidebarBottomPosition = document.getElementById('help_sidebar').getBoundingClientRect().bottom;
         var topNavHeight = $('#top_navbar').height();
+        var footerHeight = $('footer').height();
+        var footerTopPosition = document.querySelector('footer').getBoundingClientRect().top;
+        
 
         var sidebarMenu = $('#help_sidebar');
 
         // glue menu it it's not already glued and set top position for it
         if(sidebarTopPosition < topNavHeight){
-            //console.log("glue menu");
             $(sidebarMenu).addClass("sidebar--glued");
             $(sidebarMenu).css({'top' : topNavHeight + 'px'});
         } else{
@@ -44,7 +47,21 @@ $(function () {
             $(sidebarMenu).removeClass("sidebar--glued");
             $(sidebarMenu).css({'top' : '0'});            
         }
+
+        // adapt the height of sidebar menu so it doesn't overlap footer
+        if((footerTopPosition -10) > sidebarBottomPosition){
+            // set the height of memu
+            // it should be window hight - topNavHeight
+            $(sidebarMenu).height($(window).height() - topNavHeight);
+        } else{ 
+            $(sidebarMenu).height(footerTopPosition - topNavHeight);
+        }
+
+     
+
     });
+   
+
 
 });
 
