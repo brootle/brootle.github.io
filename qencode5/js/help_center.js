@@ -47,6 +47,8 @@ $(function () {
             $(sidebarMenu).addClass("sidebar--glued");
             $(sidebarMenu).css({'top' : topNavHeight + 'px'});
             $(sidebarMenu).height($(window).height() - topNavHeight);
+            // we also need to set width of the menu same as help_sidebar_container
+            $(sidebarMenu).width($('#help_sidebar_container').width() + 'px');
         } else{
             //console.log("detach menu");
             $(sidebarMenu).removeClass("sidebar--glued");

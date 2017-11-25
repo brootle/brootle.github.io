@@ -205,6 +205,10 @@ header .header-message .button-and-text > span{
     background: #fffaa8;
 }
 
+.white{
+    background: white;
+}
+
 .q5-white-background {
     background: white;
 }
@@ -1619,40 +1623,97 @@ p.formats-page{
 
 /*--------------NOV-13-2017----HELP CENTER--------------*/
 .search-block{
-    padding-top: 2.4vw;
-    padding-bottom: 2.4vw;
+    margin-top: 2.5vw;
 }
 
 .content-container{
-    width: 71%;
-    box-sizing: border-box;
     padding-right: 2vw;
+    padding-left: 2vw;
+
+    box-sizing: border-box;    
 }
 
 .help-content{
-    /*background: mediumseagreen;*/
+    width: 71%;
+    box-sizing: border-box;
+
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+
+    padding-bottom: 5vw;
 }
 
-.help-content section h1 {
+.help-content-header{
+    border-bottom: 1px solid #e6e6e6;    
+}
+
+.help-center-section-title {
     font-size: 1.9vw;
+    margin: 0;
+}
+
+.title-with-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
     margin-top: 1vw;
     margin-bottom: 1vw;    
 }
 
-.help-content section h2 {
+.title-with-nav__buttons{
+    display: flex;
+}
+
+.title-btn{
+    width: 2.4vw;
+    height: 2.4vw;
+    box-sizing: border-box;
+    transition: 0.3s;
+    cursor: pointer;    
+}
+
+.title-btn__next{
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;    
+}
+
+.title-btn__next:hover {
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;
+}
+
+.title-btn__back{
+    background: url(../img/go_back.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;    
+}
+
+.title-btn__back:hover {
+    background: url(../img/go_back_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;
+}
+
+.title-btn + .title-btn{
+    margin-left: 0.5vw;
+}
+
+.help-content h2 {
     font-size: 1.2vw;
     margin-top: 2.5vw;
     margin-bottom: 1.5vw;  
 }
 
-.help-content section p {
+.help-content p {
     font-size: 1vw;
     line-height: 1.9vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
 }
 
-.help-content section ol, .help-ordered-list{
+.help-content ol, .help-ordered-list{
     font-size: 1vw;
     line-height: 1.9vw;
     margin-top: 1.5vw;
@@ -1660,7 +1721,7 @@ p.formats-page{
     padding-left: 3vw;
 }
 
-.help-content section ol li, .help-ordered-list-item{
+.help-content ol li, .help-ordered-list-item{
     margin-top: 1vw;
     margin-bottom: 1vw;
 }
@@ -1681,13 +1742,13 @@ p.formats-page{
     margin-bottom: 1vw;
 }
 
-.help-content section .help-ordered-list-item__title-block h2{
+.help-content .help-ordered-list-item__title-block h2{
     margin-top: 2vw;
     margin-bottom: 0;
     font-size: 1.1vw;    
 }
 
-.help-content section .help-ordered-list-item__title-block p{
+.help-content .help-ordered-list-item__title-block p{
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -1708,11 +1769,67 @@ p.formats-page{
     border-radius: 0.6vw;
 }
 
+.help-next-steps{
+    padding-top: 2vw;
+    padding-bottom: 2vw;    
+}
+
+.help-next-steps > h2{
+    margin: 0;
+}
+
+.steps-block{
+    border: 1px solid #e6e6e6;   
+    border-radius: 8px; 
+    font-size: 1vw;
+    font-weight: bold;    
+}
+
+.step{
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 3.6vw;
+    padding-left: 4vw;    
+    cursor: pointer;
+    transition: 0.3s;  
+}
+
+.step--next{
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;  
+}
+
+.step--next:hover{
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;      
+}
+
+.step--back{
+    background: url(../img/go_back.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;  
+}
+
+.step--back:hover{
+    background: url(../img/go_back_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;      
+}
+
+.steps-block .step:last-of-type{
+    border-bottom: none;
+}
+
 .sidebar-container{
     width: 29%; 
     box-sizing: border-box;
     transition: all .4s ease;
-    border-left: 1px solid #e6e6e6;
+    /*border-left: 1px solid #e6e6e6;*/
     /*padding-left: 2vw;*/
 }
 
@@ -1720,10 +1837,14 @@ p.formats-page{
     /*transition: all .4s ease;*/
     top: 0;
     background: white;    
-    padding-left: 2vw;
-    padding-right: 1vw;
+    /*padding-left: 2vw;
+    padding-right: 1vw;*/
 
     height: 100%;
+}
+
+.sidebar-menu > section {
+    padding-right: 1vw;    
 }
 
 .sidebar--glued{

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>    
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <script src="js/q5.accordion.js"></script>
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body>
+
+    <nav id="top_navbar" class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <div class="q5-dropdown-container">
+                    <a id="features-dropdown" class="q5-dropdown-menu" href="">Features</a>
+                    <div id="submenu_content" class="q5-submenu-content">
+                        <a href="" class="menu-item--speed">Speed</a>
+                        <a href="" class="menu-item--secure">Secure</a>
+                    </div>                
+                    <script>
+                        document.querySelector("#features-dropdown").addEventListener('click', function(e){
+                            e.preventDefault();
+                            console.log("clicked");
+                            let authorizedMenu = document.querySelector("#submenu_content");
+                            this.classList.toggle("q5-opened-menu");
+                            // show menu if it's not shown already 
+                            if (authorizedMenu.style.maxHeight){
+                                authorizedMenu.style.maxHeight = null;
+                                authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                                //authorizedMenu.style.display = "none";
+                            } else {
+                                //authorizedMenu.style.display = "flex";
+                                authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                                authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                            }             
+                        });   
+                    </script>    
+                </div>            
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green btn-animated">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>    
+
+        <div id="not-authorized-menu-mobile" class="q5-authorized-menu">
+            <a href="" class="q5-white-background">Pricing</a>
+            <a href="" class="q5-white-background">Speed</a>
+            <a href="" class="q5-white-background">Secure</a>
+            <a href="" class="q5-white-background">Formats</a>
+            <a href="" class="q5-white-background">Contact</a>    
+            <a href="" class="q5-white-background">Try Demo</a>         
+            <a href="" class="menu-item--login"> <strong>Log In</strong></a>
+            <a href="" class="menu-item--create-account"> <strong>Create Account</strong></a>
+        </div>        
+
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');       
+                let authorizedMobileMenu = document.querySelector("#not-authorized-menu-mobile");
+                // show and hide mobile menu    
+                if (authorizedMobileMenu.style.maxHeight){
+                    authorizedMobileMenu.style.maxHeight = null;
+                    //authorizedMobileMenu.style.display = "none";
+                    authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                } else {
+                    //authorizedMobileMenu.style.display = "flex";
+                    authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                    authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                }                   
+            });            
+        </script>
+
+    </nav>    
+
+
+    <main class="no-header no-padding-bottom">
+
+
+        <div class="container help-block">
+
+            <div id="help_sidebar_container" class="sidebar-container">
+                <div id="help_sidebar" class="sidebar-menu">
+
+                    <section>
+                        <h1 class="help-center-title text-green">HELP CENTER</h1>
+                        <div class="sidebar-menu__links">
+                            <a class="q-link text-gray" href="">Getting Started</a>
+
+                            <a class="q-link text-gray sidebar-menu__selected-link" href="">Setting Up Your Project</a>
+                            <div class="sidebar-menu__submenu">
+                                <a class="q-link text-gray" href="#creating_project">Creating a Project</a>
+                                <a class="q-link text-gray sidebar-menu__selected-link" href="#transcoding_profiles">Transcoding Profiles</a>
+                                <a class="q-link text-gray" href="#transfer_methods">Transfer Methods</a>
+                                <a class="q-link text-gray" href="#editing_project">Editing a Project</a>
+                            </div>
+
+                            <a class="q-link text-gray" href="">Transcoding Videos</a>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h1 class="help-center-title text-green">RESOURCES</h1>
+                        <div class="sidebar-menu__links">
+                            <a class="q-link text-gray" href="">Qencode Rest API</a>
+                            <a class="q-link text-gray" href="">Integration Language / Api Clients</a>
+                            <a class="q-link text-gray" href="">Input and Output Formats</a>
+                            <a class="q-link text-gray" href="">Input and Output Storages</a>
+                        </div>                        
+                    </section>
+                
+                    <section>
+                        <h1 class="help-center-title text-green">TUTORIALS</h1>
+                        <div class="sidebar-menu__links">
+                            <a class="q-link text-gray" href="">Launching a website</a>
+                            <a class="q-link text-gray" href="">Launching mobile video applications</a>
+                            <a class="q-link text-gray" href="">Launching OTT Platform</a>
+                        </div>                             
+                    </section>
+                
+                                                                                            
+                </div>
+            </div>
+
+            <div class="help-content">
+                
+                <div class="help-content-header">
+
+                    <div class="content-container">
+
+                        <div class="input-and-button search-block">
+                            <input class="search-input text-gray" name="search" placeholder="" type="text">      
+                            <button class="button-default q5-text-white q5-green-background">Search</button>
+                        </div>
+
+                        <h1 class="help-center-title text-green">HELP CENTER</h1>
+
+                        <div class="title-with-nav">
+                            <h1 class="help-center-section-title text-gray">Setting up your project</h1>
+                            <div class="title-with-nav__buttons">
+                                <div class="title-btn title-btn__back"></div>   
+                                <div class="title-btn title-btn__next"></div>                                
+                            </div>
+                        </div>                          
+                        
+                    </div>
+
+                </div>
+
+                <div id="help_content" class="content-container">
+                        
+
+                    <h2 id="transcoding_profiles" class="text-blue">Transcoding Profiles</h2>
+                    <p class="text-gray">
+                        You may create as many Transcoding Profiles as you like, one for each
+                        video file type tha you want outputted for transcoding job.
+                    </p>                   
+                    <div class="text-gray help-ordered-list">
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">1.</div>
+                            <div>
+                                To create Transcoding Profile, please make sure you are in the Edit
+                                Project section of your Project, and click <span class="help-button">+ Add Transcoding Profile</span>
+                            </div>
+                        </div> 
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">2.</div>
+                            <div>
+                                Enter a <strong>Profile Name</strong> for your Transcoding Profile. Pick something
+                                distinct which will make it easier to identify and manage in the
+                                future, <strong>for example: HLS at 375kbps (640x360).</strong>
+                            </div>
+                        </div> 
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">3.</div>
+                            <div>
+                                Select an <strong>Output Format</strong> from the dropdown.
+                                <div class="help-message light-grey">
+                                    To learn more about our output formats, review our
+                                    <a class="q-link text-blue" href="">Input and Output Formats</a> section.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">4.</div>
+                            <div>
+                                Select an <strong>Video Codec</strong> from the dropdown.
+                                <div class="help-message light-grey">
+                                    To learn more about our output formats, review our
+                                    <a class="q-link text-blue" href="">Input and Output Formats</a> section.
+                                </div>                                
+                            </div>
+                        </div>       
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">5.</div>
+                            <div>
+                                Specify in the <strong>Output Path</strong> which folder and
+                                naming convention to use when saving this file to your storage or
+                                Transfer Method. An <strong>example</strong> would be
+                                <strong>videos/{uuid}</strong>.
+                                <div class="help-message light-yellow">
+                                    Please note that for MP4 files, a separate Output Path must be
+                                    specified for each resolution added.
+                                </div>   
+                            </div>                                    
+                        </div> 
+                        
+                    
+                        <div class="help-ordered-list-item"> 
+
+                            <div class="help-ordered-list-item__title-block">
+                                <h2>Video Settings</h2>
+                                <p class="text-gray">
+                                    Covers some of the main settings required to create the video
+                                    portion of the transcoding files.
+                                </p>                                              
+                            </div>
+
+                            <div class="help-ordered-list-item__number">6.</div>
+                            <div>
+                                <strong>Resolution.</strong> This allows you to add all the resolution
+                                you will need for this Transcoding Profile.
+                            </div>
+
+                            <div class="text-gray help-ordered-list">
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">1.</div>
+                                    <div>
+                                        To add a new resolution to this transcoding profile,
+                                        click <span class="help-button">+ Add Resolution</span>
+                                    </div>
+                                </div>  
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">2.</div>
+                                    <div>
+                                        Select the resolution you would like to add using
+                                        the <strong>Output Resolution</strong> dropdown.
+                                    </div>
+                                </div>               
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">3.</div>
+                                    <div>
+                                        Enter the bitrate for this video in the
+                                        <strong>Bitrate (kbps)</strong> field.
+                                    </div>
+                                </div>    
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">4.</div>
+                                    <div>
+                                        After you are done, click 
+                                        <span class="help-button">+ Add Resolution</span>
+                                        to save.
+                                        <div class="help-message light-grey">
+                                            You can continue adding resolutions until you have
+                                            all that you need.
+                                        </div>
+                                    </div>
+                                </div>                                                                                                         
+                            </div>                                   
+                            
+                        </div>     
+
+                        <div class="help-ordered-list-item"> 
+
+                            <div class="help-ordered-list-item__title-block">
+                                <h2>Audio Settings</h2>                                     
+                            </div>
+
+                            <div class="help-ordered-list-item__number">7.</div>
+                            <div>
+                                To edit Audio Settings, click the <strong>Audio Settings</strong>
+                                to expand the section. These setting modify the audio
+                                within the output video.
+                            </div>
+
+                            <div class="text-gray help-ordered-list">
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">1.</div>
+                                    <div>
+                                        Enter <strong>Max Audio Bitrate</strong> to specify
+                                        the maximum bitrate for audio in kbps for 
+                                        output video.
+                                    </div>
+                                </div>                                                                                                        
+                            </div>                                   
+                            
+                        </div>                 
+
+                        <div class="help-ordered-list-item"> 
+
+                            <div class="help-ordered-list-item__title-block">
+                                <h2>Thumbnail Settings</h2>                                     
+                            </div>
+
+                            <div class="help-ordered-list-item__number">8.</div>
+                            <div>
+                                To edit Thumbnail Settings, click the 
+                                <strong>Thumbnail Settings</strong> to expand the section.
+                            </div>
+
+                            <div class="text-gray help-ordered-list">
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">1.</div>
+                                    <div>
+                                        Click <span class="help-button">+ Add Thumbnail</span>
+                                        to create a new thumbnail for this transcoding profile.
+                                    </div>
+                                </div>      
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">2.</div>
+                                    <div>
+                                        Enter the percentage of the timeline from which you want
+                                        to create the thumbnail in the <strong>Time (%)</strong> field.
+                                        Click <span class="help-button">+ Add Thumbnail</span>.
+                                        You can use 0 for the beginning, 100 for the end, and any
+                                        integer in between.
+                                    </div>
+                                </div>       
+                                <div class="help-ordered-list-item">
+                                    <div class="help-ordered-list-item__number">3.</div>
+                                    <div>
+                                        Click <span class="help-button">+ Add Thumbnail Size</span>
+                                        to and enter enter the width and height of the 
+                                        thumbnail you want to create.
+                                    </div>
+                                </div>                                                                                                                                                                                
+                            </div>                                   
+                            
+                        </div>           
+
+                        <div class="help-ordered-list-item">
+                            <div class="help-ordered-list-item__number">9.</div>
+                            <div>
+                                After you've completed the setup you need, just
+                                click <span class="help-button">Save All</span>
+                                and you're all set to start using your
+                                Transcoding Profile.
+                            </div>
+                        </div>                                                                                                                           
+                    </div>                                     
+
+                 </div>
+
+                <div class="help-next-steps light-grey text-gray content-container">
+                    <h2>Creating a Project</h2>
+                    <p>
+                        Congrats! You've learned more about creating a project on Qencode!
+                        You may want to learn about:
+                    </p>
+                    <div class="steps-block white">
+                        <div class="step step--back">Creating a Project</div>
+                        <div class="step step--next">Transfer Methods</div>
+                        <div class="step step--next">Editing a Project</div>
+                    </div>
+                </div>   
+
+                <div class="content-container">
+                    <h2 class="text-gray">Questions?</h2>
+                    <p class="text-gray">
+                        We are always happy to help with code or other questions you might have!
+                        <a class="q-link text-blue" href="">Search</a> our documentation,
+                        <a class="q-link text-blue" href="">contact support</a> or
+                        <a class="q-link text-blue" href="">connect with our support team</a>.
+                    </p>
+                </div>                     
+                                                                                                  
+            </div>
+
+        </div>
+
+        <script src="js/help_center.js"></script>
+
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
