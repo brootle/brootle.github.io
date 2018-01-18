@@ -11,6 +11,10 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">    
+
     <link href="css/hamburgers.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
 
@@ -68,13 +72,13 @@
 
                 <div class="plans-switcher">
                     <div>
-                        <span class="text-gray switcher-button plans-switcher--active" data-switcher="individual_plans">Individual Plans</span>
-                        <span class="text-gray switcher-button plans-switcher--inactive" data-switcher="business_plans">High Volume</span>
+                        <span class="text-gray switcher-button plans-switcher--inactive" data-switcher="individual_plans">Individual Plans</span>
+                        <span class="text-gray switcher-button plans-switcher--active" data-switcher="business_plans">High Volume</span>
                     </div>
                 </div>
 
 
-                <div id="individual_plans" class="switchercontent switchercontent--active">
+                <div id="individual_plans" class="switchercontent">
 
                     <div class="tab tab--pricing">
                         <span class="tablinks tablinks--active" data-tabcontent="free">Free</span>
@@ -131,7 +135,7 @@
                     </div>
                 </div>
 
-                <div id="business_plans" class="switchercontent">
+                <div id="business_plans" class="switchercontent switchercontent--active">
 
                     <div class="tab tab--pricing">
                         <span class="tablinks tablinks--active" data-tabcontent="enterprise">Enterprise</span>
@@ -140,20 +144,76 @@
                     <div id="enterprise" class="pricing-plan-block tabcontent tabcontent--active">
                         <div>
                             <h3>Enterprise</h3>
-                            <div class="pricing-plan--enterprise">
-                                <button class="button-default button-solid long-button">Contact Sales</button>
-                            </div>
-                            <!--<p class="pricing-plan-block--title">Includes everything in Free plus:</p>-->
-                            <p class="text-light-gray light-grey pricing-plan-block--title2">plan includes:</p>
-                            <ul class="text-gray">
-                                <li>No monthly fees</li>
-                                <li>No maximum request limit</li>
-                                <li>No queue times</li>
-                                <li>Full API and SDK</li>
-                                <li>All formats, codecs and features</li>
-                                <li>Personalized support</li>
-                                <li>Annual contracts on demand</li>
-                            </ul>                             
+                            <div id="enterprise_content" style="display: none;">
+                                <div class="pricing-plan--enterprise">
+                                    <button class="button-default button-solid long-button">Contact Sales</button>
+                                </div>
+                                <!--<p class="pricing-plan-block--title">Includes everything in Free plus:</p>-->
+                                <p class="text-light-gray light-grey pricing-plan-block--title2">plan includes:</p>
+                                <ul class="text-gray">
+                                    <li>No monthly fees</li>
+                                    <li>No maximum request limit</li>
+                                    <li>No queue times</li>
+                                    <li>Full API and SDK</li>
+                                    <li>All formats, codecs and features</li>
+                                    <li>Personalized support</li>
+                                    <li>Annual contracts on demand</li>
+                                </ul>      
+                            </div>    
+                            <div id="enterprise_form">
+                                <div class="pricing-plan--enterprise">
+                                    <div id="error_message" class="error"></div>
+                                    <form id="cont_form">
+                                        <div class="input-container">
+                                            <div class="text-gray">
+                                                <label for="Name">Your Name</label>
+                                            </div>
+                                            <input id="name" name="Name" class="text-gray" type="text" style="border: 2px solid rgb(238, 238, 237);">
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="text-gray">
+                                                <label for="Company">Company</label>
+                                            </div>
+                                            <input id="company" name="Company" class="text-gray" type="text" style="border: 2px solid rgb(238, 238, 237);">
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="text-gray">
+                                                <label for="Title">Title</label>
+                                            </div>
+                                            <input id="title" name="Title" class="text-gray" type="text" style="border: 2px solid rgb(238, 238, 237);">
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="input-label text-gray">
+                                                    <label for="phone">Phone</label>
+                                            </div>                            
+                                            <input id="phone" class="gray-border text-gray" placeholder="" name="user[phone]" type="tel">      
+                                            <script src="build/js/intlTelInput.js"></script>     
+                                            <script src="build/js/utils.js"></script>    
+                                            <script>
+                                                // https://github.com/jackocnr/intl-tel-input
+                                                // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                                $("#phone").intlTelInput({
+                                                    // nationalMode: false,
+                                                    autoPlaceholder: "polite"
+                                                })
+                                            </script>
+                                        </div>  
+                                        <div class="input-container">
+                                            <div class="text-gray">
+                                                <label for="Email">Email</label>
+                                            </div>
+                                            <input id="email" name="Email" class="text-gray" type="text" style="border: 2px solid rgb(238, 238, 237);">
+                                        </div>
+                                    </form>
+                                    <div class="pricing-plan--enterprise">
+                                        <button class="button-default button-solid long-button" id="button_form_send">Send</button>
+                                    </div>
+                                    <div class="pricing-plan--enterprise">
+                                        <button class="button-default long-button" id="button_form_cancel">Cancel</button>
+                                    </div>
+
+                                </div>
+                            </div>                                               
                         </div>
                     </div>
                 </div>          
