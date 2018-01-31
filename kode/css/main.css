@@ -1,4 +1,89 @@
 body{
     background: #1c2542;
-    color: white;
+    color: #fdfdff;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;    
 }
+
+a:hover, a:visited, a:active, a:link {
+    color: #fdfdff;
+    text-decoration: none;
+}
+
+nav {
+    padding-top: 30px;
+    padding-bottom: 5px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    display: block;
+    width: 100%;
+    background-color: #1c2542;
+}
+
+.nav-wrap{
+    box-sizing: border-box;
+    max-width: 960px;
+    padding: 0 16px;
+    margin: 0 auto;
+    position: relative; 
+
+    display: flex;
+    justify-content: space-between;       
+}
+
+.kode-logo img{
+    height: 35px;
+}
+
+.nav-items{
+    margin-left: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+.nav-items a{
+    color: #117694;
+
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 24px;
+
+    display: inline-block;
+    transition: all .3s ease;
+    cursor: pointer;
+    margin-right: 18px;
+    margin-left: 18px;
+    border-bottom: 2px solid #1c2542;    
+}
+
+.nav-items a:hover {
+    border-bottom: 2px solid #43c086;
+    color: #fdfdff;
+}
+
+.dropdown-menu{
+    position: relative;
+    padding-right: 15px;    
+}
+
+.dropdown-menu:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    transform: rotate(90deg);
+    font-size: 10px;
+    font-weight: normal;    
+}
+
+header{
+    padding-top: 72px;
+}
+
+main{
+    flex: 1;
+}
+
