@@ -71,13 +71,15 @@
         <div class="video-container">
             <iframe id="player" src="https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
 
-            <div class="loading-indicator-container">
+            <div id="loading-indicator" class="loading-indicator-container">
                 <div class="loading-indicator"></div>
             </div>
+
+            <div id="play-button" class="play-button"></div>
+
         </div>          
-<!--
-        <button id="play-button">PLAY</button>
-        <button id="pause-button">PAUSE</button>-->
+
+        <!--<button id="pause-button">PAUSE</button>-->
 
 
         <script>
@@ -111,10 +113,18 @@
                     player.playVideo();
                 });
                 
-                var pauseButton = document.getElementById("pause-button");
-                pauseButton.addEventListener("click", function() {
-                    player.pauseVideo();
-                });
+                // var pauseButton = document.getElementById("pause-button");
+                // pauseButton.addEventListener("click", function() {
+                //     player.pauseVideo();
+                // });
+
+                var loadingIndicator = document.getElementById("loading-indicator");
+
+                console.log("video loaded");
+                // hide loading button
+                loadingIndicator.style.display = "none";
+                // show play button
+                playButton.style.display = "block";
 
             }
 

@@ -272,20 +272,20 @@ main{
 }
 
 .loading-indicator-container{
-    background: rgba(22, 63, 115, 0.6);
+    background: rgba(24, 107, 138, 0.32);
     border-radius: 50%;
     width: 170px;
     height: 170px;    
     display: flex;
     align-items: center;
     justify-content: center;    
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 .loading-indicator{
-    border: 8px solid rgba(29, 102, 121, 0.8);
+    border: 8px solid rgba(47, 208, 125, 0.39);
     border-radius: 50%;
-    border-top: 8px solid rgba(46, 208, 125, 0.7);
+    border-top: 8px solid rgb(47, 208, 125);
     width: 100px;
     height: 100px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -303,6 +303,30 @@ main{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.play-button{
+    display: none;
+    width: 170px;
+    height: 170px;
+    background: url(../img/play.png) no-repeat center;
+    background-size: 170px;
+    box-sizing: border-box; 
+    cursor: pointer;
+
+    -webkit-animation: fadeEffect 0.5s;
+    animation: fadeEffect 0.5s;    
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 
 .copyright{
     padding: 0 16px;
