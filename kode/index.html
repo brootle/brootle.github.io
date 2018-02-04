@@ -3,15 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8" />
-
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-    </script>
-
-    <script src="js/main.js"></script>    
+    <meta charset="utf-8" /> 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
 
@@ -69,6 +61,7 @@
         </div>           
 
         <div class="video-container">
+
             <iframe id="player" src="https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
 
             <div id="loading-indicator" class="loading-indicator-container">
@@ -79,10 +72,15 @@
 
         </div>          
 
-        <!--<button id="pause-button">PAUSE</button>-->
-
-
         <script>
+
+            // solution for video https://stackoverflow.com/a/44630726/6261255
+
+            // https://developers.google.com/youtube/iframe_api_reference#Examples
+            // https://developers.google.com/youtube/player_parameters
+
+            // https://css-tricks.com/play-button-youtube-and-vimeo-api/
+
             // 2. This code loads the IFrame Player API code asynchronously.
             var tag = document.createElement('script');
 
@@ -98,8 +96,6 @@
                 player = new YT.Player('player', {
                     events: {
                         'onReady': onPlayerReady
-                        // 'onReady': onPlayerReady,
-                        // 'onStateChange': onPlayerStateChange
                     }
                 });
             }
@@ -118,11 +114,6 @@
                     // start video
                     player.playVideo();
                 });
-                
-                // var pauseButton = document.getElementById("pause-button");
-                // pauseButton.addEventListener("click", function() {
-                //     player.pauseVideo();
-                // });
 
                 var loadingIndicator = document.getElementById("loading-indicator");
 
@@ -134,19 +125,6 @@
 
             }
 
-            // 5. The API calls this function when the player's state changes.
-            //    The function indicates that when playing a video (state=1),
-            //    the player should play for six seconds and then stop.
-            // var done = false;
-            // function onPlayerStateChange(event) {
-            //     if (event.data == YT.PlayerState.PLAYING && !done) {
-            //         setTimeout(stopVideo, 6000);
-            //         done = true;
-            //     }
-            // }
-            // function stopVideo() {
-            //     player.stopVideo();
-            // }
         </script>        
 
     </main>
