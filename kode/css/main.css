@@ -256,6 +256,7 @@ main{
     height: 389px;
 
     background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
+    background-size: cover; 
 
     display: flex;
     align-items: center;
@@ -737,6 +738,114 @@ a.kode-button{
     position: absolute;
     left: -18px;
     font-size: 15px;
+}
+
+.gallery{
+    overflow: hidden;
+    margin-top: 50px;
+    margin-bottom: 50px;    
+    display: flex;
+    justify-content: center;  
+    position: relative;  
+
+    height: 290px;
+}
+
+.gallery-blocks-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    z-index: 0;  
+
+    height: 290px;
+
+    transition: all 0.8s ease 0s;    
+}
+
+.gallery__central-block{
+    width: 520px;
+    height: 290px;
+    margin: 0 22.5px;
+
+
+    background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
+    background-size: cover;      
+
+    transition: all 0.8s ease 0s;
+}
+
+.gallery__side-block{
+    margin: 0 22.5px;
+    width: 340px;
+    height: 220px;
+
+    background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
+    background-size: cover;  
+
+    transition: all 0.8s ease 0s;
+}
+
+.filter-block{
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.filter-delimiter{
+    width: 520px;
+    height: 100%;    
+}
+
+.filter{
+    flex-grow: 1;   
+    height: 100%; 
+    z-index: 1;  
+}
+
+.filter--left{
+    background: linear-gradient(to right, #1c2542 , rgba(28, 37, 66, 0));    
+}
+
+.filter--right{
+    background: linear-gradient(to left, #1c2542 , rgba(28, 37, 66, 0));    
+}
+
+.navigation-button{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.navigation-block{
+    position: absolute;
+    width: 920px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    z-index: 2;  
+}
+
+.navigation-button--back{
+    background-image: url(../img/sprites.png);
+    background-size: 3008%;
+    background-position: 9.3% 45.6%;
+}
+
+.navigation-button--forward{
+    background-image: url(../img/sprites.png);
+    background-size: 3008%;
+    background-position: 12.5% 45.6%;
 }
 
 .copyright{
