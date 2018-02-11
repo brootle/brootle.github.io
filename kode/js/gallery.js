@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
         visibleGalleryBlocks.forEach(visibleBlock => {
             visibleBlock.style.transition = "all 0.8s ease 0s";  
         });              
+
+        // disable button untill animation is finished
+        // pointer-events: none;
+        var navigationButtons = document.querySelectorAll('.navigation-button');
+        navigationButtons.forEach(button => {
+            button.style.pointerEvents = "none";
+        });
     });
 
     var buttonBack = document.getElementById("button-back");
@@ -74,6 +81,11 @@ document.addEventListener('DOMContentLoaded', function () {
         visibleGalleryBlocks.forEach(visibleBlock => {
             visibleBlock.style.transition = "all 0.8s ease 0s";  
         });        
+
+        var navigationButtons = document.querySelectorAll('.navigation-button');
+        navigationButtons.forEach(button => {
+            button.style.pointerEvents = "none";
+        });        
     });    
 
 
@@ -101,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function () {
             centralBlock.classList.remove('gallery__side-block');  
             centralBlock.classList.add('gallery__central-block');
             // ALL TRANSITIONS will be returned to elements on next button click
+
+            // enable navigation buttons
+            var navigationButtons = document.querySelectorAll('.navigation-button');
+            navigationButtons.forEach(button => {
+                button.style.pointerEvents = "all";
+            });            
         }
     });       
 
