@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // update video src based on data, it should be associated with central element 
         // with index 2
-        document.getElementById('gallery-player').src = `https://www.youtube.com/embed/${videos[2].videoId}?rel=0&showinfo=0&enablejsapi=1`;          
+        document.getElementById('gallery-player').src = `https://www.youtube.com/embed/${videos[positions[2]].videoId}?rel=0&showinfo=0&enablejsapi=1`;          
     }
 
     function hideGalleryMediaControlButtons(){
