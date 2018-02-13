@@ -749,6 +749,8 @@ a.kode-button{
     position: relative;  
 
     height: 290px;
+
+    align-items: center;
 }
 
 .gallery-blocks-container{
@@ -764,26 +766,38 @@ a.kode-button{
     transition: all 0.8s ease 0s;    
 }
 
+/*background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;*/
+/*background-size: cover;      */
 .gallery__central-block{
-    width: 520px;
+    width: 516px;
     height: 290px;
     margin: 0 22.5px;
-
-
-    background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
-    background-size: cover;      
-
+    background-size: cover; 
     transition: all 0.8s ease 0s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;    
 }
 
+
+.gallery-video{
+    z-index: 5;
+}
+
+.gallery-video > iframe{
+    width: 516px;
+    height: 290px;
+    display: none;
+}
+
+/*background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;*/
+/*background-size: cover;*/
 .gallery__side-block{
     margin: 0 22.5px;
     width: 340px;
-    height: 220px;
-
-    background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
-    background-size: cover;  
-
+    height: 220px;  
+    background-size: cover; 
     transition: all 0.8s ease 0s;
 }
 

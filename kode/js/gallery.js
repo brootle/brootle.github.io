@@ -1,10 +1,75 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded with JavaScript');
 
+    // VIDEOS USED IN THE GALLERY
+    // this array MUST have at least 5 items, items can repeat
+    var videos = [
+        {
+            title: "video 0",
+            url: "img/gallery/screenshot1.png"
+        },
+        {   
+            title: "video 1",
+            url: "img/gallery/screenshot2.png"
+        },
+        {   
+            title: "video 2",
+            url: "img/gallery/screenshot3.png"
+        },
+        {   
+            title: "video 3",
+            url: "img/gallery/screenshot4.png"
+        },
+        {   
+            title: "video 4",
+            url: "img/gallery/screenshot5.png"
+        },
+        {   
+            title: "video 5",
+            url: "img/gallery/screenshot6.png"
+        },
+        {   
+            title: "video 6",
+            url: "img/gallery/screenshot7.png"
+        },
+        {   
+            title: "video 7",
+            url: "img/gallery/screenshot8.png"
+        }                                                
+    ];
+
+    // everything will be based on what video is central 
+    // max is the last video, lenght - 1;
+    var centralVideoIndex = 2; // it must be less than videos lengh -1
+
+    // how many items will exist on a page
+    var intemsNumber = 5;    
+
+    // we need to fill positions based on videos that we have and based on how many of them we have
+    // in total we only have 5 available positions
+    // there will be 3 visible blocks
+
+    var positions = new Array();
+    fillPositions();
+    console.log(positions);    
+
+    // printing VIEW layer based on DATA layer
+    positions.forEach(position => {
+        console.log(videos[position].title);
+    });  
+
+    updateGalleryView();
+
+///////////////////////////////////////////////////////////////////////
 
     var buttonForward = document.getElementById("button-forward");
     buttonForward.addEventListener("click", ()=> {
         console.log("button forward clicked");
+
+        // update video src based on data
+        document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";
+
+        hideGalleryMediaControlButtons();
 
         // get gallery
         var gallery = document.querySelector('#gallery');        
@@ -44,11 +109,19 @@ document.addEventListener('DOMContentLoaded', function () {
         navigationButtons.forEach(button => {
             button.style.pointerEvents = "none";
         });
+
+        // make a move in a model layer
+        moveBack();       
     });
 
     var buttonBack = document.getElementById("button-back");
     buttonBack.addEventListener("click", ()=> {
         console.log("button back clicked");
+
+        // update video src based on data
+        document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";        
+
+        hideGalleryMediaControlButtons();
 
         // get gallery
         var gallery = document.querySelector('#gallery');        
@@ -86,6 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
         navigationButtons.forEach(button => {
             button.style.pointerEvents = "none";
         });        
+
+        // make a move in a model layer   
+        moveNext();
     });    
 
 
@@ -119,8 +195,95 @@ document.addEventListener('DOMContentLoaded', function () {
             navigationButtons.forEach(button => {
                 button.style.pointerEvents = "all";
             });            
+
+            // now we must update VIEW based on new MODEL data
+            updateGalleryView();
         }
     });       
+  
+
+    function updateGalleryView(){
+        console.log("Updating VIEW.....");
+
+        var galleryBlocks = document.querySelectorAll('.gallery-block');
+        galleryBlocks.forEach((galleryBlock, index) =>  {
+            //galleryBlock.innerHTML = videos[positions[index]].title; //positions
+            galleryBlock.style.background = `linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(${videos[positions[index]].url}) no-repeat center`;
+            galleryBlock.style.backgroundSize = "cover";
+        }); 
+         
+        showGalleryMediaControlButtons();
+    }
+
+    function hideGalleryMediaControlButtons(){
+        document.getElementById("gallery-loading-indicator").style.display = "none";   
+
+        document.getElementById("gallery-play-button").style.display = "none";     
+
+        // hide video and stop it
+        document.getElementById("gallery-player").style.display = "none";
+    }  
+
+    function showGalleryMediaControlButtons(){
+        document.getElementById("gallery-loading-indicator").style.display = "flex";
+        //document.getElementById("gallery-play-button").style.display = "block";          
+    }        
+
+    ///////////////////////////////////////////////////////////////////////
+    ////////////    MODEL LAYER    ////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+
+
+    function fillPositions(){
+        console.log("filling positions....");
+        // we fill positions array based of index of central video
+        // 3-2=1 | 3-1=2 | 3-0=3 | 3+1=4 | 3+2=5
+        for (i = -2; i < intemsNumber - 2; i++){
+            if((centralVideoIndex+i)<0){
+                positions.push(videos.length+i+1);
+            } else if((centralVideoIndex+i) > videos.length-1){
+                positions.push(centralVideoIndex+i - videos.length);
+            } else{
+                positions.push(centralVideoIndex+i);
+            }
+        }
+    }
+
+    function moveNext(){
+        console.log("move next");
+
+        // when we click next we update positions in the array
+        // [1,2,3,4,5] => [2,3,4,5,6]
+        
+        positions = positions.map(position => {
+            position-=1;
+            // if position is <0 videos lenght-1 we assign videos.length - 1 to position
+            if(position < 0){
+                position = videos.length - 1;
+            }
+            return position;
+        });
+
+        console.log(positions);
+    }
+
+    function moveBack(){
+        console.log("move back");
+
+        // [1,2,3,4,5] => [0,1,2,3,4]
+
+        positions = positions.map(position => {
+            position+=1;
+            // if position is > videos lenght-1 we assign 0 to position
+            if(position > videos.length -1){
+                position = 0;
+            }          
+            return position;
+        });
+
+        console.log(positions);      
+    }    
+
 
 
 });

@@ -77,60 +77,7 @@
 
             </div>          
 
-            <script>
 
-                // solution for video https://stackoverflow.com/a/44630726/6261255
-
-                // https://developers.google.com/youtube/iframe_api_reference#Examples
-                // https://developers.google.com/youtube/player_parameters
-
-                // https://css-tricks.com/play-button-youtube-and-vimeo-api/
-
-                // 2. This code loads the IFrame Player API code asynchronously.
-                var tag = document.createElement('script');
-
-                tag.src = "https://www.youtube.com/iframe_api";
-                var firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                // 3. This function creates an <iframe> (and YouTube player)
-                //    after the API code downloads.
-                var player;
-                function onYouTubeIframeAPIReady() {
-
-                    player = new YT.Player('player', {
-                        events: {
-                            'onReady': onPlayerReady
-                        }
-                    });
-                }
-
-                // 4. The API will call this function when the video player is ready.
-                function onPlayerReady(event) {
-                    // event.target.playVideo();
-
-                    // bind events
-                    var playButton = document.getElementById("play-button");
-                    playButton.addEventListener("click", function() {
-                        // hide play button
-                        playButton.style.display = "none";
-                        // show player
-                        document.getElementById("player").style.display = "block";
-                        // start video
-                        player.playVideo();
-                    });
-
-                    var loadingIndicator = document.getElementById("loading-indicator");
-
-                    console.log("video loaded");
-                    // hide loading button
-                    loadingIndicator.style.display = "none";
-                    // show play button
-                    playButton.style.display = "block";
-
-                }
-
-            </script>    
 
             <div class="visit-qencode">
                 <span>We've already built the most effective video transcoding platform</span>
@@ -461,21 +408,127 @@
             </div>
 
             <div class="gallery">
+
+                <div class="gallery-video">
+                    <div id="gallery-loading-indicator" class="loading-indicator-container">
+                        <div class="loading-indicator"></div>
+                    </div>      
+
+                    <div id="gallery-play-button" class="play-button"></div>
+
+                    <iframe id="gallery-player" src="https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>   
+                </div>           
+
                 <div class="navigation-block">
                     <div id="button-back" class="navigation-button navigation-button--back"></div>
                     <div id="button-forward" class="navigation-button navigation-button--forward"></div>
-                </div>
+                </div>                
+                               
+                <script>
+
+                    // solution for video https://stackoverflow.com/a/44630726/6261255
+
+                    // https://developers.google.com/youtube/iframe_api_reference#Examples
+                    // https://developers.google.com/youtube/player_parameters
+
+                    // https://css-tricks.com/play-button-youtube-and-vimeo-api/
+
+                    // 2. This code loads the IFrame Player API code asynchronously.
+                    var tag = document.createElement('script');
+
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    // 3. This function creates an <iframe> (and YouTube player)
+                    //    after the API code downloads.
+                    var player;
+                    var galleryPlayer;
+                    
+                    function onYouTubeIframeAPIReady() {
+
+                        player = new YT.Player('player', {
+                            events: {
+                                'onReady': onPlayerReady
+                            }
+                        });
+
+
+                        galleryPlayer = new YT.Player('gallery-player', {
+                            events: {
+                                'onReady': onGalleryPlayerReady
+                            }
+                        });          
+
+                    }
+
+                    function onGalleryPlayerReady(event) {
+
+                        var galleryLoadingIndicator = document.getElementById("gallery-loading-indicator");
+                        galleryLoadingIndicator.style.display = "none";
+
+                        var galleryPlayButton = document.getElementById("gallery-play-button");
+                        galleryPlayButton.style.display = "block";
+
+                        galleryPlayButton.addEventListener("click", function() {
+                            // hide play button
+                            galleryPlayButton.style.display = "none";
+                            // show player
+                            document.getElementById("gallery-player").style.display = "block";
+                            // start video
+                            galleryPlayer.playVideo();
+                        });              
+
+                        // here we also bind stop play when nave button clicked
+                        // navigation-button          
+                        // document.querySelectorAll('.navigation-button').forEach(button => {
+                        //     button.addEventListener("click", (e)=>{
+                        //         console.log("stop video");
+                        //     }
+                        //     //galleryPlayer.stopVideo();
+                        // });    
+
+                    }
+
+                    // 4. The API will call this function when the video player is ready.
+                    function onPlayerReady(event) {
+                        // event.target.playVideo();
+
+                        // bind events
+                        var playButton = document.getElementById("play-button");
+                        playButton.addEventListener("click", function() {
+                            // hide play button
+                            playButton.style.display = "none";
+                            // show player
+                            document.getElementById("player").style.display = "block";
+                            // start video
+                            player.playVideo();
+                        });
+
+                        var loadingIndicator = document.getElementById("loading-indicator");
+
+                        console.log("video loaded");
+                        // hide loading button
+                        loadingIndicator.style.display = "none";
+                        // show play button
+                        playButton.style.display = "block";
+
+                    }
+
+                </script>                                   
+
+
                 <div class="filter-block">
                     <div class="filter filter--left"></div>
                     <div class="filter-delimiter"></div>
                     <div class="filter filter--right"></div>
                 </div>
                 <div id="gallery" class="gallery-blocks-container">
-                    <div id="video-position-1" class="gallery__side-block">0</div>
-                    <div id="video-position-2" class="gallery__side-block visible-block">1</div>
-                    <div id="video-position-3" class="gallery__central-block visible-block">2</div>
-                    <div id="video-position-4" class="gallery__side-block visible-block">3</div>
-                    <div id="video-position-5" class="gallery__side-block">4</div>
+                    <div id="video-position-1" class="gallery-block gallery__side-block"></div>
+                    <div id="video-position-2" class="gallery-block gallery__side-block visible-block"></div>
+                    <div id="video-position-3" class="gallery-block gallery__central-block visible-block"></div>
+                    <div id="video-position-4" class="gallery-block gallery__side-block visible-block"></div>
+                    <div id="video-position-5" class="gallery-block gallery__side-block"></div>
                 </div>
             </div>
 
