@@ -5,40 +5,45 @@ document.addEventListener('DOMContentLoaded', function () {
     // this array MUST have at least 5 items, items can repeat
     var videos = [
         {
-            title: "video 0",
-            url: "img/gallery/screenshot1.png",
-            videoSrc: "https://www.youtube.com/watch?v=L3wKzyIN1yk"
-        },
-        {   
             title: "video 1",
-            url: "img/gallery/screenshot2.png",
-            videoSrc: "https://www.youtube.com/watch?v=R_raXzIRgsA"
+            url: "img/gallery/screenshot1.png",
+            videoId: "XvoW-bwIeyY"
         },
         {   
             title: "video 2",
-            url: "img/gallery/screenshot3.png",
-            videoSrc: "https://www.youtube.com/watch?v=u9Dg-g7t2l4"
+            url: "img/gallery/screenshot2.png",
+            videoId: "6byRchYizJY"
         },
         {   
-            title: "video 3",
-            url: "img/gallery/screenshot4.png"
+            title: "video 1",
+            url: "img/gallery/screenshot1.png",
+            videoId: "XvoW-bwIeyY"
         },
         {   
-            title: "video 4",
-            url: "img/gallery/screenshot5.png"
+            title: "video 2",
+            url: "img/gallery/screenshot2.png",
+            videoId: "6byRchYizJY"
         },
         {   
-            title: "video 5",
-            url: "img/gallery/screenshot6.png"
+            title: "video 1",
+            url: "img/gallery/screenshot1.png",
+            videoId: "XvoW-bwIeyY"
         },
         {   
-            title: "video 6",
-            url: "img/gallery/screenshot7.png"
+            title: "video 2",
+            url: "img/gallery/screenshot2.png",
+            videoId: "6byRchYizJY"
         },
         {   
-            title: "video 7",
-            url: "img/gallery/screenshot8.png"
-        }                                                
+            title: "video 1",
+            url: "img/gallery/screenshot1.png",
+            videoId: "6byRchYizJY"
+        },
+        {   
+            title: "video 2",
+            url: "img/gallery/screenshot2.png",
+            videoId: "XvoW-bwIeyY"
+        }                                                          
     ];
 
     // everything will be based on what video is central 
@@ -69,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
     buttonForward.addEventListener("click", ()=> {
         console.log("button forward clicked");
 
-        // update video src based on data
-        document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";
+        // // update video src based on data
+        // document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";
 
         hideGalleryMediaControlButtons();
 
@@ -121,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
     buttonBack.addEventListener("click", ()=> {
         console.log("button back clicked");
 
-        // update video src based on data
-        document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";        
+        // // update video src based on data
+        // document.getElementById('gallery-player').src = "https://www.youtube.com/embed/XvoW-bwIeyY?rel=0&showinfo=0&enablejsapi=1";        
 
         hideGalleryMediaControlButtons();
 
@@ -215,7 +220,12 @@ document.addEventListener('DOMContentLoaded', function () {
             galleryBlock.style.backgroundSize = "cover";
         }); 
          
-        //showGalleryMediaControlButtons();
+        // update central gallery block video src
+        showGalleryMediaControlButtons();     
+
+        // update video src based on data, it should be associated with central element 
+        // with index 2
+        document.getElementById('gallery-player').src = `https://www.youtube.com/embed/${videos[2].videoId}?rel=0&showinfo=0&enablejsapi=1`;          
     }
 
     function hideGalleryMediaControlButtons(){
@@ -268,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         console.log(positions);
+          
     }
 
     function moveBack(){
@@ -285,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         console.log(positions);      
+           
     }    
 
 
