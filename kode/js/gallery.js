@@ -6,15 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var videos = [
         {
             title: "video 0",
-            url: "img/gallery/screenshot1.png"
+            url: "img/gallery/screenshot1.png",
+            videoSrc: "https://www.youtube.com/watch?v=L3wKzyIN1yk"
         },
         {   
             title: "video 1",
-            url: "img/gallery/screenshot2.png"
+            url: "img/gallery/screenshot2.png",
+            videoSrc: "https://www.youtube.com/watch?v=R_raXzIRgsA"
         },
         {   
             title: "video 2",
-            url: "img/gallery/screenshot3.png"
+            url: "img/gallery/screenshot3.png",
+            videoSrc: "https://www.youtube.com/watch?v=u9Dg-g7t2l4"
         },
         {   
             title: "video 3",
@@ -212,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
             galleryBlock.style.backgroundSize = "cover";
         }); 
          
-        showGalleryMediaControlButtons();
+        //showGalleryMediaControlButtons();
     }
 
     function hideGalleryMediaControlButtons(){
@@ -225,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }  
 
     function showGalleryMediaControlButtons(){
-        document.getElementById("gallery-loading-indicator").style.display = "flex";
+        document.getElementById("gallery-loading-indicator").style.display = "flex"; 
         //document.getElementById("gallery-play-button").style.display = "block";          
     }        
 
