@@ -159,10 +159,10 @@ $(function () {
             $(visibleBlock).css('transition', "all 0.8s ease 0s");
         });        
 
-        var navigationButtons = $('.navigation-button');
-        $.each(navigationButtons, function(index, button) {
-            $(button).css('pointer-events', "none");
-        });            
+        // var navigationButtons = $('.navigation-button');
+        // $.each(navigationButtons, function(index, button) {
+        //     $(button).css('pointer-events', "none");
+        // });            
     }
 
     // when animation finished we put gallery into default position and update it according to model
@@ -223,6 +223,7 @@ $(function () {
         $("#gallery-loading-indicator").css('display', "none");  
         $("#gallery-play-button").css('display', "none");  
         $("#gallery-player").css('display', "none");  
+        $(".navigation-block").css('display', "none");  
     }  
   
 
