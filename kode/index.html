@@ -10,7 +10,7 @@
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/gallery.js"></script>
+    <script type="text/javascript" src="js/gallery-jq.js"></script>
     <script type="text/javascript" src="js/softscroll.js"></script>
 
     <link href="css/main.css" rel="stylesheet" />
@@ -447,8 +447,8 @@
 
                     // 3. This function creates an <iframe> (and YouTube player)
                     //    after the API code downloads.
-                    var player;
-                    var galleryPlayer;
+                    var player; // this is intro video on top
+                    var galleryPlayer; // this is a player in the gallery
                     
                     function onYouTubeIframeAPIReady() {
 
@@ -469,46 +469,37 @@
 
                     function onGalleryPlayerReady(event) {
 
-                        var galleryLoadingIndicator = document.getElementById("gallery-loading-indicator");
-                        galleryLoadingIndicator.style.display = "none";
+                        $("#gallery-loading-indicator").css('display', "none");  
 
-                        var galleryPlayButton = document.getElementById("gallery-play-button");
-                        galleryPlayButton.style.display = "block";
-
-                        galleryPlayButton.addEventListener("click", function() {
+                        $("#gallery-play-button").css('display', "block"); 
+            
+                        $("#gallery-play-button").click(function (){
                             // hide play button
-                            galleryPlayButton.style.display = "none";
+                            $("#gallery-play-button").css('display', "none");  
                             // show player
-                            document.getElementById("gallery-player").style.display = "block";
+                            $("#gallery-player").css('display', "block");  
                             // start video
                             galleryPlayer.playVideo();
-                        });               
-
+                        });
                     }
 
                     // 4. The API will call this function when the video player is ready.
                     function onPlayerReady(event) {
-                        // event.target.playVideo();
 
-                        // bind events
-                        var playButton = document.getElementById("play-button");
-                        playButton.addEventListener("click", function() {
+                        $("#play-button").click(function (){
                             // hide play button
-                            playButton.style.display = "none";
+                            $("#play-button").css('display', "none");  
                             // show player
-                            document.getElementById("player").style.display = "block";
+                            $("#player").css('display', "block");  
                             // start video
                             player.playVideo();
-                        });
-
-                        var loadingIndicator = document.getElementById("loading-indicator");
+                        });                        
 
                         console.log("video loaded");
                         // hide loading button
-                        loadingIndicator.style.display = "none";
+                        $("#loading-indicator").css('display', "none"); 
                         // show play button
-                        playButton.style.display = "block";
-
+                        $("#play-button").css('display', "block"); 
                     }
 
                 </script>                                   
