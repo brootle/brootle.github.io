@@ -191,11 +191,11 @@ $(function () {
 
             // ALL TRANSITIONS will be returned to elements on next button click
 
-            // enable navigation buttons
-            var navigationButtons = $('.navigation-button');
-            $.each(navigationButtons, function(index, button) {
-                $(button).css('pointer-events', "all");  
-            });                      
+            // // enable navigation buttons
+            // var navigationButtons = $('.navigation-button');
+            // $.each(navigationButtons, function(index, button) {
+            //     $(button).css('pointer-events', "all");  
+            // });                      
 
             // now we must update VIEW based on new MODEL data
             updateGalleryView();
