@@ -270,15 +270,14 @@
                 <div class="tab">
                     <div class="tabs-container">
                         <span class="tablinks tablinks--active" data-tabcontent="formats">Formats</span>
-                        <span class="tablinks" data-tabcontent="codecs">Codecs</span>  
-                        <span class="tablinks" data-tabcontent="resolutions">Resolutions</span>  
+                        <span class="tablinks" data-tabcontent="codecs_resolutions">Codecs & Resolutions</span>  
                         <span class="tablinks" data-tabcontent="transfer">Transfer</span>  
                     </div>               
                 </div>  
 
                 <div id="formats" class="tabcontent tabcontent--active">
                     <div>
-                        <div class="tab-card tab-card--formats-tab1">
+                        <div class="tab-card">
                             <h3>OUTPUT FORMATS:</h3>
                             <ul>
                                 <li>HLS</li>
@@ -287,7 +286,7 @@
                                 <li>WebM</li>
                             </ul>                            
                         </div>   
-                        <div class="tab-card tab-card--formats-tab2">
+                        <div class="tab-card">
                             <h3>INPUT FORMATS:</h3>
                             <ul>
                                 <li>MPEG-4 (mp4, m4a, m4v, f4v, f4a, m4b, m4r, f4b, mov)</li>
@@ -300,21 +299,42 @@
                     </div>                     
                 </div>     
 
-                <div id="codecs" class="tabcontent">
+                <div id="codecs_resolutions" class="tabcontent">
 
                     <div>
-                        2
+                        <div class="tab-card">
+                            <h3>CODECS:</h3>
+                            <ul>
+                                <li>H.264 (AVC1)</li>
+                                <li>H.265 (HEVC)</li>
+                                <li>VP9</li>
+                                <li>VP8</li>
+                            </ul>                            
+                        </div>   
+                        <div class="tab-card">
+                            <h3>RESOLUTIONS:</h3>
+                            <div class="two-columns">
+                                <div>
+                                    <ul>
+                                        <li>240p</li>
+                                        <li>360p</li>
+                                        <li>480p</li>
+                                        <li>720p</li>
+                                    </ul>  
+                                </div> 
+                                <div>
+                                    <ul>
+                                        <li>1080p</li>
+                                        <li>2K</li>
+                                        <li>4K</li>
+                                        <li>8K</li>
+                                    </ul>     
+                                </div>                              
+                            </div>                         
+                        </div>    
                     </div>  
 
-                </div>       
-
-                <div id="resolutions" class="tabcontent">
-
-                    <div>
-                        3
-                    </div>  
-
-                </div>   
+                </div>        
 
                 <div id="transfer" class="tabcontent">
 
@@ -325,7 +345,7 @@
                 </div>                                   
 
                 <script>
-                    const tabLinks = document.querySelectorAll('.tablinks');
+                    var tabLinks = document.querySelectorAll('.tablinks');
 
                     tabLinks.forEach(link => link.addEventListener('click', switchTab));
 
@@ -337,13 +357,13 @@
                         $('.tabcontent--active').removeClass("tabcontent--active");
 
                         // find what tab link was clicked and show tab content with that ID
-                        const clickedLink = e.currentTarget;
+                        var clickedLink = e.currentTarget;
                         $(clickedLink).addClass('tablinks--active');
 
-                        const tabID = clickedLink.getAttribute("data-tabcontent");
+                        var tabID = clickedLink.getAttribute("data-tabcontent");
 
                         $(`#${tabID}`).addClass('tabcontent--active');
-                        const tabContent = document.querySelector(`#${tabID}`);
+                        var tabContent = document.querySelector(`#${tabID}`);
 
                     }                    
                 </script>                                            
@@ -373,7 +393,7 @@
                     <h3 class="text-green">Interested in becoming a miner?</h3>
                     <div>
                         <input type="email" placeholder="Enter your email">
-                        <a class="kode-button" href="https://cloud.qencode.com">SUBMIT</a>    
+                        <a class="kode-button">SUBMIT</a>    
                     </div>                
                 </div>
             </div>
@@ -467,6 +487,8 @@
                     }
 
                     function onGalleryPlayerReady(event) {
+
+                        // console.log(event);
 
                         $("#gallery-loading-indicator").css('display', "none");  
 
@@ -874,10 +896,26 @@
                 </p>
 
                 <div class="subscribe-form subsribe-bottom">
-                    <div>
+                    <div id="submit_subscription">
                         <input type="email" placeholder="Enter your email">
-                        <a class="kode-button" href="https://cloud.qencode.com">SUBMIT</a>    
-                    </div>                
+                        <a id="submit_subs_button" class="kode-button">SUBMIT</a>    
+                    </div>      
+                    <div id="submit_message">
+                        <div class="thank-you-message">
+                            <div class="submit-check-box"></div>
+                            <span>Thank you for your subscription!</span>
+                        </div>    
+                    </div>      
+
+                    <script>
+                        var submitButton = document.querySelector('#submit_subs_button');
+
+                        submitButton.addEventListener('click', () => {
+                            $('#submit_subscription').hide();
+                            $('#submit_message').show();
+                        });
+                    </script>                      
+
                 </div>
 
             </div>                

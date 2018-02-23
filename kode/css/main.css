@@ -357,7 +357,9 @@ a.kode-button{
     align-items: center;
     
     font-weight: bold;
-    font-size: 14px;    
+    font-size: 14px;   
+
+    cursor: pointer; 
 }
 
 .kode-button > img{
@@ -546,7 +548,6 @@ a.kode-button{
     text-align: center;
     box-sizing: border-box;
 
-    width: 850px;
     margin-top: 52px;
     margin-bottom: 24px;
 }
@@ -557,23 +558,37 @@ a.kode-button{
 
 .tabcontent > div{
     display: flex;
-    justify-content: space-between;
     width: 100%;    
     align-items: baseline;
+    justify-content: center;
 }
 
 .tab-card{
     background: #233052;
     border-radius: 6px;
     padding: 22px 28px;
+    padding-right: 40px;
     text-align: left;
     box-sizing: border-box;    
+}
+
+.tab-card + .tab-card{
+    margin-left: 60px;
+}
+
+.two-columns{
+    display: flex;
+}
+
+.two-columns > div:last-of-type{
+    margin-left: 50px;
 }
 
 .tab-card h3{
     margin: 0;
     font-size: 10px;
 }
+
 
 .tab-card ul {
     margin: 0;
@@ -600,14 +615,6 @@ a.kode-button{
     border-bottom: 2px solid #6ec656;
     border-left: 2px solid #6ec656;
     transform: rotate(-49deg);
-}
-
-.tab-card--formats-tab1{
-    width: 276px;
-}
-
-.tab-card--formats-tab2{
-    width: 457px;
 }
 
 .subscribe-container{
@@ -1161,6 +1168,25 @@ a.kode-button{
 
 .subscribe-form.subsribe-bottom input{
     background: #233052;    
+}
+
+#submit_message{
+    display: none;
+}
+
+.thank-you-message{
+    background: #35fa90;
+    color: #1e2541;
+    height: 54px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;    
+
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;    
 }
 
 footer{
