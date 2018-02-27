@@ -7,11 +7,6 @@ body{
     flex-direction: column;    
 }
 
-.container{
-    max-width: 1170px;
-    padding: 0 20px;    
-}
-
 .text-green{
     color: #02fa9a;
 }
@@ -28,8 +23,8 @@ a:hover, a:visited, a:active, a:link {
 nav {
     z-index: 99999;
 
-    padding-top: 35px;
-    padding-bottom: 25px;
+    padding-top: 30px;
+    padding-bottom: 20px;
     position: fixed;
     top: 0px;
     left: 0;
@@ -42,7 +37,8 @@ nav {
 
 .nav-wrap{
     box-sizing: border-box;
-
+    max-width: 960px;
+    padding: 0 16px;
     margin: 0 auto;
     position: relative; 
 
@@ -51,11 +47,11 @@ nav {
 }
 
 .kode-logo img{
-    height: 44px;
+    height: 35px;
 }
 
 .nav-items{
-    margin-left: 10px;
+    margin-left: 2vw;
     display: flex;
     align-items: center;
 }
@@ -63,24 +59,22 @@ nav {
 .nav-items a{
     color: #117694;
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-
-    line-height: 32px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 24px;
 
     display: inline-block;
     transition: all .3s ease;
     cursor: pointer;
-    margin-right: 23px;
-    margin-left: 23px;
-    border-bottom: 3px solid #1c2542;    
+    margin-right: 18px;
+    margin-left: 18px;
+    border-bottom: 2px solid #1c2542;    
 
-    border-bottom: 3px solid rgba(28, 37, 66, 0.0);    
+    border-bottom: 2px solid rgba(28, 37, 66, 0.0);    
 }
 
 .nav-items a:hover {
-    border-bottom: 3px solid #02fa9a;
+    border-bottom: 2px solid #02fa9a;
     color: #fdfdff;
 }
 
@@ -94,33 +88,34 @@ nav {
     font-family: "FontAwesome";
     position: absolute;
     right: 0;
-    top: -1px;
     transform: rotate(90deg);
-    font-size: 11px;
-    font-weight: normal;   
+    font-size: 10px;
+    font-weight: normal;    
 }
 
 header{
-    padding-top: 108px;
+    padding-top: 72px;
 }
 
 .header-logo{
-    height: 479px;
+    height: 415px;
     background: url(../img/globe.png) no-repeat center;
-    background-size: 1798px;
+    background-size: 1480px;
 }
 
 .social-icons{
-    padding: 0 20px;
-    margin: 18px 0;
+    padding: 0 16px;
+    margin-top: 5px;
+    margin-bottom: 5px; 
     text-align: center;    
 }
 
 .social-icon{
     display: inline-block;
-    margin: 2px 7px;
-    width: 26px;
-    height: 26px;
+    margin: 2px 5px;    
+
+    width: 22px;
+    height: 22px;
     background-image: url('../img/social_icons.png');
     background-size: 1800%;
 
@@ -217,26 +212,25 @@ header{
 }
 
 .header-description{
-    font-family: 'Roboto Slab', serif;
     padding: 0 16px;
-    margin: 23px auto;
+    margin: 19px auto;
     text-align: center;
-    font-size: 36px;
-    line-height: 48px;
+    font-size: 29px;
+    line-height: 38px;
     font-weight: bold;
-    width: 634px;
+    width: 525px;
 }
 
 .header-green-line-wrapper{
     max-width: 1px;
     margin: 0 auto;
-    margin-top: 47px;
-    margin-bottom: 0px;   
+    margin-top: 39px;
+    margin-bottom: 0px;    
 }
 
 .header-green-line{
-    border-left: 2px solid #02fa9a;
-    height: 21px;
+    border-left: 1px solid #02fa9a;
+    height: 17px;
 }
 
 main{
@@ -246,21 +240,20 @@ main{
 .blue-line-wrapper{
     max-width: 1px;
     margin: 0 auto;
-    margin-top: 14px;
-    margin-bottom: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .blue-line{
-    border-left: 2px solid #28345c;
-    height: 168px;
+    border-left: 1px solid #28345c;
+    height: 137px;
 }
 
 .video-container{
-    margin: 32px auto;
+    margin: 19px auto;
     text-align: center;
-
-    width: 848px;
-    height: 477px;
+    width: 692px;
+    height: 389px;
 
     background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;
     background-size: cover; 
@@ -279,8 +272,8 @@ main{
 .loading-indicator-container{
     background: rgba(24, 107, 138, 0.32);
     border-radius: 50%;
-    width: 228px;
-    height: 228px;    
+    width: 170px;
+    height: 170px;    
     display: flex;
     align-items: center;
     justify-content: center;    
@@ -291,8 +284,8 @@ main{
     border: 8px solid rgba(47, 208, 125, 0.39);
     border-radius: 50%;
     border-top: 8px solid rgb(47, 208, 125);
-    width: 152px;
-    height: 152px;
+    width: 100px;
+    height: 100px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
     box-sizing: border-box;
@@ -311,10 +304,10 @@ main{
 
 .play-button{
     display: none;
-    width: 228px;
-    height: 228px;
+    width: 170px;
+    height: 170px;
     background: url(../img/play.png) no-repeat center;
-    background-size: 228px;
+    background-size: 170px;
     box-sizing: border-box; 
     cursor: pointer;
 
@@ -336,39 +329,42 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 23px 29px;
+    padding: 16px 24px;
     margin: 44px auto;
     margin-bottom: 30px;
     text-align: center;
-    width: 831px;
-    border: 2px solid #28345c;
+    width: 674px;
+    border: 1px solid #28345c;
     box-sizing: border-box;
 }
 
 .visit-qencode > span{
-    font-family: 'Roboto Slab', serif;
+    width: 360px;
     text-align: left;
-    font-size: 24px;
-    line-height: 34px;
+    font-size: 19px;
+    line-height: 28px;
     font-weight: bold;
 }
 
 a.kode-button{
     background: #35fa90;
     color: #1e2541;
-    width: 473px;
-    height: 56px;
+    width: 244px;
+    height: 44px;
+
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    
     font-weight: bold;
-    font-size: 17px;
-    cursor: pointer;
+    font-size: 14px;   
+
+    cursor: pointer; 
 }
 
 .kode-button > img{
-    width: 124px;
-    margin-left: 14px;
+    width: 100px;  
+    margin-left: 10px;  
 }
 
 .description{
@@ -379,31 +375,29 @@ a.kode-button{
 }
 
 .description--narrow{
-    width: 841px;
+    width: 700px;
 }
 
 .description--wide{
-    width: 1042px;
+    width: 860px;
 }
 
 .kode-paragraph{
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 24px;
     margin: 0;
     margin-bottom: 30px;
 }
 
 .kode-h1{
-    font-family: 'Roboto Slab', serif;
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 33px;
-    margin-top: 33px;
+    font-size: 30px;
+    margin-bottom: 26px;
+    margin-top: 26px;
 }
 
 .more-info{
-    width: 1097px;
+    width: 890px;
     padding: 0 24px;
     margin: 0 auto;
     margin-bottom: 21px;
@@ -421,7 +415,7 @@ a.kode-button{
 }
 
 .more-info.more-info--4columns{
-    width: 1162px;
+    width: 956px;
 }
 
 .more-info--4columns > .more-info__details{
@@ -432,16 +426,16 @@ a.kode-button{
 }
 
 .details-image{
-    width: 258px;
-    height: 295px;  
+    width: 210px;
+    height: 240px;    
 
     background-image: url(../img/sprites.png);
     background-size: 730%;
 }
 
 .more-info--4columns .details-image{
-    width: 127px;
-    height: 144px;
+    width: 101px;
+    height: 122px;
 }
 
 .details-image--problem-1{  
@@ -493,23 +487,21 @@ a.kode-button{
 
 .details-text{
     text-align: left;
-    padding-left: 26px;
+    width: 223px;   
 }
 
 .more-info--4columns .details-text {
-    /*width: 180px;*/
-    padding: 0;
+    width: 180px;
 }
 
 .kode-h2{
-    font-family: 'Roboto Slab', serif;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 14px;
-    margin-top: 26px;
+    margin-top: 18px;
 }
 
 .tabs-block{
-    margin-top: 57px;
+    margin-top: 48px;
 }
 
 .tab {
@@ -526,21 +518,20 @@ a.kode-button{
 }
 
 .tablinks {
-    font-family: 'Roboto Slab', serif;
-    line-height: 62px;
+    line-height: 47px;
     display: inline-block;
     box-sizing: border-box;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 3px solid #1c2542;
+    font-size: 19px;
+    font-weight: 600;
+    border-bottom: 2px solid #1c2542;
     padding-right: 5px;
     padding-left: 5px;
 }
 
 .tablinks--active {
-    border-bottom: 3px solid #02fa9a;
+    border-bottom: 2px solid #02fa9a;
 }
 
 .tablinks + .tablinks {
@@ -557,8 +548,8 @@ a.kode-button{
     text-align: center;
     box-sizing: border-box;
 
-    margin-top: 61px;
-    margin-bottom: 61px;
+    margin-top: 52px;
+    margin-bottom: 24px;
 }
 
 .tabcontent--active {
@@ -575,10 +566,10 @@ a.kode-button{
 .tab-card{
     background: #233052;
     border-radius: 6px;
-    padding: 24px 38px;
+    padding: 22px 28px;
     padding-right: 40px;
     text-align: left;
-    box-sizing: border-box;  
+    box-sizing: border-box;    
 }
 
 .tab-card + .tab-card{
@@ -590,24 +581,22 @@ a.kode-button{
 }
 
 .two-columns > div:last-of-type{
-    margin-left: 72px;
+    margin-left: 50px;
 }
 
 .tab-card h3{
-    font-family: 'Roboto Slab', serif;
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 
 .tab-card ul {
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     margin-top: 13px;
-    padding-left: 32px;
+    padding-left: 28px;
     list-style-type: none;
-    font-size: 18px;
-    line-height: 36px;
+    font-size: 15px;
+    line-height: 28px;
 }
 
 .tab-card li {
@@ -619,33 +608,37 @@ a.kode-button{
     display: inline-block;
     box-sizing: border-box;
     position: absolute;
-    left: -29px;
-    top: 12px;
-    height: 8px;
-    width: 14px;
-    border-bottom: 3px solid #6ec656;
-    border-left: 3px solid #6ec656;
-    transform: rotate(-46deg);
+    left: -24px;
+    top: 9px;
+    height: 6px;
+    width: 10px;
+    border-bottom: 2px solid #6ec656;
+    border-left: 2px solid #6ec656;
+    transform: rotate(-49deg);
 }
 
 .subscribe-container{
     margin: 0px auto;
-    margin-bottom: 58px;
-    width: 914px;
-    height: 214px;
-    box-sizing: border-box;
+    margin-bottom: 51px;
+    width: 743px;
+    height: 168px;
+    box-sizing: border-box;  
+
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: flex-end;    
+
     position: relative;
 }
 
 .k-logo{
     position: absolute;
-    width: 123px;
-    height: 83px;
+
+    width: 105px;
+    height: 60px;
     top: 0px;
     left: 0;
+
     background-image: url(../img/sprites.png);
     background-size: 1456%;
     background-position: 19.5% 39.8%;
@@ -653,92 +646,88 @@ a.kode-button{
 
 .subscribe-form{
     z-index: 1;
-    width: 810px;
-    padding: 29px 35px;
-    padding-top: 24px;
+    width: 659px;
+    padding: 23px 28px;
+    padding-top: 17px;
     box-sizing: border-box;
     background: #233052;
-    border-radius: 29px;
+    border-radius: 24px;
 }
 
 .subscribe-form > div{
     display: flex;
-    align-items: center;
 }
 
 .subscribe-form input{
-    font-family: 'Roboto', sans-serif;
-    height: 59px;
+    height: 44px;
     margin: 0;
     padding: 0;
-    border: 0;
+    border: 0;    
     flex-grow: 1;
     background: #1c2542;
+
     padding: 12px 23px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
-    outline: 0;   
+
+    outline: 0;    
 }
 
 .subscribe-form a.kode-button{
-    width: 245px;
-    margin-left: 12px;   
+    width: 198px;
+    margin-left: 9px;    
 }
 
 .subscribe-form h3{
-    font-family: 'Roboto Slab', serif;
     margin: 0;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 19px;
+    margin-bottom: 20px;    
 }
 
 
 .whitepaper-and-info{
-    width: 645px;
-    margin: 53px auto;
+    width: 522px;
+    margin: 43px auto;
     box-sizing: border-box;
-    display: flex;
+    display: flex;    
     align-items: center;
 }
 
 .download-container{
     display: flex;
     align-items: center;
-    width: 434px;
-    height: 124px;
+    width: 352px;
+    height: 102px;
     box-sizing: border-box;
     justify-content: space-between;
-    padding: 0 40px;
-    border: 2px solid #28345c;
+    padding: 0 34px;
+    border: 1px solid #28345c; 
 }
 
 .whitepaper-icon{
-    height: 82px;
-    width: 61px;
+    height: 71px;
+    width: 51px;
     background-image: url(../img/sprites.png);
     background-size: 3008%;
     background-position: 2.2% 39.8%;
 }
 
 .download-container a.kode-button{
-    width: 245px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 900;
+    width: 197px;
+    font-size: 12px;    
 }
 
 .more-links{
-    margin-left: 40px;
+    margin-left: 32px;    
 }
 
 .more-links ul{
-    font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding-left: 22px;
+    padding-left: 21px;
     list-style-type: none;
-    font-size: 18px;
-    line-height: 35px;
+    font-size: 15px;
+    line-height: 28px;  
 }
 
 .more-links li {
@@ -748,22 +737,26 @@ a.kode-button{
 .more-links li::before {
     content: "\f0da";
     font-family: "FontAwesome";
+
     color: #02fa9a;
+
     display: inline-block;
     box-sizing: border-box;
     position: absolute;
-    left: -20px;
-    font-size: 18px;
+    left: -18px;
+    font-size: 15px;
 }
 
 .gallery{
     overflow: hidden;
-    width: 1280px;
-    margin: 65px auto;
+    width: 1200px;
+    margin: 50px auto; 
     display: flex;
-    justify-content: center;
-    position: relative;
-    height: 355px;
+    justify-content: center;  
+    position: relative;  
+
+    height: 290px;
+
     align-items: center;
 }
 
@@ -775,7 +768,7 @@ a.kode-button{
     position: absolute;
     z-index: 0;  
 
-    height: 355px;
+    height: 290px;
 
     transition: all 0.8s ease 0s;    
 }
@@ -783,8 +776,8 @@ a.kode-button{
 /*background: linear-gradient(rgba(20,55,113,.5), rgba(20,55,113,.5)), url(../img/video_thumbnail.png) no-repeat center;*/
 /*background-size: cover;      */
 .gallery__central-block{
-    width: 632px;
-    height: 355px;
+    width: 516px;
+    height: 290px;
     margin: 0 22.5px;
     background-size: cover; 
     transition: all 0.8s ease 0s;
@@ -800,21 +793,21 @@ a.kode-button{
 }
 
 .gallery-video > iframe{
-    width: 632px;
-    height: 355px;
+    width: 516px;
+    height: 290px;
     display: none;
 }
 
 .gallery-video > .play-button{
-    width: 150px;
-    height: 150px;
-    background-size: 150px; 
+    width: 120px;
+    height: 120px;
+    background-size: 120px;    
 }
 
 .gallery-video > .loading-indicator-container{
-    width: 116px;
-    height: 116px;
-    background-size: 116px;    
+    width: 86px;
+    height: 86px;
+    background-size: 86px;    
 }
 
 .gallery-video > .loading-indicator-container > .loading-indicator {
@@ -828,9 +821,9 @@ a.kode-button{
 /*background-size: cover;*/
 .gallery__side-block{
     margin: 0 22.5px;
-    width: 430px;
-    height: 270px;  
-    background-size: contain; 
+    width: 340px;
+    height: 220px;  
+    background-size: cover; 
     transition: all 0.8s ease 0s;
 }
 
@@ -865,15 +858,15 @@ a.kode-button{
 }
 
 .navigation-button{
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .navigation-block{
     position: absolute;
-    width: 1140px;
+    width: 920px;
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -897,16 +890,16 @@ a.kode-button{
 
 
 .member-photo{
-    width: 170px;
-    height: 170px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    align-self: flex-start;
-    margin-top: 24px;
-    margin-bottom: 14px;  
+    align-self: flex-start;    
+    margin-top: 16px;
+    margin-bottom: 6px;    
 }
 
 .more-info--team .more-info__details {
-    width: 25%;
+    width: 24%;
     padding-left: 32px;
 }
 
@@ -916,26 +909,25 @@ a.kode-button{
 
 .title-with-link{
     display: flex;
-    align-items: center;
+    align-items: center;    
     margin-top: 23px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;    
 }
 
 .title-with-link a{
     display: inline-block;
-    width: 23px;
-    height: 23px;
-    margin-left: 15px;
+    width: 18px;
+    height: 18px;
+    margin-left: 7px;
+    margin-bottom: 1px;
     background-image: url(../img/sprites.png);
     background-size: 7744%;
     background-position: 16.5% 45.7%;
 }
 
 .more-info--team .kode-h2 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
-    font-weight: 500;
 }
 
 
@@ -944,24 +936,21 @@ a.kode-button{
 }
 
 .position-title{
-    font-family: 'Roboto', sans-serif;
     margin: 0;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: bold;
+    font-size: 12px;
     text-transform: uppercase;
-    line-height: 22px;
+    line-height: 17px;
     margin-top: 8px;
     margin-bottom: 10px;    
 }
 
 .more-info--team ul{
     margin: 0;
-    margin-top: 13px;
-    padding-left: 11px;
+    padding-left: 9px;
     list-style-type: none;
-    font-size: 16px;
-    line-height: 27px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 22px;
 }
 
 .more-info--team li {
@@ -987,16 +976,12 @@ a.kode-button{
 }
 
 .more-info--team-advisors .more-info__details:last-of-type {
-    padding-left: 93px;
+    padding-left: 77px;
 }
 
 .more-info--token-terms{
-    width: 880px;
+    width: 685px;    
     margin-bottom: 45px;
-}
-
-.more-info--token-terms .kode-h2{
-    margin-bottom: 20px;
 }
 
 .more-info--token-terms .more-info__details {
@@ -1006,29 +991,27 @@ a.kode-button{
 
 .more-info--token-terms ul{
     margin: 0;
-    margin-top: 29px;
-    margin-bottom: 18px;
+    margin-top: 32px;
     padding-left: 0;
     list-style-type: none;
-    font-size: 18px;
-    line-height: 36px;
+    font-size: 15px;
+    line-height: 28px;    
     text-align: left;
-    font-family: 'Roboto', sans-serif;
 }
 
 .details-image--token-1 {
-    background-position: 42.7% 51.5%;
+    background-position: 41.7% 51.5%;
     background-size: 706%;
 }
 
 .details-image--token-2 {
-    background-position: 66.7% 50.5%;
+    background-position: 65.7% 51.5%;
     background-size: 706%;
 }
 
 .phase{
-    width: 1138px;
-    padding: 0 20px;
+    width: 950px;
+    padding: 0 24px;
     margin: 0 auto;
     text-align: center;
     box-sizing: border-box;
@@ -1043,9 +1026,9 @@ a.kode-button{
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    height: 40px;
-    width: 40px;
-    top: 56px;
+    height: 35px;
+    width: 35px;
+    top: 47px;
     background-image: url(../img/sprites.png);
     background-size: 4484%;
     background-position: 2.1% 45.6%;
@@ -1058,7 +1041,7 @@ a.kode-button{
 }
 
 .phase-name{
-    padding-left: 158px;
+    padding-left: 134px;
 }
 
 .phase .blue-line-wrapper{
@@ -1072,7 +1055,7 @@ a.kode-button{
 
 .phase .blue-line.green-arrow {
     border: 0;
-    width: 2px;
+    width: 1px;
     background: #36fa8f;
 
     background: linear-gradient(to bottom , rgba(28, 37, 66, 0), #36fa8f);   
@@ -1087,42 +1070,39 @@ a.kode-button{
     position: absolute;
     left: -5px;
     bottom: 0;
-    height: 12px;
-    width: 12px;
-    border-bottom: 3px solid #36fa8f;
-    border-left: 3px solid #36fa8f;
+    height: 11px;
+    width: 11px;
+    border-bottom: 2px solid #36fa8f;
+    border-left: 2px solid #36fa8f;
     transform: rotate(-45deg);
 }
 
 .blue-line-wrapper.short-line .blue-line.transparent-end {
-    height: 120px;
+    height: 100px;
     border: 0;
-    width: 2px;
-    background: #28345c;
+    width: 1px;
+    background: #28345c;;
     background: linear-gradient(to bottom , #28345c, rgba(28, 37, 66, 0));
 }
 
 .phase-name h2{
-    font-family: 'Roboto', sans-serif;
     margin: 0;
-    margin-top: 31px;
-    font-size: 18px;  
+    margin-top: 28px;
+    font-size: 14px;    
 }
 
 .phase-name h1{
-    font-family: 'Roboto Slab', serif;
-    font-weight: bold;
     margin: 0;
-    font-size: 30px;
-    margin-top: -1px; 
+    font-size: 24px;
+    margin-top: 4px;    
 }
 
 .phase-timeline{
-    margin-top: 38px;  
+    margin-top: 34px;    
 }
 
 .phase-item{
-    padding-left: 75px;
+    padding-left: 60px;    
     position: relative;
 }
 
@@ -1131,28 +1111,25 @@ a.kode-button{
     display: inline-block;
     box-sizing: border-box;
     position: absolute;
-    left: 38px;
-    top: 6px;
-    height: 8px;
-    width: 13px;
-    border-bottom: 3px solid #117694;
-    border-left: 3px solid #117694;
-    transform: rotate(-46deg);
+    left: 31px;
+    top: 4px;
+    height: 6px;
+    width: 10px;
+    border-bottom: 2px solid #117694;
+    border-left: 2px solid #117694;
+    transform: rotate(-49deg);
 }
 
 .phase-item h3{
-    font-family: 'Roboto Slab', serif;
-    font-weight: bold;
     margin: 0;
-    font-size: 18px;
-    margin-top: 24px;
+    font-size: 14px;
+    margin-top: 22px;    
 }
 
 .phase-item p{
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     margin-top: 8px;
-    font-size: 18px;   
+    font-size: 15px;    
 }
 
 .blue-line-wrapper.short-line {
@@ -1161,7 +1138,7 @@ a.kode-button{
 }
 
 .blue-line-wrapper.short-line .blue-line {
-    height: 38px;
+    height: 25px;
 }
 
 .phase-name h1.future-work{
@@ -1169,21 +1146,21 @@ a.kode-button{
 }
 
 .email-image{
-    width: 599px;
-    height: 219px;
+    width: 496px;
+    height: 213px;
     padding: 0 24px;
     margin: 0 auto;
     text-align: center;
     box-sizing: border-box;
-    margin-top: -3px;
+    margin-top: -26px;
     margin-bottom: -52px;
     background-image: url(../img/sprites.png);
     background-position: -4.5% 53%;
-    background-size: 310%;
+    background-size: 310%;  
 }
 
 .subscribe-form.subsribe-bottom{
-    width: 748px;
+    width: 607px;
     margin: 0 auto;
     padding: 0;
     background: none;    
@@ -1198,28 +1175,18 @@ a.kode-button{
 }
 
 .thank-you-message{
-    font-family: 'Roboto Slab', serif;
     background: #35fa90;
     color: #1e2541;
-    height: 66px;
+    height: 54px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 18px;
-    width: 100%;
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;  
-}
+    font-size: 14px;
+    width: 100%;    
 
-.submit-check-box{
-width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 13px;
-    background-image: url(../img/sprites.png);
-    background-size: 3680%;
-    background-position: 25.2% 39.8%;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;    
 }
 
 footer{
@@ -1228,8 +1195,9 @@ footer{
 
 .copyright{
     padding: 0 16px;
-    margin-top: 32px;
+    margin-top: 22px;
     margin-bottom: 15px;
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: bold;  
 }
