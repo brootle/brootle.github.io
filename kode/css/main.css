@@ -61,8 +61,7 @@ nav {
 }
 
 .nav-items a{
-    color: #117694;
-
+  
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 700;
@@ -77,27 +76,75 @@ nav {
     border-bottom: 3px solid #1c2542;    
 
     border-bottom: 3px solid rgba(28, 37, 66, 0.0);    
+
+    color: #117694;  
+
+    position: relative;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(
+            to right,
+            white,
+            white 50%,
+            #117694 50%);
+            background-size: 200% 100%;
+            background-position: 100%;    
+
 }
 
+
 .nav-items a:hover {
-    border-bottom: 3px solid #02fa9a;
-    color: #fdfdff;
+    /*border-bottom: 3px solid #02fa9a;
+    color: #fdfdff;*/
+    background-position: 0%;    
+}
+
+.nav-items a:before{
+  content: '';
+  position: absolute;
+  width: 0; height: 3px;
+  display: block;
+  margin-top: 5px;
+  left: 0;
+  bottom: -3px;
+  background: #02fa9a;
+  transition: width .3s ease;
+}
+
+.nav-items a:hover:before{
+  width: 100%;
+
+  background: #02fa9a;
 }
 
 .dropdown-menu{
     position: relative;
-    padding-right: 15px;    
+    padding-right: 15px;     
 }
 
 .dropdown-menu:after {
-    content: "\f054";
+    content: "\f078";
     font-family: "FontAwesome";
     position: absolute;
     right: 0;
     top: -1px;
-    transform: rotate(90deg);
     font-size: 11px;
-    font-weight: normal;   
+    font-weight: normal;     
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(
+            to right,
+            white,
+            white 50%,
+            #117694 50%);
+            background-size: 200% 100%;
+            background-position: 100%; 
+}
+
+.nav-items a:hover:after{
+    background-position: 0%;               
 }
 
 header{
