@@ -2,8 +2,25 @@
     color: #877ce2;
 }
 
+.text-white{
+    color: #fbfcfe;
+}
+
+.text-green{
+    color: #54edeb;
+}
+
 .bg-purple{
     background: #877ce2;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none;
+    box-shadow:none;
+}
+
+.btn{
+    transition: all 0s;    
 }
 
 .btn--bounty{
@@ -11,15 +28,53 @@
     border-color: #877ce2;
     background: none;
     border-radius: 0;
+    font-size: 13px;
 }
 
 .btn--bounty:hover{
-    color: rgba(255,255,255,.75);
-    background: #877ce2;
+    color: #01d7b3;
+    border-color: #01d7b3;
+}
+
+.btn-header{
+    color: #fbfcfe;
+    border-color: #fbfcfe;
+    background: none;
+    border-radius: 0;
+    font-size: 14px;
+    padding: .6rem 1.2rem;
+}
+
+.btn-header:hover{
+    color: #01d7b3;
+    border-color: #01d7b3;
 }
 
 nav{
     background: rgba(26, 29, 46, 0.89);   
+    transition: all 0.4s ease-in-out ;
+    padding-top: 0;
+    padding-bottom: 0;      
+}
+
+.navbar{
+    padding-top: 0;
+    padding-bottom: 0;      
+}   
+
+.navbar-brand__logo{
+    width: 141px;
+    height:auto;
+    transition: all 0.4s ease-in-out ;
+}
+
+.nav-scrolled-down{
+    background: rgba(26, 29, 46, 1);   
+}
+
+.shrink 
+{
+   width:105px;
 }
 
 .nav-link {
@@ -44,16 +99,33 @@ nav{
     background-position: 0% 0;
 }
 
+.social-icon--telegram:hover {
+    background-position: 0% 97%;
+}
+
 .social-icon--twitter{
     background-position: 34% 0;
 }
+
+.social-icon--twitter:hover{
+    background-position: 34% 97%;
+}
+
 
 .social-icon--facebook{
     background-position: 66% 0;
 }
 
+.social-icon--facebook:hover{
+    background-position: 66% 97%;
+}
+
 .social-icon--bitcoin{
     background-position: 100% 0;
+}
+
+.social-icon--bitcoin:hover{
+    background-position: 100% 97%;
 }
 
 
@@ -63,6 +135,38 @@ nav{
 
 .dropdown-menu {
     min-width: 0;
+
+    background: rgba(47, 51, 78, 0.84);   
+    border: 1px solid #52565f;
+    border-radius: .1rem;
+    padding: 1rem 0;
+    margin: .6rem 0 0;
+
+    -webkit-box-shadow: 1px 1px 6px 1px rgba(26, 29, 46, 0.58);
+    box-shadow: 1px 1px 6px 1px rgba(26, 29, 46, 0.58);
+}
+
+.dropdown-item{
+    color: rgba(255,255,255,.5);
+    padding: .3rem 1rem;
+    font-size: 15px;
+
+    display: flex;
+    align-items: baseline;    
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    color: #15b599;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #f4f6f5; 
+    background-color: rgba(50, 165, 166, 0.7);
+}
+
+.flag-selector{
+    display: flex;
+    align-items: center;    
 }
 
 .flag{
@@ -71,19 +175,10 @@ nav{
 
     display: inline-block;
 
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: 12px;   
-
-    left: 0px;
-
     background-image: url(../img/flags.png);
     background-repeat: no-repeat;  
-}
 
-.nav-link.flag-selector {
-    padding-left: 25px;
+    margin-right: 6px;    
 }
 
 .flag--us{
@@ -91,24 +186,117 @@ nav{
     background-position: -5241px 0px;  
 }
 
-.btn {
-    font-size: 13px;
+.flag--de{
+    height: 12px;
+    background-position: -1269px 0px;
 }
+
+.flag--fr{
+    height: 14px;
+    background-position: -1731px 0px;
+}
+
+.flag--ru{
+    height: 14px;
+    background-position: -4295px 0px;
+}
+
+.flag--cn {
+    height: 14px;
+    background-position: -1049px 0px;
+}
+
 
 header{
     width: 100%;
-    height: 580px;    
+    /*height: 580px;    */
     position: relative; 
+    top: -100px;
 }
 
 .header-content{
-    padding-top: 100px;
+    padding-top: 173px;
+    padding-bottom: 70px;
+    text-align: center;
 }
 
 #canvas-container > canvas {
     position: absolute;
     top: 0;
     z-index: -1;
+}
+
+.header-title{
+    margin-top: 2rem;
+    font-size: 37px;    
+}
+
+.header-description{
+    margin-top: 0.9rem;
+    font-size: 21px;    
+}
+
+.header-buttons{
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+    display: flex;
+    justify-content: center;    
+}
+
+.btn-header{
+    color: #fbfcfe;
+    border-color: #fbfcfe;
+    background: none;
+    border-radius: 0;
+    font-size: 13px;
+    padding: .4rem 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.btn-header:hover{
+    color: #01d7b3;
+    border-color: #01d7b3;
+}
+
+.header-btn-icon{
+    height: 29px;
+    width: 22px;
+    margin-right: 8px;
+    background-image: url(../img/header_buttons_icons.png);
+    /*background-size: 348%; */
+    background-size: 80px 68px; 
+}
+
+.header-btn-icon--white-paper{
+    background-position: 0px 0px;
+}
+
+.header-btn-icon--one-pager{
+    background-position: 56px -2px;
+}
+
+.header-btn-icon--presentation{
+    background-position: 36px -1px;
+    width: 35px;
+}
+
+.btn-header:hover .header-btn-icon--white-paper{
+    background-position: 0px 34px;
+}
+
+.btn-header:hover .header-btn-icon--one-pager{
+    background-position: 56px 32px;
+}
+
+.btn-header:hover .header-btn-icon--presentation{
+    background-position: 35px 33px;
+}
+
+.header-social-buttons .social-icon {
+    width: 27px;
+    height: 27px;
+    margin: 0 .1rem;
 }
 
 @media (min-width: 1200px){
@@ -118,13 +306,15 @@ header{
 }
 
 @media (min-width: 992px){
-    .nav-link.flag-selector {
-        padding-left: 25px !important;
-    }
 
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: .7rem;
         padding-left: .7rem;
+    }    
+
+    .navbar{
+        padding-top: 0;
+        padding-bottom: 0;      
     }    
 }
 

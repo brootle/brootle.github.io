@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded with JavaScript');
 
         //https://codepen.io/shakdaniel/pen/JoKOQx
- 
 
         var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
         var container = document.getElementById('canvas-container');
