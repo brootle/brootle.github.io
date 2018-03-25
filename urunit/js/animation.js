@@ -26,6 +26,11 @@ $(function () {
 
     setTimeout(function() {
         $(".header-social-buttons").addClass("active");
-    }, 2000);         
+    }, 2000);    
+
+    setTimeout(function() {
+        $(".pre-sale-countdown").addClass("active");
+    }, 2400);              
+
 
 });
