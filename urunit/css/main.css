@@ -299,18 +299,35 @@ header{
     margin: 0 .1rem;
 }
 
-.slide-in {
+.slide-in-up {
     transform: translateY(10%) scale(0.90);
-}
-
-.slide-in {
     opacity: 0;
-    transition: all 0.4s;
+    transition: all 0.4s;    
 }
 
-.slide-in.active {
+.slide-in-up.active {
     opacity: 1;
     transform: translateY(0%) scale(1);
+}
+
+.slide-in-from-left {
+    transform: translateX(40%);
+    opacity: 0;
+    transition: all 0.4s;    
+}
+
+.slide-in-from-left.active {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.show-up {
+    opacity: 0;
+    transition: all 0.4s;    
+}
+
+.show-up.active {
+    opacity: 1;
 }
 
 @media (min-width: 1200px){
