@@ -184,7 +184,7 @@
 
     <main>
         
-        <section class="section--video container">            
+        <section class="section--video">            
             <div class="video-text-and-button">
                 <p class="video-message text-black">
                     Want to know why <strong>U Run It</strong> is so special and how <br>
@@ -201,6 +201,21 @@
                 </svg>           
                 <p class="play-btn-text text-green">WATCH OVERVIEW</p>
             </div>
+            <div class="video-container">
+                <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/Gc2en3nHxA4?rel=0" frameborder="0" allowfullscreen></iframe>                
+            </div>
+
+            <script>
+                // on button click show video container with video and start playing
+                $("#play-video-btn").click(function (){
+                    // hide play button
+                    $(".video-text-and-button").css('display', "none");  
+                    // show player
+                    $(".video-container").css('display', "block");  
+                    // start video
+                    $("#video")[0].src += "&autoplay=1";
+                });                
+            </script>
         </section>    
      
         <section>            
