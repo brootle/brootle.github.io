@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //https://codepen.io/shakdaniel/pen/JoKOQx
 
+        var SHIFTUP = 100;
+
         var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
         var container = document.getElementById('canvas-container');
         // var w = container.offsetWidth;
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             renderer = new THREE.CanvasRenderer();            
             renderer.setPixelRatio( window.devicePixelRatio );
             // renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.setSize(container.offsetWidth, container.offsetHeight);            
+            renderer.setSize(container.offsetWidth, container.offsetHeight + SHIFTUP);            
             container.appendChild( renderer.domElement );
 
             document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -69,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // camera.updateProjectionMatrix();
             // renderer.setSize( window.innerWidth, window.innerHeight );
 
-            renderer.setSize(container.offsetWidth, container.offsetHeight);   
+            renderer.setSize(container.offsetWidth, container.offsetHeight + SHIFTUP);   
 
-            camera.aspect = container.offsetWidth / container.offsetHeight;
+            camera.aspect = container.offsetWidth / (container.offsetHeight + SHIFTUP);
             camera.updateProjectionMatrix();                         
         }
         //
