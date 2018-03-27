@@ -1,0 +1,39 @@
+// this is just example how mocha can be used for testing
+
+const assert = require('assert');
+
+// making a class just for testing
+class Car {
+    park(){
+        return 'stop'
+    }
+
+    drive(){
+        return 'vroom'
+    }
+}
+
+// we declare this variable globally so we can use it inside mocha functions
+let car;
+
+// this mocha function will be run before any test
+// it can be used to initialize some common code used by different tests
+// this will be executed everytime before 'it'
+beforeEach(() => {
+    // make an instance of Car class for testing
+    car = new Car();
+});
+
+// now let's test it, 1st arg is description and second is a function
+describe('Car Class', () => {
+    // now we write a test for certain functions
+    it('car can park', () => {
+        // make assertion that the result of our function will be equal to some value
+        assert.equal(car.park(), 'stop');
+    });
+
+    it('car can drive', () => {
+        // make assertion that the result of our function will be equal to some value
+        assert.equal(car.drive(), 'vroom');
+    });    
+});

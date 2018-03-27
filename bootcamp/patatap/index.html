@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+	<title>Patatap</title>
+    <script type="text/javascript" src="paper-full.js"></script>
+
+    <script type="text/paperscript" canvas="myCanvas">
+    
+        var circle;
+        var radius = 500;
+        var fillColor = 'purple';
+        var startX = 20;
+        var startY = 20;
+        var interval = 40;
+        var columns = 10;
+        var rows = 10;
+
+        // draw a grid of circles
+        // for(var i = 0; i < columns; i++){
+  
+        //     for(var j = 0; j < rows; j++){
+        //         console.log(i,j);
+        //         circle = new Path.Circle(new Point(startX+(j*(radius+interval)), startY+(i*(radius+interval))), radius);
+        //         circle.fillColor = fillColor;      
+        //     }
+            
+        // }       
+
+        var circles = [];
+
+        function onKeyDown(event) {
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            
+            var newCircle = new Path.Circle(point, radius);
+            newCircle.fillColor = fillColor;
+
+            circles.push(newCircle);
+        }        
+
+        // var animatedCircle = new Path.Circle(new Point(200,200), radius);
+        // animatedCircle.fillColor = fillColor;   
+
+        function onFrame(event) {
+            for(var i = 0; i < circles.length; i++){
+                circles[i].fillColor.hue += 1;
+                circles[i].scale(0.9);
+            }
+
+            // animatedCircle.fillColor.hue += 1;
+            // animatedCircle.scale(0.9);
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+    <canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
