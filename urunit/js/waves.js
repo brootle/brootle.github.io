@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var camera, scene, renderer;
         var particles, particle, count = 0;
 
-        // var mouseX = 0, mouseY = 0;
-        var mouseX,
-            mouseY;    
+        var mouseX = 0, mouseY = -200;
+        // var mouseX,
+        //     mouseY;    
 
         var windowHalfX = window.innerWidth / 2;
         var windowHalfY = window.innerHeight / 2;      
 
-        mouseY = windowHalfY*(-1);
-        mouseX = windowHalfX;
+        // mouseY = windowHalfY*(-1);
+        // mouseX = windowHalfX;
    
 
         init();
@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
             camera = new THREE.PerspectiveCamera( 75, container.offsetWidth / container.offsetHeight, 1, 10000 );
             // camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
             camera.position.z = 1000;
+            camera.position.y = 200;                 
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0x1a1d2e);
+            // console.log(camera.position);
             particles = new Array();
             var PI2 = Math.PI * 2;
             var material = new THREE.SpriteCanvasMaterial( {
@@ -57,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
             renderer.setSize(container.offsetWidth, container.offsetHeight + SHIFTUP);            
             container.appendChild( renderer.domElement );
 
-            document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-            document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-            document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-            //
+            // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+            // document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+            // document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+            // //
             window.addEventListener( 'resize', onWindowResize, false );
         }
 
@@ -105,8 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function render() {
-            camera.position.x += ( mouseX - camera.position.x ) * .05;
-            camera.position.y += ( - mouseY - camera.position.y ) * .05;         
+            // camera.position.x += ( mouseX - camera.position.x ) * .05;
+            // camera.position.y += ( - mouseY - camera.position.y ) * .05;     
+            // console.log(camera.position); 
             camera.lookAt( scene.position );
             var i = 0;
             for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
