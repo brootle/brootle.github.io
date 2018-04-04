@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body>
+
+    <nav class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <a href="">Speed</a>
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green btn-animated">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="no-header">
+
+        <div class="light-grey">
+            <h1 class="q-h1-tittle text-blue container">
+                Plans and Pricing.
+            </h1>
+
+
+            <div class="container">
+
+                <p class="pricing-message--big">
+                    With Qencode, you are getting one of the highest quality and fastest
+                    cloud transcoding services at the lowest price on the market.
+                </p>
+
+                <div class="plans-switcher">
+                    <div>
+                        <span class="text-gray switcher-button plans-switcher--active" data-switcher="universal_plans">Universal Plans</span>
+                        <span class="text-gray switcher-button plans-switcher--inactive" data-switcher="business_plans">High Volume</span>
+                    </div>
+                </div>
+
+
+                <div id="universal_plans" class="switchercontent switchercontent--active">
+
+                    <div class="tab tab--pricing">
+                        <span class="tablinks tablinks--active" data-tabcontent="unlimited">Unlimited</span>
+                    </div>
+
+                    <div id="unlimited" class="pricing-plan-block tabcontent tabcontent--active">
+                        <div>
+                            <h3>Unlimited</h3>
+                            <div class="pricing-plan-block--info">
+                                <div class="pricing-plan-block__texts">
+                                    <p class="text-blue pricing-plan-block--amount">500</p>
+                                    <div>
+                                        <p class="text-blue pricing-plan-block--units">minutes</p>
+                                        <p class="text-blue pricing-plan-block--units">every month</p>
+                                    </div>                                    
+                                    <p class="text-blue pricing-plan-block--free">Free</p>
+                                </div>
+                                <div class="pricing-plan-block__delimeter">
+                                    <p class="text-light-gray">then only</p>
+                                    <div></div>
+                                </div>
+                                <div class="pricing-plan-block__texts">
+                                    <p class="text-blue pricing-plan-block--amount"><span>$</span>0.003</p>
+                                    <div>
+                                        <p class="text-blue pricing-plan-block--units">per</p>
+                                        <p class="text-blue pricing-plan-block--units">SD minute</p>
+                                    </div>                                    
+                                </div>                                
+                                <button class="button-default button-solid long-button">Get Started</button>
+                            </div>
+                            <ul class="text-gray">
+                                <li>First 500 minutes is always free</li>
+                                <li>24/7 support</li>
+                                <li>Personal account manager</li>
+                                <li>Pay As You Go</li>
+                                <li>No monthly fees</li>
+                                <li>No maximum request limit</li>
+                                <li>No queue times</li>
+                                <li>Full API and SDK</li>
+                                <li>All formats, codecs and features</li>
+                                <li>Pricing starts after first 500 minutes: <br>
+                                    (costs for HEVC and VP9 x 2) <br>
+                                    $ 0.004 for HD <br>
+                                    $ 0.008 for UHD
+                                </li>
+                            </ul>                            
+                        </div>
+                        <div>
+                            <button class="button-default button-solid long-button">Try It Today</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="business_plans" class="switchercontent">
+
+                    <div class="tab tab--pricing">
+                        <span class="tablinks tablinks--active" data-tabcontent="enterprise">Enterprise</span>
+                    </div>
+
+                    <div id="enterprise" class="pricing-plan-block tabcontent tabcontent--active">
+                        <div>
+                            <h3>Enterprise</h3>
+                            <div class="pricing-plan--enterprise">
+                                <button class="button-default button-solid long-button">Contact Sales</button>
+                            </div>
+                            <p class="text-light-gray light-grey pricing-plan-block--title2">plan includes:</p>
+                            <ul class="text-gray">
+                                <li>No monthly fees</li>
+                                <li>No maximum request limit</li>
+                                <li>No queue times</li>
+                                <li>Full API and SDK</li>
+                                <li>All formats, codecs and features</li>
+                                <li>Personalized support</li>
+                                <li>Annual contracts on demand</li>
+                            </ul>                             
+                        </div>
+                    </div>
+                </div>          
+ 
+                
+
+                <script>
+                    const switcherButtons = document.querySelectorAll('.switcher-button');
+
+                    switcherButtons.forEach(button => button.addEventListener('click', switchPlan));
+
+                    function switchPlan(e){
+
+                        if(window.innerWidth <=780){
+                            const activeButton = document.querySelector('.plans-switcher--active');
+                            const inactiveButton = document.querySelector('.plans-switcher--inactive');
+                            // if active button clicked -> show inactive button
+                            if(e.target === activeButton){
+                                if(inactiveButton.style.display === "block"){
+                                    inactiveButton.style.display = "none";
+                                } else{
+                                    inactiveButton.style.display = "block";
+                                }
+                            }
+                            // if inactive button clicked -> make it active button
+                            // and make active button inactive button
+                            if(e.target === inactiveButton){
+
+                                inactiveButton.classList.remove("plans-switcher--inactive");
+                                inactiveButton.classList.add("plans-switcher--active");
+
+                                activeButton.classList.remove("plans-switcher--active");
+                                activeButton.classList.add("plans-switcher--inactive");
+                                activeButton.style.display = "none";
+                                
+                                // swap active and inactive buttons
+                                // childNode[4].parentNode.insertBefore(childNode[4], childNode[3]);
+                                inactiveButton.parentNode.insertBefore(inactiveButton,activeButton);
+
+                                // display plans
+                                const activeContent = document.querySelector('.switchercontent--active');
+                                activeContent.classList.remove('switchercontent--active');
+                                const switcherID = inactiveButton.getAttribute("data-switcher");
+                                const switcherContent = document.querySelector(`#${switcherID}`);
+                                switcherContent.classList.add('switchercontent--active');                                
+                            }                            
+                        } else {
+                            // for screen sizes > 780
+                            // find active elements and remove -> tablinks--active tabcontent--active
+                            const activePlan = document.querySelector('.plans-switcher--active');
+                            const activeContent = document.querySelector('.switchercontent--active');
+
+
+                            activePlan.classList.remove('plans-switcher--active');
+                            activePlan.classList.add('plans-switcher--inactive')
+                            activeContent.classList.remove('switchercontent--active');
+
+                            // find what tab link was clicked and show tab content with that ID
+                            const clickedButton = e.currentTarget;
+                            clickedButton.classList.add('plans-switcher--active');
+                            clickedButton.classList.remove('plans-switcher--inactive')
+
+                            const switcherID = clickedButton.getAttribute("data-switcher");
+
+                            const switcherContent = document.querySelector(`#${switcherID}`);
+                            switcherContent.classList.add('switchercontent--active');
+                        }
+
+                    }                    
+                </script>
+
+                <div class="pricing-message">
+                    <p class="q-paragraph text-gray">
+                        If you have questions about billing and plans, contact us at 
+                        <a class="q-link text-blue" href="mailto:sales@qencode.com">sales@qencode.com</a>  
+                    </p>
+                </div>
+                
+
+            </div>
+
+            <div class="get-started container no-top-margin">
+                <div class="get-started-message dark-grey">
+                    <div>
+                        <h3 class="text-gray">Interested in getting started?</h3>
+                        <p class="text-gray"> 
+                            You can test out our features for yourself or integrate
+                            entire project in just a few simple steps.
+                        </p>
+                    </div>
+                    <div>
+                        <button class="button-default button-solid">Create Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact container">
+            <h1 class="q-h1-tittle text-blue">
+                Talk to Us
+            </h1>
+            <div>
+                <div class="contact-message">
+                    <p class="q-paragraph text-gray">
+                        We love creating powerful solutions that are
+                        aligned with the needs of your business.
+                    </p>
+                    <p class="q-paragraph text-gray">
+                        Contact us with any any questions. We'd love to help.
+                    </p>
+                    <p class="q-paragraph text-gray icon-and-text">
+                        <img src="img/phone.png" alt=""> <span>(310) 905-8600 (Corporate HQ)</span> <br>
+                        <img src="img/phone.png" alt=""> <span>(415) 877-6500</span>  <br>
+                        <img src="img/phone.png" alt=""> <span>(917) 525-4500</span> 
+                    </p>
+                    <p class="q-paragraph text-gray">
+                        For more information about Demo or Plans or Pricing send us
+                        an email: <a class="q-link text-blue" href="mailto:sales@qencode.com">sales@qencode.com</a>  
+                    </p>
+                </div>
+                <div class="contact-form">
+                    <form action="send_message">
+
+                        <div class="input-container">
+                            <div class="text-gray">
+                                <label for="email_address">Email</label>
+                            </div>                            
+                            <input id="email_address" class="text-gray" name="message[email]" placeholder="" type="text">      
+                        </div>                         
+
+                        <div class="input-container">
+                            <div class="text-gray">
+                                <label for="author_name">Name</label>
+                            </div>                            
+                            <input id="author_name" class="text-gray" autocomplete="off" name="message[name]" placeholder="" type="text">      
+                        </div>         
+
+                        <div class="input-container">
+                            <div class="text-gray">
+                                <label for="comment">Comment</label>                                 
+                            </div>                            
+                            <textarea id="comment" class="text-gray" name="message[comment]" placeholder=""></textarea>
+                        </div>                                       
+
+                        <button class="button-default button-solid long-button" type="submit">Send Message</button>
+
+                    </form>                    
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
