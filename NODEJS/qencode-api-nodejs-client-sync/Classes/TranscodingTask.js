@@ -10,6 +10,7 @@ class TranscodingTask {
 
         this.StartTime;
         this.Duration;      
+        this.lastStatus
     }    
 
     Start(transcodingProfile, uri, transferMethod = null, payload = null, OutputPathVariables = null){
@@ -35,25 +36,30 @@ class TranscodingTask {
             parameters.duration = this.Duration.toFixed(4).toString();
         }
 
-        // if (OutputPathVariables.Count > 0){
-        //     var outputPathVars = JsonConvert.SerializeObject(OutputPathVariables,
-        //         Formatting.None,
-        //         new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-        //     parameters.Add("output_path_variables", outputPathVars);
-        // }
-
-        // var response = api.Request<StartEncodeResponse>("start_encode", parameters) as StartEncodeResponse;
-        // this.statusUrl = response.status_url;
-        // PollStatus();
-        // return response;
-
-        console.log(parameters);
+        if (OutputPathVariables != null){
+            parameters.output_path_variables = JSON.stringify(OutputPathVariables);
+        }
 
         let response = this.api.Request("start_encode", parameters);
 
         this.statusUrl = response.status_url;
 
+        // PollStatus();
+
         return response;
+    }
+
+
+    GetStatus(){
+        let parameters = {
+            "task_tokens[]": this.taskToken
+        };        
+
+        let response = this.api.Request("status", parameters);
+
+        this.lastStatus = response.statuses[this.taskToken];
+
+        return this.lastStatus;
     }
 
 }
