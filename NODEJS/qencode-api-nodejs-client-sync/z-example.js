@@ -24,11 +24,11 @@ console.log("Status URL: ", task.statusUrl);
 CheckTaskStatus();
 
 async function CheckTaskStatus(){
-    do {
+    while (task.GetStatus().status != "completed") {
         console.log(task.GetStatus().status);
         await sleep(5000);
-    }
-    while (task.GetStatus().status != "completed");     
+    }     
+    console.log(task.GetStatus().status);
 }
 
 function sleep(ms){
