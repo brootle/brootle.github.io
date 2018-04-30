@@ -1,7 +1,7 @@
 const QencodeApiClient = require('./QencodeApiClient.js');
 
 const apiKey = "5adb0584aa29f";
-const transcodingProfile = "5adb0584aa43b";
+const transcodingProfiles = ["5adb0584aa43b", "5adb0584aacca", "5adb0584ab49e"];
 const transferMethod = null;
 const videoUrl = "https://qa.stagevids.com/static/1.mp4";
 const payload = null;
@@ -17,7 +17,7 @@ task.StartTime = 0.01567;
 task.Duration = 0.575;
 console.log("Created new task: ", task.taskToken);
 
-task.Start(transcodingProfile, videoUrl, transferMethod, payload, OutputPathVariables);
+task.Start(transcodingProfiles, videoUrl, transferMethod, payload, OutputPathVariables);
 console.log("Status URL: ", task.statusUrl);
 
 CheckTaskStatus();

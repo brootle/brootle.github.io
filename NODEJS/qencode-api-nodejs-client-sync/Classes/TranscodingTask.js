@@ -13,11 +13,11 @@ class TranscodingTask {
         this.lastStatus
     }    
 
-    Start(transcodingProfile, uri, transferMethod = null, payload = null, OutputPathVariables = null){
+    Start(transcodingProfiles, uri, transferMethod = null, payload = null, OutputPathVariables = null){
         let parameters = {
             task_token: this.taskToken,
             uri: uri,
-            profiles: transcodingProfile
+            profiles: transcodingProfiles
         };
     
         if (transferMethod != null) {
