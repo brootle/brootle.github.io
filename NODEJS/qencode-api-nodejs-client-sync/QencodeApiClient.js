@@ -1,6 +1,5 @@
 
 const request = require('sync-request');
-const FormData = require('form-data');
 const querystring = require('querystring');
 
 const TranscodingTask = require('./Classes/TranscodingTask');
@@ -8,6 +7,11 @@ const TranscodingTask = require('./Classes/TranscodingTask');
 class QencodeApiClient {
 
     constructor(key){
+
+        if(key.length < 12) {
+            throw new Error("Missing or invalid Qencode project api key!");
+        }  
+
         this.Key = key;
         this.AccessToken = null;
         this.url = "https://api-qa.qencode.com/";
@@ -16,7 +20,7 @@ class QencodeApiClient {
         this.ConnectTimeout = 20;
         this.lastResponseRaw = null;
         this.lastResponse = null;    
-        this.getAccessToken();
+        this.getAccessToken();      
     }    
 
 
@@ -32,19 +36,46 @@ class QencodeApiClient {
 
     Request(path, parameters){
 
-        // convert parameters to string like 'api_key=5adb0584aa29f'
-        parameters = querystring.stringify(parameters);   
+        this.lastResponseRaw = null;
+        this.lastResponse = null;
 
-        let response = request(
-            'POST', 
-            `https://api-qa.qencode.com/v1/${path}`,
-            {
-                headers: {'content-type': 'application/x-www-form-urlencoded'},                
-                body: parameters
-            }
-        );
+        let requestUrl = null;
 
-        response = JSON.parse(response.getBody('utf8'));        
+        if (path.toLowerCase().indexOf("http") == 0){
+            requestUrl = path;
+        }else{
+            requestUrl = this.url + this.version + "/" + path;
+        }
+
+
+        if (parameters != null && !(typeof parameters === 'string')){
+            // convert parameters to string like 'api_key=5adb0584aa29f'
+            parameters = querystring.stringify(parameters);            
+        }  
+
+
+        try{
+            this.lastResponseRaw = request(
+                'POST', 
+                requestUrl,
+                {
+                    headers: {'content-type': 'application/x-www-form-urlencoded'},                
+                    body: parameters
+                }
+            );
+        } catch (err) {
+            throw new Error("Error executing request to url: " + requestUrl, err);
+        }
+
+        let response = JSON.parse(this.lastResponseRaw.getBody('utf8'));
+    
+        if (response == null || response.error == null){
+            throw new Error("Invalid API response", this.lastResponseRaw);
+        }
+
+        if (response.error != 0){
+            throw new Error(response.message);
+        }    
 
         return response;  
     }

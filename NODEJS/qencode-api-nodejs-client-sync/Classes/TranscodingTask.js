@@ -44,11 +44,34 @@ class TranscodingTask {
 
         this.statusUrl = response.status_url;
 
-        // PollStatus();
-
         return response;
     }
 
+    StartCustom(taskParams, payload = null){
+
+        let query = { query: taskParams };
+        console.log(query);
+
+        let query_json = querystring.stringify(query);  
+
+
+        console.log(query_json);
+
+        let parameters = {
+            task_token: this.taskToken,
+            query: query_json
+        };
+
+        if (payload != null){
+            parameters.payload = payload;
+        }     
+
+        let response = this.api.Request("start_encode2", parameters);
+
+        this.statusUrl = response.status_url;
+
+        return response;
+    }
 
     GetStatus(){
         let parameters = {

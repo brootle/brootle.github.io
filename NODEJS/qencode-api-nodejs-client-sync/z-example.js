@@ -20,7 +20,6 @@ console.log("Created new task: ", task.taskToken);
 task.Start(transcodingProfile, videoUrl, transferMethod, payload, OutputPathVariables);
 console.log("Status URL: ", task.statusUrl);
 
-
 CheckTaskStatus();
 
 async function CheckTaskStatus(){
