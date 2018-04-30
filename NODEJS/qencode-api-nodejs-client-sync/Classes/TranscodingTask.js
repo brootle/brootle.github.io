@@ -52,7 +52,7 @@ class TranscodingTask {
         let query = { query: taskParams };
         console.log(query);
 
-        let query_json = querystring.stringify(query);  
+        let query_json = JSON.stringify(query);
 
 
         console.log(query_json);
