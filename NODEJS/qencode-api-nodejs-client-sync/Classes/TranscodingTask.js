@@ -14,6 +14,11 @@ class TranscodingTask {
     }    
 
     Start(transcodingProfiles, uri, transferMethod = null, payload = null, OutputPathVariables = null){
+
+        if(Array.isArray(transcodingProfiles)){
+            transcodingProfiles = transcodingProfiles.join();
+        }
+
         let parameters = {
             task_token: this.taskToken,
             uri: uri,
