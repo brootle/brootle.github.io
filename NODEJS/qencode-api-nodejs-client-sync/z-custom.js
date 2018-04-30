@@ -1,3 +1,5 @@
+const requestPromise = require('request-promise');
+
 const QencodeApiClient = require('./QencodeApiClient.js');
 
 const apiKey = "5adb0584aa29f";
@@ -11,11 +13,14 @@ let transcodingParams = {};
 transcodingParams.source = videoUrl;
 
 let format = {};
+
 format.destination = {};
 format.destination.url = s3_path;
 format.destination.key = s3_key;
 format.destination.secret = s3_secret;
+
 format.output = "advanced_hls";
+
 
 let stream = {};
 stream.size = "1920x1080";
@@ -31,9 +36,12 @@ vcodec_params.directpred = 2;
 
 stream.video_codec_parameters = vcodec_params;
 
-format.stream = stream;
+format.stream = [];
+format.stream.push(stream);
 
-transcodingParams.format = format;
+
+transcodingParams.format = [];
+transcodingParams.format.push(format);
 
 const qencodeApiClient = new QencodeApiClient(apiKey);
 console.log("AccessToken: ", qencodeApiClient.AccessToken);
@@ -43,3 +51,20 @@ console.log("Created new task: ", task.taskToken);
 
 task.StartCustom(transcodingParams, payload);
 console.log("Status URL: ", task.statusUrl);
+
+
+CheckTaskStatus();
+
+async function CheckTaskStatus(){
+    while (task.GetStatus().status != "completed") {
+        console.log(task.GetStatus().status);
+        await sleep(5000);
+    }     
+    console.log(task.GetStatus().status);
+}
+
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
+}

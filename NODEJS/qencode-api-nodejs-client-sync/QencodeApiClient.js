@@ -50,7 +50,7 @@ class QencodeApiClient {
 
         if (parameters != null && !(typeof parameters === 'string')){
             // convert parameters to string like 'api_key=5adb0584aa29f'
-            parameters = querystring.stringify(parameters);            
+            parameters = querystring.stringify(parameters);        
         }  
 
 

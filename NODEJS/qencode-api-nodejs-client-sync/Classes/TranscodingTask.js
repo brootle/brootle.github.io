@@ -50,26 +50,24 @@ class TranscodingTask {
     StartCustom(taskParams, payload = null){
 
         let query = { query: taskParams };
-        console.log(query);
 
         let query_json = JSON.stringify(query);
-
-
-        console.log(query_json);
 
         let parameters = {
             task_token: this.taskToken,
             query: query_json
-        };
+        };    
 
         if (payload != null){
             parameters.payload = payload;
         }     
 
-        let response = this.api.Request("start_encode2", parameters);
+        return this._do_request("start_encode2", parameters);;
+    }
 
+    _do_request(methodName, parameters){
+        let response = this.api.Request(methodName, parameters);
         this.statusUrl = response.status_url;
-
         return response;
     }
 
