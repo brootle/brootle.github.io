@@ -1,5 +1,3 @@
-const requestPromise = require('request-promise');
-
 const QencodeApiClient = require('./QencodeApiClient.js');
 
 const apiKey = "5adb0584aa29f";
