@@ -1,4 +1,4 @@
-qencode-api-node-client
+Qencode API NodeJS Client
 ====================
 
 Node library for interacting with the Qencode API.
