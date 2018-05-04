@@ -14,7 +14,7 @@ class QencodeApiClient {
 
         this.Key = key;
         this.AccessToken = null;
-        this.url = "https://api-qa.qencode.com/";
+        this.url = "https://api.qencode.com/";
         this.version = "v1";
         this.USER_AGENT = "Qencode PHP API SDK 1.0";
         this.ConnectTimeout = 20;
