@@ -399,7 +399,7 @@
                             </div>
                         </div>
                         <div class="q6-table-body">
-                            <div class="q6-table-row">
+                            <div class="q6-table-row q6-expandable-row">
                                 <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
                                 <div>HLS</div>
                                 <div>H.264</div>
@@ -459,7 +459,7 @@
                                 </div>
                             </div>
 
-                            <div class="q6-table-row">
+                            <div class="q6-table-row q6-expandable-row">
                                 <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
                                 <div>HLS</div>
                                 <div>H.264</div>
@@ -473,7 +473,7 @@
                             </div>
                                        
 
-                            <div class="q6-table-row">
+                            <div class="q6-table-row q6-expandable-row">
                                 <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
                                 <div>HLS</div>
                                 <div>H.264</div>
@@ -495,20 +495,33 @@
                         // and put data there from JSON
 
                         // show and hide details
-                        var expandButtons = document.querySelectorAll(".q6-table-dropdown");
+                        // var expandButtons = document.querySelectorAll(".q6-table-dropdown");
+                        // expandButtons.forEach(button => {
+                        //     button.addEventListener('click', function(){
+                        //         // toggle arrow
+                        //         this.classList.toggle("q6-table-dropdown--active");
+                        //         // hide and show content
+                        //         console.log("hide and show content");
+                        //         // find next tr
+                        //         var currentRow = this.closest(".q6-table-row");
+                        //         var nextRow = this.closest(".q6-table-row").nextElementSibling;
+                        //         $(nextRow).toggleClass("q6-hidden");  
+                        //         $(currentRow).toggleClass("q6-table-row--active");                                                                                                             
+                        //     });
+                        // });      
+
+                        var expandButtons = document.querySelectorAll(".q6-expandable-row");
                         expandButtons.forEach(button => {
                             button.addEventListener('click', function(){
-                                // toggle arrow
-                                this.classList.toggle("q6-table-dropdown--active");
-                                // hide and show content
-                                console.log("hide and show content");
-                                // find next tr
-                                var currentRow = this.closest(".q6-table-row");
-                                var nextRow = this.closest(".q6-table-row").nextElementSibling;
+                                var currentRow = this;
+                                var nextRow = currentRow.nextElementSibling;
+                                var arrowElement = $(currentRow).find('.q6-table-dropdown')
+
+                                $(currentRow).toggleClass("q6-table-row--active");  
                                 $(nextRow).toggleClass("q6-hidden");  
-                                $(currentRow).toggleClass("q6-table-row--active");                                                                                                             
+                                $(arrowElement).toggleClass("q6-table-dropdown--active");                                                                                                           
                             });
-                        });                                
+                        });                                                     
                     
                     </script>
 
