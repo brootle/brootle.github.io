@@ -422,19 +422,14 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     color: #171717;
     width: 100%;
     text-align: left;
-    font-size: 13px;   
-
-    border-collapse:separate;
-    border-spacing:0 8px;     
+    font-size: 13px;    
     margin-top: 5px; 
 }
 
-.q6-table th{
+.q6-table-head{
     font-family: GraphikMedium;
     font-weight: normal; 
     font-size: 13px; 
-    padding: 10px 10px;
-    background: #f3f3f3;
 
     word-wrap: break-word;
     white-space: nowrap;
@@ -442,7 +437,22 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     overflow: hidden;       
 }
 
-.q6-table td{
+.q6-table-row{
+    background: white;   
+    display: flex;
+    margin: 8px 0;
+}
+
+.q6-table-dropdown-content.q6-table-row{
+    background: none;
+}
+
+.q6-table-head > .q6-table-row{
+    background: none;
+}
+
+.q6-table-row > div{
+    flex: 1;
     padding: 10px 10px;
     word-wrap: break-word;
     white-space: nowrap;
@@ -469,14 +479,20 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     transition: all 0.1s ease;
 }
 
+.q6-table-dropdown--active:after {
+    transform: rotate(90deg);
+}
 
-.q6-table tr{
-    background: white;   
+.q6-row-has-error{
+    border: 1px solid #de3c3a;
 }
 
 
-
 /*MODIFICATORS*/
+.q6-hidden {
+    display: none;
+}
+
 .q6-max-wide{
     width: 100%;
 }

@@ -388,42 +388,117 @@
                 <div class="q6-table-head-underline"></div>
 
                 <div class="q6-container">
-                    <table class="q6-table">
-                        <thead>
-                            <tr>
-                                <th>Profile</th>
-                                <th>Format</th>
-                                <th>Video codec</th>               
-                                <th>Audio codec</th>          
-                                <th>Status</th>                               
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="q6-table-dropdown">Best_for_UHD_2018</span></td>
-                                <td>HLS</td>
-                                <td>H.264</td>
-                                <td>AAC</td>
-                                <td>Encoding</td>
-                            </tr>            
-                            <tr>
-                                <td><span class="q6-table-dropdown">Best_for_UHD_2018</span></td>
-                                <td>HLS</td>
-                                <td>H.264</td>
-                                <td>AAC</td>
-                                <td>Done</td>
-                            </tr>     
-                            <tr>
-                                <td><span class="q6-table-dropdown">Best_for_UHD_2018</span></td>
-                                <td>HLS</td>
-                                <td>H.264</td>
-                                <td>AAC</td>
-                                <td>Error</td>
-                            </tr>                                                             
+                    <div class="q6-table">
+                        <div class="q6-table-head">
+                            <div class="q6-table-row">
+                                <div>Profile</div>
+                                <div>Format</div>
+                                <div>Video codec</div>               
+                                <div>Audio codec</div>          
+                                <div>Status</div>                               
+                            </div>
+                        </div>
+                        <div class="q6-table-body">
+                            <div class="q6-table-row">
+                                <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
+                                <div>HLS</div>
+                                <div>H.264</div>
+                                <div>AAC</div>
+                                <div>Encoding</div>
+                            </div>         
+                            <div class="q6-table-dropdown-content q6-table-row q6-hidden" >
+                                <div class="q6-table">
+                                    <div class="q6-table-head">
+                                        <div class="q6-table-row">
+                                            <div>Profile</div>
+                                            <div>Format</div>
+                                            <div>Video codec</div>               
+                                            <div>Audio codec</div>          
+                                            <div>Status</div> 
+                                            <div>Status</div>                               
+                                        </div>
+                                    </div>   
+                                    <div>                                     
+                                        <div class="q6-table-row">
+                                            <div>1</div>
+                                            <div>2</div>
+                                            <div>3</div>
+                                            <div>4</div>
+                                            <div>5</div>
+                                            <div>6</div>
+                                        </div>
+                                        <div class="q6-table-row q6-row-has-error">
+                                            <div>1</div>
+                                            <div>2</div>
+                                            <div>3</div>
+                                            <div>4</div>
+                                            <div>5</div>
+                                            <div>6</div>
+                                        </div>
+                                        <div class="q6-table-row">
+                                            <div>1</div>
+                                            <div>2</div>
+                                            <div>3</div>
+                                            <div>4</div>
+                                            <div>5</div>
+                                            <div>6</div>
+                                        </div>                                                                                     
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="q6-table-row">
+                                <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
+                                <div>HLS</div>
+                                <div>H.264</div>
+                                <div>AAC</div>
+                                <div>Done</div>
+                            </div>            
+                            <div class="q6-table-dropdown-content q6-table-row q6-hidden">
+                                <div>
+                                    some content
+                                </div>
+                            </div>
+                                       
+
+                            <div class="q6-table-row">
+                                <div><span class="q6-table-dropdown">Best_for_UHD_2018</span></div>
+                                <div>HLS</div>
+                                <div>H.264</div>
+                                <div>AAC</div>
+                                <div>Done</div>
+                            </div>            
+                            <div class="q6-table-dropdown-content q6-table-row q6-hidden">
+                                <div>
+                                    some content
+                                </div>
+                            </div>
+                                                                                                          
                                                                                                                                                                 
                         </tbody>
                     </table>  
-                </div>  
+
+                    <script>
+                        // add empty rows after table was initiated - see q5.datatable.js
+                        // and put data there from JSON
+
+                        // show and hide details
+                        var expandButtons = document.querySelectorAll(".q6-table-dropdown");
+                        expandButtons.forEach(button => {
+                            button.addEventListener('click', function(){
+                                // toggle arrow
+                                this.classList.toggle("q6-table-dropdown--active");
+                                // hide and show content
+                                console.log("hide and show content");
+                                // find next tr
+                                var nextRow = this.closest(".q6-table-row").nextElementSibling;
+                                $(nextRow).toggleClass("q6-hidden");                                                                                                            
+                            });
+                        });                                
+                    
+                    </script>
+
+                </div>                  
 
             </div>
 
