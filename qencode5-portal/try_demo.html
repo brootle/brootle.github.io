@@ -491,8 +491,10 @@
                                 // hide and show content
                                 console.log("hide and show content");
                                 // find next tr
+                                var currentRow = this.closest(".q6-table-row");
                                 var nextRow = this.closest(".q6-table-row").nextElementSibling;
-                                $(nextRow).toggleClass("q6-hidden");                                                                                                            
+                                $(nextRow).toggleClass("q6-hidden");  
+                                $(currentRow).toggleClass("q6-table-row--active");                                                                                                             
                             });
                         });                                
                     
