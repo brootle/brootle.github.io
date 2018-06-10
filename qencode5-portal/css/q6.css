@@ -681,8 +681,46 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 }
 
 .q6-table-row > div:last-of-type{
-    min-width: 220px;
+    min-width: 240px;
 }
+
+.q6-encoding-status{
+    display: flex;
+    align-items: center;   
+    padding-left: 22px;
+}
+
+.q6-status-icon{
+    position: relative;
+}
+
+.q6-status-icon:before{
+    content:"";
+    position: absolute;
+    width:18px;
+    height: 18px;
+
+    left: -22px;
+    top: -2px;
+
+    background-image: url(../img/encoding_status_icons.png);
+    background-size: 58px 18px;
+    background-repeat: no-repeat;
+    cursor: pointer;  
+}
+
+.q6-status__encoding:before{
+    background-position: 0 0;  
+}
+
+.q6-status__done:before{
+    background-position: -20px 0;  
+}
+
+.q6-status__error:before{
+    background-position: -40px 0;  
+}
+
 
 
 /*MODIFICATORS*/
