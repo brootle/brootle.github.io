@@ -425,7 +425,16 @@
                                             <div>285/69 MB</div>
                                             <div>2017-06-01 14:20:25</div>
                                             <div>2017-06-01 14:20:25</div>
-                                            <div>Encoding</div>
+                                            <div>
+                                                <div class="q6-status-message-container">
+                                                    <div>Encoding</div>
+                                                    <div class="q6-status-message__buttons q6-hidden">
+                                                        <div class="q6-status-button__play"></div>
+                                                        <div class="q6-status-button__open"></div>
+                                                        <div class="q6-status-button__copy"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="q6-table-dropdown-content q6-table-row q6-hidden q6-video-preview-container">
                                             <div class="q6-video-preview__player">
@@ -559,11 +568,13 @@
                             button.addEventListener('click', function(){
                                 var currentRow = this;
                                 var nextRow = currentRow.nextElementSibling;
-                                var arrowElement = $(currentRow).find('.q6-table-dropdown')
+                                var arrowElement = $(currentRow).find('.q6-table-dropdown');
+                                var statusButtons = $(currentRow).find('.q6-status-message__buttons');
 
                                 $(currentRow).toggleClass("q6-table-row--active");  
                                 $(nextRow).toggleClass("q6-hidden");  
-                                $(arrowElement).toggleClass("q6-table-dropdown--active");                                                                                                           
+                                $(arrowElement).toggleClass("q6-table-dropdown--active");   
+                                $(statusButtons).toggleClass("q6-hidden");                                                                                                          
                             });
                         });                       
 
