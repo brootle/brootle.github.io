@@ -138,7 +138,7 @@
                             <div class="q6-drag-and-drop__icon"></div>
 
                             <div class="q6-drag-and-drop__message-container">
-                                <div class="q6-browse-file">
+                                <div class="q6-browse-file q6-hidden">
                                     <div class="q6-drag-and-drop__title q6-black-text">
                                         Drag & Drop
                                     </div>
@@ -150,9 +150,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="q6-drag-and-drop__file-container q6-hidden">
-                                    <div class="q6-drag-and-drop__filename"></div> 
-                                    <div id="remove_selected_video" class="q6-remove-video-icon q6-margin-left_10px"></div>
+                                <div class="q6-drag-and-drop__file-container">
+                                    <div class="q6-drag-and-drop__filename">myvideo.mp4</div> 
+                                    <div id="remove_selected_video" class="q6-remove-video-icon q6-margin-left_10px" style="display: none;"></div>
                                 </div>
                                                                
                             </div>
@@ -167,14 +167,14 @@
                             <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
                         </div>
 
-                        <div id="video_upload_progress" class="q6-hidden q6-margin-top_25px">
+                        <div id="video_upload_progress" class="q6-margin-top_25px">
                             <div class="q6-video-upload__message">
                                 <div>Encoding &nbsp;</div>
-                                <div id="video_upload_percentage">73</div>
+                                <div id="video_upload_percentage">100</div>
                                 <div>%</div>
                             </div>
                             <div class="q6-video-upload__progress-bar">
-                                <div class="q6-progress-complete" style="width:73%"></div>
+                                <div class="q6-progress-complete" style="width:100%"></div>
                             </div>
                         </div>                        
                         
@@ -341,13 +341,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button id="upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">
+                        <button id="upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin q6-hidden">
                             <span>Upload and Encode</span>
                         </button>
                         <button id="cancel-upload-button" class="q6-button q6-red-background q6-red-border q6-max-wide q6-top-margin q6-hidden">
                             <span>Cancel</span>
                         </button>
-                        <button id="start-new-upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin q6-hidden"> 
+                        <button id="start-new-upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin"> 
                             <span>Start new Upload and Encode</span>
                         </button>                        
 
