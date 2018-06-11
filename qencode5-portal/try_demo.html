@@ -136,26 +136,51 @@
                     <div class="q6-drag-and-drop-container q6-light-gray-background">
                         <div class="q6-drag-and-drop q6-white-background">
                             <div class="q6-drag-and-drop__icon"></div>
-                            <div class="q6-drag-and-drop__title q6-black-text">
-                                Drag & Drop
-                            </div>
-                            <div class="q6-drag-and-drop__intructions q6-black-text">
-                                your files here, or 
-                                <div class="q6-upload-file-link">
-                                    <input type="file" name="file" id="file" />
-                                    <label class="q6-green-text" for="file">Browse</label>
-                                </div>
-                            </div>
-                            <div class="q6-drag-and-drop__filename"></div>
-                            <script>
-                                var input = document.querySelector('#file');
-                                var path = document.querySelector('.q6-drag-and-drop__filename');
 
-                                input.addEventListener( 'change', function(e){
-                                    var fileName = e.target.value.split( '\\' ).pop();
-                                    path.innerHTML = fileName;
-                                });                                    
-                            </script>                            
+                            <div class="q6-drag-and-drop__message-container">
+                                <div class="q6-browse-file">
+                                    <div class="q6-drag-and-drop__title q6-black-text">
+                                        Drag & Drop
+                                    </div>
+                                    <div class="q6-drag-and-drop__intructions q6-black-text">
+                                        your files here, or 
+                                        <div class="q6-upload-file-link">
+                                            <input type="file" name="file" id="file" />
+                                            <label class="q6-green-text" for="file">Browse</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="q6-drag-and-drop__file-container q6-hidden">
+                                    <div class="q6-drag-and-drop__filename"></div> 
+                                    <div id="remove_selected_video" class="q6-remove-video-icon q6-margin-left_10px"></div>
+                                </div>
+                                
+                                <script>
+
+                                    // when we click Browse link
+                                    $("#file").change(function(e) {
+                                        var fileName = e.target.value.split( '\\' ).pop();
+
+                                        $('.q6-drag-and-drop__filename').html(fileName);
+
+                                        // show box fith file
+                                        $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                        // hide box with bowse link
+                                        $(".q6-browse-file").toggleClass("q6-hidden");                                          
+                                    });           
+
+                                    // when we clock Remove icon
+                                    $("#remove_selected_video").click(function() {
+                                        console.log("clicked");
+                                        // hide box fith file
+                                        $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                        // show box with bowse link
+                                        $(".q6-browse-file").toggleClass("q6-hidden");                                          
+                                    });                                                             
+                                 
+                                </script>                                   
+                            </div>
+                        
                         </div>
 
                         <div class="q6-input">
