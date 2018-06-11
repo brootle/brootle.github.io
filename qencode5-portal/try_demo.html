@@ -154,31 +154,7 @@
                                     <div class="q6-drag-and-drop__filename"></div> 
                                     <div id="remove_selected_video" class="q6-remove-video-icon q6-margin-left_10px"></div>
                                 </div>
-                                
-                                <script>
-
-                                    // when we click Browse link
-                                    $("#file").change(function(e) {
-                                        var fileName = e.target.value.split( '\\' ).pop();
-
-                                        $('.q6-drag-and-drop__filename').html(fileName);
-
-                                        // show box fith file
-                                        $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
-                                        // hide box with bowse link
-                                        $(".q6-browse-file").toggleClass("q6-hidden");                                          
-                                    });           
-
-                                    // when we clock Remove icon
-                                    $("#remove_selected_video").click(function() {
-                                        console.log("clicked");
-                                        // hide box fith file
-                                        $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
-                                        // show box with bowse link
-                                        $(".q6-browse-file").toggleClass("q6-hidden");                                          
-                                    });                                                             
-                                 
-                                </script>                                   
+                                                               
                             </div>
                         
                         </div>
@@ -300,6 +276,8 @@
                                     <script>
                                         (function($){
                                             $(window).on("load",function(){
+
+                                                // Custom scroll for text area
                                                 
                                                 var textareaLineHeight=parseInt($(".textarea-wrapper textarea").css("line-height"));
                                                 
@@ -352,7 +330,66 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">Upload and Encode</button>
+                        <button id="upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">
+                            <span>Upload and Encode</span>
+                        </button>
+                        <button id="cancel-upload-button" class="q6-button q6-red-background q6-red-border q6-max-wide q6-top-margin q6-hidden">
+                            <span>Cancel</span>
+                        </button>
+
+                        <script>
+
+                            // when we click Browse link
+                            $("#file").change(function(e) {
+                                var fileName = e.target.value.split( '\\' ).pop();
+                            
+                                // if filename is not empty
+                                // filename can be empty if user clicks cancel instead of OK when chosing file
+                                if(fileName){
+                                    $('.q6-drag-and-drop__filename').html(fileName);
+                                    // show box fith file
+                                    $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                    // hide box with bowse link
+                                    $(".q6-browse-file").toggleClass("q6-hidden");  
+
+                                    // we should also must make sure we show remove button 
+                                    $("#remove_selected_video").show();
+                                }                                       
+                            });           
+
+                            // when we click Remove icon
+                            $("#remove_selected_video").click(function() {
+                                // hide box fith file
+                                $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                // show box with bowse link
+                                $(".q6-browse-file").toggleClass("q6-hidden");                                          
+                            });         
+
+                            // when we click Upload and Encode button
+                            $("#upload-button").click(function() {
+                                // we must hide remove button if it's visible!
+                                var removeButtonVisible = $("#remove_selected_video").is(':visible'); 
+                                if(removeButtonVisible){
+                                    $("#remove_selected_video").hide();
+                                }          
+
+                                // we must hide Upload button and show big Cancel button 
+                                $("#upload-button").toggleClass("q6-hidden");
+                                $("#cancel-upload-button").toggleClass("q6-hidden");
+                                                                                
+                            });             
+
+
+                            // when we click Cancel button
+                            $("#cancel-upload-button").click(function() {
+
+                                // we must hide Cancel button and show big Upload button 
+                                $("#cancel-upload-button").toggleClass("q6-hidden");
+                                $("#upload-button").toggleClass("q6-hidden");
+                                                                                
+                            });                                                                                                       
+                            
+                        </script>                            
                     </div>
                 </div>
             </div>
