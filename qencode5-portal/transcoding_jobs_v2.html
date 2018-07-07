@@ -314,9 +314,47 @@
                                                     <div>H.264</div>
                                                     <div>AAC</div>
                                                     <div>240</div>
-                                                    <div>https://master/fdsf434jlkdfjldsfjlsfdf.mp4</div>
-                                                    <div>icon</div>
-                                                </div>                                       
+                                                    <div>
+                                                        <div class="q6-input__text">
+                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                        </div>                                                                                                                
+                                                    </div>
+                                                    <div>
+                                                        <div class="q6-copy-sourceURL-button"></div>                                                        
+                                                    </div>
+                                                </div>     
+                                                <div class="q6-table-row">
+                                                    <div>00:03:00</div>
+                                                    <div>WEBM</div>
+                                                    <div>285.69 MB</div>
+                                                    <div>H.264</div>
+                                                    <div>AAC</div>
+                                                    <div>240</div>
+                                                    <div>
+                                                        <div class="q6-input__text">
+                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                        </div>                                                                                                                
+                                                    </div>
+                                                    <div>
+                                                        <div class="q6-copy-sourceURL-button"></div>                                                        
+                                                    </div>
+                                                </div>      
+                                                <div class="q6-table-row">
+                                                    <div>00:03:00</div>
+                                                    <div>WEBM</div>
+                                                    <div>285.69 MB</div>
+                                                    <div>H.264</div>
+                                                    <div>AAC</div>
+                                                    <div>240</div>
+                                                    <div>
+                                                        <div class="q6-input__text">
+                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                        </div>                                                                                                                
+                                                    </div>
+                                                    <div>
+                                                        <div class="q6-copy-sourceURL-button"></div>                                                        
+                                                    </div>
+                                                </div>                                                                                                                                        
                                             </div>
                                         </div>
 
@@ -366,7 +404,15 @@
                             var jobID = this.previousElementSibling;           
                             jobID.select();      
                             document.execCommand("Copy");                                                           
-                        });                                                                                                       
+                        });        
+
+                        $(".q6-copy-sourceURL-button").click(function() {
+                            var parentDiv = this.parentElement;
+                            var divWithLink = parentDiv.previousElementSibling;
+                            var sourceURL = $(divWithLink).find("input");
+                            sourceURL.select();  
+                            document.execCommand("Copy");                                                        
+                        });                                                                                                               
                     </script>                        
 
                     <script>
