@@ -6,6 +6,7 @@
 
 .q6-container{
     width: 1040px;
+    max-width: 1040px;
     margin: auto;
     padding: 0 20px;
 }
@@ -555,7 +556,7 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     word-wrap: break-word;
     white-space: nowrap;
     text-overflow: ellipsis;
-    /*overflow: hidden;    */
+    overflow: hidden;    
 
     color: #575757;
 }
@@ -778,6 +779,7 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-table-row > div:last-of-type{
     min-width: 250px;
+    overflow: initial;    
 }
 
 .q6-encoding-status{
@@ -920,9 +922,6 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     align-items: flex-end;      
 }
 
-.q6-filter-box__buttons .q6-button{
-    font-size: 13px;
-}
 
 .q6-filter-box__buttons > .q6-button:nth-of-type(2){
     margin-left: 8px;
@@ -963,14 +962,93 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     text-align: center;
 }
 
-.q6-date-delimeter{
-    /*margin-right: 3px;    */
+
+.q6-job__details{
+    display: flex;
+    background: white;
+    margin-top: 28px;
+    padding: 25px;
+    padding-top: 10px;
+    border-radius: 2px;
+}
+
+.q6-job__details > div:nth-of-type(1){
+    display: flex;
+    flex-direction: column;    
+}
+
+.q6-job__details > div:nth-of-type(1) > div:nth-of-type(1){
+    flex: 1;
+}
+
+.q6-job__details > div:nth-of-type(2){
+    margin-left: 40px;    
 }
 
 
-#transcoding_jobs_table{
-    
+.q6-job__details > div{
+    max-width: 50%;
 }
+
+.q6-input__text{
+    display: flex;
+    align-items: center;
+}
+
+.q6-input__text > input{
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    flex: 1;  
+
+    border: none;
+    padding: 0;
+    margin: 0;    
+
+    border-radius: 0;    
+
+    min-width: 340px;
+    font-size: 13px;
+    color: #575757;    
+}
+
+.q6-input__text > span{
+    line-height: 32px;
+    font-size: 13px;
+    color: #575757;    
+}
+
+.q6-copy-jobID-button{
+    width: 32px;
+    height: 32px;
+    background-image: url(../img/copy_id_icon.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;  
+
+    cursor: pointer;
+}
+
+.q6-execution-log{
+    display: flex;
+    line-height: 32px;
+    font-size: 13px;    
+    color: #575757;
+}
+
+.q6-execution-log > div {
+    margin-left: 10px;
+}
+
+.q6-execution-log > div:nth-of-type(1) {
+    margin-left: 0;
+}
+
+.q6-table h2{
+    color: #161616;
+    font-weight: 100;    
+    font-size: 24px;    
+} 
 
 
 
@@ -1060,5 +1138,13 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-no-padding{
     padding: 0;
+}
+
+.q6-no-right-padding{
+    padding-right: 0;
+}
+
+.q6-btn-small{
+    font-size: 13px;
 }
 /*MODIFICATORS*/
