@@ -485,8 +485,7 @@
 task_token: "fasfl348uotljslkjfaldf34"
 uri: "https://qa.stagevids.com/static/test_mini.mp4"
 profiles: "dfjk35jl34"
-payload:"my data"
-                                                </textarea>
+payload:"my data"</textarea>
 
                                         
 
@@ -525,7 +524,15 @@ payload:"my data"
                             var sourceURL = $(divWithLink).find("input");
                             sourceURL.select();  
                             document.execCommand("Copy");                                                        
-                        });                                                                                                               
+                        });     
+
+                        $(".q6-copy-input-parameters-button").click(function() {
+                            var parentDiv = this.parentElement;
+                            var textarea = parentDiv.nextElementSibling;
+                            textarea.select();  
+                            document.execCommand("Copy");                                                        
+                        });                           
+                                                                                                     
                     </script>                        
 
                     <script>
