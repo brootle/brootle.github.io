@@ -129,65 +129,58 @@
             </div>        
 
             <div class="q6-container">
-                <h3 class="q6-step-title q6-black-text">1. Let's get some basic information</h3>
+                <h3 class="q6-step-title q6-black-text">3. Complete setup and billing information</h3>
                 <div class="q6-progress-steps-container">
+                    <div class="q6-progress-step q6-progress-step--complete"></div>
+                    <div class="q6-progress-step q6-progress-step--complete"></div>
                     <div class="q6-progress-step q6-progress-step--current"></div>
-                    <div class="q6-progress-step"></div>
-                    <div class="q6-progress-step"></div>
                 </div>
             </div>
 
             <div class="q6-gray-background">
                 <div class="q6-container">
-                    <div class="q6-signup-data">
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="user_name">Name</label>
+
+                    <div class="q6-signup-data--complete">
+                        <div>
+                            <div class="q6-sign-up-promo q6-white-background">
+                                <div>
+                                    <div>Free 500</div>
+                                    <div>minutes <br> every month</div>
+                                </div>
+                                <hr>
+                                <p>Billing starts after first 500 minutes per month</p>
+                                <div>
+                                    <div>$ 0.003</div>
+                                    <div>per <br> SD minute</div>
+                                </div>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="user_name" name="user[name]">
+                            <a href="">More information</a>
                         </div>
-
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="phone">Phone</label>
-                            </div>                            
-                            <input id="phone" class="q6-input__field q6-black-text" placeholder="" name="user[phone]" type="tel">      
-                            <script src="build/js/intlTelInput.js"></script>     
-                            <script src="build/js/utils.js"></script>    
-                            <script>
-                                // https://github.com/jackocnr/intl-tel-input
-                                // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
-                                $("#phone").intlTelInput({
-                                    // nationalMode: false,
-                                    autoPlaceholder: "polite"
-                                })
-                            </script>
-                        </div>   
-
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="login_pass">Password</label>
-                                <span>8 or more characters</span>
-                            </div>
-                            <div class="q6-pass-wrapper">
-                                <input id="login_pass" class="q6-input__field q6-black-text" name="user[pass]" placeholder="" type="password">
-                                <div class="q6-eye"></div>
+                        <div>
+                            <div class="q6-card-data">
+                                <div class="q6-input q6-lock-icon">
+                                    <div class="q6-input__label">
+                                        <label for="user_name">Name</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="user_name" name="user[name]">
+                                </div>   
+                                <div class="q6-input q6-lock-icon">
+                                    <div class="q6-input__label">
+                                        <label for="user_card">Card number</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="user_card" name="user[card]" placeholder="0299 2222 3432 0342">
+                                </div>                                                                 
                             </div>
                         </div>
-
-                        <script>
-                            $('.q6-eye').click(function(){
-                                var el=$('#login_pass');
-                                el.get(0).type=el.attr('type')=='text'?'password':'text';
-                            });
-                        </script>                            
-                        
                     </div>
+
                 </div>                
             </div>
 
             <div class="q6-container">
-                <button class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">Continue</button>
+                <button id="complete-setup-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin"> 
+                    <span>Complete Setup</span>
+                </button>
             </div>
 
         </section>
