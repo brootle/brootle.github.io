@@ -156,24 +156,60 @@
                                     <div>per <br> SD minute</div>
                                 </div>
                             </div>
-                            <a href="">More information</a>
+                            <div class="q6-more-info-link">
+                                <a href="">More information</a>
+                            </div>
                         </div>
                         <div>
                             <div class="q6-card-data">
-                                <div class="q6-input q6-lock-icon">
-                                    <div class="q6-input__label">
-                                        <label for="user_name">Name</label>
+                                <div class="q6-card-data__name-and-cardnumber">
+                                    <div class="q6-input q6-lock-icon">
+                                        <div class="q6-input__label">
+                                            <label for="user_name">Name</label>
+                                        </div>
+                                        <input class="q6-input__field q6-black-text" type="text" id="user_name" name="user[name]">
+                                    </div>   
+                                    <div class="q6-input q6-lock-icon q6-card-icon">
+                                        <div class="q6-input__label">
+                                            <label for="user_card">Card number</label>
+                                        </div>
+                                        <input class="q6-input__field q6-black-text" type="text" id="user_card" name="user[card]" maxlength="19">
+                                        <script>
+                                            document.getElementById('user_card').addEventListener('input', function (e) {
+                                                e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                            });                                                        
+                                        </script>                                    
+                                    </div>                                                                 
+                                </div>
+                                <div class="q6-card-data__exp-date">
+                                    <div class="q6-input q6-lock-icon">
+                                        <div class="q6-input__label">
+                                            <label for="exp_date">Exp. Date</label>
+                                        </div>
+                                        <div class="q6-exp-date-wrapper q6-black-text">
+                                            <input type="text" placeholder="MM" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="2">
+                                            <span class="q6-exp-date-delimeter">/</span>
+                                            <input type="text" placeholder="YYYY" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="4">
+                                        </div>
+                                    </div> 
+                                    <div class="q6-input q6-lock-icon">
+                                        <div class="q6-input__label">
+                                            <label for="user_cvv">CVV</label>
+                                        </div>
+                                        <input class="q6-input__field q6-black-text" type="text" id="user_cvv" name="user[cvv]"  onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="3">
+                                    </div>                                                                         
+                                </div>
+                                <hr>
+                                <div class="q6-card-data__footer">
+                                    <div class="q6-lock-icon--left">
+                                        Payment information secured and protected
                                     </div>
-                                    <input class="q6-input__field q6-black-text" type="text" id="user_name" name="user[name]">
-                                </div>   
-                                <div class="q6-input q6-lock-icon">
-                                    <div class="q6-input__label">
-                                        <label for="user_card">Card number</label>
-                                    </div>
-                                    <input class="q6-input__field q6-black-text" type="text" id="user_card" name="user[card]" placeholder="0299 2222 3432 0342">
-                                </div>                                                                 
-                            </div>
+                                    <img src="img/stripe_logo.png" alt="Powered by Sripe">
+                                </div>
+                            </div>                           
                         </div>
+ 
+
                     </div>
 
                 </div>                

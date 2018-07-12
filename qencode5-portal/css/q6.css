@@ -1328,8 +1328,11 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 .q6-card-data{
-    display: flex;
-    margin-left: 40px;    
+    margin-left: 40px;  
+}
+
+.q6-card-data__name-and-cardnumber{
+    display: flex;  
 }
 
 .q6-signup-data--complete > div{
@@ -1340,11 +1343,11 @@ input[type=password].q6-input__field.q6-input--error{
     max-width: 460px;
 }
 
-.q6-card-data > div{
+.q6-card-data__name-and-cardnumber > div{
     flex: 1;
 }
 
-.q6-card-data > div:nth-of-type(2){
+.q6-card-data__name-and-cardnumber > div:nth-of-type(2){
     margin-left: 9px;
 }
 
@@ -1368,9 +1371,116 @@ input[type=password].q6-input__field.q6-input--error{
     background-repeat: no-repeat;
 }
 
-.q6-card-icon{
+.q6-input.q6-card-icon{
     position: relative;
 }
+
+.q6-input.q6-card-icon > input{
+    padding-left: 40px;  
+}
+
+.q6-card-icon:after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 15px;
+    left: 10px;
+    bottom: 12px;
+    background-image: url(../img/card.png);
+    background-size: 22px 15px;
+    background-repeat: no-repeat;
+}
+
+.q6-card-data__exp-date{
+    display: flex;
+}
+
+.q6-card-data__exp-date > div:nth-of-type(1) {
+    max-width: 140px;    
+}
+
+.q6-card-data__exp-date > div:nth-of-type(2) {
+    margin-left: 9px;
+    max-width: 67px;    
+}
+
+.q6-exp-date-wrapper {
+    padding: 9px 13px;
+    padding-right: 36px;
+    padding-bottom: 8px;
+    border: 1px solid #bcbcbc;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 5px;
+    background: white;    
+}
+
+.q6-exp-date-wrapper input {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: initial;
+    font-size: 13px;
+    text-align: center;
+}
+
+.q6-exp-date-wrapper input:first-of-type{
+    width: 23px;
+    text-align: right;    
+}
+
+.q6-exp-date-wrapper input:nth-of-type(2){
+    width: 34px;
+    text-align: left;    
+}
+
+.q6-card-data > hr {
+    margin-top: 25px;
+    margin-bottom: 16px;
+    border: none;
+    border-top: 1px solid #e3e3e3;
+}
+
+.q6-card-data__footer > div:first-of-type{
+    color: #a1a3ba;
+    font-size: 12px;  
+    padding-left: 18px;     
+}
+
+.q6-lock-icon--left{
+    position: relative;
+}
+
+.q6-lock-icon--left:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 14px;
+    left: 0;
+    bottom: 4px;
+    background-image: url(../img/lock_icon.png);
+    background-size: 12px 14px;
+    background-repeat: no-repeat;
+}
+
+.q6-card-data__footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.q6-more-info-link{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;    
+}
+
+.q6-more-info-link > a{
+    color: #b9b9c3;
+}
+
 
 
 /*MODIFICATORS*/
