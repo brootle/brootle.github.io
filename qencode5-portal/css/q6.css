@@ -1,4 +1,22 @@
+@font-face {
+   font-family: GraphikRegular;
+   src: url(../fonts/Graphik/Graphik-Regular.otf);
+}
 
+@font-face {
+   font-family: GraphikMedium;
+   src: url(../fonts/Graphik/Graphik-Medium.otf);
+}
+
+@font-face {
+   font-family: GraphikSemibold;
+   src: url(../fonts/Graphik/Graphik-Semibold.otf);
+}
+
+@font-face {
+   font-family: GraphikLight;
+   src: url(../fonts/Graphik/Graphik-Light.otf);
+}
 
 .q6-main {
     padding-bottom: 0;
@@ -18,10 +36,10 @@
 
 .q6-page-title h1{
     margin: 0;
-    font-size: 23px;
+    font-size: 24px;
     text-align: left;
     line-height: initial;
-    font-weight: bold;
+    font-family: GraphikSemibold;
 }
 
 .q6-section-title{
@@ -29,7 +47,8 @@
     font-weight: 100;
     margin-top: 40px;
     font-size: 23px;
-    line-height: initial;      
+    line-height: initial;
+    font-family: GraphikLight;
 }
 
 .q6-two-columns{
@@ -136,7 +155,7 @@
 
 .q6-input__label{
     color: #171717;
-    font-size: 13px;
+    font-size: 14px;
     margin: 4px 0;
     font-family: GraphikMedium;
 
@@ -151,7 +170,7 @@
 }
 
 .q6-input__label span{
-    color: #787878;    
+    color: #797979;
     font-family: GraphikRegular, sans-serif;    
 }
 
@@ -159,17 +178,18 @@ input[type=text].q6-input__field,
 input[type=tel].q6-input__field,
 input[type=password].q6-input__field{
     width: 100%;
-    padding: 12px 13px;
-    padding-bottom: 11px;
+    padding: 14px 14px;
+    padding-bottom: 13px;
     margin: 0;
     display: inline-block;
     border-radius: 5px;
     box-sizing: border-box;
     outline: none;
     border: 1px solid #bcbcbc;
-    font-size: 13px;
-
+    font-size: 16px;
     line-height: initial;
+    font-family: GraphikRegular;
+    color: #575757;
 }
 
 
@@ -212,7 +232,8 @@ input[type=password].q6-input__field{
 
     outline: none;
     display: inline-block;
-    padding: 8px 14px;
+    /*padding: 8px 14px;*/
+    padding: 13px 14px;
     margin-bottom: 0;
     font-size: 16px;
     text-align: center;
@@ -283,7 +304,7 @@ a.q6-button{
     font-family: "FontAwesome";
     position: absolute;
     right: 0;
-    top: 10px;
+    top: 14px;
     padding-right: 10px;
     font-size: 14px;
     pointer-events: none;
@@ -295,23 +316,25 @@ a.q6-button{
     -moz-appearance: none;
 
     width: 100%;
-    padding: 12px 13px;
-    padding-bottom: 11px;
     margin: 0!important;
     display: inline-block;
     border-radius: 5px;
     box-sizing: border-box;
     outline: none;
     border: 1px solid #bcbcbc;
-    font-size: 13px;    
 
-    line-height: initial;    
+    padding: 14px 14px;
+    padding-bottom: 13px;
+    font-size: 16px;
+    line-height: initial;
+    font-family: GraphikRegular;
+    color: #575757;
 }
 
 .q6-multiple-checkboxes{
-    height: 225px;
+    height: 244px;
     width: 100%;
-    padding: 12px 13px;
+    padding: 14px 14px;
     padding-right: 5px;
     margin: 0;
     display: inline-block;
@@ -352,7 +375,7 @@ a.q6-button{
 
 .q6-checkmark {
     position: absolute;
-    top: -2px;
+    top: -1px;
     left: 0;
     height: 18px;
     width: 18px;
@@ -642,6 +665,7 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-row-error-message__content .q6-button{
     font-size: 13px;
+    padding: 6px 14px;    
 }
 
 .q6-expandable-row{
@@ -717,6 +741,11 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-video-details-btns .q6-button{
     font-size: 13px;
+    padding: 6px 14px;    
+}
+
+.q6-video-details-btns a.q6-button:hover, .q6-video-details-btns a.q6-button:focus{
+    color: white;
 }
 
 .q6-status-message-container{
@@ -865,10 +894,9 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-demo-parameters{
     resize: none;
-    height: 148px;
+    height: 157px;
     margin: 0;
-    padding: 0;
-    padding: 12px 13px;
+    padding: 14px 15px;
     border-radius: 5px;
     box-sizing: border-box;
     border: 1px solid #bcbcbc;
@@ -938,6 +966,24 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     display: flex;
 }
 
+.q6-filter-box__options input[type=text].q6-input__field, 
+.q6-filter-box__options input[type=tel].q6-input__field, 
+.q6-filter-box__options input[type=password].q6-input__field {
+    padding: 12px 14px;
+    padding-bottom: 11px;
+    font-size: 13px;
+}
+
+.q6-filter-box__options .q6-select {
+    padding: 12px 14px;
+    padding-bottom: 11px;
+    font-size: 13px;
+}
+
+.q6-filter-box__options .q6-custom-select:after {
+    top: 10px;
+}
+
 .q6-filter-box__options > .q6-input{
     margin-right: 16px;
 }
@@ -945,7 +991,12 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 .q6-filter-box__buttons{
     display: flex;
     align-items: flex-end; 
-    margin-bottom: 6px;      
+    margin-bottom: 5px;      
+}
+
+.q6-filter-box__buttons .q6-button{
+    padding: 9px 14px;
+    padding-bottom: 8px;
 }
 
 
@@ -986,6 +1037,7 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     font-size: 13px;    
     width: 85px;
     text-align: center;
+    color: #575757;    
 }
 
 
@@ -1185,7 +1237,8 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     font-weight: 100;
     margin-bottom: 10px;    
     line-height: initial;
-    font-size: 18px;    
+    font-size: 18px;   
+    font-family: GraphikRegular;     
 }
 
 .q6-progress-steps-container{
@@ -1235,7 +1288,7 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 .q6-eye {
     position: absolute;
     right: 8px;
-    top: 4px;    
+    top: 8px;
     width: 32px;
     height: 32px;
     background-image: url(../img/eye_icon.png);
@@ -1365,7 +1418,7 @@ input[type=password].q6-input__field.q6-input--error{
     width: 12px;
     height: 14px;
     right: 10px;
-    bottom: 13px;
+    bottom: 17px;
     background-image: url(../img/lock_icon.png);
     background-size: 12px 14px;
     background-repeat: no-repeat;
@@ -1385,7 +1438,7 @@ input[type=password].q6-input__field.q6-input--error{
     width: 22px;
     height: 15px;
     left: 10px;
-    bottom: 12px;
+    bottom: 16px;
     background-image: url(../img/card.png);
     background-size: 22px 15px;
     background-repeat: no-repeat;
@@ -1401,13 +1454,13 @@ input[type=password].q6-input__field.q6-input--error{
 
 .q6-card-data__exp-date > div:nth-of-type(2) {
     margin-left: 9px;
-    max-width: 67px;    
+    max-width: 70px;   
 }
 
 .q6-exp-date-wrapper {
-    padding: 9px 13px;
+    padding: 12px 13px;
+    padding-bottom: 11px;
     padding-right: 36px;
-    padding-bottom: 8px;
     border: 1px solid #bcbcbc;
     box-sizing: border-box;
     display: inline-block;
@@ -1420,17 +1473,26 @@ input[type=password].q6-input__field.q6-input--error{
     margin: 0;
     border: none;
     width: initial;
-    font-size: 13px;
     text-align: center;
+
+    font-size: 16px;
+    font-family: GraphikRegular;
+    color: #575757;    
+}
+
+.q6-exp-date-delimeter{
+    font-size: 16px;
+    font-family: GraphikRegular;
+    color: #575757;     
 }
 
 .q6-exp-date-wrapper input:first-of-type{
-    width: 23px;
+    width: 28px;
     text-align: right;    
 }
 
 .q6-exp-date-wrapper input:nth-of-type(2){
-    width: 34px;
+    width: 43px;
     text-align: left;    
 }
 
@@ -1520,8 +1582,9 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 
-.q6-signup__final-step > div:nth-of-type(2) > .q6-button{
+.q6-signup__final-step > div:nth-of-type(2) > .q6-button {
     margin-bottom: 10px;
+    padding: 9px 14px;
 }
 
 .q6-sing-up__link-box{
@@ -1682,7 +1745,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
 
 .q6-skip-button{
     font-size: 15px;
-    margin-top: 10px;    
+    margin-top: 5px;    
 }
 
 /*MODIFICATORS*/
@@ -1795,6 +1858,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
 
 .q6-btn-small{
     font-size: 13px;
+    padding: 6px 14px;    
 }
 /*MODIFICATORS*/
 
