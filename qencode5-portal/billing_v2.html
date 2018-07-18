@@ -3,9 +3,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8" />   
+    <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 
@@ -121,101 +121,53 @@
 
         <div class="q6-page-title q6-blue-background">
             <div class="q6-container">
-                <h1 class="q6-white-text">Sign Up</h1>
+                <h1 class="q6-white-text">Billing</h1>
             </div>   
         </div>
             
-        <section class="section--sign-up">
-            <div class="q6-container">
-                <h2 class="q6-section-title q6-black-text q6-tittle--with-ok-icon">
-                    Congratulations, your account is ready!                   
-                </h2>
-            </div>        
+        <div class="q6-tab">
+            <div class="q6-tabs-container">
+                <span class="q6-tablinks q6-tablinks--active" data-tabcontent="formats">Formats</span>
+                <span class="q6-tablinks" data-tabcontent="codecs_resolutions">Codecs &amp; Resolutions</span>  
+                <span class="q6-tablinks" data-tabcontent="transfer">Transfer</span>  
+            </div>               
+        </div>
 
-            <div class="q6-container">
-                <p class="q6-gray-text sing-up__final-description">Here are some tools to help you to get started. To try a quick demo, use the Manual Transcoding option.</p>
-            </div>
+        <div id="formats" class="q6-tabcontent q6-tabcontent--active">
+            dgddflsdk                   
+        </div>   
 
-            <div class="q6-gray-background">
-                <div class="q6-container">
+        <div id="codecs_resolutions" class="q6-tabcontent q6-tabcontent--active">
+            eeeeeeeeeeeeeee                   
+        </div>    
 
-                    <div class="q6-signup__final-step">
+        <div id="transfer" class="q6-tabcontent q6-tabcontent--active">
+            hhhhhhhhhhhhhhhhhh                   
+        </div>            
 
-                        <div>
-                            <a href="" class="q6-sing-up__link-box q6-gray-text">
-                                <div class="q6-link-box__icon q6-link-box__icon--start"></div>
-                                <div class="q6-link-box__details">
-                                    <h5 class="q6-black-text">Getting Started</h5>
-                                    <p>
-                                        Read our step-by-step guide to creating projects and launching jobs.
-                                    </p>
-                                </div>
-                            </a>
-                            <div class="q6-sing-up__link-box q6-sing-up__link-box--no-selection q6-gray-text">
-                                <div class="q6-link-box__icon q6-link-box__icon--sdk"></div>
-                                <div class="q6-link-box__details">
-                                    <h5 class="q6-black-text">Browse our SDKs</h5>
-                                    <p>
-                                        Use out premade libraries to jump-start your workflow.
-                                    </p>
-                                    <div class="q6-sdk-container">
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--java"></div>
-                                            <p>java</p>
-                                        </a>
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--c"></div>
-                                            <p>c#</p>
-                                        </a>     
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--nodejs"></div>
-                                            <p>node.js</p>
-                                        </a>    
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--php"></div>
-                                            <p>php</p>
-                                        </a>                    
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--js"></div>
-                                            <p>javascript</p>
-                                        </a>  
-                                        <a href="">
-                                            <div class="q6-sdk-icon q6-sdk-icon--python"></div>
-                                            <p>python</p>
-                                        </a>                                                                                                                                                                         
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="" class="q6-sing-up__link-box q6-gray-text">
-                                <div class="q6-link-box__icon q6-link-box__icon--manual"></div>
-                                <div class="q6-link-box__details">
-                                    <h5 class="q6-black-text">Manual Transcoding</h5>
-                                    <p>
-                                        Use out premade libraries to jump-start your workflow.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="" class="q6-sing-up__link-box q6-gray-text">
-                                <div class="q6-link-box__icon q6-link-box__icon--docs"></div>
-                                <div class="q6-link-box__details">
-                                    <h5 class="q6-black-text">View Documentation</h5>
-                                    <p>
-                                        Review our API docs and other useful resources.
-                                    </p>
-                                </div>
-                            </a>                                                                                    
-                        </div>
-                        <div>
-                            <button class="q6-button q6-green-text q6-transparent-background q6-green-border q6-btn-small">Contact Suppot</button>
-                            <button class="q6-button q6-green-background q6-green-border q6-btn-small">Create Project</button>
-                        </div>
+        <script>
+            var tabLinks = document.querySelectorAll('.q6-tablinks');
 
-                    </div>
+            tabLinks.forEach(link => link.addEventListener('click', switchTab));
 
-                </div>                
-            </div>
+            function switchTab(e){
 
-        </section>
+                // find active elements and remove -> tablinks--active tabcontent--active
+
+                $('.q6-tablinks--active').removeClass("q6-tablinks--active");
+                $('.q6-tabcontent--active').removeClass("q6-tabcontent--active");
+
+                // find what tab link was clicked and show tab content with that ID
+                var clickedLink = e.currentTarget;
+                $(clickedLink).addClass('q6-tablinks--active');
+
+                var tabID = clickedLink.getAttribute("data-tabcontent");
+
+                $(`#${tabID}`).addClass('q6-tabcontent--active');
+                var tabContent = document.querySelector(`#${tabID}`);
+
+            }                    
+        </script>                     
 
 
     </main>
