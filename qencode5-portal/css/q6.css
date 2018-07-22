@@ -1570,7 +1570,7 @@ input[type=password].q6-input__field.q6-input--error{
     left: 0px;
     top: 5px;
     background-image: url(../img/signup_icons.png);
-    background-size: 245px 100px;
+    background-size: 245px 170px;
     background-repeat: no-repeat;
     background-position: -184px -2px;
 }
@@ -1609,7 +1609,7 @@ input[type=password].q6-input__field.q6-input--error{
     border: 2px solid #41c186;
 }
 
-a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
+a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container a{
     color: #6d6f6e;
     text-decoration: none;
 }
@@ -1622,7 +1622,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
     width: 44px;
     height: 44px;
     background-image: url(../img/signup_icons.png);
-    background-size: 245px 100px;
+    background-size: 245px 170px;
     background-repeat: no-repeat;
     margin-bottom: 5px;    
 }
@@ -1673,19 +1673,20 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
     color: #575757;  
 }
 
-.q6-sdk-container{
+.q6-icons-container{
     display: flex;
     margin-top: 10px;   
     flex-wrap: wrap;     
 }
 
 .q6-sdk-icon{
-    height: 50px;    
+    height: 45px;    
     background-image: url(../img/signup_icons.png);
-    background-size: 245px 100px;
+    background-size: 245px 170px;
     background-repeat: no-repeat;
+    margin-top: 4px;
+    margin-bottom: 2px;    
 }
-
 .q6-sdk-icon--java {
     width: 32px;
     background-position: -3px -45px;
@@ -1720,16 +1721,55 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
     background-position: -203px -42px;
 }
 
-.q6-sdk-container > a{
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-    margin: 0 15px;    
+
+.q6-gettingstarted-icon {
+    height: 45px;
+    background-image: url(../img/signup_icons.png);
+    background-size: 245px 170px;
+    background-repeat: no-repeat;
+    margin-top: 4px;
+    margin-bottom: 2px;
 }
 
-.q6-sdk-container > a:first-of-type{
+.q6-gettingstarted-icon--guide{
+    width: 32px;
+    background-position: -4px -93px;
+}
+
+.q6-gettingstarted-icon--create {
+    width: 46px;
+    background-position: -41px -93px;
+}
+
+.q6-gettingstarted-icon--contact {
+    width: 35px;
+    background-position: -91px -93px;
+}
+
+.q6-icons-container > a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 15px;
+    width: 88px;
+    height: 80px;
+    border: 2px solid #cecece;
+    border-radius: 10px;  
+}
+
+.q6-icons-container--wide-icons > a{
+    width: 186px; 
+}
+
+.q6-icons-container > a:hover {
+    border: 2px solid #41c186;
+}
+
+.q6-icons-container > a:first-of-type{
     margin-left: 0;
 }
+
+
 
 .q6-signup-company-and-website {
     padding-top: 10px;
@@ -1973,10 +2013,14 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
     .q6-signup__final-step > div:first-of-type {
         padding-right: 0;
     }    
-    .q6-sdk-container > a {
+    .q6-icons-container > a {
         margin-left: 0;
         margin-right: 10px;
     }    
+
+    .q6-two-columns--signup{
+        flex-direction: column;
+    }
 }
 
 @media screen and (min-width: 480px){
@@ -2028,8 +2072,9 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-sdk-container a{
     .q6-signup__final-step > div:first-of-type {
         padding-right: 25px;
     }    
-    .q6-sdk-container > a {
-        margin: 0 15px;
+
+    .q6-two-columns--signup{
+        flex-direction: row;
     }    
 }
 
