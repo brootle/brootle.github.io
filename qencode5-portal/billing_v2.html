@@ -35,6 +35,9 @@
 
     <link href="css/q6.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>     
+
 
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
@@ -137,25 +140,248 @@
             </div>
         </div>
 
-        <section id="usage" class="q6-tabcontent q6-tabcontent--active">
+        <section id="usage" class="q6-tabcontent q6-tabcontent--active section--billing__usage">
             <div class="q6-container">
                 <h2 class="q6-section-title q6-black-text">General info</h2>    
+                <div class="q6-filter-box">
+
+                    <div class="q6-filter-box__label">
+                        <span>Period:</span>
+                    </div>
+
+                    <div class="q6-filter-box__options">   
+
+                        <div class="q6-input q6-input--month">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="month" required="" name="month">
+                                    <option value="all_months">All months</option>
+                                    <option value="january">January</option>
+                                    <option value="february">February</option>
+                                    <option value="march">March</option>
+                                    <option value="april">April</option>
+                                    <option value="may">May</option>
+                                    <option value="june">June</option>
+                                    <option value="july">July</option>
+                                    <option value="august">August</option>
+                                    <option value="september">September</option>
+                                    <option value="october">October</option>
+                                    <option value="november">November</option>
+                                    <option value="december">December</option>
+                                </select>                                   
+                            </div>
+                        </div>    
+
+                        <div class="q6-input q6-input--year">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="year" required="" name="year">
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                </select>                                   
+                            </div>
+                        </div>                                         
+                                                
+                    </div>
+
+                    <div class="q6-filter-box__buttons">
+                        <button class="q6-button q6-green-background q6-green-border q6-btn-small">Refresh page</button>
+                    </div>    
+
+                    <div class="q6-filter-box__buttons">
+                        <button class="q6-button q6-green-background q6-green-border q6-btn-small q6-btn--download">
+                            <span>Download CSV</span>
+                        </button>
+                    </div>   
+        
+                </div>                
             </div>   
 
             <div class="q6-gray-background">
                 <div class="q6-container">
-                    fsfasd
+                    <div class="q6-tabcontent-data">
+                        <div class="q6-billing-chart">
+                            <canvas id="usage_chart"></canvas>
+                        </div>
+
+                        <script>
+                            // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                            var data = {
+                                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                                datasets: [                                    
+                                    {
+                                        backgroundColor: '#aa31cc',
+                                        borderColor: '#aa31cc',
+                                        data: [
+                                            150,
+                                            110,
+                                            50,
+                                            70,
+                                            55,
+                                            58,
+                                            77,
+                                            120,
+                                            150,
+                                            110,
+                                            53,
+                                            145
+                                        ],
+                                        pointBorderColor: "white",
+                                        pointRadius: 5,
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderColor: "white",                                        
+                                        label: 'UHD',
+                                        fill: false
+                                    }, 
+                                    {
+                                        backgroundColor: '#fea314',
+                                        borderColor: '#fea314',
+                                        data: [
+                                            350,
+                                            190,
+                                            470,
+                                            200,
+                                            300,
+                                            250,
+                                            410,
+                                            390,
+                                            230,
+                                            150,
+                                            120,
+                                            260
+                                        ],
+                                        pointBorderColor: "white",
+                                        pointRadius: 5,
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderColor: "white",
+                                        label: 'HD',
+                                        fill: false
+                                    }, 
+                                    {
+                                        backgroundColor: '#ff0478',
+                                        borderColor: '#ff0478',
+                                        data: [
+                                            60,
+                                            90,
+                                            20,
+                                            120,
+                                            90,
+                                            170,
+                                            43,
+                                            80,
+                                            10,
+                                            30,
+                                            70,
+                                            20
+                                        ],
+                                        pointBorderColor: "white",
+                                        pointRadius: 5,
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderColor: "white",                                        
+                                        label: 'SD',
+                                        fill: false
+                                    }
+                                ]
+                            };                  
+
+                            var options = {
+                                maintainAspectRatio: false,
+                                spanGaps: false,
+                                elements: {
+                                    line: {
+                                        tension: 0
+                                    },
+                                    point: { 
+                                        radius: 3 
+                                    } 
+                                },
+                                legend: {
+                                    display: false
+                                },                                                         
+                                scales : {
+                                    xAxes : [ {
+                                        gridLines : {
+                                            display : false
+                                        }                                     
+                                    } ]
+                                },
+
+                                tooltips: {      
+                                    titleFontColor: 'black',
+                                    backgroundColor: 'white',
+                                    bodyFontColor: '#021519',
+                                    borderColor:'#eeeeee',
+                                    borderWidth:2,
+                                    bodyFontStyle: 'bold',
+                                    displayColors: false,
+                                    xPadding: 15,
+                                    yPadding: 10,
+
+                                    callbacks: {
+                                        title: function(tooltipItem, data) {
+                                            //console.log(Chart.defaults.global.tooltips.titleFontColor);
+                                            // console.log(tooltipItem[0]);
+                                            //console.log(data.datasets[tooltipItem[0].datasetIndex]);                                            
+                                            return data.datasets[tooltipItem[0].datasetIndex].label;
+                                        },
+                                        label: function(tooltipItem, data) {
+                                            console.log(tooltipItem.yLabel);
+                                            return tooltipItem.yLabel + " hrs";
+                                        }                                        
+                                    }                                                                                                  
+                                }                                
+
+                            };
+
+                            var chart = new Chart('usage_chart', {
+                                type: 'line',
+                                data: data,
+                                options: options
+                            });
+
+                        </script>
+
+                    </div>
                 </div>
             </div>    
 
 
             <div class="q6-container">
                 <h2 class="q6-section-title q6-black-text">Usage by project</h2>    
+                <div class="q6-filter-box">
+
+                    <div class="q6-filter-box__label">
+                        <span>Choose projects:</span>
+                    </div>
+
+                    <div class="q6-filter-box__options">   
+
+                        <div class="q6-input q6-input--projects">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="project" required="" name="project">
+                                    <option value="all_projects">All projects</option>
+                                    <option value="project_id323434">New project</option>
+                                    <option value="project_id323435">Old project</option>
+                                    <option value="project_id323436">Super long name for a project</option>
+                                </select>                                   
+                            </div>
+                        </div>                                           
+                                                
+                    </div>
+
+                    <div class="q6-filter-box__buttons">
+                        <button class="q6-button q6-green-background q6-green-border q6-btn-small">Refresh page</button>
+                    </div>    
+        
+                </div>                  
             </div>          
 
             <div class="q6-gray-background">
                 <div class="q6-container">
-                    fsfasd
+                    <div class="q6-tabcontent-data">
+                        some data
+                    </div>
                 </div>
             </div>                      
         </section>   
