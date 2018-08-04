@@ -1345,7 +1345,11 @@ input[type=password].q6-input__field.q6-input--error{
 .q6-signup-data--complete{
     display: flex;
     padding-top: 30px;
-    padding-bottom: 15px;  
+    padding-bottom: 30px;
+}
+
+.q6-card-data{
+    margin-left: 60px;
 }
 
 .q6-sign-up-promo{
@@ -1357,9 +1361,37 @@ input[type=password].q6-input__field.q6-input--error{
     box-sizing: border-box    
 }
 
-.q6-sign-up-promo > div{
+.q6-sign-up-promo-info{
+    font-size: 16px;
+    font-family: GraphikRegular;    
+    line-height: 16px;    
+}
+
+
+.q6-sign-up-promo__box > div:first-of-type {
     display: flex;
-    align-items: center;    
+    align-items: center;
+
+    background: #3270eb;
+    color: white;
+
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;   
+
+    padding: 30px;
+    padding-top: 13px;
+    padding-bottom: 5px;
+}
+
+.q6-sign-up-promo__box > div:nth-of-type(2) {
+    border: 1px solid #e5e5e5;
+    border-top: 0;
+
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 .q6-sign-up-promo > hr{
@@ -1369,26 +1401,78 @@ input[type=password].q6-input__field.q6-input--error{
     border-top: 1px solid #ebebed;      
 }
 
-.q6-sign-up-promo > div > div:first-of-type{
-    font-size: 44px;
-    margin-right: 16px;    
+.q6-sign-up-promo-bonus{
+    font-size: 44px; 
+    font-family: GraphikMedium;   
+    margin-right: 5px;      
 }
 
-.q6-sign-up-promo > div > div:nth-of-type(2){
-    font-size: 18px;
-    line-height: 20px;
-    padding-bottom: 5px;     
+.q6-sign-up-promo-dollar{
+    font-size: 28px;    
 }
 
-.q6-sign-up-promo > p{
+.q6-sign-up-promo__box p{
     color: #797979;
     font-size: 16px;
     font-family: GraphikRegular;       
-    margin: 12px 0;     
+    margin: 10px 0;     
 }
 
-.q6-card-data{
-    margin-left: 40px;  
+.q6-sign-up-promo__list{
+    padding: 15px 30px;
+}
+
+.promo-list-item{
+    display: flex;
+    margin: 11px 0;    
+}
+
+.promo-list-item > p{
+    flex: 1;
+    color: #171717;  
+    padding-left: 13px;  
+    padding-top: 4px;        
+}
+
+.promo-list-item__icon {
+    width: 28px;
+    height: 26px;
+    background-image: url(../img/signup_icons__confirm.png);
+    background-size: 200px 35px;
+    background-repeat: no-repeat;
+}
+
+.promo-list-item__icon--free{
+    display: inline-block;
+    height: 27px;
+    width: 27px;
+    background-position: -2px -2px;
+    margin-right: 5px; 
+}
+
+
+.promo-list-item__icon--video{
+    background-position: -31px -1px;    
+}
+
+.promo-list-item__icon--api{
+    background-position: -57px 0px; 
+}
+
+.promo-list-item__icon--no-fees{
+    background-position: -83px 0px; 
+}
+
+.promo-list-item__icon--pay{
+    background-position: -109px 0px; 
+}
+
+.promo-list-item__icon--support{
+    background-position: -136px -3px;
+}
+
+.promo-list-item__icon--manager{
+    background-position: -163px -1px;
 }
 
 .q6-card-data__name-and-cardnumber{
@@ -1400,7 +1484,7 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 .q6-signup-data--complete > div:first-of-type{
-    max-width: 460px;
+    max-width: 528px;
 }
 
 .q6-card-data__name-and-cardnumber > div{
@@ -1504,8 +1588,8 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 .q6-card-data > hr {
-    margin-top: 15px;
-    margin-bottom: 14px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     border: none;
     border-top: 1px solid #e3e3e3;
 }
@@ -1549,6 +1633,11 @@ input[type=password].q6-input__field.q6-input--error{
 
 .q6-more-info-link > a{
     color: #a5a5a5;
+}
+
+.q6-card-data__extra-data > p{
+    color: #a0a3b7;
+    font-size: 12px;    
 }
 
 .q6-sing-up__final-description{
@@ -1950,6 +2039,27 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 }
 
 
+#chartjs-tooltip {
+  opacity: 1;
+  position: absolute;
+  background: white;
+  color: black;
+  border-radius: 3px;
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
+  pointer-events: none;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.chartjs-tooltip-key {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+}
+
+
 /*MODIFICATORS*/
 /*background colors*/
 .q6-blue-background{
@@ -2092,20 +2202,8 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
     }        
     .q6-sign-up-promo {
         padding: 16px;
-        padding-top: 21px;
     }     
-    .q6-sign-up-promo > div > div:first-of-type {
-        font-size: 35px;
-        margin-right: 10px;
-    }    
-    .q6-sign-up-promo > div > div:nth-of-type(2) {
-        font-size: 14px;
-        line-height: 17px;
-        padding-bottom: 0px;
-    }    
-    .q6-card-data {
-        margin-left: 0;
-    }    
+
     .q6-card-data__name-and-cardnumber {
         flex-direction: column;
     }   
@@ -2140,6 +2238,11 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
         margin-right: 0;
         margin-top: 30px;
     }    
+
+    .q6-card-data {
+        margin-left: 0;
+    }    
+  
 }
 
 @media screen and (min-width: 480px){
@@ -2167,22 +2270,9 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
         flex-direction: row;
         padding-top: 30px;
     }
-    .q6-card-data {
-        margin-left: 20px;
-    }    
-    .q6-sign-up-promo {
-        padding: 22px;
-        padding-top: 33px;
-    }    
-    .q6-sign-up-promo > div > div:first-of-type {
-        font-size: 44px;
-        margin-right: 16px;
-    }   
-    .q6-sign-up-promo > div > div:nth-of-type(2) {
-        font-size: 18px;
-        line-height: 20px;
-        padding-bottom: 5px;
-    }     
+
+
+
 
     .q6-signup__final-step {
         flex-direction: row;
@@ -2204,16 +2294,14 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
         margin-right: 30px;
         margin-top: 0px;
     }        
+
+    .q6-card-data {
+        margin-left: 60px;
+    }    
 }
 
 @media screen and (min-width: 1080px){
-    .q6-card-data__name-and-cardnumber {
-        flex-direction: row;
-    }  
-    .q6-card-data {
+    /*.q6-card-data {
         margin-left: 40px;
-    }    
-    .q6-card-data__name-and-cardnumber > div:nth-of-type(2) {
-        margin-left: 9px;
-    }    
+    }      */
 }
