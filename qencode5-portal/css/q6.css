@@ -2059,6 +2059,10 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
     font-size: 14px;        
 }
 
+.q6-billing-chart-container{
+    padding-top: 30px;
+}
+
 .q6-billing-chart{
     height: 304px;
     background: white;
@@ -2094,6 +2098,217 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
   margin-right: 10px;
 }
 
+.q6-summary-table{
+    background: white;
+    margin-top: 8px;
+    padding-left: 40px;
+    padding-top: 1px;  
+    padding-bottom: 1px;       
+}
+
+.q6-summary-table__row{
+    display: flex;
+    margin: 15px 0;    
+    align-items:flex-start;
+    align-content:flex-start;    
+}
+
+.q6-summary-data{
+    width: 450px;
+    padding-left: 20px;
+    padding-right: 30px;    
+}
+
+.q6-summary-title{
+    flex: 1;
+    display: flex;    
+}
+
+.q6-summary-title__icon{
+    width: 20px;
+    height: 20px;
+
+    background-image: url(../img/billing_icons.png);
+    background-size: 60px 20px;
+    background-repeat: no-repeat;    
+}
+
+.q6-summary-title__icon--free{
+    background-position: 0 0;
+}
+
+.q6-summary-title__icon--unlimited{
+    background-position: -25px 0;
+}
+
+.q6-summary-title__info{
+    margin-left: 10px;
+    margin-top: 2px;    
+    flex: 1;        
+}
+
+.q6-summary-data-cell{
+    flex: 1;
+    padding: 1px 0;  
+}
+
+.q6-summary-data--title .q6-summary-data-cell{
+    padding: 4px 0;      
+}
+
+.q6-summary-data--title{
+    text-transform: uppercase;
+    font-family: GraphikMedium;
+    font-size: 11px;    
+    border-radius: 3px;    
+}
+
+.q6-summary-data-row{
+    display: flex;
+    width: 100%;    
+}
+
+.q6-summary-data-row > div:last-of-type{
+    text-align: right;
+}
+
+.q6-summary-data--body .q6-summary-data-row > div:last-of-type{
+    font-weight: bold;
+}
+
+.q6-summary-total{
+    background: white;
+    border-top: 1px solid #e6e6e6;    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 48px;          
+}
+
+.q6-summary-total > div:nth-of-type(1){
+    text-transform: uppercase;
+    font-family: GraphikMedium;
+    font-size: 11px;
+    padding-right: 25px;
+}
+
+.q6-summary-total > div:nth-of-type(2){
+    width: 165px;
+    background: #fffef1;
+    padding-right: 30px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+
+    font-weight: bold;
+    font-size: 16px;
+
+    border-left: 1px solid #e6e6e6;    
+}
+
+.q6-billing-data{
+    padding: 30px 0;
+}
+
+.q6-billing-data > .q6-expandable{
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;    
+    margin-top: 8px; 
+
+    cursor: pointer;
+
+    justify-content: space-between;    
+}
+
+.q6-expandable > .q6-summary-total > div:nth-of-type(2) {
+    background: white;
+}
+
+.q6-expandable{
+    background: white;       
+}
+
+.q6-expandable--active {
+    background: #f9f9f9;
+    box-shadow: 1px 1px 1px 0px rgb(182, 182, 182);
+}
+
+.q6-expandable-dropdown {
+    cursor: pointer;
+    position: relative;
+    padding-left: 17px;
+    color: #316fea;
+}
+
+.q6-expandable-dropdown:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    top: -1px;
+    transition: all 0.1s ease;
+}
+
+.q6-expandable-dropdown--active:after {
+    transform: rotate(90deg);
+}
+
+.q6-usage{
+    display: flex;
+    flex: 1;
+    align-items: center;    
+    margin-bottom: 15px;    
+}
+
+.q6-usage__time{
+    flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;        
+}
+
+.q6-usage__symbol{
+    width: 38px;
+    height: 24px;
+    background: #353535;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 3px; 
+}
+
+.q6-time-line{
+    height: 3px;
+    width: 100%;
+}
+
+.q6-time-value{
+    font-size: 13px;    
+}
+
+.q6-usage--uhd .q6-time-line{
+    background: #a931ce;
+}
+
+.q6-usage--hd .q6-time-line{
+    background: #ffa312;
+}
+
+.q6-usage--sd .q6-time-line{
+    background: #ff047b;
+}
+
+.q6-summary-title--lines{
+    flex-direction: column;
+}
+
 
 /*MODIFICATORS*/
 /*background colors*/
@@ -2112,6 +2327,11 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 .q6-gray-background{
     background: #f3f3f3;
 }
+
+.q6-lighter-gray-background{
+    background: #f6f6f6;
+}
+
 
 .q6-light-gray-background{
     background: #f8f8f8;
