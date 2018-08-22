@@ -1029,7 +1029,116 @@
         <section id="payment_methods" class="q6-tabcontent">
             <div class="q6-container">            
                 <h2 class="q6-section-title q6-black-text">Card details</h2>    
-            </div>                                  
+                <div class="q6-paynemt-methods__card-details">
+                    <div class="q6-card-inputs">
+                        <div class="q6-input q6-lock-icon">
+                            <div class="q6-input__label">
+                                <label for="user_name">Name</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="user_name" name="user[name]">
+                        </div>
+                        
+                        <div class="q6-input q6-input--card-number q6-lock-icon q6-card-icon">
+                            <div class="q6-input__label">
+                                <label for="user_card">Card number</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="user_card" name="user[card]" maxlength="19">
+                            <script>
+                                document.getElementById('user_card').addEventListener('input', function (e) {
+                                    e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                });                                                        
+                            </script>                                    
+                        </div>
+
+                        <div class="q6-input q6-input--exp-date q6-lock-icon">
+                            <div class="q6-input__label">
+                                <label for="exp_date">Exp. Date</label>
+                            </div>
+                            <div class="q6-exp-date-wrapper q6-black-text">
+                                <input type="text" placeholder="MM" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="2">
+                                <span class="q6-exp-date-delimeter">/</span>
+                                <input type="text" placeholder="YYYY" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="4">
+                            </div>
+                        </div>          
+
+                        <div class="q6-input q6-input--cvv q6-lock-icon">
+                            <div class="q6-input__label">
+                                <label for="user_cvv">CVV</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="user_cvv" name="user[cvv]" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="3">
+                        </div>  
+                    </div>
+                    <div class="q6-add-new-card">
+                        <button class="q6-button q6-green-background q6-green-border">Add card</button>
+                    </div>                    
+                </div>                                                            
+
+            </div>     
+
+            <div class="q6-container">
+                <h2 class="q6-section-title q6-black-text">Your cards</h2>                   
+            </div>            
+
+            <div class="q6-payment-methods-table q6-gray-background">
+
+                <div>
+                    <div class="q6-table">
+                        <div class="q6-table-head q6-full-screen-underline">
+                            <div class="q6-table-row q6-container q6-no-padding">
+                                <div>Credit card</div>
+                                <div>Card name</div>
+                                <div>Expire date</div>                      
+                                <div>Actions</div>                               
+                            </div>
+                        </div>
+                        <div class="q6-table-body q6-container q6-no-padding">
+
+                            <div class="q6-table-row">
+                                <div class="q6-payment-method-container">
+                                    <div class="q6-payment-method">
+                                        <div class="q6-payment-icon q6-payment__mastercard">4242</div>
+                                    </div>
+                                </div>
+                                <div>John Smith</div>
+                                <div>07/2018</div>
+                                <div>
+                                    actions
+                                </div>
+                            </div>                
+
+                            <div class="q6-table-row">
+                                <div class="q6-payment-method-container">
+                                    <div class="q6-payment-method">
+                                        <div class="q6-payment-icon q6-payment__visa">4242</div>
+                                    </div>
+                                </div>
+                                <div>Demetrius Massingberg</div>
+                                <div>01/2022</div>
+                                <div>
+                                    actions
+                                </div>
+                            </div>                                                                                                                     
+
+                            <div class="q6-table-row">
+                                <div class="q6-payment-method-container">
+                                    <div class="q6-payment-method">
+                                        <div class="q6-payment-icon q6-payment__mastercard">4242</div>
+                                    </div>
+                                </div>
+                                <div>John Smith</div>
+                                <div>07/2018</div>
+                                <div>
+                                    actions
+                                </div>
+                            </div>                                                                                                                                                                         
+                                                                                                                                                                                                       
+                        </div>
+                    </div>                   
+
+                </div>                  
+
+            </div>
+
         </section>    
 
         <section id="payment_history" class="q6-tabcontent">
