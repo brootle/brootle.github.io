@@ -636,6 +636,10 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     flex-direction: column;
 }
 
+.q6-error-border{
+    border: 1px solid #de3c3a;  
+}
+
 .q6-row-has-error > .q6-table-row{
     padding: 0;
     margin: 0;
@@ -845,6 +849,13 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     width: 100%;
 }
 
+.q6-status {
+    display: flex;
+    align-items: center;
+    padding-left: 22px;
+    width: 100%;
+}
+
 .q6-status-icon{
     position: relative;
 }
@@ -858,8 +869,8 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     left: -22px;
     top: -1px;
 
-    background-image: url(../img/encoding_status_icons.png);
-    background-size: 58px 18px;
+    background-image: url(../img/status_icons.png);
+    background-size: 80px 18px;
     background-repeat: no-repeat;
 }
 
@@ -873,6 +884,10 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
 .q6-status__error:before{
     background-position: -40px 0;  
+}
+
+.q6-status__pending:before{
+    background-position: -60px 0;  
 }
 
 .q6-encoding-progress{
@@ -2312,7 +2327,8 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 
 
 .q6-payment-methods-table,
-.q6-payment-history-table{
+.q6-payment-history-table,
+.q6-invoices-table{
     padding-bottom: 20px;    
 }
 
@@ -2359,13 +2375,15 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 }
 
 .q6-payment-methods-table .q6-table-row:hover,
-.q6-payment-history-table .q6-table-row:hover{
+.q6-payment-history-table .q6-table-row:hover,
+.q6-invoices-table .q6-table-row:hover{
     background: #f9f9f9;
     box-shadow: 1px 1px 1px 0px rgb(182, 182, 182);    
 }
 
 .q6-payment-methods-table .q6-table-head .q6-table-row:hover,
-.q6-payment-history-table .q6-table-head .q6-table-row:hover{
+.q6-payment-history-table .q6-table-head .q6-table-row:hover,
+.q6-invoices-table .q6-table-head .q6-table-row:hover{
     background: none;
     box-shadow: none;    
 }
@@ -2431,6 +2449,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 .q6-table-row > div.q6-action-buttons-container{
     padding-top: 0px;
     padding-bottom: 0px;
+    padding-right: 15px;
     display: flex;
     align-items: center;   
     justify-content: space-between;     
@@ -2511,6 +2530,25 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 .q6-main-link:hover{
     text-decoration: underline;
 }
+
+.q6-invoices-table .q6-table-row > div:last-of-type {
+    max-width: 140px;
+    min-width: 140px;
+}
+
+.q6-invoices-table .q6-table-row > div:first-of-type {
+    min-width: 230px;
+}
+
+.q6-invoices-table .q6-table-row > div:nth-last-of-type(2){
+    padding-right: 15px;
+    text-align: right;
+}
+
+.q6-invoices-table .q6-table-body .q6-table-row > div:nth-last-of-type(2){
+    font-weight: bold;
+}
+
 
 /*MODIFICATORS*/
 /*background colors*/
@@ -2636,6 +2674,11 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
     .q6-container {
         padding: 0 10px;
     }    
+
+    .q6-no-padding {
+        padding: 0;
+    }
+
     .q6-input-tooltip {
         flex-direction: column;
         align-items: flex-start;        
@@ -2709,6 +2752,10 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 @media screen and (min-width: 480px){
     .q6-container {
         padding: 0 20px;
+    }    
+
+    .q6-no-padding {
+        padding: 0;
     }    
 }
 
