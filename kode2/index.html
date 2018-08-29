@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" /> 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/softscroll.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,500,700,900" rel="stylesheet">
+
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>KODE</title>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrap container">
+            <div class="kode-logo">
+                <a href=""><img src="img/logo_small.png" alt=""></a>
+            </div>
+            <div class="nav-items">
+                <a href="">Whitepaper</a>
+                <a href="">Contact</a>
+                <a href="" class="dropdown-menu select-language">EN</a>
+            </div>
+        </div>      
+    </nav>    
+
+    <div class="scroll-anchor" id="home"></div>
+
+    <header>
+        <div class="header-logo"></div>
+        <div class="container">
+            <h1 class="text-green">The Kode Network</h1>
+            <p class="header-description">                
+                Decentralized Video Transcoding <br>
+                developed <a href="https://cloud.qencode.com/" class="text-green right-arrow">by Qencode</a>
+            </p>
+            <div class="social-icons">
+                <a href="" class="social-icon social-icon--twitter"></a>     
+                <a href="" class="social-icon social-icon--medium"></a>    
+                <a href="" class="social-icon social-icon--reddit"></a>    
+                <a href="" class="social-icon social-icon--git"></a>    
+                <a href="" class="social-icon social-icon--youtube"></a>    
+                <a href="" class="social-icon social-icon--facebook"></a>    
+                <a href="" class="social-icon social-icon--discord"></a>    
+                <a href="" class="social-icon social-icon--instagram"></a>    
+                <a href="" class="social-icon social-icon--telegram"></a>    
+                <a href="" class="social-icon social-icon--slack"></a>    
+                <a href="" class="social-icon social-icon--w"></a>                         
+            </div>        
+
+            <div class="video-container">
+
+                <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/XvoW-bwIeyY?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                
+                <div id="play-button" class="play-button"></div>
+
+                <script>
+                    // on button click show video container with video and start playing
+                    $("#play-button").click(function (){
+                        // hide play button
+                        $(".play-button").css('display', "none");  
+                        // show player
+                        $("#video").css('display', "block");  
+                        // start video
+                        $("#video")[0].src += "&autoplay=1";
+                    });                
+                </script>                
+            </div>   
+
+        </div>
+    </header>
+
+    <main>
+
+        <div class="vertical-delimiter">
+            <div class="green-line-wrapper">
+                <div class="green-line"></div>
+            </div>        
+
+            <div class="blue-line-wrapper">
+                <div class="blue-line"></div>
+            </div>  
+        </div>      
+
+        <section>
+            <h1 class="kode-h1 text-green">The problem</h1>
+
+            <div class="description container">
+                <p class="kode-paragraph">
+                    Currently market share for web services is concentrated to just a few third-party 
+                    providers. Companies both big and small are largely dependent on the terms and 
+                    availability of the few providers available, as well as exposed to risks with 
+                    privacy and security.
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="more-info container">
+                <div class="more-info__details">
+                    <div class="details-image details-image--problem-1"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Highly Centralized</h2>
+                        <p class="kode-paragraph">
+                            Big third-party providers continue consolidate services,
+                            gaining even more on their already majority control
+                            of marketshare for cloud web services.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--problem-2"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Price Descrimination</h2>
+                        <p class="kode-paragraph">
+                            Providers charge high prices for their services, practicing price discrimination
+                            against startups with low volume and creating a barrier of entry to innovators.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--problem-3"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Conflict of Interest</h2>
+                        <p class="kode-paragraph">
+                            Many large third-party providers compete directly with the customers they provide
+                            their services to and create a conflict of interest that hurts their clients.
+                        </p>                        
+                    </div>
+                </div>
+            </div>
+
+        </section>     
+
+        <div class="vertical-delimiter">
+            <div class="green-line-wrapper">
+                <div class="green-line"></div>
+            </div>        
+
+            <div class="blue-line-wrapper">
+                <div class="blue-line"></div>
+            </div>  
+        </div>      
+
+        <section>
+            <h1 class="kode-h1 text-green">The Solution</h1>     
+
+            <div class="description container">
+                <p class="kode-paragraph">
+                    The Kode Network is a decentralized video transcoding platform that leverages 
+                    the latest blockchain technologies, providing the most available, private, 
+                    secure and cost-effective video transcoding solution for startups and large 
+                    enterprises alike.
+                </p>
+            </div>    
+
+            <hr>
+
+            <div class="more-info container">
+                <div class="more-info__details">
+                    <div class="details-image details-image--solution-1"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Peer-to-Peer Network</h2>
+                        <p class="kode-paragraph">
+                            Each transcoding split into smaller parts and distributed across a massive 
+                            decentralized peer-to-peer network, ensuring cost savings and availability.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--solution-2"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Auction Based Bidding</h2>
+                        <p class="kode-paragraph">
+                            An internal auction is initiated for each task request, driving efficiency 
+                            innovation and ensuring participants always get the best prices in the market.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--solution-3"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Blockchain Technology</h2>
+                        <p class="kode-paragraph">
+                            Anonymized ledgers provide high levels of privacy across the blockchain, 
+                            while maintaining an open community and ensuring that the network stays secure.
+                        </p>                        
+                    </div>
+                </div>
+            </div>            
+
+        </section>      
+
+        <div class="vertical-delimiter">
+            <div class="green-line-wrapper">
+                <div class="green-line"></div>
+            </div>        
+
+            <div class="blue-line-wrapper">
+                <div class="blue-line"></div>
+            </div>  
+        </div>        
+
+        <section>
+            <h1 class="kode-h1 text-green">Why Kode Network?</h1>    
+
+            <div class="more-info more-info--why-kode container">
+                <div class="more-info__details">
+                    <div class="details-image details-image--why-kode-1"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Privacy</h2>
+                        <p class="kode-paragraph">
+                            A decentralized transcoding platform that provides a secure and
+                            anonymous way to transcode videos.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--why-kode-2"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Availability</h2>
+                        <p class="kode-paragraph">
+                            A large peer-to-peer network of nodes greatly reduce the chance of the 
+                            system of being down.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--why-kode-3"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Cost-Savings</h2>
+                        <p class="kode-paragraph">
+                            Huge efficiency gain by leveraging idle processing power across a
+                            distributed network.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-image details-image--why-kode-4"></div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Simple UI or API</h2>
+                        <p class="kode-paragraph">
+                            Provide services without requiring any blockchain or cryptocurrency knowledge.
+                        </p>                        
+                    </div>
+                </div>                
+            </div>                
+        </section>       
+
+        <div class="vertical-delimiter">
+            <div class="green-line-wrapper">
+                <div class="green-line"></div>
+            </div>        
+
+            <div class="blue-line-wrapper">
+                <div class="blue-line"></div>
+            </div>  
+        </div>        
+
+        <section>
+            <h1 class="kode-h1 text-green">Robust Video Transcoding</h1>    
+
+            <div class="description container">
+                <p class="kode-paragraph">
+                    Using Kode Network, customets can convert videos into all the latest containers,
+                    formats and codecs, and create to videos with multiple quality and resolution
+                    settings.
+                </p>
+            </div>       
+
+            <hr>       
+
+            <div class="more-info more-info--robust-video container">
+                <div class="more-info__details">
+                    <div class="details-text">
+                        <h2 class="kode-h2">Formats</h2>
+                        <ul class="checklist">
+                            <li>HLS</li>
+                            <li>MPEG-DASH</li>
+                            <li>MP4</li>
+                            <li>WebM</li>
+                        </ul>  
+                        <ul class="checklist">
+                            <li>MPEG-4 (mp4, m4a, m4v, f4v, f4a, m4b, m4r, f4b, mov)</li>
+                            <li>3GP (3gp, 3gp2, 3g2, 3gpp, 3gpp2)</li>
+                            <li>MPEG-TS, MPEG2-PS, MPEG1</li>
+                            <li>MPEG2 (CableLabs)</li>
+                            <li>AVI, FLV, VOB, WEBM (webm)</li>
+                        </ul>                                        
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <div class="details-text">
+                        <h2 class="kode-h2">Codecs</h2>
+                        <ul class="checklist">
+                            <li>H.264 (AVC1)</li>
+                            <li>H.265 (HEVC)</li>
+                            <li>VP9</li>
+                            <li>VP8</li>
+                            <li>AVI</li>
+                        </ul>                      
+                    </div>
+                    <div class="details-text">
+                        <h2 class="kode-h2">Transfers</h2>
+                        <ul class="checklist">
+                            <li>FTP</li>
+                            <li>Amazon S3</li>
+                            <li>Digital Ocean Space</li>
+                            <li>Google Cloud</li>
+                            <li>Microsoft Azure</li>
+                            <li>Scality S3</li>
+                            <li>Custom S3</li>                            
+                        </ul>                      
+                    </div>                    
+                </div>
+                <div class="more-info__details">
+                    <div class="details-text">
+                        <h2 class="kode-h2">Resolutions</h2>
+                        <ul class="checklist">
+                            <li>240p</li>
+                            <li>360p</li>
+                            <li>480p</li>
+                            <li>720p</li>
+                            <li>1080p</li>
+                            <li>2K</li>
+                            <li>4K</li>
+                            <li>8K</li>                            
+                        </ul>                     
+                    </div>
+                </div>
+            </div>   
+
+        </section>    
+
+        <div class="vertical-delimiter">
+            <div class="green-line-wrapper">
+                <div class="green-line"></div>
+            </div>        
+
+            <div class="blue-line-wrapper">
+                <div class="blue-line"></div>
+            </div>  
+        </div>      
+
+        <section>
+            <h1 class="kode-h1 text-green">Mining</h1> 
+
+            <div class="description description--wide">
+                <p class="kode-paragraph">
+                    Using Kode Network, miners allocate their processing power to create a massive
+                    network of highly available and secure web services, at a far market rate
+                    determined by the networks internal bidding system.
+                </p>
+            </div>     
+
+            <div class="subscribe-container">
+                <div class="k-logo"></div>
+                <div class="subscribe-form">
+                    <h3 class="text-green">Interested in becoming a miner?</h3>
+                    <div>
+                        <input type="email" placeholder="Enter your email">
+                        <a class="kode-button">SUBMIT</a>    
+                    </div>                
+                </div>
+            </div>
+
+        </section>     
+
+        <div class="scroll-anchor" id="documentation"></div>
+
+        <div class="blue-line-wrapper">
+            <div class="blue-line"></div>
+        </div>        
+
+        <section>
+            <h1 class="kode-h1 text-green">Documentation</h1> 
+
+            <div class="description description--wide">
+                <p class="kode-paragraph">
+                    Using Kode Network, miners allocate their processing power to create a massive
+                    network of highly available and secure web services, at a far market rate
+                    determined by the networks internal bidding system.
+                </p>
+            </div>        
+
+            <div class="whitepaper-and-info">
+                <div class="download-container">
+                    <div class="whitepaper-icon"></div>
+                    <a class="kode-button" href="/docs/whitepaper.pdf" download>DOWNLOAD WHITEPAPER</a> 
+                </div>
+                <div class="more-links">
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Overview</a></li>
+                        <li><a href="">API Outline</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </section>     
+
+        <div class="blue-line-wrapper">
+            <div class="blue-line"></div>
+        </div>        
+
+        <section>
+            <h1 class="kode-h1 text-green">Team</h1> 
+
+            <div class="description description--wide">
+                <p class="kode-paragraph">
+                    The Kode Network is a project currently being developed by core members from
+                    the Qencode team.
+                </p>
+            </div>  
+
+            <div class="more-info more-info--team">
+                <div class="more-info__details">
+                    <img class="member-photo" src="img/team/teammember1.jpg" alt="Murad Mordukhay">
+                    <div class="details-text">
+                        <div class="title-with-link">
+                            <h2 class="kode-h2">MURAD MORDUKHAY</h2>
+                            <a href=""></a>
+                        </div>
+                        <p class="position-title text-green">
+                            Product Management, Digital Marketing, Operations
+                        </p>
+                        <ul>
+                            <li>Qencode, CEO</li>
+                            <li>StageVids, CEO</li>
+                            <li>Reach Local Russia, CEO</li>
+                        </ul>                            
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <img class="member-photo" src="img/team/teammember2.jpg" alt="Nikita Yeryomin">
+                    <div class="details-text">
+                        <div class="title-with-link">
+                            <h2 class="kode-h2">NIKITA YERYOMIN</h2>
+                            <a href=""></a>
+                        </div>                        
+                        <p class="position-title text-green">
+                            Platform Architecture, Development and talent acquisition
+                        </p>        
+                        <ul>
+                            <li>Qencode, President</li>
+                            <li>CEO, AlterEgo</li>
+                            <li>Professor at DGMA State Academy</li>
+                        </ul>                                       
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <img class="member-photo" src="img/team/teammember3.jpg" alt="Sergey Dobryak">
+                    <div class="details-text">
+                        <div class="title-with-link">
+                            <h2 class="kode-h2">SERGEY DOBRYAK</h2>
+                            <a href=""></a>
+                        </div>                         
+                        <p class="position-title text-green">
+                            Network Systems, Backend Architecture, and system efficiency
+                        </p>     
+                        <ul>
+                            <li>Qencode, CTO</li>
+                            <li>Head of Computer Science</li>
+                            <li>Professor at DGMA State Academy</li>
+                        </ul>                                               
+                    </div>
+                </div>
+            </div>            
+            
+
+        </section>    
+
+        <div class="blue-line-wrapper">
+            <div class="blue-line"></div>
+        </div>     
+
+        <section>
+            <h1 class="kode-h1 text-green">Advisors</h1> 
+
+            <div class="more-info more-info--team more-info--team-advisors">
+                <div class="more-info__details">
+                    <img class="member-photo" src="img/team/advisor1.jpg" alt="Sanjeev Verma">
+                    <div class="details-text">
+                        <div class="title-with-link">
+                            <h2 class="kode-h2">SANJEEV VERMA, PHD</h2>
+                            <a href=""></a>
+                        </div>
+                        <p class="position-title text-green">
+                            Blockchain, System Security, Multimedia Streaming
+                        </p>
+                        <ul>
+                            <li>Samsung</li>
+                            <li>Nokia</li>
+                            <li>Bell Labs</li>
+                        </ul>                            
+                    </div>
+                </div>
+                <div class="more-info__details">
+                    <img class="member-photo" src="img/team/advisor2.jpg" alt="Guatam Sampathkumar">
+                    <div class="details-text">
+                        <div class="title-with-link">
+                            <h2 class="kode-h2">GUATAM SAMPATHKUMAR</h2>
+                            <a href=""></a>
+                        </div>                        
+                        <p class="position-title text-green">
+                            Platform Architecture, Development and talent acquisition
+                        </p>        
+                        <ul>
+                            <li>Cisco</li>
+                            <li>Paypal</li>
+                            <li>Alcatel-Lucent</li>
+                        </ul>                                       
+                    </div>
+                </div>
+            </div>            
+            
+
+        </section>    
+
+        <div class="blue-line-wrapper">
+            <div class="blue-line"></div>
+        </div>              
+
+        <section>
+            <h1 class="kode-h1 text-green">Token Terms</h1> 
+
+            <div class="more-info more-info--token-terms">
+                <div class="more-info__details">
+                    <h2 class="kode-h2">Token Sale Distribution</h2>
+                    <div class="details-image details-image--token-1"></div>
+                    <ul>
+                        <li>60% Token Sale Participants</li>
+                        <li>20% Network Seeding</li>
+                        <li>10% Advisors and Strategic Partners</li>
+                        <li>5% Legal and Operations</li>
+                    </ul>
+                </div>
+                <div class="more-info__details">
+                    <h2 class="kode-h2">Anticipated Use of Funds</h2>
+                    <div class="details-image details-image--token-2"></div>
+                    <ul>
+                        <li>50% Software Development</li>
+                        <li>20% Community Development</li>
+                        <li>15% Marketing</li>
+                        <li>5% Operational and Legal</li>
+                        <li>5% Bounty</li>
+                        <li>5% Miscellaneous Expenses</li>
+                    </ul>
+                </div>
+            </div>  
+
+        </section>            
+
+        <div class="scroll-anchor" id="roadmap"></div>
+
+        <div class="blue-line-wrapper">
+            <div class="blue-line"></div>
+        </div>        
+
+        <section>
+            <h1 class="kode-h1 text-green">Roadmap</h1>
+
+            <div class="phase">
+
+                <div class="phase-circle"></div>
+
+                <div class="phase-block phase-name">
+                    <h2 class="text-blue">PHASE 1</h2>
+                    <h1>Foundation</h1>
+                </div>
+                <div class="phase-line">
+                    <div class="blue-line-wrapper">
+                        <div class="blue-line green-arrow"></div>
+                    </div>                    
+                </div>
+                <div class="phase-block phase-timeline">
+                    <div class="phase-item checked-item">
+                        <h3 class="text-green">Q3 2015</h3>
+                        <p>StageVids video platform launched</p>
+                    </div>    
+                    <div class="phase-item checked-item">
+                        <h3 class="text-green">Q2 2016</h3>
+                        <p>Development of distributed transcoding</p>
+                    </div>  
+                    <div class="phase-item checked-item">
+                        <h3 class="text-green">Q4 2016</h3>
+                        <p>Transcoding optimized for high cost-efficiency</p>
+                    </div>         
+                    <div class="phase-item checked-item">
+                        <h3 class="text-green">Q2 2017</h3>
+                        <p>Qencode distributed cloud video transcoding launched</p>
+                    </div>        
+                    <div class="phase-item">
+                        <h3 class="text-green">Q1 2018</h3>
+                        <p>Kode token presale to strategic partners</p>
+                    </div>                                                                                     
+                </div>
+            </div>
+
+            <div class="blue-line-wrapper short-line">
+                <div class="blue-line"></div>
+            </div>        
+
+            <div class="phase">
+
+                <div class="phase-circle"></div>
+
+                <div class="phase-block phase-name">
+                    <h2 class="text-blue">PHASE 2</h2>
+                    <h1>Token Sale</h1>
+                </div>
+                <div class="phase-line">
+                    <div class="blue-line-wrapper">
+                        <div class="blue-line"></div>
+                    </div>                    
+                </div>
+                <div class="phase-block phase-timeline">
+                    <div class="phase-item">
+                        <h3 class="text-green">March 20 / 2018</h3>
+                        <p>Kode tokens available on Qencode's platform</p>
+                    </div>    
+                    <div class="phase-item">
+                        <h3 class="text-green">April 15 / 2018</h3>
+                        <p>Token Sale Completed</p>
+                    </div>  
+                    <div class="phase-item">
+                        <h3 class="text-green">March 20 / 2018</h3>
+                        <p>ERC-20 tokens issued</p>
+                    </div>                                                        
+                </div>
+            </div>            
+
+
+            <div class="blue-line-wrapper short-line">
+                <div class="blue-line"></div>
+            </div>        
+
+            <div class="phase">
+
+                <div class="phase-circle"></div>
+
+                <div class="phase-block phase-name">
+                    <h2 class="text-blue">PHASE 3</h2>
+                    <h1>Operation</h1>
+                </div>
+                <div class="phase-line">
+                    <div class="blue-line-wrapper">
+                        <div class="blue-line"></div>
+                    </div>                    
+                </div>
+                <div class="phase-block phase-timeline">
+                    <div class="phase-item">
+                        <h3 class="text-green">Q3 2018</h3>
+                        <p>Kode tokens integrated into Qencode platform</p>
+                    </div>    
+                    <div class="phase-item">
+                        <h3 class="text-green">Q4 2018</h3>
+                        <p>Native Kode blockchain development</p>
+                    </div>                                                        
+                </div>
+            </div>             
+
+
+            <div class="blue-line-wrapper short-line">
+                <div class="blue-line"></div>
+            </div>        
+
+            <div class="phase">
+
+                <div class="phase-circle"></div>
+
+                <div class="phase-block phase-name">
+                    <h2 class="text-blue">PHASE 4</h2>
+                    <h1>Go Live!</h1>
+                </div>
+                <div class="phase-line">
+                    <div class="blue-line-wrapper">
+                        <div class="blue-line"></div>
+                    </div>                    
+                </div>
+                <div class="phase-block phase-timeline">
+                    <div class="phase-item">
+                        <h3 class="text-green">Q1 2019</h3>
+                        <p>Native Kode network launched</p>
+                    </div>    
+                    <div class="phase-item">
+                        <h3 class="text-green">Q1 2019</h3>
+                        <p>Theta ERC-20 tokens exchanged 1:1 for Theta blockchain tokens</p>
+                    </div>      
+                    <div class="phase-item">
+                        <h3 class="text-green">Q3 2019</h3>
+                        <p>Miners and masternodes go live on Kode network</p>
+                    </div>                                                                       
+                </div>
+            </div>        
+
+            <div class="blue-line-wrapper short-line">
+                <div class="blue-line"></div>
+            </div>        
+
+            <div class="phase">
+
+                <div class="phase-circle"></div>
+
+                <div class="phase-block phase-name">
+                    <h1 class="future-work">Future work</h1>
+                </div>
+                <div class="phase-line">
+                    <div class="blue-line-wrapper">
+                        <div class="blue-line"></div>
+                    </div>                    
+                </div>
+                <div class="phase-block phase-timeline">
+                    <div class="phase-item">
+                        <h3 class="text-green">Q2 2020</h3>
+                        <p>Cloud storage development started</p>
+                    </div>    
+                    <div class="phase-item">
+                        <h3 class="text-green">Q2 2021</h3>
+                        <p>CDN development started</p>
+                    </div>      
+                    <div class="phase-item">
+                        <h3 class="text-green">Q2 2022</h3>
+                        <p>Love streaming development started</p>
+                    </div>                                                                       
+                </div>
+            </div>    
+
+            <div class="blue-line-wrapper short-line">
+                <div class="blue-line transparent-end"></div>
+            </div>                                      
+
+        </section>        
+
+  
+
+        <section>
+
+            <div class="email-image"></div>
+
+            <h1 class="kode-h1 text-green">Stay updated</h1>
+
+            <div class="description description--wide">
+                <p class="kode-paragraph">
+                    Learn about our progress and stay updated from KODE.
+                </p>
+
+                <div class="subscribe-form subsribe-bottom">
+                    <div id="submit_subscription">
+                        <input type="email" placeholder="Enter your email">
+                        <a id="submit_subs_button" class="kode-button">SUBMIT</a>    
+                    </div>      
+                    <div id="submit_message">
+                        <div class="thank-you-message">
+                            <div class="submit-check-box"></div>
+                            <span>Thank you for your subscription!</span>
+                        </div>    
+                    </div>      
+
+                    <script>
+                        var submitButton = document.querySelector('#submit_subs_button');
+
+                        submitButton.addEventListener('click', () => {
+                            $('#submit_subscription').hide();
+                            $('#submit_message').show();
+                        });
+                    </script>                      
+
+                </div>
+
+            </div>                
+        </section>                                       
+
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="" class="social-icon social-icon--twitter"></a>     
+            <a href="" class="social-icon social-icon--medium"></a>    
+            <a href="" class="social-icon social-icon--reddit"></a>    
+            <a href="" class="social-icon social-icon--git"></a>    
+            <a href="" class="social-icon social-icon--youtube"></a>    
+            <a href="" class="social-icon social-icon--facebook"></a>    
+            <a href="" class="social-icon social-icon--discord"></a>    
+            <a href="" class="social-icon social-icon--instagram"></a>    
+            <a href="" class="social-icon social-icon--telegram"></a>    
+            <a href="" class="social-icon social-icon--slack"></a>    
+            <a href="" class="social-icon social-icon--w"></a>                         
+        </div>
+        <div class="copyright text-blue">
+            © Qencode, Corp | All Rights Reserved | KODE NETWORK&trade;
+        </div>
+    </footer>
+
+</body>
+</html>
