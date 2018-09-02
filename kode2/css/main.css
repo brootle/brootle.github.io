@@ -7,6 +7,38 @@ body{
     flex-direction: column;    
 }
 
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: #35fa90;
+
+    width: 30px;
+    height: 3px;    
+
+    left: -10px;
+}
+
+.hamburger-inner {
+    width: 20px;
+    left: 10px;
+}
+
+.hamburger-box {
+    width: 30px;
+}
+
+.hamburger {
+    display: flex;
+    border: 0;
+    outline: 0;
+}
+
+.hamburger--squeeze.is-active .hamburger-inner,
+.hamburger--squeeze.is-active .hamburger-inner::after  {
+    left: 0;
+    width: 30px;
+}
+
+
+
 section hr{
     margin: 38px 0;
     height: 0;
@@ -2196,6 +2228,10 @@ a:hover.text-green, a:visited.text-green, a:active.text-green, a:link.text-green
 
     .k-logo {
         display: block;
+    }
+
+    .hamburger{
+        display: none;
     }
 
 }
