@@ -59,10 +59,6 @@ describe('Blockchain', ()=>{
         
         expect(blockchain).not.toEqual(another_blockchain);
     })       
-
-    it('generates a hash that matches the difficulty', ()=>{
-
-    })       
     
 
 });

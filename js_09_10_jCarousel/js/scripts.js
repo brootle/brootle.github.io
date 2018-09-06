@@ -6,6 +6,10 @@ $(function () {
 
     $('.jcarousel').jcarousel({
         // Configuration goes here
+    }).jcarouselAutoscroll({
+        interval: 3000,
+        target: '+=1',
+        autostart: true
     });
 
     // initiate Select2 plugin

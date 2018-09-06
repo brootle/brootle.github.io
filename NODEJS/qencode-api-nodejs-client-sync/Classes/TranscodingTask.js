@@ -1,5 +1,4 @@
 const querystring = require('querystring');
-const StartEncodeResponse = require('../Responses/StartEncodeResponse');
 
 class TranscodingTask {
 

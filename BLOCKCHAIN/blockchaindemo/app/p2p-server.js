@@ -8,10 +8,17 @@ const P2P_PORT = process.env.P2P_PORT || 5001
 // if it doesn't exist we just assign empty array
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 
+// there will be different data passed over sockets, so we create types for data
+const MESSAGE_TYPES = {
+    chain: "CHAIN",
+    transaction: "TRANSACTION"
+};
+
 // define P2p class
 class P2pServer {
-    constructor(blockchain){
+    constructor(blockchain, transactionPool){
         this.blockchain = blockchain;
+        this.transactionPool = transactionPool;
         this.sockets = [];
     }
 
@@ -66,20 +73,47 @@ class P2pServer {
             const data = JSON.parse(message); // convert JSON format message back to objet
             // console.log('data: ', data); // just printing data when our socket gets some message
 
+            // now we have two types of messages, chain and transaction
+            switch(data.type){
+                case MESSAGE_TYPES.chain:
+                    this.blockchain.replaceChain(data.chain);
+                    break;
+                case MESSAGE_TYPES.transaction:
+                    this.transactionPool.updateOrAddTransaction(data.transaction);
+                    break;                    
+            }
+
             // replace chain with updated one
-            this.blockchain.replaceChain(data);
+            // this.blockchain.replaceChain(data);
         });
     }
 
+    // syncronizing blockchain //
     // helper function that send chain to connected socket
     sendChain(socket){
-        socket.send(JSON.stringify(this.blockchain.chain));
+        socket.send(JSON.stringify({
+            type: MESSAGE_TYPES.chain,
+            chain: this.blockchain.chain
+        }));
     }
 
     // send updated chain to all connected peers
     syncChains(){
         this.sockets.forEach(socket => this.sendChain(socket));
     }
+
+
+    // syncronizing transactions //
+    broadcastTransaction(transaction){
+        this.sockets.forEach(socket => this.sendTransaction(socket, transaction));
+    }
+
+    sendTransaction(socket, transaction){
+        socket.send(JSON.stringify({
+            type: MESSAGE_TYPES.transaction,
+            transaction
+        }));
+    }    
 }
 
 module.exports = P2pServer;
