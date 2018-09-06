@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>   
+
+
+    <script src="js/q5.datatable.js"></script>      
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <link href="css/q6.css" rel="stylesheet" />
+
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav" id="top_menu">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
+                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+                </div>
+                <script>
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        this.classList.toggle("q5-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });   
+                </script>
+            </div>
+        </div>
+
+        <div class="q5-mobile-navigation">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>     
+
+            <div id="authorized-menu-mobile" class="q5-authorized-menu">
+                <a href="" class="q5-white-background">My Projects</a>
+                <a href="" class="q5-white-background">Transcoding Jobs</a>
+                <a href="" class="q5-white-background">Billing</a>
+                <a href="" class="q5-white-background">Documentation</a>
+                <a href="" class="q5-white-background">Contact</a>            
+                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
+                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            </div>        
+            
+
+            <script>
+                const hamburger = document.querySelector('.hamburger');
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('is-active');       
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });            
+            </script> 
+        </div>
+ 
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q6-main">
+
+        <div class="q6-api-container">
+            <div class="q6-api-sidebar" id="sidebar">
+                sidebar <br>
+
+                Lorem ipsum dolor <br>
+                sit amet, consectetur <br>
+                adipisicing elit. <br>
+                Recusandae neque tenetur <br>
+                eum voluptate <br>
+                assumenda, culpa<br>
+                 reprehenderit quia <br>
+                 cum ratione <br>
+                 nesciunt dicta autem soluta. Expedita <br>
+                 rerum nostrum unde cupiditate <br>
+                 molestias repellat. <br>
+                Lorem ipsum dolor <br>
+                sit amet, consectetur <br>
+                adipisicing elit. <br>
+                Recusandae neque tenetur <br>
+                eum voluptate <br>
+                assumenda, culpa<br>
+                 reprehenderit quia <br>
+                 cum ratione <br>
+                 nesciunt dicta autem soluta. Expedita <br>
+                 rerum nostrum unde cupiditate <br>
+                 molestias repellat. <br>
+                Lorem ipsum dolor <br>
+                sit amet, consectetur <br>
+                adipisicing elit. <br>
+                Recusandae neque tenetur <br>
+                eum voluptate <br>
+                assumenda, culpa<br>
+                 reprehenderit quia <br>
+                 cum ratione <br>
+                 nesciunt dicta autem soluta. Expedita <br>
+                 rerum nostrum unde cupiditate <br>
+                 molestias repellat. <br>
+                Lorem ipsum dolor <br>
+                sit amet, consectetur <br>
+                adipisicing elit. <br>
+                Recusandae neque tenetur <br>
+                eum voluptate <br>
+                assumenda, culpa<br>
+                 reprehenderit quia <br>
+                 LAST LINE <br>
+                 nesciunt dicta autem soluta. Expedita <br>
+                 rerum nostrum unde cupiditate <br>
+                 molestias repellat. <br>           
+                 THE LAST LINE<br>                                         
+            </div>
+
+            <script>
+                // calculated position of sidebar based on top menu hight
+
+                updateSidebarTopPosition();
+
+                $(window).resize(updateSidebarTopPosition);                
+
+                function updateSidebarTopPosition(){
+                    var topMenuHeight = $('#top_menu').height();
+                    $("#sidebar").css("top", topMenuHeight + "px");
+                }
+            </script>
+
+            <div class="q6-api-content">
+                <section>
+                    <div class="q6-api-content__instructions q6-api-instructions-container">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus vel voluptate non quisquam consequatur saepe odio consequuntur corporis labore aliquid, porro sit quod est facere consectetur. Expedita est ad tenetur!
+                    </div>
+                    <div class="q6-api-content__example">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore optio quisquam fugiat distinctio beatae, facilis quidem at consequatur quis alias fuga, doloribus officiis ratione vero, quasi autem ut provident expedita.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta delectus nulla accusantium, sequi eius quibusdam esse pariatur laudantium aliquam recusandae voluptatem harum atque est dolores, culpa nisi minus fuga cumque.
+                    </div>
+                </section>
+                <section>
+                    <div class="q6-api-content__instructions">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam magnam alias veniam quasi nisi. Similique ipsa, impedit fuga quaerat nobis, ut saepe. Quod, praesentium. Nulla, blanditiis assumenda at pariatur dolorum.
+                    </div>
+                    <div class="q6-api-content__example">right</div>
+                </section> 
+                <section class="q6-api-content__footer">
+                    <div></div>
+                    <div class="q6-api-content__example"></div>
+                </section>               
+            </div>
+        </div>
+
+    </main>
+
+
+
+</body>
+</html>
