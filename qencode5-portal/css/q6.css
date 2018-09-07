@@ -2719,11 +2719,14 @@ section#preferences{
 .q6-api-container{
     display: flex;
     min-height: 100vh;
+    color: #353535;
 }
 
 .q6-api-sidebar{
     width: 300px;
     padding-left: 25px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     position: fixed;
     overflow-y: auto;
     bottom: 0;
@@ -2731,12 +2734,51 @@ section#preferences{
     top: 0;
 }
 
+.q6-api-section-title {
+    font-size: 12px;
+    font-family: GraphikMedium;
+    margin: 30px 0;
+    color: #43c088;
+}
+
+.q6-sidebar-menu__links > .q6-link{
+    display: block;
+    margin: 10px 0;
+    color: #353e5d;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.q6-sidebar-menu__submenu > .q6-link{
+    color: #353e5d;
+    display: block;
+    padding-left: 15px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border-left: 3px solid #e7e8ec;
+}
+
+.q6-sidebar-menu__links > .q6-link.q6-sidebar-menu__selected-link,
+.q6-sidebar-menu__submenu > .q6-link.q6-sidebar-menu__selected-link{
+    font-family: GraphikMedium;
+    color: #3070eb;    
+}
+
+.q6-sidebar-menu__submenu > .q6-sidebar-menu__selected-link {
+    border-color: #316fea;
+}
+
+.q6-sidebar-menu__submenu{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .1s ease-out;    
+}
+
 .q6-api-content{
     margin-left: 300px;
 
     border-left: 1px solid #e6e6e6;
     flex: 1;
-    color: red;  
 
     display: flex;
     flex-direction: column;
@@ -2744,8 +2786,40 @@ section#preferences{
     background: #1f2c3d;
 }
 
+.q6-api-content__instructions h2 {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #3270e9;
+    font-family: GraphikMedium;
+}
+
+.q6-api-content__instructions h3 {
+    margin: 15px 0;
+    margin-top: 30px;
+    color: #c6c4c5;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: GraphikMedium;
+}
+
+.q6-api-content__instructions p{
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #353e5d;  
+}
+
 .q6-api-content > section{
     display: flex;
+}
+
+.q6-api__attributes-box{
+    padding: 20px 0;
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;    
+    margin-bottom: 20px;
 }
 
 .q6-api-content > section > div{
@@ -2759,6 +2833,40 @@ section#preferences{
 
 .q6-api-content__example{
     padding-left: 60px;    
+    color: #fefffa;
+    margin-top: 110px;
+}
+
+.q6-api-content__example h2{
+    margin: 10px 0;
+    font-size: 18px;
+    font-family: GraphikMedium;    
+}
+
+.hljs {
+    background: #2b3c56;
+}
+
+pre {
+    border: 0;
+    background: #2b3c56;
+}
+
+.q6-api-content__example p{
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+
+.q6-api-example-warning{
+    margin-top: 20px;
+    border: 2px solid #314661;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 15px;
+    color: #96acc4;
+    line-height: 25px;
 }
 
 .q6-api-content__footer{
@@ -2773,6 +2881,45 @@ section#preferences{
 .q6-api-instructions-container{
     padding-left: 30px;
     padding-right: 60px;
+}
+
+.q6-api-parameter{
+    background: #3270eb;
+    display: inline-block;
+    color: white;
+    padding: 6px 11px;
+    font-size: 14px;
+    border-radius: 4px;    
+}
+
+.q6-api__attributes-content{
+    display: flex;
+    justify-content: flex-end;    
+    color: #353e5d;
+    font-size: 14px;    
+}
+
+.q6-api__attributes-content > div:last-of-type{
+    width: 60%;
+}
+
+.q6-api__attributes-content > div:first-of-type{
+    margin-right: 30px;
+    text-align: right;
+}
+
+.q6-api__attributes-content > div:first-of-type > div{
+    line-height: 16px;
+    background: #42c285;
+    color: white;
+    padding: 0px 4px;
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+.q6-api__attributes-content p{
+    margin: 0;
+    line-height: 17px;
 }
 
 /***************************** A P I *******************************/
@@ -2848,6 +2995,10 @@ section#preferences{
 
 .q6-gray-text{
     color: #6d6f6e;
+}
+
+.q6-blue-text{
+    color: #3270e9;    
 }
 /*text colors*/
 
