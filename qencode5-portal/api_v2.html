@@ -326,6 +326,33 @@
                         <div class="q6-api-languages__button">PHP</div>
                         <div class="q6-api-languages__button">JavaScript</div>
                     </div>
+
+                    <script>
+                        $(function () {
+                            var tabLinks = document.querySelectorAll('.q6-api-languages__button');
+
+                            tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                            function switchTab(e){
+
+                                // find active elements and remove -> tablinks--active tabcontent--active
+
+                                $('.q6-api-languages__button--active').removeClass("q6-api-languages__button--active");
+                                // $('.q6-tabcontent--active').removeClass("q6-tabcontent--active");
+
+                                // find what tab link was clicked and show tab content with that ID
+                                var clickedLink = e.currentTarget;
+                                $(clickedLink).addClass('q6-api-languages__button--active');
+
+                                // var tabID = clickedLink.getAttribute("data-tabcontent");
+
+                                // $(`#${tabID}`).addClass('q6-tabcontent--active');
+                                // var tabContent = document.querySelector(`#${tabID}`);
+
+                            }        
+                        });                                             
+                    </script>
+
                 </div>
 
                 <section>
