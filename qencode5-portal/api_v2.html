@@ -235,15 +235,17 @@
 
                                 // deselected all submenu links if they were selected
                                 $(".q6-sidebar-menu__submenu > .q6-sidebar-menu__selected-link").removeClass("q6-sidebar-menu__selected-link");
+                                $('.q6-sidebar-menu__links > .q6-sidebar-menu__selected-link').removeClass("q6-sidebar-menu__selected-link");
 
                                 var currentpanel = this.nextElementSibling;
-                                $(this).toggleClass("q6-sidebar-menu__selected-link");
+                                //$(this).toggleClass("q6-sidebar-menu__selected-link");
+                                $(this).addClass("q6-sidebar-menu__selected-link");
                                 // 1. find displayed panel (not current) and hide it
                                 $('.q6-sidebar-menu__submenu').each(function(index){
                                     if(this !== currentpanel){
                                         if(this.style.maxHeight){
                                             this.style.maxHeight = null;
-                                            $(this.previousElementSibling).toggleClass("q6-sidebar-menu__selected-link");
+                                            //$(this.previousElementSibling).toggleClass("q6-sidebar-menu__selected-link");
                                         }                    
                                     }
                                 });
