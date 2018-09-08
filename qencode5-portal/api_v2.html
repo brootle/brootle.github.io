@@ -331,11 +331,11 @@
                 <div class="q6-api-languages-container">
                     <div></div>
                     <div class="q6-api-languages-menu">
-                        <div class="q6-api-languages__button">Curl</div>
-                        <div class="q6-api-languages__button">Ruby</div>
-                        <div class="q6-api-languages__button q6-api-languages__button--active">Python</div>
-                        <div class="q6-api-languages__button">PHP</div>
-                        <div class="q6-api-languages__button">JavaScript</div>
+                        <div class="q6-api-languages__button" data-language="curl">Curl</div>
+                        <div class="q6-api-languages__button" data-language="ruby">Ruby</div>
+                        <div class="q6-api-languages__button q6-api-languages__button--active" data-language="python">Python</div>
+                        <div class="q6-api-languages__button" data-language="php">PHP</div>
+                        <div class="q6-api-languages__button" data-language="javascript">JavaScript</div>
                     </div>
 
                     <script>
@@ -346,19 +346,16 @@
 
                             function switchTab(e){
 
-                                // find active elements and remove -> tablinks--active tabcontent--active
-
                                 $('.q6-api-languages__button--active').removeClass("q6-api-languages__button--active");
-                                // $('.q6-tabcontent--active').removeClass("q6-tabcontent--active");
+                                $('.q6-api-example__language--active').removeClass("q6-api-example__language--active");
 
-                                // find what tab link was clicked and show tab content with that ID
+                                // find what tab link was clicked and show tab content
                                 var clickedLink = e.currentTarget;
                                 $(clickedLink).addClass('q6-api-languages__button--active');
 
-                                // var tabID = clickedLink.getAttribute("data-tabcontent");
+                                var selectedLanguage = clickedLink.getAttribute("data-language");
 
-                                // $(`#${tabID}`).addClass('q6-tabcontent--active');
-                                // var tabContent = document.querySelector(`#${tabID}`);
+                                $(`.q6-api-example__language[data-example='${selectedLanguage}']`).addClass('q6-api-example__language--active');
 
                             }        
                         });                                             
@@ -446,12 +443,83 @@
                     </div>
                     <div class="q6-api-content__example">
                         <h2>Response Example</h2>
-                        <div class="q6-api-example__language q6-api-example__language--active">
+
+                        <div class="q6-api-example__language" data-example="curl">
 <pre><code>{
   "token" : "1357924680",
   "expire" : "2017-12-31 23:59:59"
 }</code></pre>   
                         </div> 
+
+                        <div class="q6-api-example__language" data-example="ruby">
+<pre><code># The Greeter class
+class Greeter
+def initialize(name)
+    @name = name.capitalize
+end
+
+def salute
+    puts "Hello #{@name}!"
+end
+end
+
+g = Greeter.new("world")
+g.salute
+</code></pre>   
+                        </div>                         
+
+                        <div class="q6-api-example__language q6-api-example__language--active" data-example="python">
+<pre><code>@requires_authorization
+def somefunc(param1='', param2=0):
+    r'''A docstring'''
+    if param1 > param2: # interesting
+        print 'Gre\'ater'
+    return (param2 - param1 + 1 + 0b10l) or None
+
+class SomeClass:
+    pass
+
+>>> message = '''interpreter
+... prompt'''
+</code></pre>   
+                        </div> 
+
+                        <div class="q6-api-example__language" data-example="php">
+<pre><code><?php
+$r = new HttpRequest('http://example.com/feed.rss', HttpRequest::METH_GET);
+$r->setOptions(array('lastmodified' => filemtime('local.rss')));
+$r->addQueryData(array('category' => 3));
+try {
+    $r->send();
+    if ($r->getResponseCode() == 200) {
+        file_put_contents('local.rss', $r->getResponseBody());
+    }
+} catch (HttpException $ex) {
+    echo $ex;
+}
+?>
+</code></pre>   
+                        </div> 
+
+                        <div class="q6-api-example__language" data-example="javascript">
+<pre><code>function $initHighlight(block, cls) {
+  try {
+    if (cls.search(/\bno\-highlight\b/) != -1)
+      return process(block, true, 0x0F) +
+             ` class="${cls}"`;
+  } catch (e) {
+    /* handle exception */
+  }
+  for (var i = 0 / 2; i < classes.length; i++) {
+    if (checkCondition(classes[i]) === undefined)
+      console.log('undefined');
+  }
+}
+
+export  $initHighlight;
+</code></pre>   
+                        </div>                         
+
                         <p class="q6-api-example-warning">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora facilis eaque accusantium, maiores dolores officia explicabo ex perspiciatis cupiditate, quaerat. Nam iusto odio veniam, culpa ex commodi beatae repudiandae praesentium.
                         </p>
@@ -500,12 +568,82 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nihil quam dolorum labore? Dolorem fugiat beatae nostrum odio temporibus, nobis odit praesentium id itaque ab quas omnis rem, et at.
                         </p>
                         <h2>Response Example</h2>
-                        <div class="q6-api-example__language q6-api-example__language--active">                        
+                        <div class="q6-api-example__language" data-example="curl">                        
 <pre><code>{
     "task_token" : "1236547890",
     "upload_url" : "https://master-ed4971d0bd8811e481e104012ff1f701.qencode.com/v1/upload_file"
 }</code></pre>    
+                        </div>   
+
+                        <div class="q6-api-example__language" data-example="ruby">                        
+<pre><code># The Greeter class
+class Greeter
+def initialize(name)
+    @name = name.capitalize
+end
+
+def salute
+    puts "Hello #{@name}!"
+end
+end
+
+g = Greeter.new("world")
+g.salute
+</code></pre>    
+                        </div>                          
+
+                        <div class="q6-api-example__language q6-api-example__language--active" data-example="python">                        
+<pre><code>@requires_authorization
+def somefunc(param1='', param2=0):
+    r'''A docstring'''
+    if param1 > param2: # interesting
+        print 'Gre\'ater'
+    return (param2 - param1 + 1 + 0b10l) or None
+
+class SomeClass:
+    pass
+
+>>> message = '''interpreter
+... prompt'''
+</code></pre>    
                         </div>
+
+                        <div class="q6-api-example__language" data-example="php">                        
+<pre><code><?php
+$r = new HttpRequest('http://example.com/feed.rss', HttpRequest::METH_GET);
+$r->setOptions(array('lastmodified' => filemtime('local.rss')));
+$r->addQueryData(array('category' => 3));
+try {
+    $r->send();
+    if ($r->getResponseCode() == 200) {
+        file_put_contents('local.rss', $r->getResponseBody());
+    }
+} catch (HttpException $ex) {
+    echo $ex;
+}
+?>
+</code></pre>    
+                        </div>                       
+
+                        <div class="q6-api-example__language" data-example="javascript">                        
+<pre><code>function $initHighlight(block, cls) {
+  try {
+    if (cls.search(/\bno\-highlight\b/) != -1)
+      return process(block, true, 0x0F) +
+             ` class="${cls}"`;
+  } catch (e) {
+    /* handle exception */
+  }
+  for (var i = 0 / 2; i < classes.length; i++) {
+    if (checkCondition(classes[i]) === undefined)
+      console.log('undefined');
+  }
+}
+
+export  $initHighlight;
+</code></pre>    
+                        </div>                             
+
                     </div>
                 </section>                 
 
