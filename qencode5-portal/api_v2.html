@@ -257,12 +257,17 @@
                                 }                  
 
                                 // 3. scroll to some destination
-                                var dest = $(this).attr('href'); 
-                                $('html,body').animate({
-                                    scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
-                                }, 250, "swing", function() {
-                                    // Animation complete.
-                                });                                         
+                                try {
+                                    var dest = $(this).attr('href'); 
+                                    $('html,body').animate({
+                                        scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
+                                    }, 250, "swing", function() {
+                                        // Animation complete.
+                                    });   
+                                }
+                                catch(err) {
+                                    console.log(err.message);
+                                }                                                                      
 
                             });         
                         });   
@@ -286,14 +291,18 @@
                     $(function () {
                         $(".q6-sidebar-menu__submenu > .q6-link").click(function(e) { 
                             e.preventDefault(); 
-                            var dest = $(this).attr('href'); 
 
-                            // make sure that destination exists
-                            $('html,body').animate({
-                                scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
-                            }, 250, "swing", function() {
-                                // Animation complete.
-                            });
+                            try {
+                                var dest = $(this).attr('href'); 
+                                $('html,body').animate({
+                                    scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
+                                }, 250, "swing", function() {
+                                    // Animation complete.
+                                });   
+                            }
+                            catch(err) {
+                                console.log(err.message);
+                            }    
 
 
                         }); 
