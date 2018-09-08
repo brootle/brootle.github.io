@@ -41,41 +41,52 @@
 
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
-<body class="q5-page q-body">
+<body class="q6-page q6-body">
 
-    <nav class="q5-container q5-nav" id="top_menu">
-        <div class="q5-logo">
-            <a href=""><img src="img/logo.svg" alt=""></a>
+    <nav class="q6-nav" id="top_menu">
+        <div class="q6-logo">
+            <a href=""><img src="img/logo_dark.png" alt=""></a>
         </div>
-        <div class="q5-top-menu">
-            <div class="q5-menu-items--left">
+        <div class="q6-top-menu">
+            <div class="q6-menu-items--left">
                 <a href="">My Projects</a>
                 <a href="">Transcoding Jobs</a>
                 <a href="">Billing</a>
                 <a href="">Documentation</a>
                 <a href="">Contact</a>
             </div>
-            <div class="q5-menu-items--right">
-                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
-                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
-                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
-                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+            <div class="q6-menu-items--right">
+                <button id="menu-button" class="q6-button-default q6-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q6-authorized-menu">
+                    <a href="" class="q6-menu-item--settings">Settings</a>
+                    <a href="" class="q6-menu-item--log-out">Log out</a>
                 </div>
                 <script>
-                    document.querySelector("#menu-button").addEventListener('click', function(){
-                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
-                        this.classList.toggle("q5-opened-menu");
-                        // show menu if it's not shown already 
-                        if (authorizedMenu.style.maxHeight){
-                            authorizedMenu.style.maxHeight = null;
-                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
-                            //authorizedMenu.style.display = "none";
-                        } else {
-                            //authorizedMenu.style.display = "flex";
-                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
-                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
-                        }             
-                    });   
+                    $(function () {  
+                        $("#menu-button").on('click', function(){
+                            let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                            $(this).toggleClass("q6-opened-menu");
+                            // show menu if it's not shown already 
+                            if (authorizedMenu.style.maxHeight){
+                                authorizedMenu.style.maxHeight = null;
+                                authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                                //authorizedMenu.style.display = "none";
+                            } else {
+                                //authorizedMenu.style.display = "flex";
+                                authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                                authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                            }             
+                        });                           
+                    });  
+
+                    // close dropdown menu when clicked anywhere outside
+                    $(function () {    
+                        $(document).click(function(e) {
+                            if(e.target.id !== "menu-button" && $("#menu-button").hasClass("q6-opened-menu")){
+                                $("#menu-button").trigger("click");
+                            }                        
+                        });
+                    });  
                 </script>
             </div>
         </div>
@@ -120,7 +131,7 @@
     </nav>    
 
 
-    <main class="q5-main q5-no-header q5-page-content q6-main">
+    <main class="q6-no-header q6-page-content q6-main">
 
 
         <div class="q6-api-container">

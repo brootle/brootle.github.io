@@ -18,8 +18,153 @@
    src: url(../fonts/Graphik/Graphik-Light.otf);
 }
 
+.q6-body{
+    font-family: GraphikRegular, sans-serif;    
+}
+
+.q6-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
 .q6-main {
     padding-bottom: 0;
+}
+
+.q6-no-header {
+    padding-top: 90px;
+}
+
+.q6-page-content {
+    flex: 1;
+}
+
+.q6-nav {
+    padding: 0 25px;
+    display: flex;
+    background: #1f2c3d;
+    align-items: center;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 99999;
+}
+
+.q6-nav .q6-logo img {
+    border-style: none;
+}
+
+.q6-nav .q6-top-menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.q6-nav .q6-top-menu .q6-menu-items--left {
+    margin-left: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-nav .q6-top-menu .q6-menu-items--right {
+    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.q6-top-menu a:hover, .q6-top-menu a:visited, .q6-top-menu a:active, .q6-top-menu a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.q6-top-menu a {
+    font-family: GraphikMedium;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 33px;
+    transition: border .3s ease;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-left: 15px;
+    border-bottom: 3px solid #1f2c3d;
+}
+
+.q6-top-menu a:hover {
+    border-bottom: 3px solid #41c186;
+}
+
+.q6-authorized-menu {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    max-height: 0;
+    top: 63px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    flex-direction: column;
+}
+
+.q6-authorized-menu > a {
+    line-height: 38px;
+    height: 38px;
+    min-width: 200px;
+    margin: 0;
+    border-bottom: 2px solid #414f63;
+    box-sizing: border-box;
+    transition: border .2s ease;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #1f2c3d;
+}
+
+.q6-has-submenu.q6-opened-menu:after {
+    content: "\f0d8";
+}
+
+.q6-has-submenu:after {
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    padding-right: 15px;
+    top: 1px;
+}
+
+.q6-button-default {
+    background-color: #41c186;
+    border-color: #41c186;
+    outline: none;
+    font-family: GraphikMedium;
+    color: white;
+    display: inline-block;
+    padding: 0 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 34px;
+    height: 36px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #41c186;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.q6-button-default.q6-has-submenu{
+    padding-right: 35px;
 }
 
 .q6-container{
