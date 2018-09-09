@@ -92,40 +92,42 @@
             </div>
         </div>
 
-        <div class="q5-mobile-navigation">
-            <button class="hamburger hamburger--spin" type="button">
+        <div class="q6-mobile-navigation">
+            <button id="mobile-menu-button" class="hamburger hamburger--spin" type="button">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
                 </span>
             </button>     
 
-            <div id="authorized-menu-mobile" class="q5-authorized-menu">
-                <a href="" class="q5-white-background">My Projects</a>
-                <a href="" class="q5-white-background">Transcoding Jobs</a>
-                <a href="" class="q5-white-background">Billing</a>
-                <a href="" class="q5-white-background">Documentation</a>
-                <a href="" class="q5-white-background">Contact</a>            
-                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
-                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            <div id="authorized-menu-mobile" class="q6-authorized-menu">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>            
+                <a href="">Settings</a>
+                <a href="">Log out</a>
             </div>        
             
 
             <script>
-                const hamburger = document.querySelector('.hamburger');
-                hamburger.addEventListener('click', ()=>{
-                    hamburger.classList.toggle('is-active');       
-                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
-                    // show and hide mobile menu    
-                    if (authorizedMobileMenu.style.maxHeight){
-                        authorizedMobileMenu.style.maxHeight = null;
-                        //authorizedMobileMenu.style.display = "none";
-                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
-                    } else {
-                        //authorizedMobileMenu.style.display = "flex";
-                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
-                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
-                    }                   
-                });            
+                $(function () {   
+                    $("#mobile-menu-button").on('click', function(){
+                        $(this).toggleClass("is-active");   
+                        let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                        // show and hide mobile menu    
+                        if (authorizedMobileMenu.style.maxHeight){
+                            authorizedMobileMenu.style.maxHeight = null;
+                            //authorizedMobileMenu.style.display = "none";
+                            authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                        } else {
+                            //authorizedMobileMenu.style.display = "flex";
+                            authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                        }                   
+                    });    
+                });   
+                   
             </script> 
         </div>
  
@@ -454,16 +456,18 @@
 
                     </div>
                     <div class="q6-api-content__example">
-                        <h2>Response Example</h2>
+                        <div class="q6-api-content__example-container">
 
-                        <div class="q6-api-example__language" data-example="curl">
+                            <h2>Response Example</h2>
+
+                            <div class="q6-api-example__language" data-example="curl">
 <pre><code>{
   "token" : "1357924680",
   "expire" : "2017-12-31 23:59:59"
 }</code></pre>   
-                        </div> 
+                            </div> 
 
-                        <div class="q6-api-example__language" data-example="ruby">
+                            <div class="q6-api-example__language" data-example="ruby">
 <pre><code># The Greeter class
 class Greeter
 def initialize(name)
@@ -478,9 +482,9 @@ end
 g = Greeter.new("world")
 g.salute
 </code></pre>   
-                        </div>                         
+                            </div>                         
 
-                        <div class="q6-api-example__language q6-api-example__language--active" data-example="python">
+                            <div class="q6-api-example__language q6-api-example__language--active" data-example="python">
 <pre><code>@requires_authorization
 def somefunc(param1='', param2=0):
     r'''A docstring'''
@@ -494,9 +498,9 @@ class SomeClass:
 >>> message = '''interpreter
 ... prompt'''
 </code></pre>   
-                        </div> 
+                            </div> 
 
-                        <div class="q6-api-example__language" data-example="php">
+                            <div class="q6-api-example__language" data-example="php">
 <pre><code><?php
 $r = new HttpRequest('http://example.com/feed.rss', HttpRequest::METH_GET);
 $r->setOptions(array('lastmodified' => filemtime('local.rss')));
@@ -511,9 +515,9 @@ try {
 }
 ?>
 </code></pre>   
-                        </div> 
+                            </div> 
 
-                        <div class="q6-api-example__language" data-example="javascript">
+                            <div class="q6-api-example__language" data-example="javascript">
 <pre><code>function $initHighlight(block, cls) {
   try {
     if (cls.search(/\bno\-highlight\b/) != -1)
@@ -530,11 +534,16 @@ try {
 
 export  $initHighlight;
 </code></pre>   
-                        </div>                         
+                            </div>                         
 
-                        <p class="q6-api-example-warning">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora facilis eaque accusantium, maiores dolores officia explicabo ex perspiciatis cupiditate, quaerat. Nam iusto odio veniam, culpa ex commodi beatae repudiandae praesentium.
-                        </p>
+                            <p class="q6-api-example-warning">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora facilis eaque accusantium, maiores dolores officia explicabo ex perspiciatis cupiditate, quaerat. Nam iusto odio veniam, culpa ex commodi beatae repudiandae praesentium.
+                            </p>
+
+
+                        </div>
+
+
                     </div>
                 </section>      
 
@@ -575,19 +584,21 @@ export  $initHighlight;
 
                     </div>
                     <div class="q6-api-content__example">
-                        <h2>Returns</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nihil quam dolorum labore? Dolorem fugiat beatae nostrum odio temporibus, nobis odit praesentium id itaque ab quas omnis rem, et at.
-                        </p>
-                        <h2>Response Example</h2>
-                        <div class="q6-api-example__language" data-example="curl">                        
+                        <div class="q6-api-content__example-container">
+
+                            <h2>Returns</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nihil quam dolorum labore? Dolorem fugiat beatae nostrum odio temporibus, nobis odit praesentium id itaque ab quas omnis rem, et at.
+                            </p>
+                            <h2>Response Example</h2>
+                            <div class="q6-api-example__language" data-example="curl">                        
 <pre><code>{
     "task_token" : "1236547890",
     "upload_url" : "https://master-ed4971d0bd8811e481e104012ff1f701.qencode.com/v1/upload_file"
 }</code></pre>    
-                        </div>   
+                            </div>   
 
-                        <div class="q6-api-example__language" data-example="ruby">                        
+                            <div class="q6-api-example__language" data-example="ruby">                        
 <pre><code># The Greeter class
 class Greeter
 def initialize(name)
@@ -602,9 +613,9 @@ end
 g = Greeter.new("world")
 g.salute
 </code></pre>    
-                        </div>                          
+                            </div>                          
 
-                        <div class="q6-api-example__language q6-api-example__language--active" data-example="python">                        
+                            <div class="q6-api-example__language q6-api-example__language--active" data-example="python">                        
 <pre><code>@requires_authorization
 def somefunc(param1='', param2=0):
     r'''A docstring'''
@@ -618,9 +629,9 @@ class SomeClass:
 >>> message = '''interpreter
 ... prompt'''
 </code></pre>    
-                        </div>
+                            </div>
 
-                        <div class="q6-api-example__language" data-example="php">                        
+                            <div class="q6-api-example__language" data-example="php">                        
 <pre><code><?php
 $r = new HttpRequest('http://example.com/feed.rss', HttpRequest::METH_GET);
 $r->setOptions(array('lastmodified' => filemtime('local.rss')));
@@ -635,9 +646,9 @@ try {
 }
 ?>
 </code></pre>    
-                        </div>                       
+                            </div>                       
 
-                        <div class="q6-api-example__language" data-example="javascript">                        
+                            <div class="q6-api-example__language" data-example="javascript">                        
 <pre><code>function $initHighlight(block, cls) {
   try {
     if (cls.search(/\bno\-highlight\b/) != -1)
@@ -654,7 +665,10 @@ try {
 
 export  $initHighlight;
 </code></pre>    
-                        </div>                             
+                            </div>   
+
+
+                        </div>                          
 
                     </div>
                 </section>                 
