@@ -139,7 +139,31 @@
 
         <div class="q6-api-container">
 
-            <div class="q6-api-sidebar" id="sidebar">
+            <div id="sidebar-switcher" class="q6-api-sidebar__switcher"></div>
+            <script>
+                $(function () {   
+                    $("#sidebar-switcher").on('click', function(){
+                        $("#sidebar").toggleClass("q6-api-open-menu");
+                        $(this).toggleClass("q6-api-switcher-activated");
+                    });                         
+
+                    $(function () {    
+                        $(document).click(function(e) {
+                            var sidebarClicked = $(e.target).closest("#sidebar").attr('id');
+                            var switcherClicked = e.target.id;
+
+                            if(switcherClicked != "sidebar-switcher" && !sidebarClicked){
+                                // console.log("switched outsite switcher and outside sidebar");
+
+                                $("#sidebar").removeClass("q6-api-open-menu");
+                                $("#sidebar-switcher").removeClass("q6-api-switcher-activated");                                 
+                            }                    
+                        });
+                    });                      
+                });                                       
+            </script>
+
+            <div class="q6-api-sidebar" id="sidebar">    
 
                 <section>
                     <h1 class="q6-api-section-title">SECTION 1</h1>
@@ -272,11 +296,19 @@
 
                                 // 3. scroll to some destination
                                 try {
+
+                                    var extraScroll = 0;
+                                    if($('#languageMenuBar').is(':visible')){
+                                        extraScroll = 60;
+                                    }
+                                                                    
+
                                     var dest = $(this).attr('href'); 
                                     $('html,body').animate({
-                                        scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
+                                        scrollTop: $(dest).offset().top - $("#top_menu").height() - 25 - extraScroll
                                     }, 250, "swing", function() {
-                                        // Animation complete.
+                                        // Animation complete.                        
+
                                     });   
                                 }
                                 catch(err) {
@@ -307,11 +339,19 @@
                             e.preventDefault(); 
 
                             try {
+
+                                var extraScroll = 0;
+                                if($('#languageMenuBar').is(':visible')){
+                                    extraScroll = 60;
+                                }
+
                                 var dest = $(this).attr('href'); 
                                 $('html,body').animate({
-                                    scrollTop: $(dest).offset().top - $("#top_menu").height() - 25
+                                    scrollTop: $(dest).offset().top - $("#top_menu").height() - 25 - extraScroll
                                 }, 250, "swing", function() {
                                     // Animation complete.
+                                    $("#sidebar").removeClass("q6-api-open-menu");
+                                    $("#sidebar-switcher").removeClass("q6-api-switcher-activated");                                    
                                 });   
                             }
                             catch(err) {
@@ -341,6 +381,8 @@
             </script>
 
             <div class="q6-api-content">
+
+                <div id="languageMenuBar"></div>
 
                 <div class="q6-api-languages-container">
                     <div></div>

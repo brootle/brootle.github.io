@@ -18,6 +18,14 @@
    src: url(../fonts/Graphik/Graphik-Light.otf);
 }
 
+#desktopMode {
+    display: none;
+}
+
+#languageMenuBar{
+    display: none;
+}
+
 .q6-body{
     font-family: GraphikRegular, sans-serif;    
 }
@@ -2870,6 +2878,7 @@ section#preferences{
     display: flex;
     min-height: 100vh;
     color: #353535;
+    position: relative;
 }
 
 
@@ -2880,9 +2889,13 @@ section#preferences{
     padding-bottom: 20px;
     position: fixed;
     overflow-y: auto;
+    overflow-x: hidden;
     bottom: 0;
     left: 0;
     top: 0;
+    transition: all .4s ease;
+    z-index: 1;
+    background: white;    
 }
 
 .q6-api-section-title {
@@ -3123,7 +3136,22 @@ pre {
     line-height: 17px;
 }
 
+.q6-api-sidebar__switcher{
+    width: 25px;
+    height: 25px;
+    background-color: rgba(156, 39, 176, 0.39);
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
 
+.q6-api-open-menu{
+    transform: translateX(0%);
+}
+
+.q6-api-switcher-activated{
+    left: 230px;    
+}
 
 /***************************** A P I *******************************/
 
@@ -3253,6 +3281,10 @@ pre {
 
 
 @media screen and (min-width: 320px){
+    #languageMenuBar {
+        display: block;
+    }
+
     .q6-container {
         padding: 0 10px;
     }    
@@ -3332,8 +3364,20 @@ pre {
 
     /*=================== API PAGE ================================*/
     .q6-api-sidebar {
-        display: none;
+        /*display: none;*/
+
+        transform: translateX(-100%);
+        transition: all .2s ease;   
+
+        overflow-y: auto;
+        margin-top: 60px;
+        box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);           
     }    
+
+    .q6-api-sidebar.q6-api-open-menu {
+        transform: translateX(0%);
+    }
+
     .q6-api-content {
         margin-left: 0;
     }    
@@ -3405,6 +3449,10 @@ pre {
     }    
     .q6-authorized-menu a:hover {
         border-bottom: 2px solid #41c186;;
+    }    
+    .q6-api-sidebar__switcher {
+        top: 150px;
+        position: fixed;
     }        
     /*=================== API PAGE ================================*/    
 
@@ -3431,6 +3479,10 @@ pre {
 }
 
 @media screen and (min-width: 768px){
+    #languageMenuBar {
+        display: none;
+    }
+
     .q6-input-tooltip {
         flex-direction: row;
         align-items: center;
@@ -3506,6 +3558,13 @@ pre {
         margin-right: 5px;
         padding: 0 10px;
     }    
+    .q6-api-sidebar__switcher {
+        top: 90px;
+    }    
+
+    .q6-api-sidebar {
+        margin-top: 0;
+    }        
     /*=================== API PAGE ================================*/  
 
 }
@@ -3519,6 +3578,10 @@ pre {
 
 
 @media screen and (min-width: 1080px){
+    #desktopMode {
+        display: block;
+    }
+
     .q6-mobile-navigation .hamburger {
         display: none;
     }
@@ -3562,12 +3625,21 @@ pre {
         width: calc((100vw - 230px)*0.45);
     }    
     .q6-api-sidebar {
-        display: block;
+        /*display: block;*/
+
+        transform: translateX(0);
+        overflow-y: auto;      
+        box-shadow: none;      
     }    
 
     #authorized-menu-mobile{
         display: none;
     }
+
+    .q6-api-sidebar__switcher {
+        display: none;
+    }    
+  
 }
 
 @media screen and (min-width: 1290px){
