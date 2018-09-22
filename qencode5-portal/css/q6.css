@@ -209,6 +209,16 @@
     font-family: GraphikLight;
 }
 
+.q6-section-title--with-icon{
+    display: flex;
+    align-items: center;
+}
+
+.q6-section-title--with-icon .q6-help-icon{
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
 .q6-two-columns{
     display: flex;
 }
@@ -613,7 +623,12 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
 
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;   
+
+    padding-bottom: 1px;
+    padding-top: 4px;
+    font-size: 13px;
+    margin-bottom: 2px;
 }
 
 .q6-help-icon span{
@@ -2556,7 +2571,10 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 
 .q6-payment-methods-table,
 .q6-payment-history-table,
-.q6-invoices-table{
+.q6-invoices-table,
+.q6-video-settings-table,
+.q6-table--thumbnail-time,
+.q6-table--thumbnail-size{
     padding-bottom: 20px;    
 }
 
@@ -2604,14 +2622,20 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 
 .q6-payment-methods-table .q6-table-row:hover,
 .q6-payment-history-table .q6-table-row:hover,
-.q6-invoices-table .q6-table-row:hover{
+.q6-invoices-table .q6-table-row:hover,
+.q6-video-settings-table .q6-table-row:hover,
+.q6-table--thumbnail-time .q6-table-row:hover,
+.q6-table--thumbnail-size .q6-table-row:hover{
     background: #f9f9f9;
     box-shadow: 1px 1px 1px 0px rgb(182, 182, 182);    
 }
 
 .q6-payment-methods-table .q6-table-head .q6-table-row:hover,
 .q6-payment-history-table .q6-table-head .q6-table-row:hover,
-.q6-invoices-table .q6-table-head .q6-table-row:hover{
+.q6-invoices-table .q6-table-head .q6-table-row:hover,
+.q6-video-settings-table .q6-table-head .q6-table-row:hover,
+.q6-table--thumbnail-time .q6-table-head .q6-table-row:hover,
+.q6-table--thumbnail-size .q6-table-head .q6-table-row:hover{
     background: none;
     box-shadow: none;    
 }
@@ -3156,6 +3180,156 @@ pre {
 /***************************** A P I *******************************/
 
 
+/********************* ADD TRANSCODING PROFILE *********************/
+.q6-transcoding-profile__video-settings{
+    margin-top: 50px;    
+}
+
+
+.q6-video-settings__radio-buttons{
+    display: inline-flex;
+}
+
+.q6-video-settings__radio-buttons input[type="radio"] {
+    display: none;
+}
+
+.q6-video-settings__radio-buttons label{
+    cursor: pointer;
+    line-height: 48px;
+    padding: 0 25px;
+    font-weight: 100;    
+    margin: 0;
+    border: 1px solid #bcbcbc;   
+    border-right: none; 
+}
+
+.q6-video-settings__radio-buttons label:last-of-type{
+    border-right: 1px solid #bcbcbc;  
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.q6-video-settings__radio-buttons label:first-of-type{
+    border-left: 1px solid #bcbcbc;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+.q6-video-settings__radio-buttons input[type=radio]:checked + label {
+    background: #1fa550;
+    color: white;  
+    border-color: #1fa550;
+    font-family: GraphikMedium;      
+}
+
+.q6-input--profile-name{
+    min-width: 355px;
+}
+
+.q6-input--video-codec{
+    min-width: 296px;
+}
+
+.q6-tittle-and-buttons{
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+    margin-top: 40px;
+    justify-content: space-between;    
+}
+
+.q6-tittle-and-buttons .q6-section-title{
+    margin: 0;
+}
+
+.q6-tittle-buttons .q6-button{
+    padding-top: 7px;
+    padding-bottom: 7px;    
+}
+
+.q6-tittle-buttons .q6-button{
+    margin-right: 15px;
+}
+
+.q6-tittle-buttons .q6-button:last-of-type {
+    margin-right: 0;
+}
+
+.q6-video-settings-table .q6-table-row > div:last-of-type {
+    min-width: 0;
+    max-width: 110px;
+}
+
+.q6-video-settings-table .q6-table-row > div:first-of-type {
+    max-width: 90px;
+}
+
+
+.q6-video-settings-table .q6-table-row > div:nth-of-type(2){
+    max-width: 150px;
+}
+
+.q6-video-settings-table .q6-table-row > div:nth-of-type(3){
+    max-width: 150px;
+}
+
+.q6-video-settings-table .q6-table-row > div:nth-of-type(4){
+    max-width: 90px;
+}
+
+.q6-video-settings-table .q6-table-row > div:nth-of-type(5){
+    max-width: 90px;
+}
+
+.q6-table-row .q6-checkbox{
+    margin: 0;
+}
+
+.q6-input--audio-bitrate{
+    max-width: 200px;
+}
+
+.q6-two-tables-in-row{
+    position: relative;
+}
+
+.q6-table--fantom{
+    position: absolute;
+    left: 0;
+    right: 0;    
+}
+
+.q6-table--thumbnail-time .q6-table-row > div:first-of-type {
+    max-width: 90px;
+}
+
+.q6-table--thumbnail-size .q6-table-row > div:first-of-type {
+    max-width: 90px;
+}
+
+.q6-table--thumbnail-time .q6-table-row > div:last-of-type {
+    min-width: 110px;
+    max-width: 110px;
+}
+
+.q6-table--thumbnail-size .q6-table-row > div:last-of-type {
+    min-width: 110px;
+    max-width: 110px;
+}
+
+.q6-table--thumbnail-time{
+    width: 350px;
+}
+
+.q6-table--thumbnail-size .q6-table-row > div:nth-of-type(2) {
+    max-width: 130px;
+}
+/********************* ADD TRANSCODING PROFILE *********************/
+
+
+
 /*MODIFICATORS*/
 /*background colors*/
 .q6-blue-background{
@@ -3428,10 +3602,7 @@ pre {
     }    
     .q6-api-content__example-container{
         padding: 10px 15px;        
-    }
-    .q6-mobile-navigation .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-        background-color: #51ed99;
-    }    
+    } 
     .q6-authorized-menu {
         top: 90px;
         width: 100%;
