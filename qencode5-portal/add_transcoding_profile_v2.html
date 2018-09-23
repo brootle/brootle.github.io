@@ -175,7 +175,7 @@
                     </h2>
 
                     <div class="q6-tittle-buttons">
-                        <button class="q6-button q6-green-background q6-green-border q6-button--add">
+                        <button id="add_resolution_btn" class="q6-button q6-green-background q6-green-border q6-button--add">
                             <span>Add resolution</span>                            
                         </button>
                     </div>
@@ -183,7 +183,7 @@
 
             </div>        
 
-            <div class="q6-video-settings__add-resolution">
+            <div class="q6-video-settings__add-resolution q6-hidden">
                 <hr class="q6-horizontal-delimeter">
 
                 <div class="q6-container">
@@ -273,11 +273,11 @@
 
                     <label class="q6-checkbox q6-black-text">
                         Watermarking
-                        <input type="checkbox">
+                        <input id="watermark_checkbox" type="checkbox">
                         <span class="q6-checkmark"></span>
                     </label>  
 
-                    <div class="q6-video-settings__watermark q6-two-columns">                        
+                    <div class="q6-video-settings__watermark q6-two-columns q6-hidden">                        
                         <div class="q6-watermark__preview-image"></div>
                         <div class="q6-watermark__inputs">
                             <div class="q6-input">
@@ -314,7 +314,17 @@
                                 </div>                                                                                             
                             </div>                      
                         </div>
-                    </div>                                
+                    </div>        
+
+                    <script>
+                        $("#watermark_checkbox").change(function() {
+                            if(this.checked) {
+                                $(".q6-video-settings__watermark").removeClass("q6-hidden");
+                            } else{
+                                $(".q6-video-settings__watermark").addClass("q6-hidden");
+                            }
+                        });                        
+                    </script>                                            
 
                 </div>
 
@@ -322,16 +332,34 @@
 
                 <div class="q6-container">
                     <div class="q6-video-settings__buttons">
-                        <button class="q6-button q6-green-border q6-green-text">
+                        <button id="cancel_video_settings" class="q6-button q6-green-border q6-green-text">
                             Cancel                        
                         </button>                        
-                        <button class="q6-button q6-green-background q6-green-border">
+                        <button id="save_video_settings" class="q6-button q6-green-background q6-green-border">
                             Save                        
                         </button>
                     </div>
                 </div>
 
             </div>
+
+            <script>
+                $("#add_resolution_btn").click(function() {
+                    $(".q6-video-settings__add-resolution").removeClass("q6-hidden");
+                });           
+
+                $("#cancel_video_settings").click(function() {
+                    $("#watermark_checkbox").prop("checked", false);
+                    $(".q6-video-settings__watermark").addClass("q6-hidden");
+                    $(".q6-video-settings__add-resolution").addClass("q6-hidden");
+                });                      
+
+                $("#save_video_settings").click(function() {
+                    $("#watermark_checkbox").prop("checked", false);
+                    $(".q6-video-settings__watermark").addClass("q6-hidden");
+                    $(".q6-video-settings__add-resolution").addClass("q6-hidden");
+                });                   
+            </script>
 
             <div class="q6-video-settings-table q6-gray-background">
                 <div>
