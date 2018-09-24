@@ -1,0 +1,5513 @@
+@font-face {
+   font-family: GraphikRegular;
+   src: url(../fonts/Graphik/Graphik-Regular.otf);
+}
+
+@font-face {
+   font-family: GraphikMedium;
+   src: url(../fonts/Graphik/Graphik-Medium.otf);
+}
+
+input::-ms-clear, input::-ms-reveal {
+    display: none;
+}
+
+.q5-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.q5-page-content {
+  flex: 1;
+}
+
+
+.q-body {
+    font-family: GraphikRegular, sans-serif;
+}
+
+.q5-container {
+    padding-left: 15.7%;
+    padding-right: 15.7%;
+}
+
+.hamburger{
+    display: none;
+    border: none;
+    outline: none;    
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: #316fea;
+}
+
+.q5-nav{
+    display: flex;
+    background: white;
+    align-items: center;
+    height: 5.2vw;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;    
+    z-index: 99999;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.q5-nav .q5-top-menu{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;    
+}
+
+
+.q5-nav .q5-logo img{
+    width: 10vw;
+    border-style: none;
+    padding-top: 0.2vw;
+}
+
+.q5-nav .q5-top-menu .q5-menu-items--left{
+    margin-left: 2vw; 
+    display: flex;
+    align-items: center;    
+    background: white;
+}
+
+.q5-nav .q5-top-menu .q5-menu-items--right{
+    margin-right: 1vw; 
+    display: flex;
+    align-items: center;    
+    position: relative;
+    background: white;
+}
+
+.q5-top-menu a{
+    display: inline-block;
+    font-size: 1vw;
+    
+    line-height: 4.9vw;
+    transition: border .3s ease;
+    cursor: pointer;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    border-bottom: 2px solid white;
+}
+
+.q5-top-menu a:hover{
+    border-bottom: 2px solid #43c086;
+}
+
+.q5-top-menu a:hover, .q5-top-menu a:visited, .q5-top-menu a:active, .q5-top-menu a:link {
+    color: #333e5c;
+    text-decoration: none;
+}
+
+.q5-top-menu a i{
+    margin-right: 0.4vw;
+}
+
+.q5-button-default {
+    background-color: white;
+    border-color: #41c186;
+    outline: none;
+
+    display: inline-block;
+    padding: 0.5vw 1.1vw;
+    margin-bottom: 0;
+    font-size: 1vw;
+
+    line-height: 1.5vw;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    border: 2px solid #43c086;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.q5-btn-animated:hover{
+    color: white;
+    background-color: #41c186;
+}
+
+/*----------------------------------------------------------*/
+
+
+/*.q5-button-solid {
+    background: #41c186;
+    color: white;
+    font-size: 1.4vw;
+    font-weight: 600;
+    padding: 0.8vw 3vw;
+}*/
+
+.q5-white-border{
+    border-color: white;    
+}
+
+.q5-black-border{
+    border-color: #343d5c
+}
+
+.q5-green-border{
+    border-color: #41c186
+}
+
+.q5-green-background{
+    background: #41c186;    
+}
+
+.q5-transparent-background{
+    background: inherit;    
+}
+
+.q5-gray-background{
+    background: #f8f8f8;    
+}
+
+.q5-light-grey {
+    background: #f8f8f8;
+}
+
+.q5-light-yellow {
+    background: #fffaa8;
+}
+
+.q5-white {
+    background: white;
+}
+
+.q5-white-background{
+    background: white;    
+}
+
+.q5-blue-background{
+    background: #316fea;
+}
+
+.q5-text-white{
+    color: white;
+}
+
+.q5-text-gray{
+    color: #373d5d;
+}
+
+.q5-text-inactive-gray{
+    color: #bdbec0;
+}
+
+.q5-text-blue{
+    color: #316fea;
+}
+
+.q5-text-green{
+    color: #44c285;
+}
+
+.q-link{
+    text-decoration: none; 
+}
+/*----------------------------------------------------------*/
+
+.q5-main{
+    padding-bottom: 4vw;
+}
+
+
+.q5-hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+}
+
+/*----------------------------------------------------------*/
+
+input[type=text], input[type=password], input[type=tel], textarea {
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #e6e6e6;
+    font-size: 1vw;
+}
+
+.q5-input-container {
+    /*margin-top: 0.7vw;*/
+    font-size: 1.1vw;
+    margin-bottom: 1vw;
+}
+
+.q5-input-container textarea{
+    height: 10vw;    
+    resize: none;
+    outline: none;    
+}
+
+/*----------------------------------------------------------*/
+
+.q-paragraph{
+    font-size: 1.1vw;
+    line-height: 1.6vw;    
+}
+/*
+.q5-long-button{
+    font-size: 1vw;
+    width: 14.2vw;
+    padding: 0.6vw 3vw;    
+}*/
+
+/*----------------------------------------------------------*/
+
+.q5-footer{
+    border-top: 1px solid #e6e6e6;   
+    padding-top: 2.2vw; 
+}
+
+.q5-small-logo img{
+    width: 2.3vw;    
+}
+
+.q5-logo-and-menu{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4vw;    
+}
+
+.q5-footer-menu{
+    display: flex;    
+}
+
+.q5-footer-menu > div{
+    display: flex;    
+}
+
+.q5-footer-menu__block {
+    padding-left: 7vw;
+}
+
+.q5-footer-menu__block a {
+    display: block;
+    text-decoration: none;
+    font-size: 1vw;
+    line-height: 2vw;
+}
+
+.q5-footer-menu__block h3{
+    margin: 0;
+    margin-bottom: 1vw;
+    font-size: 1vw;
+    /*font-weight: 600;*/
+    font-family: GraphikMedium;
+    font-weight: normal;    
+}
+
+.q5-copyright-and-socials{
+    font-size: 0.94vw;
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.q5-copyright-and-socials i{
+    font-size: 1.1vw;
+    margin-left: 1vw;
+}
+
+.q5-copyright-and-socials a:hover{
+    color: #316fea;
+}
+
+.q-h1-tittle{
+    margin: 0;
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;    
+}
+
+/*----------------------------------------------------------*/
+
+.q5-no-header{
+    padding-top: 5vw;
+}
+
+/*----------------------------------------------------------*/
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.q-list{
+    margin: 0;
+    padding-left: 2vw;
+    list-style-type: none;
+    font-size: 1.1vw;
+    line-height: 1.3vw;    
+}
+
+.q-list li::before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: -1.6vw;
+    top: 0.2vw;
+    height: 0.5vw;
+    width: 0.7vw;
+    border-bottom: 2px solid #6ec656;
+    border-left: 2px solid #6ec656;
+    transform: rotate(-49deg);
+}
+
+.q-list li{
+    position: relative;
+    margin-bottom: 1.3vw;
+}
+
+.q5-main .q5-two-columns .q-list{
+    margin-top: 3vw;
+}
+
+.q5-two-columns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.q5-main > .q5-two-columns{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;
+}
+
+.q5-two-columns > div {
+    width: 45%;
+}
+
+.q5-input-container .q5-two-columns{
+    align-items: center;
+}
+
+.q5-main > .q5-one-column{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;    
+}
+
+.q5-tab {
+    display: flex;
+    border-bottom: 1px solid #dbdad6;
+    box-sizing: border-box;
+}
+
+.q5-tab--pricing{
+    display: none;
+}
+
+
+.q5-tablinks {
+    line-height: 2.6vw;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.4vw;
+    font-weight: 600;
+    border-bottom: 2px solid white;
+    color: #343d5c;
+    padding-right: 1vw;
+    padding-left: 0.5vw;
+}
+
+.q5--tablinks-disabled{
+    cursor: unset;
+    border: none;
+    padding: 0;
+}
+
+.q5-tablinks + .q5-tablinks{
+    margin-left: 1vw;
+} 
+
+.q5-tablinks--active {
+    border-bottom: 2px solid #41c186;
+}
+
+.q5-tabcontent {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    margin-top: 1.5vw;
+}
+
+.q5-tabcontent > div{
+    width: 100%;
+}
+
+.q5-tabcontent--active {
+    display: flex;
+}
+
+.q5-tabcontent-with-tables{
+    display: flex;    
+}
+
+.q-h2-tittle {
+    margin: 0;
+    font-size: 1.8vw;
+    font-weight: normal;
+    text-align: left;
+    line-height: 2.1vw;
+}
+
+.q5-confirm-checkbox-and-text {
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 1.4vw;
+}
+
+.q5-custom-checkbox--small-gray {
+    margin-right: 0.7vw;
+    margin-left: 0.5vw;
+}
+
+.q5-custom-checkbox--small-gray input[type="checkbox"] {
+    display: none;
+}
+
+.q5-custom-checkbox--small-gray label {
+    position: relative;
+    padding-left: 1.5vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;
+    display: initial;
+}
+
+.q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+
+    background: url(../img/box_empty.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;    
+}
+
+.q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+    background: url(../img/box_checked.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;       
+}
+
+/*.q5-input-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    font-weight: 900;
+}*/
+
+.q-form{
+    margin-top: 2vw;
+}
+
+.q5-main-login-img {
+    width: 87%;
+    padding-left: 1vw;
+    margin-top: 1.5vw;
+}
+
+.q5-pass-wrapper{
+    position: relative; 
+}
+
+.q5-pass-wrapper input[type=password], .q5-pass-wrapper input[type=text] {
+    padding-right: 4vw;
+}
+
+.q5-eye{
+    position: absolute;
+    box-sizing: border-box;
+    width: 2.5vw;
+    height: 2.1vw;    
+
+    background: url(../img/eye.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;
+
+    right: 1vw;
+    top: 1.1vw;
+    cursor: pointer;
+    border-left: 0.2vw solid #e6e6e6;    
+
+    transition: 0.3s;
+}
+
+
+.q5-eye:hover {
+    background: url(../img/eye_over.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;    
+}
+
+
+.q5-two-columns .q5-two-columns .q5-input-container {
+    margin-top: 0;
+}
+
+.q-link-box{
+    display: flex;
+    align-items: center;
+    width: 69%;
+    border: 2px solid #e6e6e6;
+    border-radius: 0.5vw;
+    padding: 0.4vw 1.4vw;
+    box-sizing: border-box;
+}
+
+.q-link-box--max-width{
+    width: 100%;
+}
+
+.q-link-box--selected{
+    border-color: #42c186;
+}
+
+.q-link-box > div:first-of-type{
+    width: 93%;
+    padding-right: 1vw;    
+}
+
+.q-link-box__title{
+    font-size: 1.1vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;    
+}
+
+.q-link-box__image{
+    width: 2.8vw;    
+    height: 2.8vw;  
+
+    box-sizing: border-box;
+
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.8vw;    
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.q-link-box__image:hover{
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.8vw;    
+}
+
+.q-link-box + .q-link-box {
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+}
+
+.q5-email-sent {
+    width: 7vw;
+    margin-bottom: 0.7vw;
+}
+
+.q5-warning-message {
+    background: #3270eb;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.91vw;
+    line-height: 1.7vw;
+    padding: 0.5vw 0.8vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.q5-warning-message > img {
+    width: 1.4vw;
+    margin-right: 0.7vw;
+}
+
+.q5-steps-progress {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+}
+
+.q5-progress-circle {
+    box-sizing: border-box;
+    width: 1.6vw;
+    height: 1.6vw;
+    background: url(../img/check_1.png);
+    background-repeat: no-repeat;
+    background-size: 1.6vw;
+}
+
+.q5-progress-circle__current {
+    background: url(../img/check_2.png);
+    background-repeat: no-repeat;
+    background-size: 1.6vw;
+}
+
+.q5-steps-progress > img {
+    height: 0.2vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+}
+
+.q5-input-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    /*font-weight: 900;*/
+    font-family: GraphikMedium;    
+}
+
+.q5-input-container {
+    font-size: 1.1vw;
+    margin-bottom: 1vw;
+}
+
+.intl-tel-input {
+    width: 100%;
+    margin: 0.5vw 0;
+}
+
+.q5-input-info {
+    font-size: 1vw;
+}
+
+.q5-pass-wrapper {
+    position: relative;
+}
+
+.q5-eye {
+    position: absolute;
+    box-sizing: border-box;
+    width: 2.5vw;
+    height: 2.1vw;
+    background: url(../img/eye.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;
+    right: 1vw;
+    top: 1.1vw;
+    cursor: pointer;
+    border-left: 0.2vw solid #e6e6e6;
+    transition: 0.3s;
+}
+
+.q5-eye:hover {
+    background: url(../img/eye_over.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 75% 50%;
+}
+
+.q5-button-solid {
+    background: #41c186;
+    color: white;
+    font-size: 1.4vw;
+    font-weight: 600;
+    padding: 0.8vw 3vw;
+}
+
+.q5-long-button {
+    font-size: 1vw;
+    min-width: 14.2vw;
+    padding: 0.6vw 3vw;
+}
+
+.q5-error-message {
+    background: #e42932;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.91vw;
+    line-height: 1.7vw;
+    padding: 0 0.8vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: -1vw;
+}
+
+.q5-two-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.q5-two-buttons > .q5-long-button {
+    width: 47%;
+}
+
+.q5-white-button {
+    background: white;
+    color: #373d5d;
+    border-color: #e6e6e6;
+}
+
+.q5-selectcontent {
+    min-height: 2.3vw;
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    margin-left: 1.5vw;
+}
+
+.q5-selectcontent--active {
+    display: block;
+}
+
+.q5-no-space-between {
+    justify-content: flex-start;
+}
+
+.q5-custom-select {
+    position: relative;
+}
+
+.q5-custom-select:after {
+    content: "\f0d7";
+    color: #bcbcbc;
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 1.5vw;
+    padding-right: 1.5vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+}
+
+.q5-select {
+    border: 2px solid #e6e6e6;
+    width: 100%;
+    padding: 0.9vw 1.5vw;
+    padding-right: 2.2vw;
+    margin: 0.5vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1vw;
+}
+
+.q5-selectcontent--active__ext {
+    display: block;
+}
+
+.q5-lock-message {
+    background: #eeeeee;
+    border-radius: 4px;
+    font-size: 1vw;
+    line-height: 1.3vw;
+    padding: 0.8vw 0.8vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.q5-max-length {
+    width: 100%;
+}
+
+.q5-lock-message > img {
+    height: 0.96vw;
+    margin-right: 0.7vw;
+    margin-bottom: 0.2vw;
+}
+
+.q5-no-top-margin {
+    margin-top: 0;
+}
+
+.q5-unlimited-hidden {
+    display: none;
+}
+
+.q5-two-columns .q5-two-columns .q5-input-container {
+    margin-top: 0;
+}
+
+.q5-two-columns--not-equal > div:first-of-type {
+    width: 56%;
+}
+
+.q5-two-columns--not-equal > div:last-of-type {
+    width: 39%;
+}
+
+.q5-two-columns--not-equal-reversed > div:first-of-type {
+    width: 32%;
+}
+
+.q5-two-columns--not-equal-reversed > div:last-of-type {
+    width: 63%;
+}
+
+.q5-cvc-wrapper {
+    position: relative;
+}
+
+.q5-question {
+    position: absolute;
+    box-sizing: border-box;
+    width: 1.1vw;
+    height: 1.1vw;
+    background: url(../img/help.png);
+    background-repeat: no-repeat;
+    background-size: 1.1vw;
+    right: 1vw;
+    top: 1.5vw;
+    cursor: pointer;
+}
+
+.q5-card-input {
+    padding: 0.9vw 1.5vw;
+    display: flex;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #e6e6e6;
+    color: #73767d;
+    font-size: 1vw;
+    margin: 0.5vw 0;
+    text-align: left;
+    padding-left: 3.3vw;
+    justify-content: space-between;
+    background: url(../img/card.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 4% 49%;
+}
+
+.q5-card-input input[type=text] {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.q5-card-input > input[type=text]:first-of-type {
+    width: 100%;
+}
+
+.q5-card-input > div {
+    width: 8vw;
+    text-align: right;
+}
+
+.q5-credit-card-container > div:last-of-type {
+    width: 22%;
+}
+
+.q5-credit-card-container > div:first-of-type {
+    width: 73%;
+}
+
+.q5-card-input > div > input[type=text] {
+    width: 1.6vw;
+    text-align: center;
+}
+
+.q5-credit-card-container {
+    align-items: flex-end;
+}
+
+.q5-progress-circle__checked {
+    background: url(../img/check_3.png);
+    background-repeat: no-repeat;
+    background-size: 1.6vw;
+}
+
+.q5-page-tittle-box{
+    background: #2c6cf2;
+    margin-top: 4vw;
+    margin-bottom: 3vw;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.q5-page-tittle-box > h1{
+    margin: 0;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: 900;
+}
+
+.q5-page-tittle-box + .q5-one-column{
+    margin-top: 0;
+}
+
+.q5-has-submenu {
+    position: relative;
+    padding-right: 2.5vw;
+}
+
+.q5-has-submenu:after {
+    content: "\f0d7";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    padding-right: 1vw;
+    padding-top: 0vw;
+}
+
+/*----------------------------------------------------------*/
+
+.q5-button-link{
+    min-width: 10vw;
+    outline: none;
+    display: inline-block;
+    padding: 0.5vw 1.6vw;
+    margin-bottom: 0;
+    font-size: 1vw;
+    font-weight: 600;
+    line-height: 1.5vw;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;    
+    position: relative;
+
+    outline: none;
+
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.q5-button-link + .q5-button-link{
+    margin-left: 1vw;
+}
+
+.q5-back-link{
+    padding-left: 2.5vw;
+}
+
+.q5-back-link:after {
+    content: "\f104";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    padding-left: 1.1vw;
+    padding-top: 0vw;
+    font-size: 1.5vw;
+}
+
+.q5-info-message{
+    background: #f8f8f8;
+    border-radius: 4px;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    padding: 1vw;
+    display: inline-block;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;    
+}
+
+.q5-info-message > .q5-button-link{
+    min-width: 0;
+    margin-right: 1vw;
+}
+
+/*----------------------------------------------------------*/
+.q5-dropdown-data-block{
+    margin-bottom: 2vw;
+}
+
+.q5-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vw;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.6vw;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.q5-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.q5-dropdown-content > div{
+    margin-top: 1.5vw;
+    margin-bottom: 0;
+}
+/*----------------------------------------------------------*/
+
+.q5-h3-tittle{
+    margin: 0;
+    font-size: 1.3vw;
+    text-align: left;
+    line-height: 2.1vw;    
+    display: inline-table;
+}
+
+.q5-dropdown-header > .q5-h3-tittle{
+    position: relative;    
+    padding-right: 2vw;
+}
+
+.q5-dropdown-header > .q5-h3-tittle:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    font-size: 1vw;
+    top: 0.04vw;
+    font-weight: 100;
+    transition: all 0.2s ease;
+}
+
+.q5-active-dropdown > .q5-h3-tittle:after{
+    transform: rotate(90deg);
+}
+
+.q5-format-choice {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vw;
+}
+
+.q5-radio-buttons {
+    display: flex;
+}
+
+.q5-radio-buttons input[type="radio"] {
+    display: none;
+}
+
+.q5-radio-buttons label {
+    position: relative;
+    padding-left: 3vw;
+    margin-right: 3vw;
+    white-space: nowrap;
+    font-size: 1.2vw;
+}
+
+.q5-radio-buttons input[type=radio] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.4vw;
+    width: 2vw;
+    height: 2vw;
+    border: 2px solid #e5e5e5;
+    border-radius: 0.2vw;
+
+    transition: all 0.2s ease;
+}
+
+.q5-radio-buttons input[type=radio]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.7vw;
+    top: -0.1vw;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: white;
+    height: 1.1vw;
+    transform: rotate(45deg);
+    width: 0.65vw;
+}
+
+.q5-radio-buttons input[type=radio]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: -0.4vw;
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #42c287;
+    background: #42c287;
+    border-radius: 0.2vw;
+}
+
+.q5-arrow-left{
+    position: relative;
+}
+
+.q5-arrow-left:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+
+    left: -0.6vw;
+    border-top: 0.7vw solid transparent;
+    border-bottom: 0.7vw solid transparent;
+    border-right: 0.7vw solid #eeeeee;
+
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);    
+}
+
+.q5-input-label-with-help{
+    justify-content: flex-start;
+    align-items: center;    
+}
+
+.q5-input-label-with-help > img{
+    margin-left: 0.6vw;
+    width: 1.1vw;
+    cursor: pointer;    
+}
+
+.q5-button-block{
+    background: #f8f8f8;
+    border-radius: 4px;
+    box-sizing: border-box;    
+
+    padding-top: 1.3vw;
+    padding-bottom: 1.3vw;  
+
+    text-align: center;
+
+    padding-left: 3vw;
+    padding-right: 3vw;  
+}
+
+/*----------------------------------------------------------*/
+.q5-table table.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1vw;
+    text-align: left;
+    font-size: 1vw;
+
+    table-layout: fixed;
+}
+
+.q5-table table.dataTable, .q5-table table.dataTable th, .q5-table table.dataTable td {
+    border: 2px solid #eeeeee;
+}
+
+.q5-table table.dataTable tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.q5-table table.dataTable tbody td {
+    padding: 1vw;
+
+
+    word-wrap: break-word;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
+}
+
+.q5-table table.dataTable thead th, .q5-table table.dataTable thead td, .q5-table table.dataTable.no-footer {
+    padding: 0.7vw 1vw;
+
+    background: url(../img/table.png),#f8f8f8;
+    background-repeat: no-repeat;
+    background-size: 0.7vw;
+    background-position: center right;
+    background-origin: content-box;
+    padding-right: 0.5vw;    
+}
+
+.q5-table table.dataTable thead .sorting_asc {
+    background-image: url(../img/table_down.png);
+}
+
+.q5-table table.dataTable thead .sorting_desc {
+    background-image: url(../img/table_up.png);
+}
+
+.q5-table table.dataTable thead th.sorting_disabled{
+    background: #f8f8f8;
+}
+
+/*.q5-table table.dataTable tbody tr td:nth-of-type(2) {
+    text-align: center;
+}*/
+
+#thumbnail_table_size tbody tr td:nth-of-type(2) {
+    text-align: left;
+}
+
+
+
+.q5-table table.dataTable tbody tr td:last-of-type .q5-action-buttons-group{
+    justify-content: center;
+}
+
+.q5-table table.dataTable thead th, table.dataTable tfoot th {
+    font-family: GraphikMedium;
+    font-weight: normal;
+}
+
+/*#transfer_method_table tbody tr td:last-of-type .q5-action-buttons-group{
+    justify-content:space-between;
+}*/
+
+.q5-table table.dataTable tbody tr td:first-of-type,
+.q5-table table.dataTable thead th:first-of-type{
+    display: none;
+}
+
+.dt-rowReorder-float .sorting_1{
+    display: none;
+}
+
+.dt-rowReorder-float table.dataTable tbody th, table.dataTable tbody td {
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dt-rowReorder-float tbody td:nth-of-type(2) {
+    text-align: center;
+}
+
+
+.q5-table .dataTables_length{
+    display: none;
+}
+
+.q5-table .q5-table-navigation {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1vw;
+    align-items: center;
+}
+
+.q5-table .dataTables_info{
+    padding: 0;
+    margin: 0;
+    font-size: 1.1vw;
+    padding: 0.2vw 0.6vw;
+}
+
+.q5-table .dataTables_paginate{
+    padding: 0;
+    margin: 0;    
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5vw 0.8vw;
+    border: 1px solid #e5e5e5;
+    margin-left: 0.5vw;
+    font-size: 1.1vw;
+    color: #848484 !important; 
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, 
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, 
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: #d5d5d5 !important;
+    border: 1px solid #e5e5e5;
+    background: none;
+}
+
+.q5-table .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: #f8f8f8;
+}
+
+.q5-table-visible-records{
+    background: #f8f8f8;
+    padding: 0.7vw;    
+}
+
+.q5-action-buttons-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.q5-action-buttons-group a {
+    margin-right: 0.8vw;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw;*/
+}
+
+.q5-action-buttons-group a:last-of-type{
+    margin-right: 0;
+}
+
+.q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+    width: 1.5vw;
+    height: 1.5vw;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5vw;
+    cursor: pointer;
+    box-sizing: border-box;    
+}
+
+.q5-action-button--edit{
+    background: url(../img/edit.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--copy{
+    background: url(../img/copy.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--delete{
+    background: url(../img/delete.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+.q5-action-button--drag{
+    width: 1.5vw;
+    height: 0.75vw;        
+    background: url(../img/replace.png);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+}
+
+
+
+.q5-action-button--edit, .q5-action-button--drag {
+    color: #b1b1b1;
+}
+
+.q5-action-button--edit:hover, .q5-action-button--drag:hover {
+    color: #316fea;
+}
+
+.q5-action-button--delete{
+    color: #fe8980;
+}
+
+.q5-action-button--delete:hover{
+    color: #f04237;
+}
+
+/*----------------------------------------------------------*/
+
+/*----------------------------------------------------------*/
+.q5-custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.q5-custom-checkbox label {
+    position: relative;
+    padding-left: 2vw;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.2vw;
+    display: initial;
+}
+
+.q5-custom-checkbox input[type=checkbox] + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    /*top: -0.2vw;*/
+    width: 1.6vw;
+    height: 1.6vw;
+    border: 2px solid #e5e5e5;
+    border-radius: 0.2vw;
+    transition: all 0.2s ease;
+
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);        
+}
+
+.q5-custom-checkbox input[type=checkbox]:checked + label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    /*top: -0.2vw;*/
+    width: 1.6vw;
+    height: 1.6vw;
+    border: 1px solid #42c287;
+    background: #42c287;
+    border-radius: 0.2vw;
+
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);    
+}
+
+.q5-custom-checkbox input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.5vw;
+    top: 0vw;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: white;
+    height: 0.9vw;
+    transform: rotate(45deg);
+    width: 0.6vw;
+}
+/*----------------------------------------------------------*/
+
+.q5-faq-block{
+    margin-top: 4vw;
+}
+
+.q5-accordion-container {
+    margin-top: 0.7vw;
+    font-size: 1vw;
+}
+
+.q5-accordion-button {
+    width: 100%;
+    padding: 1vw 1.2vw;
+    margin: 0.2vw 0;
+    display: inline-block;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    background: #f8f8f8;
+
+    font-size: 1vw;
+    font-weight: 900;    
+}
+
+.q5-accordion-button:after {
+    content: "+";
+    color: #316fea;
+    position: absolute;
+    right: 0;
+    top: 0.7vw;
+    padding-right: 1.2vw;
+    font-size: 1.8vw;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+.q5-accordion-button.q5-active-accordion:after {
+    content: "\2212";
+}
+
+.q5-accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.q5-accordion-panel p {
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    margin-top: 0.6vw;
+    margin-bottom: 0.6vw;
+    font-size: 1vw;
+    line-height: 1.5vw;
+}
+
+/*----------------------------------------------------------*/
+.q5-td-with-help > span{
+    vertical-align: middle;
+}
+
+.q5-td-with-help > img{
+    vertical-align: middle;
+    width: 1.1vw;
+    margin-left: 0.3vw;
+}
+
+
+.q5-align-left{
+    text-align: left;
+}
+
+.q5-button-block > .q-form{
+    margin-top: 1vw;
+}
+
+.q5-two-columns > .q5-two-columns {
+    width: 50%;
+}
+
+.q5-two-columns > .q5-two-columns + .q5-two-columns {
+    margin-left: 3vw;
+}
+
+
+#add_thumbnail_form{
+    margin-top: 0;
+}
+
+#add_thumbnail_form > div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+#add_thumbnail_form > div > div:first-of-type{
+    display: flex;
+    margin-right: 1vw;
+}
+
+#add_thumbnail_form > div > div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 0.3vw;
+}
+
+#add_thumbnail_form .q5-input-container{
+    margin-bottom: 0;
+}
+
+#add_thumbnail_form input[type=text]{
+    margin-bottom: 0;
+}
+
+#add_thumbnail_form .q5-input-container:first-of-type{
+    width: 7vw;    
+}
+
+#add_thumbnail_form .q5-input-container:last-of-type{
+    width: 12vw;    
+    margin-left: 1vw;
+}
+
+.input-x-delimeter{
+    text-align: center;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;    
+}
+
+#general_info .q5-two-columns .q5-two-columns > div:first-of-type{
+    width: 25%;
+}
+
+/*#transfer_method_table tbody tr td:nth-of-type(2),
+#encoding_profiles_table tbody tr td:nth-of-type(2),
+#projects_table tbody tr td:nth-of-type(2){
+    text-align: left;
+}*/
+
+#video_settings_table tr td:nth-of-type(2),
+#thumbnail_table tr td:nth-of-type(2){
+    text-align: center;
+}
+
+.q5-tabcontent--empty{
+    height: 30vw;
+}
+
+.q-form .q-form{
+    margin-top: 1vw;    
+}
+
+#add_transfer_method_form .q5-faq-block{
+    margin-top: 0;
+}
+
+button:disabled {
+    background: #e5e5e5;
+    border-color: #e5e5e5;
+    cursor: not-allowed;
+}
+
+.q5-hidden{
+    display: none;
+}
+
+.q5-filter-box {
+    background: #f8f8f8;
+    border-radius: 4px;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    padding: 1vw 1.5vw;
+    display: inline-flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+.q5-filter-box > div{
+    display: flex;    
+}
+
+.q5-filter-box .q5-input-container {
+    margin-bottom: 0;
+}
+
+.q5-date-filter-container{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.q5-filter-box .q5-select {
+    padding: 0.6vw 1vw;
+    width: 10vw;
+}
+
+.q5-medium-width {
+    min-width: 8vw;
+}
+
+.q5-filter-box .q5-custom-select:after {
+    top: 1.3vw;
+    padding-right: 1vw;
+}
+
+.q5-date-filter-select{
+    display: inline-flex;
+    align-items: center;     
+}
+
+.q5-filter-date {
+    display: inline-block;
+    position: relative;
+}
+
+.q5-date-filter-buttons{
+    padding-bottom: 0.6vw;    
+}
+
+.q5-filter-date input[type=text]{
+    width: 10vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+    cursor: pointer;
+    padding: 0.6vw 1vw;
+}
+
+.q5-filter-date:after {
+    content: "\f073";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 1.3vw;
+    padding-right: 1.4vw;
+    font-size: 1.1vw;
+    pointer-events: none;
+    color: #73767d;
+}
+
+.q5-no-min-width{
+    min-width: 0;
+}
+
+#transcoding_jobs_table tbody tr td:nth-of-type(2){
+    
+}
+
+.q5-table-dropdown{
+    cursor:pointer;
+    position: relative;
+    padding-left: 1.5vw;    
+    color: #316fea;
+}
+
+.q5-table-dropdown:after {
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    font-size: 0.8vw;
+    top: 0.16vw;
+    transition: all 0.1s ease;
+}
+
+.q5-table-dropdown--active:after{
+    transform: rotate(90deg);
+}
+
+.q5-table-dropdown-content td{
+    background: #f8f8f8;    
+
+    padding: 1vw;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: 1vw;    
+}
+
+.transcoding-jobs-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-headers{
+    width: 28%;
+}
+
+.project-logs{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-logs > div{
+    width: 48%;
+}
+
+.q5-table table.dataTable .transcoding-jobs-table{
+    margin: 0.5vw 0;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    border: 2px solid #e6e6e6;   
+    padding: 0.4vw 0;
+    background: white;     
+}
+
+.q5-table table.dataTable .transcoding-jobs-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.q5-table table.dataTable .transcoding-jobs-table thead tr:hover {
+    background-color: white;
+}
+
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr:hover,
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr:hover > td{
+    background-color: #fafafa;
+}
+
+.q5-table table.dataTable .transcoding-jobs-output-info .transcoding-jobs-table tbody tr{
+    border-bottom: 2px solid #eeeeee;
+}
+
+.q5-table table.dataTable .transcoding-jobs-details table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table td{
+    background: white;  
+    border: none;  
+    padding: 0.6vw 1vw;
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table th{
+    padding: 0.7vw 1vw;
+    font-family: GraphikMedium;
+    font-weight: normal;
+    font-size: 1vw;
+    text-align: left;
+    background: none;
+    border: none;    
+}
+
+.q5-table table.dataTable .q5-table-dropdown-content table td:first-of-type, 
+.q5-table table.dataTable .q5-table-dropdown-content table th:first-of-type{
+    display: block; 
+}
+
+.input-dash-delimeter{
+    margin-left: 0.1vw;
+    margin-right: 0.1vw; 
+}
+
+
+.q5-select-billing-radiobuttons-container > label{
+    cursor: pointer;
+    margin-top: 1vw;
+    transition: 0.3s;
+}
+
+.q5-select-billing-radiobuttons-container > label:first-of-type {
+    margin-top: 0;
+}
+
+.q5-select-billing-radiobuttons-container input[type=radio]{
+    display: none;
+}
+
+.q5-select-billing-radiobuttons-container input[type=radio]:checked + label {
+    border-color: #42c186;
+}
+
+.q5-billing-radio-button{
+    box-sizing: border-box;
+    width: 2.3vw;
+    height: 2.3vw;
+    border: 2px solid #e5e5e5;
+    border-radius: 50%;
+    transition: all 0.2s ease;    
+
+    position: relative;
+}
+
+.q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button {
+    border-color: #42c186;
+    background: #42c186;
+}
+
+.q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0.6vw;
+    top: 0.3vw;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: white;
+    height: 1.1vw;
+    transform: rotate(45deg);
+    width: 0.65vw;
+}
+
+.q5-billing-icon--free{
+    box-sizing: border-box;
+    background: url(../img/billing_free.jpg);
+    background-repeat: no-repeat;
+    background-size: 1.5vw;
+    background-position: 0% 23%;
+    padding-left: 2.5vw;
+    line-height: 1.8;  
+}
+
+.q5-billing-icon--unlimited{
+    box-sizing: border-box;
+    background: url(../img/billing_unlimited.jpg);
+    background-repeat: no-repeat;
+    background-size: 1.7vw;
+    background-position: 0% 40%;
+    padding-left: 2.5vw;
+    line-height: 1.8;
+}
+
+.q5-credit-card-block{
+    display: flex;
+    flex-direction: column;
+}
+
+.q5-credit-card-block > button{
+    align-self: flex-end;
+}
+
+.q5-card-details-container{
+    margin-bottom: 1vw;
+    background: #f9f9f9;    
+    border-radius: 0.5vw;
+    padding: 0.4vw 1vw;
+    box-sizing: border-box;    
+}
+
+.q5-card-details-container .q5-input-container{
+    background: white;
+    border-radius: 0.5vw;
+}
+
+.q5-card-details-container input[type=text]{
+    margin: 0;
+}
+
+input[type=text].q5-card-input--cvc{
+    width: 3vw;
+    text-align: center;
+}
+
+input[type=text].q5-card-input--zip{
+    width: 3vw;
+    text-align: center;
+}
+
+.q5-card-input--exp-date span{
+    color: #a3a6b5
+}
+
+.q5-input-with-message{
+    background: #e6e6e6;
+    border-radius: 0.5vw;    
+}
+
+.q5-message-below-card{
+    background: #e6e6e6;
+    margin-top: -1vw;
+    margin-bottom: 0.5vw;
+    border-radius: 0.5vw;
+    padding: 0.7vw 1.5vw;
+    font-size: 0.8vw;
+    color: #373d5d;    
+}
+
+.q5-billing-icon--powered-by-stripe{
+    box-sizing: border-box;
+    background: url(../img/powered_by_stripe.jpg);
+    background-repeat: no-repeat;
+    background-size: 8.5vw;
+    background-position: 100% 50%;
+    line-height: 1.8;
+}
+
+
+/*--------------NOV-13-2017----HELP CENTER--------------*/
+.q5-help-block{
+    display: flex;
+}
+
+
+.q5-search-block{
+    margin-top: 2.5vw;
+}
+
+.q5-content-container{
+    padding-right: 2vw;
+    padding-left: 2vw;
+
+    box-sizing: border-box;    
+}
+
+.q5-help-content{
+    width: 71%;
+    box-sizing: border-box;
+
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+
+    padding-bottom: 5vw;
+}
+
+.q5-help-content-header{
+    border-bottom: 1px solid #e6e6e6;    
+}
+
+.q5-help-center-section-title {
+    font-size: 1.9vw;
+    margin: 0;
+}
+
+.q5-title-with-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+    margin-top: 1vw;
+    margin-bottom: 1vw;    
+}
+
+.q5-title-with-nav__buttons{
+    display: flex;
+}
+
+.q5-title-btn{
+    width: 2.4vw;
+    height: 2.4vw;
+    box-sizing: border-box;
+    transition: 0.3s;
+    cursor: pointer;    
+}
+
+.q5-title-btn__next{
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;    
+}
+
+.q5-title-btn__next:hover {
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;
+}
+
+.q5-title-btn__back{
+    background: url(../img/go_back.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;    
+}
+
+.q5-title-btn__back:hover {
+    background: url(../img/go_back_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.4vw;
+}
+
+.q5-title-btn + .q5-title-btn{
+    margin-left: 0.5vw;
+}
+
+.q5-help-content h2 {
+    font-size: 1.2vw;
+    margin-top: 2.5vw;
+    margin-bottom: 1.5vw;  
+}
+
+.q5-help-content p {
+    font-size: 1vw;
+    line-height: 1.9vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.q5-help-content ol, .q5-help-ordered-list{
+    font-size: 1vw;
+    line-height: 1.9vw;
+    margin-top: 1.5vw;
+    margin-bottom: 3.5vw;
+    padding-left: 3vw;
+}
+
+.q5-help-content ol li, .q5-help-ordered-list-item{
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.q5-help-ordered-list-item{
+    position: relative;
+}
+
+.q5-help-ordered-list-item__number{
+    position: absolute;
+    left: -2.3vw;
+    min-width: 2vw;
+    text-align: right;
+}
+
+.q5-help-ordered-list-item__title-block{
+    margin-left: -1.2vw;
+    margin-bottom: 1vw;
+}
+
+.q5-help-content .q5-help-ordered-list-item__title-block h2{
+    margin-top: 2vw;
+    margin-bottom: 0;
+    font-size: 1.1vw;    
+}
+
+.q5-help-content .q5-help-ordered-list-item__title-block p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.q5-help-button{
+    font-weight: 600;
+    border: 1px solid #e6e6e6;
+    padding: 0.4vw 0.7vw;
+    border-radius: 0.5vw;
+}
+
+.q5-help-message{
+    margin-left: -2vw;
+    font-size: 0.9vw;
+    display: inline-block;
+    padding: 0.1vw 0.7vw;
+    border-radius: 0.6vw;
+}
+
+.q5-help-next-steps{
+    padding-top: 2vw;
+    padding-bottom: 2vw;    
+}
+
+.q5-help-next-steps > h2{
+    margin: 0;
+}
+
+.q5-steps-block{
+    border: 1px solid #e6e6e6;   
+    border-radius: 8px; 
+    font-size: 1vw;
+    font-weight: bold;    
+}
+
+.q5-step{
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 3.6vw;
+    padding-left: 4vw;    
+    cursor: pointer;
+    transition: 0.3s;  
+}
+
+.q5-step--next{
+    background: url(../img/go.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;  
+}
+
+.q5-step--next:hover{
+    background: url(../img/go_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;      
+}
+
+.q5-step--back{
+    background: url(../img/go_back.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;  
+}
+
+.q5-step--back:hover{
+    background: url(../img/go_back_over.png);
+    background-repeat: no-repeat;
+    background-size: 2.1vw;
+    background-position: 1vw;      
+}
+
+.q5-steps-block .q5-step:last-of-type{
+    border-bottom: none;
+}
+
+.q5-sidebar-container{
+    width: 29%; 
+    box-sizing: border-box;
+    transition: all .4s ease;
+}
+
+.q5-sidebar-menu{
+    top: 0;
+    background: white;    
+
+    height: 100%;
+}
+
+.q5-sidebar-menu > section {
+    padding-right: 1vw;    
+}
+
+.q5-sidebar--glued{
+    position: fixed;
+	overflow-y: auto; 
+}
+
+
+
+.q5-input-and-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 1vw;
+    box-sizing: border-box;
+}
+
+.q5-input-and-button > input{
+    margin: 0;
+    margin-right: 1vw;
+}
+
+.q5-input-and-button > button{
+    min-width: 7.7vw;
+}
+
+.q5-no-padding-bottom{
+    padding-bottom: 0;
+}
+
+.q5-help-center-title{
+    font-size: 0.8vw;
+    margin-top: 2.5vw;
+    margin-bottom: 1.5vw;    
+}
+
+.q5-sidebar-menu__links > .q-link{
+    display: block;
+    font-size: 1vw;
+    margin-bottom: 0.9vw;
+}
+
+.q5-sidebar-menu__selected-link{
+    color: #316fea;
+    font-weight: 600;
+}
+
+.q5-sidebar-menu__submenu{
+    margin-bottom: 1.5vw;
+}
+
+.q5-sidebar-menu__submenu > .q-link{
+    display: block;
+    font-size: 0.9vw;
+    line-height: 1.8vw;
+    padding-left: 1.5vw;
+    box-sizing: border-box;
+    border-left: 3px solid #e7e8ec;
+}
+
+.q5-sidebar-menu__submenu > .q5-sidebar-menu__selected-link{
+    border-color: #316fea;
+}
+
+.q5-sidebar-menu-link-with-submenu{
+
+}
+
+/*--------------NOV-13-2017----HELP CENTER--------------*/
+
+@media screen and (max-width: 960px){
+    .q5-container {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .q5-nav {
+        height: 7.2vw;
+    }    
+
+    .q5-nav .q5-logo img {
+        width: 13vw;
+        padding-top: 0.3vw;
+    }    
+
+    .q5-top-menu a {
+        font-size: 1.6vw;
+        line-height: 6.9vw;
+        margin-right: 1vw;
+        margin-left: 1vw;
+    }    
+
+    .q5-button-default {
+        padding: 0.9vw 1.6vw;
+        font-size: 1.6vw;
+        line-height: 1.6vw;
+    }    
+
+    .q5-no-header {
+        padding-top: 7vw;
+    }    
+
+    .q5-main .q5-two-columns .q-list {
+        font-size: 1.7vw;
+        line-height: 3.1vw;
+    }    
+
+    .q-list li::before {
+        left: -1.8vw;
+        top: 1vw;
+        height: 0.7vw;
+        width: 1vw;
+    }    
+
+    .q5-tablinks {
+        font-size: 1.8vw;
+        line-height: 3.5vw;
+    }    
+
+    .q-h2-tittle {
+        font-size: 3.6vw;
+        line-height: 4.3vw;
+    }    
+
+    .q-paragraph {
+        line-height: 3.4vw;
+        font-size: 1.8vw;
+    }    
+
+    .q5-input-container {
+        font-size: 1.5vw;
+    }    
+
+    .q5-input-label {
+        font-size: 1.5vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0;
+    }    
+
+    .q5-confirm-checkbox-and-text {
+        font-size: 1.4vw;
+        margin-top: 1vw;
+        margin-bottom: 2.4vw;
+    }    
+
+    .q5-custom-checkbox--small-gray {
+        margin-right: 1.7vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+        top: -0.5vw;
+        width: 2vw;
+        height: 2vw;
+        background: url(../img/box_empty.png);
+        background-repeat: no-repeat;
+        background-size: 2vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+        background: url(../img/box_checked.png);
+        background-repeat: no-repeat;
+        background-size: 2vw;
+    }    
+
+    .q5-button-default {
+        padding: 0.9vw 1.6vw;
+        font-size: 1.6vw;
+        line-height: 1.6vw;
+    }
+
+    .q5-button-solid {
+        font-size: 2vw;
+        padding: 1.3vw 3vw;
+    }
+
+    .q5-long-button {
+        font-size: 1.6vw;
+        min-width: 19vw;
+    }    
+
+    .q5-footer {
+        padding-top: 3.2vw;
+    }
+
+    .q5-small-logo img {
+        width: 3.1vw;
+    }    
+
+    .q5-footer-menu__block {
+        padding-left: 8vw;
+    }    
+
+    .q5-footer-menu__block h3 {
+        margin-bottom: 1.2vw;
+        font-size: 1.5vw;
+    }    
+
+    .q5-footer-menu__block a {
+        font-size: 1.4vw;
+        line-height: 2.5vw;
+    }    
+
+    .q5-hr {
+        margin-top: 2.5vw;
+        margin-bottom: 2.5vw;
+    }
+
+    .q5-copyright-and-socials {
+        font-size: 1.3vw;
+        padding-top: 2vw;
+        padding-bottom: 4vw;
+    }    
+
+    .q5-copyright-and-socials i {
+        font-size: 1.8vw;
+        margin-left: 2vw;
+    }    
+
+    .q5-eye {
+        width: 3.5vw;
+        height: 3.1vw;
+        background: url(../img/eye.png);
+        background-repeat: no-repeat;
+        background-size: 1.8vw;
+        background-position: 88% 50%;
+        right: 1.8vw;
+        top: 1.8vw;
+        border-left: 0.3vw solid #e6e6e6;
+        transition: 0.3s;
+    }    
+
+    .q5-eye:hover {
+        background: url(../img/eye_over.png);
+        background-repeat: no-repeat;
+        background-size: 1.8vw;
+        background-position: 88% 50%;
+    }    
+
+
+    .q5-email-sent {
+        width: 14vw;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-warning-message > img {
+        width: 2vw;
+        margin-right: 0.9vw;
+    }    
+
+    .q5-warning-message {
+        font-size: 1.3vw;
+        line-height: 2vw;
+        padding: 0.7vw 1.4vw;
+    }     
+
+    .q5-progress-circle {
+        width: 3vw;
+        height: 3vw;
+        background: url(../img/check_1.png);
+        background-repeat: no-repeat;
+        background-size: 3vw;
+    }    
+
+    .q5-progress-circle__current {
+        background: url(../img/check_2.png);
+        background-repeat: no-repeat;
+        background-size: 3vw;
+    }    
+
+    .q5-progress-circle__checked {
+        background: url(../img/check_3.png);
+        background-repeat: no-repeat;
+        background-size: 3vw;
+    }    
+
+    .q5-steps-progress > img {
+        height: 0.4vw;
+        margin-left: 0.5vw;
+        margin-right: 0.5vw;
+    }    
+
+    .q5-error-message {
+        font-size: 1.3vw;
+        line-height: 2vw;
+        padding: 0.3vw 1.4vw;        
+    }
+    
+    .q5-select {      
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0;
+    }
+
+    .q5-custom-select:after {
+        top: 2.55vw;
+        font-size: 1.7vw;
+    }
+
+    .q5-input-info {
+        font-size: 1.4vw;
+    }            
+
+    .q5-selectcontent {
+        margin-left: 2.5vw;
+        font-size: 1.5vw;
+    }
+
+    .q5-card-input {
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0;  
+        padding-left: 4vw;
+        background-size: 2vw;      
+    }    
+
+    .q5-two-columns > div {
+        width: 48%;
+    }    
+
+    .q5-question {
+        width: 1.5vw;
+        height: 1.5vw;
+        background: url(../img/help.png);
+        background-repeat: no-repeat;
+        background-size: 1.5vw;
+        right: 1.3vw;
+        top: 2.5vw;
+    }    
+
+    .q5-card-input > div {
+        width: 11vw;
+    }    
+
+    .q5-card-input > div > input[type=text] {
+        width: 2.6vw;
+    }    
+
+    .q5-lock-message {
+        font-size: 1.3vw;
+        line-height: 2vw;
+        padding: 0.7vw 1.4vw;        
+    }
+
+    .q5-lock-message > img {
+        height: 1.4vw;
+        margin-right: 1vw;
+    }    
+
+    .q5-tabcontent {
+        margin-top: 2vw;
+    }    
+
+    .q-link-box + .q-link-box,
+    .q5-select-billing-radiobuttons-container > label {
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+    }    
+
+    .q-link-box {
+        width: 88%;
+        padding: 1.4vw 2.4vw;
+    }
+
+    .q-link-box--max-width{
+        width: 100%;
+    }    
+
+    .q-link-box__title {
+        font-size: 2vw;
+    }    
+
+    .q-link-box__image {
+        width: 5vw;
+        height: 5vw;
+        background-size: 4.9vw;
+    }    
+
+    .q-link-box__image:hover {
+        background-size: 4.9vw;
+    }    
+
+    .intl-tel-input {
+        margin: 1vw 0;
+    }    
+
+    .q5-pass-wrapper input[type=password], .q5-pass-wrapper input[type=text] {
+        padding-right: 7vw;
+    }        
+
+    .q5-has-submenu {
+        padding-right: 4vw;
+    }
+
+    .q5-has-submenu:after {
+        padding-right: 1.6vw;
+    }    
+
+    .q5-page-tittle-box {
+        padding: 3vw;
+    }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 2.8vw;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        padding: 0.9vw 1.6vw;
+        font-size: 1.6vw;
+        line-height: 2.1vw;
+        min-width: 17vw;        
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-left: 2vw;
+    }
+
+    .q5-back-link{
+        padding-left: 3.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 2vw;
+        padding-left: 1.6vw;
+    }
+
+    /*----------------------------------------------------------*/    
+
+    .q5-info-message{
+        font-size: 1.6vw;
+        padding: 1.6vw;
+        line-height: 1.6vw;
+    }
+
+    .q5-info-message > .q5-button-link{
+        margin-right: 3vw;
+    }    
+
+
+    .q5-table table.dataTable {
+        font-size: 1.4vw;
+    }    
+
+    .q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+        width: 2.3vw;
+        height: 2.3vw;
+        background-size: 2.3vw;
+    }    
+
+    .q5-action-button--drag {
+        height: 1.1vw;
+    }    
+
+    .q5-action-buttons-group a {
+        margin-right: 0.9vw;
+    }
+
+    .q5-table table.dataTable thead th {
+        padding: 0.9vw 1.4vw;
+        background-size: 0.9vw;
+        padding-right: 0.7vw;
+    }    
+
+    .q5-table table.dataTable tbody td {
+        padding: 1.1vw 1.4vw;
+    }        
+
+    .q5-custom-checkbox input[type=checkbox] + label:before,
+    .q5-custom-checkbox input[type=checkbox]:checked + label:before {
+        width: 2vw;
+        height: 2vw;
+        border-radius: 0.4vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox]:checked + label:after {
+        left: 0.6vw;
+        top: -0.2vw;
+        height: 1.2vw;
+        width: 0.8vw;
+    }    
+
+    .q5-table .dataTables_info {
+        font-size: 1.4vw;
+    }    
+
+    .q5-table-visible-records {
+        padding: 0.8vw;
+    }    
+
+    .q5-table .q5-table-navigation {
+        margin-top: 1.5vw;
+    }    
+
+    .q5-table table.dataTable {
+        margin-top: 2vw;
+    }    
+
+    .q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0.8vw 1vw;
+        margin-left: 0.9vw;
+        font-size: 1.4vw;
+    }    
+
+    .q5-h3-tittle {
+        font-size: 1.8vw;
+        line-height: 3.5vw;
+    }    
+
+    .q5-arrow-left:after {
+        left: -1.1vw;
+        border-top: 1.2vw solid transparent;
+        border-bottom: 1.2vw solid transparent;
+        border-right: 1.2vw solid #eeeeee;
+    }    
+
+    .q5-radio-buttons label {
+        font-size: 2.2vw;
+        padding-left: 4.5vw;
+        margin-right: 3vw;
+    }
+
+    .q5-radio-buttons input[type=radio] + label:before {
+        width: 3vw;
+        height: 3vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:before {
+        width: 3vw;
+        height: 3vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:after {
+        left: 1vw;
+        top: -0.3vw;
+        height: 2.1vw;
+        width: 1vw;
+    }    
+
+    .q5-input-label-with-help > img {
+        margin-left: 0.8vw;
+        width: 1.6vw;
+    }    
+
+    .q5-td-with-help > img {
+        margin-left: 0.5vw;
+        width: 1.6vw;
+    }    
+
+    #add_thumbnail_form > div > div:first-of-type {
+        margin-right: 2vw;
+    }    
+
+    #add_thumbnail_form .q5-input-container:first-of-type {
+        width: 11vw;
+    }   
+
+    #add_thumbnail_form .q5-input-container:last-of-type {
+        width: 18vw;
+        margin-left: 2vw;
+    }     
+
+    .input-x-delimeter {
+        margin-left: 0.8vw;
+        margin-right: 0.8vw;
+    }    
+
+    .q5-accordion-button {
+        font-weight: normal;
+        font-size: 1.8vw;
+        padding: 1.2vw 1.8vw;
+        margin: 0.4vw 0;
+    }    
+
+    .q5-accordion-button:after {
+        font-size: 2.6vw;
+        top: 1vw;
+        font-size: 2.6vw;
+        padding-right: 1.5vw;
+    }    
+
+    .q5-accordion-panel p {
+        font-size: 1.8vw;
+        line-height: 3.4vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        padding-left: 2.2vw;
+        padding-right: 2.2vw;        
+    }    
+
+    .q5-button-block {
+        padding: 1.6vw;
+    }    
+
+    .q5-filter-box{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.6vw;        
+    }
+
+    .q5-date-filter-buttons {
+        padding-bottom: 0;
+    }    
+
+    .q5-filter-box .q5-select {
+        width: 22vw;
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        line-height: 1.9vw;
+    }    
+
+    .q5-filter-box .q5-custom-select:after {
+        top: 2.55vw;
+        padding-right: 1.5vw;
+    }    
+
+    .q5-filter-date input[type=text] {
+        padding: 1.2vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+        font-size: 1.6vw;
+        margin: 1vw 0;
+        width: 17vw;
+        line-height: 1.9vw;
+    }    
+
+    .q5-filter-date:after {
+        top: 2.5vw;
+        padding-right: 1.6vw;
+        font-size: 2.1vw;
+    }    
+
+    .input-dash-delimeter{
+        margin-left: 0.6vw;
+        margin-right: 0.6vw;
+        font-size: 1.8vw;
+    }    
+
+    .q5-filter-box .q5-input-container {
+        margin-bottom: 1vw;
+    }    
+
+    .q5-date-filter-container {
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }    
+
+    .transcoding-jobs-details {
+        flex-direction: column;
+    }    
+
+    .project-headers {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }    
+
+    .project-headers > div{
+        width: 48%;
+    }
+
+    .project-logs {
+        width: 100%;
+    }    
+
+    .q5-table table.dataTable .q5-table-dropdown-content table td {
+        padding: 0.9vw 1.4vw;
+        font-size: 1.6vw;
+    }    
+
+    .q5-table table.dataTable .transcoding-jobs-table {
+        margin: 1vw 0;
+        padding: 0.8vw 0;
+    }    
+
+    .q5-table table.dataTable .q5-table-dropdown-content table th {
+        font-size: 1.4vw;
+        padding: 0.9vw 1.4vw;
+        padding-right: 0.7vw;
+    }    
+
+    .q5-nav .q5-top-menu .q5-menu-items--right {
+        margin-right: 0;
+    }    
+
+    .q5-billing-radio-button {
+        width: 3.5vw;
+        height: 3.5vw;
+    }    
+
+    .q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button:after {
+        left: 0.9vw;
+        top: 0.2vw;
+        height: 1.8vw;
+        width: 1.1vw;
+    }    
+
+    .q5-billing-icon--free {
+        background-size: 2.5vw;
+        background-position: 0% 5%;
+        padding-left: 4vw;
+        line-height: 1.6;
+    }    
+
+    .q5-billing-icon--unlimited {
+        background-size: 2.9vw;
+        background-position: 0% 44%;
+        padding-left: 4vw;
+        line-height: 1.6;
+    }    
+
+    .q5-card-details-container .q5-card-input > input[type=text]:first-of-type {
+        width: 65%;
+    }    
+
+    input[type=text].q5-card-input--cvc {
+        width: 4vw;
+        text-align: center;
+    }    
+
+    input[type=text].q5-card-input--zip {
+        width: 5vw;
+        text-align: center;
+    }
+
+    .q5-message-below-card {
+        font-size: 1.3vw;
+        padding-left: 2.1vw;
+        border-radius: 1vw;
+    }    
+    
+    .q5-card-details-container .q5-input-container {
+        border-radius: 1vw;
+    }    
+
+    .q5-input-with-message {
+        border-radius: 1vw;
+    }    
+
+    .q5-card-details-container {
+        margin-bottom: 2vw;
+        padding: 0.8vw 1.5vw;
+    }    
+
+    .q5-billing-icon--powered-by-stripe {
+        background-size: 11.5vw;
+        background-position: 100% 50%;
+        line-height: 1.4;
+    }    
+
+    /*--------------NOV-13-2017----HELP CENTER--------------*/   
+    .q5-input-and-button > input {
+        margin: 0;
+        margin-right: 2vw;
+    }     
+
+    .q5-input-and-button > button {
+        min-width: 10.7vw;
+    }    
+
+    .q5-search-block {
+        margin-top: 3.4vw;
+    }   
+
+    .q5-title-with-nav {
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-title-btn {
+        width: 3.4vw;
+        height: 3.4vw;
+    }    
+
+    .q5-title-btn__back, .q5-title-btn__back:hover,
+    .q5-title-btn__next, .q5-title-btn__next:hover {
+        background-size: 3.4vw;
+    }    
+
+    .q5-title-btn + .q5-title-btn {
+        margin-left: 1vw;
+    }    
+
+    .q5-help-center-section-title {
+        font-size: 2.5vw;
+    }    
+
+    .q5-help-next-steps {
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+    }    
+
+    .q5-step {
+        font-size: 1.3vw;
+        padding-left: 5.5vw;
+        line-height: 4.6vw;
+    }    
+
+    .q5-step--next, .q5-step--back,
+    .q5-step--next:hover, .q5-step--back:hover {
+        background-size: 3.1vw;
+        background-position: 1.5vw;
+    }    
+
+    .q5-help-content {
+        padding-bottom: 7vw;
+    }    
+    
+
+    .q5-help-center-title {
+        font-size: 1.2vw;
+        margin-top: 3.5vw;
+        margin-bottom: 2.5vw;
+    }    
+
+    .q5-help-content section h1 {
+        font-size: 2.5vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-help-content h2 {
+        font-size: 2vw;
+        margin-top: 3.5vw;
+        margin-bottom: 2.5vw;
+    }    
+
+    .q5-help-next-steps > h2 {
+        margin: 0;
+    }    
+
+
+
+    .q5-help-content p {
+        font-size: 1.3vw;
+        line-height: 2.3vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-help-ordered-list {
+        font-size: 1.3vw;
+        line-height: 2.3vw;
+        margin-top: 2.5vw;
+        margin-bottom: 4.5vw;
+        padding-left: 4vw;
+    }   
+
+    .q5-help-button {
+        font-weight: 600;
+        padding: 0.6vw 0.9vw;
+        border-radius: 0.7vw;
+    }     
+
+    .q5-help-ordered-list-item__number {
+        left: -2.6vw;
+    }    
+
+    .q5-help-message {
+        margin-left: -2.4vw;
+        font-size: 1.2vw;
+        display: inline-block;
+        padding: 0.2vw 0.9vw;
+        border-radius: 0.7vw;
+    }    
+
+    .q5-help-content .q5-help-ordered-list-item__title-block h2 {
+        margin-top: 3vw;
+        margin-bottom: 0;
+        font-size: 1.6vw;
+    }    
+
+    .q5-sidebar-menu__links > .q-link {
+        display: block;
+        font-size: 1.3vw;
+        margin-bottom: 1.5vw;
+    }    
+
+    .q5-sidebar-menu__submenu > .q-link {
+        font-size: 1.2vw;
+        line-height: 2.4vw;
+    }    
+
+    .q5-sidebar-menu__submenu {
+        margin-bottom: 2.3vw;
+    }    
+
+    .q5-help-ordered-list-item__title-block {
+        margin-left: -1.7vw;
+        margin-bottom: 2vw;
+    }    
+    /*--------------NOV-13-2017----HELP CENTER--------------*/      
+
+}
+
+@media screen and (max-width: 780px){
+    .q5-container {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .q5-nav {
+        height: 8.2vw;
+        justify-content: space-between;
+    }    
+
+    .q5-nav .q5-logo img {
+        width: 20vw;
+        padding-top: 0.5vw;
+    }    
+
+    .q5-nav .q5-top-menu {
+        display: none;
+    }    
+
+    .hamburger {
+        display: inline-block;
+        padding-right: 0;
+    }    
+
+    .q5-no-header {
+        padding-top: 8.2vw;
+    }    
+
+    .q5-main > .q5-two-columns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }    
+
+    .q5-main > .q5-signup-and-info {
+        flex-direction: column-reverse;
+    }    
+
+    .q5-two-columns > div {
+        width: 100%;
+    }    
+
+    .q5-signup-and-info > div:first-of-type {
+        margin-top: 5.3vw;
+    }    
+
+    .q5-tablinks {
+        font-size: 3.3vw;
+        line-height: 6.5vw;
+        margin-right: 3vw;
+        padding-right: 3vw;
+        padding-left: 1.5vw;
+    }    
+
+    .q5--tablinks-disabled{
+        padding: 0;
+    }    
+
+    .q5-tabcontent {
+        margin-top: 2.5vw;
+    }    
+
+    .q-h2-tittle {
+        line-height: 5.3vw;
+        font-size: 4.6vw;
+    }    
+
+    .q-paragraph {
+        line-height: 3.8vw;
+        font-size: 2.2vw;
+    }    
+
+    .q5-input-container {
+        font-size: 1.8vw;
+    }    
+
+    .q5-input-label {
+        font-size: 1.8vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;
+    }    
+
+    .q5-confirm-checkbox-and-text {
+        font-size: 1.8vw;
+        margin-top: 1.5vw;
+        margin-bottom: 3.4vw;
+    }    
+
+    .q5-custom-checkbox--small-gray {
+        margin-right: 2.5vw;
+        margin-left: 1vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+        top: -1vw;
+        width: 2.5vw;
+        height: 2.5vw;
+        background: url(../img/box_empty.png);
+        background-repeat: no-repeat;
+        background-size: 2.5vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+        background: url(../img/box_checked.png);
+        background-repeat: no-repeat;
+        background-size: 2.5vw;
+    }    
+
+    .q5-button-default {
+        padding: 1.3vw 2.6vw;
+        font-size: 2.2vw;
+        line-height: 2.2vw;
+    }
+
+    .q5-button-solid {
+        font-size: 2.4vw;
+        padding: 1.3vw 3vw;
+    }    
+
+    .q5-long-button {
+        font-size: 2vw;
+        min-width: 24vw;
+    }
+
+    .q5-eye {
+        width: 5.5vw;
+        height: 5.5vw;
+        background: url(../img/eye.png);
+        background-repeat: no-repeat;
+        background-size: 2.8vw;
+        background-position: 75% 50%;
+        right: 1.8vw;
+        top: 2.1vw;
+    }    
+
+    .q5-eye:hover {
+        background: url(../img/eye_over.png);
+        background-repeat: no-repeat;
+        background-size: 2.8vw;
+        background-position: 75% 50%;
+    }    
+
+    .q5-main-login-img {
+        width: 100%;
+        padding-left: 0;
+    }    
+
+    .q5-main .q5-two-columns .q-list {
+        font-size: 2.2vw;
+        line-height: 3.7vw;
+    }    
+
+    .q-list li::before {
+        left: -1.8vw;
+        top: 1vw;
+        height: 0.7vw;
+        width: 1vw;
+    }    
+
+    .q5-small-logo img {
+        width: 5.1vw;
+    }    
+
+    .q5-footer-menu__block h3 {
+        font-size: 1.8vw;
+    }    
+
+    .q5-footer-menu__block a {
+        font-size: 1.7vw;
+        line-height: 2.8vw;
+    }    
+
+    .q5-copyright-and-socials {
+        font-size: 1.6vw;
+    }    
+
+    .q5-copyright-and-socials i {
+        font-size: 2.2vw;
+        margin-left: 3vw;
+    }    
+
+    .q5-email-sent {
+        width: 18vw;
+        margin-bottom: 3vw;
+    }
+
+    .q5-warning-message {
+        font-size: 1.7vw;
+        line-height: 3vw;
+        padding: 1vw 2.4vw;
+    }    
+
+    .q5-warning-message > img {
+        width: 3vw;
+        margin-right: 1.3vw;
+    }    
+
+    .q5-input-container{
+        margin-bottom: 2vw;        
+    }
+
+    .q5-input-container > .q5-two-columns > div {
+        width: 50%;
+    }       
+
+    .intl-tel-input {
+        margin: 1.5vw 0;
+    }     
+
+    .q5-input-info {
+        font-size: 1.8vw;
+    }    
+
+    .q5-progress-circle {
+        width: 4vw;
+        height: 4vw;
+        background: url(../img/check_1.png);
+        background-repeat: no-repeat;
+        background-size: 4vw;
+    }
+
+    .q5-progress-circle__current {
+        background: url(../img/check_2.png);
+        background-repeat: no-repeat;
+        background-size: 4vw;
+    }    
+
+    .q5-progress-circle__checked {
+        background: url(../img/check_3.png);
+        background-repeat: no-repeat;
+        background-size: 4vw;
+    }    
+
+    .q5-error-message {
+        font-size: 1.7vw;
+        line-height: 3.2vw;
+        top: -2vw;        
+    }    
+
+    .q5-no-space-between {
+        flex-direction: column;
+    }    
+
+    .q5-input-container > .q5-two-columns > div {
+        width: 100%;
+    }    
+
+    .q5-select {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;        
+    }    
+
+    .q5-custom-select:after {
+        top: 3.7vw;
+        font-size: 2.2vw;
+        padding-right: 2.5vw;
+    }    
+
+    .q5-selectcontent {
+        margin-left: 0;
+    }    
+
+    .q-form > form > .q5-two-columns {
+        flex-direction: column;
+    }
+
+    .q5-card-input {
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;        
+    }    
+
+    .q5-lock-message{
+        font-size: 1.7vw;
+        line-height: 3vw;
+        padding: 1vw 2.4vw;    
+        position: relative;
+        top: -1vw;            
+    }
+
+    .q5-lock-message > img {
+        height: 2.2vw;
+        margin-right: 1.3vw;
+    }    
+
+    .q5-question {
+        width: 3vw;
+        height: 3vw;
+        background: url(../img/help.png);
+        background-repeat: no-repeat;
+        background-size: 3vw;
+        right: 1.8vw;
+        top: 3.2vw;
+    }    
+
+    .q5-credit-card-container > div:first-of-type {
+        width: 78%;
+    }    
+
+    .q5-credit-card-container > div:last-of-type {
+        width: 18%;
+    }    
+
+    .q5-card-input {
+        padding-left: 8vw;
+        background-size: 3.5vw;
+        background-position: 4% 49%;
+    }
+
+    .q5-card-input > div {
+        width: 12vw;
+    }    
+
+    .q5-card-input > div > input[type=text] {
+        width: 3.6vw;
+    }    
+
+    .q5-tabcontent {
+        margin-top: 3vw;
+    }    
+
+    .q5-input-container > .q5-two-columns > .q5-input-label {
+        width: 50%;
+    }    
+
+    .q-link-box {
+        width: 100%;
+        padding: 2.4vw 3.4vw;
+    }    
+
+    .q-link-box__title {
+        font-size: 2.7vw;
+    }    
+
+    .q-link-box__image {
+        width: 7vw;
+        height: 7vw;
+        background-size: 6.9vw;
+    }    
+
+    .q-link-box__image:hover {
+        background-size: 6.9vw;
+    }    
+
+    .q5-pass-wrapper input[type=password], .q5-pass-wrapper input[type=text] {
+        padding-right: 10vw;
+    }            
+
+    .q5-page-tittle-box {
+        padding: 4vw;
+        margin-top: 5vw;
+        margin-bottom: 4vw;
+        flex-direction: column;
+        align-items: flex-start;        
+    }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 4.8vw;
+    }
+
+    .q5-page-tittle-box > div{
+        margin-top: 3vw;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        padding: 2.2vw 4.6vw;
+        line-height: 2vw;
+        min-width: 25vw;
+        font-size: 2.2vw;       
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-left: 0vw;
+    }
+
+    .q5-back-link{
+        padding-left: 5.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 2.8vw;
+        padding-left: 2.6vw;
+    }
+
+    /*----------------------------------------------------------*/   
+
+    .q5-info-message{
+        font-size: 2.2vw;
+        padding: 2.6vw;
+        line-height: 2.2vw;
+    }
+
+    .q5-info-message > .q5-button-link{
+        margin-right: 3vw;
+    }          
+
+    .q5-encoding-tabs > .q5-tablinks{
+        font-size: 3vw;
+        line-height: 6.5vw;
+        margin-right: 0;
+        padding-right: 1vw;
+        padding-left: 1vw;
+    }
+
+    .q5-button-block {
+        padding: 2.6vw;
+    }    
+
+    .q5-dropdown-data-block {
+        margin-bottom: 4vw;
+    }    
+
+    .q5-dropdown-header {
+        margin-top: 1.9vw;
+        padding-bottom: 1.5vw;
+    }    
+
+    .q5-h3-tittle {
+        font-size: 2.8vw;
+        line-height: 4vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle:after {
+        font-size: 2.5vw;
+        top: 0.1vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle {
+        padding-right: 4vw;
+    }    
+
+    .q5-table table.dataTable {
+        margin-top: 3vw;
+        font-size: 1.5vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox] + label:before, .q5-custom-checkbox input[type=checkbox]:checked + label:before {
+        width: 3vw;
+        height: 3vw;
+        left: -0.6vw;
+        top: 0.6vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox]:checked + label:after {
+        left: 0.4vw;
+        top: -0.5vw;
+        height: 1.7vw;
+        width: 1.1vw;
+    }    
+
+    .q5-table .dataTables_info {
+        font-size: 1.8vw;
+    }    
+
+    .q5-table-visible-records {
+        padding: 1.3vw;
+    }    
+
+    .q5-table .q5-table-navigation {
+        margin-top: 2vw;
+    }    
+
+    .q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 1vw 1.4vw;
+        margin-left: 1.3vw;
+        font-size: 1.8vw;
+    }    
+
+    .q5-table table.dataTable tbody td {
+        padding: 1.8vw 1.4vw;
+        font-size: 1.8vw;
+    }    
+
+    .q5-table table.dataTable thead th {
+        background-size: 1.2vw;
+        padding-right: 0.4vw;
+    }    
+
+    .q5-input-label-with-help > img {
+        margin-left: 1.1vw;
+        width: 2vw;
+    }    
+
+    .q5-format-choice {
+        flex-direction: column;
+        align-items: flex-start;
+    }    
+
+    .q5-radio-buttons {
+        display: flex;
+        margin-top: 2vw;
+        margin-bottom: 3vw;
+    }    
+
+    .q5-arrow-left:after {
+        display: none;
+    }    
+
+    .q5-radio-buttons label {
+        margin-right: 4vw;
+        font-size: 3vw;
+        padding-left: 6vw;
+    }    
+
+    .q5-radio-buttons input[type=radio] + label:before {
+        width: 4vw;
+        height: 4vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:before {
+        width: 4vw;
+        height: 4vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:after {
+        left: 1.2vw;
+        top: -0.3vw;
+        height: 2.6vw;
+        width: 1.6vw;
+    }    
+
+    .q5-dropdown-content > div {
+        margin-top: 2.5vw;
+    }    
+
+    #add_resolution_form > div > .q5-two-columns{
+        flex-direction: column;
+    }
+
+    #add_resolution_form .q5-two-columns > .q5-two-columns + .q5-two-columns {
+        margin-left: 0;
+    }    
+
+    #add_resolution_form .q5-two-columns > .q5-two-columns {
+        width: 100%;
+    }    
+
+    #add_resolution_form .q5-two-columns > .q5-two-columns > div {
+        width: 48%;
+    }    
+
+    .q-form .q5-button-link + .q5-button-link {
+        margin-left: 3vw;
+    }
+
+    #add_thumbnail_form > div {
+        flex-direction: column;
+    }    
+
+    #add_thumbnail_form > div > div:first-of-type {
+        margin-right: 0;
+        margin-bottom: 3vw;
+        margin-top: 1vw;
+        justify-content: space-between;
+    }    
+
+    #add_thumbnail_form .q5-input-container:first-of-type {
+        width: 48%;
+    }    
+
+    #add_thumbnail_form .q5-input-container:last-of-type {
+        width: 48%;
+        margin-left: 0;
+    }    
+
+    #add_thumbnail_size_form > div > .q5-two-columns{
+        flex-direction: column;
+    }
+
+    #add_thumbnail_size_form > div > .q5-two-columns > .q5-two-columns {
+        width: 100%;
+    }    
+
+    #add_thumbnail_size_form > div > .q5-two-columns > .q5-two-columns > div {
+        width: 48%;
+    }        
+
+    .input-x-delimeter {
+        margin-left: 1vw;
+        margin-right: 1vw;
+        font-size: 2.8vw;
+    }    
+
+    .q5-faq-block, #add_transfer_method_form .q5-faq-block {
+        margin-top: 6vw;
+    }    
+
+    .q5-faq-block .q5-two-columns {
+        flex-direction: column;
+    }        
+
+    .q5-accordion-button {
+        font-size: 2.2vw;
+        padding: 1.5vw 2vw;
+        margin: 0.6vw 0;
+        border-radius: 0.8vw;
+    }    
+
+    .q5-accordion-button:after {
+        top: 0.8vw;
+        font-size: 3.6vw;
+        padding-right: 2.5vw;
+    }    
+
+    .q5-accordion-panel p {
+        line-height: 3.8vw;
+        font-size: 2.2vw;
+    }    
+
+    #add_transfer_method_form > .q5-two-columns{
+        flex-direction: column;
+    }
+
+    .q5-filter-box {
+        padding: 2.6vw;
+    }    
+
+    .q5-filter-box > div:first-of-type {
+        flex-direction: column;
+        width: 100%;
+    }    
+
+    .q5-filter-box .q5-select {
+        width: 100%;
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;
+        line-height: 2.4vw;        
+    }    
+
+    .q5-filter-box .q5-custom-select:after {
+        top: 3.7vw;
+        font-size: 2.2vw;
+        padding-right: 2.5vw;
+    }
+
+    .q5-filter-box .q5-input-container {
+        margin-bottom: 2vw;
+    }
+
+    .q5-date-filter-container {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-date-filter-select {
+        width: 100%;
+        justify-content: space-between;
+    }  
+
+    .q5-filter-date input[type=text] {
+        width: 38vw;
+        padding: 1.9vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 0;        
+        line-height: 2.4vw;
+    }      
+
+    .input-dash-delimeter {
+        font-size: 2.6vw;
+    }    
+
+    .q5-filter-date:after {
+        top: 3.8vw;
+        padding-right: 2.6vw;
+        font-size: 3.1vw;
+    }    
+
+    .q5-table table.dataTable .q5-table-dropdown-content table td {
+        font-size: 1.8vw;
+    }    
+
+    .q5-table-dropdown:after {
+        font-size: 1.8vw;
+        top: 0;
+    }    
+
+    .q5-table-dropdown {
+        padding-left: 2vw;
+    }    
+
+    .q5-table table.dataTable .q5-table-dropdown-content table th {
+        font-size: 1.5vw;
+    }    
+
+    .q5-billing-radio-button {
+        width: 5vw;
+        height: 5vw;
+    }    
+
+    .q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button:after {
+        left: 1.6vw;
+        top: 0.4vw;
+        height: 2.6vw;
+        width: 1.4vw;
+    }    
+
+    .q5-billing-icon--free {
+        background-size: 3.5vw;
+        background-position: 0% 5%;
+        padding-left: 6vw;
+        line-height: 1.6;
+    }    
+
+    .q5-billing-icon--unlimited {
+        background-size: 3.9vw;
+        background-position: 0% 37%;
+        padding-left: 6vw;
+        line-height: 1.6;
+    }    
+
+    input[type=text].q5-card-input--cvc {
+        width: 5vw;
+    }    
+
+    input[type=text].q5-card-input--zip {
+        width: 7vw;
+    }
+
+    .q5-message-below-card {
+        font-size: 1.8vw;
+        margin-top: -2vw;
+        padding: 1.1vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+    }    
+
+    .q5-card-details-container .q5-input-container {
+        border-radius: 1.5vw;
+    }    
+
+    .q5-input-with-message {
+        border-radius: 1.5vw;
+    }    
+
+    .q5-card-details-container {
+        margin-bottom: 2vw;
+        padding: 1.4vw 2vw;
+    }     
+
+    .q5-billing-icon--powered-by-stripe {
+        background-size: 16.5vw;
+    }    
+
+    /*--------------NOV-13-2017----HELP CENTER--------------*/  
+    .q5-search-block {
+        margin-top: 4.2vw;
+    }    
+
+    .q5-content-container {
+        width: 100%;
+    }    
+
+    .q5-help-content {
+        padding-bottom: 9vw;
+    }     
+
+    .q5-help-center-section-title {
+        font-size: 3.5vw;
+    }    
+
+    .q5-title-btn__back, .q5-title-btn__back:hover, .q5-title-btn__next, .q5-title-btn__next:hover {
+        background-size: 4.4vw;
+    }    
+
+    .q5-title-btn {
+        width: 4.4vw;
+        height: 4.4vw;
+    }    
+
+    .q5-title-btn + .q5-title-btn {
+        margin-left: 1.5vw;
+    }    
+
+    .q5-title-with-nav {
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+    }    
+
+    .q5-help-content h2 {
+        font-size: 3vw;
+    }    
+
+    .q5-input-and-button > input {
+        margin: 0;
+        margin-right: 3vw;
+    }    
+
+    .q5-input-and-button {
+        padding-right: 0;
+    }    
+
+    .q5-input-and-button > button {
+        min-width: 16.7vw;
+    }    
+
+    .q5-help-center-title {
+        font-size: 1.7vw;
+        margin-top: 4.5vw;
+        margin-bottom: 3.5vw;
+    }   
+
+    .q5-help-content section h1 {
+        font-size: 3.5vw;
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+    }     
+
+    .q5-help-content h2 {
+        font-size: 3vw;
+        margin-top: 4.5vw;
+        margin-bottom: 3.5vw;
+    }    
+
+    .q5-help-content p {
+        font-size: 2.1vw;
+        line-height: 3.5vw;
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+    }    
+
+    .q5-help-next-steps > h2 {
+        margin: 0;
+    }    
+
+    .q5-step {
+        font-size: 2.1vw;
+        padding-left: 7.5vw;
+        line-height: 6.5vw;
+    }    
+
+    .q5-step--next, .q5-step--back, .q5-step--next:hover, .q5-step--back:hover {
+        background-size: 4.1vw;
+        background-position: 2vw;
+    }    
+
+    .q5-help-ordered-list {
+        font-size: 1.9vw;
+        line-height: 3.5vw;
+        margin-top: 3.5vw;
+        margin-bottom: 5.5vw;
+        padding-left: 4vw;
+    }    
+
+    .q5-help-message {
+        margin-left: -3.2vw;
+        font-size: 1.6vw;
+        display: inline-block;
+        padding: 0.9vw 1.2vw;
+        border-radius: 0.7vw;
+        line-height: 2vw;
+    }    
+
+    .q5-help-content .q5-help-ordered-list-item__title-block h2 {
+        margin-top: 4vw;
+        margin-bottom: 0;
+        font-size: 2.3vw;
+    }    
+
+    .q5-help-ordered-list-item__title-block {
+        margin-left: -2.2vw;
+        margin-bottom: 3vw;
+    }    
+
+    .q5-sidebar-menu__links > .q-link {
+        font-size: 1.5vw;
+        margin-bottom: 2.5vw;
+    }    
+
+    .q5-sidebar-menu__links > .q-link {
+        font-size: 2.1vw;
+        margin-bottom: 3vw;
+        line-height: 3.3vw;
+    }   
+
+    .q5-sidebar-menu__submenu {
+        margin-bottom: 3.3vw;
+    }     
+
+    .q5-sidebar-menu__submenu > .q-link {
+        font-size: 2vw;
+        line-height: 4vw;
+    }    
+    /*--------------NOV-13-2017----HELP CENTER--------------*/       
+
+}
+
+@media screen and (max-width: 480px){
+    .q5-container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .q5-nav {
+        height: 14.2vw;
+    }    
+
+    .q5-nav .q5-logo img {
+        width: 35vw;
+        padding-top: 0.8vw;
+    }    
+
+    .q5-no-header {
+        padding-top: 14.2vw;
+    }    
+
+    .q5-main > .q5-two-columns {
+        margin-top: 7.8vw;
+        padding-left: 0;
+        padding-right: 0;
+    }    
+
+    .q5-signup-and-info > div:first-of-type {
+        margin-top: 8.3vw;
+    }    
+
+    .q5-tab {
+        border-bottom: 1px solid #dbdad6;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }    
+
+    .q5-tablinks {
+        line-height: 10.8vw;
+        display: inline-block;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 7.3vw;
+        font-weight: 600;
+        border-bottom: 3px solid #f8f8f8;
+        color: #343d5c;
+        padding-right: 3vw;
+        padding-left: 1vw;
+    }    
+
+    .q5-signup-and-info .q5-tablinks {
+        border-bottom: 3px solid white;
+    }    
+
+    .q5-signup-and-info .q5-tablinks {
+        font-size: 5.3vw;
+        line-height: 10.5vw;
+    }    
+
+    .q5-signup-and-info .q5-tablinks--active {
+        border-bottom: 3px solid #41c186;
+    }    
+
+    .q5-signup-and-info .q5-tabcontent {
+        margin-top: 4.5vw;
+    }
+
+    .q-h2-tittle {
+        line-height: 8vw;
+        font-size: 6vw;
+    }    
+
+    .q-paragraph {
+        line-height: 6.8vw;
+        font-size: 4.2vw;
+    }    
+
+    .q-form {
+        margin-top: 2.5vw;
+    }    
+
+    .q5-input-container {
+        font-size: 4vw;
+    }    
+
+    .q5-input-label {
+        font-size: 4vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+    }    
+
+    .q5-confirm-checkbox-and-text {
+        font-size: 3.4vw;
+        line-height: 5vw;
+        align-items: flex-start;
+    }    
+
+    .q5-custom-checkbox--small-gray {
+        margin-right: 1.5vw;
+        margin-left: 2vw;
+        line-height: 4vw;
+        margin-top: 0.2vw;
+    }    
+
+    .q5-custom-checkbox--small-gray label {
+        position: relative;
+        padding-left: 1.5vw;
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 1.2vw;
+        display: initial;
+        width: 4vw;
+        height: 4vw;
+        display: inline-block;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+        top: 0;
+        width: 4vw;
+        height: 4vw;
+        background: url(../img/box_empty.png);
+        background-repeat: no-repeat;
+        background-size: 4vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+        background: url(../img/box_checked.png);
+        background-repeat: no-repeat;
+        background-size: 4vw;
+    }    
+
+    .q5-button-default {
+        padding: 2.1vw 2.6vw;
+        font-size: 4.2vw;
+        line-height: 5.2vw;
+        width: 100%;
+    }    
+
+    .q5-button-solid {
+        font-size: 4.4vw;
+        padding: 3.3vw 3vw;
+        line-height: 3.3vw;
+        width: 100%;
+    }    
+
+    .q5-pass-wrapper input[type=password], .q5-pass-wrapper input[type=text] {
+        padding-right: 16vw;
+    }    
+
+    .q5-eye {
+        width: 10vw;
+        height: 10vw;
+        background: url(../img/eye.png);
+        background-repeat: no-repeat;
+        background-size: 5.8vw;
+        background-position: 75% 50%;
+        right: 2.8vw;
+        top: 3.1vw;
+    }    
+
+    .q5-eye:hover {
+        background: url(../img/eye_over.png);
+        background-repeat: no-repeat;
+        background-size: 5.8vw;
+        background-position: 75% 50%;
+    }    
+
+    .q5-main .q5-two-columns .q-list {
+        font-size: 3.7vw;
+        line-height: 6.7vw;
+        padding-left: 5vw;
+        margin-top: 6vw;
+    }    
+
+    .q-list li::before {
+        left: -4.8vw;
+        top: 2vw;
+        height: 1.4vw;
+        width: 2.3vw;
+    }    
+
+    .q5-footer {
+        padding-top: 5.2vw;
+    }
+
+    .q5-logo-and-menu {
+        flex-direction: column;
+    }    
+
+    .q5-small-logo img {
+        width: 8.1vw;
+    }    
+
+    .q5-footer-menu {
+        flex-direction: column;
+    }    
+
+    .q5-footer-menu > div {
+        justify-content: space-between;
+    }
+
+    .q5-footer-menu > div {
+        display: flex;
+        margin-top: 4vw;
+    }    
+
+    .q5-footer-menu__block {
+        padding-left: 0;
+    }    
+
+    .q5-footer-menu__block {
+        width: 32%;
+    }    
+
+    .q5-footer-menu__block h3 {
+        font-size: 3.3vw;
+    }    
+
+    .q5-footer-menu__block a {
+        font-size: 3.4vw;
+        line-height: 5.8vw;
+    }    
+
+    .q5-hr {
+        margin-top: 6.5vw;
+        margin-bottom: 6.5vw;
+    }
+
+    .q5-copyright-and-socials {
+        font-size: 3.2vw;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        padding-top: 0;
+    }    
+
+    .q5-copyright-and-socials > div:first-of-type {
+        margin-top: 3vw;
+    }    
+
+    .q5-copyright-and-socials i {
+        font-size: 4.2vw;
+        margin-left: 0;
+        margin-right: 6vw;
+    }    
+
+    .q5-main {
+        padding-bottom: 6vw;
+    }    
+
+    .q5-email-sent {
+        width: 27vw;
+    }   
+
+    .q5-warning-message {
+        font-size: 2.6vw;
+        line-height: 4.2vw;
+        padding: 1.2vw 3vw;
+    }     
+
+    .q5-warning-message > img {
+        width: 4vw;
+        margin-right: 2.3vw;
+        margin-bottom: 0.2vw;
+    }    
+
+    .q5-progress-circle {
+        width: 7vw;
+        height: 7vw;
+        background: url(../img/check_1.png);
+        background-repeat: no-repeat;
+        background-size: 7vw;
+    }    
+
+    .q5-progress-circle__current {
+        background: url(../img/check_2.png);
+        background-repeat: no-repeat;
+        background-size: 7vw;
+    }    
+
+    .q5-progress-circle__checked {
+        background: url(../img/check_3.png);
+        background-repeat: no-repeat;
+        background-size: 7vw;
+    }    
+
+    .q5-steps-progress > img {
+        height: 0.9vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }    
+
+    .q5-input-info {
+        font-size: 3.4vw;
+    }
+
+    .intl-tel-input {
+        margin-bottom: 2vw;
+    }    
+
+    .q5-error-message {
+        font-size: 2.6vw;
+        padding: 1.2vw 3vw;
+    }    
+
+    .q5-input-container {
+        margin-bottom: 3vw;
+    }    
+
+    .q5-confirm-checkbox-and-text {
+        margin-bottom: 5.4vw;
+    }    
+
+    .q5-select {
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        padding-right: 9vw;
+    }    
+
+    .q5-custom-select:after {
+        top: 5.6vw;
+        font-size: 4.5vw;
+        padding-right: 4.5vw;
+    }    
+
+    .q5-tablinks {
+        line-height: 10.5vw;
+        font-size: 5.3vw;
+        margin-right: 0;
+        padding-left: 1vw;
+        border-bottom: 3px solid white;
+    }    
+
+    .q5--tablinks-disabled{
+        cursor: unset;
+        border: none;
+        padding: 0;
+    }    
+
+    .q5-tablinks--active {
+        border-bottom: 3px solid #41c186;
+    }    
+
+    .q5-lock-message {
+        font-size: 2.6vw;
+        line-height: 4.2vw;
+        padding: 1.2vw 3vw;
+    }    
+
+    .q5-lock-message > img {
+        height: 4vw;
+        width: 4.2vw;
+        margin-right: 2.3vw;
+    }    
+
+    .q5-two-columns--not-equal{
+        flex-direction: column;
+    }
+
+    .q5-two-columns--not-equal-reversed{
+        flex-direction: column;
+    }    
+
+    .q5-input-container > .q5-two-columns > .q5-input-label {
+        width: 30%;
+    }    
+
+    .q5-two-columns--not-equal > div:first-of-type {
+        width: 100%;
+    }    
+
+    .q5-two-columns--not-equal > div:last-of-type {
+        width: 100%;
+    }    
+
+    .q5-two-columns--not-equal-reversed > div:first-of-type {
+        width: 100%;
+    }    
+
+    .q5-two-columns--not-equal-reversed > div:last-of-type {
+        width: 100%;
+    }    
+
+    .q5-credit-card-container{
+        flex-direction: column;
+    }
+
+    .q5-credit-card-container > div:first-of-type {
+        width: 100%;
+    }    
+
+    .q5-card-input {
+        position: relative;
+        padding: 3vw;
+        padding-left: 16vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;    
+        background-size: 7.5vw;
+        background-position: 6% 49%;            
+    }    
+
+    .q5-cvc-wrapper input{
+        margin-top: 0;
+    }
+
+    .q5-credit-card-container > div:last-of-type {
+        width: 35%;
+    }    
+
+    .q5-question {
+        width: 6vw;
+        height: 6vw;
+        background: url(../img/help.png);
+        background-repeat: no-repeat;
+        background-size: 6vw;
+        right: 3.8vw;
+        top: 3.2vw;
+    }    
+
+    .q5-card-input > div {
+        width: 40%;
+        position: absolute;
+        top: 17.4vw;
+        left: 0;
+        border: 2px solid #e6e6e6;
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        display: flex;
+        justify-content: center;        
+    }    
+
+    .q5-card-input > div > input[type=text] {
+        width: 12.6vw;
+    }    
+
+    .q-link-box {
+        border-radius: 0.8vw;
+        padding: 3.4vw 3.4vw;
+        flex-direction: column;
+    }    
+
+    .q-link-box__title {
+        font-size: 4.7vw;
+    }    
+
+    .q-link-box__image {
+        width: 15vw;
+        height: 15vw;
+        background-size: 14.5vw;
+    }    
+
+    .q-link-box__image:hover {
+        background-size: 14.5vw;
+    }    
+
+    .q-link-box > div:first-of-type {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .q-link-box + .q-link-box,
+    .q5-select-billing-radiobuttons-container > label {
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+    }    
+
+    .q5-main > .q5-one-column {
+        margin-top: 7.8vw;
+    }        
+
+    .q5-page-tittle-box {
+        padding: 5vw;
+        margin-top: 7.8vw;
+        flex-direction: column;
+    }
+
+    .q5-page-tittle-box > h1{
+        font-size: 7.8vw;
+    }
+
+    .q5-page-tittle-box > div{
+        margin-top: 4vw;
+        flex-direction: column;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        font-size: 4.4vw;
+        padding: 3.3vw 3vw;
+        line-height: 5.3vw;
+        width: 100%;      
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-top: 4vw;
+    }
+
+    .q5-back-link{
+        padding-left: 5.8vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 6.6vw;
+        padding-left: 6.6vw;
+    }
+
+    /*----------------------------------------------------------*/     
+
+    .q5-encoding-tabs > .q5-tablinks{
+        line-height: 9.5vw;
+    }    
+
+    .q5-info-message {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 3.6vw;
+        line-height: 3.6vw;
+        padding: 3.6vw;        
+    }    
+
+    .q5-info-message > .q5-button-link {
+        margin-right: 0;
+        margin-bottom: 4vw;
+    }    
+
+    .q5-tab.q5-encoding-tabs{
+        flex-direction: column;
+    }
+
+    .q5-encoding-tabs > .q5-tablinks {
+        font-size: 5.3vw;
+        line-height: 10.5vw;
+    }    
+
+    .q5-encoding-tabs > .q5-tablinks + .q5-tablinks {
+        margin-left: 0;
+    }    
+
+    .q5-h3-tittle {
+        font-size: 5vw;
+        line-height: 10vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle {
+        padding-right: 7vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle:after {
+        font-size: 4.5vw;
+        top: 0.3vw;
+    }    
+
+    .q5-button-block {
+        padding: 3.6vw;
+    }    
+
+    .q-form .q5-button-link + .q5-button-link {
+        margin-left: 0; 
+    }    
+
+    .q5-radio-buttons {
+        margin-top: 4vw;
+        margin-bottom: 4vw;
+        justify-content: space-between;
+        width: 100%;
+    }    
+
+    .q5-radio-buttons label:last-of-type{
+        margin-right: 0;
+    }
+
+    .q5-radio-buttons label {
+        font-size: 4.8vw;
+        padding-left: 9vw;
+    }    
+
+    .q5-radio-buttons input[type=radio] + label:before {
+        width: 6vw;
+        height: 6vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:before {
+        width: 6vw;
+        height: 6vw;
+    }    
+
+    .q5-radio-buttons input[type=radio]:checked + label:after {
+        left: 1.7vw;
+        top: -0.2vw;
+        height: 4vw;
+        width: 2.6vw;
+    }    
+
+    .q5-format-choice {
+        margin-bottom: 3vw;
+    }    
+
+    #add_resolution_form .q5-two-columns > .q5-two-columns {
+        flex-direction: column;
+    }   
+
+    #add_resolution_form .q5-two-columns > .q5-two-columns > div {
+        width: 100%;
+    }    
+
+    .q5-input-label-with-help > img {
+        margin-left: 2.1vw;
+        width: 4vw;
+    }    
+
+    .q5-dropdown-content > div {
+        margin-top: 3.5vw;
+    }    
+
+    .q5-accordion-button {
+        font-size: 4.2vw;
+        padding: 2.3vw 3vw;
+        border-radius: 1vw;
+        margin: 0.9vw 0;
+    }    
+
+    .q5-accordion-button:after {
+        top: 0.9vw;
+        font-size: 6.6vw;
+        padding-right: 3vw;
+    }    
+     
+    .q5-accordion-panel p {
+        line-height: 6.8vw;
+        font-size: 4vw;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        margin-top: 2vw;
+        margin-bottom: 4vw;
+    }     
+
+    #add_thumbnail_form > div > div:first-of-type {
+        flex-direction: column;
+        margin-bottom: 0;
+    }    
+
+    #add_thumbnail_form .q5-input-container:first-of-type {
+        width: 100%;
+        margin-bottom: 3vw;
+    }    
+
+    #add_thumbnail_form .q5-input-container:last-of-type {
+        width: 100%;
+        margin-bottom: 3vw;
+    }    
+
+    #add_thumbnail_form > div > div:last-of-type {
+        flex-direction: column;
+        margin-top: 2vw;
+    }    
+
+    #add_thumbnail_size_form > div > .q5-two-columns > .q5-two-columns {
+        flex-direction: column;
+    }    
+
+    #add_thumbnail_size_form > div > .q5-two-columns > .q5-two-columns > div {
+        width: 100%;
+    }    
+
+    .input-x-delimeter {
+        margin-left: 2vw;
+        margin-right: 2vw;
+        font-size: 6.8vw;
+    }    
+
+    .q5-table table.dataTable {
+        margin-top: 5vw;
+    }    
+
+    #video_settings_table tbody td:nth-of-type(7){
+        display: none;
+    }
+
+    #video_settings_table thead th:nth-of-type(7){
+        display: none;
+    }    
+
+    #thumbnail_table tbody td:nth-of-type(5){
+        display: none;
+    }
+
+    #thumbnail_table thead th:nth-of-type(5){
+        display: none;
+    }        
+
+    .q5-table table.dataTable {
+        margin-top: 3vw;
+        font-size: 2.5vw;
+    }    
+
+    .q5-table table.dataTable tbody td {
+        padding: 2.8vw 1.4vw;
+        font-size: 3vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox] + label:before, .q5-custom-checkbox input[type=checkbox]:checked + label:before {
+        width: 4vw;
+        height: 4vw;
+        left: -0.9vw;
+        top: -0.1vw;
+    }    
+
+    .q5-custom-checkbox input[type=checkbox]:checked + label:after {
+        left: 0.2vw;
+        top: -1.4vw;
+        height: 2.3vw;
+        width: 1.6vw;
+    }    
+
+    .q5-action-buttons-group a {
+        margin-right: 0;
+        margin-bottom: 2.5vw;
+    }    
+
+    .q5-action-buttons-group a:last-of-type {
+        margin-bottom: 0;
+    }        
+
+    .q5-action-buttons-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+        width: 4.3vw;
+        height: 4.3vw;
+        background-size: 4.3vw;
+    }    
+
+    .q5-td-with-help > img {
+        margin-left: 1.1vw;
+        width: 4vw;
+    }    
+
+    .q5-table table.dataTable thead th {
+        background-size: 2vw;
+    }
+    
+    .q5-table .dataTables_info {
+        font-size: 3vw;
+    }    
+
+    .q5-table-visible-records {
+        padding: 2vw;
+    }    
+
+    .q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 2vw 2.5vw;
+        margin-left: 3.3vw;
+        font-size: 3.2vw;
+    }    
+
+    .q5-table .q5-table-navigation {
+        margin-top: 3vw;
+    }    
+
+    .q5-filter-box {
+        padding: 3.6vw;
+    }    
+ 
+    .q5-filter-box .q5-select {
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        padding-right: 9vw;
+        line-height: 6.2vw;
+    }
+
+    .q5-filter-box .q5-custom-select:after {
+        top: 3.7vw;
+        font-size: 2.2vw;
+        padding-right: 2.5vw;
+        top: 7.11vw;
+        font-size: 4.5vw;
+        padding-right: 4.5vw;
+    }    
+
+    .q5-date-filter-buttons {
+        width: 100%;
+        flex-direction: column;
+    }    
+
+    .q5-filter-box .q5-input-container {
+        margin-bottom: 3vw;
+    }    
+
+    .q5-date-filter-container {
+        margin-bottom: 3vw;
+    }    
+
+    .q5-filter-date input[type=text] {
+        padding: 3vw;
+        padding-left: 4.4vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        line-height: 6.2vw;
+        width: 100%;
+    }    
+
+    .q5-date-filter-select {
+        flex-direction: column;
+    }    
+
+    .q5-filter-date {
+        width: 100%;
+    }    
+
+    .q5-filter-date:after {
+        top: 6.8vw;
+        padding-right: 4.6vw;
+        font-size: 5.1vw;
+    }    
+
+    .q5-table-dropdown:after {
+        font-size: 2vw;
+        top: 0.3vw;
+    }    
+
+    .project-headers {
+        flex-direction: column;
+    }    
+
+    .project-headers > div {
+        width: 100%;
+    }    
+
+    .project-logs {
+        flex-direction: column;
+    }    
+
+    .project-logs > div {
+        width: 100%;
+    }    
+
+    .q5-table table.dataTable .q5-table-dropdown-content table td {
+        font-size: 3.8vw;
+        padding: 1.4vw 1.8vw;
+    }    
+
+    .transcoding-jobs-output-info{
+        display: none;
+    }
+
+    .q5-billing-radio-button {
+        width: 8vw;
+        height: 8vw;
+    }    
+
+    .q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button:after {
+        left: 2.3vw;
+        top: 0.6vw;
+        height: 4.3vw;
+        width: 2.7vw;
+    }    
+
+    .q5-billing-icon--free {
+        background-size: 5.5vw;
+        background-position: 0% 0%;
+        padding-left: 9vw;
+        line-height: 1.5;
+    }    
+
+    .q5-billing-icon--unlimited {
+        background-size: 6vw;
+        background-position: 0% 37%;
+        padding-left: 9vw;
+        line-height: 1.5;
+    }    
+
+    .q5-message-below-card {
+        font-size: 2.8vw;
+        margin-top: -2vw;
+
+        padding: 1.1vw;
+        padding-left: 3.1vw;
+        border-radius: 1.5vw;
+
+        position: relative;
+        border-radius: 3vw;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        padding: 2vw;
+        position: absolute;
+        top: 30vw;
+        left: 0;
+        right: 0;
+    }
+
+    .q5-input-with-message {
+        height: 30vw;
+        border-radius: 3vw;
+        position: relative;
+    }    
+
+    .q5-card-details-container .q5-card-input > div {
+        background: white;
+        top: 14.4vw;
+        border: none;        
+        width: 31%;
+    }
+
+    .q5-card-details-container .q5-input-container {
+        border-radius: 3vw;
+    }    
+
+    .q5-card-details-container {
+        margin-bottom: 5vw;
+        padding: 3.4vw 0;
+    }
+
+    input[type=text].q5-card-input--cvc {
+        position: absolute;
+        left: 34vw;
+        padding: 3vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        background: white;
+        top: 14.4vw;
+        border: none;
+        width: 27%;
+    }    
+
+    input[type=text].q5-card-input--zip {
+        width: 7vw;
+        position: absolute;
+        right: 0;
+        border: none;
+        padding: 3vw;
+        border-radius: 3vw;
+        font-size: 5.4vw;
+        margin-bottom: 2vw;
+        background: white;
+        top: 14.4vw;
+        border: none;
+        width: 30%;
+    }    
+
+    .q5-card-details-container .q5-card-input > input[type=text]:first-of-type {
+        width: 100%;
+    }    
+
+    .q5-billing-icon--powered-by-stripe {
+        background-size: 26.5vw;
+    }
+
+}
+
+
+@media screen and (max-width: 320px){
+    .q5-nav {
+        height: 27vw;
+    }
+
+    .q5-nav .q5-logo img {
+        width: 47.4vw;
+        padding-top: 1vw;
+    }    
+
+    .q5-no-header {
+        padding-top: 27vw;
+    }    
+
+    .q5-main > .q5-two-columns {
+        margin-top: 9.8vw;
+    }
+
+    .q-paragraph {
+        line-height: 8.8vw;
+        font-size: 5.3vw;
+    }    
+
+    .q5-tablinks {
+        font-size: 6.3vw;
+        line-height: 14.5vw;
+    }    
+
+    .q5-signup-and-info .q5-tablinks {
+        font-size: 6.3vw;
+        line-height: 14.5vw;
+    }    
+
+    .q-h2-tittle {
+        line-height: 11vw;
+        font-size: 9vw;
+    }    
+
+    input[type=text], input[type=password], input[type=tel], textarea {
+        padding: 5vw;
+        font-size: 5.4vw;
+        margin-bottom: 4vw;
+    }
+
+    .q5-input-label {
+        font-size: 5vw;
+    }   
+
+    .q-form {
+        margin-top: 4.5vw;
+    }    
+
+    .q5-confirm-checkbox-and-text {
+        font-size: 4.2vw;
+        line-height: 6vw;
+        margin-bottom: 6.4vw;
+    }    
+
+    .q5-custom-checkbox--small-gray {
+        line-height: 6vw;
+    }    
+
+    .q5-custom-checkbox--small-gray label {
+        width: 6vw;
+        height: 6vw;
+    }     
+
+    .q5-custom-checkbox--small-gray input[type=checkbox] + label:before {
+        top: 0;
+        width: 6vw;
+        height: 6vw;
+        background: url(../img/box_empty.png);
+        background-repeat: no-repeat;
+        background-size: 6vw;
+    }    
+
+    .q5-custom-checkbox--small-gray input[type=checkbox]:checked + label:before {
+        background: url(../img/box_checked.png);
+        background-repeat: no-repeat;
+        background-size: 6vw;
+    }    
+
+    .q5-eye {
+        width: 12vw;
+        height: 12vw;
+        background: url(../img/eye.png);
+        background-repeat: no-repeat;
+        background-size: 7.8vw;
+        background-position: 73% 50%;
+        right: 2.8vw;
+        top: 4vw;
+    }    
+
+    .q5-eye:hover {
+        background: url(../img/eye_over.png);
+        background-repeat: no-repeat;
+        background-size: 7.8vw;
+        background-position: 73% 50%;
+        right: 2.8vw;
+        top: 4vw;
+    }        
+
+    .q5-pass-wrapper input[type=password], .q5-pass-wrapper input[type=text] {
+        padding-right: 18vw;
+    }    
+
+    .q5-signup-and-info > div:first-of-type {
+        margin-top: 10.3vw;
+    }    
+
+    .q5-main .q5-two-columns .q-list {
+        font-size: 5vw;
+        line-height: 11vw;
+        padding-left: 9vw;
+    }    
+
+    .q-list li::before {
+        left: -7.8vw;
+        top: 3vw;
+        height: 2.4vw;
+        width: 4.3vw;
+    }       
+
+    .q5-button-default {
+        padding: 2.7vw 2.6vw;
+        font-size: 5.3vw;
+        line-height: 9.2vw;
+        font-weight: 600;
+    }     
+
+    .q5-button-solid {
+        font-size: 6vw;
+        line-height: 9vw;
+    }    
+
+    form .q5-long-button {
+        font-size: 5.5vw;
+        line-height: 8vw;
+    }
+
+    .q5-small-logo img {
+        width: 12.1vw;
+    }    
+
+    .q5-footer-menu > div {
+        margin-top: 7vw;
+    }    
+
+    .q5-footer-menu__block {
+        width: 41%;
+    }    
+
+    .q5-footer-menu__block h3 {
+        font-size: 5.3vw;
+        margin-bottom: 4vw;
+    }    
+
+    .q5-footer-menu__block a {
+        font-size: 5.1vw;
+        line-height: 10.8vw;
+    }    
+
+    .q5-hr {
+        margin-top: 8.5vw;
+        margin-bottom: 8.5vw;
+    }    
+
+    .q5-copyright-and-socials {
+        font-size: 4.8vw;
+        line-height: 8vw;
+    }    
+
+    .q5-copyright-and-socials i {
+        font-size: 6.2vw;
+    }    
+
+    .q5-footer {
+        padding-top: 7.2vw;
+    }    
+
+    .q5-main {
+        padding-bottom: 15vw;
+    }    
+
+    .q5-main > .q5-one-column {
+        margin-top: 9.8vw;
+    }    
+
+    .q5-warning-message {
+        font-size: 3.6vw;
+        line-height: 5.2vw;
+        padding: 2.7vw 4vw;
+    }
+
+    .q5-warning-message > img {
+        display: none;
+    }    
+
+    .q5-steps-progress {
+        margin-top: 3.5vw;
+        margin-bottom: 3.5vw;
+    }    
+
+    .q5-progress-circle {
+        width: 9vw;
+        height: 9vw;
+        background: url(../img/check_1.png);
+        background-repeat: no-repeat;
+        background-size: 9vw;
+    }    
+
+    .q5-progress-circle__current {
+        background: url(../img/check_2.png);
+        background-repeat: no-repeat;
+        background-size: 9vw;
+    }    
+
+    .q5-progress-circle__checked {
+        background: url(../img/check_3.png);
+        background-repeat: no-repeat;
+        background-size: 9vw;
+    }    
+
+    .q5-steps-progress > img {
+        height: 1.4vw;
+        margin-left: 1.5vw;
+        margin-right: 1.5vw;
+    }
+
+    .intl-tel-input {
+        margin-bottom: 4vw;
+    }
+
+    .q5-input-info {
+        font-size: 4.4vw;
+    }    
+
+    .q5-error-message {
+        font-size: 3.6vw;
+        padding: 2.2vw 4vw;
+        top: -4vw;
+    }
+
+    .q5-two-buttons > .q5-long-button {
+        width: 48%;
+    }    
+
+    .q5-input-container > .q5-two-columns{
+        flex-direction: column;
+        align-items: flex-start;        
+    }
+
+    .q5-select {
+        padding: 5vw;
+        font-size: 5.4vw;
+        margin-bottom: 4vw;
+        padding-right: 11vw;
+    }    
+
+    .q5-custom-select:after {
+        top: 6.6vw;
+        font-size: 6.5vw;
+        padding-right: 5.5vw;
+    }    
+
+    .q5-lock-message {
+        font-size: 3.6vw;
+        line-height: 5.2vw;
+        padding: 2.7vw 4vw;
+    }    
+
+    .q5-lock-message > img {
+        display: none;
+    }    
+
+    .q5-card-input{
+        padding: 5vw;
+        font-size: 5.4vw;
+        margin-bottom: 4vw;
+        padding-left: 17vw;   
+        background-size: 9.5vw; 
+    }    
+
+    .q5-card-input > div{
+        padding: 5vw;
+        font-size: 5.4vw;
+        margin-bottom: 4vw;
+        top: 23.4vw;        
+    }
+
+    .q5-question {
+        top: 5.3vw;
+    }
+
+    .q-link-box__title {
+        font-size: 6.7vw;
+    }
+
+    .q-link-box {
+        padding: 4.4vw 4.4vw;
+    }    
+
+    .q-link-box + .q-link-box,
+    .q5-select-billing-radiobuttons-container > label {
+        margin-top: 7vw;
+        margin-bottom: 7vw;
+    }    
+
+    .q5-page-tittle-box {
+        padding: 6vw;
+        margin-top: 9.8vw;
+    }    
+
+    .q5-page-tittle-box > h1{
+        font-size: 8.8vw;
+    }
+
+    .q5-page-tittle-box > div {
+        margin-top: 5vw;
+    }
+
+    /*----------------------------------------------------------*/
+
+    .q5-button-link{
+        font-size: 5.5vw;
+        line-height: 8vw;   
+    }
+
+    .q5-button-link + .q5-button-link{
+        margin-top: 5vw;
+    }
+
+    .q5-back-link:after {
+        font-size: 8vw;
+        padding-left: 5.6vw;
+    }
+
+    /*----------------------------------------------------------*/  
+
+    .q5-encoding-tabs > .q5-tablinks{
+        font-size: 5.3vw;
+        line-height: 9.5vw;
+    }
+
+    .q5-info-message {
+        font-size: 5vw;
+        line-height: 7.5vw;
+        padding: 4vw;
+    }    
+
+    .q5-encoding-tabs > .q5-tablinks {
+        font-size: 7.3vw;
+        line-height: 13.5vw;
+    }    
+
+    .q5-table table.dataTable {
+        font-size: 3.5vw;
+    }    
+
+    .q5-table table.dataTable tbody td {
+        padding: 3.8vw 1.4vw;
+        font-size: 4vw;
+    }    
+
+    .q5-table table.dataTable thead th {
+        padding: 2.9vw 1.4vw;
+        background-size: 3vw;
+    }    
+
+    .q5-action-button--edit, .q5-action-button--copy, .q5-action-button--delete, .q5-action-button--drag {
+        width: 5.3vw;
+        height: 5.3vw;
+        background-size: 5.3vw;
+    }    
+
+    .q5-action-buttons-group a {
+        margin-bottom: 3.5vw;
+    }    
+
+    .q5-button-block {
+        padding: 4vw;
+    }    
+
+    .q5-table .dataTables_info {
+        font-size: 4.5vw;
+    }    
+
+    .q5-table-visible-records {
+        padding: 3vw;
+    }    
+
+    .q5-table .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 3vw 3.6vw;
+        margin-left: 4.3vw;
+        font-size: 5.2vw;
+    }    
+
+    .q5-accordion-button {
+        font-size: 4.7vw;
+        padding: 2.6vw 3vw;
+        margin: 1.4vw 0;
+    }    
+
+    .q5-accordion-button:after {
+        top: 1.2vw;
+        font-size: 7.6vw;
+        padding-right: 3vw;
+    }    
+
+    .q5-accordion-panel p {
+        line-height: 7vw;
+        font-size: 4.5vw;
+    }    
+
+    .q5-h3-tittle {
+        font-size: 7vw;
+        line-height: 13vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle:after {
+        font-size: 6.6vw;
+    }    
+
+    .q5-dropdown-header > .q5-h3-tittle {
+        padding-right: 10vw;
+    }    
+
+    .q5-billing-radio-button {
+        width: 10vw;
+        height: 10vw;
+    }    
+
+    .q5-select-billing-radiobuttons-container input[type=radio]:checked + label > .q5-billing-radio-button:after {
+        left: 2.7vw;
+        top: 0.6vw;
+        height: 5.3vw;
+        width: 3.3vw;
+    }    
+
+    .q5-billing-icon--free {
+        background-size: 7.5vw;
+        background-position: 0% 9%;
+        padding-left: 12vw;
+        line-height: 1.5;
+    }
+
+    .q5-billing-icon--unlimited {
+        background-size: 9vw;
+        background-position: 0% 38%;
+        padding-left: 12vw;
+        line-height: 1.5;
+    }    
+
+    .q5-card-details-container .q5-card-input > div {
+        top: 17.4vw;
+        width: 30%;
+    }    
+
+    input[type=text].q5-card-input--cvc {
+        left: 36vw;
+        padding: 5vw 3vw;
+        top: 17.4vw;
+        width: 23%;
+    }    
+
+    input[type=text].q5-card-input--zip {
+        top: 17.4vw;
+        padding: 5vw 3vw;
+    }    
+
+    .q5-message-below-card {
+        top: 36vw;
+        font-size: 3.7vw;
+        line-height: 4.5vw;
+    }    
+
+    .q5-input-with-message {
+        height: 36vw;
+    }    
+
+    .q5-card-details-container {
+        margin-bottom: 9vw;
+    }    
+
+    .q5-billing-icon--powered-by-stripe {
+        background-size: 35.5vw;
+    }    
+
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />   
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>   
+
+
+    <script src="js/q5.datatable.js"></script>      
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <link href="css/q6.css" rel="stylesheet" />
+
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
+                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+                </div>
+                <script>
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        this.classList.toggle("q5-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });   
+                </script>
+            </div>
+        </div>
+
+        <div class="q5-mobile-navigation">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>     
+
+            <div id="authorized-menu-mobile" class="q5-authorized-menu">
+                <a href="" class="q5-white-background">My Projects</a>
+                <a href="" class="q5-white-background">Transcoding Jobs</a>
+                <a href="" class="q5-white-background">Billing</a>
+                <a href="" class="q5-white-background">Documentation</a>
+                <a href="" class="q5-white-background">Contact</a>            
+                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
+                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            </div>        
+            
+
+            <script>
+                const hamburger = document.querySelector('.hamburger');
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('is-active');       
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });            
+            </script> 
+        </div>
+ 
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q6-main">
+
+        <div class="q6-page-title q6-blue-background">
+            <div class="q6-container">
+                <h1 class="q6-white-text">Sign Up</h1>
+            </div>   
+        </div>
+            
+        <section class="section--sign-up">
+            <div class="q6-container">
+                <h2 class="q6-section-title q6-black-text q6-tittle--with-ok-icon">
+                    Congratulations, your account is ready!                   
+                </h2>
+            </div>        
+
+            <div class="q6-container">
+                <p class="q6-sing-up__final-description">Here are some tools to help you to get started. To try a quick demo, use the Manual Transcoding option.</p>
+            </div>
+
+            <div class="q6-gray-background">
+                <div class="q6-container">
+
+                    <div class="q6-signup__final-step">
+
+                        <div>
+                            <div class="q6-sing-up__link-box q6-sing-up__link-box--no-selection q6-gray-text">
+                                <div class="q6-link-box__icon q6-link-box__icon--start"></div>
+                                <div class="q6-link-box__details">
+                                    <h5 class="q6-black-text">Getting Started</h5>
+                                    <p>
+                                        Review some of our resources or start transcoding videos.
+                                    </p>
+                                    <div class="q6-icons-container q6-icons-container--wide-icons">
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--tutorials"></div>
+                                            <p>Tutorials</p>
+                                        </a>
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--create"></div>
+                                            <p>Create Project</p>
+                                        </a>     
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--demo"></div>
+                                            <p>Schedule Demo</p>
+                                        </a>  
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--api"></div>
+                                            <p>API Documentation</p>
+                                        </a>
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--manual"></div>
+                                            <p>Manual Transcoding</p>
+                                        </a>     
+                                        <a href="">
+                                            <div class="q6-gettingstarted-icon q6-gettingstarted-icon--support"></div>
+                                            <p>Support</p>
+                                        </a>                                          
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="q6-sing-up__link-box q6-sing-up__link-box--no-selection q6-gray-text">
+                                <div class="q6-link-box__icon q6-link-box__icon--sdk"></div>
+                                <div class="q6-link-box__details">
+                                    <h5 class="q6-black-text">Browse our SDKs</h5>
+                                    <p>
+                                        Use our pre-made libraries to jump-start your workflow.
+                                    </p>
+                                    <div class="q6-icons-container">
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--java"></div>
+                                            </div>      
+
+                                            <p>Java</p>
+                                        </a>
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--c"></div>
+                                            </div>                                                
+                                            
+                                            <p>C#</p>
+                                        </a>     
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--nodejs"></div>
+                                            </div>                                                
+                                            
+                                            <p>Node.JS</p>
+                                        </a>    
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--php"></div>
+                                            </div>                                                
+
+                                            <p>PHP</p>
+                                        </a>                    
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--js"></div>
+                                            </div>   
+                                            <p>JavaScript</p>
+                                        </a>  
+                                        <a href="">
+                                            <div class="q6-icon-container">
+                                                <div class="q6-sdk-icon q6-sdk-icon--python"></div>
+                                            </div>   
+                                            <p>Python</p>
+                                        </a>                                                                                                                                                                         
+                                    </div>
+                                </div>
+                            </div>
+
+                                                                                  
+                        </div>
+
+                    </div>
+
+                </div>                
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer class="q5-container q5-footer">
+
+        <div class="q5-logo-and-menu">
+            <div class="q5-small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="q5-footer-menu">
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="q5-text-gray" href="">About us</a>
+                        <a class="q5-text-gray" href="">Privacy policy</a>
+                        <a class="q5-text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="q5-text-gray" href="">Pricing</a>
+                        <a class="q5-text-gray" href="">Speed</a>
+                        <a class="q5-text-gray" href="">Formats</a>
+                        <a class="q5-text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="q5-text-gray" href="">Try Demo</a>
+                        <a class="q5-text-gray" href="">API</a>
+                        <a class="q5-text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="q5-text-gray" href="">Contact us</a>
+                        <a class="q5-text-gray" href="">Live chat</a>
+                        <a class="q5-text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr class="q5-hr">
+
+        <div class="q5-copyright-and-socials">
+            <div>
+                <span class="q5-text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

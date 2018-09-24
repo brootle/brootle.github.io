@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">         
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>   
+
+
+    <script src="js/q5.datatable.js"></script>      
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <link href="css/q6.css" rel="stylesheet" />
+
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
+                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+                </div>
+                <script>
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        this.classList.toggle("q5-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });   
+                </script>
+            </div>
+        </div>
+
+        <div class="q5-mobile-navigation">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>     
+
+            <div id="authorized-menu-mobile" class="q5-authorized-menu">
+                <a href="" class="q5-white-background">My Projects</a>
+                <a href="" class="q5-white-background">Transcoding Jobs</a>
+                <a href="" class="q5-white-background">Billing</a>
+                <a href="" class="q5-white-background">Documentation</a>
+                <a href="" class="q5-white-background">Contact</a>            
+                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
+                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            </div>        
+            
+
+            <script>
+                const hamburger = document.querySelector('.hamburger');
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('is-active');       
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });            
+            </script> 
+        </div>
+ 
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q6-main">
+
+        <div class="q6-page-title q6-blue-background">
+            <div class="q6-container">
+                <h1 class="q6-white-text">Add Transcoding Profile</h1>
+            </div>   
+        </div>
+            
+        <section>
+            <div class="q6-container">
+
+                <div class="q6-transcoding-profile__video-settings">
+                    <div class="q6-input">
+                        <div class="q6-input__label">
+                            <label>Choose output format</label>
+                        </div>
+                        <div class="q6-switch__radio-buttons">
+                            <input id="mp4" type="radio" name="format" value="mp4" checked="">
+                            <label for="mp4">MP4</label>
+                            <input id="hls" type="radio" name="format" value="hls">
+                            <label for="hls">HLS</label>
+                            <input id="mpeg_dash" type="radio" name="format" value="mpeg_dash">    
+                            <label for="mpeg_dash">MPEG-DASH</label>
+                            <input id="webm" type="radio" name="format" value="webm">    
+                            <label for="webm">WEBM</label>                            
+                        </div>
+                    </div>
+                    <div class="q6-two-columns">
+                        <div class="q6-input q6-input--profile-name">
+                            <div class="q6-input__label">
+                                <label for="profile_name">Profile name</label>
+                                <span>From 3 to 20 symbols</span>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="profile_name" maxlength="20">
+                        </div>
+                        <div class="q6-input q6-input--video-codec">
+                            <div class="q6-input__label q6-align-start">
+                                <label for="video_codec">Video codec</label> <div class="q6-help-icon"><span>?</span></div>
+                            </div>
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="video_codec" required="" name="video_codec">
+                                    <option value="0" selected="selected">H.265 (MPEG-H PART2/HEVC)</option>
+                                    <option value="1">H.265 (MPEG-H PART2/HEVC)</option>
+                                </select>                                   
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="q6-tittle-and-buttons">
+                    <h2 class="q6-section-title q6-black-text q6-section-title--with-icon">
+                        <span>Video settings</span>
+                        <div class="q6-help-icon"><span>?</span></div>
+                    </h2>
+
+                    <div class="q6-tittle-buttons">
+                        <button id="add_resolution_btn" class="q6-button q6-green-background q6-green-border q6-button--add">
+                            <span>Add resolution</span>                            
+                        </button>
+                    </div>
+                </div>
+
+            </div>        
+
+            <div class="q6-video-settings__add-resolution q6-hidden">
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+
+                    <div class="q6-resolution-inputs">
+
+                        <div class="q6-input q6-input--output-resolution">
+                            <div class="q6-input__label">
+                                <label for="output_resolution__size">Output resolution</label>
+                            </div>
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="output_resolution__size" required="" name="output_resolution__size">
+                                    <option value="0" selected="selected">Custom size</option>
+                                    <option value="1">Some other size</option>
+                                </select>                                   
+                            </div>
+                        </div>   
+
+                        <div class="q6-input--resolution-size">
+
+                            <div class="q6-input__label">
+                                <label for="output_resolution__width">Size</label>
+                            </div>
+                            <div class="q6-input--resolution-size__inputs">
+                                <div class="q6-input">
+                                    <input class="q6-input__field q6-black-text" type="text" id="output_resolution__width" placeholder="Width">
+                                </div>      
+
+                                <div class="q6-inputs-delimeter">x</div>
+
+                                <div class="q6-input">
+                                    <input class="q6-input__field q6-black-text" type="text" id="output_resolution__height" placeholder="Height">
+                                </div>  
+                            </div>  
+
+                        </div>      
+
+                        <div class="q6-input q6-input--quality-crf">
+                            <div class="q6-input__label q6-align-start">
+                                <label for="output_resolution__quality">Quality (CRF)</label> <div class="q6-help-icon"><span>?</span></div>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="output_resolution__quality" placeholder="Optional">
+                        </div>                
+
+                        <div class="q6-input">
+                            <div class="q6-input__label">
+                                <label for="output_resolution__tag">Tag</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="output_resolution__tag" placeholder="Optional">
+                        </div>     
+
+                        <div class="q6-input q6-input--framerate">
+                            <div class="q6-input__label">
+                                <label for="output_resolution__framerate">Framerate</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="output_resolution__framerate" placeholder="Optional">
+                        </div>  
+
+                        <div class="q6-input q6-input--keyframe">
+                            <div class="q6-input__label">
+                                <label for="output_resolution__keyframe">Keyframe</label>
+                            </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="output_resolution__keyframe" placeholder="Optional">
+                        </div>                                                                              
+
+                    </div>
+
+                    <label class="q6-checkbox q6-black-text">
+                        Mute audio
+                        <input type="checkbox">
+                        <span class="q6-checkmark"></span>
+                    </label>         
+
+
+                    <label class="q6-checkbox q6-black-text">
+                        Two-pass (exact bitrate)
+                        <input type="checkbox">
+                        <span class="q6-checkmark"></span>
+                    </label>            
+
+                    <div class="q6-input q6-input--output-bitrate">
+                        <div class="q6-input__label">
+                            <label for="output_resolution__bitrate">Bitrate (kbps)</label>
+                        </div>
+                        <input class="q6-input__field q6-black-text" type="text" id="output_resolution__bitrate" placeholder="128">
+                    </div>                      
+
+                    <label class="q6-checkbox q6-black-text">
+                        Watermarking
+                        <input id="watermark_checkbox" type="checkbox">
+                        <span class="q6-checkmark"></span>
+                    </label>  
+
+                    <div class="q6-video-settings__watermark q6-two-columns q6-hidden">                        
+                        <div class="q6-watermark__preview-image"></div>
+                        <div class="q6-watermark__inputs">
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="watermark_url">Watermark URL</label>
+                                    <span>(use .png format only)</span>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" id="watermark_url">
+                            </div>      
+                            <div class="q6-inline-inputs">
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="watermark_x">X position</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="watermark_x" placeholder="0">
+                                </div>
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="watermark_y">Y position</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="watermark_y" placeholder="0">
+                                </div>  
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-align-start">
+                                        <label for="watermark_opacity">Opacity</label> <div class="q6-help-icon"><span>?</span></div>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="watermark_opacity" placeholder="100%">
+                                </div>   
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="watermark_bg">Background color</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="watermark_bg" placeholder="#000000">
+                                </div>                                                                                             
+                            </div>                      
+                        </div>
+                    </div>        
+
+                    <script>
+                        $("#watermark_checkbox").change(function() {
+                            if(this.checked) {
+                                $(".q6-video-settings__watermark").removeClass("q6-hidden");
+                            } else{
+                                $(".q6-video-settings__watermark").addClass("q6-hidden");
+                            }
+                        });                        
+                    </script>                                            
+
+                </div>
+
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+                    <div class="q6-video-settings__buttons">
+                        <button id="cancel_video_settings" class="q6-button q6-green-border q6-green-text">
+                            Cancel                        
+                        </button>                        
+                        <button id="save_video_settings" class="q6-button q6-green-background q6-green-border">
+                            Save                        
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                $("#add_resolution_btn").click(function() {
+                    $(".q6-video-settings__add-resolution").removeClass("q6-hidden");
+                });           
+
+                $("#cancel_video_settings").click(function() {
+                    $("#watermark_checkbox").prop("checked", false);
+                    $(".q6-video-settings__watermark").addClass("q6-hidden");
+                    $(".q6-video-settings__add-resolution").addClass("q6-hidden");
+                });                      
+
+                $("#save_video_settings").click(function() {
+                    $("#watermark_checkbox").prop("checked", false);
+                    $(".q6-video-settings__watermark").addClass("q6-hidden");
+                    $(".q6-video-settings__add-resolution").addClass("q6-hidden");
+                });                   
+            </script>
+
+            <div class="q6-video-settings-table q6-gray-background">
+                <div>
+                    <div class="q6-table">
+                        <div class="q6-table-head q6-full-screen-underline">
+                            <div class="q6-table-row q6-container q6-no-padding">
+                                <div>Enable</div>
+                                <div>Output resolution</div>
+                                <div>Tag</div>                      
+                                <div>Quality</div>  
+                                <div>Bitrate</div>     
+                                <div>Output path</div>    
+                                <div>Actions</div>                    
+                            </div>
+                        </div>
+                        <div class="q6-table-body q6-container q6-no-padding">
+
+                            <div class="q6-table-row">
+                                <div>
+                                    <label class="q6-checkbox">
+                                        <input type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>
+                                </div>
+                                <div>240</div>
+                                <div>240p</div>
+                                <div>20%</div>
+                                <div></div>
+                                <div>/240/{uuid}.mp4</div>
+                                <div class="q6-action-buttons-container">
+                                    <div class="q6-action-buttons">
+                                        <div class="q6-action-button q6-action-button__copy">
+                                            <div class="q6-tooltip">Edit</div>
+                                        </div>       
+                                        <div class="q6-action-button q6-action-button__delete">
+                                            <div class="q6-tooltip">Delete</div>
+                                        </div>                                                                            
+                                    </div>
+                                </div>
+                            </div>        
+
+                            <div class="q6-table-row">
+                                <div>
+                                    <label class="q6-checkbox">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="q6-checkmark"></span>
+                                    </label>
+                                </div>
+                                <div>240</div>
+                                <div>240p</div>
+                                <div>20%</div>
+                                <div></div>
+                                <div>/240/{uuid}.mp4</div>
+                                <div class="q6-action-buttons-container">
+                                    <div class="q6-action-buttons">
+                                        <div class="q6-action-button q6-action-button__copy">
+                                            <div class="q6-tooltip">Edit</div>
+                                        </div>       
+                                        <div class="q6-action-button q6-action-button__delete">
+                                            <div class="q6-tooltip">Delete</div>
+                                        </div>                                                                            
+                                    </div>
+                                </div>
+                            </div>   
+
+                            <div class="q6-table-row">
+                                <div>
+                                    <label class="q6-checkbox">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="q6-checkmark"></span>
+                                    </label>
+                                </div>
+                                <div>240</div>
+                                <div>240p</div>
+                                <div>20%</div>
+                                <div></div>
+                                <div>/240/{uuid}.mp4</div>
+                                <div class="q6-action-buttons-container">
+                                    <div class="q6-action-buttons">
+                                        <div class="q6-action-button q6-action-button__copy">
+                                            <div class="q6-tooltip">Edit</div>
+                                        </div>       
+                                        <div class="q6-action-button q6-action-button__delete">
+                                            <div class="q6-tooltip">Delete</div>
+                                        </div>                                                                            
+                                    </div>
+                                </div>
+                            </div>   
+
+                            <div class="q6-table-row">
+                                <div>
+                                    <label class="q6-checkbox">
+                                        <input type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>
+                                </div>
+                                <div>240</div>
+                                <div>240p</div>
+                                <div>20%</div>
+                                <div></div>
+                                <div>/240/{uuid}.mp4</div>
+                                <div class="q6-action-buttons-container">
+                                    <div class="q6-action-buttons">
+                                        <div class="q6-action-button q6-action-button__copy">
+                                            <div class="q6-tooltip">Edit</div>
+                                        </div>       
+                                        <div class="q6-action-button q6-action-button__delete">
+                                            <div class="q6-tooltip">Delete</div>
+                                        </div>                                                                            
+                                    </div>
+                                </div>
+                            </div>                                                                                               
+                                                                                                                                                                    
+                                                                                                                                                                                                       
+                        </div>
+                    </div>                   
+
+                </div>                  
+
+            </div>
+
+        </section>
+
+        <section>
+            <div class="q6-container">
+                <h2 class="q6-section-title q6-black-text">Audio settings</h2>
+            </div>     
+
+            <hr class="q6-horizontal-delimeter">   
+
+            <div class="q6-container">
+                <div class="q6-input q6-input--audio-bitrate">
+                    <div class="q6-input__label q6-align-start">
+                        <label for="audio_bitrate">Max Audio Bitrate (kbps)</label> <div class="q6-help-icon"><span>?</span></div>
+                    </div>
+                    <input class="q6-input__field q6-black-text" type="text" id="audio_bitrate" placeholder="128">
+                </div>                
+            </div>
+
+
+        </section>    
+
+        <section>
+            <div class="q6-container">
+
+                <div class="q6-tittle-and-buttons">
+                    <h2 class="q6-section-title q6-black-text q6-section-title--with-icon">
+                        <span>Thumbnail settings</span>
+                        <div class="q6-help-icon"><span>?</span></div>
+                    </h2>
+
+                    <div class="q6-tittle-buttons">
+                        <button id="add_time_size_btn" class="q6-button q6-green-background q6-green-border q6-button--add">
+                            <span>Add time & size</span>                            
+                        </button>                     
+                    </div>
+                </div>
+
+
+            </div>    
+
+            <div class="q6-thumbnail-settings__add-time-size q6-hidden">
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+
+                    <div class="q6-input">
+                        <div class="q6-input__label q6-align-start">
+                            <label>Choose time option</label> <div class="q6-help-icon"><span>?</span></div>
+                        </div>
+                        <div class="q6-switch__radio-buttons">
+                            <input id="individual" type="radio" name="time_option" value="individual" checked="">
+                            <label for="individual">Individual</label>
+                            <input id="interval" type="radio" name="time_option" value="interval">    
+                            <label for="interval">Interval</label>                            
+                        </div>
+                    </div>    
+
+                    <div id="individual_time">
+                        <div class="q6-input__message">Each time mark works with all sizes you will enter.</div>
+
+                        <div class="q6-input--time">
+
+                            <div class="q6-input__label q6-align-start">
+                                <label>Time (%)</label> <div class="q6-help-icon"><span>?</span></div>
+                            </div>
+
+                            <div class="q6-input--time__inputs">
+
+                                <div class="q6-time-inputs__array">
+                                    <div class="q6-input">
+                                        <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                    </div>                                        
+                                </div>   
+
+                                <button id="add_individual_time_input" class="q6-button q6-green-background q6-green-border q6-button--add">
+                                    <span>Add field</span>                            
+                                </button>         
+
+                                <script>
+                                    var timeInputsIndex = 0;
+                                    var timeInputsValues = [];
+                                    $("#add_individual_time_input").click(function() {
+                                        timeInputsIndex++;
+                                        var timeInputsArray = $(".q6-time-inputs__array").html();
+                                        timeInputsArray+=`
+                                            <div class="q6-input">
+                                                <input id="time_input_${timeInputsIndex}" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                            </div>                                           
+                                        `;
+                                         $(".q6-time-inputs__array").html(timeInputsArray);
+                            
+                                    });                            
+                                </script>                     
+
+                            </div>  
+
+                        </div>
+
+                    </div>    
+
+                    <div id="interval_time" class="q6-hidden">
+                        <div class="q6-input__message">Some critical info about interval option.</div>
+
+                        <div class="q6-input--time-interval">
+
+                            <div class="q6-time-interval__range">
+                                <div class="q6-input__label">
+                                    <label>Time range</label>
+                                </div>
+                                <div class="q6-time-range-inputs">
+                                    <div class="q6-input">
+                                        <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                                    </div>      
+
+                                    <div class="q6-inputs-delimeter">&ndash;</div>
+
+                                    <div class="q6-input">
+                                        <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                                    </div>  
+                                </div>  
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Interval (sec)</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                            </div>                            
+
+                        </div>
+                    
+                    </div>    
+
+                    <script>
+                        $("input[name='time_option']").change(function(e){
+                            if($(this).val() == 'individual') {
+                                $("#individual_time").removeClass("q6-hidden");
+                                $("#interval_time").addClass("q6-hidden");
+
+                                $(".q6-time-inputs__array").html(`
+                                    <div class="q6-input">
+                                        <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                    </div>                                            
+                                `);
+
+                            } else {
+                                $("#individual_time").addClass("q6-hidden");
+                                $("#interval_time").removeClass("q6-hidden");                                
+                            }
+
+                        });                                         
+                    </script>     
+
+                    <div class="q6-thumbnail-size-container">
+
+                        <div class="q6-thumbnail__inputs">
+
+                            <div id="size_input_0">
+                                <div class="q6-input--resolution-size">
+
+                                    <div class="q6-input__label">
+                                        <label>Size</label>
+                                    </div>
+                                    <div class="q6-input--resolution-size__inputs">
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                        </div>      
+
+                                        <div class="q6-inputs-delimeter">x</div>
+
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                        </div>  
+                                    </div>  
+
+                                </div>       
+
+                                <div class="q6-input q6-input--output-path">
+                                    <div class="q6-input__label">
+                                        <label>Output path</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                </div>  
+                            </div>                           
+                            
+                        </div>   
+                        
+                        <button id="add_thumbnail_size" class="q6-button q6-green-background q6-green-border q6-button--add">
+                            <span>Add field</span>                            
+                        </button>    
+
+                        <script>
+                            var thumbnailSizesIndex = 0;
+                            $("#add_thumbnail_size").click(function() {
+                                thumbnailSizesIndex++;
+                                var thumbnailInputsArray = $(".q6-thumbnail__inputs").html();
+                                thumbnailInputsArray+=`
+                                    <div id="size_input_${thumbnailSizesIndex}">
+                                        <div class="q6-input--resolution-size">
+                                            <div class="q6-input--resolution-size__inputs">
+                                                <div class="q6-input">
+                                                    <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                                </div>      
+
+                                                <div class="q6-inputs-delimeter">x</div>
+
+                                                <div class="q6-input">
+                                                    <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                                </div>  
+                                            </div>  
+
+                                        </div>       
+
+                                        <div class="q6-input q6-input--output-path">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                        </div>  
+                                    </div>                                          
+                                `;
+                                $(".q6-thumbnail__inputs").html(thumbnailInputsArray);
+                    
+                            });                            
+                        </script>                                            
+
+                    </div>                                           
+
+                </div>
+
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+                    <div class="q6-thumbnail-settings__buttons">
+                        <button id="cancel_thumbnail_settings" class="q6-button q6-green-border q6-green-text">
+                            Cancel                        
+                        </button>                        
+                        <button id="save_thumbnail_settings" class="q6-button q6-green-background q6-green-border">
+                            Save                        
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                $("#add_time_size_btn").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").removeClass("q6-hidden");
+                });           
+
+                $("#cancel_thumbnail_settings").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+
+                    resetAddThumbnailSetting();                                
+                });                      
+
+                $("#save_thumbnail_settings").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+
+                    resetAddThumbnailSetting();                                      
+                });   
+
+                function resetAddThumbnailSetting(){
+                    $(".q6-time-inputs__array").html(`
+                        <div class="q6-input">
+                            <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                        </div>                                            
+                    `);    
+
+                    $(".q6-thumbnail__inputs").html(`
+                            <div id="size_input_0">
+                                <div class="q6-input--resolution-size">
+
+                                    <div class="q6-input__label">
+                                        <label>Size</label>
+                                    </div>
+                                    <div class="q6-input--resolution-size__inputs">
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                        </div>      
+
+                                        <div class="q6-inputs-delimeter">x</div>
+
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                        </div>  
+                                    </div>  
+
+                                </div>       
+
+                                <div class="q6-input q6-input--output-path">
+                                    <div class="q6-input__label">
+                                        <label>Output path</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                </div>  
+                            </div>                      
+                    `);                       
+                }             
+            </script>            
+
+
+            <div class="q6-gray-background">
+
+                <div class="q6-two-tables-in-row">
+                    
+                    <div class="q6-table q6-table--fantom">
+                        <div class="q6-table-head q6-full-screen-underline">
+                            <div class="q6-table-row q6-container q6-no-padding">
+                                <div>&nbsp;</div>                 
+                            </div>
+                        </div>
+                    </div>                   
+                   
+                    <div class="q6-container">
+                        <div class="q6-two-columns">
+                            <div class="q6-table q6-table--thumbnail-time">
+                                <div class="q6-table-head">
+                                    <div class="q6-table-row q6-no-padding">
+                                        <div>Enable</div>
+                                        <div>Time(%)</div>
+                                        <div>Actions</div>                                        
+                                    </div>
+                                </div>
+                                <div class="q6-table-body q6-no-padding">
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>10</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                                                                                                                                                                    
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>15</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>   
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>55</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>                                                                           
+                                                                                                                                                                                                            
+                                </div>
+                            </div>       
+
+                            <div class="q6-table q6-table--thumbnail-size">
+                                <div class="q6-table-head">
+                                    <div class="q6-table-row q6-no-padding">
+                                        <div>Enable</div>
+                                        <div>Size (WxH)</div>
+                                        <div>Output path</div>
+                                        <div>Actions</div>                                        
+                                    </div>
+                                </div>
+                                <div class="q6-table-body q6-no-padding">
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>1920x1080</div>
+                                        <div>/image/{uuid}.png</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>           
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>1920x1080</div>
+                                        <div>/image/{uuid}.png</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>     
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>1920x1080</div>
+                                        <div>/image/{uuid}.png</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>     
+
+                                    <div class="q6-table-row">
+                                        <div>
+                                            <label class="q6-checkbox">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div>1920x1080</div>
+                                        <div>/image/{uuid}.png</div>
+                                        <div class="q6-action-buttons-container">
+                                            <div class="q6-action-buttons">
+                                                <div class="q6-action-button q6-action-button__copy">
+                                                    <div class="q6-tooltip">Edit</div>
+                                                </div>       
+                                                <div class="q6-action-button q6-action-button__delete">
+                                                    <div class="q6-tooltip">Delete</div>
+                                                </div>                                                                            
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                            
+                                </div>
+                            </div>  
+                        </div>                                
+                    </div>   
+
+                </div>
+               
+
+            </div>            
+
+        </section>            
+
+
+    </main>
+
+    <footer class="q5-container q5-footer">
+
+        <div class="q5-logo-and-menu">
+            <div class="q5-small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="q5-footer-menu">
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="q5-text-gray" href="">About us</a>
+                        <a class="q5-text-gray" href="">Privacy policy</a>
+                        <a class="q5-text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="q5-text-gray" href="">Pricing</a>
+                        <a class="q5-text-gray" href="">Speed</a>
+                        <a class="q5-text-gray" href="">Formats</a>
+                        <a class="q5-text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="q5-text-gray" href="">Try Demo</a>
+                        <a class="q5-text-gray" href="">API</a>
+                        <a class="q5-text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="q5-text-gray" href="">Contact us</a>
+                        <a class="q5-text-gray" href="">Live chat</a>
+                        <a class="q5-text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr class="q5-hr">
+
+        <div class="q5-copyright-and-socials">
+            <div>
+                <span class="q5-text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

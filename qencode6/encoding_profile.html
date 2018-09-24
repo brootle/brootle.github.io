@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>   
+
+    <link href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>   
+
+    <script src="js/q5.datatable.js"></script>   
+    <script src="js/q5.accordion.js"></script>        
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
+                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+                </div>
+                <script>
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        this.classList.toggle("q5-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });   
+                </script>
+            </div>
+        </div>
+
+        <div class="q5-mobile-navigation">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>     
+
+            <div id="authorized-menu-mobile" class="q5-authorized-menu">
+                <a href="" class="q5-white-background">My Projects</a>
+                <a href="" class="q5-white-background">Transcoding Jobs</a>
+                <a href="" class="q5-white-background">Billing</a>
+                <a href="" class="q5-white-background">Documentation</a>
+                <a href="" class="q5-white-background">Contact</a>            
+                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
+                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            </div>        
+            
+
+            <script>
+                const hamburger = document.querySelector('.hamburger');
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('is-active');       
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });            
+            </script> 
+        </div>
+ 
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q5-container">
+
+        <div class="q5-page-tittle-box">
+            <h1>New Project</h1>
+            <div>
+                <button class="q5-button-link q5-back-link q5-blue-background q5-white-border q5-text-white">Back to My Projects</button>
+                <button class="q5-button-link q5-white-background q5-white-border q5-text-blue">Save Project</button>
+            </div>
+        </div>        
+        
+        <div class="q5-one-column">
+
+            <div>
+
+                <div class="q5-tab q5-encoding-tabs">
+                    <span class="q5-tablinks q5-tablinks--active" data-tabcontent="general_info">
+                        1. General Info
+                    </span>
+                    <span class="q5-tablinks" data-tabcontent="encoding_profiles">
+                        2. Encoding profiles
+                    </span>           
+
+                    <span class="q5-tablinks" data-tabcontent="transfer_methods">
+                        3. Transfer methods
+                    </span>                            
+                </div>  
+
+                <div id="general_info" class="q5-tabcontent q5-tabcontent-with-tables q5-tabcontent--active">
+                    <div>                       
+                        <div class="q5-two-columns">
+                            <div class="q-form q5-no-top-margin">      
+                                <div class="q5-input-container">
+                                    <div class="q5-input-label q5-text-gray">
+                                            <label for="project_name">Project Name</label>
+                                    </div>                         
+                                    <input id="project_name" class="q5-text-gray" name="project_name" placeholder="" type="text">      
+                                </div>
+                                <div class="q5-input-container">
+                                    <div class="q5-two-columns">
+                                        <div class="q5-input-label q5-text-gray">
+                                            <label for="api_key">API key</label>
+                                        </div>  
+                                        <span class="q5-text-gray q5-input-info">Will be shown after project is created</span>                                                                  
+                                    </div>
+                                    <input id="api_key" class="q5-text-gray" name="api_key" placeholder="" type="text"> 
+                                </div>     
+                                <button class="q5-button-link q5-green-background q5-green-border q5-text-white" type="submit" disabled>
+                                    Recreate App ID and Secret
+                                </button>                                                         
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+
+                <div class="q5-tabcontent q5-tabcontent-with-tables q5-tabcontent--empty">
+
+                </div>
+
+                <div id="encoding_profiles" class="q5-tabcontent q5-tabcontent-with-tables">
+                    <div>
+
+                        <div id="add_encoding_profile_info_box">
+
+                            <div class="q5-button-block">
+                                <button id="add_encoding_profile_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                    + Add Encoding Profile
+                                </button>   
+                            </div>  
+
+                            <div class="q5-table">
+                                <table id="encoding_profiles_table" class="q5-text-gray" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Profile Name</th>
+                                            <th>Profile ID</th>
+                                            <th>Action</th>     
+                                            <th></th>                      
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>test_1</td>
+                                            <td>54345kjl434ljl345</td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--edit"></a>
+                                                    <a class="q5-action-button--copy"></a>
+                                                    <a class="q5-action-button--delete"></a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--drag"></a>
+                                                </div>                                                    
+                                            </td>
+                                        </tr>       
+                                        <tr>
+                                            <td>2</td>
+                                            <td>test_2</td>
+                                            <td>56746lj67l456kj7l564</td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--edit"></a>
+                                                    <a class="q5-action-button--copy"></a>
+                                                    <a class="q5-action-button--delete"></a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--drag"></a>
+                                                </div>                                                    
+                                            </td>
+                                        </tr>     
+                                        <tr>
+                                            <td>3</td>
+                                            <td>test_3</td>
+                                            <td>jl5j245l245k32l45j</td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--edit"></a>
+                                                    <a class="q5-action-button--copy"></a>
+                                                    <a class="q5-action-button--delete"></a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--drag"></a>
+                                                </div>                                                    
+                                            </td>
+                                        </tr>                                                                                                                                                                                                      
+                                    </tbody>
+                                </table>  
+
+
+                            </div>                                   
+
+                        </div>                    
+
+                        <div id="add_encoding_profile_form">
+                            <span class="q5-info-message q5-text-gray q5-max-length">
+                                <button id="add_encoding_profile_back_button" class="q5-button-link q5-back-link q5-transparent-background q5-black-border q5-text-gray">Back</button>
+                                <span>Encoding Profile > Add encoding profile</span>
+                            </span>
+
+                            <div class="q5-two-columns">
+                                <div class="q-form">      
+                                    <div class="q5-input-container">
+                                        <div class="q5-input-label q5-text-gray">
+                                                <label for="profile_name">Profile Name</label>
+                                        </div>                         
+                                        <input id="profile_name" class="q5-text-gray" name="profile_name" placeholder="" type="text">      
+                                    </div>
+                                </div>
+                            </div>   
+
+                            <div class="q5-dropdown-data-block">
+
+                                <div class="q5-dropdown-header">
+                                    <h2 class="q5-h3-tittle q5-text-blue">Video Settings</h2>
+                                </div>      
+
+                                <div class="q5-dropdown-content">
+                                    <div>
+
+                                        <div class="q5-input-label q5-text-gray">
+                                            <label>Output formats:</label>
+                                        </div>     
+
+                                        <div class="q5-format-choice">
+                                            <div class="q5-radio-buttons q5-text-gray">
+                                                <input id="mp4" type="radio" name="format" value="mp4" checked="">
+                                                <label for="mp4">MP4</label>
+                                                <input id="hls" type="radio" name="format" value="hls">
+                                                <label for="hls">HLS</label>
+                                                <input id="mpeg_dash" type="radio" name="format" value="mpeg_dash">    
+                                                <label for="mpeg_dash">MPEG-DASH</label>
+                                            </div>
+                                            <span class="q5-lock-message q5-arrow-left q5-text-gray q5-max-length">
+                                                <img src="img/lock.png" alt="">                                        
+                                                Remember, you can only choose one output format per Encoding Profile. 
+                                                Once an output format has been selected, it cannot be changed.
+                                            </span>             
+                                        </div> 
+
+                                        <div class="q5-input-container">    
+
+                                            <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                <label for="video_store">Store Encoded Videos</label>
+                                                <img src="img/help.png" alt="">                                         
+                                            </div>                                             
+
+                                            <div class="q5-two-columns q5-no-space-between">
+
+                                                <div class="q5-custom-select">
+                                                    <select class="q5-select q5-text-gray" id="video_store" required="" name="video_store">
+                                                        <option value="locally">Store videos locally on qencode servers</option>
+                                                        <option value="amazon">Store videos at Amazon</option>
+                                                    </select>                          
+                                                </div>    
+                                                <div></div>    
+                                            </div>   
+
+                                        </div> 
+
+                                        <div id="output-path-outside-form" class="q5-input-container q5-hidden">
+
+                                            <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                <label for="add_resolution_form--output-path--outside-form">Output path *</label>
+                                                <img src="img/help.png" alt="">                                         
+                                            </div>
+                        
+                                            <input id="add_resolution_form--output-path--outside-form" class="q5-text-gray" name="add_resolution_form--output-path--outside-form" placeholder="" type="text">      
+                                        </div>                                    
+
+                                        <div class="q5-button-block">
+
+                                            <button id="add_resolution_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                            + Add Resolution
+                                            </button>
+
+                                            <div id="add_resolution_form" class="q-form q5-hidden q5-align-left">
+
+                                                <div>
+
+                                                    <div class="q5-two-columns">   
+                                                        <div class="q5-two-columns">   
+                                                            <div class="q5-input-container">
+                                                                <div class="q5-input-label q5-text-gray">
+                                                                    <label for="add_output_resolution">Output resolution</label>                                     
+                                                                </div>                            
+                                                                <div class="q5-custom-select">
+                                                                    <select class="q5-select q5-text-gray" id="add_output_resolution" required="" name="add_output_resolution">
+                                                                        <option value="original_size">Original size</option>
+                                                                        <option value="1080p">1080p</option>
+                                                                        <option value="720p">720p</option>
+                                                                        <option value="480p">480p</option>
+                                                                        <option value="360p">360p</option>
+                                                                        <option value="240p">240p</option>
+                                                                    </select>                          
+                                                                </div>            
+                                                            </div>
+                                                            <div class="q5-input-container">
+                                                                <div class="q5-input-label q5-text-gray">
+                                                                        <label for="add_quality">Quality</label>
+                                                                </div>                         
+                                                                <input id="add_quality" class="q5-text-gray" name="add_quality" placeholder="20" type="text">      
+                                                            </div>   
+                                                        </div>    
+                                                        <div class="q5-two-columns">   
+                                                            <div class="q5-input-container">
+                                                                <div class="q5-input-label q5-text-gray">
+                                                                        <label for="add_bitrate">Bitrate (kbps)</label>
+                                                                </div>                         
+                                                                <input id="add_bitrate" class="q5-text-gray" name="add_bitrate" placeholder="128" type="text">      
+                                                            </div>
+                                                            <div class="q5-input-container">
+                                                                <div class="q5-input-label q5-text-gray">
+                                                                        <label for="add_tag">Tag</label>
+                                                                </div>                         
+                                                                <input id="add_tag" class="q5-text-gray" name="add_tag" placeholder="Your tag" type="text">      
+                                                            </div>   
+                                                        </div>                                                                                                         
+                                                    </div>
+
+                                                    <div id="output-path-in-form" class="q5-input-container">
+
+                                                        <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                            <label for="add_resolution_form--output-path">Output path *</label>
+                                                            <img src="img/help.png" alt="">                                         
+                                                        </div>
+                                    
+                                                        <input id="add_resolution_form--output-path" class="q5-text-gray" name="add_resolution_form--output-path--outside-form" placeholder="" type="text">      
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <button id="add_resolution_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Cancel</button>
+                                                    <button id="add_resolution_settings_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                                    + Add Settings
+                                                    </button>                                                
+                                                </div>
+                
+                                            </div>
+                                        </div>
+
+                                        <div class="q5-table">
+                                            <table id="video_settings_table" class="q5-text-gray" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>id</th>
+                                                        <th>Enable</th>
+                                                        <th>Output Resolution</th>
+                                                        <th>Quality</th>
+                                                        <th>Tag</th>
+                                                        <th>Bitrate</th>
+                                                        <th>Output path</th>
+                                                        <th>Action</th>     
+                                                        <th></th>                      
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res1080" type="checkbox" name="resolution" value="1080">
+                                                                <label for="res1080"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>1080p</td>
+                                                        <td>20</td>
+                                                        <td>1080</td>
+                                                        <td></td>
+                                                        <td>https://www.youtube.com/watch?v=L3wKzyIN1yk</td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res720" type="checkbox" name="resolution" value="720">
+                                                                <label for="res720"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>720p</td>
+                                                        <td>20</td>
+                                                        <td>720</td>
+                                                        <td></td>
+                                                        <td>https://www.google.com.ua/search?dcr=0&q=hello+world&oq=hello+world&gs_l=psy-ab.3..0l10.114989.117752.0.118042.11.11.0.0.0.0.197.936.6j2.8.0....0...1.1.64.psy-ab..3.8.930...0i131k1j0i67k1j0i3k1j0i10k1.0.jl-A4-sjPtI</td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res480" type="checkbox" name="resolution" value="480">
+                                                                <label for="res480"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>480p</td>
+                                                        <td>20</td>
+                                                        <td>480</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res320" type="checkbox" name="resolution" value="320">
+                                                                <label for="res320"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>360p</td>
+                                                        <td>20</td>
+                                                        <td>360</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>  
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res240" type="checkbox" name="resolution" value="240">
+                                                                <label for="res240"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>240p</td>
+                                                        <td>20</td>
+                                                        <td>240</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>     
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res240_6" type="checkbox" name="resolution" value="240">
+                                                                <label for="res240_6"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>240p</td>
+                                                        <td>20</td>
+                                                        <td>240</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>     
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>
+                                                            <div class="q5-custom-checkbox">
+                                                                <input id="res320_7" type="checkbox" name="resolution" value="320">
+                                                                <label for="res320_7"></label>                                
+                                                            </div>
+                                                        </td>
+                                                        <td>360p</td>
+                                                        <td>20</td>
+                                                        <td>360</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--edit"></a>
+                                                                <a class="q5-action-button--delete"></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="q5-action-buttons-group">
+                                                                <a class="q5-action-button--drag"></a>
+                                                            </div>                                                    
+                                                        </td>
+                                                    </tr>                                                                                                                                                                                                                                                  
+                                                </tbody>
+                                            </table>  
+
+
+                                        </div>          
+
+
+                                        
+
+
+                                    </div>                             
+                                </div>   
+
+                                <div class="q5-dropdown-header">
+                                    <h2 class="q5-h3-tittle q5-text-blue">Audio Settings</h2>
+                                </div>      
+
+                                <div class="q5-dropdown-content">
+                                    <div class="q5-two-columns">
+                                        <div>      
+                                            <div class="q5-input-container">
+
+                                                <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                    <label for="max_bitrate">Max audio bitrate (kbps)</label>
+                                                    <img src="img/help.png" alt="">                                         
+                                                </div>
+                            
+                                                <input id="max_bitrate" class="q5-text-gray" name="max_bitrate" placeholder="" type="text">      
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>   
+
+                                <div class="q5-dropdown-header">
+                                    <h2 class="q5-h3-tittle q5-text-blue">Thumbnail Settings</h2>
+                                </div>      
+
+                                <div class="q5-dropdown-content">
+
+                                    <div class="q5-button-block">
+                                        <button id="add_thumbnail_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                            + Add thumbnail
+                                        </button>
+
+                                        <div id="add_thumbnail_form" class="q-form q5-align-left q5-hidden">
+                                            <div>
+                                                <div>   
+                                                    <div class="q5-input-container">
+                                                        <div class="q5-input-label q5-text-gray q5-input-label-with-help">
+                                                            <label for="add_thumbnail_form--time">Time (%)</label>
+                                                            <img src="img/help.png" alt="">                                         
+                                                        </div>                                                    
+                                                        <input id="add_thumbnail_form--time" class="q5-text-gray" name="add_thumbnail_form--time" placeholder="0" type="text">            
+                                                    </div>
+                                                    <div class="q5-input-container">
+                                                        <div class="q5-input-label q5-text-gray">
+                                                            <label for="add_thumbnail_form--tag">Tag</label>
+                                                        </div>                         
+                                                        <input id="add_thumbnail_form--tag" class="q5-text-gray" name="add_thumbnail_form--tag" placeholder="Your tag" type="text">      
+                                                    </div>   
+                                                </div>
+                                                <div>
+                                                    <button id="add_thumbnail_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Cancel</button>
+                                                    <button id="add_thumbnail_add_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                                        + Add thumbnail
+                                                    </button> 
+                                                </div>    
+                                            </div>        
+                                        </div>
+
+                                    </div>
+
+                                    <div class="q5-table">
+                                        <table id="thumbnail_table" class="q5-text-gray" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>Enable</th>
+                                                    <th class="q5-td-with-help"><span>Time (%)</span> <img src="img/help.png" alt=""></th>
+                                                    <th>Tag</th>
+                                                    <th></th>
+                                                    <th>Action</th>     
+                                                    <th></th>                      
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <div class="q5-custom-checkbox">
+                                                            <input id="enable_1" type="checkbox" name="enable_1" value="enable_1">
+                                                            <label for="enable_1"></label>                                
+                                                        </div>
+                                                    </td>
+                                                    <td>0</td>
+                                                    <td>Start</td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--edit"></a>
+                                                            <a class="q5-action-button--delete"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--drag"></a>
+                                                        </div>                                                    
+                                                    </td>
+                                                </tr>    
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <div class="q5-custom-checkbox">
+                                                            <input id="enable_2" type="checkbox" name="enable_2" value="enable_2">
+                                                            <label for="enable_2"></label>                                
+                                                        </div>
+                                                    </td>
+                                                    <td>0.5</td>
+                                                    <td>Best</td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--edit"></a>
+                                                            <a class="q5-action-button--delete"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--drag"></a>
+                                                        </div>                                                    
+                                                    </td>
+                                                </tr>          
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>
+                                                        <div class="q5-custom-checkbox">
+                                                            <input id="enable_3" type="checkbox" name="enable_3" value="enable_3">
+                                                            <label for="enable_3"></label>                                
+                                                        </div>
+                                                    </td>
+                                                    <td>1</td>
+                                                    <td>Final</td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--edit"></a>
+                                                            <a class="q5-action-button--delete"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--drag"></a>
+                                                        </div>                                                    
+                                                    </td>
+                                                </tr>                                                                                                                                                                                                                                                                                                                                         
+                                            </tbody>
+                                        </table>  
+
+
+                                    </div>      
+
+                                    <div class="q5-button-block">
+                                        <button id="add_thumbnail_size_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                            + Add thumbnail size
+                                        </button>
+
+                                        <div id="add_thumbnail_size_form" class="q-form q5-align-left q5-hidden">
+
+                                            <div>
+
+                                                <div class="q5-two-columns">   
+                                                    <div class="q5-two-columns">   
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                    <label>Size (WxH)</label>
+                                                            </div>                         
+                                                            <div class="q5-two-columns">
+                                                                <input id="add_thumbnail_size_1" class="q5-text-gray" name="add_thumbnail_size_1" placeholder="1920" type="text">     
+                                                                <span class="input-x-delimeter q5-text-gray">x</span>
+                                                                <input id="add_thumbnail_size_2" class="q5-text-gray" name="add_thumbnail_size_2" placeholder="1080" type="text">                                                            
+                                                            </div>  
+                                                        </div>   
+                                                        <div class="q5-input-container">
+                                                            <div class="q5-input-label q5-text-gray">
+                                                                <label for="add_thumbnail_size_tag">Tag</label>
+                                                            </div>                         
+                                                            <input id="add_thumbnail_size_tag" class="q5-text-gray" name="add_thumbnail_size_tag" placeholder="Your tag" type="text">      
+                                                        </div>   
+                                                    </div>    
+
+                                                    <div class="q5-input-container">
+                                                        <div class="q5-input-label q5-text-gray">
+                                                            <label for="add_thumbnail_size_path">Output path</label>
+                                                        </div>                         
+                                                        <input id="add_thumbnail_size_path" class="q5-text-gray" name="add_thumbnail_size_path" placeholder="" type="text">      
+                                                    </div>   
+                                                                                                                                            
+                                                </div>
+
+                                            </div>
+
+                                            <div>
+                                                <button id="add_thumbnail_size_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Cancel</button>
+                                                <button id="add_thumbnail_size_add_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                                + Add Thumbnail Size
+                                                </button>                                                
+                                            </div>
+            
+                                        </div>                                    
+                                    </div>     
+
+
+                                    <div class="q5-table">
+                                        <table id="thumbnail_table_size" class="q5-text-gray" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>Size (WxH)</th>
+                                                    <th>Tag</th>
+                                                    <th>Output path</th>
+                                                    <th>Action</th>     
+                                                    <th></th>                      
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>1920x1080</td>
+                                                    <td>bbc_one_general</td>
+                                                    <td>https://www.google.com.ua/search?q=hello&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiBrP7fotbWAhWFCJoKHag6AXsQ_AUICigB&biw=1313&bih=678#imgrc=_</td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--edit"></a>
+                                                            <a class="q5-action-button--delete"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--drag"></a>
+                                                        </div>                                                    
+                                                    </td>
+                                                </tr>          
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>380x600</td>
+                                                    <td>bbc_one_size_2</td>
+                                                    <td>https://www.google.com.ua/search?q=hello</td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--edit"></a>
+                                                            <a class="q5-action-button--delete"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="q5-action-buttons-group">
+                                                            <a class="q5-action-button--drag"></a>
+                                                        </div>                                                    
+                                                    </td>
+                                                </tr>                                                                                                                   
+                                            </tbody>
+                                        </table>  
+
+
+                                    </div>                                                                
+
+                                </div>                                                           
+
+                                <script>
+                                    var expandButtons = document.querySelectorAll(".q5-dropdown-header");
+                                    expandButtons.forEach(button => {
+                                        button.addEventListener('click', function(){
+                                            var panels = document.querySelectorAll(".q5-dropdown-content");
+                                            var currentpanel = this.nextElementSibling;
+                                            this.classList.toggle("q5-active-dropdown");
+                                            // 2. show subling panel if it's not shown already 
+                                            if (currentpanel.style.maxHeight){
+                                                currentpanel.style.maxHeight = null;
+                                            } else {
+                                                currentpanel.style.maxHeight = currentpanel.scrollHeight + "px";
+                                            }                                                                                         
+                                        });
+                                    });                                
+                                </script>  
+
+                            </div>                                     
+
+                            <button class="q5-button-default q5-button-solid q5-long-button" type="submit">Save All</button>   
+
+                            <div class="q5-faq-block"> 
+                                <h2 class="q5-h3-tittle q5-text-blue">FAQ</h2>
+                                <p class="q-paragraph q5-text-gray">
+                                    These FAQs are designed to provide a better understanding of Encoding Profile.        
+                                </p>         
+
+                                <div class="q5-two-columns q5-text-gray">
+                                    <div>
+
+                                        <div class="q5-accordion-container">
+                                            <a class="q5-accordion-button">What is transfer method?</a>
+                                            <div class="q5-accordion-panel" style="">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam 
+                                                </p>
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam 
+                                                </p>                            
+                                            </div>
+                                
+
+                                            <a class="q5-accordion-button">What type is best for my site?</a>
+                                            <div class="q5-accordion-panel">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                    architecto rem amet aperiam sint aliquam illum, qui odit.
+                                                </p>
+                                            </div>
+
+                                            <a class="q5-accordion-button">What is transfer method?</a>
+                                            <div class="q5-accordion-panel">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                    architecto rem amet aperiam sint aliquam illum, qui odit.
+                                                </p>
+                                            </div>                                                                         
+
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+
+                                        <div class="q5-accordion-container">
+                                            <a class="q5-accordion-button">What is transfer method?</a>
+                                            <div class="q5-accordion-panel">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                    architecto rem amet aperiam sint aliquam illum, qui odit.
+                                                </p>
+                                            </div>
+                                
+
+                                            <a class="q5-accordion-button">What type is best for my site?</a>
+                                            <div class="q5-accordion-panel">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                    architecto rem amet aperiam sint aliquam illum, qui odit.
+                                                </p>
+                                            </div>
+
+                                            <a class="q5-accordion-button">What is transfer method?</a>
+                                            <div class="q5-accordion-panel">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                    commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                    architecto rem amet aperiam sint aliquam illum, qui odit.
+                                                </p>
+                                            </div>                                                                          
+
+                                        </div>                    
+
+                                    </div>
+
+                                </div>  
+                            </div>      
+                        </div>
+
+        
+
+                    </div>
+                </div>       
+
+                <div id="transfer_methods" class="q5-tabcontent q5-tabcontent-with-tables">
+
+                    <div>
+                        <div id="add_transfer_method_info_box">
+
+                            <div class="q5-button-block">
+                                <button id="add_transfer_method_button" class="q5-button-link q5-green-background q5-green-border q5-text-white">
+                                    + Add Transfer Method
+                                </button>   
+                            </div>  
+
+                            <div class="q5-table">
+                                <table id="transfer_method_table" class="q5-text-gray" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Transfer Name</th>
+                                            <th>Type</th>
+                                            <th>Action</th>                         
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Test transfer</td>
+                                            <td>Test type transfer</td>
+                                            <td>
+                                                <div class="q5-action-buttons-group">
+                                                    <a class="q5-action-button--edit"></a>
+                                                    <a class="q5-action-button--delete"></a>
+                                                </div>
+                                            </td>
+                                        </tr>                                                                                                                        
+                                    </tbody>
+                                </table>  
+                            </div>   
+
+                        </div>  
+                        <div id="add_transfer_method_form" class="q5-hidden">
+                            <span class="q5-info-message q5-text-gray q5-max-length">
+                                <button id="add_transfer_method_back_button" class="q5-button-link q5-back-link q5-transparent-background q5-black-border q5-text-gray">Back</button>
+                                <span>Transfer Methods > Add transfer method</span>
+                            </span>
+                            <div class="q5-two-columns q-form">
+
+                                <div>
+                                    <div>
+                                        <h2 class="q5-h3-tittle q5-text-blue">General Info</h2>
+                                        <div class="q-form">
+                                            <div class="q5-input-container">
+                                                <div class="q5-input-label q5-text-gray">
+                                                        <label for="transfer_method_name">Transfer method name</label>
+                                                </div>                         
+                                                <input id="transfer_method_name" class="q5-text-gray" name="transfer_method_name" placeholder="" type="text">      
+                                            </div>    
+                                            <div class="q5-input-container">
+                                                <div class="q5-input-label q5-text-gray">
+                                                    <label for="transfer_method_type">Type</label>                                     
+                                                </div>                            
+                                                <div class="q5-custom-select">
+                                                    <select class="q5-select q5-text-gray" id="transfer_method_type" required="" name="transfer_method_type">
+                                                        <option value="amazon_s3">Amazon S3</option>
+                                                        <option value="amazon_s4">Amazon S3</option>
+                                                    </select>                          
+                                                </div>                                                                    
+                                            </div>                                                    
+                                        </div>                            
+                                    </div>
+                                    <div>
+                                        <h2 class="q5-h3-tittle q5-text-blue">Amazon S3 Credentials</h2>
+                                        <div class="q-form">
+                                            <div class="q5-input-container">
+                                                <div class="q5-input-label q5-text-gray">
+                                                        <label for="amazon_bucket_name">Amazon Bucket Name</label>
+                                                </div>                         
+                                                <input id="amazon_bucket_name" class="q5-text-gray" name="amazon_bucket_name" placeholder="" type="text">      
+                                            </div>    
+                                            <div class="q5-input-container">
+                                                <div class="q5-input-label q5-text-gray">
+                                                        <label for="amazon_access_id">Amazon Access ID</label>
+                                                </div>                         
+                                                <input id="amazon_access_id" class="q5-text-gray" name="amazon_access_id" placeholder="" type="text">      
+                                            </div>      
+                                            <div class="q5-input-container">
+                                                <div class="q5-input-label q5-text-gray">
+                                                        <label for="amazon_access_key">Amazon Access Key</label>
+                                                </div>                         
+                                                <input id="amazon_access_key" class="q5-text-gray" name="amazon_access_key" placeholder="" type="text">      
+                                            </div>                                                                                         
+                                            <button class="q5-button-default q5-button-solid q5-long-button" type="submit">Save Method</button> 
+                                        </div>                            
+                                    </div>                                    
+                                </div>
+
+                                <div class="q5-faq-block"> 
+                                    <h2 class="q5-h3-tittle q5-text-blue">FAQ</h2>
+                                    <p class="q-paragraph q5-text-gray">
+                                        These FAQs are designed to provide a better understanding of Transfer Methods.        
+                                    </p>         
+
+                                    <div class="q5-accordion-container q5-text-gray">
+                                        <a class="q5-accordion-button">What is transfer method?</a>
+                                        <div class="q5-accordion-panel" style="">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam 
+                                            </p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam 
+                                            </p>                            
+                                        </div>
+                            
+
+                                        <a class="q5-accordion-button">What type is best for my site?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>
+
+                                        <a class="q5-accordion-button">What is transfer method?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>     
+
+                                        <a class="q5-accordion-button">What type is best for my site?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>
+
+                                        <a class="q5-accordion-button">What is transfer method?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>   
+
+                                        <a class="q5-accordion-button">What type is best for my site?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>
+
+                                        <a class="q5-accordion-button">What is transfer method?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>          
+
+                                        <a class="q5-accordion-button">What type is best for my site?</a>
+                                        <div class="q5-accordion-panel">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quisquam 
+                                                commodi id debitis optio! Repellendus facilis, nisi nam tempore, vitae accusamus, 
+                                                architecto rem amet aperiam sint aliquam illum, qui odit.
+                                            </p>
+                                        </div>                                                                                                                                                                                     
+
+                                    </div>
+                                </div>                         
+
+                     
+                            </div>
+                            
+                        </div>                 
+                    </div>
+
+                </div>                   
+
+                <script>
+                    // hide button after it was clicked adding a class and show form removing a class
+                    let addResolutionCancelButton = document.querySelector("#add_resolution_cancel_button");
+                    let addResolutionSettingsButton = document.querySelector("#add_resolution_settings_button");
+                    let addResolutionForm = document.querySelector("#add_resolution_form");
+                    let addResolutionButton = document.querySelector("#add_resolution_button");
+
+                    let addThumbnailButton = document.querySelector("#add_thumbnail_button");
+                    let addThumbnailForm = document.querySelector("#add_thumbnail_form");
+                    let addThumbnailCancelButton = document.querySelector("#add_thumbnail_cancel_button");
+                    let addThumbnailAddButton = document.querySelector("#add_thumbnail_add_button");
+
+                    let addThumbnailSizeButton = document.querySelector("#add_thumbnail_size_button");
+                    let addThumbnailSizeForm = document.querySelector("#add_thumbnail_size_form");
+                    let addThumbnailSizeCancelButton = document.querySelector("#add_thumbnail_size_cancel_button");
+                    let addThumbnailSizeAddButton = document.querySelector("#add_thumbnail_size_add_button");  
+
+                    let addTransferMethodButton = document.querySelector("#add_transfer_method_button");
+                    let addTransferMethodInfoBox = document.querySelector("#add_transfer_method_info_box");
+                    let addTransferMethodForm = document.querySelector("#add_transfer_method_form");
+                    let addTransferMethodBackButton = document.querySelector("#add_transfer_method_back_button");
+
+                    let addEncodingProfileButton = document.querySelector("#add_encoding_profile_button"); 
+                    let addEncodingProfileForm = document.querySelector("#add_encoding_profile_form"); 
+                    let addEncodingProfileInfoBox = document.querySelector("#add_encoding_profile_info_box");
+                    let addEncodingProfileBackButton = document.querySelector("#add_encoding_profile_back_button");                                                                                                                                         
+
+                    let radioButtons = document.getElementsByName("format");
+
+                    // hide form if another format selected and show button
+                    radioButtons.forEach(radioButton => {
+                        radioButton.addEventListener('change', function(){
+                            document.querySelector("#output-path-outside-form").classList.add("q5-hidden");
+                            addResolutionForm.classList.add("q5-hidden");
+                            addResolutionButton.classList.remove("q5-hidden");
+                        });
+                    });       
+
+                    //////////////////////////////////////////////////////
+                    // show form after "Add Encoding Profile" button clicked
+                    addEncodingProfileButton.addEventListener('click', function() {
+                        addEncodingProfileInfoBox.classList.toggle("q5-hidden");
+                        addEncodingProfileForm.classList.toggle("q5-hidden");
+                    });                
+
+                    // hide form and show Add button after Back button clicked
+                    addEncodingProfileBackButton.addEventListener('click', function() {
+                        addEncodingProfileInfoBox.classList.toggle("q5-hidden");
+                        addEncodingProfileForm.classList.toggle("q5-hidden");
+                    });                                 
+                    //////////////////////////////////////////////////////                     
+
+                    //////////////////////////////////////////////////////
+                    // show form after "Add Transfer Method" button clicked
+                    addTransferMethodButton.addEventListener('click', function() {
+                        addTransferMethodInfoBox.classList.toggle("q5-hidden");
+                        addTransferMethodForm.classList.toggle("q5-hidden");
+                    });                
+
+                    // hide form and show Add button after Back button clicked
+                    addTransferMethodBackButton.addEventListener('click', function() {
+                        addTransferMethodInfoBox.classList.toggle("q5-hidden");
+                        addTransferMethodForm.classList.toggle("q5-hidden");
+                    });                                 
+                    //////////////////////////////////////////////////////               
+
+                    //////////////////////////////////////////////////////
+                    // show form after "Add Thumbnail Size" button clicked
+                    addThumbnailSizeButton.addEventListener('click', function() {
+                        this.classList.toggle("q5-hidden");
+                        addThumbnailSizeForm.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });    
+
+                    // hide form if "Cancel" button clicked
+                    addThumbnailSizeCancelButton.addEventListener('click', function() {
+                        addThumbnailSizeForm.classList.toggle("q5-hidden");
+                        addThumbnailSizeButton.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });       
+
+                    // hide form if "Add Thumbnail Size" button in form clicked
+                    addThumbnailSizeAddButton.addEventListener('click', function() {
+                        addThumbnailSizeForm.classList.toggle("q5-hidden");
+                        addThumbnailSizeButton.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });                                                              
+                    //////////////////////////////////////////////////////                                                                 
+
+                    //////////////////////////////////////////////////////
+                    // show form after "Add Thumbnail" button clicked
+                    addThumbnailButton.addEventListener('click', function() {
+                        this.classList.toggle("q5-hidden");
+                        addThumbnailForm.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });
+
+                    // hide form if "Cancel" button clicked
+                    addThumbnailCancelButton.addEventListener('click', function() {
+                        addThumbnailForm.classList.toggle("q5-hidden");
+                        addThumbnailButton.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });           
+
+                    // hide form if "Add Thumbnail" button in form clicked
+                    addThumbnailAddButton.addEventListener('click', function() {
+                        addThumbnailForm.classList.toggle("q5-hidden");
+                        addThumbnailButton.classList.toggle("q5-hidden");
+                        updateDropDownContentHight(this);
+                    });        
+                    //////////////////////////////////////////////////////                          
+
+                    //////////////////////////////////////////////////////
+                    // show form after "Add Resolution" button clicked
+                    addResolutionButton.addEventListener('click', function() {
+                        this.classList.toggle("q5-hidden");
+                        addResolutionForm.classList.toggle("q5-hidden");
+
+                        // if mp4 format is NOT checked -> hide "output path" in form
+                        // and show output path above the form
+                        if(!document.getElementById("mp4").checked){
+                            document.querySelector("#output-path-in-form").classList.add("q5-hidden");
+                            document.querySelector("#output-path-outside-form").classList.remove("q5-hidden");
+                        }else{
+                            document.querySelector("#output-path-in-form").classList.remove("q5-hidden");
+                        }                                                
+
+                        updateDropDownContentHight(this);
+                    });
+
+                    // hide form if "Cancel" button clicked
+                    addResolutionCancelButton.addEventListener('click', function() {
+                        addResolutionForm.classList.toggle("q5-hidden");
+                        addResolutionButton.classList.toggle("q5-hidden");
+
+                        document.querySelector("#output-path-outside-form").classList.add("q5-hidden")
+                        updateDropDownContentHight(this);
+                    });
+
+                    // hide form if "Add Settings" button clicked
+                    addResolutionSettingsButton.addEventListener('click', function() {
+                        addResolutionForm.classList.toggle("q5-hidden");
+                        addResolutionButton.classList.toggle("q5-hidden");
+
+                        document.querySelector("#output-path-outside-form").classList.add("q5-hidden")
+                        updateDropDownContentHight(this);
+                    });                     
+                    //////////////////////////////////////////////////////                   
+
+                    function updateDropDownContentHight(button){
+                        // find first parent with classname "q5-dropdown-content"
+                        let currentDropDownContent = button.closest(".q5-dropdown-content");
+                        currentDropDownContent.style.maxHeight = currentDropDownContent.scrollHeight + "px";                                               
+                    }    
+                </script>                
+
+                <script>
+                    const tabLinks = document.querySelectorAll('.q5-tablinks');
+
+                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                    function switchTab(e){
+                        
+                        // find active elements and remove -> tablinks--active tabcontent--active
+                        const activeLink = document.querySelector('.q5-tablinks--active');
+                        const activeContent = document.querySelector('.q5-tabcontent--active');
+
+                        activeLink.classList.remove('q5-tablinks--active');
+                        activeContent.classList.remove('q5-tabcontent--active');
+
+                        // find what tab link was clicked and show tab content with that ID
+                        const clickedLink = e.currentTarget;
+                        clickedLink.classList.add('q5-tablinks--active');
+
+                        const tabID = clickedLink.getAttribute("data-tabcontent");
+
+                        const tabContent = document.querySelector(`#${tabID}`);
+                        tabContent.classList.add('q5-tabcontent--active');
+                    }                    
+                </script>                                            
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+    <footer class="q5-container q5-footer">
+
+        <div class="q5-logo-and-menu">
+            <div class="q5-small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="q5-footer-menu">
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="q5-text-gray" href="">About us</a>
+                        <a class="q5-text-gray" href="">Privacy policy</a>
+                        <a class="q5-text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="q5-text-gray" href="">Pricing</a>
+                        <a class="q5-text-gray" href="">Speed</a>
+                        <a class="q5-text-gray" href="">Formats</a>
+                        <a class="q5-text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="q5-text-gray" href="">Try Demo</a>
+                        <a class="q5-text-gray" href="">API</a>
+                        <a class="q5-text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="q5-text-gray" href="">Contact us</a>
+                        <a class="q5-text-gray" href="">Live chat</a>
+                        <a class="q5-text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr class="q5-hr">
+
+        <div class="q5-copyright-and-socials">
+            <div>
+                <span class="q5-text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>

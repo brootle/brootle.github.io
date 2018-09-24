@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>   
+
+    <script src="js/q5.datatable.js"></script>      
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q5-page q-body">
+
+    <nav class="q5-container q5-nav">
+        <div class="q5-logo">
+            <a href=""><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="q5-top-menu">
+            <div class="q5-menu-items--left">
+                <a href="">My Projects</a>
+                <a href="">Transcoding Jobs</a>
+                <a href="">Billing</a>
+                <a href="">Documentation</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="q5-menu-items--right">
+                <button id="menu-button" class="q5-button-default q5-green-background q5-text-white q5-has-submenu">My Account</button>
+                <div id="authorized-menu-fullsize" class="q5-authorized-menu">
+                    <a href="" class="menu-item--settings"><strong>Settings</strong></a>
+                    <a href="" class="menu-item--log-out"><strong>Log out</strong></a>
+                </div>
+                <script>
+                    document.querySelector("#menu-button").addEventListener('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        this.classList.toggle("q5-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });   
+                </script>
+            </div>
+        </div>
+
+        <div class="q5-mobile-navigation">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>     
+
+            <div id="authorized-menu-mobile" class="q5-authorized-menu">
+                <a href="" class="q5-white-background">My Projects</a>
+                <a href="" class="q5-white-background">Transcoding Jobs</a>
+                <a href="" class="q5-white-background">Billing</a>
+                <a href="" class="q5-white-background">Documentation</a>
+                <a href="" class="q5-white-background">Contact</a>            
+                <a href="" class="menu-item--settings"> <strong>Settings</strong></a>
+                <a href="" class="menu-item--log-out"> <strong>Log out</strong></a>
+            </div>        
+            
+
+            <script>
+                const hamburger = document.querySelector('.hamburger');
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('is-active');       
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });            
+            </script> 
+        </div>
+ 
+    </nav>    
+
+
+    <main class="q5-main q5-no-header q5-page-content q5-container">
+
+        <div class="q5-page-tittle-box">
+            <h1>Transcoding Jobs</h1>
+        </div>        
+        
+        <div class="q5-one-column">
+
+            <div class="q-form q5-filter-box">
+
+                <div>   
+                    <div class="q5-input-container">
+                        <div class="q5-input-label q5-text-gray">
+                            <label for="project">Project:</label>                                     
+                        </div>                            
+                        <div class="q5-custom-select">
+                            <select class="q5-select q5-text-gray" id="project" required="" name="project">
+                                <option value="all_projects">All Projects</option>
+                                <option value="some_projects">Some Projects</option>
+                            </select>                          
+                        </div>                                                                    
+                    </div>
+
+                    <div class="q5-date-filter-container">
+                        <div class="q5-input-label q5-text-gray">
+                            <label >Show by period:</label>                                     
+                        </div>
+                        <div class="q5-date-filter-select">
+                            <div class="q5-filter-date">
+                                <input id="date_start" class="q5-text-gray" autocomplete="off" name="date_start" placeholder="Choose date" type="text"/>
+                                <script>
+                                    $( function() {
+                                        $( "#date_start" ).datepicker();
+                                    } );
+                                </script>                                        
+                            </div>
+                            <span class="input-dash-delimeter q5-text-gray">‒</span>
+                            <div class="q5-filter-date">
+                                <input id="date_end" class="q5-text-gray" autocomplete="off" name="date_end" placeholder="Choose date" type="text"/>
+                                <script>
+                                    $( function() {
+                                        $( "#date_end" ).datepicker();
+                                    } );
+                                </script>                                            
+                            </div>
+                        </div>
+                    </div>                                
+
+                    <div class="q5-input-container">
+                        <div class="q5-input-label q5-text-gray">
+                            <label for="status">Status:</label>                                     
+                        </div>                            
+                        <div class="q5-custom-select">
+                            <select class="q5-select q5-text-gray" id="status" required="" name="status">
+                                <option value="all_statuses">All Statuses</option>
+                                <option value="some_statuses">Some Statuses</option>
+                            </select>                          
+                        </div>                                                                    
+                    </div>
+                </div>
+                <div class="q5-date-filter-buttons">
+                    <button id="add_thumbnail_cancel_button" class="q5-button-link q5-no-min-width q5-transparent-background q5-black-border q5-text-gray">Clear</button>
+                    <button id="add_thumbnail_add_button" class="q5-button-link q5-medium-width q5-green-background q5-green-border q5-text-white">
+                        Filter
+                    </button> 
+                </div>    
+     
+            </div>
+
+            <div class="q5-table">
+
+                <div id="transcoding_jobs_table_wrapper" class="dataTables_wrapper no-footer">
+
+                    <table id="transcoding_jobs_table" class="q5-text-gray dataTable" width="100%">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th class="sorting_disabled">Job ID</th>
+                                <th>Project</th>
+                                <th>Video Length</th>               
+
+                                <th>Size</th>        
+                                <th>Created at</th>    
+                                <th>Status</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><span class="q5-table-dropdown">5423ffjsfa735ntuerotu84</span></td>
+                                <td>BBC_Sherlok_S5</td>
+                                <td>00:15:00</td>
+
+                                <td>451 Mb</td>
+                                <td>2017-09-20 11:56:35</td>
+                                <td>Queed</td>
+                            </tr>            
+
+                            <tr>
+                                <td>2</td>
+                                <td><span class="q5-table-dropdown">gsdlfkg4345245l4j3l45jl34</span></td>
+                                <td>Sony_Si_Fi_2</td>
+                                <td>00:15:00</td>
+
+                                <td>4.21 GB</td>
+                                <td>2017-09-20 11:56:35</td>
+                                <td>Downloading</td>
+                            </tr>      
+                            
+                                                                                                                                                                
+                        </tbody>
+                    </table>  
+
+                    <div class="q5-table-navigation">
+                        <div class="dataTables_info" id="transcoding_jobs_table_info" role="status" aria-live="polite">
+                            <span class="q5-text-gray"><span class="q5-table-visible-records">1 - 2</span> of 2</span>
+                        </div>
+                        <div class="dataTables_paginate paging_simple" id="transcoding_jobs_table_paginate">
+                            <a class="paginate_button previous disabled" aria-controls="transcoding_jobs_table" aria-label="Previous" data-dt-idx="0" tabindex="0" id="transcoding_jobs_table_previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                            <a class="paginate_button next disabled" aria-controls="transcoding_jobs_table" aria-label="Next" data-dt-idx="1" tabindex="0" id="transcoding_jobs_table_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <script>
+                    // add empty rows after table was initiated - see q5.datatable.js
+                    // and put data there from JSON
+
+                    // show and hide details
+                    var expandButtons = document.querySelectorAll(".q5-table-dropdown");
+                    expandButtons.forEach(button => {
+                        button.addEventListener('click', function(){
+                            // toggle arrow
+                            this.classList.toggle("q5-table-dropdown--active");
+                            // hide and show content
+                            this.closest("tr").nextSibling.classList.toggle("q5-hidden");                                                                                                              
+                        });
+                    });                                
+                   
+                </script>
+            </div>              
+
+        </div>
+
+    </main>
+
+    <footer class="q5-container q5-footer">
+
+        <div class="q5-logo-and-menu">
+            <div class="q5-small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="q5-footer-menu">
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="q5-text-gray" href="">About us</a>
+                        <a class="q5-text-gray" href="">Privacy policy</a>
+                        <a class="q5-text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="q5-text-gray" href="">Pricing</a>
+                        <a class="q5-text-gray" href="">Speed</a>
+                        <a class="q5-text-gray" href="">Formats</a>
+                        <a class="q5-text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="q5-text-gray" href="">Try Demo</a>
+                        <a class="q5-text-gray" href="">API</a>
+                        <a class="q5-text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="q5-footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="q5-text-gray" href="">Contact us</a>
+                        <a class="q5-text-gray" href="">Live chat</a>
+                        <a class="q5-text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr class="q5-hr">
+
+        <div class="q5-copyright-and-socials">
+            <div>
+                <span class="q5-text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="q5-text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
