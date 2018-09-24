@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="/assets/css/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/highlight/styles/atom-one-dark.css">
+    <script src="/assets/js/highlight.pack.js"></script>  
+    <link rel="stylesheet" href="/assets/css/q6.css">
+
+    <title>Qencode Opensource</title>
+
+  </head>
+  <body>
+    <nav class="q6-nav" id="top_menu">
+    <div class="q6-logo">
+        <a href=""><img src="assets/images/logo_dark.png" alt=""></a>
+    </div>
+    <div class="q6-top-menu">
+        <div class="q6-menu-items--left">
+            
+                <a href="/" >
+                Documentation
+                </a>
+            
+                <a href="/guides.html" >
+                Guides
+                </a>
+            
+                <a href="/docs.html" >
+                Docs
+                </a>
+            
+                <a href="/library.html" >
+                Library
+                </a>
+            
+                <a href="/opensource.html" class="q6-top-menu--active">
+                Opensource
+                </a>
+            
+        </div>
+        <div class="q6-menu-items--right">
+            <a href="">Try Demo</a>
+            <button id="menu-button" class="q6-button-default q6-has-submenu">My Account</button>
+            <div id="authorized-menu-fullsize" class="q6-authorized-menu">
+                <a href="" class="q6-menu-item--settings">Settings</a>
+                <a href="" class="q6-menu-item--log-out">Log out</a>
+            </div>
+            <script>
+                $(function () {  
+                    $("#menu-button").on('click', function(){
+                        let authorizedMenu = document.querySelector("#authorized-menu-fullsize");
+                        $(this).toggleClass("q6-opened-menu");
+                        // show menu if it's not shown already 
+                        if (authorizedMenu.style.maxHeight){
+                            authorizedMenu.style.maxHeight = null;
+                            authorizedMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                            //authorizedMenu.style.display = "none";
+                        } else {
+                            //authorizedMenu.style.display = "flex";
+                            authorizedMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                            authorizedMenu.style.maxHeight = authorizedMenu.scrollHeight + "px";
+                        }             
+                    });                           
+                });  
+
+                // close dropdown menu when clicked anywhere outside
+                $(function () {    
+                    $(document).click(function(e) {
+                        if(e.target.id !== "menu-button" && $("#menu-button").hasClass("q6-opened-menu")){
+                            $("#menu-button").trigger("click");
+                        }                        
+                    });
+                });  
+            </script>
+        </div>
+    </div>
+
+    <div class="q6-mobile-navigation">
+        <button id="mobile-menu-button" class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>     
+
+        <div id="authorized-menu-mobile" class="q6-authorized-menu">
+            
+                <a href="/">
+                Documentation
+                </a>
+            
+                <a href="/guides.html">
+                Guides
+                </a>
+            
+                <a href="/docs.html">
+                Docs
+                </a>
+            
+                <a href="/library.html">
+                Library
+                </a>
+            
+                <a href="/opensource.html">
+                Opensource
+                </a>
+            
+            <a href="">Settings</a>
+            <a href="">Log out</a>
+        </div>        
+        
+
+        <script>
+            $(function () {   
+                $("#mobile-menu-button").on('click', function(){
+                    $(this).toggleClass("is-active");   
+                    let authorizedMobileMenu = document.querySelector("#authorized-menu-mobile");
+                    // show and hide mobile menu    
+                    if (authorizedMobileMenu.style.maxHeight){
+                        authorizedMobileMenu.style.maxHeight = null;
+                        //authorizedMobileMenu.style.display = "none";
+                        authorizedMobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        //authorizedMobileMenu.style.display = "flex";
+                        authorizedMobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        authorizedMobileMenu.style.maxHeight = authorizedMobileMenu.scrollHeight + "px";
+                    }                   
+                });    
+            });   
+                
+        </script> 
+    </div>
+
+</nav>   
+
+    <main class="q6-no-header q6-page-content q6-main">
+
+        <h1 id="this-is-opensource-page">This is Opensource page</h1>
+
+
+    </main>
+
+  </body>
+</html>

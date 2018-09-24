@@ -1,0 +1,286 @@
+<div id="sidebar-switcher" class="q6-api-sidebar__switcher"></div>
+<script>
+    $(function () {   
+        $("#sidebar-switcher").on('click', function(){
+            $("#sidebar").toggleClass("q6-api-open-menu");
+            $(this).toggleClass("q6-api-switcher-activated");
+        });                         
+
+        $(function () {    
+            $(document).click(function(e) {
+                var sidebarClicked = $(e.target).closest("#sidebar").attr('id');
+                var switcherClicked = e.target.id;
+
+                if(switcherClicked != "sidebar-switcher" && !sidebarClicked){
+                    // console.log("switched outsite switcher and outside sidebar");
+
+                    $("#sidebar").removeClass("q6-api-open-menu");
+                    $("#sidebar-switcher").removeClass("q6-api-switcher-activated");                                 
+                }                    
+            });
+        });                      
+    });                                       
+</script>
+
+<div class="q6-api-sidebar" id="sidebar">   
+
+    {% assign sorted_collections = site.collections | sort: "position" %}
+
+    {% for collection in sorted_collections %}
+    <section>
+        <h1 class="q6-api-section-title">{{ collection.title }}</h1>
+        <div class="q6-sidebar-menu__links">
+            {% assign section = collection.title %}
+
+            <!-- Create empty arrays -->
+            {% assign chapters = '' | split: ',' %}
+            {% assign unique_chapters = '' | split: ',' %}
+
+            <!-- Map and flatten -->
+            {% assign article_chapters =  site[section] | map: 'chapter' | join: ',' | join: ',' | split: ',' %}   
+
+            <!-- Push to chapters -->
+            {% for chapter in article_chapters '%}
+                {% assign chapters = chapters | push: chapter %}
+            {% endfor %}        
+
+<!-- Uniq -->
+{% assign chapters = chapters | sort %}
+{% for chapter in chapters %}
+
+  <!-- If not equal to previous then it must be unique as sorted -->
+  {% unless chapter == previous %}
+
+    <!-- Push to unique_tags -->
+    {% assign unique_chapters = unique_chapters | push: chapter %}
+  {% endunless %}
+
+  {% assign previous = chapter %}
+{% endfor %}            
+
+
+            {{ unique_chapters }}        
+
+            
+            <!--{% assign chapters = site[section] %}
+
+            {{ chapters }}-->
+
+        </div>
+    </section>
+    {% endfor %}
+
+    <!--<section>
+        <h1 class="q6-api-section-title">SECTION 1</h1>
+        <div class="q6-sidebar-menu__links">
+            <a class="q6-link" href="#section_one">Problem One</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_one__problem_one__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_one__problem_one__submenu_two">Submenu Two</a>
+            </div>                 
+
+            <a class="q6-link" href="#section_one__problem_two">Problem Two</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_one__problem_two__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_one__problem_two__submenu_two">Submenu Two</a>
+            </div>  
+
+            <a class="q6-link" href="#section_one__problem_three">Problem Three</a>
+            <div class="q6-sidebar-menu__submenu"></div>                           
+
+            <a class="q6-link" href="#problem_four">Problem Four</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_one__problem_four__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_one__problem_four__submenu_two">Submenu Two</a>
+                <a class="q6-link" href="#section_one__problem_four__submenu_three">Submenu Three</a>
+                <a class="q6-link" href="#section_one__problem_four__submenu_four">Submenu Four</a>
+                <a class="q6-link" href="#section_one__problem_four__submenu_five">Submenu Five</a>
+            </div>                                                        
+
+
+        </div>
+    </section>  
+
+    <section>
+        <h1 class="q6-api-section-title">SECTION 2</h1>
+        <div class="q6-sidebar-menu__links">
+            <a class="q6-link" href="#section_two__problem_one">Problem One</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_two__problem_one__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_two__problem_one__submenu_two">Submenu Two</a>
+                <a class="q6-link" href="#section_two__problem_one__submenu_three">Submenu Three</a>
+                <a class="q6-link" href="#section_two__problem_one__submenu_four">Submenu Four</a>
+            </div>                 
+
+            <a class="q6-link" href="#section_two__problem_two">Problem Two</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_two__problem_two__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_two__problem_two__submenu_two">Submenu Two</a>
+            </div>  
+
+            <a class="q6-link" href="#section_two__problem_three">Problem Three</a>
+            <div class="q6-sidebar-menu__submenu"></div>                           
+
+            <a class="q6-link" href="#section_two__problem_four">Problem Four</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#problem_four__submenu_section_two__one">Submenu One</a>
+                <a class="q6-link" href="#section_two__problem_four__submenu_two">Submenu Two</a>
+                <a class="q6-link" href="#section_two__problem_four__submenu_three">Submenu Three</a>
+                <a class="q6-link" href="#section_two__problem_four__submenu_four">Submenu Four</a>
+                <a class="q6-link" href="#section_two__problem_four__submenu_five">Submenu Five</a>
+            </div>                                                        
+
+
+        </div>
+    </section>  
+
+    <section>
+        <h1 class="q6-api-section-title">SECTION 3</h1>
+        <div class="q6-sidebar-menu__links">
+            <a class="q6-link" href="#section_three__problem_one">Problem One</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_three__problem_one__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_three__problem_one__submenu_two">Submenu Two</a>
+                <a class="q6-link" href="#section_three__problem_one__submenu_three">Submenu Three</a>
+                <a class="q6-link" href="#section_three__problem_one__submenu_four">Submenu Four</a>
+            </div>                 
+
+            <a class="q6-link" href="#section_three__problem_two">Problem Two</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_three__problem_two__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_three__problem_two__submenu_two">Submenu Two</a>
+            </div>  
+
+            <a class="q6-link" href="#section_three__problem_three">Problem Three</a>
+            <div class="q6-sidebar-menu__submenu"></div>                           
+
+            <a class="q6-link" href="#section_three__problem_four">Problem Four</a>
+            <div class="q6-sidebar-menu__submenu">
+                <a class="q6-link" href="#section_three__problem_four__submenu_one">Submenu One</a>
+                <a class="q6-link" href="#section_three__problem_four__submenu_two">Submenu Two</a>
+                <a class="q6-link" href="#section_three__problem_four__submenu_three">Submenu Three</a>
+                <a class="q6-link" href="#section_three__problem_four__submenu_four">Submenu Four</a>
+                <a class="q6-link" href="#section_three__problem_four__submenu_five">Submenu Five</a>
+            </div>                                                        
+
+
+        </div>
+    </section>  -->
+    
+
+    <script>
+        // toggle open and close of section menu links
+        // q6-sidebar-menu__selected-link
+
+        $(function () {    
+            $('.q6-sidebar-menu__links > .q6-link').each(function(index){
+                $(this).click(function(){
+
+                    // deselected all submenu links if they were selected
+                    $(".q6-sidebar-menu__submenu > .q6-sidebar-menu__selected-link").removeClass("q6-sidebar-menu__selected-link");
+                    $('.q6-sidebar-menu__links > .q6-sidebar-menu__selected-link').removeClass("q6-sidebar-menu__selected-link");
+
+                    var currentpanel = this.nextElementSibling;
+                    //$(this).toggleClass("q6-sidebar-menu__selected-link");
+                    $(this).addClass("q6-sidebar-menu__selected-link");
+                    // 1. find displayed panel (not current) and hide it
+                    $('.q6-sidebar-menu__submenu').each(function(index){
+                        if(this !== currentpanel){
+                            if(this.style.maxHeight){
+                                this.style.maxHeight = null;
+                                //$(this.previousElementSibling).toggleClass("q6-sidebar-menu__selected-link");
+                            }                    
+                        }
+                    });
+                    // 2. show subling panel if it's not shown already 
+                    if (currentpanel.style.maxHeight){
+                        currentpanel.style.maxHeight = null;
+                    } else {
+                        currentpanel.style.maxHeight = currentpanel.scrollHeight + "px";                                     
+                    }                  
+
+                    // 3. scroll to some destination
+                    try {
+
+                        var extraScroll = 0;
+                        if($('#languageMenuBar').is(':visible')){
+                            extraScroll = 60;
+                        }
+                                                        
+
+                        var dest = $(this).attr('href'); 
+                        $('html,body').animate({
+                            scrollTop: $(dest).offset().top - $("#top_menu").height() - 25 - extraScroll
+                        }, 250, "swing", function() {
+                            // Animation complete.                        
+
+                        });   
+                    }
+                    catch(err) {
+                        console.log(err.message);
+                    }                                                                      
+
+                });         
+            });   
+        });                
+    
+
+        // toggle when submenu link is selected
+        // q6-sidebar-menu__selected-link
+        // q6-sidebar-menu__submenu q6-link
+        $(function () {  
+            $('.q6-sidebar-menu__submenu > .q6-link').each(function(index){
+                $(this).click(function(){
+                    // find all selected submenu link and remove selected class
+                    $(".q6-sidebar-menu__submenu > .q6-sidebar-menu__selected-link").removeClass("q6-sidebar-menu__selected-link");
+                    $(this).addClass("q6-sidebar-menu__selected-link");                                                         
+                });         
+            });                           
+        });           
+
+        // scroll when submenu links clicked
+        $(function () {
+            $(".q6-sidebar-menu__submenu > .q6-link").click(function(e) { 
+                e.preventDefault(); 
+
+                try {
+
+                    var extraScroll = 0;
+                    if($('#languageMenuBar').is(':visible')){
+                        extraScroll = 60;
+                    }
+
+                    var dest = $(this).attr('href'); 
+                    $('html,body').animate({
+                        scrollTop: $(dest).offset().top - $("#top_menu").height() - 25 - extraScroll
+                    }, 250, "swing", function() {
+                        // Animation complete.
+                        $("#sidebar").removeClass("q6-api-open-menu");
+                        $("#sidebar-switcher").removeClass("q6-api-switcher-activated");                                    
+                    });   
+                }
+                catch(err) {
+                    console.log(err.message);
+                }    
+
+
+            }); 
+        });                                       
+    </script>
+
+</div>
+
+<script>
+    $(function () {  
+        // calculated position of sidebar based on top menu hight
+
+        updateSidebarTopPosition();
+
+        $(window).resize(updateSidebarTopPosition);                
+
+        function updateSidebarTopPosition(){
+            var topMenuHeight = $('#top_menu').height();
+            $("#sidebar").css("top", topMenuHeight + "px");
+        }
+    });   
+</script>

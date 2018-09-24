@@ -1,0 +1,36 @@
+<div id="languageMenuBar"></div>
+
+<div class="q6-api-languages-container">
+    <div></div>
+    <div class="q6-api-languages-menu">
+        <div class="q6-api-languages__button" data-language="curl">Curl</div>
+        <div class="q6-api-languages__button" data-language="ruby">Ruby</div>
+        <div class="q6-api-languages__button q6-api-languages__button--active" data-language="python">Python</div>
+        <div class="q6-api-languages__button" data-language="php">PHP</div>
+        <div class="q6-api-languages__button" data-language="javascript">JavaScript</div>
+    </div>
+
+    <script>
+        $(function () {
+            var tabLinks = document.querySelectorAll('.q6-api-languages__button');
+
+            tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+            function switchTab(e){
+
+                $('.q6-api-languages__button--active').removeClass("q6-api-languages__button--active");
+                $('.q6-api-example__language--active').removeClass("q6-api-example__language--active");
+
+                // find what tab link was clicked and show tab content
+                var clickedLink = e.currentTarget;
+                $(clickedLink).addClass('q6-api-languages__button--active');
+
+                var selectedLanguage = clickedLink.getAttribute("data-language");
+
+                $(`.q6-api-example__language[data-example='${selectedLanguage}']`).addClass('q6-api-example__language--active');
+
+            }        
+        });                                             
+    </script>
+
+</div>
