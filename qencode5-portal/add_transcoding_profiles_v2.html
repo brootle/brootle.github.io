@@ -630,7 +630,79 @@
                             }
 
                         });                                         
-                    </script>                                                
+                    </script>     
+
+                    <div class="q6-thumbnail-size-container">
+
+                        <div class="q6-thumbnail__inputs">
+
+                            <div id="size_input_0">
+                                <div class="q6-input--resolution-size">
+
+                                    <div class="q6-input__label">
+                                        <label>Size</label>
+                                    </div>
+                                    <div class="q6-input--resolution-size__inputs">
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                        </div>      
+
+                                        <div class="q6-inputs-delimeter">x</div>
+
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                        </div>  
+                                    </div>  
+
+                                </div>       
+
+                                <div class="q6-input q6-input--output-path">
+                                    <div class="q6-input__label">
+                                        <label>Output path</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                </div>  
+                            </div>                           
+                            
+                        </div>   
+                        
+                        <button id="add_thumbnail_size" class="q6-button q6-green-background q6-green-border q6-button--add">
+                            <span>Add field</span>                            
+                        </button>    
+
+                        <script>
+                            var thumbnailSizesIndex = 0;
+                            $("#add_thumbnail_size").click(function() {
+                                thumbnailSizesIndex++;
+                                var thumbnailInputsArray = $(".q6-thumbnail__inputs").html();
+                                thumbnailInputsArray+=`
+                                    <div id="size_input_${thumbnailSizesIndex}">
+                                        <div class="q6-input--resolution-size">
+                                            <div class="q6-input--resolution-size__inputs">
+                                                <div class="q6-input">
+                                                    <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                                </div>      
+
+                                                <div class="q6-inputs-delimeter">x</div>
+
+                                                <div class="q6-input">
+                                                    <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                                </div>  
+                                            </div>  
+
+                                        </div>       
+
+                                        <div class="q6-input q6-input--output-path">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                        </div>  
+                                    </div>                                          
+                                `;
+                                $(".q6-thumbnail__inputs").html(thumbnailInputsArray);
+                    
+                            });                            
+                        </script>                                            
+
+                    </div>                                           
 
                 </div>
 
@@ -657,22 +729,52 @@
                 $("#cancel_thumbnail_settings").click(function() {
                     $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
 
-                    $(".q6-time-inputs__array").html(`
-                        <div class="q6-input">
-                            <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
-                        </div>                                            
-                    `);                    
+                    resetAddThumbnailSetting();                                
                 });                      
 
                 $("#save_thumbnail_settings").click(function() {
                     $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
 
+                    resetAddThumbnailSetting();                                      
+                });   
+
+                function resetAddThumbnailSetting(){
                     $(".q6-time-inputs__array").html(`
                         <div class="q6-input">
                             <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
                         </div>                                            
-                    `);                        
-                });                   
+                    `);    
+
+                    $(".q6-thumbnail__inputs").html(`
+                            <div id="size_input_0">
+                                <div class="q6-input--resolution-size">
+
+                                    <div class="q6-input__label">
+                                        <label>Size</label>
+                                    </div>
+                                    <div class="q6-input--resolution-size__inputs">
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Width">
+                                        </div>      
+
+                                        <div class="q6-inputs-delimeter">x</div>
+
+                                        <div class="q6-input">
+                                            <input class="q6-input__field q6-black-text" type="text" placeholder="Height">
+                                        </div>  
+                                    </div>  
+
+                                </div>       
+
+                                <div class="q6-input q6-input--output-path">
+                                    <div class="q6-input__label">
+                                        <label>Output path</label>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" placeholder="/image/{uuid}.png">
+                                </div>  
+                            </div>                      
+                    `);                       
+                }             
             </script>            
 
 
