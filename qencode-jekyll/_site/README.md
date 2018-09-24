@@ -1,1 +1,0 @@
-Qencode Documentation based on Jekyll
