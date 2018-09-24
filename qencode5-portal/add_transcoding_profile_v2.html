@@ -131,9 +131,9 @@
                 <div class="q6-transcoding-profile__video-settings">
                     <div class="q6-input">
                         <div class="q6-input__label">
-                            <label for="input_url">Choose output format</label>
+                            <label>Choose output format</label>
                         </div>
-                        <div class="q6-video-settings__radio-buttons">
+                        <div class="q6-switch__radio-buttons">
                             <input id="mp4" type="radio" name="format" value="mp4" checked="">
                             <label for="mp4">MP4</label>
                             <input id="hls" type="radio" name="format" value="hls">
@@ -143,29 +143,27 @@
                             <input id="webm" type="radio" name="format" value="webm">    
                             <label for="webm">WEBM</label>                            
                         </div>
-
-                        <div class="q6-two-columns">
-                            <div class="q6-input q6-input--profile-name">
-                                <div class="q6-input__label">
-                                    <label for="profile_name">Profile name</label>
-                                    <span>From 3 to 20 symbols</span>
-                                </div>
-                                <input class="q6-input__field q6-black-text" type="text" id="profile_name" maxlength="20">
+                    </div>
+                    <div class="q6-two-columns">
+                        <div class="q6-input q6-input--profile-name">
+                            <div class="q6-input__label">
+                                <label for="profile_name">Profile name</label>
+                                <span>From 3 to 20 symbols</span>
                             </div>
-                            <div class="q6-input q6-input--video-codec">
-                                <div class="q6-input__label q6-align-start">
-                                    <label for="video_codec">Video codec</label> <div class="q6-help-icon"><span>?</span></div>
-                                </div>
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="video_codec" required="" name="video_codec">
-                                        <option value="0" selected="selected">H.265 (MPEG-H PART2/HEVC)</option>
-                                        <option value="1">H.265 (MPEG-H PART2/HEVC)</option>
-                                    </select>                                   
-                                </div>
+                            <input class="q6-input__field q6-black-text" type="text" id="profile_name" maxlength="20">
+                        </div>
+                        <div class="q6-input q6-input--video-codec">
+                            <div class="q6-input__label q6-align-start">
+                                <label for="video_codec">Video codec</label> <div class="q6-help-icon"><span>?</span></div>
+                            </div>
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="video_codec" required="" name="video_codec">
+                                    <option value="0" selected="selected">H.265 (MPEG-H PART2/HEVC)</option>
+                                    <option value="1">H.265 (MPEG-H PART2/HEVC)</option>
+                                </select>                                   
                             </div>
                         </div>
-
-                    </div>
+                    </div>                    
                 </div>
 
                 <div class="q6-tittle-and-buttons">
@@ -512,7 +510,7 @@
                     </h2>
 
                     <div class="q6-tittle-buttons">
-                        <button class="q6-button q6-green-background q6-green-border q6-button--add">
+                        <button id="add_time_size_btn" class="q6-button q6-green-background q6-green-border q6-button--add">
                             <span>Add time & size</span>                            
                         </button>                     
                     </div>
@@ -520,6 +518,119 @@
 
 
             </div>    
+
+            <div class="q6-thumbnail-settings__add-time-size q6-hidden">
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+
+                    <div class="q6-input">
+                        <div class="q6-input__label q6-align-start">
+                            <label>Choose time option</label> <div class="q6-help-icon"><span>?</span></div>
+                        </div>
+                        <div class="q6-switch__radio-buttons">
+                            <input id="individual" type="radio" name="time_option" value="individual" checked="">
+                            <label for="individual">Individual</label>
+                            <input id="internal" type="radio" name="time_option" value="internal">    
+                            <label for="internal">Internal</label>                            
+                        </div>
+                    </div>    
+
+                    <div id="individual_time">
+                        <div class="q6-input__message">Each time mark works with all sizes you will enter.</div>
+
+                        <div class="q6-input--time">
+
+                            <div class="q6-input__label q6-align-start">
+                                <label>Time (%)</label> <div class="q6-help-icon"><span>?</span></div>
+                            </div>
+
+                            <div class="q6-input--time__inputs">
+
+                                <div class="q6-time-inputs__array">
+                                    <div class="q6-input">
+                                        <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                    </div>                                        
+                                </div>   
+
+                                <button id="add_individual_time_input" class="q6-button q6-green-background q6-green-border q6-button--add">
+                                    <span>Add field</span>                            
+                                </button>         
+
+                                <script>
+                                    var timeInputsIndex = 0;
+                                    $("#add_individual_time_input").click(function() {
+                                        timeInputsIndex++;
+                                        var timeInputsArray = $(".q6-time-inputs__array").html();
+                                        timeInputsArray+=`
+                                            <div class="q6-input">
+                                                <input id="time_input_${timeInputsIndex}" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                            </div>                                           
+                                        `;
+                                         $(".q6-time-inputs__array").html(timeInputsArray);
+                                        console.log(timeInputsArray);
+                                    });                            
+                                </script>                     
+
+                            </div>  
+
+                        </div>
+
+                    </div>    
+
+                    <div id="internal_time" class="q6-hidden">Internal</div>    
+
+                    <script>
+                        $("input[name='time_option']").change(function(e){
+                            if($(this).val() == 'individual') {
+                                $("#individual_time").removeClass("q6-hidden");
+                                $("#internal_time").addClass("q6-hidden");
+
+                                $(".q6-time-inputs__array").html(`
+                                    <div class="q6-input">
+                                        <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                                    </div>                                            
+                                `);
+
+                            } else {
+                                $("#individual_time").addClass("q6-hidden");
+                                $("#internal_time").removeClass("q6-hidden");                                
+                            }
+
+                        });                                         
+                    </script>                                                
+
+                </div>
+
+                <hr class="q6-horizontal-delimeter">
+
+                <div class="q6-container">
+                    <div class="q6-thumbnail-settings__buttons">
+                        <button id="cancel_thumbnail_settings" class="q6-button q6-green-border q6-green-text">
+                            Cancel                        
+                        </button>                        
+                        <button id="save_thumbnail_settings" class="q6-button q6-green-background q6-green-border">
+                            Save                        
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                $("#add_time_size_btn").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").removeClass("q6-hidden");
+                });           
+
+                $("#cancel_thumbnail_settings").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+                });                      
+
+                $("#save_thumbnail_settings").click(function() {
+                    $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+                });                   
+            </script>            
+
 
             <div class="q6-gray-background">
 
