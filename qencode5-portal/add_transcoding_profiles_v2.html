@@ -531,8 +531,8 @@
                         <div class="q6-switch__radio-buttons">
                             <input id="individual" type="radio" name="time_option" value="individual" checked="">
                             <label for="individual">Individual</label>
-                            <input id="internal" type="radio" name="time_option" value="internal">    
-                            <label for="internal">Internal</label>                            
+                            <input id="interval" type="radio" name="time_option" value="interval">    
+                            <label for="interval">Interval</label>                            
                         </div>
                     </div>    
 
@@ -559,6 +559,7 @@
 
                                 <script>
                                     var timeInputsIndex = 0;
+                                    var timeInputsValues = [];
                                     $("#add_individual_time_input").click(function() {
                                         timeInputsIndex++;
                                         var timeInputsArray = $(".q6-time-inputs__array").html();
@@ -568,7 +569,7 @@
                                             </div>                                           
                                         `;
                                          $(".q6-time-inputs__array").html(timeInputsArray);
-                                        console.log(timeInputsArray);
+                            
                                     });                            
                                 </script>                     
 
@@ -578,13 +579,44 @@
 
                     </div>    
 
-                    <div id="internal_time" class="q6-hidden">Internal</div>    
+                    <div id="interval_time" class="q6-hidden">
+                        <div class="q6-input__message">Some critical info about interval option.</div>
+
+                        <div class="q6-input--time-interval">
+
+                            <div class="q6-time-interval__range">
+                                <div class="q6-input__label">
+                                    <label>Time range</label>
+                                </div>
+                                <div class="q6-time-range-inputs">
+                                    <div class="q6-input">
+                                        <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                                    </div>      
+
+                                    <div class="q6-inputs-delimeter">&ndash;</div>
+
+                                    <div class="q6-input">
+                                        <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                                    </div>  
+                                </div>  
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Interval (sec)</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" placeholder="">
+                            </div>                            
+
+                        </div>
+                    
+                    </div>    
 
                     <script>
                         $("input[name='time_option']").change(function(e){
                             if($(this).val() == 'individual') {
                                 $("#individual_time").removeClass("q6-hidden");
-                                $("#internal_time").addClass("q6-hidden");
+                                $("#interval_time").addClass("q6-hidden");
 
                                 $(".q6-time-inputs__array").html(`
                                     <div class="q6-input">
@@ -594,7 +626,7 @@
 
                             } else {
                                 $("#individual_time").addClass("q6-hidden");
-                                $("#internal_time").removeClass("q6-hidden");                                
+                                $("#interval_time").removeClass("q6-hidden");                                
                             }
 
                         });                                         
@@ -624,10 +656,22 @@
 
                 $("#cancel_thumbnail_settings").click(function() {
                     $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+
+                    $(".q6-time-inputs__array").html(`
+                        <div class="q6-input">
+                            <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                        </div>                                            
+                    `);                    
                 });                      
 
                 $("#save_thumbnail_settings").click(function() {
                     $(".q6-thumbnail-settings__add-time-size").addClass("q6-hidden");
+
+                    $(".q6-time-inputs__array").html(`
+                        <div class="q6-input">
+                            <input id="time_input_0" class="q6-input__field q6-black-text" type="text" placeholder="0">
+                        </div>                                            
+                    `);                        
                 });                   
             </script>            
 
