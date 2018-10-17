@@ -126,63 +126,85 @@
         </div>
             
         <section>
-            <div class="q6-container">
-                <h2 class="q6-section-title q6-black-text">Input info</h2>
-            </div>        
 
             <div class="q6-container">
                 <div class="q6-two-columns">
-                    <div class="q6-drag-and-drop-container q6-light-gray-background">
-                        <div id="drop_zone" ondragleave="dragLeaveHandler(event);" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" class="q6-drag-and-drop q6-white-background">
-                            <div class="q6-drag-and-drop__icon"></div>
-
-                            <div class="q6-drag-and-drop__message-container">
-                                <div class="q6-browse-file">
-                                    <div class="q6-drag-and-drop__title q6-black-text">
-                                        Drag & Drop
-                                    </div>
-                                    <div class="q6-drag-and-drop__intructions q6-black-text">
-                                        your files here, or 
-                                        <div class="q6-upload-file-link">
-                                            <input type="file" name="file" id="file" />
-                                            <label class="q6-green-text" for="file">Browse</label>
+                    <div class="q6-transcoding-input-info">
+                        <h2 class="q6-section-title q6-black-text">Input info</h2>
+                        <div class="q6-drag-and-drop-container q6-light-gray-background">
+                            <div class="q6-radio-block">
+                                <label class="q6-radio-button">
+                                    <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
+                                    <span class="q6-radio-checkmark"></span>
+                                </label>                                                        
+                                <div id="drop_zone" ondragleave="dragLeaveHandler(event);" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" class="q6-drag-and-drop q6-white-background">
+                                    
+                                    <div class="q6-drag-and-drop__message-container">                                    
+                                        <div class="q6-browse-file">
+                                            <div class="q6-drag-and-drop__icon"></div>
+                                            <div class="q6-drag-and-drop__title q6-black-text">
+                                                Drag & Drop
+                                            </div>
+                                            <div class="q6-drag-and-drop__intructions q6-black-text">
+                                                your files here, or 
+                                                <div class="q6-upload-file-link">
+                                                    <input type="file" name="file" id="file" />
+                                                    <label class="q6-green-text" for="file">Browse</label>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="q6-drag-and-drop__file-container q6-hidden">
+                                            <div>
+                                                <div class="q6-ok-icon"></div>
+                                            </div>
+                                            <div>
+                                                <div class="q6-input__label">
+                                                    <label>File selected</label>
+                                                </div>                                            
+                                                <div class="q6-drag-and-drop__filename"></div> 
+                                                <div id="remove_selected_video" class="q6-file-remove">Remove</div>
+                                            </div>
+                                        </div>
+                                                                    
                                     </div>
-                                </div>
-                                <div class="q6-drag-and-drop__file-container q6-hidden">
-                                    <div class="q6-drag-and-drop__filename"></div> 
-                                    <div id="remove_selected_video" class="q6-remove-video-icon q6-margin-left_10px"></div>
-                                </div>
-                                                               
+                                
+                                </div>                            
                             </div>
-                        
-                        </div>
 
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="input_url">Insert link</label>
-                                <span>Use external link for your video file</span>
+                            <div class="q6-radio-block">
+                                <label class="q6-radio-button">
+                                    <input type="radio" name="file-selector" value="insert_link">
+                                    <span class="q6-radio-checkmark"></span>
+                                </label>                                                           
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="input_url">Insert link</label>
+                                        <span>Use external link for your video file</span>
+                                    </div>
+                                    <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
+                                </div>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
-                        </div>
 
-                        <div id="video_upload_progress" class="q6-hidden q6-margin-top_25px">
-                            <div class="q6-video-upload__message">
-                                <div>Encoding &nbsp;</div>
-                                <div id="video_upload_percentage">73</div>
-                                <div>%</div>
-                            </div>
-                            <div class="q6-video-upload__progress-bar">
-                                <div class="q6-progress-complete" style="width:73%"></div>
-                            </div>
-                        </div>                        
-                        
+                            <div id="video_upload_progress" class="q6-hidden q6-margin-top_25px">
+                                <div class="q6-video-upload__message">
+                                    <div>Encoding &nbsp;</div>
+                                    <div id="video_upload_percentage">73</div>
+                                    <div>%</div>
+                                </div>
+                                <div class="q6-video-upload__progress-bar">
+                                    <div class="q6-progress-complete" style="width:73%"></div>
+                                </div>
+                            </div>                        
+                            
+                        </div>
                     </div>
                     <div class="q6-input-details-container">
+                        <h2 class="q6-section-title q6-black-text">Output info</h2>
                         <div class="q6-two-columns">
                             <div class="q6-input">
                                 <div class="q6-input__label">
-                                    <label for="project_name">Select your project</label>
+                                    <label for="project_name">Project</label>
+                                    <a href="">Manage</a>
                                 </div>
                                 <div class="q6-custom-select">
                                     <select class="q6-select" id="project_name" required="" name="project_name">
@@ -194,7 +216,8 @@
                             </div>
                             <div class="q6-input">
                                 <div class="q6-input__label">
-                                    <label for="project_name">Store encoded video</label>
+                                    <label for="project_name">Storage</label>
+                                    <a href="">Manage</a>
                                 </div>
                                 <div class="q6-custom-select">
                                     <select class="q6-select" id="project_name" required="" name="project_name">
@@ -207,65 +230,62 @@
                         <div class="q6-two-columns">
                             <div class="q6-input">
                                 <div class="q6-input__label">
-                                    <label for="project_name">Select encoding profiles</label>
+                                    <label for="project_name">Transcoding Profiles</label>
+                                    <a href="">Manage</a>
                                 </div>
                                 <div class="q6-multiple-checkboxes">
-                                    <label class="q6-checkbox q6-black-text">MP4
+                                    <label class="q6-checkbox q6-black-text">
+                                        <div>mp4</div>
+                                        <div>                                            
+                                            <p>MP4, H264</p>
+                                            <p>1080, 720, 480, 360, 240</p>
+                                        </div>
                                         <input type="checkbox" checked="checked">
                                         <span class="q6-checkmark"></span>
                                     </label>
-                                    <label class="q6-checkbox q6-black-text">HLS
+                                    <label class="q6-checkbox q6-black-text">
+                                        <div>hls</div>
+                                        <div>                                            
+                                            <p>HLS, H264</p>
+                                            <p>1080, 720, 480, 360, 240</p>
+                                        </div>
                                         <input type="checkbox">
                                         <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">MPEG-DASH
+                                    </label>    
+                                    <label class="q6-checkbox q6-black-text">
+                                        <div>mpeg-dash</div>
+                                        <div>                                            
+                                            <p>MPEG-DASH, H264</p>
+                                            <p>1080, 720, 480, 360, 240</p>
+                                        </div>
                                         <input type="checkbox">
                                         <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">Best
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">HBO_new
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">HBO_ONE
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">Test
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">Custom
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                    </label>                                    
+                                    </label>                                                                   
                                 </div>
                             </div>
-                            <div>
-                                <div class="q6-two-columns">
+                            <div class="q6-settings-and-buttons">
+                                <div id="advanced-output-settings" class="q6-hidden">
+                                    <div class="q6-two-columns">
+                                        <div class="q6-input">
+                                            <div class="q6-input__label q6-align-start">
+                                                <label for="input_url">Start time</label> <div class="q6-help-icon"><span>?</span></div>
+                                            </div>
+                                            <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
+                                        </div>
+                                        <div class="q6-input">
+                                            <div class="q6-input__label q6-align-start"">
+                                                <label for="input_url">Duration</label> <div class="q6-help-icon"><span>?</span></div>
+                                            </div>
+                                            <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
+                                        </div>
+                                    </div>
                                     <div class="q6-input">
                                         <div class="q6-input__label q6-align-start">
-                                            <label for="input_url">Start time</label> <div class="q6-help-icon"><span>?</span></div>
+                                            <label for="input_url">Output path variables</label> <div class="q6-help-icon"><span>?</span></div>
                                         </div>
-                                        <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
-                                    </div>
-                                    <div class="q6-input">
-                                        <div class="q6-input__label q6-align-start"">
-                                            <label for="input_url">Duration</label> <div class="q6-help-icon"><span>?</span></div>
-                                        </div>
-                                        <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
-                                    </div>
-                                </div>
-                                <div class="q6-input">
-                                    <div class="q6-input__label q6-align-start">
-                                        <label for="input_url">Output path variables</label> <div class="q6-help-icon"><span>?</span></div>
-                                    </div>
 
 
-                                    <textarea class="q6-demo-parameters q6-black-text" placeholder="{
+                                        <textarea class="q6-demo-parameters q6-black-text" placeholder="{
 &quot;param1&quot;: &quot;value1&quot;,
 &quot;param2&quot;: &quot;value2&quot;
 ...
@@ -273,18 +293,31 @@
 
                              
 
+                                    </div>
                                 </div>
+
+                                <div class="q6-settings-buttons">
+                                    <button id="advanced-settings" class="q6-button q6-blue-border q6-blue-text q6-max-wide q6-top-margin"> 
+                                        <span>Advanced Settings</span>
+                                    </button>     
+                                    <button id="hide-advanced-settings" class="q6-button q6-blue-border q6-blue-text q6-max-wide q6-top-margin q6-hidden"> 
+                                        <span>Hide Advanced Settings</span>
+                                    </button>                                                                       
+                                    <button id="upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">
+                                        <span>Start Transcoding</span>
+                                    </button>
+                                    <button id="cancel-upload-button" class="q6-button q6-red-background q6-red-border q6-max-wide q6-top-margin q6-hidden">
+                                        <span>Cancel</span>
+                                    </button>
+                                    <button id="start-new-upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin q6-hidden"> 
+                                        <span>Start New Transcoding</span>
+                                    </button>  
+                                </div>
+
                             </div>
+
                         </div>
-                        <button id="upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin">
-                            <span>Upload and Encode</span>
-                        </button>
-                        <button id="cancel-upload-button" class="q6-button q6-red-background q6-red-border q6-max-wide q6-top-margin q6-hidden">
-                            <span>Cancel</span>
-                        </button>
-                        <button id="start-new-upload-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin q6-hidden"> 
-                            <span>Start new Upload and Encode</span>
-                        </button>                        
+                      
 
                         <script>
 
@@ -418,6 +451,17 @@
                                                                                 
                             });             
 
+                            // click Advanced Settings button - advanced-settings
+                            $("#advanced-settings").click(function() {
+                                $("#advanced-output-settings").removeClass("q6-hidden");  
+                                $(this).addClass("q6-hidden");  
+                                $("#hide-advanced-settings").removeClass("q6-hidden");                                                                                                      
+                            });      
+                            $("#hide-advanced-settings").click(function() {
+                                $("#advanced-output-settings").addClass("q6-hidden"); 
+                                $(this).addClass("q6-hidden");   
+                                $("#advanced-settings").removeClass("q6-hidden");                                                                                                      
+                            });                                                       
 
                             // when we click Cancel button
                             $("#cancel-upload-button").click(function() {

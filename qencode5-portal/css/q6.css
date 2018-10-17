@@ -228,9 +228,52 @@
 }
 
 .q6-drag-and-drop-container{
-    padding: 23px;
+    padding: 21px;
     border-radius: 13px;
     height: 100%;
+}
+
+.q6-radio-block{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-radio-button {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.q6-radio-button input {
+    display: none;
+}
+
+.q6-radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+
+    background-image: url(../img/radio_btn.png);
+    background-size: 24px 50px;
+    background-repeat: no-repeat;
+
+    background-position: 0 -25px;    
+}
+
+.q6-radio-button input:checked ~ .q6-radio-checkmark {
+    background-position: 0 0;   
+}
+
+
+.q6-radio-block .q6-input{
+    flex: 1;
 }
 
 .q6-drag-and-drop{
@@ -255,7 +298,7 @@
 .q6-drag-and-drop__icon{
     width: 65px;
     height: 57px;
-
+    margin: 0 auto;
     background-image: url(../img/drag_and_drop_icon.png);
     background-size: 65px 57px;
     background-repeat: no-repeat;    
@@ -299,7 +342,6 @@
     display: flex;
     align-items: center;   
     justify-content: center; 
-    width: 100%;
 }
 
 .q6-remove-video-icon{
@@ -312,11 +354,32 @@
 }
 
 .q6-drag-and-drop__filename{
-    font-size: 14px;
+    font-size: 16px;
     color: #575757;
+    text-align: left;
     word-wrap: break-word;
+    font-family: GraphikMedium;  
+}
 
-    max-width: 88%;    
+.q6-ok-icon{
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/ok_icon.png);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;    
+}
+
+.q6-drag-and-drop__file-container > div:nth-of-type(2){
+    max-width: 290px;
+    min-width: 180px;
+}
+
+.q6-file-remove{
+    color: #575757;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;    
 }
 
 .q6-input{
@@ -547,9 +610,46 @@ a.q6-button{
     cursor: pointer;
 }
 
+.q6-checkbox > div:first-of-type{
+    font-family: GraphikMedium;
+}
+
+.q6-checkbox p{
+    margin: 0;
+    font-size: 13px;
+}
+
+.q6-input__label > a{
+    font-family: GraphikRegular;
+    font-size: 13px;
+    color: #1fa550;    
+}
+
+.q6-transcoding-input-info{
+    height: 100%;    
+}
+
+.q6-advanced-output-settings{
+
+}
+
+.q6-settings-and-buttons{
+    display: flex; 
+    flex-direction: column; 
+}
+
+.q6-settings-buttons{
+    width: 100%;
+    margin-bottom: 11px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 .q6-checkmark {
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
     height: 18px;
     width: 18px;
