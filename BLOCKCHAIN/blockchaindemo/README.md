@@ -170,7 +170,7 @@ The App is here https://github.com/15Dkatz/sf-chain-guides
     Run app
     $ npm run dev
 
-    Start app from another HTTP and PORT at another termina; and connect to running app at 5001 port
+    Start app from another HTTP and PORT at another terminal and connect to running app at 5001 port
     $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev 
 
     In Postman make few transactions in post requests to http://localhost:3001/transact
@@ -224,3 +224,107 @@ The App is here https://github.com/15Dkatz/sf-chain-guides
 63. Add clear function to transaction-pool.js
 
 64. Add a test to transaction-pool.test.js to test clear function
+
+65. Add test to transaction.test.js to test 'creating a reward transaction'
+
+67. Add "clear transactions" message to p2p-server.js
+    So we bassically force all connected sockets to run clear() function on transactionPool
+
+68. Create miner instance in app/index.js
+
+69. Add mine-transactions GET route to app/index.js
+
+70. TEST mining blocks:
+
+    start instance of the app
+    $ npm run dev
+    and the app will run at http://localhost:3001/
+
+    Start app from another HTTP and PORT at another terminal and connect to running app at 5001 port
+    $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev   
+    the app will run at http://localhost:3002/  
+
+    In Postman make few transactions in post requests to http://localhost:3001/transact
+    The 'Body' must be 'raw'
+
+    {
+        "recipient":"jdfaldlasjfl343l4jldss",
+        "amount": 20
+    }        
+
+    and
+
+    {
+        "recipient":"jdfaldlasjfl343l4jldss",
+        "amount": 14
+    }        
+
+    NOW we can call for GET request http://localhost:3002/mine-transactions
+    transactions will be added to the chain and chain will be replaced
+    and we will be redirected to http://localhost:3002/blocks
+
+
+71. Calculate Wallet Balance, see chapter 66 https://www.udemy.com/build-blockchain/learn/v4/t/lecture/9423068?start=0
+
+72. Add calculateBalance function to wallet/index.js
+
+73. Add this.balance = this.calculateBalance(blockchain); to createTransaction function and add blockchain argument
+
+74. Add blockchain to const transaction = wallet.createTransaction(recipient, amount, blockchain, transactionPool); in app/index.js
+    and we must add it to wallet/index.test.js as well and in wallet/transaction-pool.test.js
+
+    and run tests
+        $ npm run jest-test    
+
+75. Add test to test calculateBalance function in wallet/index.test.js
+
+76. TEST the complete app
+
+    start instance of the app
+    $ npm run dev
+    and the app will run at http://localhost:3001/
+
+    Start app from another HTTP and PORT at another terminal and connect to running app at 5001 port
+    $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev   
+    the app will run at http://localhost:3002/  
+
+    Get Public Key of one of the connected wallets
+    http://localhost:3002/public-key
+
+    In Postman make transaction in post requests to http://localhost:3001/transact
+    The 'Body' must be 'raw', use Public Key from http://localhost:3002/public-key
+
+    {
+        "recipient":"0464ad28dda49a775ff8e9e7df60e474719ab55413ea554d592a9a2b46c3da1d91e76de5475b6df6d65bde3831beed8c169981013fc7ce7dbfc442a780fd59a5ad",
+        "amount": 20
+    }       
+
+    and couple more transactions 
+
+    {
+        "amount": 12,
+        "address": "0464ad28dda49a775ff8e9e7df60e474719ab55413ea554d592a9a2b46c3da1d91e76de5475b6df6d65bde3831beed8c169981013fc7ce7dbfc442a780fd59a5ad"
+    }
+
+    {
+        "amount": 43,
+        "address": "0464ad28dda49a775ff8e9e7df60e474719ab55413ea554d592a9a2b46c3da1d91e76de5475b6df6d65bde3831beed8c169981013fc7ce7dbfc442a780fd59a5ad"
+    }    
+
+    We can see transactions in TransactionPool here http://localhost:3001/transactions or http://localhost:3002/transactions
+
+    Now we can MINE transactions by going to http://localhost:3001/mine-transactions 
+    and we will be redirected to http://localhost:3001/blocks
+
+
+    Do another transaction to see the balance of the wallet
+
+    In Postman make transaction in post requests to http://localhost:3001/transact
+    The 'Body' must be 'raw', use Public Key from http://localhost:3002/public-key
+
+    {
+        "recipient":"0464ad28dda49a775ff8e9e7df60e474719ab55413ea554d592a9a2b46c3da1d91e76de5475b6df6d65bde3831beed8c169981013fc7ce7dbfc442a780fd59a5ad",
+        "amount": 20
+    }         
+
+    Keep in mined that if you MINED from the 1st wallet it also got 50 as mining reward

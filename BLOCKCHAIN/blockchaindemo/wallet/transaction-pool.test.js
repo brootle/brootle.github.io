@@ -1,18 +1,20 @@
 const TransactionPool = require('./transaction-pool');
 const Transaction = require('./transaction');
 const Wallet = require('./index');
+const Blockchain = require('../blockchain');
 
 describe('TransactionPool', ()=>{
 
-    let transactionPool, wallet, transaction;
+    let transactionPool, wallet, transaction, blockchain;
 
     beforeEach(()=>{
         transactionPool = new TransactionPool();
         wallet = new Wallet();
+        blockchain = new Blockchain();
         // transaction = Transaction.newTransaction(wallet, 'dsf43453kl434', 30);        
         // transactionPool.updateOrAddTransaction(transaction);
 
-        transaction = wallet.createTransaction('dsf43453kl434', 30, transactionPool);
+        transaction = wallet.createTransaction('dsf43453kl434', 30, blockchain, transactionPool);
     });
 
     it('add a transaction to the pool', ()=>{
@@ -32,7 +34,7 @@ describe('TransactionPool', ()=>{
 
     it('clears transactions', ()=>{
         transactionPool.clear();
-        expect(transactionPool).toEqual([]);
+        expect(transactionPool.transactions).toEqual([]);
     });
 
     describe('mixing valid and corrupt transactions', () => {
@@ -45,7 +47,7 @@ describe('TransactionPool', ()=>{
             // now let's make transactions, half of them will be corrupted
             for(let i=0; i<6; i++){
                 wallet = new Wallet();
-                transaction = wallet.createTransaction('ldkfjae43ldjfal', 30, transactionPool);
+                transaction = wallet.createTransaction('ldkfjae43ldjfal', 30, blockchain, transactionPool);
 
                 // when i is even we corrupt transaction with some stupid amount number
                 if(i%2==0){

@@ -11,7 +11,8 @@ const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 // there will be different data passed over sockets, so we create types for data
 const MESSAGE_TYPES = {
     chain: "CHAIN",
-    transaction: "TRANSACTION"
+    transaction: "TRANSACTION",
+    clear_transactions: "CLEAR_TRANSACTIONS"
 };
 
 // define P2p class
@@ -80,7 +81,10 @@ class P2pServer {
                     break;
                 case MESSAGE_TYPES.transaction:
                     this.transactionPool.updateOrAddTransaction(data.transaction);
-                    break;                    
+                    break;         
+                case MESSAGE_TYPES.clear_transactions:
+                    this.transactionPool.clear();
+                    break;                                  
             }
 
             // replace chain with updated one
@@ -107,6 +111,14 @@ class P2pServer {
     broadcastTransaction(transaction){
         this.sockets.forEach(socket => this.sendTransaction(socket, transaction));
     }
+
+    broadcastClearTransactions(){
+        this.sockets.forEach(socket => socket.send(
+            JSON.stringify({
+                type: MESSAGE_TYPES.clear_transactions
+            })            
+        ));       
+    }    
 
     sendTransaction(socket, transaction){
         socket.send(JSON.stringify({
