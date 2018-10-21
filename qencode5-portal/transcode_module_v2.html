@@ -137,7 +137,7 @@
                                     <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
                                     <span class="q6-radio-checkmark"></span>
                                 </label>                                                        
-                                <div id="drop_zone" ondragleave="dragLeaveHandler(event);" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" class="q6-drag-and-drop q6-white-background">
+                                <div id="drop_zone" class="q6-drag-and-drop q6-white-background">
                                     
                                     <div class="q6-drag-and-drop__message-container">                                    
                                         <div class="q6-browse-file">
@@ -261,68 +261,71 @@
                                                 <div id="progress_controller" class="q6-progress__controller"></div>
                                             </div>
                                             <script>
-                                                // based on https://www.kirupa.com/html5/drag.htm
+                                                $(function () {
 
-                                                var dragItem = document.querySelector("#progress_controller");
-                                                var progressContainer = document.querySelector("#progress_container");
+                                                    // progress bar
+                                                    // based on https://www.kirupa.com/html5/drag.htm
+                                                    var dragItem = document.querySelector("#progress_controller");
+                                                    var progressContainer = document.querySelector("#progress_container");
 
-                                                var active = false;
-                                                var currentX;
-                                                var initialX;
-                                                var xOffset = 0;  
+                                                    var active = false;
+                                                    var currentX;
+                                                    var initialX;
+                                                    var xOffset = 0;  
 
-                                                progressContainer.addEventListener("touchstart", dragStart, false);
-                                                progressContainer.addEventListener("touchend", dragEnd, false);
-                                                progressContainer.addEventListener("touchmove", drag, false);
+                                                    progressContainer.addEventListener("touchstart", dragStart, false);
+                                                    progressContainer.addEventListener("touchend", dragEnd, false);
+                                                    progressContainer.addEventListener("touchmove", drag, false);
 
-                                                progressContainer.addEventListener("mousedown", dragStart, false);
-                                                progressContainer.addEventListener("mouseup", dragEnd, false);
-                                                progressContainer.addEventListener("mousemove", drag, false);     
+                                                    progressContainer.addEventListener("mousedown", dragStart, false);
+                                                    progressContainer.addEventListener("mouseup", dragEnd, false);
+                                                    progressContainer.addEventListener("mousemove", drag, false);     
 
-                                                progressContainer.addEventListener("mouseout", dragEnd, false); 
+                                                    progressContainer.addEventListener("mouseout", dragEnd, false); 
 
-                                                function dragStart(e) {
-                                                    if (e.type === "touchstart") {
-                                                        initialX = e.touches[0].clientX - xOffset;
-                                                    } else {
-                                                        initialX = e.clientX - xOffset;
-                                                    }
-
-                                                    if (e.target === dragItem) {
-                                                        active = true;
-                                                    }
-                                                }
-
-                                                function dragEnd(e) {
-                                                    initialX = currentX;
-                                                    active = false;
-                                                }
-
-                                                function drag(e) {
-                                                    if (active) {
-                                                    
-                                                        e.preventDefault();
-                                                    
-                                                        if (e.type === "touchmove") {
-                                                            currentX = e.touches[0].clientX - initialX;
+                                                    function dragStart(e) {
+                                                        if (e.type === "touchstart") {
+                                                            initialX = e.touches[0].clientX - xOffset;
                                                         } else {
-                                                            currentX = e.clientX - initialX;
+                                                            initialX = e.clientX - xOffset;
                                                         }
 
-                                                        xOffset = currentX;
-
-                                                        setTranslate(currentX, dragItem);
+                                                        if (e.target === dragItem) {
+                                                            active = true;
+                                                        }
                                                     }
-                                                }
 
-                                                function setTranslate(xPos, el) {
-                                                    var progressBarWidth=$("#progress_bar").width();                                                    
-                                                    if(xPos>=0 && xPos<=progressBarWidth){
-                                                        var progress = Math.round(xPos*100/progressBarWidth);
-                                                        $("#progress_value").html(progress+'%');
-                                                        el.style.transform = "translate3d(" + xPos + "px, " + "0, 0)";
-                                                    }                                                    
-                                                }                                                                                                                                      
+                                                    function dragEnd(e) {
+                                                        initialX = currentX;
+                                                        active = false;
+                                                    }
+
+                                                    function drag(e) {
+                                                        if (active) {
+                                                        
+                                                            e.preventDefault();
+                                                        
+                                                            if (e.type === "touchmove") {
+                                                                currentX = e.touches[0].clientX - initialX;
+                                                            } else {
+                                                                currentX = e.clientX - initialX;
+                                                            }
+
+                                                            xOffset = currentX;
+
+                                                            setTranslate(currentX, dragItem);
+                                                        }
+                                                    }
+
+                                                    function setTranslate(xPos, el) {
+                                                        var progressBarWidth=$("#progress_bar").width();                                                    
+                                                        if(xPos>=0 && xPos<=progressBarWidth){
+                                                            var progress = Math.round(xPos*100/progressBarWidth);
+                                                            $("#progress_value").html(progress+'%');
+                                                            el.style.transform = "translate3d(" + xPos + "px, " + "0, 0)";
+                                                        }                                                    
+                                                    }   
+                                                });                                                                                                                                                                                   
                                             </script>
                                         </div>                                         
                                     </div>                                                                                                    
@@ -394,96 +397,49 @@
                       
 
                         <script>
+                            $(function () {
+                                $("#input_url").click(function() {
+                                    $('input[name=file-selector][value=insert_link').prop('checked',true);
+                                });
 
-                            ////////////////////////////////////////////////////////////////
-                            ////////////////////////////////////////////////////////////////
-                            // HANDLE FILE DROP ZONE
-                            function dropHandler(ev) {
-                                //console.log('File(s) dropped');
+                                $("#drop_zone").click(function() {
+                                    $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                });                                
 
-                                // Prevent default behavior (Prevent file from being opened)
-                                ev.preventDefault();                                
+                                ////////////////////////////////////////////////////////////////
+                                ////////////////////////////////////////////////////////////////
+                                // HANDLE FILE DROP ZONE
+                                document.querySelector("#drop_zone").addEventListener('dragover',dragOverHandler);
+                                document.querySelector("#drop_zone").addEventListener('dragleave',dragLeaveHandler);
+                                document.querySelector("#drop_zone").addEventListener('drop',dropHandler);
 
-                                var fileName = '';
+                                function dropHandler(ev) {
+                                    //console.log('File(s) dropped');
 
-                                if (ev.dataTransfer.items) {
-                                    // Use DataTransferItemList interface to access the file(s)
-                                    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-                                        // If dropped items aren't files, reject them
-                                        if (ev.dataTransfer.items[i].kind === 'file') {
-                                            var file = ev.dataTransfer.items[i].getAsFile();
-                                            //console.log('... file[' + i + '].name = ' + file.name);
-                                            fileName+=file.name;
+                                    // Prevent default behavior (Prevent file from being opened)
+                                    ev.preventDefault();                                
+
+                                    var fileName = '';
+
+                                    if (ev.dataTransfer.items) {
+                                        // Use DataTransferItemList interface to access the file(s)
+                                        for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                                            // If dropped items aren't files, reject them
+                                            if (ev.dataTransfer.items[i].kind === 'file') {
+                                                var file = ev.dataTransfer.items[i].getAsFile();
+                                                //console.log('... file[' + i + '].name = ' + file.name);
+                                                fileName+=file.name;
+                                            }
                                         }
-                                    }
-                                } else {
-                                    // Use DataTransfer interface to access the file(s)
-                                    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                                        //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-                                        fileName+=ev.dataTransfer.files[i].name
-                                    }
-                                } 
+                                    } else {
+                                        // Use DataTransfer interface to access the file(s)
+                                        for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                                            //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+                                            fileName+=ev.dataTransfer.files[i].name
+                                        }
+                                    } 
 
-                                //console.log("FILE: ",fileName);
-                                $('.q6-drag-and-drop__filename').html(fileName);
-                                // show box fith file
-                                $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
-                                // hide box with bowse link
-                                $(".q6-browse-file").addClass("q6-hidden");  
-
-                                // we should also must make sure we show remove button 
-                                $("#remove_selected_video").show();                                
-                                
-                                // Pass event to removeDragData for cleanup
-                                removeDragData(ev)
-                            }
-
-                            function dragOverHandler(ev) {
-                                // console.log('File(s) in drop zone'); 
-
-                                // Prevent default behavior (Prevent file from being opened)
-                                ev.preventDefault();
-
-                                // highlight drag and drop area
-                                $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
-                            }             
-
-                            function dragLeaveHandler(ev) {
-                                // console.log('File(s) out of drop zone'); 
-
-                                // Prevent default behavior (Prevent file from being opened)
-                                ev.preventDefault();
-
-                                // remove highlight of drag and drop area
-                                $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                
-                            }                                               
-                            
-
-                            function removeDragData(ev) {
-                                // console.log('Removing drag data');
-
-                                if (ev.dataTransfer.items) {
-                                    // Use DataTransferItemList interface to remove the drag data
-                                    ev.dataTransfer.items.clear();
-                                } else {
-                                    // Use DataTransfer interface to remove the drag data
-                                    ev.dataTransfer.clearData();
-                                }
-
-                                // remove highlight of drag and drop area
-                                $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                  
-                            }
-                            ////////////////////////////////////////////////////////////////
-                            ////////////////////////////////////////////////////////////////
-
-
-                            // when we click Browse link
-                            $("#file").change(function(e) {
-                                var fileName = e.target.value.split( '\\' ).pop();
-                            
-                                // if filename is not empty
-                                // filename can be empty if user clicks cancel instead of OK when chosing file
-                                if(fileName){
+                                    //console.log("FILE: ",fileName);
                                     $('.q6-drag-and-drop__filename').html(fileName);
                                     // show box fith file
                                     $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
@@ -491,78 +447,139 @@
                                     $(".q6-browse-file").addClass("q6-hidden");  
 
                                     // we should also must make sure we show remove button 
-                                    $("#remove_selected_video").show();
-                                } 
+                                    $("#remove_selected_video").show();                                                                
+                                    
+                                    // Pass event to removeDragData for cleanup
+                                    removeDragData(ev)
+                                }
 
-                                // clear value in case same file will be selected
-                                $(this).val('');                                      
-                            });           
-                           
+                                function dragOverHandler(ev) {
+                                    // console.log('File(s) in drop zone'); 
 
-                            // when we click Remove icon
-                            $("#remove_selected_video").click(function() {
-                                // hide box fith file
-                                $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
-                                // show box with bowse link
-                                $(".q6-browse-file").toggleClass("q6-hidden");                                          
-                            });         
+                                    // Prevent default behavior (Prevent file from being opened)
+                                    ev.preventDefault();
 
-                            // when we click Upload and Encode button
-                            $("#upload-button").click(function() {
-                                // we must hide remove button if it's visible!
-                                var removeButtonVisible = $("#remove_selected_video").is(':visible'); 
-                                if(removeButtonVisible){
-                                    $("#remove_selected_video").hide();
-                                }          
+                                    // highlight drag and drop area
+                                    $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
 
-                                // we must hide Upload button and show big Cancel button 
-                                $("#upload-button").toggleClass("q6-hidden");
-                                $("#cancel-upload-button").toggleClass("q6-hidden");
+                                    // select radiobutton
+                                    $('input[name=file-selector][value=dropzone_file').prop('checked',true);                                      
+                                }             
 
-                                // we must show upload progress
-                                $("#video_upload_progress").toggleClass("q6-hidden");
+                                function dragLeaveHandler(ev) {
+                                    // console.log('File(s) out of drop zone'); 
+
+                                    // Prevent default behavior (Prevent file from being opened)
+                                    ev.preventDefault();
+
+                                    // remove highlight of drag and drop area
+                                    $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                
+                                }                                               
                                 
-                                                                                
-                            });                                                                 
 
-                            // when we click Cancel button
-                            $("#cancel-upload-button").click(function() {
+                                function removeDragData(ev) {
+                                    // console.log('Removing drag data');
 
-                                // we must hide Cancel button and show big Upload button 
-                                $("#cancel-upload-button").toggleClass("q6-hidden");
-                                $("#upload-button").toggleClass("q6-hidden");
+                                    if (ev.dataTransfer.items) {
+                                        // Use DataTransferItemList interface to remove the drag data
+                                        ev.dataTransfer.items.clear();
+                                    } else {
+                                        // Use DataTransfer interface to remove the drag data
+                                        ev.dataTransfer.clearData();
+                                    }
 
-                                // we must hide upload progress
-                                $("#video_upload_progress").toggleClass("q6-hidden");  
+                                    // remove highlight of drag and drop area
+                                    $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                  
+                                }
+                                ////////////////////////////////////////////////////////////////
+                                //////////////////////////////////////////////////////////////// 
 
-                                // show remove video icon   
-                                $("#remove_selected_video").show();                           
-                                                                                
-                            });    
+                                // when we click Browse link
+                                $("#file").change(function(e) {
+                                    var fileName = e.target.value.split( '\\' ).pop();
+                                
+                                    // if filename is not empty
+                                    // filename can be empty if user clicks cancel instead of OK when chosing file
+                                    if(fileName){
+                                        $('.q6-drag-and-drop__filename').html(fileName);
+                                        // show box fith file
+                                        $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                        // hide box with bowse link
+                                        $(".q6-browse-file").addClass("q6-hidden");  
 
-                            // when we click Start new uplad button - we reset to initial state
-                            $("#start-new-upload-button").click(function() {
+                                        // we should also must make sure we show remove button 
+                                        $("#remove_selected_video").show();
+                                    } 
 
-                                // hide progress
-                                $("#video_upload_progress").toggleClass("q6-hidden"); 
-
-                                // show remove video icon   
-                                $("#remove_selected_video").show();     
-
-                                // hide box fith file
-                                $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
-                                // show box with bowse link
-                                $(".q6-browse-file").toggleClass("q6-hidden");  
-
-                                // hide start new uplad button
-                                $("#start-new-upload-button").toggleClass("q6-hidden");  
-
-                                // show upload button                   
-                                $("#upload-button").toggleClass("q6-hidden");                                                                        
-                                                                                
-                            });                                                                                                       
-                                                                                                                                                           
+                                    // clear value in case same file will be selected
+                                    $(this).val('');                                      
+                                });           
                             
+
+                                // when we click Remove icon
+                                $("#remove_selected_video").click(function() {
+                                    // hide box fith file
+                                    $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                    // show box with bowse link
+                                    $(".q6-browse-file").toggleClass("q6-hidden");                                          
+                                });         
+
+                                // when we click Upload and Encode button
+                                $("#upload-button").click(function() {
+                                    // we must hide remove button if it's visible!
+                                    var removeButtonVisible = $("#remove_selected_video").is(':visible'); 
+                                    if(removeButtonVisible){
+                                        $("#remove_selected_video").hide();
+                                    }          
+
+                                    // we must hide Upload button and show big Cancel button 
+                                    $("#upload-button").toggleClass("q6-hidden");
+                                    $("#cancel-upload-button").toggleClass("q6-hidden");
+
+                                    // we must show upload progress
+                                    $("#video_upload_progress").toggleClass("q6-hidden");
+                                    
+                                                                                    
+                                });                                                                 
+
+                                // when we click Cancel button
+                                $("#cancel-upload-button").click(function() {
+
+                                    // we must hide Cancel button and show big Upload button 
+                                    $("#cancel-upload-button").toggleClass("q6-hidden");
+                                    $("#upload-button").toggleClass("q6-hidden");
+
+                                    // we must hide upload progress
+                                    $("#video_upload_progress").toggleClass("q6-hidden");  
+
+                                    // show remove video icon   
+                                    $("#remove_selected_video").show();                           
+                                                                                    
+                                });    
+
+                                // when we click Start new uplad button - we reset to initial state
+                                $("#start-new-upload-button").click(function() {
+
+                                    // hide progress
+                                    $("#video_upload_progress").toggleClass("q6-hidden"); 
+
+                                    // show remove video icon   
+                                    $("#remove_selected_video").show();     
+
+                                    // hide box fith file
+                                    $(".q6-drag-and-drop__file-container").toggleClass("q6-hidden");
+                                    // show box with bowse link
+                                    $(".q6-browse-file").toggleClass("q6-hidden");  
+
+                                    // hide start new uplad button
+                                    $("#start-new-upload-button").toggleClass("q6-hidden");  
+
+                                    // show upload button                   
+                                    $("#upload-button").toggleClass("q6-hidden");                                                                        
+                                                                                    
+                                });                                                                 
+                            });
+                                                                                                                                                                                                                                                                
                         </script>                            
                     </div>
                 </div>
