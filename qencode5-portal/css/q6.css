@@ -632,8 +632,8 @@ a.q6-button{
 
 .q6-checkbox input {
     position: absolute;
-    opacity: 0;
     cursor: pointer;
+    display: none;
 }
 
 .q6-checkbox > div:first-of-type{
@@ -3805,7 +3805,7 @@ pre {
     background: #f7f8fa;
     margin-right: 15px;
     flex: 1;
-    padding: 20px;
+    padding: 20px 0;
     border-radius: 8px;    
 }
 
@@ -3828,6 +3828,68 @@ pre {
     color: #17172b;
     top: 12px;
     padding-right: 23px;
+}
+
+.q6-calc-formats .q6-custom-select{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.q6-calc-formats .q6-multiple-checkboxes{
+    height: initial;
+    border: 0;
+    padding: 0;
+    padding-right: 20px;
+}
+
+.q6-calc-formats .q6-checkbox > div:first-of-type {
+    position: absolute;
+    top: 6px;
+    left: 33%;
+    font-size: 13px;
+}
+
+.q6-calc-formats .q6-checkmark {
+    height: 30px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.q6-calc-formats .q6-checkbox {
+    padding-left: 0;
+    margin-bottom: 5px;
+}
+
+.q6-calc-formats .q6-checkbox .q6-checkmark:after {
+    border: solid #3270e9;
+    border-width: 0 2px 2px 0;
+    left: 23%;
+    top: 9px;
+}
+
+.q6-calc-formats .q6-checkmark {
+    border: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;    
+}
+
+.q6-calc-formats .q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: #e9effb;
+}
+
+.q6-calc-formats .q6-checkbox input:checked ~ div {
+    color: #3270e9;
+}
+
+.q6-calc-formats__note{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    color: #575757;
+    text-align: center;
+    font-size: 15px;    
 }
 /********************* CALCULATOR *********************/
 
