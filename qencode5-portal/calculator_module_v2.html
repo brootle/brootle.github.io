@@ -130,11 +130,11 @@
                             <div class="q6-input__label">
                                 <label for="input_minutes">Input minutes</label>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="input_minutes" value="200000000000">
+                            <input class="q6-input__field q6-black-text" type="text" id="input_minutes" value="">
                         </div>  
                         <script>
                             $(function () {
-                                document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                //document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
 
                                 document.getElementById('input_minutes').addEventListener('input', function (e) {
                                     e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
@@ -146,14 +146,26 @@
                             <div class="q6-input__label">
                                 <label for="your_cost">Your cost</label>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="your_cost" value="100000000">
+                            <input class="q6-input__field q6-black-text" type="text" id="your_cost" value="">
                         </div> 
                         <script>
                             $(function () {
-                                document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
-                                
+                                // on load
+                                //document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+
                                 document.getElementById('your_cost').addEventListener('input', function (e) {
-                                    e.target.value = '$ ' + e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+
+                                    if(e.target.value.includes(".")){
+                                        // if number is decimal
+                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9. ]/g, '').replace(/(\..*)\./g, '$1').trim();
+                                    } else{
+                                        // if the number is not decimal add spaces after thousands
+                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                    }
+                                    
+                                    
+                                    // original
+                                    //e.target.value = '$ ' + e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
                                 });     
                             });                                                    
                         </script>                                                                     
