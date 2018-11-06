@@ -130,12 +130,14 @@
                             <div class="q6-input__label">
                                 <label for="input_minutes">Input minutes</label>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="input_minutes" value="">
+                            <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="input_minutes" value="10000">
                         </div>  
                         <script>
                             $(function () {
-                                //document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                // format input value on page load id there is preset value
+                                document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
 
+                                // when user inputs value
                                 document.getElementById('input_minutes').addEventListener('input', function (e) {
                                     e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
                                 });     
@@ -146,13 +148,27 @@
                             <div class="q6-input__label">
                                 <label for="your_cost">Your cost</label>
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="your_cost" value="">
+                            <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="your_cost" value="4522.11">
                         </div> 
                         <script>
                             $(function () {
                                 // on load
-                                //document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                //document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();                                
 
+                                var inputValue = document.getElementById('your_cost').value;
+                                if(inputValue.includes(".")){
+                                    // if number is decimal
+                                    // fortmat part before dot                    
+                                    var integerValue = parseInt(inputValue).toString();
+                                    document.getElementById('your_cost').value = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim() + '.' + inputValue.split('.')[1];
+                                            
+                                } else{
+                                    // if the number is not decimal add spaces after thousands
+                                    document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                }                                
+
+
+                                // when user inputs value
                                 document.getElementById('your_cost').addEventListener('input', function (e) {
 
                                     if(e.target.value.includes(".")){
