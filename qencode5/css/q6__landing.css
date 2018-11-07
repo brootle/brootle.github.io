@@ -1,0 +1,606 @@
+/*******NOV-7-2018******* CALCULATOR ********---***********/
+.q6-container{
+    /*width: 1040px;*/
+    max-width: 1040px;
+    margin: auto;
+    padding: 0 20px;
+    box-sizing: content-box;    
+}
+
+.q6-button{
+    font-family: GraphikMedium;
+    background: transparent;
+    outline: none;
+    display: inline-block;
+    padding: 12px 14px;
+    margin-bottom: 0;
+    font-size: 16px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+
+    min-width: 88px;
+
+    color: white;
+}
+
+a.q6-button{
+    text-decoration: none;
+}
+
+.q6-input__label {
+    color: #171717;
+    font-size: 14px;
+    margin: 4px 0;
+    font-family: GraphikMedium;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=password].q6-input__field {
+    width: 100%;
+    padding: 14px 14px;
+    padding-bottom: 13px;
+    margin: 0;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #bcbcbc;
+    font-size: 16px;
+    line-height: initial;
+    font-family: GraphikRegular;
+    color: #575757;
+}
+
+.q6-select {
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    margin: 0!important;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #bcbcbc;
+    padding: 14px 14px;
+    padding-bottom: 13px;
+    padding-right: 20px;
+    font-size: 16px;
+    line-height: initial;
+    font-family: GraphikRegular;
+    color: #575757;
+}
+
+.q6-custom-select {
+    position: relative;
+}
+
+.q6-custom-select:after {
+    content: "\f0d7";
+    color: #bdbdbd;
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 14px;
+    padding-right: 10px;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.q6-multiple-checkboxes {
+    height: 244px;
+    width: 100%;
+    padding: 14px 14px;
+    padding-right: 5px;
+    margin: 0;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #bcbcbc;
+    font-size: 13px;
+    overflow-y: auto;
+}
+
+/* Checkbox */
+.q6-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    font-weight: 100;    
+}
+
+.q6-checkbox input {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
+
+.q6-checkbox > div:first-of-type{
+    font-family: GraphikMedium;
+}
+
+.q6-checkbox p{
+    margin: 0;
+    font-size: 13px;
+}
+
+.q6-input__label > a{
+    font-family: GraphikRegular;
+    font-size: 13px;
+    color: #1fa550;    
+}
+
+.q6-transcoding-input-info{
+    height: 100%;    
+}
+
+.q6-advanced-output-settings{
+
+}
+
+.q6-settings-and-buttons{
+    display: flex; 
+    flex-direction: column; 
+}
+
+.q6-settings-buttons{
+    width: 100%;
+    margin-bottom: 11px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.q6-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #bebebe;
+    border-radius: 3px;
+    transition: all 0.1s ease;
+}
+
+.q6-checkbox:hover input ~ .q6-checkmark {
+    background-color: #ededed;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: #1fa550;
+}
+
+.q6-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark:after {
+    display: block;
+}
+
+.q6-checkbox .q6-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 3px;
+    height: 8px;    
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Checkbox */
+
+
+/*start of calculator module*/
+.q6-module-title{
+    font-family: GraphikMedium;
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.q6-module-title--calc_icon{
+    position: relative;
+    padding-left: 40px;
+}
+
+.q6-module-title--calc_icon:before {
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 31px;
+    left: 0;
+    top: -3px;
+    background-image: url(../img/calculator_icon.png);
+    background-size: 27px 31px;
+    background-repeat: no-repeat;
+}
+
+.q6-calc-summary{
+    background: #f7f8fa;
+    margin: 15px 0;
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;    
+}
+
+
+.q6-calc-summary__inputs{
+    display: flex;
+    align-items: flex-end;  
+}
+
+.q6-calc-summary__message{
+    padding: 0 10px;
+    margin-top: 10px;
+    color: #929292;
+    font-size: 13px;    
+}
+
+.q6-calc-summary__message strong{
+    font-family: GraphikMedium;
+    font-weight: normal;    
+}
+
+.q6-calc-summary .q6-input {
+    margin: 0;
+}
+
+.q6-calc-summary input[type=text].q6-input__field{
+    color: #3270e9;
+    font-family: GraphikMedium;
+    font-size: 23px;
+    padding-left: 23px;
+    border-radius: 25px;
+    border: 0;
+}
+
+.q6-calc-summary .q6-input__label{
+    font-family: GraphikRegular, sans-serif;   
+    padding-left: 10px; 
+    margin: 0;
+    margin-bottom: 8px;    
+}
+
+.q6-calc-inputs-delimeter{
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    background-image: url(../img/exchange_icon.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    margin: 13px 15px;   
+}
+
+.q6-calc-summary__inputs .q6-input {
+    max-width: 230px;
+}
+
+.q6-calc-summary__inputs .q6-input:nth-of-type(1){
+    max-width: 260px;
+}
+
+.q6-calc-summary__details{
+    margin-left: 30px;  
+    display: flex;
+    align-items: flex-end;    
+    flex: 1; 
+    justify-content: space-between;    
+}
+
+.q6-calc-summary .q6-calc-summary__details .q6-input__label {
+    padding-left: 0px;
+}
+
+.q6-calc-summary-formats{
+    display: flex;
+    line-height: 28px;
+    font-size: 16px;  
+}
+
+.q6-calc-summary-formats > div:nth-of-type(2){
+    color: #171717;
+    font-family: GraphikMedium;
+    padding-left: 12px;    
+}
+
+.q6-calc-details-buttons{
+    margin-bottom: 5px;
+    margin-left: 15px;
+    max-width: 220px;    
+}
+
+.q6-calc-details-buttons .q6-button{
+    width: 100%;
+    margin-top: 7px;
+
+    font-size: 15px;
+    padding: 10px 14px;
+    padding-bottom: 9px;    
+}
+
+.q6-calc-formats{
+    display: flex;
+    margin: 15px 0;
+}
+
+.q6-calc-formats > div{
+    background: #f7f8fa;
+    margin-right: 15px;
+    flex: 1;
+    padding: 20px 0;
+    border-radius: 8px;    
+}
+
+.q6-calc-formats > div:last-of-type{
+    margin-right: 0;
+}
+
+.q6-calc-formats .q6-select{
+    background: #e7ebee;
+    border: 0;
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 26px;
+    border-radius: 25px;
+}
+
+.q6-calc-formats .q6-custom-select:after {
+    color: #17172b;
+    top: 15px;
+    padding-right: 17px;
+}
+
+.q6-calc-formats .q6-custom-select{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.q6-extra-formats > .q6-custom-select option:first-of-type{
+    display: none;
+}
+
+.q6-calc-formats .q6-multiple-checkboxes{
+    height: initial;
+    border: 0;
+    padding: 0;
+    padding-right: 20px;
+}
+
+.q6-calc-formats .q6-checkbox > div:first-of-type {
+    position: absolute;
+    top: 6px;
+    left: 33%;
+    font-size: 13px;
+}
+
+.q6-calc-formats .q6-checkmark {
+    height: 30px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.q6-calc-formats .q6-checkbox {
+    padding-left: 0;
+    margin-bottom: 5px;
+}
+
+.q6-calc-formats .q6-checkbox .q6-checkmark:after {
+    border: solid #3270e9;
+    border-width: 0 2px 2px 0;
+    left: 23%;
+    top: 9px;
+}
+
+.q6-calc-formats .q6-checkmark {
+    border: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;    
+}
+
+.q6-calc-formats .q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: #e9effb;
+}
+
+.q6-calc-formats .q6-checkbox input:checked ~ .q6-checkmark:hover {
+    background-color: #d8e7ff;
+}
+
+.q6-calc-formats .q6-checkbox input:checked ~ div {
+    color: #3270e9;
+}
+
+.q6-calc-formats__note{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    color: #575757;
+    text-align: center;
+    font-size: 15px;    
+}
+
+.q6-calc-details-buttons > .q6-button.q6-gray-background.q6-gray-border.q6-gray-text:hover{
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.q6-calc-details-buttons > .q6-button.q6-light-blue-background.q6-light-blue-border.q6-blue-text:hover{
+    background-color: #d8e7ff;
+    border-color: #d8e7ff;
+}
+/*end of calculator module*/
+
+/*MODIFICATORS*/
+/*background colors*/
+.q6-blue-background{
+    background: #3270eb;
+}
+
+.q6-light-blue-background{
+    background: #e9effd;
+}
+
+.q6-green-background{
+    background: #1fa550;
+}
+
+.q6-red-background{
+    background: #e04a4b;
+}
+
+.q6-gray-background{
+    background: #f3f3f3;
+}
+
+.q6-lighter-gray-background{
+    background: #f6f6f6;
+}
+
+
+.q6-light-gray-background{
+    background: #f8f8f8;
+}
+
+.q6-white-background{
+    background: white;
+}
+
+.q6-transparent-background{
+    background: transparent;
+}
+/*background colors*/
+
+/*border colors*/
+.q6-green-border{
+    border-color: #1fa550;
+}
+
+.q6-red-border{
+    border-color: #e04a4b;
+}
+
+.q6-blue-border{
+    border-color: #3270eb;
+}
+
+.q6-light-blue-border{
+    border-color: #e9effd;
+}
+
+.q6-white-border{
+    border-color: white;
+}
+
+.q6-gray-border{
+    border-color: #f3f3f3;;    
+}
+/*border colors*/
+
+
+/*text colors*/
+.q6-white-text{
+    color: white;
+}
+
+.q6-black-text{
+    color: #171717;
+}
+
+.q6-green-text{
+    color: #1fa550;
+}
+
+.q6-gray-text{
+    color: #6d6f6e;
+}
+
+
+.q6-light-gray-text{
+    color: #808298;
+}
+
+.q6-blue-text{
+    color: #3270e9;    
+}
+/*text colors*/
+
+.q6-margin-left_10px{
+    margin-left: 10px;
+}
+
+.q6-margin-left_15px{
+    margin-left: 15px;
+}
+
+.q6-margin-top_25px{
+    margin-top: 25px;
+}
+
+.q6-margin-bottom_50px{
+    margin-bottom: 50px;
+}
+
+.q6-hidden {
+    display: none;
+}
+
+.q6-max-wide{
+    width: 100%;
+}
+
+.q6-top-margin{
+    margin-top: 25px;    
+}
+
+.q6-align-start{
+    justify-content: flex-start;    
+}
+
+.q6-no-padding{
+    padding: 0;
+}
+
+.q6-no-right-padding{
+    padding-right: 0;
+}
+
+.q6-btn-small{
+    font-size: 13px;
+    padding: 6px 14px;    
+}
+/*MODIFICATORS*/
+/********************* CALCULATOR *********************/
