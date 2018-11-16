@@ -88,15 +88,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="q6-drag-and-drop__file-container q6-hidden">
-                                                    <div>
-                                                        <div class="q6-ok-icon"></div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-input__label">
-                                                            <label>File selected</label>
-                                                        </div>                                            
+                                                    <div>                  
+                                                        <div class="q6-videofile__icon"></div>                        
                                                         <div class="q6-drag-and-drop__filename"></div> 
-                                                        <div id="remove_selected_video" class="q6-file-remove">Remove</div>
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="new_file">
+                                                            <label class="q6-blue-text" for="new_file">Choose another file</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                                             
@@ -145,7 +143,109 @@
                                             $("#input_url").addClass("q6-input--disabled");
                                         });                                                                                                                                   
                                     });                                                                                                                                                                                                                                                                     
-                                </script>                                                      
+                                </script>      
+
+                                <script>
+                                    $(function (){
+                                        // when we click Browse link
+                                        $("#file").change(function(e) {
+                                            var fileName = e.target.value.split( '\\' ).pop();
+                                        
+                                            // if filename is not empty
+                                            // filename can be empty if user clicks cancel instead of OK when chosing file
+                                            if(fileName){
+                                                $('.q6-drag-and-drop__filename').html(fileName);
+                                                // show box fith file
+                                                $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                                // hide box with bowse link
+                                                $(".q6-browse-file").addClass("q6-hidden");  
+                                            } 
+
+                                            // clear value in case same file will be selected
+                                            $(this).val('');                                      
+                                        });   
+                                    });  
+                                </script>  
+
+                                <script>
+                                    $(function () {
+                                        // HANDLE FILE DROP ZONE
+                                        document.querySelector("#drop_zone").addEventListener('dragover',dragOverHandler);
+                                        document.querySelector("#drop_zone").addEventListener('dragleave',dragLeaveHandler);
+                                        document.querySelector("#drop_zone").addEventListener('drop',dropHandler);
+
+                                        function dropHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();                                
+
+                                            var fileName = '';
+
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                                                    // If dropped items aren't files, reject them
+                                                    if (ev.dataTransfer.items[i].kind === 'file') {
+                                                        var file = ev.dataTransfer.items[i].getAsFile();
+                                                        //console.log('... file[' + i + '].name = ' + file.name);
+                                                        fileName+=file.name;
+                                                    }
+                                                }
+                                            } else {
+                                                // Use DataTransfer interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                                                    //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+                                                    fileName+=ev.dataTransfer.files[i].name
+                                                }
+                                            } 
+
+                                            $('.q6-drag-and-drop__filename').html(fileName);
+                                            // show box fith file
+                                            $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                            // hide box with bowse link
+                                            $(".q6-browse-file").addClass("q6-hidden");  
+
+                                            // we should also must make sure we show remove button 
+                                            $("#remove_selected_video").show();                                                                
+                                            
+                                            // Pass event to removeDragData for cleanup
+                                            removeDragData(ev)
+                                        }
+
+                                        function dragOverHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // highlight drag and drop area
+                                            $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
+
+                                            // select radiobutton
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);                                      
+                                        }             
+
+                                        function dragLeaveHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                
+                                        }                                               
+                                        
+
+                                        function removeDragData(ev) {
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to remove the drag data
+                                                ev.dataTransfer.items.clear();
+                                            } else {
+                                                // Use DataTransfer interface to remove the drag data
+                                                ev.dataTransfer.clearData();
+                                            }
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                  
+                                        }           
+                                    });
+                                                                                                                                                                                                                                                                        
+                                </script>                                                                                
                                 
                             </div>                                
                             <div>
