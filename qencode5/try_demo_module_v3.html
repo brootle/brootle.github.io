@@ -119,6 +119,32 @@
                                     </div>
                                 </div>
 
+ 
+
+                                <script>
+                                    $(function () {
+                                        // when radio buttons clicked
+                                        $('input[name=file-selector]').change(function() {
+                                            if(this.value === "insert_link"){
+                                                $("#input_url").removeClass("q6-input--disabled");
+                                            } else{
+                                                $("#input_url").addClass("q6-input--disabled");
+                                            }
+                                        }); 
+
+                                        // when drop zone area or input url clicked
+                                        $("#input_url").click(function() {
+                                            $('input[name=file-selector][value=insert_link').prop('checked',true);
+                                            $(this).removeClass("q6-input--disabled");
+                                        });
+
+                                        $("#drop_zone").click(function() {
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                            $("#input_url").addClass("q6-input--disabled");
+                                        });                                                                                                                                   
+                                    });                                                                                                                                                                                                                                                                     
+                                </script>                                
+
                                 <div id="video_upload_progress" class="q6-hidden q6-margin-top_25px">
                                     <div class="q6-video-upload__message">
                                         <div>Encoding &nbsp;</div>
