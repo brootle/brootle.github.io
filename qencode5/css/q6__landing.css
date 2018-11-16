@@ -7,6 +7,14 @@
     box-sizing: content-box;    
 }
 
+.q6-two-columns{
+    display: flex;
+}
+
+.q6-two-columns > div:nth-of-type(2) {
+    margin-left: 25px;
+}
+
 .q6-button{
     font-family: GraphikMedium;
     background: transparent;
@@ -353,7 +361,7 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     margin: 15px 0;
 }
 
-.q6-calc-formats > div{
+.q6-extra-formats{
     background: #f7f8fa;
     margin-right: 15px;
     flex: 1;
@@ -361,11 +369,11 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     border-radius: 8px;    
 }
 
-.q6-calc-formats > div:last-of-type{
+.q6-extra-formats:last-of-type{
     margin-right: 0;
 }
 
-.q6-calc-formats .q6-select{
+.q6-extra-formats .q6-select{
     color: #171717;
     font-family: GraphikMedium;
     font-size: 16px;
@@ -376,13 +384,13 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     border-color: #e1e5ee;
 }
 
-.q6-calc-formats .q6-custom-select:after {
+.q6-extra-formats .q6-custom-select:after {
     color: #17172b;
     top: 16px;
     padding-right: 17px;
 }
 
-.q6-calc-formats .q6-custom-select{
+.q6-extra-formats .q6-custom-select{
     margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -392,54 +400,54 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     display: none;
 }
 
-.q6-calc-formats .q6-multiple-checkboxes{
+.q6-extra-formats .q6-multiple-checkboxes{
     height: initial;
     border: 0;
     padding: 0;
     padding-right: 20px;
 }
 
-.q6-calc-formats .q6-checkbox > div:first-of-type {
+.q6-extra-formats .q6-checkbox > div:first-of-type {
     position: absolute;
     top: 6px;
     left: 33%;
     font-size: 13px;
 }
 
-.q6-calc-formats .q6-checkmark {
+.q6-extra-formats .q6-checkmark {
     height: 30px;
     width: 100%;
     display: block;
     position: relative;
 }
 
-.q6-calc-formats .q6-checkbox {
+.q6-extra-formats .q6-checkbox {
     padding-left: 0;
     margin-bottom: 5px;
 }
 
-.q6-calc-formats .q6-checkbox .q6-checkmark:after {
+.q6-extra-formats .q6-checkbox .q6-checkmark:after {
     border: solid #3270e9;
     border-width: 0 2px 2px 0;
     left: 23%;
     top: 9px;
 }
 
-.q6-calc-formats .q6-checkmark {
+.q6-extra-formats .q6-checkmark {
     border: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;    
 }
 
-.q6-calc-formats .q6-checkbox input:checked ~ .q6-checkmark {
+.q6-extra-formats .q6-checkbox input:checked ~ .q6-checkmark {
     background-color: #e9effb;
 }
 
-.q6-calc-formats .q6-checkbox input:checked ~ .q6-checkmark:hover {
+.q6-extra-formatss .q6-checkbox input:checked ~ .q6-checkmark:hover {
     background-color: #d8e7ff;
 }
 
-.q6-calc-formats .q6-checkbox input:checked ~ div {
+.q6-extra-formats .q6-checkbox input:checked ~ div {
     color: #3270e9;
 }
 
@@ -450,18 +458,198 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     color: #575757;
     text-align: center;
     font-size: 15px;    
+    line-height: 20px;
 }
 
-.q6-calc-details-buttons > .q6-button.q6-gray-background.q6-gray-border.q6-gray-text:hover{
+.q6-button.q6-gray-background.q6-gray-border.q6-gray-text:hover{
     background: #e0e0e0;
     border-color: #e0e0e0;
 }
 
-.q6-calc-details-buttons > .q6-button.q6-light-blue-background.q6-light-blue-border.q6-blue-text:hover{
+.q6-button.q6-light-blue-background.q6-light-blue-border.q6-blue-text:hover{
     background-color: #d8e7ff;
     border-color: #d8e7ff;
 }
 /********************* CALCULATOR *********************/
+
+/********************* TRY DEMO ***********************/
+.q6-module-title--play_video_icon{
+    position: relative;
+    padding-left: 48px;
+}
+
+.q6-module-title--play_video_icon:before {
+    content: "";
+    position: absolute;
+    width: 32px;
+    height: 28px;
+    left: 0;
+    top: -1px;
+    background-image: url(../img/play_video_icon.png);
+    background-size: 32px 28px;
+    background-repeat: no-repeat;
+}
+
+.q6-drag-and-drop-container {
+    padding: 21px;
+    border-radius: 13px;
+}
+
+.q6-radio-block {
+    display: flex;
+    align-items: center;
+}
+
+.q6-radio-button {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.q6-radio-button input {
+    display: none;
+}
+
+.q6-radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-image: url(../img/radio_btn.png);
+    background-size: 24px 50px;
+    background-repeat: no-repeat;
+    background-position: 0 -25px;
+}
+
+.q6-radio-button input:checked ~ .q6-radio-checkmark {
+    background-position: 0 0;
+}
+
+.q6-upload-file-link label {
+    cursor: pointer;
+    margin: 0;
+    font-family: GraphikMedium;
+}
+
+.q6-drag-and-drop {
+    width: 400px;
+    height: 240px;
+    border: 1px dashed #bebebe;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.q6-drag-and-drop__message-container {
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.q6-drag-and-drop__icon {
+    width: 63px;
+    height: 55px;
+    margin: 0 auto;
+    background-image: url(../img/drag_and_drop_icon.png);
+    background-size: 63px 53px;
+    background-repeat: no-repeat;
+}
+
+.q6-drag-and-drop__title {
+    font-family: GraphikMedium;
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+.q6-upload-file-link input {
+    display: none;
+}
+
+.q6-drag-and-drop__intructions {
+    font-size: 15px;
+}
+
+.q6-output-container{
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #d9e0ea;
+    border-radius: 13px;
+}
+
+.q6-output__description{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.q6-output__description > div{
+    max-width: 265px;
+    text-align: center;
+}
+
+.q6-output__description p{
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+    margin-bottom: 20px;   
+}
+
+.q6-output__description p:last-of-type{
+    margin-bottom: 0;
+}
+
+.q6-input-output-container, .q6-input-container{
+    display: flex;
+}
+
+.q6-input-output-container > div:nth-of-type(2),
+.q6-input-container > div:nth-of-type(2) {
+    margin-left: 15px;
+}
+
+.q6-transcoding-caption{
+    color: #b2b6c2;
+    font-size: 14px;
+    font-family: GraphikMedium;
+    margin-bottom: 7px;    
+}
+
+.q6-extra-formats > .q6-transcoding-caption{
+    margin-left: 20px;
+}
+
+.q6-output__description strong{
+    font-family: GraphikMedium;
+    font-weight: normal;
+}
+
+.q6-input-output-container .q6-button {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 14px;
+    padding-bottom: 9px;
+    margin-top: 10px;
+}
+
+.q6-upload-file-link{
+    display: inline-block;    
+}
+/********************* TRY DEMO ***********************/
 
 /*MODIFICATORS*/
 /*background colors*/

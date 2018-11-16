@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />       
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/q6__landing.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body>
+
+    <nav class="container">
+        <div class="logo">
+            <a href=""><img src="img/logo_full.png" alt=""></a>
+        </div>
+        <div class="top-menu">
+            <div class="menu-items--left">
+                <a href="">Pricing</a>
+                <a href="">Speed</a>
+                <a href="">Formats</a>
+                <a href="">Contact</a>
+                <a href="">Try Demo</a>
+            </div>
+            <div class="menu-items--right">
+                <a href="">API</a>
+                <a href=""><i class="fa fa-lock" aria-hidden="true"></i>Log In</a>
+                <button class="button-default text-green btn-animated">Create Account</button>
+            </div>
+        </div>
+
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>        
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', ()=>{
+                hamburger.classList.toggle('is-active');           
+            });            
+        </script>  
+    </nav>    
+
+
+    <main class="no-header">
+
+        <section>
+
+            <div class="q6-container">
+                <h2 class="q6-module-title q6-module-title--play_video_icon q6-black-text">Try Demo</h2>
+                <div class="q6-input-output-container">
+                    <div>
+                        <div class="q6-input-container">
+                            <div class="q6-drag-and-drop-container q6-light-gray-background">
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>     
+                                    <div>
+                                        <div class="q6-transcoding-caption">Source</div>
+                                        <div id="drop_zone" class="q6-drag-and-drop q6-white-background">
+                                            
+                                            <div class="q6-drag-and-drop__message-container">                                    
+                                                <div class="q6-browse-file">
+                                                    <div class="q6-drag-and-drop__icon"></div>
+                                                    <div class="q6-drag-and-drop__title q6-black-text">
+                                                        Drag &amp; Drop
+                                                    </div>
+                                                    <div class="q6-drag-and-drop__intructions q6-black-text">
+                                                        your files here, or 
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="file">
+                                                            <label class="q6-blue-text" for="file">Browse</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="q6-drag-and-drop__file-container q6-hidden">
+                                                    <div>
+                                                        <div class="q6-ok-icon"></div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="q6-input__label">
+                                                            <label>File selected</label>
+                                                        </div>                                            
+                                                        <div class="q6-drag-and-drop__filename"></div> 
+                                                        <div id="remove_selected_video" class="q6-file-remove">Remove</div>
+                                                    </div>
+                                                </div>
+                                                                            
+                                            </div>
+                                        
+                                        </div>                                            
+                                    </div>                                                                           
+                                </div>
+
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="insert_link">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>                                                           
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_url">Insert link</label>
+                                            <span>Use external link for your video file</span>
+                                        </div>
+                                        <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
+                                    </div>
+                                </div>
+
+                                <div id="video_upload_progress" class="q6-hidden q6-margin-top_25px">
+                                    <div class="q6-video-upload__message">
+                                        <div>Encoding &nbsp;</div>
+                                        <div id="video_upload_percentage">73</div>
+                                        <div>%</div>
+                                    </div>
+                                    <div class="q6-video-upload__progress-bar">
+                                        <div class="q6-progress-complete" style="width:73%"></div>
+                                    </div>
+                                </div>                        
+                                
+                            </div>                                
+                            <div>
+                                <div class="q6-extra-formats">
+                                    <div class="q6-transcoding-caption">
+                                        Settings
+                                    </div>                                    
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select" id="format1" required="" name="format1">
+                                            <option value="" selected>Select format</option>
+                                            <option data-formats="format1_01_checkboxes" value="mp4" selected>MP4</option>
+                                        </select>                                   
+                                    </div>      
+                                    <div id="format1_01_checkboxes" class="q6-extra-formats__content">
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select" id="format1_1" required="" name="format1_1">
+                                                <option value="h264">H.264</option>
+                                            </select>                                   
+                                        </div>      
+                                        <div class="q6-multiple-checkboxes">
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                                <div>4K</div>
+                                            </label>                
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>1080</div>
+                                            </label> 
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>720</div>
+                                            </label> 
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>480</div>
+                                            </label> 
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>360</div>
+                                            </label> 
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>240</div>
+                                            </label> 
+                                            <label class="q6-checkbox q6-black-text">                                    
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                                <div>144</div>
+                                            </label>                                                                                                                                                                                                                                                        
+                                        </div>                     
+                                    </div>                                                                 
+                                </div>                              
+                            </div>
+                        </div>
+                       <div>
+                            <button id="start-button" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Start</button>
+                        </div>                        
+                    </div>
+                    <div class="q6-output-container">
+                        <div class="q6-transcoding-caption">
+                            Output
+                        </div>
+                        <div class="q6-output__description">
+                            <div>
+                                <p class="q6-black-text">
+                                    Demo version creates <br> 30 second clip with watermark
+                                </p>
+
+                                <p class="q6-black-text">
+                                    <strong class="q6-blue-text">Get 500 minutes free</strong> <br>
+                                    by creating an account.
+                                </p>
+                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Create account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="container">
+
+        <div class="logo-and-menu">
+            <div class="small-logo">
+                <a href=""><img src="img/logo_short.png" alt=""></a>
+            </div>
+            <div class="footer-menu">
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Company</h3>
+                        <a class="text-gray" href="">About us</a>
+                        <a class="text-gray" href="">Privacy policy</a>
+                        <a class="text-gray" href="">Terms and Conditions</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Features</h3>
+                        <a class="text-gray" href="">Pricing</a>
+                        <a class="text-gray" href="">Speed</a>
+                        <a class="text-gray" href="">Formats</a>
+                        <a class="text-gray" href="">Security</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu__block">
+                        <h3>Resources</h3>
+                        <a class="text-gray" href="">Try Demo</a>
+                        <a class="text-gray" href="">API</a>
+                        <a class="text-gray" href="">Help Center</a>
+                    </div>
+                    <div class="footer-menu__block">
+                        <h3>Support</h3>
+                        <a class="text-gray" href="">Contact us</a>
+                        <a class="text-gray" href="">Live chat</a>
+                        <a class="text-gray" href="">Phone call</a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="copyright-and-socials">
+            <div>
+                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
+            </div>
+            <div>
+                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
