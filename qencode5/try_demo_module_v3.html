@@ -71,7 +71,7 @@
                                     </label>     
                                     <div>
                                         <div class="q6-transcoding-caption">Source</div>
-                                        <div id="drop_zone" class="q6-drag-and-drop q6-white-background">
+                                        <div id="drop_zone" class="q6-drag-and-drop">
                                             
                                             <div class="q6-drag-and-drop__message-container">                                    
                                                 <div class="q6-browse-file">
@@ -125,8 +125,10 @@
                                         $('input[name=file-selector]').change(function() {
                                             if(this.value === "insert_link"){
                                                 $("#input_url").removeClass("q6-input--disabled");
+                                                $("#drop_zone").addClass("q6-drag-and-drop--disabled");                                                
                                             } else{
                                                 $("#input_url").addClass("q6-input--disabled");
+                                                $("#drop_zone").removeClass("q6-drag-and-drop--disabled"); 
                                             }
                                         }); 
 
@@ -134,10 +136,12 @@
                                         $("#input_url").click(function() {
                                             $('input[name=file-selector][value=insert_link').prop('checked',true);
                                             $(this).removeClass("q6-input--disabled");
+                                            $("#drop_zone").addClass("q6-drag-and-drop--disabled");
                                         });
 
                                         $("#drop_zone").click(function() {
                                             $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                            $(this).removeClass("q6-drag-and-drop--disabled");
                                             $("#input_url").addClass("q6-input--disabled");
                                         });                                                                                                                                   
                                     });                                                                                                                                                                                                                                                                     
