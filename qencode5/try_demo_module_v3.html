@@ -148,7 +148,7 @@
                                 <script>
                                     $(function (){
                                         // when we click Browse link
-                                        $("#file").change(function(e) {
+                                        $("#file, #new_file").change(function(e) {
                                             var fileName = e.target.value.split( '\\' ).pop();
                                         
                                             // if filename is not empty
@@ -199,13 +199,14 @@
                                             } 
 
                                             $('.q6-drag-and-drop__filename').html(fileName);
+                                            
                                             // show box fith file
                                             $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
                                             // hide box with bowse link
                                             $(".q6-browse-file").addClass("q6-hidden");  
 
-                                            // we should also must make sure we show remove button 
-                                            $("#remove_selected_video").show();                                                                
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
+                                            $("#input_url").addClass("q6-input--disabled");                                                              
                                             
                                             // Pass event to removeDragData for cleanup
                                             removeDragData(ev)
