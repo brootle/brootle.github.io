@@ -315,7 +315,7 @@
                         <div class="q6-transcoding-caption">
                             Output
                         </div>
-                        <div class="q6-output__description">
+                        <div id="output-description" class="q6-output__description">
                             <div>
                                 <p class="q6-black-text">
                                     Demo version creates <br> 30 second clip with watermark
@@ -328,8 +328,56 @@
                                 <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Create account</button>
                             </div>
                         </div>
+
+                        <div id="video_upload_progress" class="q6-video-upload">
+                            <div class="q6-video-upload__message">
+                                <div>
+                                    <div>Uploading &nbsp;</div>
+                                    <div id="video_upload_percentage"></div>
+                                    <div>%</div>                                                                        
+                                </div>                                
+                                <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
+                                <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
+                            </div>
+                            <div class="q6-video-upload__progress-bar">
+                                <div id="video_upload_visual" class="q6-progress-complete"></div>
+                            </div>
+                        </div>  
+
+                        <script>
+                            $(function () {
+                                // update upload progress based on data received from server 
+                                var uploadProgress = 27; // fetch data from server
+                                $("#video_upload_percentage").html(uploadProgress);
+                                $("#video_upload_visual").width(uploadProgress + '%');
+                            });                                                                                                                                                                                                                                                                     
+                        </script>                         
+
                     </div>
                 </div>
+
+                <script>
+                    $(function () {
+                        // when START button clicked
+                        $("#start-button").click(function() {
+                            // hide output-description and start-button  
+                            $("#start-button, #output-description").hide();          
+
+                            // show upload progress
+                            $("#video_upload_progress").show();           
+                        });   
+
+                        // when CANCEL button clicked      
+                        $("#cancel-buton").click(function() {
+                            // hide output-description and start-button  
+                            $("#start-button, #output-description").show();          
+
+                            // show upload progress
+                            $("#video_upload_progress").hide();           
+                        });                                                                                                                                                    
+                    });                                                                                                                                                                                                                                                                     
+                </script>   
+
             </div>
 
         </section>
