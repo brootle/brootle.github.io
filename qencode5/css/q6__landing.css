@@ -553,7 +553,7 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
 }
 
 .q6-drag-and-drop {
-    width: 408px;
+    width: 390px;
     height: 264px;
     border: 1px dashed #d9e0ea;
     border-radius: 13px;
@@ -774,6 +774,122 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     background-repeat: no-repeat; 
     border-radius: 8px;   
 }
+
+.q6-output-table{
+    margin-top: 15px;    
+}
+
+.q6-output-table > table{
+    width: 100%;
+    font-size: 13px;
+    border-collapse: collapse;   
+    color: #575757; 
+}
+
+.q6-output-table > table th{
+    text-align: left;
+    font-family: GraphikMedium;
+    font-weight: normal;
+    color: #b2b6c2;
+    border-bottom: 1px solid #d9e0ea;
+    padding: 3px 0;
+}
+
+.q6-output-table > table td{
+    padding: 10px 0;
+    vertical-align: top;
+    text-align: right;
+}
+
+.q6-output-table > table tr td:first-of-type > div{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.q6-video-encode__message > div {
+    display: flex;
+}
+
+.q6-video-encode__progress-bar {
+    height: 4px;
+    width: 100%;
+    background: #e5eaf0;
+    border-radius: 2px;
+}
+
+.q6-video-encode__message{
+    margin-bottom: 5px;
+}
+
+.q6-encode-table-buttons{
+    display: flex;
+}
+
+.q6-encode-table-buttons > .q6-button{
+    margin-right: 8px;
+    font-size: 13px;
+    padding: 4px 4px;
+    margin-top: 0;    
+}
+
+.q6-encode-table-buttons > .q6-button:last-of-type{
+    margin-right: 0;
+}
+
+.q6-button--play{
+    max-width: 68px;
+    min-width: 68px;
+    text-align: left;
+}
+
+.q6-button--download{
+    text-align: left;
+}
+
+
+.q6-button--play > span,
+.q6-button--download > span{
+    position: relative;
+}
+
+.q6-button--play > span:before{
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: -22px;
+    top: -2px;
+    background-image: url(../img/button_icons.png);
+    background-position: -2px -3px;
+    background-size: 100px 24px;
+    background-repeat: no-repeat;
+}
+
+.q6-button--download > span:before{
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: -22px;
+    top: -2px;
+    background-image: url(../img/button_icons.png);
+    background-position: -23px -3px;
+    background-size: 100px 24px;
+    background-repeat: no-repeat;
+}
+
+.q6-encode-table-buttons > .q6-button.q6-button--play{
+    padding-left: 29px;
+}
+
+.q6-encode-table-buttons > .q6-button.q6-button--download{
+    padding-left: 29px;
+}
+
+.q6-video-encode__error{
+    text-align: left;
+}
 /********************* TRY DEMO ***********************/
 
 /*MODIFICATORS*/
@@ -844,6 +960,10 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
 
 
 /*text colors*/
+.q6-red-text{
+    color: #e35554;
+}
+
 .q6-white-text{
     color: white;
 }

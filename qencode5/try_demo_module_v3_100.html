@@ -346,12 +346,6 @@
                                 </div>
                             </div>  
 
-                            <div>
-                                <div>
-                                    table
-                                </div>                         
-                            </div>
-
                             <script>
                                 $(function () {
                                     // update upload progress based on data received from server 
@@ -362,7 +356,447 @@
                                     $("#video_upload_percentage").html(uploadProgress);
                                     $("#video_upload_visual").width(uploadProgress + '%');                             
                                 });                                                                                                                                                                                                                                                                     
-                            </script>                         
+                            </script>                               
+
+                            <div class="q6-output-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Info</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>4K</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_4K" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__4K">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__4K"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__4K" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_4K" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 100; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_4K").hide();
+                                                                    $("#encode_buttons_4K").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__4K").html(uploadProgress);
+                                                                $("#video_encode_visual__4K").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_4K .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_4K .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>   
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>1080</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_1080" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__1080">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__1080"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__1080" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_1080" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 15; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_1080").hide();
+                                                                    $("#encode_buttons_1080").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__1080").html(uploadProgress);
+                                                                $("#video_encode_visual__1080").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_1080 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_1080 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>      
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>720</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_720" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__720">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__720"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__720" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_720" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 85; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_720").hide();
+                                                                    $("#encode_buttons_720").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__720").html(uploadProgress);
+                                                                $("#video_encode_visual__720").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_720 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_720 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>            
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>480</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_480" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__480">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__480"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__480" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_480" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = undefined; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_480").hide();
+                                                                    $("#encode_buttons_480").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__480").html(uploadProgress);
+                                                                $("#video_encode_visual__480").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_480 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_480 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>           
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>360</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_360" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__360">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__360"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__360" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_360" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 100; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_360").hide();
+                                                                    $("#encode_buttons_360").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__360").html(uploadProgress);
+                                                                $("#video_encode_visual__360").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_360 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_360 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>                       
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>240</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_240" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__240">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__240"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__240" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_240" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 100; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_240").hide();
+                                                                    $("#encode_buttons_240").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__240").html(uploadProgress);
+                                                                $("#video_encode_visual__240").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_240 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_240 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>               
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div>144</div>
+                                                    <div>
+                                                        <div>00:00:25</div>
+                                                        <div>550 MB</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>
+                                                        <div id="encode_progress_144" class="q6-video-encode" style="display:block;">
+                                                            <div class="q6-video-encode__message-container">
+                                                                <div class="q6-video-encode__message">
+                                                                    <div>
+                                                                        <div id="video_encode_caption__144">Encoding /&nbsp;</div>
+                                                                        <div id="video_encode_percentage__144"></div>
+                                                                        <div>%</div>                                                                        
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="q6-video-encode__progress-bar">
+                                                                    <div id="video_encode_visual__144" class="q6-progress-complete"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="q6-video-encode__error" style="display:none;">
+                                                                Error <br>
+                                                                <span class="q6-red-text">Server not responding</span>
+                                                            </div>
+                                                        </div>   
+                                                        <div id="encode_buttons_144" style="display:none;">
+                                                            <div class="q6-encode-table-buttons">
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--play"><span>Play</span></button>
+                                                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-button--download"><span>Download</span></button>
+                                                            </div>                                                            
+                                                        </div>  
+                                                        <script>
+                                                            $(function () {
+                                                                // update upload progress based on data received from server 
+                                                                var uploadProgress = 100; // fetch data from server    
+                                                                if(uploadProgress >= 100){
+                                                                    // hide progress and show buttons
+                                                                    $("#encode_progress_144").hide();
+                                                                    $("#encode_buttons_144").show();
+                                                                }                            
+                                                                $("#video_encode_percentage__144").html(uploadProgress);
+                                                                $("#video_encode_visual__144").width(uploadProgress + '%');  
+
+                                                                // if there is error
+                                                                if(!uploadProgress){
+                                                                    $("#encode_progress_144 .q6-video-encode__message-container").hide();
+                                                                    $("#encode_progress_144 .q6-video-encode__error").show();
+                                                                }                        
+                                                            });               
+                                                        </script>                                                                                                                
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>                                                                                                                                                                                             
+                                    </tbody>
+                                </table>
+                            </div>                                               
 
                         </div>                        
                         <div id="output-description-complete" class="q6-output__description q6-output__description--complete">
