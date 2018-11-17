@@ -311,48 +311,62 @@
                             <button id="start-button" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Start</button>
                         </div>                        
                     </div>
-                    <div class="q6-output-container">
-                        <div class="q6-transcoding-caption">
-                            Output
-                        </div>
-                        <div id="output-description" class="q6-output__description">
-                            <div>
-                                <p class="q6-black-text">
-                                    Demo version creates <br> 30 second clip with watermark
-                                </p>
-
-                                <p class="q6-black-text">
-                                    <strong class="q6-blue-text">Get 500 minutes free</strong> <br>
-                                    by creating an account.
-                                </p>
-                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Create account</button>
+                    <div>
+                        <div class="q6-output-container">
+                            <div class="q6-transcoding-caption">
+                                Output
                             </div>
-                        </div>
-
-                        <div id="video_upload_progress" class="q6-video-upload">
-                            <div class="q6-video-upload__message">
+                            <div id="output-description" class="q6-output__description">
                                 <div>
-                                    <div>Uploading &nbsp;</div>
-                                    <div id="video_upload_percentage"></div>
-                                    <div>%</div>                                                                        
-                                </div>                                
-                                <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
-                                <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
-                            </div>
-                            <div class="q6-video-upload__progress-bar">
-                                <div id="video_upload_visual" class="q6-progress-complete"></div>
-                            </div>
-                        </div>  
+                                    <p class="q6-black-text">
+                                        Demo version creates <br> 30 second clip with watermark
+                                    </p>
 
-                        <script>
-                            $(function () {
-                                // update upload progress based on data received from server 
-                                var uploadProgress = 27; // fetch data from server
-                                $("#video_upload_percentage").html(uploadProgress);
-                                $("#video_upload_visual").width(uploadProgress + '%');                             
-                            });                                                                                                                                                                                                                                                                     
-                        </script>                         
+                                    <p class="q6-black-text">
+                                        <strong class="q6-blue-text">Get 500 minutes free</strong> <br>
+                                        by creating an account.
+                                    </p>
+                                    <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Create account</button>
+                                </div>
+                            </div>
 
+                            <div id="video_upload_progress" class="q6-video-upload">
+                                <div class="q6-video-upload__message">
+                                    <div>
+                                        <div id="video_upload_caption">Uploading &nbsp;</div>
+                                        <div id="video_upload_percentage"></div>
+                                        <div>%</div>                                                                        
+                                    </div>                                
+                                    <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
+                                    <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
+                                </div>
+                                <div class="q6-video-upload__progress-bar">
+                                    <div id="video_upload_visual" class="q6-progress-complete"></div>
+                                </div>
+                            </div>                          
+
+                            <script>
+                                $(function () {
+                                    // update upload progress based on data received from server 
+                                    var uploadProgress = 27; // fetch data from server
+                                    if(uploadProgress >= 100){
+                                        $("#video_upload_caption").html('Complete &nbsp;');
+                                    }                                    
+                                    $("#video_upload_percentage").html(uploadProgress);
+                                    $("#video_upload_visual").width(uploadProgress + '%');                             
+                                });                                                                                                                                                                                                                                                                     
+                            </script>                         
+
+                        </div>
+                        <div id="output-description-complete" class="q6-output__description q6-output__description--complete" style="display:none;">
+                            <div>
+                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Get Started</button>
+                                <p class="q6-black-text">
+                                    Demo version creates 30 second clip with watermark. <br> 
+                                    <strong class="q6-blue-text">Get 500 minutes free</strong> by creating an account.                                       
+                                </p>                                    
+                            </div>
+                        </div>                          
                     </div>
                 </div>
 
