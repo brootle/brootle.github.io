@@ -197,7 +197,8 @@
 
                         </div>
                         <div class="q6-payment-method">
-                            <div class="q6-payment-method__header">
+                            <h3 class="q6-black-text">Payment Method</h3>  
+                            <div class="q6-payment-method__header">                                                              
                                 <div class="q6-payment-selector q6-payment-selector--active" data-tabcontent="cards">
                                     <div class="q6-payment-selector__button"></div>
                                     <div class="q6-payment-selector__items">
@@ -249,9 +250,10 @@
                                                 </div>
                                                 <input class="q6-input__field q6-black-text" type="password" id="user_cvv" name="user[cvv]"  onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" maxlength="3">
                                             </div>                                                                         
-                                        </div>
-
-                                        <button id="complete-setup-button" class="q6-button q6-green-background q6-green-border q6-max-wide q6-top-margin"> 
+                                        </div>     
+                                    </div>      
+                                    <div>
+                                        <button class="q6-button q6-button--checked q6-green-background q6-green-border q6-max-wide q6-top-margin"> 
                                             <span>Complete Setup</span>
                                         </button>                                         
      
@@ -260,12 +262,44 @@
                                                 Payment information secured and protected
                                             </div>
                                             <img src="img/stripe_logo.png" alt="Powered by Sripe">
-                                        </div>
-     
-                                    </div>                                                        
+                                        </div>                                        
+                                    </div>                                                  
                                 </div>  
                                 <div id="paypal" class="q6-paypal-data q6-payment-option">
-                                    content 2
+                                    <div>
+                                        <p>
+                                            Add PayPal credit to your account. This is one-time payment
+                                            and may take up to five minutes to process.
+                                        </p>
+                                        <div class="q6-input">
+                                            <div class="q6-input__label">
+                                                <label for="project_name">Amount</label>
+                                            </div>
+                                            <div class="q6-custom-select">
+                                                <select class="q6-select" id="project_name" required="" name="project_name">
+                                                    <option value="0" selected="selected">Custom Amount</option>
+                                                </select>                                   
+                                            </div>                                          
+                                        </div>     
+                                        <div class="q6-input">
+                                            <div class="q6-input__label">
+                                                <label for="custom_amount">Enter USD amount</label>
+                                            </div>
+                                            <input class="q6-input__field q6-black-text" type="text" id="custom_amount" name="user[custom_amount]">
+                                        </div>    
+                                        <p>
+                                            Payment between $5.00 and $10000.00 are accepted
+                                        </p>                                                                                                                                                        
+                                    </div>
+                                    <div>
+                                        <button id="pay-with-paypal" class="q6-button q6-button--paypal q6-yellow-background q6-yellow-border q6-max-wide q6-top-margin">                                             
+                                            <img src="img/paypal_icon.png" alt="">
+                                            <span>Checkout</span>                                                                                       
+                                        </button>                                         
+                                        <p class="q6-paypal-moto">
+                                            The safer, easier way to pay
+                                        </p>                                       
+                                    </div>                                       
                                 </div> 
                             </div>     
                             
