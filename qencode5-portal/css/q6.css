@@ -1632,16 +1632,11 @@ input[type=password].q6-input__field.q6-input--error{
     display: flex;
     padding-top: 30px;
     padding-bottom: 30px;
+    align-items: center;
 }
 
-.q6-card-data{
-    margin-left: 60px;
-}
 
 .q6-sign-up-promo{
-    padding: 22px;  
-    padding-top: 33px;
-    padding-bottom: 17px;
     border-radius: 13px;    
     color: #336fe9;    
     box-sizing: border-box    
@@ -1670,11 +1665,8 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 .q6-sign-up-promo__box > div:nth-of-type(2) {
-    border: 1px solid #e5e5e5;
-    border-top: 0;
-
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
+    border-left: 1px solid #d9e2f3;
+    border-right: 1px solid #d9e2f3;
     padding: 30px;
     padding-top: 10px;
     padding-bottom: 5px;
@@ -1707,7 +1699,11 @@ input[type=password].q6-input__field.q6-input--error{
 .q6-sign-up-promo__list{
     padding: 15px 30px;
     padding-right: 25px;
-    padding-bottom: 0;
+    padding-bottom: 17px;
+    border: 1px solid #d9e2f3;
+    border-radius: 13px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .promo-list-item{
@@ -1828,12 +1824,12 @@ input[type=password].q6-input__field.q6-input--error{
 }
 
 .q6-card-data__exp-date > div:nth-of-type(1) {
-    max-width: 140px;    
+    max-width: 143px;    
 }
 
 .q6-card-data__exp-date > div:nth-of-type(2) {
     margin-left: 9px;
-    max-width: 70px;   
+    max-width: 100px;   
 }
 
 .q6-exp-date-wrapper {
@@ -4626,6 +4622,161 @@ pre {
 }
 /********************* HELP SECTION *******************/
 
+
+/********************* PAYMENT METHOD *****************/
+.q6-payment-method{
+    flex-direction: column;
+    align-items: flex-start;    
+    padding: 40px;
+    background: white;
+    border-radius: 13px;
+    -webkit-box-shadow: 0 20px 37px -3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 20px 37px -3px rgba(0,0,0,.13);
+    box-shadow: 0 20px 37px -3px rgba(0,0,0,.13);
+}
+
+.q6-payment-method > div{
+    width: 100%;
+}
+
+.q6-payment-method .q6-input__label {
+    font-family: GraphikRegular, sans-serif;
+}
+
+.q6-payment-method input[type=text].q6-input__field, 
+.q6-payment-method input[type=tel].q6-input__field, 
+.q6-payment-method input[type=password].q6-input__field {
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 26px;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.q6-payment-method .q6-input.q6-card-icon > input {
+    padding-left: 50px;
+}
+
+.q6-payment-method .q6-card-icon:after {
+    left: 18px;
+}
+
+.q6-payment-method .q6-exp-date-wrapper input {
+    color: #171717;
+    font-family: GraphikMedium;
+}
+
+.q6-payment-method .q6-exp-date-wrapper {
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 26px;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.q6-payment-method__header{
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.q6-payment-method__header > div{
+    margin-right: 35px;
+}
+
+.q6-payment-method__header > div:last-of-type{
+    margin-right: 0;
+}
+
+.promo-list-item > p {
+    color: #797979;
+}
+
+.q6-sign-up-promo__box p {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.q6-payment-selector{
+    transition: 0.3s;
+    display: flex;
+    cursor: pointer;    
+    align-items: center;    
+}
+
+.q6-payment-selector__button{
+    width: 16px;
+    height: 16px;
+    border: 2px solid #dce0e9;
+    border-radius: 50%;    
+}
+
+.q6-payment-selector--active > .q6-payment-selector__button{
+    border-width: 4px;
+    border-color: #3270e9;    
+}
+
+.q6-payment-option{
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+.q6-payment-option--active {
+    display: block;
+}
+
+.q6-payment-selector__items{
+    margin-left: 14px;
+    display: flex;
+    align-items: center;    
+}
+
+.q6-payment-method-icon{
+    background-image: url(../img/payment_methods_icons.png);
+    background-size: 200px 20px;
+    background-repeat: no-repeat;
+    margin-right: 10px;    
+}
+
+.q6-payment-method-icon:last-of-type{
+    margin-right: 0;  
+}
+
+.q6-payment-method-icon--visa{
+    width: 37px;
+    height: 13px;
+    background-position: 0 0;
+}
+
+.q6-payment-method-icon--mastercard{
+    width: 24px;
+    height: 18px;
+    background-position: -39px 0;
+}
+
+.q6-payment-method-icon--american_express{
+    width: 36px;
+    height: 11px;
+    background-position: -66px 0;
+}
+
+.q6-payment-method-icon--discover{
+    width: 39px;
+    height: 8px;
+    background-position: -105px 0;
+}
+
+.q6-payment-method-icon--paypal{
+    width: 51px;
+    height: 14px;
+    background-position: -148px 0;
+}
+/********************* PAYMENT METHOD *****************/
+
 /*MODIFICATORS*/
 /*background colors*/
 .q6-blue-background{
@@ -4808,9 +4959,6 @@ pre {
         order: 2;
         margin-top: 25px;        
     }        
-    .q6-sign-up-promo {
-        padding: 16px;
-    }     
 
     .q6-card-data__name-and-cardnumber {
         flex-direction: column;
@@ -4818,10 +4966,7 @@ pre {
     .q6-card-data__name-and-cardnumber > div:nth-of-type(2) {
         margin-left: 0;
     }     
-    .q6-card-data .q6-input {
-        margin-bottom: 3px;
-        max-width: 355px;        
-    }    
+
 
     .q6-signup__final-step {
         flex-direction: column;
@@ -4851,9 +4996,11 @@ pre {
         margin-top: 30px;
     }    
 
-    .q6-card-data {
-        margin-left: 0;
-    }    
+    .q6-signup-data--complete > div:nth-of-type(2){
+        margin-left: 0px;
+        padding-left: 15px;
+        padding-right: 15px        
+    }  
   
 
     /*=================== API PAGE ================================*/
@@ -4967,6 +5114,11 @@ pre {
         padding: 0 15px;
     }    
     /*=================== API PAGE ================================*/   
+
+    .q6-signup-data--complete > div:nth-of-type(2) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }    
 }
 
 @media screen and (min-width: 768px){
@@ -5017,9 +5169,10 @@ pre {
         margin-top: 0px;
     }        
 
-    .q6-card-data {
+    .q6-signup-data--complete > div:nth-of-type(2){
         margin-left: 60px;
     }    
+      
 
     /*=================== API PAGE ================================*/  
     .q6-api-languages__button {
