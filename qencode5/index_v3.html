@@ -11,6 +11,8 @@
 
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link href="css/hamburgers.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
 
@@ -42,77 +44,99 @@
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
-        </button>        
+        </button>   
+        
+        
+        <div id="mobile-menu" class="q6-mobile-menu">
+            <a href="">Features</a>
+            <a href="">Developers</a>
+            <a href="">Pricing</a>
+            <a href="">Contact</a>           
+            <a href=""><strong>Sign In</strong></a>
+            <a href=""><strong>Get Started</strong></a>
+        </div>        
+
         <script>
-            const hamburger = document.querySelector('.hamburger');
-            hamburger.addEventListener('click', ()=>{
-                hamburger.classList.toggle('is-active');           
-            });            
-        </script>  
+            $(function () {
+                $('.hamburger').click(function() {
+                    $(this).toggleClass('is-active');       
+                    let mobileMenu = document.querySelector("#mobile-menu");
+                    // show and hide mobile menu    
+                    if (mobileMenu.style.maxHeight){
+                        mobileMenu.style.maxHeight = null;
+                        mobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        mobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                    }                       
+                })
+            });           
+        </script>
+
     </nav>  
 
 
 
-    <main class="q6-main q6-no-header q6-page-content">
+    <main class="q6-main q6-page-content">
         <div class="q6-container">
-            MAIN                      
+            Page content                      
         </div>
     </main>
 
-    <footer class="q6-footer q6-container">
-
-        <div class="logo-and-menu">
-            <div class="small-logo">
-                <a href=""><img src="img/logo_short.svg" alt=""></a>
+    <footer class="q6-footer">
+        <div class="q6-container">
+            <div class="q6-logo-and-menu">
+                <div class="q6-small-logo">
+                    <a href=""><img src="img/logo_short.svg" alt=""></a>
+                </div>
+                <div class="q6-footer-menu">
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Company</h3>
+                            <a href="">About us</a>
+                            <a href="">Privacy policy</a>
+                            <a href="">Terms and Conditions</a>
+                        </div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Features</h3>
+                            <a href="">Pricing</a>
+                            <a href="">Speed</a>
+                            <a href="">Formats</a>
+                            <a href="">Security</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Resources</h3>
+                            <a href="">Try Demo</a>
+                            <a href="">API</a>
+                            <a href="">Help Center</a>
+                        </div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Support</h3>
+                            <a href="">Contact us</a>
+                            <a href="">Live chat</a>
+                            <a href="">Phone call</a>
+                        </div>                    
+                    </div>                
+                </div>
             </div>
-            <div class="footer-menu">
+
+            <hr class="q6-hr">
+
+            <div class="q6-copyright-and-socials">
                 <div>
-                    <div class="footer-menu__block">
-                        <h3>Company</h3>
-                        <a class="text-gray" href="">About us</a>
-                        <a class="text-gray" href="">Privacy policy</a>
-                        <a class="text-gray" href="">Terms and Conditions</a>
-                    </div>
-                    <div class="footer-menu__block">
-                        <h3>Features</h3>
-                        <a class="text-gray" href="">Pricing</a>
-                        <a class="text-gray" href="">Speed</a>
-                        <a class="text-gray" href="">Formats</a>
-                        <a class="text-gray" href="">Security</a>
-                    </div>
+                    <span>@2017 Qencode Inc. All rights reserved.</span>
                 </div>
                 <div>
-                    <div class="footer-menu__block">
-                        <h3>Resources</h3>
-                        <a class="text-gray" href="">Try Demo</a>
-                        <a class="text-gray" href="">API</a>
-                        <a class="text-gray" href="">Help Center</a>
-                    </div>
-                    <div class="footer-menu__block">
-                        <h3>Support</h3>
-                        <a class="text-gray" href="">Contact us</a>
-                        <a class="text-gray" href="">Live chat</a>
-                        <a class="text-gray" href="">Phone call</a>
-                    </div>                    
-                </div>                
-            </div>
+                    <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+                </div>
+            </div>                    
         </div>
-
-        <hr>
-
-        <div class="copyright-and-socials">
-            <div>
-                <span class="text-gray">@2017 Qencode Inc. All rights reserved.</span>
-            </div>
-            <div>
-                <a class="text-inactive-gray" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a class="text-inactive-gray" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a class="text-inactive-gray" href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                <a class="text-inactive-gray" href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
-                <a class="text-inactive-gray" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
-            </div>
-        </div>
-
     </footer>
 
 </body>

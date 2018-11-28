@@ -10,9 +10,6 @@
 
 .q6-main {
     padding-bottom: 0;
-}
-
-.q6-no-header{
     padding-top: 70px;
 }
 
@@ -95,11 +92,126 @@
 
 .q6-footer{
     padding-top: 70px;
+    padding-bottom: 20px;    
     border: none;    
+}
+
+.q6-logo-and-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.q6-small-logo img {
+    height: 44px;
+}
+
+.q6-footer-menu {
+    display: flex;
+}
+
+.q6-footer-menu > div {
+    display: flex;
+}
+
+.q6-footer-menu__block {
+    padding-left: 7vw;
+}
+
+.q6-footer-menu__block a {
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 25px;
+    color: #6d6f6e;
+}
+
+.q6-footer-menu__block h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: GraphikMedium;
+}
+
+.q6-mobile-menu {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    display: none;
+    max-height: 0;
+    top: 70px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    flex-direction: column;
+    width: 100%;    
+}
+
+.q6-mobile-menu > a {
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 60px;
+    height: 60px;
+    border-bottom: 2px solid #e4e4e4;
+    transition: border .2s ease;
+    background: white;
+    color: #323548;
+}
+
+.q6-mobile-menu > a strong{
+    font-family: GraphikMedium;
+    font-weight: normal;
+}
+
+.q6-mobile-menu a:hover, 
+.q6-mobile-menu a:visited, 
+.q6-mobile-menu a:active, 
+.q6-mobile-menu a:link {
+    color: #323548;
+    text-decoration: none;
+}    
+
+.q6-mobile-menu a:hover {
+    border-bottom: 2px solid #43c086;
+}    
+
+.q6-hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 25px 0;
+}
+
+.q6-copyright-and-socials {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #6d6f6e;
+}
+
+.q6-copyright-and-socials i {
+    font-size: 14px;
+    margin-left: 13px;
+    color: #bdbec0;
+}
+
+.q6-copyright-and-socials i:hover {
+    color: #3270eb;;
+}
+
+@media screen and (max-width: 320px){
+    .q6-mobile-menu{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 780px){
     .q6-nav .q6-top-menu {
         display: none;
+    } 
+
+    .q6-mobile-menu{
+        display: flex;
     }
 }
