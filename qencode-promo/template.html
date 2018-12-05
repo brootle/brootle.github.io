@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/promo-template.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="promo-page promo-body">
+
+    <nav class="promo-nav">
+
+        <div class="promo-container">
+
+            <div class="promo-logo">
+                <a href=""><img src="img/logo.svg" alt=""></a>
+            </div>
+            <div class="promo-top-menu">
+                <div class="promo-menu-items--left">
+
+                </div>
+                <div class="promo-menu-items--right">
+                    <a href="">Sign In</a>
+                    <button class="promo-button">Get Started</button>
+                </div>
+            </div>
+    
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>   
+            
+            
+            <div id="mobile-menu" class="promo-mobile-menu">
+                <a href="">Why Qencode?</a>
+                <a href="">Pricing</a>
+                <a href="">Developers</a>                    
+                <a href="">Contact</a>         
+                <a href=""><strong>Sign In</strong></a>
+                <a href=""><strong>Get Started</strong></a>
+            </div>               
+
+
+        </div>
+
+    
+
+        <script>
+            $(function () {
+                $('.hamburger').click(function() {
+                    $(this).toggleClass('is-active');       
+                    let mobileMenu = document.querySelector("#mobile-menu");
+                    // show and hide mobile menu    
+                    if (mobileMenu.style.maxHeight){
+                        mobileMenu.style.maxHeight = null;
+                        mobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        mobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                    }                       
+                })
+            });           
+        </script>
+
+    </nav> 
+
+
+
+    <main class="promo-main promo-page-content">
+        <div class="promo-header">
+            <div class="promo-container">
+                <div class="promo-content-container">
+                    <h1>How to Build a Video Platform for OTT, Mobile and Web</h1>
+                    <div>
+                        <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+                    </div>                    
+                </div>                     
+            </div>            
+        </div>
+
+        <div class="promo-container">
+            Page content in here                      
+        </div>
+    </main>
+
+    <footer class="promo-footer">
+        <div class="promo-container">
+            <div class="promo-logo-and-menu">
+                <div class="promo-small-logo">
+                    <a href=""><img src="img/logo_short.svg" alt=""></a>
+                </div>
+                <div class="promo-footer-menu">
+                    <div>
+                        <div class="promo-footer-menu__block">
+                            <h3>Company</h3>
+                            <a href="">About us</a>
+                            <a href="">Terms and Conditions</a>
+                        </div>
+                        <div class="promo-footer-menu__block">
+                            <h3>Features</h3>
+                            <a href="">Pricing</a>
+                            <a href="">Speed</a>
+                            <a href="">Formats</a>
+                            <a href="">Security</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="promo-footer-menu__block">
+                            <h3>Developers</h3>
+                            <a href="">API</a>
+                            <a href="">Help Center</a>
+                            <a href="">Try Demo</a>                                                       
+                        </div>
+                        <div class="promo-footer-menu__block">
+                            <h3>Support</h3>
+                            <a href="">Contact us</a>
+                            <a href="">Live chat</a>
+                        </div>                    
+                    </div>                
+                </div>
+            </div>
+
+            <hr class="promo-hr">
+
+            <div class="promo-copyright-and-socials">
+                <div>
+                    <span>@2017 Qencode Inc. All rights reserved.</span>
+                </div>
+                <div class="promo-social-icons__footer">
+                    <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+                </div>
+            </div>                    
+        </div>
+    </footer>
+
+</body>
+</html>
