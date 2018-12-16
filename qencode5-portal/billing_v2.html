@@ -251,7 +251,7 @@
                                     pointBorderColor: "white",
                                     pointRadius: 4,
                                     pointBorderWidth: 2,
-                                    pointHoverRadius: 6,
+                                    //pointHoverRadius: 6,
                                     pointHoverBorderColor: "white",                                        
                                     label: 'UHD',
                                     fill: false
@@ -277,7 +277,7 @@
                                     pointBorderColor: "white",
                                     pointRadius: 4,
                                     pointBorderWidth: 2,
-                                    pointHoverRadius: 6,
+                                    //pointHoverRadius: 6,
                                     pointHoverBorderColor: "white",
                                     label: 'HD',
                                     fill: false
@@ -303,7 +303,7 @@
                                     pointBorderColor: "white",
                                     pointRadius: 4,
                                     pointBorderWidth: 2,
-                                    pointHoverRadius: 6,
+                                    //pointHoverRadius: 6,
                                     pointHoverBorderColor: "white",                                        
                                     label: 'SD',
                                     fill: false
@@ -332,6 +332,24 @@
                                     }                                     
                                 } ]
                             },
+
+
+                            onHover: function(evt) {
+                                var item = chart.getElementAtEvent(evt);
+                                if (item.length) {
+                                    var currentDatasetIndex = item[0]._datasetIndex;
+                                    
+                                    // set point hover radius to default 4
+                                    chart.data.datasets.forEach(dataset => {
+                                        dataset.pointHoverRadius = 4;
+                                    });
+                                    
+                                    // set point radius of selected dataset
+                                    chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+
+                                    chart.update();
+                                }
+                            },                            
 
                             // TODO - make completely custom tooltips
                             // tooltips: {
