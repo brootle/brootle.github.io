@@ -1611,6 +1611,10 @@ input[type=password].q6-input__field.q6-input--error{
     margin-bottom: 50px;
 }
 
+.section--sign-up .q6-gray-background{
+    background: #f7f8fa;
+}
+
 #complete-setup-button > span:before {
     content: "";
     position: absolute;
@@ -2817,7 +2821,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 .q6-action-button__delete {
     width: 32px;
     height: 32px;
-    margin: 0 2px;
+    margin: 0 2px;   
     background-image: url(../img/action_buttons.png);
     background-size: 70px 70px;
     background-repeat: no-repeat;
@@ -4906,6 +4910,641 @@ pre {
 }
 /********************* PAYMENT METHOD *****************/
 
+/********************* BILLING Dec 13 2018 update *****/
+.q6-warning-message{
+    position: absolute;
+    left: 0;
+    right: 0;    
+    background: #fffbe2;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.q6-warning-message__text{
+    float: left;
+}
+
+.q6-warning-message__button{
+    float: right;
+    height: 16px;
+    width: 16px;
+    background: #fc3e30;
+    border: none;
+    border-radius: 50%;
+    color: #fffbe2;
+    font-size: 10px;
+    outline: none;
+    user-select: none;
+    vertical-align: middle;
+    text-align: center;
+    padding: 2px;
+    margin: 0;
+    font-weight: bold;    
+}
+
+.q6-select {
+    color: #171717;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.q6-custom-select:after {
+    color: #17172b;
+}
+
+.q6-tabcontent .q6-filter-box__buttons .q6-button {
+    padding: 7px 14px;
+    padding-bottom: 7px;
+    font-size: 15px;
+}
+
+.q6-billing-preferences__buttons .q6-button {
+    padding: 7px 14px;
+    padding-bottom: 7px;
+    font-size: 15px;
+}
+
+.q6-tabcontent .q6-filter-box__buttons .q6-btn--download {
+    padding-left: 42px;
+}
+
+.q6-billing-chart, 
+.q6-summary-block {
+    -webkit-box-shadow: 0 3px 18px 2px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 3px 18px 2px rgba(0,0,0,.08);
+    box-shadow: 0 3px 18px 2px rgba(0,0,0,.08);
+}
+
+.q6-summary-title-data{
+    display: flex;
+    align-items: center;
+}
+
+.q6-summary-title__icon--wallet {
+    width: 20px;
+    height: 16px;
+    background-image: url(../img/wallet_icon.png);
+    background-size: 20px 16px;
+    background-repeat: no-repeat;
+}
+
+.q6-summary-title {
+    display: block;
+}
+
+.q6-summary-title .q6-button{
+    min-width: 128px;
+    font-size: 14px;
+    padding: 4px 14px;
+    margin-top: 15px;    
+}
+
+.q6-summary-total {
+    border-top: 1px solid #e6e9f0;
+}
+
+.q6-summary-total > div:nth-of-type(2) {
+    border-left: 1px solid #e6e9f0;
+    background: #e9effd;
+}
+
+.q6-expandable--active {
+    background: #e9effd;
+    box-shadow: 1px 1px 1px 0px rgba(60, 115, 238, 0.34);
+}
+
+.q6-payment-methods-table .q6-table-row:hover, 
+.q6-payment-history-table .q6-table-row:hover, 
+.q6-invoices-table .q6-table-row:hover, 
+.q6-video-settings-table .q6-table-row:hover, 
+.q6-table--thumbnail-time .q6-table-row:hover, 
+.q6-table--thumbnail-size .q6-table-row:hover {
+    background: white;
+    box-shadow: none;
+}
+
+.q6-table {
+    margin-top: 0;
+}
+
+.q6-table-head .q6-table-row > div {
+    padding-bottom: 0;
+}
+
+.q6-table-body {
+    margin-top: 0;
+}
+
+.q6-tabcontent .q6-table-head .q6-table-row > div {
+    color: #98999e;
+    font-family: GraphikRegular, sans-serif;
+}
+
+.q6-tabcontent .q6-table-row .q6-button {
+    font-size: 14px;
+    padding: 5px 14px;
+    padding-bottom: 4px;
+    min-width: 120px;
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+.q6-button.q6-white-background.q6-blue-border.q6-blue-text:hover {
+    background-color: #3270e9;
+    color: white;
+}
+
+.q6-table-row > div.q6-table-buttons-container{
+    padding: 0;
+    display: flex;
+    align-items: center;    
+}
+
+.q6-table-row > div.q6-table-status--default{
+    padding: 0;
+    display: flex;
+    align-items: center;    
+    font-size: 14px;
+    font-family: GraphikMedium;
+    color: #9699a0;
+}
+
+.q6-table-row > div.q6-table-status--backup{
+    padding: 0;
+    display: flex;
+    align-items: center;   
+    font-size: 14px;
+    font-family: GraphikMedium; 
+    color: #171717;
+}
+
+.q6-table-row > div {
+    padding: 13px 15px;
+    padding-right: 5px;
+}
+
+.q6-payment-methods-table .q6-table-row > div:last-of-type {
+    min-width: 120px;
+    max-width: 120px;
+}
+
+.q6-payment-methods-table .q6-table-row > div:nth-last-of-type(2) {
+    min-width: 200px;
+    max-width: 200px;
+    padding-left: 14px;
+}
+
+.q6-payment-methods-table .q6-table-row > div.q6-table-buttons-container{
+    padding-left: 0;
+}
+
+.q6-action-button {
+    margin: 0;
+    margin-right: 15px;
+}
+
+.q6-action-button:last-of-type {
+    margin-right: 0;
+}
+
+.q6-payment-methods-table .q6-table-row > div:first-of-type {
+    max-width: none;
+}
+
+.q6-payment-methods-table .q6-table-body .q6-table-row > div:first-of-type {
+    display: flex;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: center;
+}
+
+.q6-payment-type--qencode-wallet{
+    width: 20px;
+    height: 30px;
+    background-image: url(../img/logo_short.svg);
+}
+
+.q6-payment-type--visa{
+    width: 36px;
+    height: 13px;
+    background-image: url(../img/visa.svg);
+}
+
+.q6-payment-type--mastercard{
+    width: 24px;
+    height: 18px;
+    background-image: url(../img/mastercard.svg);
+}
+
+.q6-payment-type--amex{
+    width: 36px;
+    height: 11px;
+    background-image: url(../img/amex.svg);
+}
+
+.q6-payment-type--discover{
+    width: 40px;
+    height: 8px;
+    background-image: url(../img/discover.svg);
+}
+
+.q6-payment-type--paypal{
+    width: 51px;
+    height: 14px;
+    background-image: url(../img/paypal.svg);;
+}
+
+.q6-payment-methods-table .q6-table-body .q6-table-row > div {
+    min-height: 48px;
+}
+
+
+.q6-payment-methods-table .q6-table-head .q6-table-row > div:nth-of-type(2) {
+    padding-left: 35px;
+}
+
+.q6-payment-methods-table .q6-table-body .q6-table-row > div:nth-of-type(2) {
+    padding: 0;
+    padding-left: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-payment-methods-table .q6-table-head .q6-table-row > div:nth-of-type(1) {
+    padding-left: 115px;
+}
+
+.q6-add-funds-container{
+    display: flex;
+    align-items: center;
+    margin-left: 35px;   
+}
+
+.q6-payment-card-details{
+    display: flex;
+}
+
+.q6-payment-card-details > div:first-of-type{
+    margin-right: 20px;
+}
+
+.q6-add-funds-container > div:first-of-type{
+    color: #171717;
+    font-family: GraphikMedium;  
+    margin-right: 20px;  
+    min-width: 65px;
+}
+
+.q6-table-payment-data-details {
+    display: flex;
+    min-width: 175px;
+    align-items: center;
+}
+
+.q6-table-payment-data-details > div:first-of-type{
+    width: 70px;
+    display: flex;
+    margin-right: 30px;
+    justify-content: flex-end;
+}
+
+
+.q6-payment-methods-table .q6-button{
+    padding: 7px 14px;
+    padding-bottom: 7px;
+    font-size: 15px;    
+}
+
+.q6-table-add-method-button-container{
+    margin-top: 15px;
+    text-align: right;    
+}
+
+.q6-btn--add > span {
+    position: relative;
+}
+
+.q6-payment-methods-table .q6-button.q6-btn--add{
+    padding-left: 38px;
+}
+
+.q6-btn--add > span:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -26px;
+    background-image: url(../img/add_icon.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.modal {
+    z-index: 99999;
+    background-color: rgba(0,0,0,0.4);
+}
+  
+.modal-open {
+    overflow-y:scroll;
+    padding-right:0 !important;
+}
+
+.modal-backdrop.in {
+    /* display: none; */
+}
+  
+.modal-dialog {
+    /* top: 15%; */
+}
+
+.modal .q6-payment-method__sign-up {
+    min-height: initial;
+}
+
+@media (min-width: 768px){
+    .modal-dialog {
+        width: 515px;
+    }
+}
+
+.modal .q6-button--checked > span:before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: -29px;
+    top: -4px;
+    background-image: url(../img/check_blue.png);
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.q6-payment-history-table .q6-table-row > div:first-of-type {
+    min-width: 220px;
+}
+
+.q6-payment-history-table .q6-table-row > div:nth-of-type(2) {
+    min-width: 380px;
+}
+
+.q6-table-row > div.q6-invoice-payment-method{
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;    
+}
+
+.q6-invoice-payment-method > div:first-of-type{
+    width: 70px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;    
+}
+
+.q6-payment-history-table .q6-table-head .q6-table-row > div:nth-of-type(2) {
+    padding-left: 115px;
+}
+
+.q6-add-funds-block{
+    padding: 40px 0;
+    padding-bottom: 90px;
+}
+
+.q6-payment-methods-table,
+.q6-payment-history-table,
+.q6-invoices-table{
+    padding-bottom: 90px;
+}
+
+.q6-add-funds__balance-card{
+    padding: 25px;
+    min-width: 270px;
+    background: white;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.q6-add-funds__balance-card > div:first-of-type{
+    font-size: 25px;
+    font-family: GraphikLight;
+}
+
+.q6-add-funds__balance-card > div:nth-of-type(2){
+    font-family: GraphikMedium;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.q6-add-funds-block hr {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 0;
+    border-top: 1px solid #dce4f1;
+}
+
+
+.q6-add-funds-block .q6-select {
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding: 10px 14px;
+    padding-bottom: 9px;
+    padding-right: 20px;
+}
+
+.q6-add-funds-block .q6-input__label {
+    font-family: GraphikRegular, sans-serif;
+}
+
+.q6-add-funds-block input[type=text].q6-input__field {
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding: 10px 14px;
+    padding-bottom: 9px;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.q6-input--amount{
+    min-width: 190px;
+}
+
+.q6-input--amount-value{
+    max-width: 155px;
+}
+
+.q6-add-funds-block .q6-filter-box__buttons {
+    flex: initial;
+}
+
+.q6-input--payment-method{
+    flex: 1;
+}
+
+.q6-add-funds-block .q6-filter-box__options {
+    flex: 1;
+}
+
+.q6-usd-input-wrapper {
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding: 10px 14px;
+    padding-bottom: 9px;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.dd-option-image, .dd-selected-image {
+    max-height: 25px;
+    margin-right: 25px !important;
+}
+
+
+.dd-select {
+    border-radius: 6px !important;
+    padding: 0 14px;
+    padding-right: 20px;
+    border: solid 1px #e1e5ee !important;
+}
+
+.dd-selected {
+    padding: 0 !important;
+    height: 37px;
+    display: flex !important;
+    align-items: center;    
+}
+
+.dd-selected:hover{
+    text-decoration: none;
+}
+
+.dd-selected-text{
+    font-size: 16px;
+    color: #171717;
+    font-family: GraphikMedium;    
+    margin-bottom: 0;
+    font-weight: normal;    
+}
+
+.dd-select label,
+.dd-option label {
+    margin-bottom: 0;
+    font-weight: normal;
+
+    font-size: 16px;
+    color: #171717;
+    font-family: GraphikMedium;    
+}
+
+.dd-option {
+    padding: 0 14px !important; 
+    display: flex !important;
+    height: 35px;
+    align-items: center;
+}
+
+.dd-option:hover{
+    text-decoration: none;
+}
+
+.dd-desc {
+    display: none !important;
+}
+
+.q6-add-funds-block .q6-filter-box {
+    margin-bottom: 5px;
+}
+
+.q6-add-funds-block p{
+    color: #929292;
+    font-size: 13px;    
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-header .close {
+    width: 30px;
+    height: 30px;
+    background: #e9f1fc;
+    border-radius: 50%;
+    color: #5e8de9;
+    user-select: none;
+    outline: none;
+}
+
+.close {
+    filter: alpha(opacity=80);
+    opacity: .8;
+}
+
+.close:focus, .close:hover {
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.q6-success-icon {
+    width: 102px;
+    height: 102px;
+    background-image: url(../img/success_icon.png);
+    background-size: 102px 102px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.q6-failed-icon {
+    width: 102px;
+    height: 102px;
+    background-image: url(../img/failed_icon.png);
+    background-size: 102px 102px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+
+.modal h2{
+    text-align: center;
+    margin: 18px 0;
+    font-weight: 100;
+    margin-top: 40px;
+    font-size: 30px;
+    line-height: initial;
+    font-family: GraphikLight;  
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body, .modal-footer {
+    padding: 15px 45px;
+}
+
+.modal-body p {
+    font-size: 16px;
+    color: #171717;  
+    text-align: center;  
+}
+
+.modal-footer p{
+    color: #929292;
+    font-size: 13px;   
+    text-align: left; 
+}
+
+.modal-footer .q6-button {
+    padding: 7px 14px;
+    padding-bottom: 7px;
+    font-size: 15px;
+    margin: 0 auto;
+    display: inherit;
+    margin-bottom: 25px;
+}
+/********************* BILLING Dec 13 2018 update *****/
+
 /*MODIFICATORS*/
 /*background colors*/
 .q6-blue-background{
@@ -4932,8 +5571,9 @@ pre {
     background: #f3f3f3;
 }
 
+
 .q6-lighter-gray-background{
-    background: #f6f6f6;
+    background: #f7f8fa;
 }
 
 
@@ -4978,6 +5618,7 @@ pre {
 .q6-gray-border{
     border-color: #f3f3f3;;    
 }
+
 /*border colors*/
 
 
