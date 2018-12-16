@@ -1287,7 +1287,19 @@
                                 </div>
                             </div>    
 
-                            <div class="q6-input q6-input--amount-value">
+                            <script>
+                                $(function () {
+                                    $("#amount").change(function() {
+                                        if($(this).val() == "custom_amount"){
+                                            $("#custom-amount-input").show(100);
+                                        } else{
+                                            $("#custom-amount-input").hide(100);
+                                        }                                
+                                    });                                
+                                });                                                    
+                            </script>                               
+
+                            <div id="custom-amount-input" class="q6-input q6-input--amount-value">
                                 <div class="q6-input__label">
                                     <label>Enter USD amount</label>
                                 </div>
