@@ -346,6 +346,9 @@
                                     
                                     // set point radius of selected dataset
                                     chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+                                    
+                                    // set color of tooltip title same as point color
+                                    chart.options.tooltips.titleFontColor=chart.data.datasets[currentDatasetIndex].backgroundColor;
 
                                     chart.update();
                                 }
