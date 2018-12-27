@@ -5333,7 +5333,8 @@ pre {
 
 .q6-payment-methods-table,
 .q6-payment-history-table,
-.q6-invoices-table{
+.q6-invoices-table,
+.q6-transaction-history-table{
     padding-bottom: 90px;
 }
 
@@ -5562,6 +5563,87 @@ pre {
     margin: 0 auto;
     display: inherit;
     margin-bottom: 25px;
+}
+
+.q6-transaction-history-tables-container{
+    display: flex;
+    align-items: flex-end;
+}
+
+.q6-transaction-history-tables-container > div{
+    flex: 1;
+}
+
+.q6-transaction-history-table__transactions .q6-table-row > div:nth-of-type(2) {
+    min-width: 340px;
+}
+
+.q6-transaction-history-table__transactions .q6-table-row > div:nth-of-type(3) {
+    min-width: 155px;
+}
+
+.q6-transaction-history-table__transactions .q6-invoice-payment-method > div:first-of-type {
+    width: initial;
+    min-width: 40px;
+    justify-content: flex-start;
+    margin-right: 25px;
+}
+
+.q6-transaction-history-table__transactions .q6-table-body .q6-table-row > div:last-of-type {
+    color: #171717;
+    font-family: GraphikMedium;
+}
+
+.q6-transaction-history-table__transactions .q6-table-row > div:last-of-type {
+    min-width: 135px;
+}
+
+.q6-transaction-history-table__balances .q6-table-row > div:last-of-type {
+    min-width: 0px;
+}
+
+.q6-transaction-history-table__balances .q6-table-head .q6-table-row > div:last-of-type {
+    text-align: right;
+}
+
+.q6-transaction-history-table__balances{
+    margin-left: 8px;
+}
+
+.q6-transaction-history-table__balances .q6-table-body .q6-table-row > div{
+    color: #171717;
+    font-family: GraphikMedium;
+}
+
+.q6-transaction-history-table__balances  .q6-table-row > div {
+    width: 50%;
+}
+
+.q6-transaction-history-table__balances .q6-table-head.q6-table-head--extra-head .q6-table-row > div:last-of-type {
+    text-align: center;
+}
+
+.q6-transaction-history-table__transactions .q6-table-row > div,
+.q6-transaction-history-table__balances .q6-table-row > div {
+    padding-right: 15px;
+}
+
+.q6-has-right-delimeter{
+    position: relative;
+}
+
+.q6-has-right-delimeter:after{
+    content: "|";
+    position: absolute;
+    right: 0;
+}
+
+.q6-transaction-history-table__balances .q6-table-body .q6-table-row > div.q6-transaction-history--spend{
+    color: #ea4647;
+}
+
+.q6-transaction-history-table__balances .q6-table-body .q6-table-row > div.q6-transaction-history--add{
+    color: #26a244;
 }
 /********************* BILLING Dec 13 2018 update *****/
 
