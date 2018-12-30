@@ -207,11 +207,25 @@
                         <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Refresh page</button>
                     </div>
 
-                    <div class="q6-filter-box__buttons">
+                    <div class="q6-qencode-wallet-box-container">
+                        <div class="q6-qencode-wallet-box">
+                            <div class="q6-qencode-wallet-box__title">Qencode Wallet:</div>
+
+                            <div class="q6-qencode-wallet-box__balance">
+                              <span>99999.00</span>
+                              <button class="q6-button q6-button--plus"></button>
+                            </div>
+
+                            <div class="q6-qencode-wallet-box__cover"></div>
+                            <div class="q6-qencode-wallet-box__lock"></div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="q6-filter-box__buttons">
                         <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-btn--download">
                             <span>Download CSV</span>
                         </button>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -455,9 +469,10 @@
                                     },
                                     label: function(tooltipItem, data) {
                                         // console.log(tooltipItem.yLabel);
-                                        return tooltipItem.yLabel + " USD";
+                                        return "$" + tooltipItem.yLabel;
                                     }
                                 }
+
                             }
 
                         };
@@ -484,16 +499,7 @@
                             </div>
                             <div class="q6-summary-table__row">
                                 <div class="q6-summary-title">
-                                    <div>Qencode Wallet</div>
-                                    <div class="q6-summary-title-data">
-                                        <div class="q6-summary-title__icon q6-summary-title__icon--wallet"></div>
-                                        <div class="q6-summary-title__info">
-                                            <div>
-                                                $ 1205.10
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Add funds</button>
+
                                 </div>
                                 <div class="q6-summary-data q6-summary-data--body">
                                     <div class="q6-summary-data-row">
@@ -936,13 +942,6 @@
 
                 <div>
                     <div class="q6-table">
-                        <div class="q6-table-head">
-                            <div class="q6-table-row q6-container">
-                                <div>Payment methods</div>
-                                <div>Status</div>
-                                <div>Actions</div>
-                            </div>
-                        </div>
                         <div class="q6-table-body q6-container">
 
                             <div class="q6-table-row">
@@ -957,7 +956,7 @@
                                     <div class="q6-add-funds-container">
                                         <div>$1250.10</div>
                                         <div>
-                                            <button class="q6-button q6-blue-border q6-blue-text q6-white-background">Add funds</button>
+                                            <button class="q6-button q6-button--plus"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -966,9 +965,6 @@
                                 </div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -993,9 +989,6 @@
                                 </div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -1020,9 +1013,6 @@
                                 </div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -1050,9 +1040,6 @@
                                 </div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -1079,9 +1066,6 @@
                                 </div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -1105,9 +1089,6 @@
                                 <div></div>
                                 <div class="q6-action-buttons-container">
                                     <div class="q6-action-buttons">
-                                        <div class="q6-action-button q6-action-button__copy">
-                                            <div class="q6-tooltip">Edit</div>
-                                        </div>
                                         <div class="q6-action-button q6-action-button__delete">
                                             <div class="q6-tooltip">Delete</div>
                                         </div>
@@ -1115,12 +1096,14 @@
                                 </div>
                             </div>
 
+
+
                         </div>
                     </div>
 
                     <div class="q6-container">
                         <div class="q6-table-add-method-button-container">
-                            <button data-toggle="modal" data-target="#addPaymentModal" id="add-payment-method" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text q6-btn--add">
+                            <button data-toggle="modal" data-target="#addPaymentModal" id="add-payment-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-btn--add_white">
                                 <span>Add payment method</span>
                             </button>
                         </div>
@@ -1449,9 +1432,6 @@
 
 
         <section id="transaction_history" class="q6-tabcontent">
-            <div class="q6-container">
-                <h2 class="q6-section-title q6-black-text">Transaction history</h2>
-            </div>
 
             <div class="q6-transaction-history-table q6-lighter-gray-background">
                 <div class="q6-container">
@@ -1550,19 +1530,27 @@
                                     <div>$5.00</div>
                                 </div>
 
+                                <div class="q6-table-row">
+                                    <div>07 Sep 2018</div>
+                                    <div>
+                                        Bonus credit added to wallet
+                                    </div>
+                                    <div class="q6-invoice-payment-method">
+                                        <div>
+                                            <div class="q6-payment-type--gift"></div>
+                                        </div>
+                                    </div>
+                                    <div>$5.00</div>
+                                </div>
+
                             </div>
                         </div>
 
                         <div class="q6-table q6-transaction-history-table__balances">
-                            <div class="q6-table-head q6-table-head--extra-head">
-                                <div class="q6-table-row">
-                                    <div>Wallet</div>
-                                </div>
-                            </div>
                             <div class="q6-table-head">
                                 <div class="q6-table-row">
-                                    <div class="q6-has-right-delimeter">Change</div>
-                                    <div>Balance</div>
+                                    <div>Change</div>
+                                    <div>Wallet Balance</div>
                                 </div>
                             </div>
                             <div class="q6-table-body">
@@ -1590,6 +1578,11 @@
                                 <div class="q6-table-row">
                                     <div class="q6-transaction-history--add">+ $22151.23</div>
                                     <div>$22151.23</div>
+                                </div>
+
+                                <div class="q6-table-row">
+                                    <div class="q6-transaction-history--add">+ $5.00</div>
+                                    <div>$5.00</div>
                                 </div>
 
                                 <div class="q6-table-row">
