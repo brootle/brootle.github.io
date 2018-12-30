@@ -209,11 +209,13 @@
 
                     <div class="q6-qencode-wallet-box-container">
                         <div class="q6-qencode-wallet-box">
-                            <div class="q6-qencode-wallet-box__title">Qencode Wallet:</div>
+                            <div class="q6-qencode-wallet-box-content">
+                                <div class="q6-qencode-wallet-box__title">Qencode Wallet:</div>
 
-                            <div class="q6-qencode-wallet-box__balance">
-                              <span>99999.00</span>
-                              <button class="q6-button q6-button--plus"></button>
+                                <div class="q6-qencode-wallet-box__balance">
+                                  <span>99999.00</span>
+                                  <button class="q6-button q6-button--plus"></button>
+                                </div>
                             </div>
 
                             <div class="q6-qencode-wallet-box__cover"></div>
@@ -1262,121 +1264,141 @@
 
                 <div class="q6-container">
 
-                    <div class="q6-add-funds__balance-card">
-                        <div>Qencode Wallet:</div>
-                        <div>$1503.15</div>
-                    </div>
+                    <div class="q6-add-funds__payment-and-balance">
+                        <div class="q6-add-funds__payment-container">
+                            <div class="q6-add-funds-window">
 
-                    <hr>
+                                <div class="q6-add-funds__amount">
 
-                    <div class="q6-filter-box">
+                                    <div class="q6-input q6-input--amount">
 
-                        <div class="q6-filter-box__options">
+                                      <div class="q6-input__label">
+                                          <label>Amount</label>
+                                      </div>
 
-                            <div class="q6-input q6-input--amount">
+                                      <div class="q6-custom-select">
+                                          <select class="q6-select" id="amount" required="" name="amount">
+                                              <option value="custom_amount">Custom amount</option>
+                                              <option value="5">$5.00</option>
+                                              <option value="10">$10.00</option>
+                                              <option value="20">$20.00</option>
+                                              <option value="50">$50.00</option>
+                                              <option value="100">$100.00</option>
+                                          </select>
+                                      </div>
+                                    </div>
 
-                                <div class="q6-input__label">
-                                    <label>Amount</label>
-                                </div>
+                                    <div id="custom-amount-input" class="q6-custome-amount-container">
 
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="amount" required="" name="amount">
-                                        <option value="custom_amount">Custom amount</option>
-                                        <option value="5">$5.00</option>
-                                        <option value="10">$10.00</option>
-                                        <option value="20">$20.00</option>
-                                        <option value="50">$50.00</option>
-                                        <option value="100">$100.00</option>
-                                    </select>
-                                </div>
-                            </div>
+                                        <div class="q6-input q6-input--amount-value" style="">
+                                            <div class="q6-input__label">
+                                                <label>Enter USD amount</label>
+                                            </div>
+                                            <input class="q6-input__field q6-black-text" type="text" id="custom-amount" name="custom-amount" value="$ ">
 
-                            <script>
-                                $(function () {
-                                    $("#amount").change(function() {
-                                        if($(this).val() == "custom_amount"){
-                                            $("#custom-amount-input").show(100);
-                                        } else{
-                                            $("#custom-amount-input").hide(100);
-                                        }
-                                    });
-                                });
-                            </script>
+                                            <script>
+                                                $(function () {
+                                                    // when user inputs value
+                                                    document.getElementById('custom-amount').addEventListener('input', function (e) {
 
-                            <div id="custom-amount-input" class="q6-input q6-input--amount-value">
-                                <div class="q6-input__label">
-                                    <label>Enter USD amount</label>
-                                </div>
-                                <input class="q6-input__field q6-black-text" type="text" id="cutom-amount" name="cutom-amount" value="$ " >
-                            </div>
+                                                        if(e.target.value.includes(".")){
+                                                            // if number is decimal
+                                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9. ]/g, '').replace(/(\..*)\./g, '$1').trim();
 
-                            <script>
-                                $(function () {
-                                    // when user inputs value
-                                    document.getElementById('cutom-amount').addEventListener('input', function (e) {
+                                                            // allow only two digits after dots
+                                                            var afterDotDigits = e.target.value.split('.')[1];
+                                                            if(afterDotDigits.length > 2){
+                                                                e.target.value = e.target.value.replace(/.$/, '');
+                                                            }
 
-                                        if(e.target.value.includes(".")){
-                                            // if number is decimal
-                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9. ]/g, '').replace(/(\..*)\./g, '$1').trim();
-
-                                            // allow only two digits after dots
-                                            var afterDotDigits = e.target.value.split('.')[1];
-                                            if(afterDotDigits.length > 2){
-                                                e.target.value = e.target.value.replace(/.$/, '');
-                                            }
-
-                                        } else{
-                                            // if the number is not decimal add spaces after thousands
-                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
-                                        }
-                                    });
-                                });
-                            </script>
+                                                        } else{
+                                                            // if the number is not decimal add spaces after thousands
+                                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
 
 
-                            <div class="q6-input q6-input--payment-method">
+                                        </div>
 
-                                <div class="q6-input__label">
-                                    <label>Payment method</label>
-                                </div>
+                                        <div class="q6-custom-amount__message">
+                                            Enter amount between $5.00 and $10000.00
+                                        </div>
 
-                                <select id="payment-method-selector">
-                                    <option value="1" data-imagesrc="img/mastercard.svg" data-description="&nbsp">4242</option>
-                                    <option value="2" data-imagesrc="img/visa.svg" data-description="&nbsp">4242</option>
-                                    <option value="3" data-imagesrc="img/amex.svg" data-description="&nbsp">4242</option>
-                                    <option value="4" data-imagesrc="img/discover.svg" data-description="&nbsp">4242</option>
-                                    <option value="5" data-imagesrc="img/paypal.svg" data-description="&nbsp">john.smith@example.com</option>
-                                </select>
+                                    </div>
 
-                                <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
-                                <script>
-                                    $(function () {
-                                        $('#payment-method-selector').ddslick({
-                                            defaultSelectedIndex:0,
-                                            width: "100%",
-                                            background: "white",
-                                            onSelected: function(selectedData){
-                                                //callback function: do something with selectedData;
-                                            }
+                                    <script>
+                                        $(function () {
+                                            $("#amount").change(function() {
+                                                if($(this).val() == "custom_amount"){
+                                                    $("#custom-amount-input").show(100);
+                                                } else{
+                                                    $("#custom-amount-input").hide(100);
+                                                }
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+
+                                </div>
+
+                                <div class="q6-input q6-input--payment-method">
+
+                                    <div class="q6-input__label">
+                                        <label>Payment method</label>
+                                    </div>
+
+                                    <select id="payment-method-selector">
+                                        <option value="1" data-imagesrc="img/mastercard.svg" data-description="&nbsp">4242</option>
+                                        <option value="2" data-imagesrc="img/visa.svg" data-description="&nbsp">4242</option>
+                                        <option value="3" data-imagesrc="img/amex.svg" data-description="&nbsp">4242</option>
+                                        <option value="4" data-imagesrc="img/discover.svg" data-description="&nbsp">4242</option>
+                                        <option value="5" data-imagesrc="img/paypal.svg" data-description="&nbsp">john.smith@example.com</option>
+                                    </select>
+
+                                    <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+                                    <script>
+                                        $(function () {
+                                            $('#payment-method-selector').ddslick({
+                                                defaultSelectedIndex:0,
+                                                width: "100%",
+                                                background: "white",
+                                                onSelected: function(selectedData){
+                                                    //callback function: do something with selectedData;
+                                                }
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
+
+                                <div class="q6-add-funds-window__buttons">
+                                    <button data-toggle="modal" data-target="#paymentFailedModal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                    <button data-toggle="modal" data-target="#paymentSuccessModal" class="q6-button q6-white-text q6-blue-background q6-blue-border">Confirm</button>
+                                </div>
 
                             </div>
+                        </div>
+                        <div class="q6-add-funds__balance-container">
+                            <div class="q6-dotted-arrow"></div>
 
+                            <div class="q6-qencode-wallet-box">
+                                <div class="q6-qencode-wallet-box-content">
+                                    <div class="q6-qencode-wallet-box__title">Qencode Wallet:</div>
+
+                                    <div class="q6-qencode-wallet-box__balance">
+                                      <span>10315.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="q6-qencode-wallet-box__cover"></div>
+                                <div class="q6-qencode-wallet-box__lock"></div>
+                            </div>
 
                         </div>
-
-                        <div class="q6-filter-box__buttons">
-                            <button data-toggle="modal" data-target="#paymentSuccessModal" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Confirm</button>
-                            <button data-toggle="modal" data-target="#paymentFailedModal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
-                        </div>
-
                     </div>
 
-                    <p>
-                        Enter amount between $5.00 and $10000.00
-                    </p>
+
 
                     <!-- Modal -->
                     <div id="paymentSuccessModal" class="modal fade" role="dialog">
