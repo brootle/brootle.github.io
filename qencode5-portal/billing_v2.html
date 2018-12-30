@@ -1105,7 +1105,7 @@
 
                     <div class="q6-container">
                         <div class="q6-table-add-method-button-container">
-                            <button data-toggle="modal" data-target="#addPaymentModal" id="add-payment-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-btn--add_white">
+                            <button data-toggle="modal" data-target="#addPaymentModal" id="add-payment-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-btn--add_white q6-button--shadow">
                                 <span>Add payment method</span>
                             </button>
                         </div>
@@ -1266,7 +1266,7 @@
 
                     <div class="q6-add-funds__payment-and-balance">
                         <div class="q6-add-funds__payment-container">
-                            <div class="q6-add-funds-window">
+                            <div id="add-funds-window" class="q6-add-funds-window">
 
                                 <div class="q6-add-funds__amount">
 
@@ -1373,11 +1373,78 @@
                                 </div>
 
                                 <div class="q6-add-funds-window__buttons">
-                                    <button data-toggle="modal" data-target="#paymentFailedModal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
-                                    <button data-toggle="modal" data-target="#paymentSuccessModal" class="q6-button q6-white-text q6-blue-background q6-blue-border">Confirm</button>
+                                    <button id="cancel-payment" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                    <button id="confirm-payment" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Confirm</button>
                                 </div>
 
                             </div>
+
+                            <div id="add-funds-success" class="q6-add-funds-window__status" style="display:none;">
+                                <button id="close-success-window" class="q6-button q6-button--close-window"></button>
+
+                                <div class="q6-success-icon"></div>
+
+                                <h2 class="q6-section-title q6-black-text">Funds Successfully Added!</h2>
+
+                                <p><b>$100</b> has been added to your wallet</p>
+
+                                <div class="q6-add-funds-window__buttons">
+                                    <button id="add-more" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Add more</button>
+                                </div>
+
+                            </div>
+
+                            <div id="add-funds-error" class="q6-add-funds-window__status" style="display:none;">
+                                <button id="close-error-window" class="q6-button q6-button--close-window"></button>
+
+                                <div class="q6-error-icon"></div>
+
+                                <h2 class="q6-section-title q6-black-text">Oops, something went wrong</h2>
+
+                                <p>Don't worry, please check your info and try again</p>
+
+                                <div class="q6-add-funds-window__buttons">
+                                    <button id="contact-support" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Contact Support</button>
+                                    <button id="try-again" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Try Again</button>
+                                </div>
+                            </div>
+
+                            <script>
+                                $(function () {
+                                    $("#confirm-payment").click(function() {
+                                        // hide current window
+                                        $("#add-funds-window").hide(100);
+
+                                        // show success window
+                                        $("#add-funds-success").show(100);
+                                    });
+
+                                    $("#close-success-window, #add-more").click(function() {
+                                        // hide current window
+                                        $("#add-funds-success").hide(100);
+
+                                        // show success window
+                                        $("#add-funds-window").show(100);
+                                    });
+
+                                    $("#cancel-payment").click(function() {
+                                        // hide current window
+                                        $("#add-funds-window").hide(100);
+
+                                        // show success window
+                                        $("#add-funds-error").show(100);
+                                    });
+
+                                    $("#close-error-window, #try-again").click(function() {
+                                        // hide current window
+                                        $("#add-funds-error").hide(100);
+
+                                        // show success window
+                                        $("#add-funds-window").show(100);
+                                    });
+                                });
+                            </script>
+
                         </div>
                         <div class="q6-add-funds__balance-container">
                             <div class="q6-dotted-arrow"></div>
@@ -1397,55 +1464,6 @@
 
                         </div>
                     </div>
-
-
-
-                    <!-- Modal -->
-                    <div id="paymentSuccessModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="q6-success-icon"></div>
-                                    <h2 class="q6-section-title q6-black-text">Payment Succesful!</h2>
-                                    <p>Thank you! Your payment of <b>$100</b> has been received!</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <p>Please, wait some time for the amount to show up in your Qencode Wallet.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
-                    <!-- Modal -->
-                    <div id="paymentFailedModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="q6-failed-icon"></div>
-                                    <h2 class="q6-section-title q6-black-text">Something went wrong!</h2>
-                                    <p>Some error occurred, please try again</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button data-dismiss="modal" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Contact support</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
 
                 </div>
 
