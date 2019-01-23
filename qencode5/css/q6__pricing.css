@@ -1,3 +1,95 @@
 .q6-pricing-table-section{
     background: #f7f8fa;
 }
+
+.q6-pricing-table-container{
+    display: flex;
+    padding: 40px 0;
+}
+
+.q6-pricing-table-container > div:first-of-type{
+    flex: 1;
+    margin-right: 5%;
+}
+
+.q6-pricing__average{
+    display: flex;
+    align-items: center;
+}
+
+.q6-pricing__average p{
+    color: #366fe2;
+}
+
+.q6-pricing__average p:first-of-type{
+    margin-right: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 50px;    
+}
+
+.q6-pricing-table{
+    border-spacing: 0 2px;
+    text-align: right;
+    color: #4b4b4b;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.q6-pricing-table td, 
+.q6-pricing-table th {
+    padding: 20px;
+    background: white;
+}
+
+.q6-pricing-table tr td:first-of-type{
+    text-align: left;
+    font-weight: normal;
+}
+
+.q6-pricing-table-container > div{
+    position: relative;
+}
+
+.q6-pricing-table__close-button {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    height: 28px;
+    width: 28px;
+    background: #9fa3af;
+    border: none;
+    border-radius: 50%;
+    color: #fffbe2;
+    font-size: 18px;
+    outline: none;
+    user-select: none;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.q6-pricing-table__close-button:hover{
+    background: #8e929e;
+}
+
+@media screen and (max-width: 1024px){
+    .q6-pricing-table-container {
+        flex-direction: column;
+    }
+
+    .q6-pricing-table {
+        width: 100%;
+    }    
+}
+
+@media screen and (max-width: 630px){
+    .q6-pricing-table td, .q6-pricing-table th {
+        padding: 15px 10px;
+        font-size: 14px;
+    } 
+}
