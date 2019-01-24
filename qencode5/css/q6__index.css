@@ -422,10 +422,13 @@
         padding-left: 0;
     }   
     
-    .q6-card--header img {
-        margin: 0 auto;
-        display: inherit;
+    .q6-card.q6-card--header img {
+        display: none;
     }    
+
+    .q6-card.q6-card--header.q6-card--image-first{
+        margin-top: 0;
+    }
 
     .q6-card--header .q6-button-with-text {
         max-width: 100%;
@@ -507,4 +510,29 @@
     .q6-card--talk-to-us__container .q6-card > div:first-of-type {
         width: 100%;
     }    
+}
+
+
+@media screen and (max-width: 780px){
+    .q6-card h1 {
+        font-size: 38px;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .q6-card h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .q6-card h2, .q6-card--lowest-cost h2, 
+    .q6-card--about-us h2, 
+    .q6-card--talk-to-us__container h2, 
+    .q6-card--about-us h2, 
+    .q6-card--talk-to-us__container h2 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
 }
