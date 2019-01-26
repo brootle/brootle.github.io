@@ -20,10 +20,28 @@
 .q6-features-formats{
     background: #f7f8fa;
     border-radius: 8px;
-    padding: 40px;
+    padding: 30px 50px;
     margin-bottom: 70px;
-    display: flex;    
+    display: flex;
+    align-items: center;
 }
+
+.q6-features-formats__list{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5%;
+}
+
+.q6-features-formats__list > div{
+    margin-right: 30px;
+    min-width: 200px;
+}
+
+.q6-features-formats__list > div:last-of-type{
+    margin-right: 0;
+}
+
 
 .q6-features-how-it-works{
     border: 1px solid #e1e5ee;
@@ -123,6 +141,19 @@
 }
 
 
+@media screen and (max-width: 1180px){
+    .q6-features-formats {
+        flex-direction: column;
+    }
+    .q6-features-formats__list {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }    
+    .q6-features-formats__list > div {
+        flex: 1;
+    }    
+}
+
 
 @media screen and (max-width: 1024px){
     .q6-features-big-data {
@@ -147,6 +178,16 @@
         margin-right: 0;
         margin-bottom: 20px;
     }
+
+    .q6-features-formats__list {
+        flex-wrap: wrap;
+    }    
+    .q6-features-formats__list > div:last-of-type {
+        margin-right: 30px;
+    }    
+    .q6-features-formats {
+        padding: 15px 30px;
+    }    
 }
 
 @media screen and (max-width: 480px){
@@ -157,5 +198,13 @@
     }
     .q6-features-box__block {
         padding: 10px 0px;
+    }    
+
+    .q6-features-formats {
+        padding: 0;
+        background: none;
+    }    
+    .q6-features-formats__list {
+        margin-bottom: 10px;
     }    
 }

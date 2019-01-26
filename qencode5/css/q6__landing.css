@@ -46,6 +46,15 @@ h3{
     margin: 8px 0;  
 }
 
+h4{
+    color: #383838;
+    font-family: "proxima-nova";
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    margin: 5px 0;    
+}
+
 p {
     color: #4b4b4b;
     font-size: 16px;
@@ -388,6 +397,7 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     display: flex;
     flex: 1;
     justify-content: space-between;
+    align-items: center;
 }
 
 .q6-calc-summary .q6-calc-summary__details .q6-input__label {
@@ -406,17 +416,20 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     padding-left: 12px;
 }
 
-.q6-calc-details-buttons{
-    margin-bottom: 5px;
+.q6-vertical-smaller-buttons{
     margin-left: 15px;
     max-width: 220px;
 }
 
-.q6-calc-details-buttons .q6-button{
+.q6-vertical-smaller-buttons .q6-button{
     width: 100%;
-    margin-top: 7px;
+    margin-bottom: 7px;
     font-size: 15px;
     border-width: 1px;
+}
+
+.q6-vertical-smaller-buttons .q6-button:last-of-type{
+    margin-bottom: 0;
 }
 
 .q6-calc-formats{
@@ -1094,6 +1107,38 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     padding: 0 25px;
     min-width: 265px;
 }
+/********************* PROMO-BLOCK  *******************/
+
+
+/********************* CHECKLIST    *******************/
+.q6-checklist ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.q6-checklist li {
+    color: #4b4b4b;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 7.3px 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.q6-checklist li:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    height: 8px;
+    width: 16px;
+    border-bottom: 3px solid #46d797;
+    border-left: 3px solid #46d797;
+    transform: rotate(-45deg);
+}
+/********************* CHECKLIST    *******************/
 
 @media screen and (max-width: 1024px){
     .q6-promo-block__content {
@@ -1307,7 +1352,7 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
         align-items: flex-start;        
     }    
 
-    .q6-calc-details-buttons {
+    .q6-vertical-smaller-buttons {
         max-width: 100%;
         width: 100%;
         margin: 0;
