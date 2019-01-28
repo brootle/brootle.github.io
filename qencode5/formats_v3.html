@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <link href="css/q6__landing.css" rel="stylesheet" />
+    <link href="css/q6__template.css" rel="stylesheet" />
+
+    <link href="css/q6__features.css" rel="stylesheet" />
+    <link href="css/q6__formats.css" rel="stylesheet" />
+
+    <link href="css/q6__fonts.css" rel="stylesheet" />
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q6-page q6-body">
+
+    <nav class="q6-nav">
+
+        <div class="q6-container">
+
+            <div class="q6-logo">
+                <a href=""><img src="img/logo.svg" alt=""></a>
+            </div>
+            <div class="q6-top-menu">
+                <div class="q6-menu-items--left">
+                    <a href="">Why Qencode?</a>
+                    <a href="">Pricing</a>
+                    <a href="">Developers</a>                    
+                    <a href="">Contact</a>
+                </div>
+                <div class="q6-menu-items--right">
+                    <a href="">Sign In</a>
+                    <button class="q6-button q6-blue-background q6-blue-border q6-white-text">Get Started</button>
+                </div>
+            </div>
+    
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>   
+            
+            
+            <div id="mobile-menu" class="q6-mobile-menu">
+                <a href="">Why Qencode?</a>
+                <a href="">Pricing</a>
+                <a href="">Developers</a>                    
+                <a href="">Contact</a>         
+                <a href=""><strong>Sign In</strong></a>
+                <a href=""><strong>Get Started</strong></a>
+            </div>               
+
+
+        </div>
+
+    
+
+        <script>
+            $(function () {
+                $('.hamburger').click(function() {
+                    $(this).toggleClass('is-active');       
+                    let mobileMenu = document.querySelector("#mobile-menu");
+                    // show and hide mobile menu    
+                    if (mobileMenu.style.maxHeight){
+                        mobileMenu.style.maxHeight = null;
+                        mobileMenu.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0.0)";
+                    } else {
+                        mobileMenu.style.boxShadow = "0px 3px 11px 1px rgba(0,0,0,0.19)";
+                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                    }                       
+                })
+            });           
+        </script>
+
+    </nav> 
+
+
+
+    <main class="q6-main q6-page-content">
+        <div class="q6-container">
+            Page content in here                      
+        </div>
+
+        <div class="q6-card--talk-to-us__container">
+            <div class="q6-container">
+                <h2>Talk to us</h2>
+                <div class="q6-card">
+                    <div>
+                        <p>
+                            We love creating powerful solutions that are aligned
+                            with the needs of your business.
+                        </p>
+
+                        <p>Contact up with any questions. We'd love to help.</p>
+
+                        <p>
+                            <strong>(310) 905 86 00</strong> (Corporate HQ) <br>
+                            <strong>(415) 877 65 00</strong>  <br>
+                            <strong>(917) 525 45 00</strong>
+                        </p>
+
+                        <p>
+                            For more information about Demo or Plans and Pricing
+                            send us an email: <strong> <a href="mailto:sales@qencode.com">sales@qencode.com</a> </strong>
+                        </p>
+                    </div>
+                    <div>
+                    
+                        <div id="send-message-form" class="q6-send-message-form" style="display: none;">
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="name">Name</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" id="name">
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="email">Email</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" id="email">
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="comment">Comment</label>
+                                </div>
+                                <textarea id="comment"></textarea>
+                            </div>
+
+
+                            <button id="send-message" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow q6-button--send"><span>Send Message</span></button>
+
+                        </div>
+
+                        <div id="send-new-message-form" class="q6-send-message-form--thank-you" style="">
+                            <img src="img/index/send.svg" alt="">
+                            <p>Thank you. Your message has been sent!</p>
+                            <button id="send-new-message" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow"><span>Send New Message</span></button>
+                        </div>   
+
+                        <script>
+                            $(function () {
+                                $('#send-message').click(function() {
+                                    $("#send-message-form").hide();
+                                    $("#send-new-message-form").fadeIn();
+                                })
+                                $('#send-new-message').click(function() {
+                                    $("#send-new-message-form").hide();
+                                    $("#send-message-form").fadeIn();
+                                })                            
+                            });
+                        </script>                                                                   
+                    
+                    </div>                  
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="q6-footer">
+
+        <div class="q6-container">
+            <div class="q6-logo-and-menu">
+                <div class="q6-small-logo">
+                    <a href=""><img src="img/logo_short.svg" alt=""></a>
+                </div>
+                <div class="q6-footer-menu">
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Company</h3>
+                            <a href="">Contact us</a>
+                            <a href="">Terms and Conditions</a>
+                        </div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Why Qencode?</h3>
+                            <a href="">Pricing</a>
+                            <a href="">Formats</a>
+                            <a href="">Speed</a>
+                            <a href="">Security</a>
+                            <a href="">Features</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Developers</h3>
+                            <a href="">API</a>
+                            <a href="">Help Center</a>
+                            <a href="">Try Demo</a>                                                       
+                        </div>                  
+                    </div>                
+                </div>
+            </div>
+        </div>
+
+        <hr class="q6-hr">
+        
+        <div class="q6-container">
+            <div class="q6-copyright-and-socials">
+                <div>
+                    <span>© 2017 Qencode Inc. All rights reserved.</span>
+                </div>
+                <div class="q6-social-icons__footer">
+                    <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>                
+                </div>
+            </div>                    
+        </div>
+    </footer>
+
+</body>
+</html>
