@@ -1138,31 +1138,54 @@
                         </p>
                     </div>
                     <div>
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="name">Name</label>
+                    
+                        <div id="send-message-form" class="q6-send-message-form">
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="name">Name</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" id="name">
                             </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="name">
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="email">Email</label>
+                                </div>
+                                <input class="q6-input__field q6-black-text" type="text" id="email">
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="comment">Comment</label>
+                                </div>
+                                <textarea id="comment"></textarea>
+                            </div>
+
+
+                            <button id="send-message" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow q6-button--send"><span>Send Message</span></button>
+
                         </div>
 
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="email">Email</label>
-                            </div>
-                            <input class="q6-input__field q6-black-text" type="text" id="email">
-                        </div>
+                        <div id="send-new-message-form" class="q6-send-message-form--thank-you" style="display:none;">
+                            <img src="img/index/send.svg" alt="">
+                            <p>Thank you. Your message has been sent!</p>
+                            <button id="send-new-message" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow"><span>Send New Message</span></button>
+                        </div>   
 
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label for="comment">Comment</label>
-                            </div>
-                            <textarea id="comment"></textarea>
-                        </div>
-
-
-                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow q6-button--send"><span>Send Message</span></button>
-
-                    </div>
+                        <script>
+                            $(function () {
+                                $('#send-message').click(function() {
+                                    $("#send-message-form").hide();
+                                    $("#send-new-message-form").fadeIn();
+                                })
+                                $('#send-new-message').click(function() {
+                                    $("#send-new-message-form").hide();
+                                    $("#send-message-form").fadeIn();
+                                })                            
+                            });
+                        </script>                                                                   
+                    
+                    </div>                  
                 </div>
             </div>
         </div>
