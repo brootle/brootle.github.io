@@ -126,26 +126,32 @@ a.q6-button{
 .q6-input__label {
     color: #171717;
     font-size: 14px;
-    margin: 4px 0;
-    font-family: GraphikMedium;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    font-family: GraphikRegular, sans-serif;
+    margin: 4px 0;
 }
 
-input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=password].q6-input__field {
+input[type=text].q6-input__field, 
+input[type=tel].q6-input__field, 
+input[type=password].q6-input__field,
+textarea {
     width: 100%;
     padding: 14px 14px;
     margin: 0;
     display: inline-block;
-    border-radius: 5px;
     box-sizing: border-box;
     outline: none;
-    border: 1px solid #bcbcbc;
-    font-size: 16px;
+    border: 1px solid #e1e5ee;
     line-height: initial;
-    font-family: GraphikRegular;
-    color: #575757;
+
+    font-family: GraphikMedium;
+    font-size: 16px;
+    border-radius: 6px;
+    color: #171717; 
 }
 
 .q6-select {
@@ -155,16 +161,20 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     width: 100%;
     margin: 0!important;
     display: inline-block;
-    border-radius: 5px;
     box-sizing: border-box;
     outline: none;
     border: 1px solid #bcbcbc;
     padding: 14px 14px;
     padding-right: 20px;
-    font-size: 16px;
     line-height: initial;
-    font-family: GraphikRegular;
-    color: #575757;
+
+    color: #171717;
+    font-family: GraphikMedium;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 26px;
+    border-radius: 6px;
+    border-color: #e1e5ee;    
 }
 
 .q6-custom-select {
@@ -173,15 +183,19 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
 
 .q6-custom-select:after {
     content: "\f0d7";
-    color: #bdbdbd;
+
     font-family: "FontAwesome";
     position: absolute;
     right: 0;
-    top: 14px;
-    padding-right: 10px;
+
     font-size: 14px;
     pointer-events: none;
+
+    color: #17172b;
+    top: 16px;
+    padding-right: 17px;    
 }
+
 
 .q6-multiple-checkboxes {
     height: 244px;
@@ -512,23 +526,6 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     margin-right: 0;
 }*/
 
-.q6-extra-formats .q6-select{
-    color: #171717;
-    font-family: GraphikMedium;
-    font-size: 16px;
-    padding-left: 20px;
-    padding-right: 26px;
-    border-radius: 25px;
-    border-radius: 6px;
-    border-color: #e1e5ee;
-}
-
-.q6-extra-formats .q6-custom-select:after {
-    color: #17172b;
-    top: 16px;
-    padding-right: 17px;
-}
-
 .q6-extra-formats .q6-custom-select{
     margin-bottom: 10px;
     margin-left: 20px;
@@ -849,12 +846,6 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     display: inline-block;
 }
 
-.q6-input-output-container .q6-input__label {
-    font-family: GraphikRegular, sans-serif;
-    margin: 0;
-    margin-bottom: 8px;
-}
-
 .q6-radio-block .q6-input {
     flex: 1;
 }
@@ -1112,6 +1103,22 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     padding: 0 25px;
     min-width: 265px;
 }
+
+@media screen and (max-width: 1024px){
+    .q6-promo-block__content {
+        flex-direction: column;
+    }
+    .q6-promo-block__content > div:first-of-type {
+        width: 100%;
+        margin-right: 0;
+    }  
+    .q6-promo-block__content > div:nth-of-type(2) {
+        width: 100%;
+    }    
+    .q6-promo-block {
+        padding: 40px 0px;
+    }      
+}
 /********************* PROMO-BLOCK  *******************/
 
 
@@ -1119,6 +1126,8 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
 .q6-checklist ul {
     list-style-type: none;
     padding-left: 0;
+    margin: 15px 0;
+    margin-bottom: 25px;    
 }
 
 .q6-checklist li {
@@ -1143,27 +1152,126 @@ input[type=text].q6-input__field, input[type=tel].q6-input__field, input[type=pa
     border-left: 3px solid #46d797;
     transform: rotate(-45deg);
 }
+
+.q6-checklist__subtitle{
+    background: #316fea;
+    color: white;
+    display: inline-block;
+    margin: 15px 0;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    padding-top: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;    
+}
 /********************* CHECKLIST    *******************/
 
-@media screen and (max-width: 1024px){
-    .q6-promo-block__content {
-        flex-direction: column;
-    }
-    .q6-promo-block__content > div:first-of-type {
-        width: 100%;
-        margin-right: 0;
-    }  
-    .q6-promo-block__content > div:nth-of-type(2) {
-        width: 100%;
-    }    
-    .q6-promo-block {
-        padding: 40px 0px;
-    }      
-}
-/********************* PROMO-BLOCK  *******************/
 
 /********************* CONTACT-US-BLOCK  **************/
+.q6-contact-block{
+    background: #f7f8fa;
+    padding: 70px 0px;    
+    margin-top: 70px;
+}
+
+.q6-contact-block h2 {
+    text-align: center;
+}
+
+.q6-contact-block a {
+    color: #4b4b4b;
+    text-decoration: none;
+}
+
+.q6-contact-block a:hover {
+    color: #393939;
+}
+
+.q6-contact-block__content-container{
+    display: flex;
+}
+
+.q6-contact-block__content-container > div:first-of-type {
+    width: 55%;
+}
+
+.q6-contact-block__content-container > div:nth-of-type(2) {
+    width: 45%;
+    margin-left: 5vw;
+}
+
+.q6-contact-block__content-container .q6-button {
+    width: 100%;
+}
+
+.q6-contact-block__content-container textarea {
+    resize: none;
+    height: 128px;
+}
+
+.q6-contact-block__content-container .q6-input {
+    margin-bottom: 20px;
+}
+
+.q6-send-message-form--thank-you img{
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block;
+    max-width: 340px;
+}
+
+.q6-send-message-form--thank-you p{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;    
+}
+
+.q6-button.q6-button--send{
+    padding: 0 20px;
+    line-height: 48px;
+}
+
+.q6-button--send > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.q6-button--send > span:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url(../img/index/icons/send.svg);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px){
+    .q6-contact-block__content-container {
+        flex-direction: column;
+    }
+    .q6-contact-block__content-container > div:first-of-type {
+        width: 100%;
+    }
+    .q6-contact-block__content-container > div:nth-of-type(2) {
+        width: 100%;
+        margin-left: 0;
+    }    
+    .q6-contact-block {
+        background: #f7f8fa;
+        padding: 40px 0px;
+        margin-top: 40px;
+    }    
+}
 /********************* CONTACT-US-BLOCK  **************/
+
+.q6-page-description{
+    max-width: 610px;
+}
 
 /*MODIFICATORS*/
 /*background colors*/
