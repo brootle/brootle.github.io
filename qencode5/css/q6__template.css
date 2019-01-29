@@ -58,24 +58,28 @@
 }
 
 
-.q6-top-menu a:hover, .q6-top-menu a:visited, .q6-top-menu a:active, .q6-top-menu a:link{
+.q6-top-menu a:hover, 
+.q6-top-menu a:visited, 
+.q6-top-menu a:active, 
+.q6-top-menu a:link{
     color: #323548;
     text-decoration: none;
 }
 
-.q6-top-menu a {
+.q6-top-menu a.q6-menu-item-link {
     display: inline-block;
     font-size: 16px;
-    line-height: 78px;
-    transition: border .3s ease;
+    line-height: 40px;
+    transition: all .3s ease;
     cursor: pointer;
     margin-right: 2vw;
     margin-left: 2vw;
     border-bottom: 2px solid white;
 }
 
-.q6-top-menu a:hover {
-    border-bottom: 2px solid #43c086;
+.q6-top-menu a.q6-menu-item-link:hover {
+    color: #3270eb;
+    border-bottom: 2px solid #3270eb;
 }
 
 .q6-nav .q6-button{
@@ -231,6 +235,107 @@
 
 .q6-social-icons__footer > a:hover {
     color: #a3a3a3;
+}
+
+
+
+.q6-menu-item--has-submenu:hover .q6-menu-item__submenu{
+    display: block;
+}
+
+.q6-menu-item--has-submenu:hover a.q6-menu-item-link{
+    color: #3270eb;
+    border-bottom: 2px solid #3270eb;
+}
+
+.q6-menu-item__submenu{
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: none;
+    animation: fadeEffect 0.4s;
+}
+
+.q6-menu-item__submenu-content{
+    margin-top: 20px;
+    background: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    box-shadow: 0px 7px 25px 1px rgba(105, 109, 112, 0.2);
+}
+
+.q6-why-qencode-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.q6-why-qencode-box__block{
+    min-width: 270px;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 20px;
+    margin: 10px 5px;
+    border-left: 5px solid transparent;
+
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.q6-why-qencode-box__block:hover{
+    background: #f8f9fb;
+    border-radius: 5px;
+    border-left: 5px solid #3270eb;
+}
+
+.q6-why-qencode-box__block p {
+    line-height: 20px;
+    margin: 7px 0;
+}
+
+.q6-why-qencode-box__block h5{
+    margin: 5px 0;
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "proxima-nova";
+    line-height: 19px;    
+}
+
+
+.q6-why-qencode-icon-container {
+    width: 50px;
+    min-width: 50px;
+    margin-right: 20px;
+}
+
+.q6-why-qencode-icon {
+    height: 50px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+}
+
+.q6-why-qencode-icon--features {
+    background-image: url(../img/why_qencode/m_features.svg);
+}
+
+.q6-why-qencode-icon--speed {
+    background-image: url(../img/why_qencode/m_speed.svg);
+}
+
+.q6-why-qencode-icon--calculator {
+    background-image: url(../img/why_qencode/m_calc.svg);
+}
+
+.q6-why-qencode-icon--formats {
+    background-image: url(../img/why_qencode/m_formats.svg);
+}
+
+.q6-why-qencode-icon--security {
+    background-image: url(../img/why_qencode/m_security.svg);
+}
+
+.q6-why-qencode-icon--demo {
+    background-image: url(../img/why_qencode/m_demo.svg);
 }
 
 @media screen and (max-width: 320px){
