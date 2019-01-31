@@ -188,361 +188,339 @@
                 </div>
             </div>
 
-            <div class="q6-covered-block-container">
                 
+            <div class="q6-calc-component">
 
-                <div class="q6-calc-component">
+                <div class="q6-calc-summary">
+                    <div>
+                        <h2>Calculate Your Cost</h2>
 
-                    <div class="q6-calc-summary">
-                        <div>
-                            <h2>Calculate Your Cost</h2>
+                        <div class="q6-calc-summary__message">
+                            <p>Estimate your budget by updating <strong>Minutes, Costs, Formats or Resolutions</strong></p>
+                            <div class="q6-dotted-right-arrow"></div>
+                        </div>
 
-                            <div class="q6-calc-summary__message">
-                                <p>Estimate your budget by updating <strong>Minutes, Costs, Formats or Resolutions</strong></p>
-                                <div class="q6-dotted-right-arrow"></div>
-                            </div>
+                        <div class="q6-calc-summary__inputs-and-results">
 
-                            <div class="q6-calc-summary__inputs-and-results">
-
-                                <div class="q6-calc-summary__inputs">
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label for="input_minutes">Minutes of source video</label>
-                                        </div>
-                                        <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="input_minutes" value="10000">
+                            <div class="q6-calc-summary__inputs">
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="input_minutes">Minutes of source video</label>
                                     </div>
-                                    <script>
-                                        $(function () {
-                                            // format input value on page load id there is preset value
-                                            document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                    <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="input_minutes" value="10000">
+                                </div>
+                                <script>
+                                    $(function () {
+                                        // format input value on page load id there is preset value
+                                        document.getElementById('input_minutes').value = document.getElementById('input_minutes').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
 
-                                            // when user inputs value
-                                            document.getElementById('input_minutes').addEventListener('input', function (e) {
-                                                e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
-                                            });
+                                        // when user inputs value
+                                        document.getElementById('input_minutes').addEventListener('input', function (e) {
+                                            e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
                                         });
-                                    </script>
+                                    });
+                                </script>
 
-                                    <div class="q6-exchange-icon-container">
-                                        <div class="q6-exchange-icon__top"></div>
-                                        <div class="q6-exchange-icon"></div>
-                                        <div class="q6-exchange-icon__bottom"></div>
+                                <div class="q6-exchange-icon-container">
+                                    <div class="q6-exchange-icon__top"></div>
+                                    <div class="q6-exchange-icon"></div>
+                                    <div class="q6-exchange-icon__bottom"></div>
+                                </div>
+
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="your_cost">Your cost</label>
                                     </div>
+                                    <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="your_cost" value="4522.11">
+                                </div>
+                                <script>
+                                    $(function () {
+                                        // on load
+                                        //document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
 
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label for="your_cost">Your cost</label>
-                                        </div>
-                                        <input onclick="this.select();" class="q6-input__field q6-black-text" type="text" id="your_cost" value="4522.11">
-                                    </div>
-                                    <script>
-                                        $(function () {
-                                            // on load
-                                            //document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                        var inputValue = document.getElementById('your_cost').value;
+                                        if(inputValue.includes(".")){
+                                            // if number is decimal
+                                            // format part before dot
+                                            var integerValue = parseInt(inputValue).toString();
+                                            document.getElementById('your_cost').value = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim() + '.' + inputValue.split('.')[1];
 
-                                            var inputValue = document.getElementById('your_cost').value;
-                                            if(inputValue.includes(".")){
+                                        } else{
+                                            // if the number is not decimal add spaces after thousands
+                                            document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                        }
+
+
+                                        // when user inputs value
+                                        document.getElementById('your_cost').addEventListener('input', function (e) {
+
+                                            if(e.target.value.includes(".")){
                                                 // if number is decimal
-                                                // format part before dot
-                                                var integerValue = parseInt(inputValue).toString();
-                                                document.getElementById('your_cost').value = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim() + '.' + inputValue.split('.')[1];
+                                                e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
+
+                                                // allow only two digits after dots
+                                                var afterDotDigits = e.target.value.split('.')[1];
+                                                if(afterDotDigits.length > 2){
+                                                    e.target.value = e.target.value.replace(/.$/, '');
+                                                }
 
                                             } else{
                                                 // if the number is not decimal add spaces after thousands
-                                                document.getElementById('your_cost').value = '$ ' + document.getElementById('your_cost').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
                                             }
 
 
-                                            // when user inputs value
-                                            document.getElementById('your_cost').addEventListener('input', function (e) {
-
-                                                if(e.target.value.includes(".")){
-                                                    // if number is decimal
-                                                    e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
-
-                                                    // allow only two digits after dots
-                                                    var afterDotDigits = e.target.value.split('.')[1];
-                                                    if(afterDotDigits.length > 2){
-                                                        e.target.value = e.target.value.replace(/.$/, '');
-                                                    }
-
-                                                } else{
-                                                    // if the number is not decimal add spaces after thousands
-                                                    e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
-                                                }
-
-
-                                                // original
-                                                //e.target.value = '$ ' + e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
-                                            });
+                                            // original
+                                            //e.target.value = '$ ' + e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
                                         });
-                                    </script>
-                                </div>
-
-                                <div class="q6-calc-summary__results">
-                                    <div>
-                                        <div>SD:</div>
-                                        <div>HD:</div>
-                                        <div>UHD:</div>
-                                    </div>
-                                    <div>
-                                        <div>$ 42,000.00</div>
-                                        <div>$ 84,000.00</div>
-                                        <div>$ 84,000.00</div>
-                                    </div>
-                                </div>                            
+                                    });
+                                </script>
                             </div>
-                        </div>
-                        <div class="q6-calc-summary__buttons">
-                            <button class="q6-button q6-blue-background q6-blue-border q6-white-text">Get $5 Free Credit</button>
-                            <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Browse formats</button>
+
+                            <div class="q6-calc-summary__results">
+                                <div>
+                                    <div>SD:</div>
+                                    <div>HD:</div>
+                                    <div>UHD:</div>
+                                </div>
+                                <div>
+                                    <div>$ 42,000.00</div>
+                                    <div>$ 84,000.00</div>
+                                    <div>$ 84,000.00</div>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
-
-                    <div class="q6-calc-formats">
-                        <div class="q6-extra-formats">
-                            <div class="q6-custom-select">
-                                <select class="q6-select" id="format1" required="" name="format1">
-                                    <option value="" selected>Select format</option>
-                                    <option data-formats="format1_00_note" value="none">None</option>
-                                    <option data-formats="format1_01_checkboxes" value="mp4">MP4</option>
-                                </select>
-                            </div>
-                            <div id="format1_00_note" class="q6-extra-formats__content q6-calc-formats__note q6-hidden">
-                                To add a format, please select it from the dropdown
-                            </div>
-                            <div id="format1_01_checkboxes" class="q6-extra-formats__content">
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="format1_1" required="" name="format1_1">
-                                        <option value="h264">H.264</option>
-                                    </select>
-                                </div>
-                                <div class="q6-multiple-checkboxes">
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>4K</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>1080</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>720</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>480</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>360</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>240</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>144</div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="q6-extra-formats" data-addFormat="extra-format_01" style="display:none">
-                            <div class="q6-custom-select">
-                                <select class="q6-select" id="format4" required="" name="format4">
-                                    <option value="" selected>Select format</option>
-                                    <option data-formats="format4_00_note" value="none">None</option>
-                                    <option data-formats="format4_01_checkboxes" value="webm">WEBM</option>
-                                </select>
-                            </div>
-                            <div id="format4_00_note" class="q6-extra-formats__content q6-calc-formats__note">
-                                To add a format, please select it from the dropdown
-                            </div>
-                            <div id="format4_01_checkboxes" class="q6-extra-formats__content q6-hidden">
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="format4_1" required="" name="format4_1">
-                                        <option value="h264">H.264</option>
-                                    </select>
-                                </div>
-                                <div class="q6-multiple-checkboxes">
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>4K</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>1080</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>720</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>480</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>360</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>240</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>144</div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="q6-extra-formats" data-addFormat="extra-format_02" style="display:none">
-                            <div class="q6-custom-select">
-                                <select class="q6-select" id="format5" required="" name="format5">
-                                    <option value="" selected>Select format</option>
-                                    <option data-formats="format5_00_note" value="none">None</option>
-                                    <option data-formats="format5_01_checkboxes" value="mp4">MP4</option>
-                                </select>
-                            </div>
-                            <div id="format5_00_note" class="q6-extra-formats__content q6-calc-formats__note">
-                                To add a format, please select it from the dropdown
-                            </div>
-                            <div id="format5_01_checkboxes" class="q6-extra-formats__content q6-hidden">
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="format5_1" required="" name="format5_1">
-                                        <option value="h264">H.264</option>
-                                    </select>
-                                </div>
-                                <div class="q6-multiple-checkboxes">
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>4K</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>1080</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>720</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>480</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>360</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox" checked="checked">
-                                        <span class="q6-checkmark"></span>
-                                        <div>240</div>
-                                    </label>
-                                    <label class="q6-checkbox q6-black-text">
-                                        <input type="checkbox">
-                                        <span class="q6-checkmark"></span>
-                                        <div>144</div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            $(function () {
-                                $(".q6-extra-formats > div > select").change(function() {
-                                    var selectedID = $(this).find(":selected").attr("data-formats");
-
-                                    $(this).closest(".q6-extra-formats").find(".q6-extra-formats__content").addClass("q6-hidden");
-
-                                    $(`#${selectedID}`).removeClass("q6-hidden");
-
-                                    // if user selects "None" => switch to "Select format" option with is hidded from dropdown
-                                    if($(this).val() == "none"){
-                                        $(this).prop("selectedIndex", 0);
-                                    }
-
-                                });
-                            });
-                        </script>
-
-                        <div id="extra-format_01" class="q6-add-extra-format">
-                            <div>
-                                <div class="q6-add-format__plus-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve">
-                                    <polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "></polygon>
-                                </svg>
-                                </div>
-                                <div class="q6-add-format__plus-text">Add format</div>
-                            </div>
-                        </div>
-                        <div id="extra-format_02" class="q6-add-extra-format">
-                            <div>
-                                <div class="q6-add-format__plus-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve">
-                                    <polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "></polygon>
-                                </svg>
-                                </div>
-                                <div class="q6-add-format__plus-text">Add format</div>
-                            </div>
-                        </div>
-                        <script>
-                            $(function () {
-                                $(".q6-add-extra-format").click(function() {
-                                    // hide this clicked element
-                                    $(this).hide();
-
-                                    // show relevant format box
-                                    $(`[data-addFormat='${this.id}']`).show();
-
-                                    // make sure last visible element has no right margin
-                                    $('.q6-calc-formats > div:visible').last().css("margin-right", "0");
-                                });
-                            });
-                        </script>
+                    <div class="q6-calc-summary__buttons">
+                        <button class="q6-button q6-blue-background q6-blue-border q6-white-text">Get $5 Free Credit</button>
+                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Browse formats</button>
                     </div>
-                </div>    
+                </div>
 
-
-                <div id="calculator-cover" class="q6-covered-block__cover">
-                    <div>
-                        <button id="show-calculator" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide q6-button--shadow q6-button--calculator"><span>Calculate yours cost</span></button>
+                <div class="q6-calc-formats">
+                    <div class="q6-extra-formats">
+                        <div class="q6-custom-select">
+                            <select class="q6-select" id="format1" required="" name="format1">
+                                <option value="" selected>Select format</option>
+                                <option data-formats="format1_00_note" value="none">None</option>
+                                <option data-formats="format1_01_checkboxes" value="mp4">MP4</option>
+                            </select>
+                        </div>
+                        <div id="format1_00_note" class="q6-extra-formats__content q6-calc-formats__note q6-hidden">
+                            To add a format, please select it from the dropdown
+                        </div>
+                        <div id="format1_01_checkboxes" class="q6-extra-formats__content">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="format1_1" required="" name="format1_1">
+                                    <option value="h264">H.264</option>
+                                </select>
+                            </div>
+                            <div class="q6-multiple-checkboxes">
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>4K</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>1080</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>720</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>480</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>360</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>240</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>144</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="q6-extra-formats" data-addFormat="extra-format_01" style="display:none">
+                        <div class="q6-custom-select">
+                            <select class="q6-select" id="format4" required="" name="format4">
+                                <option value="" selected>Select format</option>
+                                <option data-formats="format4_00_note" value="none">None</option>
+                                <option data-formats="format4_01_checkboxes" value="webm">WEBM</option>
+                            </select>
+                        </div>
+                        <div id="format4_00_note" class="q6-extra-formats__content q6-calc-formats__note">
+                            To add a format, please select it from the dropdown
+                        </div>
+                        <div id="format4_01_checkboxes" class="q6-extra-formats__content q6-hidden">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="format4_1" required="" name="format4_1">
+                                    <option value="h264">H.264</option>
+                                </select>
+                            </div>
+                            <div class="q6-multiple-checkboxes">
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>4K</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>1080</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>720</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>480</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>360</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>240</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>144</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="q6-extra-formats" data-addFormat="extra-format_02" style="display:none">
+                        <div class="q6-custom-select">
+                            <select class="q6-select" id="format5" required="" name="format5">
+                                <option value="" selected>Select format</option>
+                                <option data-formats="format5_00_note" value="none">None</option>
+                                <option data-formats="format5_01_checkboxes" value="mp4">MP4</option>
+                            </select>
+                        </div>
+                        <div id="format5_00_note" class="q6-extra-formats__content q6-calc-formats__note">
+                            To add a format, please select it from the dropdown
+                        </div>
+                        <div id="format5_01_checkboxes" class="q6-extra-formats__content q6-hidden">
+                            <div class="q6-custom-select">
+                                <select class="q6-select" id="format5_1" required="" name="format5_1">
+                                    <option value="h264">H.264</option>
+                                </select>
+                            </div>
+                            <div class="q6-multiple-checkboxes">
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>4K</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>1080</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>720</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>480</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>360</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="q6-checkmark"></span>
+                                    <div>240</div>
+                                </label>
+                                <label class="q6-checkbox q6-black-text">
+                                    <input type="checkbox">
+                                    <span class="q6-checkmark"></span>
+                                    <div>144</div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <script>
                         $(function () {
-                            $('#show-calculator').click(function() {
+                            $(".q6-extra-formats > div > select").change(function() {
+                                var selectedID = $(this).find(":selected").attr("data-formats");
 
-                                // expand block to full size
-                                $(this).closest(".q6-covered-block-container").css("max-height","initial");
+                                $(this).closest(".q6-extra-formats").find(".q6-extra-formats__content").addClass("q6-hidden");
 
-                                // hide cover
-                                $("#calculator-cover").fadeOut(200);
-                            })
+                                $(`#${selectedID}`).removeClass("q6-hidden");
+
+                                // if user selects "None" => switch to "Select format" option with is hidded from dropdown
+                                if($(this).val() == "none"){
+                                    $(this).prop("selectedIndex", 0);
+                                }
+
+                            });
+                        });
+                    </script>
+
+                    <div id="extra-format_01" class="q6-add-extra-format">
+                        <div>
+                            <div class="q6-add-format__plus-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve">
+                                <polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "></polygon>
+                            </svg>
+                            </div>
+                            <div class="q6-add-format__plus-text">Add format</div>
+                        </div>
+                    </div>
+                    <div id="extra-format_02" class="q6-add-extra-format">
+                        <div>
+                            <div class="q6-add-format__plus-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve">
+                                <polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "></polygon>
+                            </svg>
+                            </div>
+                            <div class="q6-add-format__plus-text">Add format</div>
+                        </div>
+                    </div>
+                    <script>
+                        $(function () {
+                            $(".q6-add-extra-format").click(function() {
+                                // hide this clicked element
+                                $(this).hide();
+
+                                // show relevant format box
+                                $(`[data-addFormat='${this.id}']`).show();
+
+                                // make sure last visible element has no right margin
+                                $('.q6-calc-formats > div:visible').last().css("margin-right", "0");
+                            });
                         });
                     </script>
                 </div>
+            </div>    
 
-            </div>
 
             <div class="q6-card q6-card--formats q6-card--image-first">
                 <div>
@@ -565,359 +543,343 @@
                 </div>
             </div>
 
-            <div class="q6-covered-block-container">
-                <div class="q6-transcoding-demo">
-                    <div class="q6-input-output-container">
-                        <div>
-                            <div class="q6-input-container">
-                                <div class="q6-drag-and-drop-container">
-                                    <div class="q6-radio-block">
-                                        <label class="q6-radio-button">
-                                            <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
-                                            <span class="q6-radio-checkmark"></span>
-                                        </label>
-                                        <div>
-                                            <h2>Transcoding Demo</h2> 
-                                            <div class="q6-transcoding-caption">Source</div>
-                                            <div id="drop_zone" class="q6-drag-and-drop">
 
-                                                <div class="q6-drag-and-drop__message-container">
-                                                    <div class="q6-browse-file">
-                                                        <div class="q6-drag-and-drop__icon"></div>
-                                                        <div class="q6-drag-and-drop__title q6-black-text">
-                                                            Drag &amp; Drop
-                                                        </div>
-                                                        <div class="q6-drag-and-drop__intructions q6-black-text">
-                                                            your files here, or
-                                                            <div class="q6-upload-file-link">
-                                                                <input type="file" name="file" id="file">
-                                                                <label class="q6-blue-text" for="file">Browse</label>
-                                                            </div>
+            <div class="q6-transcoding-demo">
+                <div class="q6-input-output-container">
+                    <div>
+                        <div class="q6-input-container">
+                            <div class="q6-drag-and-drop-container">
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>
+                                    <div>
+                                        <h2>Transcoding Demo</h2> 
+                                        <div class="q6-transcoding-caption">Source</div>
+                                        <div id="drop_zone" class="q6-drag-and-drop">
+
+                                            <div class="q6-drag-and-drop__message-container">
+                                                <div class="q6-browse-file">
+                                                    <div class="q6-drag-and-drop__icon"></div>
+                                                    <div class="q6-drag-and-drop__title q6-black-text">
+                                                        Drag &amp; Drop
+                                                    </div>
+                                                    <div class="q6-drag-and-drop__intructions q6-black-text">
+                                                        your files here, or
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="file">
+                                                            <label class="q6-blue-text" for="file">Browse</label>
                                                         </div>
                                                     </div>
-                                                    <div class="q6-drag-and-drop__file-container q6-hidden">
-                                                        <div>
-                                                            <div class="q6-videofile__icon"></div>
-                                                            <div class="q6-videofile-preview__icon" style="display: none;"></div>
-                                                            <div class="q6-drag-and-drop__filename"></div>
-                                                            <div class="q6-upload-file-link">
-                                                                <input type="file" name="file" id="new_file">
-                                                                <label class="q6-blue-text" for="new_file">Choose another file</label>
-                                                            </div>
+                                                </div>
+                                                <div class="q6-drag-and-drop__file-container q6-hidden">
+                                                    <div>
+                                                        <div class="q6-videofile__icon"></div>
+                                                        <div class="q6-videofile-preview__icon" style="display: none;"></div>
+                                                        <div class="q6-drag-and-drop__filename"></div>
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="new_file">
+                                                            <label class="q6-blue-text" for="new_file">Choose another file</label>
                                                         </div>
                                                     </div>
-
                                                 </div>
 
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="q6-radio-block">
-                                        <label class="q6-radio-button">
-                                            <input type="radio" name="file-selector" value="insert_link">
-                                            <span class="q6-radio-checkmark"></span>
-                                        </label>
-                                        <div class="q6-input">
-                                            <div class="q6-input__label">
-                                                <label for="input_url">Insert URL</label>
-                                            </div>
-                                            <input class="q6-input__field q6-black-text q6-input--disabled" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
-                                        </div>
-                                    </div>
-
-                                    <script>
-                                        $(function () {
-                                            // when radio buttons clicked
-                                            $('input[name=file-selector]').change(function() {
-                                                if(this.value === "insert_link"){
-                                                    $("#input_url").removeClass("q6-input--disabled");
-                                                    $("#drop_zone").addClass("q6-drag-and-drop--disabled");
-                                                } else{
-                                                    $("#input_url").addClass("q6-input--disabled");
-                                                    $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
-                                                }
-                                            });
-
-                                            // when drop zone area or input url clicked
-                                            $("#input_url").click(function() {
-                                                $('input[name=file-selector][value=insert_link').prop('checked',true);
-                                                $(this).removeClass("q6-input--disabled");
-                                                $("#drop_zone").addClass("q6-drag-and-drop--disabled");
-                                            });
-
-                                            $("#drop_zone").click(function() {
-                                                $('input[name=file-selector][value=dropzone_file').prop('checked',true);
-                                                $(this).removeClass("q6-drag-and-drop--disabled");
-                                                $("#input_url").addClass("q6-input--disabled");
-                                            });
-                                        });
-                                    </script>
-
-                                    <script>
-                                        $(function (){
-                                            // when we click Browse link
-                                            $("#file, #new_file").change(function(e) {
-                                                var fileName = e.target.value.split( '\\' ).pop();
-
-                                                // if filename is not empty
-                                                // filename can be empty if user clicks cancel instead of OK when chosing file
-                                                if(fileName){
-                                                    $('.q6-drag-and-drop__filename').html(fileName);
-                                                    // show box fith file
-                                                    $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
-                                                    // hide box with bowse link
-                                                    $(".q6-browse-file").addClass("q6-hidden");
-                                                }
-
-                                                // clear value in case same file will be selected
-                                                $(this).val('');
-                                            });
-                                        });
-                                    </script>
-
-                                    <script>
-                                        $(function () {
-                                            // HANDLE FILE DROP ZONE
-                                            document.querySelector("#drop_zone").addEventListener('dragover',dragOverHandler);
-                                            document.querySelector("#drop_zone").addEventListener('dragleave',dragLeaveHandler);
-                                            document.querySelector("#drop_zone").addEventListener('drop',dropHandler);
-
-                                            function dropHandler(ev) {
-                                                // Prevent default behavior (Prevent file from being opened)
-                                                ev.preventDefault();
-
-                                                var fileName = '';
-
-                                                if (ev.dataTransfer.items) {
-                                                    // Use DataTransferItemList interface to access the file(s)
-                                                    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-                                                        // If dropped items aren't files, reject them
-                                                        if (ev.dataTransfer.items[i].kind === 'file') {
-                                                            var file = ev.dataTransfer.items[i].getAsFile();
-                                                            //console.log('... file[' + i + '].name = ' + file.name);
-                                                            fileName+=file.name;
-                                                        }
-                                                    }
-                                                } else {
-                                                    // Use DataTransfer interface to access the file(s)
-                                                    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                                                        //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-                                                        fileName+=ev.dataTransfer.files[i].name
-                                                    }
-                                                }
-
-                                                $('.q6-drag-and-drop__filename').html(fileName);
-
-                                                // show box fith file
-                                                $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
-                                                // hide box with bowse link
-                                                $(".q6-browse-file").addClass("q6-hidden");
-
-                                                $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
-                                                $("#input_url").addClass("q6-input--disabled");
-
-                                                // Pass event to removeDragData for cleanup
-                                                removeDragData(ev)
-                                            }
-
-                                            function dragOverHandler(ev) {
-                                                // Prevent default behavior (Prevent file from being opened)
-                                                ev.preventDefault();
-
-                                                // highlight drag and drop area
-                                                $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
-
-                                                // select radiobutton
-                                                $('input[name=file-selector][value=dropzone_file').prop('checked',true);
-                                            }
-
-                                            function dragLeaveHandler(ev) {
-                                                // Prevent default behavior (Prevent file from being opened)
-                                                ev.preventDefault();
-
-                                                // remove highlight of drag and drop area
-                                                $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");
-                                            }
-
-
-                                            function removeDragData(ev) {
-                                                if (ev.dataTransfer.items) {
-                                                    // Use DataTransferItemList interface to remove the drag data
-                                                    ev.dataTransfer.items.clear();
-                                                } else {
-                                                    // Use DataTransfer interface to remove the drag data
-                                                    ev.dataTransfer.clearData();
-                                                }
-
-                                                // remove highlight of drag and drop area
-                                                $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");
-                                            }
-                                        });
-
-                                    </script>
-
-                                </div>
-                                <div>
-                                    <div class="q6-extra-formats">
-                                        <div class="q6-transcoding-caption">
-                                            Settings
-                                        </div>
-                                        <div class="q6-custom-select">
-                                            <select class="q6-select" id="format1" required="" name="format1">
-                                                <option value="" selected>Select format</option>
-                                                <option data-formats="format1_01_checkboxes" value="mp4" selected>MP4</option>
-                                            </select>
-                                        </div>
-                                        <div id="format1_01_checkboxes" class="q6-extra-formats__content">
-                                            <div class="q6-custom-select">
-                                                <select class="q6-select" id="format1_1" required="" name="format1_1">
-                                                    <option value="h264">H.264</option>
-                                                </select>
-                                            </div>
-                                            <div class="q6-multiple-checkboxes">
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>4K</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>1080</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>720</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>480</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>360</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>240</div>
-                                                </label>
-                                                <label class="q6-checkbox q6-black-text">
-                                                    <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                    <div>144</div>
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <div>
-                                <button id="start-button" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Start</button>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="q6-output-container">
-                                <div class="q6-transcoding-caption">
-                                    Output
-                                </div>
-                                <div id="output-description" class="q6-output__description">
-                                    <div>
-                                        <p class="q6-black-text">
-                                            Demo version creates <br> 30 second clip with watermark
-                                        </p>
 
-                                        <p class="q6-black-text">
-                                            <strong class="q6-blue-text">Get $5 Free Credit</strong> <br>
-                                            by creating an account.
-                                        </p>
-                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create account</button>
-                                    </div>
-                                </div>
-
-                                <div id="video_upload_progress" class="q6-video-upload">
-                                    <div class="q6-video-upload__message">
-                                        <div>
-                                            <div id="video_upload_caption">Uploading &nbsp;</div>
-                                            <div id="video_upload_percentage"></div>
-                                            <div>%</div>
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="insert_link">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_url">Insert URL</label>
                                         </div>
-                                        <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
-                                        <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
-                                    </div>
-                                    <div class="q6-video-upload__progress-bar">
-                                        <div id="video_upload_visual" class="q6-progress-complete"></div>
+                                        <input class="q6-input__field q6-black-text q6-input--disabled" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
                                     </div>
                                 </div>
 
                                 <script>
                                     $(function () {
-                                        // update upload progress based on data received from server
-                                        var uploadProgress = 27; // fetch data from server
-                                        if(uploadProgress >= 100){
-                                            $("#video_upload_caption").html('Complete &nbsp;');
-                                        }
-                                        $("#video_upload_percentage").html(uploadProgress);
-                                        $("#video_upload_visual").width(uploadProgress + '%');
+                                        // when radio buttons clicked
+                                        $('input[name=file-selector]').change(function() {
+                                            if(this.value === "insert_link"){
+                                                $("#input_url").removeClass("q6-input--disabled");
+                                                $("#drop_zone").addClass("q6-drag-and-drop--disabled");
+                                            } else{
+                                                $("#input_url").addClass("q6-input--disabled");
+                                                $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
+                                            }
+                                        });
+
+                                        // when drop zone area or input url clicked
+                                        $("#input_url").click(function() {
+                                            $('input[name=file-selector][value=insert_link').prop('checked',true);
+                                            $(this).removeClass("q6-input--disabled");
+                                            $("#drop_zone").addClass("q6-drag-and-drop--disabled");
+                                        });
+
+                                        $("#drop_zone").click(function() {
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                            $(this).removeClass("q6-drag-and-drop--disabled");
+                                            $("#input_url").addClass("q6-input--disabled");
+                                        });
                                     });
                                 </script>
 
+                                <script>
+                                    $(function (){
+                                        // when we click Browse link
+                                        $("#file, #new_file").change(function(e) {
+                                            var fileName = e.target.value.split( '\\' ).pop();
+
+                                            // if filename is not empty
+                                            // filename can be empty if user clicks cancel instead of OK when chosing file
+                                            if(fileName){
+                                                $('.q6-drag-and-drop__filename').html(fileName);
+                                                // show box fith file
+                                                $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                                // hide box with bowse link
+                                                $(".q6-browse-file").addClass("q6-hidden");
+                                            }
+
+                                            // clear value in case same file will be selected
+                                            $(this).val('');
+                                        });
+                                    });
+                                </script>
+
+                                <script>
+                                    $(function () {
+                                        // HANDLE FILE DROP ZONE
+                                        document.querySelector("#drop_zone").addEventListener('dragover',dragOverHandler);
+                                        document.querySelector("#drop_zone").addEventListener('dragleave',dragLeaveHandler);
+                                        document.querySelector("#drop_zone").addEventListener('drop',dropHandler);
+
+                                        function dropHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            var fileName = '';
+
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                                                    // If dropped items aren't files, reject them
+                                                    if (ev.dataTransfer.items[i].kind === 'file') {
+                                                        var file = ev.dataTransfer.items[i].getAsFile();
+                                                        //console.log('... file[' + i + '].name = ' + file.name);
+                                                        fileName+=file.name;
+                                                    }
+                                                }
+                                            } else {
+                                                // Use DataTransfer interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                                                    //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+                                                    fileName+=ev.dataTransfer.files[i].name
+                                                }
+                                            }
+
+                                            $('.q6-drag-and-drop__filename').html(fileName);
+
+                                            // show box fith file
+                                            $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                            // hide box with bowse link
+                                            $(".q6-browse-file").addClass("q6-hidden");
+
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
+                                            $("#input_url").addClass("q6-input--disabled");
+
+                                            // Pass event to removeDragData for cleanup
+                                            removeDragData(ev)
+                                        }
+
+                                        function dragOverHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // highlight drag and drop area
+                                            $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
+
+                                            // select radiobutton
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                        }
+
+                                        function dragLeaveHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");
+                                        }
+
+
+                                        function removeDragData(ev) {
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to remove the drag data
+                                                ev.dataTransfer.items.clear();
+                                            } else {
+                                                // Use DataTransfer interface to remove the drag data
+                                                ev.dataTransfer.clearData();
+                                            }
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");
+                                        }
+                                    });
+
+                                </script>
+
                             </div>
-                            <div id="output-description-complete" class="q6-output__description q6-output__description--complete" style="display:none;">
-                                <div>
-                                    <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Get Started</button>
-                                    <p class="q6-black-text">
-                                        Demo version creates 30 second clip with watermark. <br>
-                                        <strong class="q6-blue-text">Get 500 minutes free</strong> by creating an account.
-                                    </p>
+                            <div>
+                                <div class="q6-extra-formats">
+                                    <div class="q6-transcoding-caption">
+                                        Settings
+                                    </div>
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select" id="format1" required="" name="format1">
+                                            <option value="" selected>Select format</option>
+                                            <option data-formats="format1_01_checkboxes" value="mp4" selected>MP4</option>
+                                        </select>
+                                    </div>
+                                    <div id="format1_01_checkboxes" class="q6-extra-formats__content">
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select" id="format1_1" required="" name="format1_1">
+                                                <option value="h264">H.264</option>
+                                            </select>
+                                        </div>
+                                        <div class="q6-multiple-checkboxes">
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                                <div>4K</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>1080</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>720</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>480</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>360</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox" checked="checked">
+                                                <span class="q6-checkmark"></span>
+                                                <div>240</div>
+                                            </label>
+                                            <label class="q6-checkbox q6-black-text">
+                                                <input type="checkbox">
+                                                <span class="q6-checkmark"></span>
+                                                <div>144</div>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <script>
-                        $(function () {
-                            // when START button clicked
-                            $("#start-button").click(function() {
-                                // hide output-description and start-button
-                                $("#start-button, #output-description").hide();
-
-                                // show upload progress
-                                $("#video_upload_progress").show();
-                            });
-
-                            // when CANCEL button clicked
-                            $("#cancel-buton").click(function() {
-                                // hide output-description and start-button
-                                $("#start-button, #output-description").show();
-
-                                // show upload progress
-                                $("#video_upload_progress").hide();
-                            });
-                        });
-                    </script>
-                </div>
-                <div id="try-demo-cover" class="q6-covered-block__cover">
                     <div>
-                        <button id="show-try-demo" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide q6-button--shadow q6-button--demo"><span>Test Transcoding</span></button>
+                            <button id="start-button" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Start</button>
+                        </div>
                     </div>
-                    <script>
-                        $(function () {
-                            $('#show-try-demo').click(function() {
-                                // expand block to full size
-                                $(this).closest(".q6-covered-block-container").css("max-height","initial");
+                    <div>
+                        <div class="q6-output-container">
+                            <div class="q6-transcoding-caption">
+                                Output
+                            </div>
+                            <div id="output-description" class="q6-output__description">
+                                <div>
+                                    <p class="q6-black-text">
+                                        Demo version creates <br> 30 second clip with watermark
+                                    </p>
 
-                                // hide cover
-                                $("#try-demo-cover").fadeOut(200);
-                            })
-                        });
-                    </script>
+                                    <p class="q6-black-text">
+                                        <strong class="q6-blue-text">Get $5 Free Credit</strong> <br>
+                                        by creating an account.
+                                    </p>
+                                    <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create account</button>
+                                </div>
+                            </div>
+
+                            <div id="video_upload_progress" class="q6-video-upload">
+                                <div class="q6-video-upload__message">
+                                    <div>
+                                        <div id="video_upload_caption">Uploading &nbsp;</div>
+                                        <div id="video_upload_percentage"></div>
+                                        <div>%</div>
+                                    </div>
+                                    <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
+                                    <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
+                                </div>
+                                <div class="q6-video-upload__progress-bar">
+                                    <div id="video_upload_visual" class="q6-progress-complete"></div>
+                                </div>
+                            </div>
+
+                            <script>
+                                $(function () {
+                                    // update upload progress based on data received from server
+                                    var uploadProgress = 27; // fetch data from server
+                                    if(uploadProgress >= 100){
+                                        $("#video_upload_caption").html('Complete &nbsp;');
+                                    }
+                                    $("#video_upload_percentage").html(uploadProgress);
+                                    $("#video_upload_visual").width(uploadProgress + '%');
+                                });
+                            </script>
+
+                        </div>
+                        <div id="output-description-complete" class="q6-output__description q6-output__description--complete" style="display:none;">
+                            <div>
+                                <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Get Started</button>
+                                <p class="q6-black-text">
+                                    Demo version creates 30 second clip with watermark. <br>
+                                    <strong class="q6-blue-text">Get 500 minutes free</strong> by creating an account.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <script>
+                    $(function () {
+                        // when START button clicked
+                        $("#start-button").click(function() {
+                            // hide output-description and start-button
+                            $("#start-button, #output-description").hide();
+
+                            // show upload progress
+                            $("#video_upload_progress").show();
+                        });
+
+                        // when CANCEL button clicked
+                        $("#cancel-buton").click(function() {
+                            // hide output-description and start-button
+                            $("#start-button, #output-description").show();
+
+                            // show upload progress
+                            $("#video_upload_progress").hide();
+                        });
+                    });
+                </script>
             </div>
+
 
             <div class="q6-card q6-card--api">
                 <div>
