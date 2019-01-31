@@ -1,0 +1,204 @@
+.q6-calc-component{
+    margin: 50px 0;
+    padding: 28px;
+    border-radius: 8px;
+    display: flex;
+    border: 1px solid #e1e5ee;    
+}
+
+.q6-calc-formats {
+    display: flex;
+    flex: 1;
+    min-width: 625px;
+    max-width: 825px;
+}
+
+.q6-calc-formats > div:last-of-type{
+    margin-right: 0;
+}
+
+.q6-calc-summary {
+    max-width: 400px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;    
+}
+
+.q6-calc-summary > div:first-of-type{
+    flex: 1;
+}
+
+.q6-calc-summary__message{
+    display: flex;
+    align-items: center;   
+    margin-top: 15px; 
+}
+
+.q6-calc-summary__message p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #898c93;
+    margin: 10px 0;    
+}
+
+.q6-calc-summary input[type=text].q6-input__field{
+    color: #3270e9;
+}
+
+.q6-calc-summary__inputs-and-results{
+    display: flex;
+    align-items: flex-end;    
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.q6-calc-summary__results{
+    display: flex;
+    line-height: 28px;
+    font-size: 16px;   
+    margin-bottom: 20px; 
+    min-width: 150px;
+}
+
+.q6-calc-summary__results > div:nth-of-type(2) {
+    color: #171717;
+    font-family: GraphikMedium;
+    padding-left: 12px;
+}
+
+.q6-calc-summary__buttons{
+    display: flex;
+    margin-top: 25px;
+}
+
+.q6-calc-summary__buttons > .q6-button{
+    font-size: 15px;
+    flex: 1;
+    margin-right: 30px;
+}
+
+.q6-calc-summary__buttons > .q6-button:last-of-type{
+    margin-right: 0;
+}
+
+.q6-dotted-right-arrow{
+    width: 44px;
+    height: 37px;
+    min-width: 44px;
+    background-image: url(../img/dotted_arrow.png);
+    background-size: 44px 37px;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.q6-calc-summary__inputs{
+    position: relative;
+    margin-right: 15px;
+    padding-right: 32px;
+}
+
+.q6-exchange-icon-container {
+    position: absolute;
+    right: 0;
+    bottom: 22px;
+}
+
+.q6-exchange-icon {
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    background-image: url(../img/exchange_gray_icon.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    margin: 4px 4px;
+}
+
+.q6-exchange-icon__top{
+    width: 15px;
+    height: 27px;
+    border-top-right-radius: 12px;
+    border: 1px solid #e1e5ee;
+    border-bottom: none;
+}
+
+.q6-exchange-icon__bottom{
+    width: 15px;
+    height: 27px;
+    border-bottom-right-radius: 12px;
+    border: 1px solid #e1e5ee;
+    border-top: none;
+}
+
+@media screen and (max-width: 1240px){
+    .q6-calc-component {
+        flex-direction: column;
+    }
+
+    .q6-calc-summary {
+        margin-bottom: 30px;
+        margin-right: 0;
+    }    
+
+    .q6-calc-summary__message {
+        flex-direction: column;
+    }    
+
+    .q6-dotted-right-arrow {
+        transform: rotate(90deg);
+    }    
+}
+
+@media screen and (max-width: 1024px){
+    .q6-calc-summary {
+        max-width: 100%;
+    }
+    .q6-calc-summary__inputs {
+        flex: 1;
+    }    
+    .q6-calc-formats {
+        max-width: 100%;
+        min-width: 0;
+    }    
+    .q6-calc-formats {
+        flex-wrap: wrap;
+    }        
+    .q6-calc-formats > div:last-of-type {
+        margin-right: 15px;
+    }    
+}
+
+@media screen and (max-width: 539px){
+    .q6-extra-formats {
+        min-width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+    .q6-calc-summary__inputs-and-results {
+        flex-direction: column;
+        align-items: flex-start;
+    }    
+    .q6-calc-summary__inputs {
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }    
+    .q6-calc-summary__buttons {
+        flex-direction: column;
+    }    
+    .q6-calc-summary__buttons > .q6-button {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }    
+    .q6-calc-summary__buttons > .q6-button:last-of-type{
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .q6-calc-component {
+        flex-direction: column;
+        padding: 0;
+        border: none;
+    }
+}
