@@ -1,3 +1,55 @@
+.q6-anchor-link{
+    position: absolute;
+    top: -90px;
+}
+
+.q6-demo-links-buttons > a{
+    display: inline-block;
+    line-height: 30px;
+    background: #f8f9fb;
+    margin-right: 20px;
+    padding: 0 20px;
+    border-radius: 20px;
+    padding-right: 50px;
+
+    color: #171717;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;    
+
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.q6-demo-links-buttons > a:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 27px;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 1px solid #3270eb;
+    border-right: 1px solid #3270eb;
+    transform: rotate(-45deg);
+    transition: all 0.2s ease;
+}
+
+.q6-demo-links-buttons > a:hover:after {
+    right: 22px;
+}
+
+.q6-demo-links-buttons > a:last-of-type{
+    margin-right: 0;
+}
+
+.q6-demo-links-buttons > a:hover{
+    background: #e0e0e0;
+    box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);   
+}
+
+
 .q6-card{
     display: flex;
     margin: 100px 0;
@@ -38,7 +90,7 @@
 }
 
 .q6-card--header{
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 .q6-card--lowest-cost{
@@ -84,8 +136,8 @@
 }
 
 .q6-card--header.q6-card p {
-    margin-bottom: 55px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 35px;
 }
 
 .q6-button--super-wide{
@@ -364,6 +416,15 @@
         margin-bottom: 40px;
     }    
 }
+
+@media screen and (max-width: 480px){
+    .q6-demo-links-buttons > a {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 7px 0;
+    }
+}
+
 
 
 
