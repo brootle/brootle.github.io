@@ -1879,7 +1879,7 @@
                                     $1065.00
                                 </div>
                                 <div class="q6-action-buttons-container">
-                                    <button class="q6-button q6-blue-border q6-blue-text q6-white-background">Pay invoice</button>
+                                    <button data-toggle="modal" data-target="#payInvoiceModal" class="q6-button q6-blue-border q6-blue-text q6-white-background">Pay invoice</button>
                                 </div>
                             </div>
 
@@ -1921,7 +1921,7 @@
                                     $2005.75
                                 </div>
                                 <div class="q6-action-buttons-container">
-                                    <button class="q6-button q6-blue-border q6-blue-text q6-white-background">Pay invoice</button>
+                                    <button data-toggle="modal" data-target="#payInvoiceModal" class="q6-button q6-blue-border q6-blue-text q6-white-background">Pay invoice</button>
                                 </div>
                             </div>
 
@@ -1929,6 +1929,83 @@
                     </div>
 
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="payInvoiceModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+
+                            <div class="q6-payment-method__pay-invoice">
+
+                                <div class="q6-input q6-input--payment-method">
+                                    
+                                    <div class="q6-invoice-summary">
+                                        <div>
+                                            <p>
+                                                <strong>Invoice:</strong>
+                                                <span>#dsfjaso453954ilsfd</span>
+                                            </p>
+                                            <p>
+                                                <strong>Date:</strong>
+                                                <span>10-30-2018</span>
+                                            </p> 
+                                            <p>
+                                                <strong>Status:</strong>
+                                                <span class="q6-incoice-status--overdue">Overdue</span>
+                                            </p>                                        
+                                        </div>   
+                                        <div>
+                                            <p><strong>October 2018</strong></p>
+                                            <span>$1,150.05</span>
+                                        </div>                                     
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="q6-input__label">
+                                        <label>Payment method</label>
+                                        <a href="">+ Add Payment Method</a>
+                                    </div>
+
+                                    <select id="pay-invoice-method-selector">
+                                        <option value="0" data-imagesrc="img/logo_short.svg" data-description="&nbsp">Qencode Wallet ($12,312.43)</option>
+                                        <option value="1" data-imagesrc="img/mastercard.svg" data-description="&nbsp">4242</option>
+                                        <option value="2" data-imagesrc="img/visa.svg" data-description="&nbsp">4242</option>
+                                        <option value="3" data-imagesrc="img/amex.svg" data-description="&nbsp">4242</option>
+                                        <option value="4" data-imagesrc="img/discover.svg" data-description="&nbsp">4242</option>
+                                        <option value="5" data-imagesrc="img/paypal.svg" data-description="&nbsp">john.smith@example.com</option>
+                                    </select>
+
+                                    <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+                                    <script>
+                                        $(function () {
+                                            $('#pay-invoice-method-selector').ddslick({
+                                                defaultSelectedIndex:0,
+                                                width: "100%",
+                                                background: "white",
+                                                onSelected: function(selectedData){
+                                                    //callback function: do something with selectedData;
+                                                }
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
+                        
+                                <div class="q6-add-funds-window__buttons">
+                                    <button data-dismiss="modal" id="cancel-invoice-pay" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                    <button data-dismiss="modal" id="confirm-invoice-pay" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Pay Now</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Modal ends -->                
 
             </div>
 
