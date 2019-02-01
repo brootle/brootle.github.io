@@ -1430,35 +1430,31 @@
                                         
                                         // show pending window
                                         $("#add-funds-pending").show();
-                                        // and send data to server
                                         
+                                        // and send data to server          
+                                        var api_key = "5a2a846a26ace"       
+                                        var url = "https://api.qencode.com/v1/access_token";                       
+                                        $.ajax({                            
+                                            url: url,
+                                            type: 'post',
+                                            data: jQuery.param({ api_key: api_key }) ,
+                                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                            success: function (response) {
+                                                // hide pending window
+                                                $("#add-funds-pending").hide();
 
-                                        // var url = ""
-                                        // $.ajax({                            
-                                        //     url: url,
-                                        //     type: 'post',
-                                        //     success: function(data) {
-                                        //         //console.log("response: ", data);
-                                        //         var status = data.status;
-                                        //         if(data.status === 'success'){
-                                        //             status = 'Payment success';
-                                        //         }
-                                        //         if(data.status === 'fail'){
-                                        //             status = 'Payment failed';
-                                        //         }                                                           
-                                        //     }
-                                        // }); 
-
-
-                                        // when we get response show another window
-                                        
-                                        // if succes
-                                        // show success window
-                                        // $("#add-funds-success").show();
-
-                                        // if error
-                                        // show error window
-                                        // $("#add-funds-error").show();
+                                                if(response.error == "0"){
+                                                    // show success window
+                                                    $("#add-funds-success").show(); 
+                                                } else{
+                                                    // show error window
+                                                    $("#add-funds-error").show();
+                                                }                                                                                          
+                                            },
+                                            error: function () {
+                                                console.log("error");
+                                            }
+                                        }); 
                                         
                                     });
 
