@@ -1379,6 +1379,19 @@
 
                             </div>
 
+                            <div id="add-funds-pending" class="q6-add-funds-window__pending" style="display:none;">
+                                
+                                <div class="q6-preloader-icon"></div>
+                                
+                                <h2>Processing...</h2>
+
+                                <p>
+                                    Your wallet balance should be updated <br>
+                                    in a few minutes.
+                                </p>
+
+                            </div>                            
+
                             <div id="add-funds-success" class="q6-add-funds-window__status" style="display:none;">
                                 <button id="close-success-window" class="q6-button q6-button--close-window"></button>
 
@@ -1413,34 +1426,46 @@
                                 $(function () {
                                     $("#confirm-payment").click(function() {
                                         // hide current window
-                                        $("#add-funds-window").hide(100);
-
+                                        $("#add-funds-window").hide();
+                                        
+                                        // show pending window
+                                        $("#add-funds-pending").show();
+                                        // and send data to server
+                                        
+                                        // when we get response show another window
+                                        
+                                        // if succes
                                         // show success window
-                                        $("#add-funds-success").show(100);
+                                        // $("#add-funds-success").show();
+
+                                        // if error
+                                        // show error window
+                                        // $("#add-funds-error").show();
+                                        
                                     });
 
                                     $("#close-success-window, #add-more").click(function() {
                                         // hide current window
-                                        $("#add-funds-success").hide(100);
+                                        $("#add-funds-success").hide();
 
                                         // show success window
-                                        $("#add-funds-window").show(100);
+                                        $("#add-funds-window").show();
                                     });
 
                                     $("#cancel-payment").click(function() {
                                         // hide current window
-                                        $("#add-funds-window").hide(100);
+                                        $("#add-funds-window").hide();
 
-                                        // show success window
-                                        $("#add-funds-error").show(100);
+                                        // show error window
+                                        $("#add-funds-error").show();
                                     });
 
                                     $("#close-error-window, #try-again").click(function() {
                                         // hide current window
-                                        $("#add-funds-error").hide(100);
+                                        $("#add-funds-error").hide();
 
                                         // show success window
-                                        $("#add-funds-window").show(100);
+                                        $("#add-funds-window").show();
                                     });
                                 });
                             </script>
