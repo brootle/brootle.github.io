@@ -62,5 +62,116 @@
 
 .q6-authorize-form .q6-button{
     width: 100%;
-    margin: 25px 0;
+    margin: 20px 0;
+}
+
+.q6-sign-up-confirm-box{
+    display: flex;  
+}
+
+.q6-confirm-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.q6-confirm-checkbox label {
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e1e5ee;
+    display: block;
+    margin-right: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 2px;
+}
+
+.q6-confirm-checkbox input[type=checkbox]:checked + label {
+    border-color: #3270eb;
+}
+
+.q6-confirm-checkbox input[type=checkbox]:checked + label:after {
+    content: '';
+    box-sizing: border-box;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #3270eb;
+}
+
+.q6-sign-up-confirm-box p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.q6-sign-up-confirm-box a{
+    color: #3270eb;
+    text-decoration: none;
+}
+
+.q6-authorize-form__message{
+    margin: 0;
+    margin-top: 25px;
+    text-align: center;    
+}
+
+.q6-authorize-form__message a{
+    color: #3270eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1024px){
+    .q6-get-started-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding-left: 0;
+        padding-right: 0;        
+    }
+    .q6-get-started-container > div:nth-of-type(2) {
+        width: 100%;
+    }    
+    .q6-get-started-container > div:first-of-type {
+        width: 90%;
+        margin: 0;
+    }    
+    .q6-get-started-features {
+        border-radius: 0 0 8px 8px;
+    }    
+}
+
+@media screen and (max-width: 780px){
+    .q6-authorize-window {
+        padding: 30px 40px;
+        background: white;
+    }
+    .q6-authorize-form__message {
+        margin-top: 10px;
+    }    
+    .q6-get-started-features {
+        padding: 40px 40px;
+    }    
+}
+
+@media screen and (max-width: 480px){
+    .q6-authorize-window {
+        padding: 20px 25px;
+    }
+    .q6-authorize-form__message {
+        margin-top: 0;
+    }    
+    .q6-get-started-container .q6-feature-item__icon {
+        margin-right: 10px;
+    }
+    .q6-get-started-features {
+        padding: 30px 0;
+    }      
+    .q6-get-started-container > div:first-of-type {
+        width: 100%;
+    }      
+    .q6-get-started-features {
+        background: transparent;
+    }    
 }
