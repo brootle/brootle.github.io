@@ -20,15 +20,15 @@
     padding: 50px 70px;    
 
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;    
+    flex-direction: column;  
     flex: 1;
 
     max-width: 500px;
 }
 
 .q6-authorize-container .q6-feature-item {
-    align-items: flex-start;    
+    align-items: flex-start;   
+    margin: 15px 0; 
 }
 
 .q6-authorize-container .q6-feature-item__icon {
@@ -52,6 +52,10 @@
 
 .q6-authorize-form{
     margin-top: 30px;    
+}
+
+.q6-authorize-form.q6-authorize-form--get-started{
+    min-height: 350px;
 }
 
 .q6-authorize-form .q6-input{
@@ -132,6 +136,125 @@
     margin-top: -15px;
 }
 
+.q6-get-started-features .q6-promo-saving-links{
+    margin-left: 53px;
+    margin-top: -12px;
+}
+
+.q6-powered-by-stripe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.q6-powered-by-stripe > div:first-of-type {
+    color: #a0a3b7;
+    font-size: 13px;
+    padding-left: 18px;
+    margin-right: 5px;
+}
+.q6-lock-icon--left {
+    position: relative;
+}
+.q6-lock-icon--left:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 14px;
+    left: 0;
+    top: 0;
+    background-image: url(../img/lock_icon.png);
+    background-size: 12px 14px;
+    background-repeat: no-repeat;
+}
+
+/********************* FORM SWITCH   ***********************/
+.q6-payment-switch{
+    display: flex;
+    margin: 30px 0;
+}
+
+.q6-payment-switch > .q6-payment-switch__button{
+    margin-right: 20px;
+}
+
+.q6-payment-switch > .q6-payment-switch__button:last-of-type{
+    margin-right: 0;
+}
+
+
+.q6-payment-switch__button{
+    background: #f7f8fa;
+    flex: 1;
+    border-radius: 6px;
+    border: 1px solid #e1e5ee;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 12px 10px;
+}
+
+.q6-payment-switch__button p {
+    color: #8e97a8;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 13px;
+    margin: 0;  
+}
+
+.q6-switch-content{
+    display: none;
+    animation: fadeEffect 1s;    
+}
+
+.q6-switch-content.q6-switch-content--active {
+    display: block;
+}
+
+.q6-payment-switch__icon{
+    background-image: url(../img/payment_switch.png);
+    background-repeat: no-repeat;   
+    margin: auto;
+    margin-bottom: 15px;
+    height: 35px;
+}
+
+.q6-payment-switch__icon--card{
+    width: 50px;
+    background-position: -7px -3px;
+}
+
+.q6-payment-switch__icon--paypal{
+    width: 76px;
+    background-position: -67px -1px;
+}
+
+.q6-payment-switch__button--active{
+    border-color: #376fe0;
+    background: #f9faff;
+}
+
+.q6-payment-switch__button--active p{
+    color: #383838;
+}
+
+.q6-payment-switch__button--active .q6-payment-switch__icon--card{
+    background-position: -7px -42px;
+}
+
+.q6-payment-switch__button--active .q6-payment-switch__icon--paypal{
+    background-position: -67px -39px;
+}
+/********************* FORM SWITCH   ***********************/
+
+.q6-form-message{
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: -10px;
+    color: #9da3af;   
+}
+
 @media screen and (max-width: 1024px){
     .q6-authorize-container {
         flex-direction: column-reverse;
@@ -179,4 +302,11 @@
         width: 100%;
         background: transparent;
     }      
+    .q6-authorize-container .q6-feature-item {
+        margin: 5px 0;
+    }    
+    .q6-get-started-features .q6-promo-saving-links {
+        margin-left: 38px;
+        margin-top: -5px;
+    }    
 }
