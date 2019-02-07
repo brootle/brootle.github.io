@@ -148,97 +148,130 @@
         <div class="q6-authorize-component">
             <div class="q6-container">
                 <div class="q6-authorize-container">
-                    <div class="q6-get-started-features">
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--speed"></div>
-                            <p>
-                                Easily transcode videos in the cloud into 
-                                <span class="q6-blue-text">MP4, HLS, MPEG-DASH, WEBM</span> and 
-                                many other formats.
-                            </p>                            
-                        </div>   
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--api"></div>
-                            <p>
-                                Full access to all features in our robust encoding
-                                <span class="q6-blue-text">API and User Interface</span>
-                            </p>                            
-                        </div>    
+                    <div class="q6-get-started-features">    
                         <div class="q6-feature-item">
                             <div class="q6-feature-item__icon q6-feature-item__icon--pay"></div>
                             <p>
+                                <span class="q6-blue-text">Pay only for what you use.</span> <br>
                                 No subscriptions or minumum contracts.
-                                <span class="q6-blue-text">Pay only for what you use.</span>
                             </p>                            
-                        </div>         
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--manager"></div>
-                            <p>
-                                Personal account manager.
-                            </p>                            
-                        </div>        
+                        </div>                          
                         <div class="q6-feature-item">
                             <div class="q6-feature-item__icon q6-feature-item__icon--gift"></div>
                             <p>
-                                Free <span class="q6-blue-text">$5 Credit</span> to try in for yourself.                                
+                                <span class="q6-blue-text">Free $5 Credit</span> <br>
+                                Try it all for yourself risk-free.                                                        
                             </p>                            
-                        </div>                                                                                                             
+                        </div>                              
+                        <div class="q6-feature-item">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--price"></div>
+                            <p>
+                                Our prices start from: <br>
+                                <span class="q6-blue-text">$0.004 per minute of SD output.</span>                                  
+                            </p>     
+                        </div>       
+                        <div class="q6-promo-saving-links">
+                                <div id="show-why-low-cost"><div class="q6-question-icon"></div> <span>Why is the cost so low?</span></div>
+                                <div id="show-price-table"><div class="q6-dollar-icon"></div><span>Price table</span></div>
+                        </div>                                                                                                                                                              
                     </div>
                     <div class="q6-authorize-window">
-                        <h2>Let's Get Started</h2>
-                        <div class="q6-authorize-form q6-authorize-form--get-started">
-                            <div class="q6-input">
+
+                        <h2 id="card-form-title">Save billing details</h2>                        
+
+                        <div class="q6-payment-switch">
+                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button q6-payment-switch__button--active">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--card"></div>
+                                <p>Save Credit Card</p>
+                            </div>
+                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
+                                <p>Add Funds with PayPal</p>
+                            </div>
+                        </div>
+                        
+                        <div id="credit-card-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
+                            <div class="q6-input q6-lock-icon">
                                 <div class="q6-input__label">
                                     <label>Name</label>
                                 </div>
                                 <input class="q6-input__field" type="text">
                             </div>      
+    
                             <div class="q6-input">
                                 <div class="q6-input__label">
-                                    <label>Email</label>
+                                    <label for="user_card">Card number</label>
                                 </div>
-                                <input class="q6-input__field" type="text">
-                            </div>     
-                            <div class="q6-input q6-input--password">
-                                <div class="q6-input__label">
-                                    <label>Password</label>
-                                </div>
-                                <input class="q6-input__field" type="password">
-                                <div class="q6-pass-eye-button"></div>
-                            </div> 
-                            
-                            <script>
-                                $(function () {
-                                    $(".q6-pass-eye-button").click(function() {
-                                        var fieldType = $(this).closest(".q6-input--password").find('.q6-input__field').attr('type');
-                                        if(fieldType == "password"){
-                                            $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'text')
-                                        } else{
-                                            $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'password')
+
+                                <div id="card-element"></div>
+                                <script src="https://js.stripe.com/v3/"></script> 
+                                <script> 
+                                    var stripe = Stripe('123');
+                                    var elements = stripe.elements();
+                                    var style = {
+                                        base: {
+                                            color: '#171717',
+                                            lineHeight: 'initial',
+                                            fontFamily: 'proxima-nova, sans-serif',
+                                            fontSmoothing: 'antialiased',
+                                            fontSize: '18px',
+                                            fontWeight: '600',
+                                            '::placeholder': {
+                                                color: '#aab7c4'
+                                            }
+                                        },
+                                        invalid: {
+                                            color: '#fa755a',
+                                            iconColor: '#fa755a'
                                         }
-                                    });
-                                });
-                            </script>   
-                            
-                            <div class="q6-sign-up-confirm-box">
-                                    
-                                <div class="q6-confirm-checkbox">
-                                    <input id="confirm-signup" type="checkbox">
-                                    <label for="confirm-signup"></label>                                
+                                    };
+                                    var card = elements.create('card', {style: style});
+                                    card.mount('#card-element');
+                                </script>                                                                            
+                            </div>                                                                                   
+
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
+
+                            <div class="q6-powered-by-stripe">
+                                <div class="q6-lock-icon--left">
+                                    Billing information secured and protected.
                                 </div>
+                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
+                            </div>                              
 
-                                <p>
-                                    I agree to the <a href="">Terms & Conditions</a>  
-                                </p>    
-                            </div>                                                     
+                        </div>   
+                        
+                        <div id="paypal-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
+                            paypal
+                        </div>
 
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create Account</button>
 
-                            <p class="q6-authorize-form__message">
-                                Already have an account? <a href="">Sign In.</a>  
-                            </p>  
+                        <script>
+                            $(function () {
+                                var tabLinks = document.querySelectorAll('.q6-payment-switch__button');
 
-                        </div>                                                              
+                                tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                                function switchTab(e){
+                                    // find active elements and remove
+                                    $('.q6-payment-switch__button--active').removeClass("q6-payment-switch__button--active");
+                                    $('.q6-switch-content--active').removeClass("q6-switch-content--active");
+
+                                    // find what button was clicked and show form with that ID
+                                    var clickedLink = e.currentTarget;
+                                    $(clickedLink).addClass('q6-payment-switch__button--active');
+
+                                    var tabID = clickedLink.getAttribute("data-form");
+
+                                    $(`#${tabID}`).addClass('q6-switch-content--active');
+
+                                    // update form title
+                                    var formTitle = clickedLink.getAttribute("data-title");
+                                    $("#card-form-title").html(formTitle);
+                                }                                       
+                            });                 
+                        </script>
+
                     </div>  
                 </div>              
             </div>
