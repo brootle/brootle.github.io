@@ -56,14 +56,12 @@ $(function () {
         $('.q6-menu-item--has-submenu').each(function(index){
             if(this !== currentSubmenu){
                 $(this).addClass("q6-menu-item--submenu-closed");
-                console.log("1");
             }
         });   
         
         // 2. show or hide current submenu on click
         if($(this).hasClass("q6-menu-item--submenu-closed")){
             $(this).removeClass("q6-menu-item--submenu-closed");   
-            console.log("2");
         } else{
             $(this).addClass("q6-menu-item--submenu-closed");  
         }
