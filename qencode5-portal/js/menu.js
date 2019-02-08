@@ -52,8 +52,8 @@ $(function () {
         $(this).toggleClass('q6-menu-item--submenu-closed');     
     });
 
-    // close menu in mobile mode after we click the menu item
-    $(".q6-why-qencode-box__block").click(function(e) {
+    // close menu in mobile mode after we click the menu item in submenu
+    $(".q6-submenu-box__block").click(function(e) {
         var mobileMode = $('.hamburger').is(':visible');
         if(mobileMode){
             $(".hamburger").removeClass("is-active");
