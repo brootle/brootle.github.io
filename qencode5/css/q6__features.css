@@ -37,14 +37,14 @@
 .q6-features-how-it-works{
     border: 1px solid #e1e5ee;
     border-radius: 8px;
-    padding: 50px 30px;
+    padding: 30px 15px;
     margin-bottom: 70px;  
     display: flex;   
 }
 
 .q6-features-how-it-works__block{
     flex: 1;
-    margin-right: 15px;
+    margin-right: 3vw;
 }
 
 .q6-features-how-it-works__block:last-of-type{
@@ -54,9 +54,9 @@
 .q6-features-how-it-works__block h5 {
     color: #383838;
     font-family: "proxima-nova";
-    font-size: 19px;
+    font-size: 18px;
     line-height: 19px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 5px 0;
     text-transform: uppercase;
     text-align: center;    
@@ -64,10 +64,11 @@
 }
 
 .q6-features-how-it-works .q6-features-icon {
-    width: 90px;
-    height: 80px;
-    background-size: 90px 75px;
+    width: 72px;
+    height: 65px;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .q6-features-icon--link {
@@ -86,17 +87,33 @@
     background-image: url(../img/features/ui.svg);
 }
 
+.q6-features-icon--storage {
+    background-image: url(../img/features/storage.svg);
+}
 
-.q6-features-how-it-works .q6-features-icon.q6-features-icon--device {
-    width: 230px;
-    height: 100px;
-    background-size: 230px 100px;    
+.q6-features-storage-logo {
+    background-image: url(../img/features/storage_logo.svg);
+    max-width: 170px;
+    width: 13vw;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;  
+    margin-top: 15px;  
+}
+
+
+.q6-features-icon.q6-features-icon--device {
+    max-width: 199px;
+    width: 15vw;
+    height: 89px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
     background-image: url(../img/features/device.svg);
 }
 
-.q6-features-how-it-works .q6-features-icon.q6-features-icon--encoding {
-    height: 100px;
-    background-position-y: bottom;
+.q6-features-icon--encoding {
     background-image: url(../img/features/encoding.svg);
 }
 
@@ -111,48 +128,77 @@
     
     height: 80%;
     justify-content: center;    
+
+    box-sizing: border-box;  
 }
 
-.q6-features-how-it-works__details--block1{
-    background-image: url(../img/features/b1.svg);
+
+
+.q6-features-how-it-works__details--source-videos {
+    background-image: url(../img/features/b1.svg);  
+    padding: 0 30px;
+    width: 15vw;  
+    max-width: 206px;  
+    margin: 0 auto;
 }
 
-.q6-features-how-it-works__details--block2{
+.q6-features-how-it-works__details--qencode-cloud {
     background-image: url(../img/features/b2.svg);
-
     flex-direction: row;
     justify-content: space-between;
-    max-width: 72%;
-    min-width: 316px;
-    margin-left: auto;
-    margin-right: auto;
     padding: 0 30px;
-    box-sizing: border-box;    
+    width: 23vw; 
+    max-width: 300px;
+    margin: 0 auto;    
+}
 
+.q6-features-how-it-works__details--qencode-cloud > div {
+    height: 100%;
+    justify-content: center;
+}
+
+.q6-features-how-it-works__details--qencode-cloud .q6-green-arrow--right{
+    width: 17%;
+    max-width: 51px;
+    height: 27px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 10%);    
+}
+
+.q6-features-how-it-works__details--storage {
+    margin: 0 auto;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    width: 13vw;
+    max-width: 170px;    
+}
+
+.q6-features-how-it-works__details--your-audience {
+    background-image: url(../img/features/b3.svg);
+    padding: 0 30px;
+    width: 20vw;
+    max-width: 260px;
+    margin: 0 auto;    
+}
+
+
+
+.q6-features-how-it-works__block{
     position: relative;
 }
 
-.q6-features-how-it-works__details--block2 > div.q6-green-arrow--right{
-    width: 23%;
+.q6-features-how-it-works__block > .q6-green-arrow--right {
+    width: 6.2vw;
+    max-width: 80px;
     height: 27px;
     position: absolute;
     top: calc(50% - 15px);
-    right: -23%;
+    right: -25%;
+    z-index: 1;
 }
-.q6-features-how-it-works__details--block2 > div.q6-green-arrow--left{
-    width: 23%;
-    height: 27px;
-    position: absolute;
-    top: calc(50% - 15px);
-    left: -23%;
-}
-.q6-features-how-it-works__details--block2 > div.q6-green-arrow--middle{
-    width: 23%;
-    height: 27px;
-    position: absolute;
-    top: calc(50% - 15px);
-    left: calc(50% - 10%);
-}
+
+
 .q6-green-arrow__head {
     width: 23px;
     min-width: 27px;
@@ -172,33 +218,21 @@
     background: #59e2ae;    
 }
 
-.q6-features-how-it-works__details--block2 > div{
-    height: 100%;
-    justify-content: center;    
-}
-
-.q6-features-how-it-works__details--block3{
-    background-image: url(../img/features/b3.svg);
-}
-
 .q6-features-how-it-works__details > div{
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;   
 }
 
-.q6-features-how-it-works > .q6-features-how-it-works__block:nth-of-type(1){
-    max-width: 200px;
-}
 
-.q6-features-how-it-works > .q6-features-how-it-works__block:nth-of-type(2){
-    flex: 1;
+.q6-features-how-it-works__details > div p{
+    margin: 10px 0;
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 16px;    
+    text-align: center;
+    line-height: 17px;    
 }
-
-.q6-features-how-it-works > .q6-features-how-it-works__block:nth-of-type(3){
-    max-width: 290px;
-}
-
 
 .q6-features-big-data{
     border: 1px solid #e1e5ee;
@@ -238,35 +272,6 @@
     }    
 }
 
-
-@media screen and (max-width: 1120px){
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--middle {
-        width: 18%;
-        left: calc(50% - 7%);
-    }
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--left {
-        width: 18%;
-        left: -18%;
-    }    
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--right {
-        width: 18%;
-        right: -18%;
-    }    
-}
-
-@media screen and (max-width: 1080px){
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--left {
-        left: -14%;
-    }
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--right {
-        right: -14%;
-    }    
-    .q6-features-how-it-works__details--block2 {
-        min-width: 300px;
-    }    
-}
-
-
 @media screen and (max-width: 1024px){
     .q6-features-big-data {
         padding: 25px 35px;
@@ -302,14 +307,7 @@
         max-width: 390px;
     }    
 
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--middle {
-        width: 90px;
-        left: calc(50% - 40px);
-    }    
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--left {
-        display: none;
-    }    
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--right {
+    .q6-features-how-it-works__block > .q6-green-arrow--right {
         display: none;
     }    
 
@@ -319,8 +317,9 @@
     .q6-green-arrow--down .q6-green-arrow{
         flex-direction: column;
         width: 27px;
-        height: 90px;
+        height: 80px;
         margin: 0 auto;
+        margin-top: 15px;
     }
     .q6-green-arrow--down  .q6-green-arrow__line {
         width: 1px;
@@ -331,6 +330,35 @@
 
     .q6-features-how-it-works__details--block2 .q6-green-arrow--down{
         display: none;
+    }    
+
+
+    .q6-features-how-it-works__details--qencode-cloud .q6-green-arrow--right {
+        width: 70px;
+        top: calc(50% - 55px);
+        left: calc(50% - 35px);
+    }    
+    .q6-features-how-it-works__details--qencode-cloud {
+        width: 100%;
+        max-width: 300px;
+    }    
+    .q6-features-how-it-works__details--source-videos {
+        width: 100%;
+        max-width: 100%;
+    }    
+    .q6-features-how-it-works__details--storage {
+        width: 100%;
+        max-width: 100%;
+    }    
+    .q6-features-storage-logo {
+        width: 170px;
+    }    
+    .q6-features-how-it-works__details--your-audience {
+        width: 100%;
+        max-width: 100%;
+    }    
+    .q6-features-icon.q6-features-icon--device {
+        width: 200px;
     }    
 }
 
@@ -372,22 +400,7 @@
     }    
 
     .q6-features-how-it-works {
-        padding: 35px 15px;
+        padding: 0;
+        border: 0;
     }    
-
-    .q6-features-how-it-works__details--block2 {
-        flex-direction: column;
-    }    
-
-    .q6-features-how-it-works__details--block2 > div.q6-green-arrow--middle {
-        display: none;
-    }   
-    
-    .q6-features-how-it-works__details--block2 {
-        min-width: 0;
-    }  
-
-    .q6-features-how-it-works__details--block2 .q6-green-arrow--down{
-        display: block;
-    }
 }
