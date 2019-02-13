@@ -102,8 +102,8 @@
 
 .q6-card--lowest-cost{
     display: flex;
-    align-items: center;
     margin: 100px 0;
+    margin-bottom: 40px;
 }
 
 .q6-card--lowest-cost > div:nth-of-type(2){
@@ -113,10 +113,11 @@
 .q6-card--lowest-cost .q6-piggybank-image > img{
     width: 100%;
     height: auto;
+    max-width: 84px;
 }
 
 .q6-card--lowest-cost .q6-piggybank-image{
-    margin-right: 48px;
+    margin-right: 30px;
 }
 
 
@@ -364,13 +365,6 @@
         min-width: 100%;
     }    
 
-    .q6-card--lowest-cost {
-        flex-direction: column;
-    }    
-
-    .q6-card--lowest-cost .q6-piggybank-image {
-        margin: 0 auto;
-    }    
 
     .q6-card--about-us .q6-two-columns{
         flex-direction: column;
@@ -404,7 +398,6 @@
     }    
 
     .q6-card--lowest-cost {
-        margin-bottom: 10px;
         margin-top: 50px;
     }    
 
@@ -425,6 +418,20 @@
         margin-bottom: 40px;
     }    
 }
+
+@media screen and (max-width: 780px){
+    .q6-card--lowest-cost {
+        flex-direction: column;
+        align-items: center;
+    }
+    .q6-card--lowest-cost .q6-piggybank-image {
+        margin-right: 0;
+    }    
+    .q6-card--lowest-cost .q6-piggybank-image > img {
+        max-width: 130px;
+    }    
+}
+
 
 @media screen and (max-width: 480px){
     .q6-demo-links-buttons > a {
