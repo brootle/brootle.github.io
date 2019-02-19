@@ -195,6 +195,7 @@
                                 </div>
                                 <input class="q6-input__field" type="password">
                                 <div class="q6-pass-eye-button"></div>
+                                <div class="q6-input__error-pass"></div>                                
                             </div> 
 
                             <div class="q6-input q6-input--password">
@@ -203,6 +204,7 @@
                                 </div>
                                 <input class="q6-input__field" type="password">
                                 <div class="q6-pass-eye-button"></div>
+                                <div class="q6-input__error-pass"></div>
                             </div>                             
                             
                             <script>
@@ -216,45 +218,15 @@
                                         }
                                     });
                                 });
-                            </script>            
+                            </script>                                                                                                     
 
-                            <script>                                
-                                $(function () {
-                                    // check pass inputs
-                                    $("input[type='password']").on('input', function() {
-                                        
-                                        var passMatch = false;
-                                        var newPass = $("input[type='password']").first().val();                                        
-
-                                        // check if all pass inputs match
-                                        $("input[type='password']").each(function(index, element){
-                                            var currentElementInput = $(element).val();
-
-                                            if(currentElementInput===newPass){
-                                                passMatch = true;
-                                            }else{
-                                                passMatch = false;
-                                            }
-                                        });       
-                                        
-                                        // enable or disable Save button if all passwords match
-                                        // make sure the pass lenght is more than minimum required lenght
-                                        if(passMatch && newPass.length > 0){
-                                            $("#save-new-pass").prop('disabled', false);
-                                        } else{
-                                            $("#save-new-pass").prop('disabled', true);
-                                        }                         
-                                    });
-                                });
-                            </script>                                                                                                  
-
-                            <button id="save-new-pass" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow" disabled>Save</button>
+                            <button id="save-new-pass" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
 
                         </div>                                                                
                     </div>  
 
                     <div id="new-pass-set-window" class="q6-authorize-window" style="display: none">
-                        <img class="q6-new-pass-saved-image" src="img/pass_saved.png" alt="">  
+                        <img class="q6-new-pass-saved-image" src="img/lock_gs.svg" alt="">  
                         <div class="q6-authorize-form">
                             <h3 class="q6-window-status__title">New password set!</h3>                                   
                             <p class="q6-window-status__text">
@@ -267,10 +239,55 @@
 
                     <script>
                         $(function () {
+
+                            var minPassLenght = 6;
+
+                            var errors = {
+                                0: `Password must be at least ${minPassLenght} symbols`,
+                                1: "Passwords do not match"
+                            }
+
+                            var currentError = 0;
+
                             $("#save-new-pass").click(function(e) {
+                                if(isPassValid()){
+                                    showSuccessWindow();
+                                }else{
+                                    showErrors();
+                                }
+                            });   
+
+                            function isPassValid(){
+                                // check if all pass inputs match
+                                var passMatch = false;
+                                var newPass = $(".q6-input--password .q6-input__field").first().val();  
+                                $(".q6-input--password .q6-input__field").each(function(index, element){
+                                    var currentElementInput = $(element).val();
+                                    if(currentElementInput===newPass){
+                                        passMatch = true;
+                                    }else{
+                                        passMatch = false;
+                                        currentError = 1;
+                                    }
+                                });            
+
+                                if(newPass.length < minPassLenght){
+                                    currentError = 0;
+                                }
+                                                
+                                // check if pass are long enough                                                                
+                                return passMatch && (newPass.length > minPassLenght);
+                            }         
+
+                            function showErrors(){
+                                $(".q6-input--password .q6-input__field").addClass('q6-input__field--error');
+                                $(".q6-input__error-pass").html(errors[currentError]);
+                            }         
+
+                            function showSuccessWindow(){
                                 $("#sign-in-window").hide();
                                 $("#new-pass-set-window").fadeIn();
-                            });                            
+                            }       
                         });
                     </script>                       
 
