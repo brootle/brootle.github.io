@@ -238,7 +238,9 @@
                                 <input class="q6-input__field" type="text">
                             </div>                                                                                         
                             <button id="send-instructions" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Send</button>
-                            <button id="cancel-forgot-pass" class="q6-button q6-blue-text q6-blue-border q6-white-background">Cancel</button>
+                            <p class="q6-authorize-form__message">
+                                <a id="cancel-forgot-pass" href="">Cancel</a>  
+                            </p>                            
                         </div>                                                                
                     </div>  
 
@@ -264,6 +266,7 @@
                             });
 
                             $("#cancel-forgot-pass").click(function(e) {
+                                e.preventDefault(); 
                                 $("#forgot-pass-window").hide();
                                 $("#sign-in-window").fadeIn();
                             });            
