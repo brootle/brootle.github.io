@@ -1,7 +1,7 @@
 .q6-formats-and-codecs-box {
     border: 1px solid #e1e5ee;
     border-radius: 8px;
-    padding: 40px 60px;
+    padding: 40px 40px;
     margin-top: 30px;
     margin-bottom: 70px;
     display: flex;
@@ -9,7 +9,8 @@
 }
 
 .q6-formats-and-codecs-box > div {
-    min-width: 200px;
+    min-width: 140px;
+    max-width: 190px;
     flex: 1;
     margin-right: 60px;
 }
@@ -19,10 +20,36 @@
     margin-right: 0;
 }
 
+
+.q6-checklist.q6-checklist--formats{
+    min-width: 360px;    
+}
+
+.q6-checklist.q6-checklist--storage{    
+    min-width: 210px;
+}
+
+.q6-checklist.q6-checklist--formats > div{
+    display: flex;
+}
+
+.q6-checklist.q6-checklist--formats > div > div{
+    flex:1;
+    margin-right: 20px;
+}
+
+.q6-checklist.q6-checklist--formats > div > div:last-of-type{
+    margin-right: 0;
+    min-width: 195px;
+}
+
+
+.q6-formats-features-container{
+    background: #f7f8fa;
+}
+
 .q6-formats-features{
-    border: 1px solid #e1e5ee;
-    border-radius: 8px;
-    padding: 20px 30px;
+    padding: 45px 30px;
     margin-top: 30px;
     margin-bottom: 70px;
     display: flex;
@@ -51,7 +78,7 @@
 
 @media screen and (max-width: 780px){
     .q6-formats-and-codecs-box {
-        padding: 20px 30px;
+        padding: 35px 30px;
     }    
     .q6-formats-and-codecs-box > div {
         margin-right: 40px;
@@ -69,9 +96,19 @@
     .q6-formats-and-codecs-box > div {
         margin-right: 0;
         flex: initial;
+        min-width: 100%;
     }        
     .q6-formats-features {
         padding: 0;
         border: 0;
     }  
+    .q6-checklist.q6-checklist--formats {
+        min-width: 100%;
+    }    
+    .q6-checklist.q6-checklist--formats > div {
+        flex-direction: column;
+    }    
+    .q6-checklist.q6-checklist--formats > div > div {
+        margin-right: 0;
+    }    
 }
