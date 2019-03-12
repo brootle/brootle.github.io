@@ -60,7 +60,7 @@
 
             <script>
                 $(function () {
-                    document.getElementById('company-search').addEventListener('input', function (e) {
+                    $("#company-search").on('input', function(e){ 
                         let companyName = e.target.value; 
                         console.log(companyName);
                         // if imput value is not empty - show clear input button
@@ -87,10 +87,10 @@
                 });
             </script>    
 
-            <table class="m1-table">
-                <thead>
+            <table id="companies-table" class="m1-table">
+                <thead class="m1-thead--sortable">
                     <tr>
-                        <th>Company</th>
+                        <th class="m1-th-selected">Company</th>
                         <th>Email</th>
                         <th>Office Phone</th>
                         <th>Website</th>
@@ -100,78 +100,90 @@
                 <tbody>
                     <tr>
                         <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
+                        <td>boss@google.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                         <td>1</td>
-                    </tr>
+                    </tr>   
                     <tr>
                         <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
+                        <td>sylvester.stallone@my-super-website.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">my-super-website.com</a></td>
                         <td>1</td>
-                    </tr>
+                    </tr>  
                     <tr>
                         <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
+                        <td>boss@google.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                         <td>1</td>
-                    </tr>
+                    </tr>  
+                    <tr>
+                        <td>Super Very Long Company Name</td>
+                        <td>boss@google.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                        <td>1</td>
+                    </tr>  
                     <tr>
                         <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
+                        <td>boss@google.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                         <td>1</td>
-                    </tr>
+                    </tr>  
                     <tr>
                         <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
+                        <td>boss@google.com <div class="m1-td-copy"></div></td>
+                        <td>+09 (212) 23 23 <div class="m1-td-copy"></div></td>
+                        <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                         <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Qencode</td>
-                        <td>boss@google.com</td>
-                        <td>+09 (212) 23 23</td>
-                        <td>google.com</td>
-                        <td>1</td>
-                    </tr>                                                                                                                                                                                    
+                    </tr>                                                                                                                                                                                                                                                                                    
                 </tbody>
             </table>
             
-            
+            <script>
+                $(function () {
+                    // table is sorted by Company from A to Z by default
+
+                    // everytime we clck sort column - send request to server to get
+                    // data based on selected column and AZ or ZA
+
+                    $(".m1-thead--sortable th").click(function(e){
+                        $('.m1-th-selected').removeClass("m1-th-selected");
+                        $(this).addClass('m1-th-selected');
+                        $(this).toggleClass('m1-th-sortedZA');
+                    });                    
+
+                    // copy table field
+                    $(".m1-td-copy").click(function (){
+
+                        try { 
+                            var cell = $(this).parent('td')[0];
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cell);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');                            
+
+                            if(successful) {
+                                console.log("copied");
+                            }
+                            else
+                            { 
+                                console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>                
 
         </div>
     </main>
