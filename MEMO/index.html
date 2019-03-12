@@ -45,48 +45,137 @@
 
     <main class="m1-page-content">
         <div class="m1-container">
+
             <div class="m1-form-container">
                 <form class="m1-form">
                     <div class="m1-icon--search"></div>
                     <div class="m1-input-container">
-                        <input id="company-search" type="text" class="m1-input" placeholder="Search company">
+                        <input id="company-search" type="text" autocomplete="off" class="m1-input" placeholder="Search company">
                         <button id="clear-search" class="m1-button--close" style="display:none"></button>
                     </div>                    
                     <button class="m1-button m1-button--light">Search</button>                
                 </form>                                               
                 <button type="submit" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add company</span></button>
             </div>
+
+            <script>
+                $(function () {
+                    document.getElementById('company-search').addEventListener('input', function (e) {
+                        let companyName = e.target.value; 
+                        console.log(companyName);
+                        // if imput value is not empty - show clear input button
+                        toggleClearSearchButton(companyName);
+        
+                        // send request to database to retrive data
+                        // render table                
+                    });
+        
+                    $("#clear-search").click((e)=>{
+                        e.preventDefault();
+                        $("#company-search").val('');
+                        toggleClearSearchButton('');
+                    });
+        
+                    //
+                    function toggleClearSearchButton(companyName){
+                        if(companyName){
+                            $('#clear-search').fadeIn(100);
+                        } else{
+                            $('#clear-search').fadeOut(100);
+                        }
+                    }
+                });
+            </script>    
+
+            <table class="m1-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Office Phone</th>
+                        <th>Website</th>
+                        <th>Memos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Qencode</td>
+                        <td>boss@google.com</td>
+                        <td>+09 (212) 23 23</td>
+                        <td>google.com</td>
+                        <td>1</td>
+                    </tr>                                                                                                                                                                                    
+                </tbody>
+            </table>
+            
+            
+
         </div>
     </main>
 
-    <script>
-        $(function () {
-            document.getElementById('company-search').addEventListener('input', function (e) {
-                let companyName = e.target.value; 
-                console.log(companyName);
-                // if imput value is not empty - show clear input button
-                toggleClearSearchButton(companyName);
-
-                // send request to database to retrive data
-                // render table                
-            });
-
-            $("#clear-search").click((e)=>{
-                e.preventDefault();
-                $("#company-search").val('');
-                toggleClearSearchButton('');
-            });
-
-            //
-            function toggleClearSearchButton(companyName){
-                if(companyName){
-                    $('#clear-search').fadeIn(100);
-                } else{
-                    $('#clear-search').fadeOut(100);
-                }
-            }
-        });
-    </script>    
 
 </body>
 </html>
