@@ -11,6 +11,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link href="https://unpkg.com/tabulator-tables@4.2.3/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.3/dist/js/tabulator.min.js"></script>       
+    
     <link href="css/m1__template.css" rel="stylesheet" />
     <link href="css/m1__elements.css" rel="stylesheet" />
 
@@ -88,76 +91,57 @@
             </script>   
 
             <div class="m1-table-container">
-                <table id="companies-table" class="m1-table">
-                    <thead class="m1-thead--sortable">
-                        <tr>
-                            <th class="m1-th-selected">Company</th>
-                            <th>Email</th>
-                            <th>Office Phone</th>
-                            <th>Website</th>
-                            <th>Memos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div> </td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td>1</td>
-                        </tr>   
-                        <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">my-super-website.com</a></td>
-                            <td>1</td>
-                        </tr>  
-                        <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td>1</td>
-                        </tr>  
-                        <tr>
-                            <td> <span>Super Very Long Company Name</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td>1</td>
-                        </tr>  
-                        <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td>1</td>
-                        </tr>  
-                        <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td>1</td>
-                        </tr>                                                                                                                                                                                                                                                                                    
-                    </tbody>
-                </table>
-            </div>
+                <div id="example-table"></div> 
+            </div>     
             
             <script>
-                $(function () {
-                    // table is sorted by Company from A to Z by default
+                //define some sample data
+                var tabledata = [
+                    {id:1, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
+                    {id:2, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"5"},
+                    {id:3, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
+                    {id:4, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},        
 
-                    // everytime we clck sort column - send request to server to get
-                    // data based on selected column and AZ or ZA
+                    {id:5, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
+                    {id:6, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"5"},
+                    {id:7, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
+                    {id:8, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
 
-                    $(".m1-thead--sortable th").click(function(e){
-                        $('.m1-th-selected').removeClass("m1-th-selected");
-                        $(this).addClass('m1-th-selected');
-                        $(this).toggleClass('m1-th-sortedZA');
-                    });                    
+                    {id:9, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
+                    {id:10, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"5"},
+                    {id:11, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
+                    {id:12, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},  
 
+                    {id:13, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
+                    {id:14, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"5"},
+                    {id:15, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
+                    {id:16, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},                                                                   
+                ];
+
+                //create Tabulator on DOM element with id "example-table"
+                var table = new Tabulator("#example-table", {
+                    height:450, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+                    data:tabledata, //assign data to table
+                    layout:"fitColumns", //fit columns to width of table (optional)
+                    columns:[ //Define Table Columns
+                        {title:"Company", field:"company", frozen:true, formatter:"html"},
+                        {title:"Email", field:"email", formatter:"html"},
+                        {title:"Office Phone", field:"office_phone", formatter:"html"},
+                        {title:"Website", field:"website", formatter:"link",
+                            formatterParams:{
+                                labelField:"website",
+                                urlPrefix:"https://",
+                                target:"_blank"                                
+                            }
+                        },
+                        {title:"Memos", field:"memos", width:130}
+                    ]
+                });           
+            </script>      
+            
+            
+            <script>
+                $(function () {                
                     // copy table field
                     $(".m1-td-copy").click(function (){
 

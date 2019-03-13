@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="img/favicon.png">    
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://unpkg.com/tabulator-tables@4.2.3/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.3/dist/js/tabulator.min.js"></script>       
+    
+    <link href="css/m1__template.css" rel="stylesheet" />
+    <link href="css/m1__elements.css" rel="stylesheet" />
+
+    <title>MEMO|Company</title>
+</head>
+<body class="m1-page">
+
+    <nav class="m1-nav">
+
+        <div class="m1-container">
+
+            <div>
+                <a href="./"><img src="img/logo.png" alt=""></a>
+            </div>
+
+            <div class="m1-top-menu-container">
+                <div id="top-menu" class="m1-top-menu">
+                    <div class="m1-menu-items--left">
+                        <a class="m1-menu-item m1-menu-item--active" href="./">Company</a>    
+                        <a class="m1-menu-item" href="./inventory.html">Inventory</a>    
+                        <a class="m1-menu-item" href="./memo.html">Memo</a>                                           
+                    </div>
+                    <div class="m1-menu-items--right">
+                                                       
+                    </div>
+                </div>
+            </div>
+                                   
+        </div>
+
+    </nav> 
+
+    <main class="m1-page-content">
+        <div class="m1-container">
+
+            <div class="m1-form-container">
+                <form class="m1-form">
+                    <div class="m1-icon--search"></div>
+                    <div class="m1-input-container">
+                        <input id="search-item" type="text" autocomplete="off" class="m1-input" placeholder="Search company">
+                        <button id="clear-search" class="m1-button--close" style="display:none"></button>
+                    </div>                    
+                    <button type="submit" class="m1-button m1-button--light">Search</button>                
+                </form>                                               
+                <button onclick="window.location.href = './companyAdd.html';" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add company</span></button>
+            </div>
+
+            <script>
+                $(function () {
+                    $("#search-item").on('input', function(e){ 
+                        let searchName = e.target.value; 
+                        //console.log(searchName);
+                        // if imput value is not empty - show clear input button
+                        toggleClearSearchButton(searchName);
+        
+                        // send request to database to retrive data
+                        // render table                
+                    });
+        
+                    $("#clear-search").click((e)=>{
+                        e.preventDefault();
+                        $("#search-item").val('');
+                        toggleClearSearchButton('');
+                    });
+        
+                    //
+                    function toggleClearSearchButton(searchName){
+                        if(searchName){
+                            $('#clear-search').fadeIn(100);
+                        } else{
+                            $('#clear-search').fadeOut(100);
+                        }
+                    }
+                });
+            </script>   
+            
+
+            <div class="m1-table-container">
+                <table id="companies-table" class="m1-table">
+                    <thead class="m1-thead--sortable">
+                        <tr>
+                            <th class="m1-th-selected">Company</th>
+                            <th>Email</th>
+                            <th>Office Phone</th>
+                            <th>Website</th>
+                            <th>Memos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div> </td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                            <td>1</td>
+                        </tr>   
+                        <tr>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">my-super-website.com</a></td>
+                            <td>1</td>
+                        </tr>  
+                        <tr>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                            <td>1</td>
+                        </tr>  
+                        <tr>
+                            <td> <span>Super Very Long Company Name</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                            <td>1</td>
+                        </tr>  
+                        <tr>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                            <td>1</td>
+                        </tr>  
+                        <tr>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
+                            <td>1</td>
+                        </tr>                                                                                                                                                                                                                                                                                    
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+                $(function () {
+                    // table is sorted by Company from A to Z by default
+
+                    // everytime we clck sort column - send request to server to get
+                    // data based on selected column and AZ or ZA
+
+                    $(".m1-thead--sortable th").click(function(e){
+                        $('.m1-th-selected').removeClass("m1-th-selected");
+                        $(this).addClass('m1-th-selected');
+                        $(this).toggleClass('m1-th-sortedZA');
+                    });                    
+
+                    // copy table field
+                    $(".m1-td-copy").click(function (){
+
+                        try { 
+                            var cell = $(this).prev('span')[0];
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cell);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');                                                            
+
+                            if(successful) {
+                                //console.log("copied");
+                                $(this).next('.m1-flash-message').html('copied');
+                                $(this).next('.m1-flash-message')
+                                    .animate({ opacity: 0.8 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>                
+
+        </div>
+    </main>
+
+
+</body>
+</html>
