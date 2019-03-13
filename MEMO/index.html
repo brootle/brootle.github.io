@@ -61,35 +61,6 @@
                 <button onclick="window.location.href = './companyAdd.html';" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add company</span></button>
             </div>
 
-            <script>
-                $(function () {
-                    $("#search-item").on('input', function(e){ 
-                        let searchName = e.target.value; 
-                        //console.log(searchName);
-                        // if imput value is not empty - show clear input button
-                        toggleClearSearchButton(searchName);
-        
-                        // send request to database to retrive data
-                        // render table                
-                    });
-        
-                    $("#clear-search").click((e)=>{
-                        e.preventDefault();
-                        $("#search-item").val('');
-                        toggleClearSearchButton('');
-                    });
-        
-                    //
-                    function toggleClearSearchButton(searchName){
-                        if(searchName){
-                            $('#clear-search').fadeIn(100);
-                        } else{
-                            $('#clear-search').fadeOut(100);
-                        }
-                    }
-                });
-            </script>   
-
             <div class="m1-table-container">
                 <div id="companies-table"></div> 
             </div>     
@@ -102,7 +73,7 @@
                     {id:3, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
                     {id:4, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},        
 
-                    {id:5, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
+                    {id:5, company:"<span>Test</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
                     {id:6, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"5"},
                     {id:7, company:"<span>Super Very Long Company Name</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"2"},
                     {id:8, company:"<span>Qencode</span>  <a href='./companyEdit.html' class='m1-td-edit'></a> ", email:'<span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', office_phone:'<span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div>', website:"qencode.com", memos:"1"},
@@ -136,7 +107,37 @@
                         },
                         {title:"Memos", field:"memos", width:130}
                     ]                   
-                });           
+                });         
+
+
+                // SEARCH FOR COMPANY and UPDATE data in the table
+                $("#search-item").on('input', function(e){ 
+                    let searchName = e.target.value; 
+                    //console.log(searchName);
+                    // if imput value is not empty - show clear input button
+                    toggleClearSearchButton(searchName);
+    
+                    // Filter data in the table
+                    table.setFilter("company", "like", searchName);                          
+                });
+    
+                $("#clear-search").click((e)=>{
+                    e.preventDefault();
+                    $("#search-item").val('');
+                    toggleClearSearchButton('');
+                    table.setFilter("company", "like", '');  
+                });
+    
+                //
+                function toggleClearSearchButton(searchName){
+                    if(searchName){
+                        $('#clear-search').fadeIn(100);
+                    } else{
+                        $('#clear-search').fadeOut(100);
+                    }
+                }        
+                // SEARCH END        
+
             </script>      
             
             
