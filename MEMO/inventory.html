@@ -45,7 +45,132 @@
 
     <main class="m1-page-content">
         <div class="m1-container">
-            <h1>Inventory</h1>                                             
+
+            <div class="m1-form-container">
+                <form class="m1-form">
+                    <div class="m1-icon--search"></div>
+                    <div class="m1-input-container">
+                        <input id="search-item" type="text" autocomplete="off" class="m1-input" placeholder="Enter item to search">
+                        <button id="clear-search" class="m1-button--close" style="display:none"></button>
+                    </div>                    
+                    <button class="m1-button m1-button--light">Search</button>                
+                </form>                                               
+                <button type="submit" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add item</span></button>
+            </div>
+
+            <script>
+                $(function () {
+                    $("#search-item").on('input', function(e){ 
+                        let searchName = e.target.value; 
+                        //console.log(searchName);
+                        // if imput value is not empty - show clear input button
+                        toggleClearSearchButton(searchName);
+        
+                        // send request to database to retrive data
+                        // render table                
+                    });
+        
+                    $("#clear-search").click((e)=>{
+                        e.preventDefault();
+                        $("#search-item").val('');
+                        toggleClearSearchButton('');
+                    });
+        
+                    //
+                    function toggleClearSearchButton(searchName){
+                        if(searchName){
+                            $('#clear-search').fadeIn(100);
+                        } else{
+                            $('#clear-search').fadeOut(100);
+                        }
+                    }
+                });
+            </script>           
+
+            <div class="m1-table-container">
+                <table id="companies-table" class="m1-table">
+                    <thead class="m1-thead--sortable">
+                        <tr>
+                            <th class="m1-th-selected">Stock ID</th>
+                            <th>Product type</th>
+                            <th>Partner</th>
+                            <th>Brand</th>
+                            <th>Model Number</th>
+
+                            <th>Condition</th>
+                            <th>LRT</th>
+                            <th>SKU</th>
+                            <th>Cost</th>
+                            <th>Sale type</th>
+                            <th>Cost code</th>
+                            <th>MSRP</th>
+                            <th>Date</th>
+                            <th>PPR</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Metal</th>
+                            <th>Band</th>
+                            <th>Dial Color</th>
+                            <th>Bezel</th>
+                            <th>Source</th>
+                            <th>Vendor Doc</th>
+                            <th>DOP</th>
+                            <th>Weight</th>
+                            <th>Screw Count</th>
+                            <th>Brand Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>                                                                                                                                                                                                                                                                                     
+                    </tbody>
+                </table>
+            </div>   
+
+            <script>
+                $(function () {
+                    // table is sorted by Company from A to Z by default
+
+                    // everytime we clck sort column - send request to server to get
+                    // data based on selected column and AZ or ZA
+
+                    $(".m1-thead--sortable th").click(function(e){
+                        $('.m1-th-selected').removeClass("m1-th-selected");
+                        $(this).addClass('m1-th-selected');
+                        $(this).toggleClass('m1-th-sortedZA');
+                    });                                          
+                });
+            </script>                       
+
         </div>
     </main>
 

@@ -50,7 +50,7 @@
                 <form class="m1-form">
                     <div class="m1-icon--search"></div>
                     <div class="m1-input-container">
-                        <input id="company-search" type="text" autocomplete="off" class="m1-input" placeholder="Search company">
+                        <input id="search-item" type="text" autocomplete="off" class="m1-input" placeholder="Search company">
                         <button id="clear-search" class="m1-button--close" style="display:none"></button>
                     </div>                    
                     <button class="m1-button m1-button--light">Search</button>                
@@ -60,11 +60,11 @@
 
             <script>
                 $(function () {
-                    $("#company-search").on('input', function(e){ 
-                        let companyName = e.target.value; 
-                        console.log(companyName);
+                    $("#search-item").on('input', function(e){ 
+                        let searchName = e.target.value; 
+                        //console.log(searchName);
                         // if imput value is not empty - show clear input button
-                        toggleClearSearchButton(companyName);
+                        toggleClearSearchButton(searchName);
         
                         // send request to database to retrive data
                         // render table                
@@ -72,20 +72,20 @@
         
                     $("#clear-search").click((e)=>{
                         e.preventDefault();
-                        $("#company-search").val('');
+                        $("#search-item").val('');
                         toggleClearSearchButton('');
                     });
         
                     //
-                    function toggleClearSearchButton(companyName){
-                        if(companyName){
+                    function toggleClearSearchButton(searchName){
+                        if(searchName){
                             $('#clear-search').fadeIn(100);
                         } else{
                             $('#clear-search').fadeOut(100);
                         }
                     }
                 });
-            </script>    
+            </script>   
 
             <div class="m1-table-container">
                 <table id="companies-table" class="m1-table">
@@ -100,42 +100,42 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Qencode</td>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div> </td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                             <td>1</td>
                         </tr>   
                         <tr>
-                            <td>Qencode</td>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">my-super-website.com</a></td>
                             <td>1</td>
                         </tr>  
                         <tr>
-                            <td>Qencode</td>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                             <td>1</td>
                         </tr>  
                         <tr>
-                            <td>Super Very Long Company Name</td>
+                            <td> <span>Super Very Long Company Name</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                             <td>1</td>
                         </tr>  
                         <tr>
-                            <td>Qencode</td>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
                             <td>1</td>
                         </tr>  
                         <tr>
-                            <td>Qencode</td>
+                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
                             <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
