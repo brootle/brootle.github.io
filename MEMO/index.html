@@ -11,9 +11,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>  
+
     <link href="https://unpkg.com/tabulator-tables@4.2.3/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.3/dist/js/tabulator.min.js"></script>       
-    
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.3/dist/js/tabulator.min.js"></script>    
+
     <link href="css/m1__template.css" rel="stylesheet" />
     <link href="css/m1__elements.css" rel="stylesheet" />
 
@@ -93,6 +95,7 @@
                 var table = new Tabulator("#companies-table", {
                     height:450, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
                     data:tabledata, //assign data to table
+                    placeholder:"No Data Available",
                     layout:"fitColumns", //fit columns to width of table (optional)
                     columns:[ //Define Table Columns
                         {title:"Company", field:"company", frozen:true, formatter:"html"},
