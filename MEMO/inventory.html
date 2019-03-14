@@ -63,329 +63,298 @@
                 <button onclick="window.location.href = './inventoryAdd.html';" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add item</span></button>
             </div>
 
-            <div class="m1-table-container">
-                <div id="inventory-table"></div> 
-            </div>     
-            
             <script>
-                //define some sample data
-                var tabledata = [
-                    { 
-                        id:1, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Yasha',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:2, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Ring',partner:'Yasha',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:3,
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Necklace',partner:'David',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:4, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Bracelet',partner:'David',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Used',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:5, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Necklace',partner:'Steven',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Used',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:6, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Ronald',brand:'Ulysse Nardin',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:7, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Steven',brand:'Jaeger-LeCoultre',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:8, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Yasha',brand:'Jaeger-LeCoultre',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:9, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Stenly',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:10, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Stenly',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:11, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Yasha',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    },
-
-                    { 
-                        id:12, 
-                        stockId:"<span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> ",
-                        productType:'Watch',partner:'Yasha',brand:'Rolex',
-                        modelNumber:'7727BB/12/9WU',condition:'Like New',ltr:'-',
-                        sku:'7727BB/12/9WU',cost:2734.999,saleType:'Price/Unit',
-                        costCode:'7727BB/12/9WU',msrp:2734.999,date:'2019-01-23',
-                        ppr:'Yes',description:'-', category:'-', size:44,
-                        metal:'Two Tonea YG',band:'President',dialColor:'Ice Blue Standard Dial',
-                        bezel:'18k Rose Gold',
-                        source:'-',vendorDoc:'-', dop:'2019-01-23', weight:131,screwCount:'-',brandGrade:'-' 
-                    }                                                                                                                                                                                                                                                                                                                   
-                ];
-
-                //create Tabulator on DOM element with id "inventory-table"
-                var table = new Tabulator("#inventory-table", {
-                    height:450, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-                    data:tabledata, //assign data to table
-                    placeholder:"No Data Available",
-                    layout:"fitDataFill",
-                    columns:[ //Define Table Columns
-                        {title:"Stock ID", field:"stockId", frozen:true, formatter:"html"},
-                        {title:"Product type", field:"productType"},
-                        {title:"Partner", field:"partner"},
-                        {title:"Brand", field:"brand"},
-                        {title:"Model Number", field:"modelNumber"},
-                        {title:"Condition", field:"condition"},
-                        {title:"LTR", field:"ltr"},
-                        {title:"SKU", field:"sku"},
-                        {
-                            title:"Cost", 
-                            field:"cost",
-                            formatter:"money",
-                            formatterParams:{decimal:".",thousand:",",symbol:"$", precision:false}                            
-                        },
-                        {title:"Sale type", field:"saleType"},
-                        {title:"Cost code", field:"costCode"},
-                        {
-                            title:"MSRP", 
-                            field:"msrp",
-                            formatter:"money",
-                            formatterParams:{decimal:".",thousand:",",symbol:"$", precision:false}                            
-                        },                
-                        {title:"Date", field:"date", formatter:"datetime", formatterParams:{
-                            inputFormat:"YYYY-MM-DD",
-                            outputFormat:"DD/MM/YY",
-                            invalidPlaceholder:"(invalid date)",
-                        }},
-                        {title:"PPR", field:"ppr"},
-                        {title:"Descriptrion", field:"description"},
-                        {title:"Category", field:"category"},
-                        {title:"Size", field:"size", formatter:function(cell, formatterParams, onRendered){
-                            //cell - the cell component
-                            //formatterParams - parameters set for the column
-                            //onRendered - function to call when the formatter has been rendered
-
-                            return cell.getValue() + " mm"; //return the contents of the cell;
-                            }
-                        },              
-                        {title:"Metal", field:"metal"}, 
-                        {title:"Band", field:"band"},    
-                        {title:"Dial Color", field:"dialColor"},   
-                        {title:"Bezel", field:"bezel"},
-                        {title:"Source", field:"source"},
-                        {title:"Vendor Doc", field:"vendorDoc"},
-                        {title:"DOP", field:"dop", formatter:"datetime", formatterParams:{
-                            inputFormat:"YYYY-MM-DD",
-                            outputFormat:"DD/MM/YY",
-                            invalidPlaceholder:"(invalid date)",
-                        }},                
-                        {title:"Weight", field:"weight", formatter:function(cell, formatterParams, onRendered){
-                            return cell.getValue() + " g";
-                            }
-                        },              
-                        {title:"Screw Count", field:"screwCount"},
-                        {title:"Brand Grade", field:"brandGrade"}
-                    ]                   
-                });         
-
-
-                // SEARCH FOR INVENTORY and UPDATE data in the table
-                $("#search-item").on('input', function(e){ 
-                    let searchName = e.target.value; 
-                    //console.log(searchName);
-                    // if imput value is not empty - show clear input button
-                    toggleClearSearchButton(searchName);
-    
-                    // Filter data in the table
-                    //table.setFilter("productType", "like", searchName);    
-                    
-                    table.setFilter([
-                        [
-                            {field:"productType", type:"like", value:searchName},
-                            {field:"partner", type:"like", value:searchName},
-                            {field:"brand", type:"like", value:searchName},
-                            {field:"condition", type:"like", value:searchName},
-                            {field:"band", type:"like", value:searchName},
-                            {field:"condition", type:"like", value:searchName}                                   
-                        ]
-                    ]);                                          
-                });
-    
-                $("#clear-search").click((e)=>{
-                    e.preventDefault();
-                    $("#search-item").val('');
-                    toggleClearSearchButton('');
-                    
-                    // clear
-                    table.setFilter([
-                        [
-                            {field:"productType", type:"like", value:''},
-                            {field:"partner", type:"like", value:''},
-                            {field:"brand", type:"like", value:''},
-                            {field:"condition", type:"like", value:''},
-                            {field:"brand", type:"like", value:''},
-                            {field:"category", type:"like", value:''},
-                            {field:"condition", type:"like", value:''}                                
-                        ]
-                    ]);                       
-                });
-    
-                //
-                function toggleClearSearchButton(searchName){
-                    if(searchName){
-                        $('#clear-search').fadeIn(100);
-                    } else{
-                        $('#clear-search').fadeOut(100);
-                    }
-                }        
-                // SEARCH END        
-
-            </script>      
-            
-            
-            <script>
-                $(function () {                
-                    // copy table field
-                    $(".m1-td-copy").click(function (){
-
-                        try { 
-                            var cell = $(this).prev('span')[0];
-                            var selection = window.getSelection();        
-                            var range = document.createRange();
-
-                            range.selectNodeContents(cell);
-                            selection.removeAllRanges();
-                            selection.addRange(range);
-
-                            var successful = document.execCommand('copy');                                                            
-
-                            if(successful) {
-                                //console.log("copied");
-                                $(this).next('.m1-flash-message').html('copied');
-                                $(this).next('.m1-flash-message')
-                                    .animate({ opacity: 0.8 }, 200)
-                                    .delay(500)     
-                                    .animate({ opacity: 0 }, 200)                                                                             
-                            }
-                            else
-                            { 
-                                //console.log("can not copy");
-                            } 
-                        } catch (err) {
-                            console.log(err);
+                $(function () {
+                    $("#search-item").on('input', function(e){ 
+                        let searchName = e.target.value; 
+                        //console.log(searchName);
+                        // if imput value is not empty - show clear input button
+                        toggleClearSearchButton(searchName);
+        
+                        // send request to database to retrive data
+                        // render table                
+                    });
+        
+                    $("#clear-search").click((e)=>{
+                        e.preventDefault();
+                        $("#search-item").val('');
+                        toggleClearSearchButton('');
+                    });
+        
+                    //
+                    function toggleClearSearchButton(searchName){
+                        if(searchName){
+                            $('#clear-search').fadeIn(100);
+                        } else{
+                            $('#clear-search').fadeOut(100);
                         }
-
-                    });                           
+                    }
                 });
-            </script>                
-    
+            </script>   
 
+            <div class="m1-table-container">
+                <table id="inventory-table" class="m1-table">
+                    <thead class="m1-thead--sortable">
+                        <tr>
+                            <th class="m1-th-selected">Stock ID</th>
+                            <th>Product type</th>
+                            <th>Partner</th>
+                            <th>Brand</th>
+                            <th>Model Number</th>
 
-                    
+                            <th>Condition</th>
+                            <th>LRT</th>
+                            <th>SKU</th>
+                            <th>Cost</th>
+                            <th>Sale type</th>
+                            <th>Cost code</th>
+                            <th>MSRP</th>
+                            <th>Date</th>
+                            <th>PPR</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Metal</th>
+                            <th>Band</th>
+                            <th>Dial Color</th>
+                            <th>Bezel</th>
+                            <th>Source</th>
+                            <th>Vendor Doc</th>
+                            <th>DOP</th>
+                            <th>Weight</th>
+                            <th>Screw Count</th>
+                            <th>Brand Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>                      
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>    
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>    
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>    
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>    
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>    
+                        <tr>
+                            <td><span>WY99981723982</span>  <a href='./inventoryEdit.html' class='m1-td-edit'></a> </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    </tbody>
+                </table>
+            </div>               
+            
+            <script>
+                $(function () {
+                    // table is sorted by Company from A to Z by default
+
+                    // everytime we clck sort column - send request to server to get
+                    // data based on selected column and AZ or ZA
+
+                    $(".m1-thead--sortable th").click(function(e){
+                        $('.m1-th-selected').removeClass("m1-th-selected");
+                        $(this).addClass('m1-th-selected');
+                        $(this).toggleClass('m1-th-sortedZA');
+                    });                                          
+                });
+            </script>                                                 
 
         </div>
     </main>
