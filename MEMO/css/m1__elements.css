@@ -254,7 +254,7 @@ a.m1-status-links__current-link:hover{
 
 .m1-td-copy{
     display: none;
-    right: 10px;
+    right: -10px;
     top: calc(50% - 13px);    
     position: absolute;
     width: 24px;
@@ -264,13 +264,13 @@ a.m1-status-links__current-link:hover{
     background-size: contain;
 }
 
-.m1-table tbody td:hover .m1-td-copy{
+.m1-table tbody .m1-cell-content:hover .m1-td-copy{
     display: block;
 }
 
 .m1-td-edit{
     display: none;
-    right: 10px;
+    right: -10px;
     top: calc(50% - 13px);    
     position: absolute;
     width: 24px;
@@ -280,14 +280,14 @@ a.m1-status-links__current-link:hover{
     background-size: contain;
 }
 
-.m1-table tbody td:hover .m1-td-edit{
+.m1-table tbody .m1-cell-content:hover .m1-td-edit{
     display: block;
 }
 
 .m1-flash-message{
     position: absolute;
-    right: 4px;
-    top: 3px;
+    right: -22px;
+    top: -15px;
     line-height: 19px;
     background: #eaeaf5;
     color: var(--base-color);;
@@ -296,5 +296,14 @@ a.m1-status-links__current-link:hover{
     border-radius: 4px;
     box-shadow: 0px 1px 5px 1px rgba(105, 109, 112, 0.41); 
     opacity: 0;
+}
+
+td .m1-cell-content{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+td .m1-cell-content:last-of-type{
+    margin-bottom: 0;
 }
 /* tables */
