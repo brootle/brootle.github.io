@@ -11,10 +11,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link href="css/_m1-variables.css" rel="stylesheet" />
     <link href="css/m1__template.css" rel="stylesheet" />
     <link href="css/m1__elements.css" rel="stylesheet" />
 
-    <title>MEMO|Company</title>
+    <title>MEMO|Customer</title>
 </head>
 <body class="m1-page">
 
@@ -29,7 +30,7 @@
             <div class="m1-top-menu-container">
                 <div id="top-menu" class="m1-top-menu">
                     <div class="m1-menu-items--left">
-                        <a class="m1-menu-item m1-menu-item--active" href="./">Company</a>    
+                        <a class="m1-menu-item m1-menu-item--active" href="./">Customer</a>    
                         <a class="m1-menu-item" href="./inventory.html">Inventory</a>    
                         <a class="m1-menu-item" href="./memo.html">Memo</a>                                           
                     </div>
@@ -50,12 +51,12 @@
                 <form class="m1-form">
                     <div class="m1-icon--search"></div>
                     <div class="m1-input-container">
-                        <input id="search-item" type="text" autocomplete="off" class="m1-input" placeholder="Search company">
+                        <input id="search-item" type="text" autocomplete="off" class="m1-input" placeholder="Search Customer">
                         <button id="clear-search" class="m1-button--close" style="display:none"></button>
                     </div>                    
                     <button type="submit" class="m1-button m1-button--light">Search</button>                
                 </form>                                               
-                <button onclick="window.location.href = './companyAdd.html';" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add company</span></button>
+                <button onclick="window.location.href = './customerAdd.html';" class="m1-button m1-button--dark m1-button--long"> <span class="m1-icon--plus">Add Customer</span></button>
             </div>
 
             <script>
@@ -92,55 +93,55 @@
                 <table id="companies-table" class="m1-table">
                     <thead class="m1-thead--sortable">
                         <tr>
-                            <th class="m1-th-selected">Company</th>
-                            <th>Email</th>
-                            <th>Office Phone</th>
-                            <th>Website</th>
-                            <th>Memos</th>
+                            <th class="m1-th-selected">Customer</th>
+                            <th>Contact Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>                            
+                            <th>Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div> </td>
+                            <td> <span>Qencode</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td><a href='./companyMemosList.html'>2</a></td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div> </td>                            
+                            <td>$1,243.43</td>
                         </tr>   
                         <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
+                            <td> <span>Qencode</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
+                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
                             <td> <span>sylvester.stallone@my-super-website.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">my-super-website.com</a></td>
-                            <td><a href='./companyMemosList.html'>2</a></td>
+                            <td>$1,243.43</td>
                         </tr>  
                         <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>Qencode</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td><a href='./companyMemosList.html'>2</a></td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td>$1,243.43</td>
                         </tr>  
                         <tr>
-                            <td> <span>Super Very Long Company Name</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>Super Very Long Customer Name</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td><a href='./companyMemosList.html'>6</a></td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td>$1,243.43</td>
                         </tr>  
                         <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>Qencode</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td><a href='./companyMemosList.html'>1</a></td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td>$1,243.43</td>
                         </tr>  
                         <tr>
-                            <td> <span>Qencode</span>  <a href="./companyEdit.html" class="m1-td-edit"></a> </td>
-                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td> <span>Qencode</span>  <a href="./customerEdit.html" class="m1-td-edit"></a> </td>
+                            <td> Daniel Springfield</td>
                             <td> <span>+09 (212) 23 23</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
-                            <td><a href="https://www.google.com/" target="_blank">google.com</a></td>
-                            <td><a href='./companyMemosList.html'>5</a></td>
+                            <td> <span>boss@google.com</span> <div class="m1-td-copy"></div> <div class="m1-flash-message"></div></td>
+                            <td>$1,243.43</td>
                         </tr>                                                                                                                                                                                                                                                                                    
                     </tbody>
                 </table>
@@ -185,7 +186,7 @@
 
             <script>
                 $(function () {
-                    // table is sorted by Company from A to Z by default
+                    // table is sorted by Customer from A to Z by default
 
                     // everytime we clck sort column - send request to server to get
                     // data based on selected column and AZ or ZA
