@@ -45,7 +45,7 @@ a.m1-status-links__current-link:hover{
 .m1-icon--search{
     width: 32px;
     height: 36px;
-    background-image: url(../img/icon_search.png);   
+    background-image: url(../img/search.svg);   
 }
 /* search form */
 
@@ -251,38 +251,59 @@ a.m1-status-links__current-link:hover{
     position: relative;
 }
 
-.m1-td-copy,
-.m1-td-edit{
+.m1-table td .m1-cell-content.m1-cell-with-buttons{
+    padding-right: 70px
+}
+
+.m1-td-buttons-container{
     display: none;
-    top: calc(50% - 13px);    
+    top: calc(50% - 13px);
     right: 7px;
     position: absolute;
+}
+
+.m1-table tbody .m1-cell-content:hover .m1-td-buttons-container{
+    display: block;
+}
+
+.m1-td-copy,
+.m1-td-edit,
+.m1-td-delete,
+.m1-td-add {
+    display: inline-block;
+    position: relative;
     width: 24px;
     height: 24px;
     cursor: pointer;
-    background-size: contain;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 1px solid var(--base-color);
+    background-color: white;
 }
 
 .m1-td-copy{
-    background-image: url(../img/icon_copy.png);    ;
-}
-
-.m1-table tbody .m1-cell-content:hover .m1-td-copy{
-    display: block;
+    background-image: url(../img/copy.svg);    
 }
 
 .m1-td-edit{
-    background-image: url(../img/icon_edit.png);    
+    background-image: url(../img/edit.svg);    
 }
 
-.m1-table tbody .m1-cell-content:hover .m1-td-edit{
-    display: block;
+.m1-td-delete{
+    background-image: url(../img/delete_3.svg);    
+}
+
+.m1-td-add{
+    background-image: url(../img/add.svg);    
 }
 
 .m1-flash-message{
     position: absolute;
-    right: -6px;
-    top: -15px;
+    right: -11px;
+    top: -25px;
+    z-index: 1;
     line-height: 19px;
     background: #eaeaf5;
     color: var(--base-color);
@@ -306,11 +327,11 @@ td .m1-cell-content:last-of-type{
 .m1-tooplip{
     display: none;
     position: absolute;
-    right: -3px;
+    right: -4px;
     top: -23px;
     line-height: 19px;
-    background: #eaeaf5;
-    color: var(--base-color);
+    background: var(--base-color);
+    color: white;
     padding: 0 5px;
     font-size: 14px;
     border-radius: 4px;
@@ -322,7 +343,11 @@ td .m1-cell-content:last-of-type{
     display: block;    
 }
 
-.m1-tooplip--copy{
+.m1-td-copy .m1-tooplip{
     right: -6px;    
+}
+
+.m1-td-delete .m1-tooplip{
+    right: -11px;    
 }
 /* tables */
