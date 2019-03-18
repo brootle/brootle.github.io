@@ -184,8 +184,7 @@ a.m1-status-links__current-link:hover{
 }
 
 .m1-table th,
-.m1-table td{
-    text-align: left;
+.m1-table td .m1-cell-content{
     text-align: left;
     padding: 15px 25px;
 }
@@ -252,16 +251,20 @@ a.m1-status-links__current-link:hover{
     position: relative;
 }
 
-.m1-td-copy{
+.m1-td-copy,
+.m1-td-edit{
     display: none;
-    right: -10px;
     top: calc(50% - 13px);    
+    right: 7px;
     position: absolute;
     width: 24px;
     height: 24px;
-    background-image: url(../img/icon_copy.png);    
     cursor: pointer;
     background-size: contain;
+}
+
+.m1-td-copy{
+    background-image: url(../img/icon_copy.png);    ;
 }
 
 .m1-table tbody .m1-cell-content:hover .m1-td-copy{
@@ -269,15 +272,7 @@ a.m1-status-links__current-link:hover{
 }
 
 .m1-td-edit{
-    display: none;
-    right: -10px;
-    top: calc(50% - 13px);    
-    position: absolute;
-    width: 24px;
-    height: 24px;
     background-image: url(../img/icon_edit.png);    
-    cursor: pointer;
-    background-size: contain;
 }
 
 .m1-table tbody .m1-cell-content:hover .m1-td-edit{
@@ -286,12 +281,12 @@ a.m1-status-links__current-link:hover{
 
 .m1-flash-message{
     position: absolute;
-    right: -22px;
+    right: -6px;
     top: -15px;
     line-height: 19px;
     background: #eaeaf5;
-    color: var(--base-color);;
-    padding: 0 5px;
+    color: var(--base-color);
+    padding: 1px 5px;
     font-size: 14px;
     border-radius: 4px;
     box-shadow: 0px 1px 5px 1px rgba(105, 109, 112, 0.41); 
@@ -300,10 +295,34 @@ a.m1-status-links__current-link:hover{
 
 td .m1-cell-content{
     position: relative;
-    margin-bottom: 10px;
+    padding: 15px 25px;    
 }
 
 td .m1-cell-content:last-of-type{
     margin-bottom: 0;
+}
+
+
+.m1-tooplip{
+    display: none;
+    position: absolute;
+    right: -3px;
+    top: -23px;
+    line-height: 19px;
+    background: #eaeaf5;
+    color: var(--base-color);
+    padding: 0 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px 1px rgba(105, 109, 112, 0.41);
+    opacity: 0.8;
+}
+
+.m1-tooplip-container:hover .m1-tooplip{
+    display: block;    
+}
+
+.m1-tooplip--copy{
+    right: -6px;    
 }
 /* tables */
