@@ -29,10 +29,12 @@ a.m1-status-links__current-link:hover{
 .m1-form-container{
     display: flex;
     align-items: center;
+    padding: 40px 0;
+    justify-content: space-between;
+    position: relative;
 }
 
 .m1-form{
-    margin: 40px 0;
     flex: 1;
     display: flex;
     align-items: center;
@@ -40,6 +42,7 @@ a.m1-status-links__current-link:hover{
 
 .m1-form-container .m1-form{
     margin-right: 60px;
+    max-width: 580px;
 }
 
 .m1-icon--search{
@@ -47,18 +50,111 @@ a.m1-status-links__current-link:hover{
     height: 36px;
     background-image: url(../img/search.svg);   
 }
+
+.m1-columns-selector{
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+    background: white;
+    padding: 25px;
+    z-index: 1;
+    box-shadow: 0px 3px 9px 0px rgba(105, 109, 112, 0.41);
+    border: 1px solid var(--base-color);
+    border-radius: 3px;    
+
+    display: flex;
+    flex-wrap: wrap;    
+
+    color: #212934;
+}
+
+.m1-selector-box-item{
+    padding: 5px 10px;
+    margin: 5px 0;   
+    min-width: 148px; 
+    max-width: 148px;
+}
 /* search form */
+
+
+/* checkbox */
+.m1-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: var(--cell-font-size);
+    line-height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 100;
+}
+
+.m1-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #eaeeef;
+    border-radius: 3px;
+}
+
+.m1-checkbox .m1-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.m1-checkbox input:checked ~ .m1-checkmark:after {
+    display: block;
+}
+
+.m1-checkbox:hover input ~ .m1-checkmark {
+    background-color: #ededed;
+}
+
+.m1-checkbox input:checked ~ .m1-checkmark {
+    background-color: var(--base-color);;
+}
+
+.m1-checkbox input:checked ~ .m1-checkbox__text {
+    color: var(--base-color);
+}
+
+.m1-checkbox input {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
+/* checkbox */
 
 
 /* buttons and inputs */
 .m1-input, 
 .m1-button{
-    padding: 0 14px;
+    padding: 0 12px;
     margin: 0;
     font-size: 18px;
     font-weight: 500;
     border-radius: 6px;
     height: 50px;
+}
+
+.m1-button{
+    padding: 0 20px;    
 }
 
 .m1-input {
@@ -123,7 +219,7 @@ a.m1-status-links__current-link:hover{
     user-select: none;
     border: 1px solid;
     transition: all 0.2s ease;
-    min-width: 136px;
+    min-width: 140px;
 }
 
 .m1-button--long{
@@ -134,7 +230,7 @@ a.m1-status-links__current-link:hover{
     background: var(--base-color);
     color: white;
     border-color: var(--base-color);
-    box-shadow: 0px 3px 13px 1px rgba(105, 109, 112, 0.41);
+    box-shadow: 0px 3px 9px 0px rgba(105, 109, 112, 0.41);
 }
 
 .m1-button--dark:hover{
@@ -154,7 +250,8 @@ a.m1-status-links__current-link:hover{
 }
 
 
-.m1-icon--plus {
+.m1-icon--plus,
+.m1-icon--arrow-down {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,6 +264,32 @@ a.m1-status-links__current-link:hover{
     width: 18px;
     height: 18px;
     background-image: url(../img/icon_plus.png);
+}
+
+.m1-icon--arrow-down:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+
+    width: 0;
+    height: 0;
+    border-top: 4px solid #ffffff;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;    
+}
+
+.m1-button--opened .m1-icon--arrow-down:before {
+    transform: rotate(180deg);
+}
+
+
+.m1-buttons-container .m1-button {
+    margin-right: 20px;
+}
+
+.m1-buttons-container .m1-button:last-of-type {
+    margin-right: 0;
 }
 /* buttons and inputs */
 
@@ -187,6 +310,10 @@ a.m1-status-links__current-link:hover{
 .m1-table td .m1-cell-content{
     text-align: left;
     padding: 15px 25px;
+}
+
+.m1-table td .m1-cell-content{
+    padding: 7px 25px;
 }
 
 .m1-table th{
