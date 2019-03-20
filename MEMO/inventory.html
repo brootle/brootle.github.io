@@ -284,7 +284,7 @@
                         function updateTableCulumnsVisibility(){
                             // get list of checked items
                             let tableColumnsVisibility = [];
-                            console.log(tableColumnsVisibility);
+                            //console.log(tableColumnsVisibility);
 
                             let checkboxes = document.querySelectorAll('#columns-selector-box input');
                             checkboxes.forEach(checkbox => tableColumnsVisibility.push(($(checkbox).prop("checked"))));
@@ -307,6 +307,24 @@
                             });                            
 
                         } 
+
+                        //////////////////////////////////////////////////////////////
+                        // toggle checked/uncheck all items in a column
+                        var columnNumber = 1; // apply to 1st column in the table
+                        var masterCheckBox = $(`#inventory-table thead tr th:nth-of-type(${columnNumber}) input`)[0];
+
+                        var columnCheckboxes = $(`#inventory-table tbody tr td:nth-of-type(${columnNumber}) input`);
+                        
+                        $(masterCheckBox).change(function() {
+                            if($(this).prop("checked")){
+                                // check all items in the current column
+                                $(columnCheckboxes).prop('checked', true);
+                            } else{
+                                // uncheck all items in the current comumn
+                                $(columnCheckboxes).prop('checked', false);
+                            }
+                        });      
+                        //////////////////////////////////////////////////////////////                  
 
                     });
                 </script>                
@@ -346,7 +364,15 @@
                 <table id="inventory-table" class="m1-table">
                     <thead class="m1-thead--sortable">
                         <tr>
-                            <th class="m1-th-selected">Stock ID</th>
+                            <th class="m1-th-selected">
+                                <div class="m1-cell-content m1-cell-content-with-checkbox">                                     
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>   
+                                    <span>Stock ID</span> 
+                                </div>                                                                                                                  
+                            </th>
                             <th>Product type</th>
                             <th>Images</th>                            
                             <th>Partner</th>
@@ -385,7 +411,11 @@
                     <tbody>
                         <tr>
                             <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
                                     <span>WY99981723982</span>  
                                     <div class="m1-td-buttons-container">
                                         <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
@@ -430,7 +460,11 @@
 
                         <tr>
                             <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
                                     <span>WY99981723982</span>  
                                     <div class="m1-td-buttons-container">
                                         <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
@@ -475,283 +509,11 @@
 
                         <tr>
                             <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
-                                    <span>WY99981723982</span>  
-                                    <div class="m1-td-buttons-container">
-                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
-                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
-                                    </div>
-                                </div>                                                               
-                            </td>
-                            <td><div class="m1-cell-content">Watch</div></td>                                               
-                            <td><div class="m1-cell-content">image</div></td>
-                            <td><div class="m1-cell-content">Yasha</div></td>
-                            
-                            <td><div class="m1-cell-content">Rolex</div></td>
-                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
-                            <td><div class="m1-cell-content">Like New</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
-                            
-                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
-                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
-                            
-                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
-                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>  
-
-
-                        <tr>
-                            <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
                                     <span>WY99981723982</span>  
                                     <div class="m1-td-buttons-container">
                                         <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
@@ -796,7 +558,11 @@
 
                         <tr>
                             <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
                                     <span>WY99981723982</span>  
                                     <div class="m1-td-buttons-container">
                                         <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
@@ -839,10 +605,13 @@
                             <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
                         </tr>  
 
-
                         <tr>
                             <td>   
-                                <div class="m1-cell-content m1-cell-with-buttons">
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
                                     <span>WY99981723982</span>  
                                     <div class="m1-td-buttons-container">
                                         <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
@@ -883,8 +652,56 @@
                             <td style="display:none;"><div class="m1-cell-content">25</div></td>
                             <td style="display:none;"><div class="m1-cell-content">26</div></td>
                             <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
-                        </tr>                                                                                                                                                                                                                                                                                                                                                                          
+                        </tr>  
 
+                        <tr>
+                            <td>   
+                                <div class="m1-cell-content m1-cell-with-buttons m1-cell-content-with-checkbox">
+                                    <label class="m1-checkbox">                                                     
+                                        <input type="checkbox">
+                                        <span class="m1-checkmark"></span>                                    
+                                    </label>                                   
+                                    <span>WY99981723982</span>  
+                                    <div class="m1-td-buttons-container">
+                                        <div class="m1-td-delete m1-tooplip-container"><div class="m1-tooplip">delete</div></div> 
+                                        <a href="./inventoryEdit.html" class="m1-td-edit m1-tooplip-container"><div class="m1-tooplip">edit</div></a>                                     
+                                    </div>
+                                </div>                                                               
+                            </td>
+                            <td><div class="m1-cell-content">Watch</div></td>                                               
+                            <td><div class="m1-cell-content">image</div></td>
+                            <td><div class="m1-cell-content">Yasha</div></td>
+                            
+                            <td><div class="m1-cell-content">Rolex</div></td>
+                            <td><div class="m1-cell-content">7727BB/12/9WU</div></td>
+                            <td><div class="m1-cell-content">Like New</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">7</div></td>                                               
+                            
+                            <td style="display:none;"><div class="m1-cell-content">8</div></td>                            
+                            <td><div class="m1-cell-content">$24,734,999.00</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">10</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">11</div></td>
+                            
+                            <td style="display:none;"><div class="m1-cell-content">12</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">13</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">14</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">15</div></td>
+                            
+                            <td style="display:none;"><div class="m1-cell-content">16</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">17</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">18</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">19</div></td>
+                            
+                            <td style="display:none;"><div class="m1-cell-content">20</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">21</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">22</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">23</div></td>
+                            
+                            <td style="display:none;"><div class="m1-cell-content">24</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">25</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">26</div></td>
+                            <td style="display:none;"><div class="m1-cell-content">27</div></td>                          
+                        </tr>                                                                                                  
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
                     </tbody>
                 </table>
