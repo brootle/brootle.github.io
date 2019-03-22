@@ -1,7 +1,14 @@
+h1{
+    color: #222834;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 15px 0;    
+}
+
 /* status links */
 .m1-status-links{
-    font-size: 18px;
-    margin: 15px 0;
+    font-size: 16px;
+    margin: 30px 0;
     color: var(--base-color-dark);
 }
 
@@ -26,7 +33,7 @@ a.m1-status-links__current-link:hover{
 
 
 /* search form */
-.m1-form-container{
+.m1-search-form-container{
     display: flex;
     align-items: center;
     padding: 40px 0;
@@ -34,13 +41,13 @@ a.m1-status-links__current-link:hover{
     position: relative;
 }
 
-.m1-form{
+.m1-search-form{
     flex: 1;
     display: flex;
     align-items: center;
 }
 
-.m1-form-container .m1-form{
+.m1-search-form-container .m1-search-form{
     margin-right: 60px;
     max-width: 580px;
 }
@@ -157,17 +164,42 @@ a.m1-status-links__current-link:hover{
 
 /* buttons and inputs */
 .m1-input, 
-.m1-button{
+.m1-button,
+.m1-select,
+textarea {
     padding: 0 12px;
     margin: 0;
     font-size: 16px;
     font-weight: 500;
     border-radius: 6px;
     height: 46px;
+    color: #232a34;
+    outline: none;
 }
 
-.m1-button{
-    padding: 0 20px;    
+.m1-input:disabled{
+    background: #f3f6ff;
+    color: var(--base-color);
+}
+
+textarea{
+    border: 1px solid #e1e5ee;
+    line-height: initial;
+    width: 100%;
+    padding: 12px;  
+}
+
+.m1-select {
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    box-sizing: border-box;    
+    outline: none;
+    border: 1px solid #e1e5ee;
+    line-height: initial;
+    padding-right: 26px;
+    width: 100%;
 }
 
 .m1-input {
@@ -176,9 +208,10 @@ a.m1-status-links__current-link:hover{
     outline: none;
     border: 1px solid #e1e5ee;
     line-height: initial;
+    width: 100%;
 }
 
-.m1-form .m1-input-container{
+.m1-search-form .m1-input-container{
     flex: 1;
     margin: 0 15px;
     position: relative;
@@ -206,7 +239,7 @@ a.m1-status-links__current-link:hover{
     background-color: var(--base-color-dark);
 }
 
-.m1-form .m1-input{    
+.m1-search-form .m1-input{    
     border: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -217,6 +250,7 @@ a.m1-status-links__current-link:hover{
 }
 
 .m1-button {
+    padding: 0 20px; 
     background: transparent;
     outline: none;
     display: inline-block;
@@ -535,3 +569,106 @@ td .m1-cell-content:last-of-type{
     right: -11px;    
 }
 /* tables */
+
+
+/* edit form */
+.m1-align-right{
+    text-align: right;
+}
+
+.m1-edit-form{
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    padding: 15px 0;
+    padding-bottom: 25px;
+    margin-bottom: 45px;  
+    word-spacing: 23px;  
+}
+
+.m1-input-container{
+    display: inline-block;
+    width: 215px;
+    margin: 10px 0;
+}
+
+.m1-label{
+    display: block;
+    color: #212934;
+    font-size: 14px;
+    margin-bottom: 5px; 
+    word-spacing: initial;   
+}
+
+
+.m1-custom-select {
+    position: relative;
+}
+
+.m1-custom-select:after {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 2px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid #2e3bbb;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+
+.m1-edit-form-container{
+    max-width: 700px;
+}
+
+.m1-input-container--condition{
+    max-width: 130px;
+}
+
+.m1-input-container--cost,
+.m1-input-container--msrp{
+    max-width: 150px;
+}
+
+.m1-input-container--sale-type{
+    max-width: 140px;
+}
+
+.m1-input-container--cost-code{
+    max-width: 190px;
+}
+
+.m1-input-container--date{
+    max-width: 140px;
+}
+
+.m1-input-container--ppr{
+    max-width: 100px;
+}
+
+.m1-input-container--description{
+    width: 100%;
+}
+
+.m1-input-container--description textarea{
+    resize: none;
+    height: 128px;  
+}
+
+.m1-input-container--images{
+    width: 100%;
+}
+
+.m1-input-container--size{
+    max-width: 130px;
+}
+
+.m1-input-container--source{
+    min-width: 456px;
+}
+
+.m1-input-container--weight{
+    max-width: 130px;
+}
+/* edit form */
