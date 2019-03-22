@@ -177,7 +177,10 @@ textarea {
     outline: none;
 }
 
-.m1-input:disabled{
+.m1-input:disabled, 
+.m1-button:disabled,
+.m1-select:disabled,
+textarea:disabled{
     background: #f3f6ff;
     color: var(--base-color);
 }
@@ -700,12 +703,22 @@ td .m1-cell-content:last-of-type{
     margin-right: 23px;
 }
 
+
 .m1-input--image:last-of-type{
     margin-right: 0;
 }
 
 .m1-input--image:hover .m1-image-button--delete{
     display: block;
+}
+
+
+.m1-input--image.m1-input--image-disabled{
+    background: #f3f6ff;
+}
+
+.m1-input--image.m1-input--image-disabled:hover .m1-image-button--delete{
+    display: none;
 }
 
 .m1-image-button{
