@@ -658,6 +658,7 @@ td .m1-cell-content:last-of-type{
 
 .m1-input-container--images{
     width: 100%;
+    margin-bottom: 0;
 }
 
 .m1-input-container--size{
@@ -670,5 +671,69 @@ td .m1-cell-content:last-of-type{
 
 .m1-input-container--weight{
     max-width: 130px;
+}
+
+.m1-input--image{
+    width: 100px;
+    height: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;   
+    padding: 0;
+    margin-bottom: 23px;
+}
+
+.m1-input--image:hover .m1-image-button--delete{
+    display: block;
+}
+
+.m1-image-button{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;    
+}
+
+.m1-image-button--delete{
+    display: none;
+    background-color: #fa006c;
+    background-image: url(../img/icon_wite_plus_14px.png);
+    background-repeat: no-repeat;  
+    background-position: center;  
+    transform: rotate(45deg);
+}
+
+.m1-image-button--delete:hover{
+    background-color: #e60164;
+    box-shadow: 0px 0px 9px 0px rgba(136, 38, 80, 0.54);
+}
+
+
+.m1-image-button--add{
+    display: block;
+    background-color: #d5daf0;
+    background-image: url(../img/icon_wite_plus_14px.png);
+    background-repeat: no-repeat;  
+    background-position: center;  
+}
+
+.m1-image-button--add:hover{
+    background-color: var(--base-color-dark);
+    box-shadow: 0px 0px 9px 0px rgba(105, 109, 112, 0.41);
+}
+
+
+.m1-input--image > img{
+    width: auto;
+    height: 90%;
+}
+
+.m1-input--add-new-image{
+    border: 1px dashed #e1e5ee;
+}
+
+.m1-input--add-new-image input{
+    display: none;
 }
 /* edit form */

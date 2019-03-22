@@ -186,7 +186,49 @@
 
                     <div class="m1-input-container m1-input-container--images">
                         <label class="m1-label">Images</label>
-                        images here
+                        <div id="images-container" class="m1-input-images-container">                           
+
+                            <div class="m1-input m1-input--image m1-input--add-new-image">
+                                <label for="file" class="m1-image-button m1-image-button--add"></label>
+                                <input id='file' type="file">
+                                <img src="" alt="">
+                            </div>              
+
+                        </div>
+
+                        <script>
+                            // control images
+                            $(function () {
+                                // delete current image
+                                $('#images-container').click(function(e){
+                                    var clickedElement = e.target;
+                                    // if we clicked delete butto -> delet current image block
+                                    if($(e.target).hasClass('m1-image-button--delete')){
+                                        // find parent block -> m1-input--image
+                                        $(e.target).closest('.m1-input--image').remove();
+                                    }
+                                });
+
+                                // add new images on file change
+                                $('#file').change(function(e) {
+                                    
+                                    if(e.target.files[0]){
+                                        var path = URL.createObjectURL(e.target.files[0]);                                      
+                                        
+                                        // create image box with uploaded image by user
+                                        $(this).closest('.m1-input--add-new-image').before(`
+                                            <div class="m1-input m1-input--image">
+                                                <img src="${path}" alt="">
+                                                <div class="m1-image-button m1-image-button--delete"></div>
+                                            </div>                                         
+                                        `);                                      
+                                    }
+
+                                });
+                            
+                            });
+                        </script>                            
+
                     </div>        
 
 
