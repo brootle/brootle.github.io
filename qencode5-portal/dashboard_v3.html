@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="js/q5.datatable.js"></script>
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="css/q5.css" rel="stylesheet" />
+    <link href="css/q5-menu.css" rel="stylesheet" />
+
+    <link href="css/q6.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <link href="css/q6__template.css" rel="stylesheet" />
+
+    <link href="css/q6__fonts.css" rel="stylesheet" />
+
+    <script src="js/menu.js"></script>    
+
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q6-page q6-body">
+
+    <nav class="q6-nav">
+
+        <div class="q6-container">
+
+            <div class="q6-logo">
+                <a href=""><img src="img/logo.svg" alt=""></a>
+            </div>
+
+            <div class="q6-top-menu-container">
+                <div id="top-menu" class="q6-top-menu q6-top-menu--desktop-mode">
+                    <div class="q6-menu-items--left">    
+                        
+                        <div class="q6-menu-item">                            
+                            <a class="q6-menu-item-link" href="">My Projects</a>  
+                        </div>           
+                        
+                        <div class="q6-menu-item">                            
+                            <a class="q6-menu-item-link" href="">Transcoding Jobs</a>  
+                        </div>                         
+
+                        <div class="q6-menu-item">                            
+                            <a class="q6-menu-item-link" href="">Billing</a>  
+                        </div>            
+                        
+                        <div class="q6-menu-item">                            
+                            <a class="q6-menu-item-link" href="">Transcode</a>  
+                        </div>       
+                        
+                        <div class="q6-menu-item">                            
+                            <a class="q6-menu-item-link" href="">Documentation</a>  
+                        </div>                          
+
+                    </div>
+                    <div class="q6-menu-items--right">                         
+    
+                        <div class="q6-menu-item q6-menu-item--has-submenu q6-menu-item--has-submenu--buttons q6-menu-item--submenu-closed">
+                            <button class="q6-button q6-blue-background q6-blue-border q6-white-text">My Account</button>
+                            <div class="q6-menu-item__submenu">
+                                <div class="q6-menu-item__submenu-content">
+                                    <div class="q6-submenu-content-container">                                          
+
+                                        <div class="q6-menu-item q6-menu-item--settings">                            
+                                            <a class="q6-menu-item-link" href="">Settings</a>  
+                                        </div>   
+                                        <div class="q6-menu-item q6-menu-item--logout">                            
+                                            <a class="q6-menu-item-link" href="">Log out</a>  
+                                        </div>        
+
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>                         
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>   
+                               
+        </div>
+
+    </nav> 
+
+    <main class="q6-main q6-page-content">
+
+        <div class="q6-page-title q6-blue-background">
+            <div class="q6-container">
+                <h1 class="q6-white-text">Dashboard</h1>
+            </div>   
+        </div>
+            
+
+        <section class="q6-section--manual-trancoding">
+
+            <div class="q6-container">
+
+                <h2 class="q6-section-title q6-black-text">Input info</h2>
+
+                <div class="q6-input-output-container">
+                    <div>
+                        <div class="q6-input-container">
+                            <div class="q6-drag-and-drop-container">
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="dropzone_file" checked="checked">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>     
+                                    <div>
+                                        <div class="q6-transcoding-caption">Source</div>
+                                        <div id="drop_zone" class="q6-drag-and-drop">
+                                            
+                                            <div class="q6-drag-and-drop__message-container">                                    
+                                                <div class="q6-browse-file">
+                                                    <div class="q6-drag-and-drop__icon"></div>
+                                                    <div class="q6-drag-and-drop__title q6-black-text">
+                                                        Drag &amp; Drop
+                                                    </div>
+                                                    <div class="q6-drag-and-drop__intructions q6-black-text">
+                                                        your files here, or 
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="file">
+                                                            <label class="q6-blue-text" for="file">Browse</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="q6-drag-and-drop__file-container q6-hidden">
+                                                    <div>                  
+                                                        <div class="q6-videofile__icon"></div>   
+                                                        <div class="q6-videofile-preview__icon" style="display: none;"></div>                        
+                                                        <div class="q6-drag-and-drop__filename"></div> 
+                                                        <div class="q6-upload-file-link">
+                                                            <input type="file" name="file" id="new_file">
+                                                            <label class="q6-blue-text" for="new_file">Choose another file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                            
+                                            </div>
+                                        
+                                        </div>                                            
+                                    </div>                                                                           
+                                </div>
+
+                                <div class="q6-radio-block">
+                                    <label class="q6-radio-button">
+                                        <input type="radio" name="file-selector" value="insert_link">
+                                        <span class="q6-radio-checkmark"></span>
+                                    </label>                                                           
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_url">Insert URL</label>
+                                        </div>
+                                        <input class="q6-input__field q6-black-text q6-input--disabled" type="text" id="input_url" placeholder="http://example.com/video/myvideo.mp4">
+                                    </div>
+                                </div>
+
+                                <div id="video_upload_progress" class="q6-video-upload">
+                                    <div class="q6-video-upload__message">
+                                        <div>
+                                            <div id="video_upload_caption">Encoding &nbsp;</div>
+                                            <div id="video_upload_percentage"></div>
+                                            <div>%</div>                                                                        
+                                        </div>                                
+                                        <div id="cancel-buton" class="q6-clickable q6-blue-text">Cancel</div>
+                                        <div id="reset-buton" class="q6-clickable q6-blue-text" style="display:none;">Reset</div>
+                                    </div>
+                                    <div class="q6-video-upload__progress-bar">
+                                        <div id="video_upload_visual" class="q6-progress-complete"></div>
+                                    </div>
+                                </div>                                 
+
+                                <script>
+                                    $(function () {
+                                        // when radio buttons clicked
+                                        $('input[name=file-selector]').change(function() {
+                                            if(this.value === "insert_link"){
+                                                $("#input_url").removeClass("q6-input--disabled");
+                                                $("#drop_zone").addClass("q6-drag-and-drop--disabled");                                                
+                                            } else{
+                                                $("#input_url").addClass("q6-input--disabled");
+                                                $("#drop_zone").removeClass("q6-drag-and-drop--disabled"); 
+                                            }
+                                        }); 
+
+                                        // when drop zone area or input url clicked
+                                        $("#input_url").click(function() {
+                                            $('input[name=file-selector][value=insert_link').prop('checked',true);
+                                            $(this).removeClass("q6-input--disabled");
+                                            $("#drop_zone").addClass("q6-drag-and-drop--disabled");
+                                        });
+
+                                        $("#drop_zone").click(function() {
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);
+                                            $(this).removeClass("q6-drag-and-drop--disabled");
+                                            $("#input_url").addClass("q6-input--disabled");
+                                        });                                                                                                                                   
+                                    });                                                                                                                                                                                                                                                                     
+                                </script>      
+
+                                <script>
+                                    $(function (){
+                                        // when we click Browse link
+                                        $("#file, #new_file").change(function(e) {
+                                            var fileName = e.target.value.split( '\\' ).pop();
+                                        
+                                            // if filename is not empty
+                                            // filename can be empty if user clicks cancel instead of OK when chosing file
+                                            if(fileName){
+                                                $('.q6-drag-and-drop__filename').html(fileName);
+                                                // show box fith file
+                                                $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                                // hide box with bowse link
+                                                $(".q6-browse-file").addClass("q6-hidden");  
+                                            } 
+
+                                            // clear value in case same file will be selected
+                                            $(this).val('');                                      
+                                        });   
+                                    });  
+                                </script>  
+
+                                <script>
+                                    $(function () {
+                                        // HANDLE FILE DROP ZONE
+                                        document.querySelector("#drop_zone").addEventListener('dragover',dragOverHandler);
+                                        document.querySelector("#drop_zone").addEventListener('dragleave',dragLeaveHandler);
+                                        document.querySelector("#drop_zone").addEventListener('drop',dropHandler);
+
+                                        function dropHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();                                
+
+                                            var fileName = '';
+
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                                                    // If dropped items aren't files, reject them
+                                                    if (ev.dataTransfer.items[i].kind === 'file') {
+                                                        var file = ev.dataTransfer.items[i].getAsFile();
+                                                        //console.log('... file[' + i + '].name = ' + file.name);
+                                                        fileName+=file.name;
+                                                    }
+                                                }
+                                            } else {
+                                                // Use DataTransfer interface to access the file(s)
+                                                for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                                                    //console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+                                                    fileName+=ev.dataTransfer.files[i].name
+                                                }
+                                            } 
+
+                                            $('.q6-drag-and-drop__filename').html(fileName);
+                                            
+                                            // show box fith file
+                                            $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                            // hide box with bowse link
+                                            $(".q6-browse-file").addClass("q6-hidden");  
+
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--disabled");
+                                            $("#input_url").addClass("q6-input--disabled");                                                              
+                                            
+                                            // Pass event to removeDragData for cleanup
+                                            removeDragData(ev)
+                                        }
+
+                                        function dragOverHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // highlight drag and drop area
+                                            $("#drop_zone").addClass("q6-drag-and-drop--drag-over");
+
+                                            // select radiobutton
+                                            $('input[name=file-selector][value=dropzone_file').prop('checked',true);                                      
+                                        }             
+
+                                        function dragLeaveHandler(ev) {
+                                            // Prevent default behavior (Prevent file from being opened)
+                                            ev.preventDefault();
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                
+                                        }                                               
+                                        
+
+                                        function removeDragData(ev) {
+                                            if (ev.dataTransfer.items) {
+                                                // Use DataTransferItemList interface to remove the drag data
+                                                ev.dataTransfer.items.clear();
+                                            } else {
+                                                // Use DataTransfer interface to remove the drag data
+                                                ev.dataTransfer.clearData();
+                                            }
+
+                                            // remove highlight of drag and drop area
+                                            $("#drop_zone").removeClass("q6-drag-and-drop--drag-over");                                  
+                                        }           
+                                    });
+                                                                                                                                                                                                                                                                        
+                                </script>                                                                                
+                                
+                            </div>                                  
+                        </div>                       
+                    </div>
+                    <div>
+                        <div class="q6-input-container--settings">
+
+                            <div class="q6-two-columns">        
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="project_name">Project</label>
+                                        <a href="">Manage</a>
+                                    </div>
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select" id="project_name" required="" name="project_name">
+                                            <option value="0" selected="selected" label=""></option>
+                                            <option value="1" label="test2">test2</option>
+                                            <option value="2" label="My First Project">My First Project</option>
+                                        </select>                                   
+                                    </div>
+                                </div>
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="project_name">Storage</label>
+                                        <a href="">Manage</a>
+                                    </div>
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select" id="project_name" required="" name="project_name">
+                                            <option value="0" selected="selected" label="Qencode (24 hours)"></option>
+                                        </select>                                   
+                                    </div>
+                                </div>                        
+                            </div>   
+
+                            <div class="q6-two-columns">        
+
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="project_name">Transcoding Profiles</label>
+                                        <a href="">Manage</a>
+                                    </div>
+                                    <div class="q6-multiple-checkboxes">
+                                        <label class="q6-checkbox q6-black-text">
+                                            <input type="checkbox" checked="checked">
+                                            <span class="q6-checkmark">MP4</span>       
+                                            <div>                                          
+                                                <p>MP4, H.264</p>
+                                                <p>8K 4K 2K 1080p 720p 480p 360p 240p</p>
+                                            </div>                                     
+                                        </label>
+                                        <label class="q6-checkbox q6-black-text">
+                                            <input type="checkbox">
+                                            <span class="q6-checkmark">HLS</span>  
+                                            <div>                                            
+                                                <p>HLS, H.264</p>
+                                                <p>1080p 720p 480p 360p 240p</p>
+                                            </div>                                      
+                                        </label>    
+                                        <label class="q6-checkbox q6-black-text">
+                                            <input type="checkbox">
+                                            <span class="q6-checkmark">MPEG-DASH</span>                                            
+                                            <div>                                      
+                                                <p>MPEG-DASH, H.264</p>
+                                                <p>1080p 720p 480p 360p 240p</p>                                              
+                                            </div>
+                                        </label>                                                                   
+                                    </div>
+                                </div>
+
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-input-advanced-settings__label">
+                                        <label for="project_name">Advanced Settings</label>
+                                        <a id="advanced-settings" href="">Show</a>
+                                        <a id="hide-advanced-settings" href="" style="display:none;">Hide</a>
+                                    </div>
+                                    
+                                    <script>
+                                        $(function () {
+                                            // hide and show advanced settings
+                                            $("#advanced-settings").click(function(e) {
+                                                e.preventDefault();
+                                                // show advanced settings  
+                                                $("#advanced-output-settings").show();  
+
+                                                // hide show button and show hide button
+                                                $(this).hide();        
+                                                $("#hide-advanced-settings").show();                                                           
+                                            });    
+
+                                            $("#hide-advanced-settings").click(function(e) {
+                                                e.preventDefault();
+                                                // show show settings button 
+                                                $("#advanced-settings").show();  
+
+                                                // hide hide button and hide advanced settings
+                                                $(this).hide();        
+                                                $("#advanced-output-settings").hide();                                                           
+                                            });                                                                                          
+                                        });                                                                                                                                                                                                                                                                     
+                                    </script>                                     
+
+                                    <div id="advanced-output-settings" class="q6-input-advanced-settings__data" style="display:none;">
+                                        <div class="q6-two-columns">
+                                            <div class="q6-input">
+                                                <div class="q6-input__label q6-align-start">
+                                                    <label for="input_url">Start time</label> <div class="q6-help-icon"><span>?</span></div>
+                                                </div>
+                                                <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
+                                            </div>
+                                            <div class="q6-input">
+                                                <div class="q6-input__label q6-align-start" "="">
+                                                    <label for="input_url">Duration</label> <div class="q6-help-icon"><span>?</span></div>
+                                                </div>
+                                                <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="hh.mm.ss">
+                                            </div>
+                                        </div>
+                                        <div class="q6-input">
+                                            <div class="q6-input__label q6-align-start">
+                                                <label for="input_url">Output path variables</label> <div class="q6-help-icon"><span>?</span></div>
+                                            </div>
+
+
+                                            <textarea class="q6-demo-parameters q6-black-text" placeholder="{
+&quot;param1&quot;: &quot;value1&quot;,
+&quot;param2&quot;: &quot;value2&quot;
+...
+}"></textarea>
+
+                                
+
+                                        </div>
+                                    </div>
+
+                                </div>                        
+                            </div>                                          
+                                                                   
+
+                        </div>                     
+
+                    </div>
+                </div>
+
+                
+                <div class="q6-input-output-container">     
+                    
+                    <div class="q6-input-container--empty">
+                    </div>           
+
+                    <div>
+                       <div>
+                            <button id="start-button" class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Start Transcoding</button>
+                        </div>  
+                    </div>
+                   
+                </div>
+
+                <script>
+                    $(function () {
+                        // update upload progress based on data received from server 
+                        var uploadProgress = 27; // fetch data from server
+                        if(uploadProgress >= 100){
+                            $("#video_upload_caption").html('Complete &nbsp;');
+                        }                                    
+                        $("#video_upload_percentage").html(uploadProgress);
+                        $("#video_upload_visual").width(uploadProgress + '%');                             
+                    });                                                                                                                                                                                                                                                                     
+                </script>                    
+
+                <script>
+                    $(function () {
+                        // when START button clicked
+                        $("#start-button").click(function() {
+                            // hide start-button  
+                            $("#start-button").hide();          
+
+                            // show upload progress
+                            $("#video_upload_progress").show();           
+                        });   
+
+                        // when CANCEL button clicked      
+                        $("#cancel-buton").click(function() {
+                            // hide start-button  
+                            $("#start-button").show();          
+
+                            // show upload progress
+                            $("#video_upload_progress").hide();           
+                        });                                                                                                                                                    
+                    });                                                                                                                                                                                                                                                                     
+                </script>   
+
+            </div>
+
+        </section>
+
+        <section class="q6-section--help">   
+
+            <div class="q6-container">
+                <div class="q6-link-boxes-container">
+                    <div class="q6-link-box__details">
+                        <div class="q6-link-box-header q6-link-box-header--start">
+                            <div>
+                                <div class="q6-link-box__icon q6-link-box__icon--start"></div>
+                            </div>
+                            <div class="q6-link-box-header__description">
+                                <h5 class="q6-black-text">Getting Started</h5>
+                                <p>
+                                    Read our step-by-step guide to creating projects and launching jobs.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="q6-icons-container q6-icons-container--wide-icons">
+                            <a href="">
+                                <div class="q6-gettingstarted-icon q6-gettingstarted-icon--api"></div>
+                                <p>API Documentation</p>
+                            </a>                               
+                            <a href="">
+                                <div class="q6-gettingstarted-icon q6-gettingstarted-icon--tutorials"></div>
+                                <p>Tutorials</p>
+                            </a>   
+                            <a href="">
+                                <div class="q6-gettingstarted-icon q6-gettingstarted-icon--support"></div>
+                                <p>Support</p>
+                            </a>                                          
+                        </div>
+                    </div>
+
+                    <div class="q6-link-box__details">
+                        <div class="q6-link-box-header q6-link-box-header--sdk">
+                            <div>
+                                <div class="q6-link-box__icon q6-link-box__icon--sdk"></div>
+                            </div>                                
+                            <div class="q6-link-box-header__description">
+                                <h5 class="q6-black-text">Browse our SDKs</h5>
+                                <p>
+                                    Use our pre-made libraries <br> to jump-start your workflow.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="q6-icons-container">
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--java"></div>
+                                </div>      
+
+                                <p>Java</p>
+                            </a>
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--c"></div>
+                                </div>                                                
+                                
+                                <p>C#</p>
+                            </a>     
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--nodejs"></div>
+                                </div>                                                
+                                
+                                <p>Node.JS</p>
+                            </a>    
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--php"></div>
+                                </div>                                                
+
+                                <p>PHP</p>
+                            </a>                    
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--js"></div>
+                                </div>   
+                                <p>JavaScript</p>
+                            </a>  
+                            <a href="">
+                                <div class="q6-icon-container">
+                                    <div class="q6-sdk-icon q6-sdk-icon--python"></div>
+                                </div>   
+                                <p>Python</p>
+                            </a>                                         
+                        </div>
+                    </div>    
+                </div>                
+            </div>                
+          
+        </section>        
+
+
+
+    </main>
+
+    <footer class="q6-footer">
+
+        <div class="q6-container">
+            <div class="q6-logo-and-menu">
+                <div class="q6-small-logo">
+                    <a href=""><img src="img/logo_short.svg" alt=""></a>
+                </div>
+                <div class="q6-footer-menu">
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Company</h3>
+                            <a href="">Contact us</a>
+                            <a href="">Terms and Conditions</a>
+                        </div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Why Qencode?</h3>
+                            <a href="">Pricing</a>
+                            <a href="">Formats</a>
+                            <a href="">Speed</a>
+                            <a href="">Security</a>
+                            <a href="">Features</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="q6-footer-menu__block">
+                            <h3>Developers</h3>
+                            <a href="">API</a>
+                            <a href="">Help Center</a>
+                            <a href="">Try Demo</a>                                                       
+                        </div>                  
+                    </div>                
+                </div>
+            </div>
+        </div>
+
+        <hr class="q6-hr">
+        
+        <div class="q6-container">
+            <div class="q6-copyright-and-socials">
+                <div>
+                    <span>© 2019 Qencode Inc. All rights reserved.</span>
+                </div>
+                <div class="q6-social-icons__footer">
+                    <a href=""><div class="q6-social-icon q6-social-icon--twitter"></div></a>
+                    <a href=""><div class="q6-social-icon q6-social-icon--facebook"></div></a>
+                    <a href=""><div class="q6-social-icon q6-social-icon--youtube"></div></a>
+                    <a href=""><div class="q6-social-icon q6-social-icon--tumblr"></div></a>
+                    <a href=""><div class="q6-social-icon q6-social-icon--linkedin"></div></a>                
+                </div>
+            </div>                    
+        </div>
+    </footer>
+
+</body>
+</html>
