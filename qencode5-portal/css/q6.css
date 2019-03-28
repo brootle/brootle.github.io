@@ -494,17 +494,7 @@ a.q6-button{
     position: relative;
 }
 
-.q6-custom-select:after {
-    content: "\f0d7";
-    color: #bdbdbd;
-    font-family: "FontAwesome";
-    position: absolute;
-    right: 0;
-    top: 14px;
-    padding-right: 10px;
-    font-size: 14px;
-    pointer-events: none;
-}
+
 
 .q6-select {
     background: white;
@@ -577,6 +567,7 @@ a.q6-button{
 .q6-checkbox p{
     margin: 0;
     font-size: 13px;
+    line-height: 20px;
 }
 
 .q6-input__label > a{
@@ -1258,9 +1249,6 @@ dark-3.mCSB_scrollTools .mCSB_draggerRail {
     font-size: 13px;
 }
 
-.q6-filter-box__options .q6-custom-select:after {
-    top: 10px;
-}
 
 .q6-filter-box__options > .q6-input{
     margin-right: 16px;
@@ -2337,7 +2325,6 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 }
 
 .q6-input--month .q6-select, .q6-input--year .q6-select{
-    font-family: GraphikMedium;
     font-size: 16px;
     padding: 10px 14px;
     padding-bottom: 9px;
@@ -2376,7 +2363,6 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 }
 
 .q6-input--projects .q6-select{
-    font-family: GraphikMedium;
     font-size: 16px;
     padding: 10px 14px;
     padding-bottom: 9px;
@@ -2581,7 +2567,7 @@ a.q6-sing-up__link-box:hover, a.q6-sing-up__link-box:focus, .q6-icons-container 
 }
 
 .q6-tabcontent .q6-expandable-dropdown:after {
-    top: 0px;
+    top: calc(50% - 8px);
 }
 
 .q6-expandable-dropdown--active:after {
@@ -3934,7 +3920,6 @@ pre {
 
 .q6-radio-block input[type=text].q6-input__field{
     border: none;
-    font-family: GraphikMedium;
 }
 
 .q6-radio-block input[type=text].q6-input__field.q6-input--disabled{
@@ -4042,21 +4027,8 @@ pre {
     margin: 0;
 }
 
-.q6-input-container--settings .q6-select {
-    color: #171717;
-    font-family: GraphikMedium;
-    font-size: 16px;
-    padding-left: 20px;
-    padding-right: 26px;
-    border-radius: 25px;
-    border-radius: 6px;
-    border-color: #e1e5ee;
-}
 
-.q6-input-container--settings .q6-custom-select:after {
-    color: #17172b;
-    padding-right: 17px;
-}
+
 
 .q6-input-container--settings > .q6-two-columns{
     margin-bottom: 30px;
@@ -4176,21 +4148,9 @@ pre {
 
 .q6-input-advanced-settings__data .q6-demo-parameters{
     height: 143px;
-    border-radius: 6px;
-    border-color: #e1e5ee;
-    font-family: GraphikMedium;
-    color: #171717;
     font-size: 16px;
 }
 
-.q6-input-advanced-settings__data input[type=text].q6-input__field,
-.q6-input-advanced-settings__data input[type=tel].q6-input__field,
-.q6-input-advanced-settings__data input[type=password].q6-input__field {
-    border-radius: 6px;
-    border-color: #e1e5ee;
-    font-family: GraphikMedium;
-    color: #171717;
-}
 
 .q6-input-container--settings > .q6-two-columns > div:nth-of-type(2) {
     margin-left: 20px;
@@ -4881,6 +4841,8 @@ pre {
     font-family: GraphikLight;
     margin-top: 0;
     margin-bottom: 35px;
+    font-weight: normal;
+    font-size: 24px;    
 }
 
 .q6-button--checked > span{
@@ -4979,8 +4941,7 @@ pre {
 }
 
 .q6-tabcontent .q6-filter-box__buttons .q6-button {
-    padding: 7px 14px;
-    padding-bottom: 7px;
+    padding: 8px 14px;
     font-size: 15px;
     border-width: 2px;
 }
@@ -5371,24 +5332,15 @@ pre {
 }
 
 
-.q6-add-funds-block .q6-select{
-    color: #171717;
-    font-family: GraphikMedium;
-}
+
 
 .q6-add-funds-block .q6-input__label {
     font-family: GraphikRegular, sans-serif;
 }
 
-.q6-add-funds-block input[type=text].q6-input__field {
-    color: #171717;
-    font-family: GraphikMedium;
-    border-radius: 6px;
-    border-color: #e1e5ee;
-}
 
 .q6-input--amount{
-    min-width: 170px;
+    min-width: 178px;
     flex: 1;
 }
 
@@ -6162,6 +6114,10 @@ pre {
 }
 
 .q6-hidden {
+    display: none;
+}
+
+.q6-button.q6-hidden {
     display: none;
 }
 
