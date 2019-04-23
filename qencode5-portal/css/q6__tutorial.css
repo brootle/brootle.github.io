@@ -1,5 +1,8 @@
+
+/* TEMPLATE */
 .q6-tutorial-content{
     background: #f7f8fa;
+    padding: 30px 0;
 }
 
 .q6-tutorial-header{
@@ -60,6 +63,7 @@
     border-top: 1px dashed #dae0ea;    
     box-sizing: border-box;
     margin: 0 15px;
+    min-width: 40px;
 }
 
 .q6-tutorial-steps-container{
@@ -98,4 +102,74 @@
     color: #838383;
     background-color: #f9f9f9;
     border-style: solid;
+    position: relative;
+}
+
+.q6-tutorial-step.q6-tutorial-step--complete:after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/check_green.png);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    right: 5px;
+    top: 6px;
+}
+
+.q6-tutorial-step.q6-tutorial-step--current{
+    color: #3b3b3b;
+    border-style: solid;
+    border-color: #306eea;
+}
+
+.q6-tutorial-step.q6-tutorial-step--current .q6-tutorial-step__title{
+    color: #306eea;
+}
+/* TEMPLATE */
+
+
+.q6-tutorial-content-title{
+    color: #525252;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.q6-tutorial-content p{
+    color: #363940;
+    margin: 5px 0;
+    line-height: 20px;
+    font-size: 15px;    
+}
+
+.q6-tutorial-video-container {
+    display: block;
+    width: 544px;
+    height: 306px;
+    background: black;
+}
+
+.q6-tutorial-intro{
+    display: flex;
+}
+
+.q6-tutorial-intro__left{
+    margin-right: 50px;
+}
+
+.q6-tutorial-intro-header{
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;    
+    margin-bottom: 15px;
+}
+
+.q6-tutorial-intro-header p{
+    margin-bottom: 0;
+}
+
+.q6-tutorial-intro-header .q6-tutorial-content-title{
+    margin-bottom: 0;
 }
