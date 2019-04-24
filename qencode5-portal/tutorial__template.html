@@ -94,7 +94,76 @@
 
     <main class="q6-page-content q6-tutorial-content">
         <div class="q6-container">
-            <h1>Tutorial</h1>           
+            <div class="q6-tutorial-content-header">
+                <div>
+                    <label>Choose a language:</label>
+                    <div>
+                        <div class="q6-tutorial-dd-selector">
+                            <div class="q6-tutorial-dd-selector__selected">
+                                JavaScript
+                            </div>
+                            <div class="q6-tutorial-dd-selector__list">
+                                <div>JavaScript</div>
+                                <div>PHP</div>
+                                <div>Python</div>
+                                <div>Ruby</div>
+                                <div>Java</div>
+                                <div>Node.JS</div>
+                                <div>C#</div>                                
+                            </div>
+                        </div>
+
+                        <script>
+                            $(function () {
+                                
+                                // close list when hover out of the list
+                                $(".q6-tutorial-dd-selector").hover(
+                                    function() {
+                                        // hover in
+                                        //$(this).find('.q6-tutorial-dd-selector__list').show();
+                                    }, function() {
+                                        // hover out
+                                        $(this).find('.q6-tutorial-dd-selector__list').hide();
+                                    }
+                                );                                  
+
+
+                                $(".q6-tutorial-dd-selector").click((e)=>{
+                                    // toggle hide and show selector list
+                                    // and update selected language
+                                    var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                                    var list = $(this).find('.q6-tutorial-dd-selector__list');
+                                    if($(list).is(':visible')){
+                                        $(list).hide();  
+                                        var selectedLanguage = $(e.target).text();
+                                        $(selectedListElement).html(selectedLanguage);  
+                                        // TODO - update content based on selected language                                 
+                                    } else{
+                                        $(list).show();
+                                    }
+                                })
+                            })
+                        </script>
+
+                    </div>
+                </div>
+                <div>
+                    <label>View our SDK on Github:</label>
+                    <div>
+                        <a href="">PHP</a>
+                        <a href="">Python</a>
+                        <a href="">Ruby</a>
+                        <a href="">Java</a>
+                        <a href="">Node.JS</a>
+                        <a href="">C#</a>
+                        <a href="">JavaScript</a>
+                    </div>
+                </div>
+            </div>   
+            <div class="q6-tutorial-content-title">Content Title</div>
+            <p>
+                Content text
+            </p>  
         </div>
     </main>
 
