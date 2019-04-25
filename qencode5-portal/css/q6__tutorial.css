@@ -373,6 +373,7 @@
 .q6-tutorial-dd-selector__list > div{
     padding: 7px 14px;
     padding-right: 31px;
+    white-space: nowrap;
 }
 
 .q6-tutorial-dd-selector__list > div:hover{
@@ -387,6 +388,43 @@
 }
 
 .q6-tutorial-dd-selector__list > div:first-of-type:after{
+    content: "";
+    margin-left: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 4px solid #366fe0;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;    
+}
+
+.q6-tutorial-dd-selector__list > table{
+    border-collapse: collapse;
+}
+
+.q6-tutorial-dd-selector__list > table td{
+    padding: 7px 14px;
+    padding-right: 31px;
+    white-space: nowrap;   
+    text-align: left; 
+}
+.q6-tutorial-dd-selector__list > table td:last-of-type{
+    padding-right: 31px;
+}
+
+.q6-tutorial-dd-selector__list > table tr:hover{
+    background: #e9f0fc;
+}
+
+.q6-tutorial-dd-selector__list > table tr:first-of-type td:last-of-type {
+    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.q6-tutorial-dd-selector__list > table tr:first-of-type td:last-of-type:after{
     content: "";
     margin-left: 10px;
     display: inline-block;
@@ -471,5 +509,24 @@
 .q6-tutorial-control.q6-tutorial-control--active{
     color: #306eea; 
     border-color: #306eea;   
+}
+
+.q6-tutorial-video-method{
+    display: none;
+}
+
+.q6-tutorial-video-method.q6-tutorial-video-method--active{
+    display: block;
+}
+
+.q6-tutorial-video-method .q6-tutorial-dd-selector{
+    font-size: 15px;
+    background: none;
+    padding: 0;    
+}
+
+.q6-tutorial-video-method .q6-tutorial-dd-selector__list{
+    top: -18px;
+    right: -15px;
 }
 /* TUTORIAL CONTENT */
