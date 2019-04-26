@@ -222,7 +222,22 @@
                             
                         </div>    
                         <div class="q6-tutorial-video-method" data-method="upload">
-                            content B
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Please use a single video file link</label>
+                                </div>
+                                <div class="q6-tutorial-video-method__drag-and-drop">
+                                    <div class="q6-drag-and-drop--blue-icon"></div>
+                                    <div>
+                                        <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
+                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> uploaded, or </div>                                         
+                                        <label>
+                                            <span>Browse</span>
+                                            <input type="file">
+                                        </label>                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>                                           
                     </div>                   
                 </div>         
@@ -332,10 +347,59 @@
                             
                         </div>      
                         <div class="q6-tutorial-video-method" data-method="upload">
-                            content B
-                        </div>   
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Please use a single video file link</label>
+                                </div>
+                                <div class="q6-tutorial-video-method__drag-and-drop">
+                                    <div class="q6-drag-and-drop--blue-icon"></div>
+                                    <div>
+                                        <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
+                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> uploaded, or </div>                                         
+                                        <label>
+                                            <span>Browse</span>
+                                            <input type="file">
+                                        </label>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
                     </div>
                 </div>
+
+
+                <script>
+                    $(function (){
+                        // when we Browse for a file
+                        $(".q6-tutorial-video-method__drag-and-drop input[type='file']").change(function(e) {                            
+                            var fileName = e.target.value.split( '\\' ).pop();
+                            
+                            // if filename is not empty
+                            // filename can be empty if user clicks cancel instead of OK when chosing file
+                            if(fileName){
+                                // display name of uploaded file to a user
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('.q6-drag-and-drop-message').hide();
+
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('.q6-drag-and-drop-message--file').show();  
+
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('.q6-drag-and-drop-filename').html(fileName);                                                                       
+
+
+                                // $('.q6-drag-and-drop__filename').html(fileName);
+                                // // show box fith file
+                                // $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
+                                // // hide box with bowse link
+                                // $(".q6-browse-file").addClass("q6-hidden");
+                            }
+
+                            // clear value in case same file will be selected
+                            $(this).val('');
+                        });
+                    });                             
+                </script>
 
 
                 <script>
