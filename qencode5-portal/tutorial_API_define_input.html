@@ -368,6 +368,75 @@
                 </div>
 
 
+
+                <script>
+                    $(function () {
+                        // handle DRAG AND DROP         
+
+                        // when over
+                        $(".q6-tutorial-video-method__drag-and-drop").on('dragover',function(e){
+                            e.preventDefault();
+                            $(this).addClass('q6-tutorial-video-method__drag-and-drop--over');
+                        });    
+
+                        // when leave drop zone
+                        $(".q6-tutorial-video-method__drag-and-drop").on('dragleave',function(e){
+                            e.preventDefault();
+                            $(this).removeClass('q6-tutorial-video-method__drag-and-drop--over');                            
+                        });
+
+                        // when dropped over drag and drop zone
+                        $(".q6-tutorial-video-method__drag-and-drop").on('drop',function(e){
+                            e.preventDefault();
+
+                            e.dataTransfer = e.originalEvent.dataTransfer;
+
+                            var fileName = '';
+
+                            // Only take 1st file if user drops several files
+                            if (e.dataTransfer.items) {
+                                // Use DataTransferItemList interface to access the file
+                                // If dropped items aren't files, reject them
+                                if (e.dataTransfer.items[0].kind === 'file') {
+                                    var file = e.dataTransfer.items[0].getAsFile();
+                                    fileName=file.name;
+                                }
+                            } else {
+                                // Use DataTransfer interface to access the file
+                                fileName=e.dataTransfer.files[0].name
+                            }
+
+                            // show uploaded filename to user
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop-message').hide();
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop-message--file').show();  
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop-filename').html(fileName);  
+
+
+                            // Pass event to removeDragData for cleanup
+                            removeDragData(e);                            
+
+                            $(this).removeClass('q6-tutorial-video-method__drag-and-drop--over');                            
+                        });                                          
+                                
+                        function removeDragData(e) {
+                            if (e.dataTransfer.items) {
+                                // Use DataTransferItemList interface to remove the drag data
+                                e.dataTransfer.items.clear();
+                            } else {
+                                // Use DataTransfer interface to remove the drag data
+                                e.dataTransfer.clearData();
+                            }
+                        }                                                                     
+                                                        
+                    })
+                </script>                  
+
+
                 <script>
                     $(function (){
                         // when we Browse for a file
@@ -386,13 +455,6 @@
 
                                 $(this).closest(".q6-tutorial-video-method__drag-and-drop")
                                     .find('.q6-drag-and-drop-filename').html(fileName);                                                                       
-
-
-                                // $('.q6-drag-and-drop__filename').html(fileName);
-                                // // show box fith file
-                                // $(".q6-drag-and-drop__file-container").removeClass("q6-hidden");
-                                // // hide box with bowse link
-                                // $(".q6-browse-file").addClass("q6-hidden");
                             }
 
                             // clear value in case same file will be selected
