@@ -79,6 +79,14 @@ textarea {
     color: #171717; 
 }
 
+input[type=text]:disabled.q6-input__field, 
+input[type=tel]:disabled.q6-input__field, 
+input[type=password]:disabled.q6-input__field,
+textarea:disabled{
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
 .q6-button--shadow {
     box-shadow: 0px 3px 13px 1px rgba(105, 109, 112, 0.41);
 }
@@ -214,6 +222,27 @@ textarea {
     max-width: 290px;
 }
 
+.q6-input.q6-input--api-key{
+    position: relative;
+    min-width: 260px;
+}
+
+.q6-input.q6-input--api-key .q6-button.q6-button--copy{
+    display: none;
+    position: absolute;
+    right: 14px;
+    bottom: 5px;    
+}
+
+.q6-input.q6-input--api-key input[type=text]:disabled.q6-input__field{
+    color: #3270eb;
+    font-weight: 400;
+}
+
+.q6-input.q6-input--api-key:hover .q6-button.q6-button--copy{
+    display: block;
+}
+
 .q6-pass-eye-button{
     position: absolute;
     width: 20px;
@@ -250,7 +279,7 @@ textarea {
     align-items: flex-end;
 }
 
-.q6-input-and-buttons--inline .q6-button{
+.q6-input-and-buttons--inline > .q6-button{
     padding-left: 40px;
     padding-right: 40px;
 }
