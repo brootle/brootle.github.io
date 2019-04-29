@@ -11,6 +11,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
     <link href="css/q6.css" rel="stylesheet">
     
     <link href="css/hamburgers.css" rel="stylesheet">
@@ -35,7 +39,7 @@
                 <div class="q6-tutorial-header__content">
                     <div class="q6-tutorial-title-container">
                         <div class="q6-tutorial-section-title">getting started</div>
-                        <div class="q6-tutorial-title">Getting Started</div>
+                        <div class="q6-tutorial-title">Transcode with the API</div>
                     </div>                    
                     <div class="q6-tutorial-button">
                         <div class="q6-demo-links-buttons q6-demo-links-buttons--back">
@@ -483,58 +487,7 @@
                 </script>                  
 
 
-                <script>
-                    $(function () {
-
-                        // this is for Drop Downs
-                        
-                        // close list when hover out of the list
-                        $(".q6-tutorial-dd-selector").hover(                            
-                            function() {
-                                // hover in
-                                //$(this).find('.q6-tutorial-dd-selector__list').show();
-                            }, function() {
-                                // hover out
-                                $(this).find('.q6-tutorial-dd-selector__list').hide();
-                            }
-                        );                                  
-
-
-                        $(".q6-tutorial-dd-selector").click(function(e){
-                            // toggle hide and show selector list
-                            // and update selected item                            
-                            var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
-                            var list = $(this).find('.q6-tutorial-dd-selector__list');
-                            if($(list).is(':visible')){
-                                $(list).hide();  
-
-                                var selectedItem='';
-                                var videoURL='';
-
-                                if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
-                                    // for simple dropdown
-                                    selectedItem = $(e.target).attr('data-item-name');
-                                } else{
-                                    // for table type dropdown
-                                    try {
-                                        selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
-                                        videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
-                                        $(e.target).closest('.q6-input').find('input').val(videoURL);  
-                                    }
-                                    catch(err) {
-                                        console.log(err.message);
-                                    }                                                                      
-                                }
-              
-                                $(selectedListElement).html(selectedItem);  
-                                // TODO - update content based on selected item  
-                                                                
-                            } else{
-                                $(list).show();
-                            }
-                        })
-                    })
-                </script>                
+        
 
                 <script>
                     $(function () {
@@ -568,6 +521,139 @@
                     <button class="q6-button q6-button--round">+ Add video</button>
                 </div>            
             </div>
+
+            <div class="q6-tutorial-content-title">Transcoding parameters API</div>
+            <p>
+                Define url for a video you want to transcode.
+            </p>
+
+            <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-codeblock__example">                    
+                    <div class="q6-tutorial-codeblock-controls">
+                        <div class="q6-btn_run-code"></div>
+                    </div>
+                    <div class="q6-tutorial-codeblock-code">
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>
+                        <pre><code>const videoUrl = "https://servername/folder/video.mp4";
+let transcodingParams = {};
+transcodingParams.source = videoUrl;</code></pre>                    
+                    </div>
+                </div>
+                <div class="q6-tutorial-codeblock__result">
+                    <pre><code>{
+    "error": 0, 
+    "upload_url": "https://storage.qencode.com/v1/upload_file", 
+    "task_token": "471272a512d76c22665db9dcee893409"
+}</code></pre> 
+                </div>                
+            </div>
+
+            <div class="q6-tutorial-buttons">
+                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Back</button>
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
+            </div>
+
+
+            <script>
+                $(function () {                
+                    // copy code
+                    $(".q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+
+
+            <script>
+                // initialize code highlight
+                hljs.initHighlightingOnLoad();
+            </script>
+
+            <script>
+                $(function () {
+
+                    // this is for Dropdowns
+                    
+                    // close list when hover out of the list
+                    $(".q6-tutorial-dd-selector").hover(                            
+                        function() {
+                            // hover in
+                            //$(this).find('.q6-tutorial-dd-selector__list').show();
+                        }, function() {
+                            // hover out
+                            $(this).find('.q6-tutorial-dd-selector__list').hide();
+                        }
+                    );                                  
+
+
+                    $(".q6-tutorial-dd-selector").click(function(e){
+                        // toggle hide and show selector list
+                        // and update selected item                            
+                        var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                        var list = $(this).find('.q6-tutorial-dd-selector__list');
+                        if($(list).is(':visible')){
+                            $(list).hide();  
+
+                            var selectedItem='';
+                            var videoURL='';
+
+                            if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
+                                // for simple dropdown
+                                selectedItem = $(e.target).attr('data-item-name');
+                            } else{
+                                // for table type dropdown
+                                try {
+                                    selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
+                                    videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
+                                    $(e.target).closest('.q6-input').find('input').val(videoURL);  
+                                }
+                                catch(err) {
+                                    console.log(err.message);
+                                }                                                                      
+                            }
+            
+                            $(selectedListElement).html(selectedItem);  
+                            // TODO - update content based on selected item  
+                                                            
+                        } else{
+                            $(list).show();
+                        }
+                    })
+                })
+            </script>                    
 
         </div>
     </main>
