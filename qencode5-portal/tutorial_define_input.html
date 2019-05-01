@@ -131,12 +131,12 @@
             <div class="q6-tutorial-add-videos-container">
 
                 <div class="q6-tutorial-add-video-block-container">
-                    <div class="q6-tutorial-add-video-block">
-                        <div class="q6-tutorial-add-video-block__controls">
+                    <div class="q6-tutorial-add-video-block q6-tutorial-inputs-block--has-controls">
+                        <div class="q6-tutorial-inputs-block__controls">
                             <div class="q6-tutorial-control q6-tutorial-control--active" data-control="url">URL</div>
                             <div class="q6-tutorial-control" data-control="upload">Upload</div>
                         </div>
-                        <div class="q6-tutorial-video-method q6-tutorial-video-method--active" data-method="url">
+                        <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="url">
                             
                             <div class="q6-input">
                                 <div class="q6-input__label">
@@ -225,7 +225,7 @@
                             </div>
                             
                         </div>    
-                        <div class="q6-tutorial-video-method" data-method="upload">
+                        <div class="q6-tutorial-controls__content" data-content="upload">
                             <div class="q6-input">
                                 <div class="q6-input__label">
                                     <label>Please use a single video file link</label>
@@ -256,12 +256,12 @@
                         <div class="q6-tutorial-vertical-delimeter"></div>
                     </div>
 
-                    <div class="q6-tutorial-add-video-block">                        
-                        <div class="q6-tutorial-add-video-block__controls">
+                    <div class="q6-tutorial-add-video-block q6-tutorial-inputs-block--has-controls">                        
+                        <div class="q6-tutorial-inputs-block__controls">
                             <div class="q6-tutorial-control q6-tutorial-control--active" data-control="url">URL</div>
                             <div class="q6-tutorial-control" data-control="upload">Upload</div>
                         </div>
-                        <div class="q6-tutorial-video-method q6-tutorial-video-method--active" data-method="url">
+                        <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="url">
                             
                             <div class="q6-input">
                                 <div class="q6-input__label">
@@ -350,7 +350,7 @@
                             </div>                            
                             
                         </div>      
-                        <div class="q6-tutorial-video-method" data-method="upload">
+                        <div class="q6-tutorial-controls__content" data-content="upload">
                             <div class="q6-input">
                                 <div class="q6-input__label">
                                     <label>Please use a single video file link</label>
@@ -491,7 +491,7 @@
 
                 <script>
                     $(function () {
-                        // switch video input between url and upload
+                        // switch content based on selected control
                         $('.q6-tutorial-control').click(function(e){
 
                             var selectedMethod = $(e.target).attr('data-control');
@@ -504,13 +504,13 @@
                             $(e.target).addClass('q6-tutorial-control--active');
 
                             // switch content
-                            $(e.target).closest('.q6-tutorial-add-video-block')
-                                .find('.q6-tutorial-video-method--active')
-                                .removeClass('q6-tutorial-video-method--active');
+                            $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                                .find('.q6-tutorial-controls__content--active')
+                                .removeClass('q6-tutorial-controls__content--active');
 
-                            $(e.target).closest('.q6-tutorial-add-video-block')
-                                .find(`[data-method="${selectedMethod}"]`)
-                                .addClass('q6-tutorial-video-method--active');
+                            $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                                .find(`[data-content="${selectedMethod}"]`)
+                                .addClass('q6-tutorial-controls__content--active');
 
                         });
                     })

@@ -224,6 +224,12 @@ textarea:disabled{
     max-width: 290px;
 }
 
+.q6-input.q6-input--region-name,
+.q6-input.q6-input--bucket-name{
+    flex: 1;
+    min-width: 260px;
+}
+
 .q6-input.q6-input--api-key{
     position: relative;
     min-width: 260px;
@@ -298,6 +304,15 @@ textarea:disabled{
     margin-right: 20px;
     margin-top: 10px;
 }
+
+.q6-input-and-buttons--inline .q6-input:last-of-type{
+    margin-right: 0;
+}
+
+.q6-input-and-buttons--inline .q6-input + .q6-button{
+    margin-left: 20px;
+}
+
 
 .q6-input__label--with-question{
     justify-content: flex-start;
@@ -471,6 +486,79 @@ input:checked + .q6-image-text-checkbox--ott:before{
 }
 /* checkbox with images and text */
 
+/* checkbox */
+.q6-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 100;
+}
+
+.q6-checkbox input {
+    display: none;
+}
+
+.q6-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #e1e5ee;
+    border-radius: 3px;
+    transition: all 0.1s ease;
+    box-sizing: border-box;
+}
+
+.q6-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+}
+
+.q6-checkbox:hover input ~ .q6-checkmark {
+    background-color: #ededed;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: #306eea;
+}
+
+.q6-checkbox input:disabled ~ .q6-checkmark {
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
+.q6-checkbox input:disabled:checked ~ .q6-checkmark {
+    border-color: #9b9b9b;
+    background: #9b9b9b;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark:after {
+    display: block;
+}
+
+.q6-checkbox .q6-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* checkbox */
 
 
 .q6-anchor-link{
