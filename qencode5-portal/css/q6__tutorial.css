@@ -179,7 +179,7 @@
     margin: 5px 0;
     line-height: 20px;
     font-size: 15px;    
-    max-width: 650px;
+    max-width: 930px;
 }
 
 .q6-tutorial-video-container {
@@ -684,6 +684,183 @@
     border-radius: 7px;
     margin: 25px 0;  
     padding-top: 20px;
-  
+}
+
+.q6-tutorial-inputs-block--inline{
+    display: inline-block;
 }
 /* TUTORIAL CONTENT */
+
+/* TUTORIAL PROFILES */
+.q6-tutorial-profiles-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.q6-tutorial-profile{
+    margin-top: 10px;
+    margin-right: 60px;
+    color: #444444;
+    font-size: 14px;
+}
+
+
+.q6-tutorial-profile__title{
+    white-space: nowrap;
+}
+
+.q6-tutorial-profile__parameters-selector{
+    width: 100%;
+    border-collapse: collapse;    
+    margin-top: 10px;
+}
+
+.q6-tutorial-profile__parameters-selector td{
+    padding: 0;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-select{
+    font-size: 14px;
+    padding: 5px;
+    font-weight: 400;
+    border: none;
+    background: #f0f5fe;
+    color: #366fe0;  
+    border-radius: 0;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-custom-select:after {
+    border-top: 3px solid #366fe0;
+    border-right: 3px solid transparent;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+}
+
+.q6-tutorial-profile__parameters-selector tr > td:nth-of-type(2){
+    width: 65%;
+}
+
+.q6-tutorial-profile__parameters-selector tr:first-of-type .q6-select{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.q6-tutorial-profile__parameters-selector tr:last-of-type .q6-select{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+
+.q6-tutorial-profile-details{
+    border-collapse: collapse;    
+    margin-top: 10px;   
+    width: 105%;
+    margin-left: -5px;
+}
+
+
+.q6-tutorial-profile-details td{
+    padding: 5px;
+}
+
+.q6-tutorial-profile-details td > div{
+    position: relative;
+}
+
+
+.q6-tutorial-profile-details th{
+    text-align: left;
+    padding: 3px 5px;
+    color: #a6a8af;
+    font-weight: 500;
+}
+
+.q6-tutorial-profile-details tbody{
+    border-bottom: 1px solid #d7d7d7;
+    border-top: 1px solid #d7d7d7;
+}
+
+.q6-tutorial-profile-details tbody td:last-of-type{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding-right: 15px;
+}
+
+.q6-tutorial-profile-details tbody td:first-of-type{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.q6-tutorial-profile-details tbody tr:hover{
+    background: #ffebeb;
+}
+
+.q6-tutorial-profile-details__delete{
+    display: none;
+    position: absolute;
+    top:1px;
+    right: -9px;
+    cursor: pointer;
+    width: 10px;
+    height: 12px;
+    background-image: url(../img/profiles_delete_icon.png);    
+}
+
+.q6-tutorial-profile-details tbody tr:hover .q6-tutorial-profile-details__delete{
+    display: block;
+}
+
+.q6-tutorial-profile__add-custom{
+    color: #366fe0;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+}
+
+.q6-tutorial-profile__add-custom-form{
+    display: none;
+    position: absolute;
+    top: -15px;
+    left: 99px;
+    padding: 15px 30px;
+    background: white;
+    border: 2px solid #366fe0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    box-shadow: 0px 3px 13px 1px rgba(105, 109, 112, 0.41);
+    cursor: default;
+    z-index: 1;
+}
+
+.q6-tutorial-profile__add-custom-form .q6-input-and-buttons--inline {
+    flex-wrap:nowrap;
+}
+
+.q6-tutorial-profile__add-custom-form .q6-button,
+.q6-tutorial-profile__add-custom-form input[type=text].q6-input__field{
+    padding: 0 13px;
+    line-height: 32px;
+    font-size: 15px;
+}
+
+.q6-tutorial-profile__add-custom-form .q6-input__label{
+    font-size: 14px;
+}
+
+.q6-tutorial-profile__add-custom-form .q6-input-and-buttons--inline .q6-input {
+    margin-top: 0;
+    min-width: 80px;
+}
+
+.q6-tutorial-profile__add-custom-form:before {
+    position: absolute;
+    content: '';
+    border-style: solid;
+    top: 10px;
+    border-width: 12px 0 12px 12px;
+    left: -12px;
+    border-color:  transparent transparent transparent #366fe0 ;   
+    transform: rotate(0.5turn);
+}
+/* TUTORIAL PROFILES */

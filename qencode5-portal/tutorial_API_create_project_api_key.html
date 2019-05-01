@@ -167,14 +167,163 @@
                             <label for="input_minutes">Enter a Project Name</label>
                             <div class="q6-question-icon"></div>
                         </div>
-                        <input id='user-project-name' class="q6-input__field" type="text">
-                    </div>     
-                    <button id="create-project" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>                                   
-                </div>                                         
+                        <input id='user-project-name' class="q6-input__field" type="text" value="My Project">
+                    </div>        
+
+                    <div id="api-key" class="q6-input q6-input--api-key">
+                        <div class="q6-input__label q6-input__label--with-question">
+                            <label for="input_minutes">API Key</label>
+                        </div>
+                        <input class="q6-input__field" type="text" value="5c924a5b76341" disabled/>
+                        <button id='copy-api-key' class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>                        
+                    </div>                               
+                </div>                  
+
+                <script>
+                    $(function () {
+                        $('#create-project').click(function(){
+                            $(this).hide();
+                            $('#api-key').show();
+                            $('#api-block').show();
+                        });
+
+                        // copy input
+                        $("#copy-api-key").click(function (){
+
+                            try { 
+                                var inputText = $(this).closest('.q6-input').find('input')[0];
+
+                                $(inputText).removeAttr('disabled');  
+
+                                inputText.select();
+                                document.execCommand("copy");   
+
+                                $(inputText).attr('disabled','disabled');  
+
+                                var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200) 
+
+                            } catch (err) {
+                                console.log(err);
+                            }
+
+                        });   
+
+                    });
+                </script>                           
 
             </div>
-      
 
+
+            <div class="q6-tutorial-content-title">Authenticate API</div>
+            <p>
+                The API instance is used to communicate with the Qencode REST API. 
+                To authenticate, use your API key.
+            </p>   
+
+
+            <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-codeblock__example">                    
+                    <div class="q6-tutorial-codeblock-controls">
+                        <div class="q6-btn_run-code"></div>
+                    </div>
+                    <div class="q6-tutorial-codeblock-code">
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>
+                        <pre><code>const apiKey = "5c924a5b76341"; // taken from your account
+const qencodeApiClient = new QencodeApiClient(apiKey);</code></pre>                    
+                    </div>
+                </div>
+                <div class="q6-tutorial-codeblock__result" style="display:none;">
+
+                </div>                
+            </div>                
+
+
+            <div class="q6-tutorial-content-title">Create a Task</div>
+            <p>
+                To begin, first create a task for your transcoding job.
+            </p>    
+
+            <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-codeblock__example">                    
+                    <div class="q6-tutorial-codeblock-controls">
+                        <div class="q6-btn_run-code"></div>
+                    </div>
+                    <div class="q6-tutorial-codeblock-code">
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>
+                        <pre><code>let task = qencodeApiClient.CreateTask();</code></pre>                    
+                    </div>
+                </div>
+                <div class="q6-tutorial-codeblock__result" style="display:none;">
+
+                </div>                
+            </div>                    
+
+
+            <div class="q6-tutorial-buttons">
+                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Back</button>
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
+            </div>                
+
+
+            <script>
+                // initialize code highlight
+                hljs.initHighlightingOnLoad();
+            </script>         
+
+            <script>
+                $(function () {                
+                    // copy code
+                    $(".q6-tutorial-codeblock-container .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
 
 
         </div>
