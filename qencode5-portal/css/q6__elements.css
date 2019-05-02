@@ -82,7 +82,8 @@ textarea {
 input[type=text]:disabled.q6-input__field, 
 input[type=tel]:disabled.q6-input__field, 
 input[type=password]:disabled.q6-input__field,
-textarea:disabled{
+textarea:disabled,
+.q6-select:disabled{
     border-color: #f7f8fa;
     background: #f7f8fa;
 }
@@ -172,7 +173,8 @@ textarea:disabled{
     box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);
 }
 
-.q6-button.q6-button--copy{
+.q6-button.q6-button--copy,
+.q6-button.q6-button--edit {
     line-height: 24px;
     font-weight: 400;
     background-color: #e9f0fc;
@@ -230,24 +232,43 @@ textarea:disabled{
     min-width: 260px;
 }
 
-.q6-input.q6-input--api-key{
+.q6-input.q6-input--bucket-name .q6-button.q6-button--edit {
+    display: none;
+    position: absolute;
+    right: 14px;
+    bottom: 5px;
+}
+
+.q6-input.q6-input--bucket-name:hover .q6-button.q6-button--edit{
+    display: block;
+}
+
+.q6-input.q6-input--api-key,
+.q6-input.q6-input--transfer-method{
     position: relative;
     min-width: 260px;
 }
 
-.q6-input.q6-input--api-key .q6-button.q6-button--copy{
+.q6-input.q6-input--api-key .q6-button.q6-button--copy,
+.q6-input.q6-input--transfer-method .q6-button.q6-button--copy{
     display: none;
     position: absolute;
     right: 14px;
     bottom: 5px;    
 }
 
-.q6-input.q6-input--api-key input[type=text]:disabled.q6-input__field{
+.q6-input.q6-input--api-key input[type=text]:disabled.q6-input__field,
+.q6-input.q6-input--bucket-name input[type=text]:disabled.q6-input__field,
+.q6-input.q6-input--transfer-method input[type=text]:disabled.q6-input__field,
+.q6-input.q6-input--region-name .q6-select:disabled {
     color: #3270eb;
-    font-weight: 400;
+    font-weight: 400; 
 }
 
-.q6-input.q6-input--api-key:hover .q6-button.q6-button--copy{
+
+
+.q6-input.q6-input--api-key:hover .q6-button.q6-button--copy,
+.q6-input.q6-input--transfer-method:hover .q6-button.q6-button--copy{
     display: block;
 }
 

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="img/favicon.png">    
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>    
+
+    <link href="css/q6.css" rel="stylesheet">
+    
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link href="css/q6__fonts.css" rel="stylesheet" />
+    <link href="css/q6__template.css" rel="stylesheet" />
+    <link href="css/q6__elements.css" rel="stylesheet" />
+    <link href="css/q6__authorize.css" rel="stylesheet" />
+
+    <link href="css/q6__tutorial.css" rel="stylesheet" />
+
+    <script src="js/menu.js"></script>
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q6-page q6-body">
+
+    <header>
+        <div class="q6-container">
+            <div class="q6-tutorial-header">
+                <div class="q6-tutorial-header__logo"><a href=""><img src="img/logo.svg" alt=""></a></div>
+                <div class="q6-tutorial-header__content">
+                    <div class="q6-tutorial-title-container">
+                        <div class="q6-tutorial-section-title">getting started</div>
+                        <div class="q6-tutorial-title">Transcode with the API</div>
+                    </div>                    
+                    <div class="q6-tutorial-button">
+                        <div class="q6-demo-links-buttons q6-demo-links-buttons--back">
+                            <a href="">Go to Dashboard</a>
+                        </div>                        
+                    </div>
+                </div>
+            </div>     
+            <div class="q6-tutorial-steps">
+                <div class="q6-tutorial-steps-container">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
+                        <div class="q6-tutorial-step__number">Step 1</div>
+                        <div class="q6-tutorial-step__title">Create Project</div>
+                    </div>
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
+                        <div class="q6-tutorial-step__number">Step 2</div>
+                        <div class="q6-tutorial-step__title">Define Input</div>
+                    </div>
+                    <div class="q6-tutorial-steps-round-delimeter q6-tutorial-steps-round-delimeter--complete">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div> 
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
+                        <div class="q6-tutorial-step__number">Step 3</div>
+                        <div class="q6-tutorial-step__title">Define Output</div>
+                    </div>
+                    <div class="q6-tutorial-step q6-tutorial-step--current">
+                        <div class="q6-tutorial-step__number">Step 4</div>
+                        <div class="q6-tutorial-step__title">Output Destination</div>
+                    </div>
+                    <div class="q6-tutorial-step">
+                        <div class="q6-tutorial-step__number">Step 5</div>
+                        <div class="q6-tutorial-step__title">Launch Transcode</div>
+                    </div>                                                                                
+                </div>
+                <div class="q6-tutorial-steps-delimeter"></div>     
+                <div class="q6-tutorial-steps-container">
+                    <div class="q6-tutorial-step">
+                        <div class="q6-tutorial-step__title">Check Status</div>
+                    </div>
+                </div>                           
+            </div>   
+        </div>
+    </header>
+
+    <main class="q6-page-content q6-tutorial-content">
+        <div class="q6-container">
+            <div class="q6-tutorial-content-header">
+                <div>
+                    <label>Choose a language:</label>
+                    <div>
+                        <div class="q6-tutorial-dd-selector">
+                            <div class="q6-tutorial-dd-selector__selected">
+                                JavaScript
+                            </div>
+                            <div class="q6-tutorial-dd-selector__list">
+                                <div>JavaScript</div>
+                                <div>PHP</div>
+                                <div>Python</div>
+                                <div>Ruby</div>
+                                <div>Java</div>
+                                <div>Node.JS</div>
+                                <div>C#</div>                                
+                            </div>
+                        </div>
+
+                        <script>
+                            $(function () {
+                                
+                                // close list when hover out of the list
+                                $(".q6-tutorial-dd-selector").hover(
+                                    function() {
+                                        // hover in
+                                        //$(this).find('.q6-tutorial-dd-selector__list').show();
+                                    }, function() {
+                                        // hover out
+                                        $(this).find('.q6-tutorial-dd-selector__list').hide();
+                                    }
+                                );                                  
+
+
+                                $(".q6-tutorial-dd-selector").click((e)=>{
+                                    // toggle hide and show selector list
+                                    // and update selected language
+                                    var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                                    var list = $(this).find('.q6-tutorial-dd-selector__list');
+                                    if($(list).is(':visible')){
+                                        $(list).hide();  
+                                        var selectedLanguage = $(e.target).text();
+                                        $(selectedListElement).html(selectedLanguage);  
+                                        // TODO - update content based on selected language                                 
+                                    } else{
+                                        $(list).show();
+                                    }
+                                })
+                            })
+                        </script>
+
+                    </div>
+                </div>
+                <div>
+                    <label>View our SDK on Github:</label>
+                    <div>
+                        <a href="">PHP</a>
+                        <a href="">Python</a>
+                        <a href="">Ruby</a>
+                        <a href="">Java</a>
+                        <a href="">Node.JS</a>
+                        <a href="">C#</a>
+                        <a href="">JavaScript</a>
+                    </div>
+                </div>
+            </div>   
+            <div class="q6-tutorial-content-title">Create Transfer Method</div>
+            <p>
+                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
+                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
+            </p>  
+
+
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
+
+                <div class="q6-tutorial-inputs-block__controls">
+                    <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
+                    <div class="q6-tutorial-control" data-control="amazon">Amazon S3</div>
+                    <div class="q6-tutorial-control" data-control="google">Google Cloud</div>
+                    <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze S3</div>
+                    <div class="q6-tutorial-control" data-control="azure">Azure</div>
+                    <div class="q6-tutorial-control" data-control="ftp">FTP</div>
+                </div>           
+
+                <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
+
+                    <div class="q6-tutorial-cards-switch">
+                        <div class="q6-tutorial-cards-switch__block q6-tutorial-cards-switch__block--active">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Qencode S3</div>
+                                <p>
+                                    <strong>$5/month <br> 250 GB </strong>
+                                    (additional $0.02/GB)
+                                </p>                            
+                            </div>
+                        </div>
+                        <div class="q6-tutorial-cards-switch__block">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Free</div>
+                                <p>
+                                    Store your files temporarily on our
+                                    server for free up to 24 hours
+                                </p>                            
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="q6-input-and-buttons--inline">
+                        <div class="q6-input q6-input--region-name">
+                            <div class="q6-input__label">
+                                <label>Region name</label>
+                            </div>                        
+                            <div class="q6-custom-select">
+                                <select id="region" class="q6-select" disabled>
+                                    <option value="1">Asia Pacific (Singapore)</option>
+                                </select>
+                            </div>
+                        </div>                      
+                        
+                        <div class="q6-input q6-input--bucket-name">
+                            <div class="q6-input__label">
+                                <label>Bucket name</label>
+                            </div>
+                            <input id="bucket" class="q6-input__field" type="text" value="my-bucket" disabled>
+                            <button id="edit-bucket" class="q6-button q6-button--round q6-button--edit">
+                                Edit
+                            </button>                            
+                        </div>                          
+                    </div>
+
+                    <label class="q6-checkbox">
+                        Public permissions
+                        <input id="public-pernissions" type="checkbox" checked disabled>
+                        <span class="q6-checkmark"></span>
+                    </label>                                                                                                       
+
+                </div> 
+
+                <div class="q6-tutorial-controls__content" data-content="amazon">
+                    Amazon S3
+                </div>                 
+
+                <div class="q6-tutorial-controls__content" data-content="google">
+                    Google Cloud
+                </div> 
+
+                <div class="q6-tutorial-controls__content" data-content="blackbaze">
+                    Blackbaze S3
+                </div> 
+
+                <div class="q6-tutorial-controls__content" data-content="azure">
+                    Azure
+                </div> 
+
+                <div class="q6-tutorial-controls__content" data-content="ftp">
+                    FTP
+                </div>                                                                               
+
+                <div class="q6-tutorial-buttons">                        
+                    <button id="update-bucket" style="display:none;" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>            
+                </div>    
+
+            </div>                
+
+
+            <div class="q6-tutorial-content-title">Define Transfer Method</div>
+            
+            <p>
+                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
+                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
+            </p>                  
+                            
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline">
+                <div class="q6-tutorial-input-with-comment">
+                    <div class="q6-input q6-input--transfer-method">
+                        <div class="q6-input__label">
+                            <label for="input_minutes">Transfer Method ID</label>
+                        </div>
+                        <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>                        
+                    </div>           
+                    <div class="q6-tutorial-input-with-comment__comment">
+                        <p>Store your files temporarily on our server for free up to 24 hours</p>
+                    </div> 
+                </div>
+            </div>
+
+            <p>
+                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
+                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
+            </p>  
+            
+            <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-codeblock__example">                    
+                    <div class="q6-tutorial-codeblock-controls">
+                        <div class="q6-btn_run-code"></div>
+                    </div>
+                    <div class="q6-tutorial-codeblock-code">
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>
+                        <pre><code class="hljs cpp"><span class="hljs-comment">//already includes the Profile IDs above</span>
+<span class="hljs-keyword">const</span> transcodingProfiles = [<span class="hljs-string">"5c924a5b76341"</span>, <span class="hljs-string">"5c924a5b76122"</span>, <span class="hljs-string">"5c924a5b76889"</span>];</code></pre>                    
+                    </div>
+                </div>
+                <div class="q6-tutorial-codeblock__result" style="display:none;">
+
+                </div>                
+            </div>
+            
+            <div class="q6-tutorial-buttons">
+                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Back</button>
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
+            </div>                                    
+
+            <script>
+                // initialize code highlight
+                hljs.initHighlightingOnLoad();
+            </script>       
+
+            <script>
+                $(function () {
+                    // copy input
+                    $(".q6-input .q6-button--copy").click(function (){
+
+                        try { 
+                            var inputText = $(this).closest('.q6-input').find('input')[0];
+
+                            $(inputText).removeAttr('disabled');  
+
+                            inputText.select();
+                            document.execCommand("copy");   
+
+                            $(inputText).attr('disabled','disabled');  
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            //console.log("copied");                                
+                            $(flashMessage).html('Copied');
+                            $(flashMessage)
+                                .animate({ opacity: 1 }, 200)
+                                .delay(500)     
+                                .animate({ opacity: 0 }, 200) 
+
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });   
+
+                });
+            </script>              
+
+            <script>
+                $(function () {
+                    // Edit bucket 
+                    $('#edit-bucket').click(function(){                                                                    
+                        $('#public-pernissions, #region, #bucket').prop('disabled', false);
+                        $('#update-bucket').show();
+                    });
+                });  
+            </script>                   
+
+            <script>
+                $(function () {
+                    // switch active cards
+                    $('.q6-tutorial-cards-switch__block').click(function(){                                            
+                        $(this).closest('.q6-tutorial-cards-switch')
+                            .find('.q6-tutorial-cards-switch__block--active')
+                            .removeClass('q6-tutorial-cards-switch__block--active');
+                        
+                        $(this).addClass('q6-tutorial-cards-switch__block--active'); 
+                    });
+                });  
+            </script>                                
+
+            <script>
+                $(function () {
+                    // switch content based on selected control
+                    $('.q6-tutorial-control').click(function(e){
+
+                        var selectedMethod = $(e.target).attr('data-control');
+
+                        // switch controls
+                        $(e.target).parent()
+                            .find('.q6-tutorial-control--active')
+                            .removeClass('q6-tutorial-control--active');
+
+                        $(e.target).addClass('q6-tutorial-control--active');
+
+                        // switch content
+                        $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                            .find('.q6-tutorial-controls__content--active')
+                            .removeClass('q6-tutorial-controls__content--active');
+
+                        $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                            .find(`[data-content="${selectedMethod}"]`)
+                            .addClass('q6-tutorial-controls__content--active');
+
+                    });
+                })
+            </script>               
+  
+
+            <script>
+                $(function () {                
+                    // copy code
+                    $(".q6-tutorial-codeblock-container .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+
+
+        </div>
+    </main>
+
+
+</body>
+</html>
