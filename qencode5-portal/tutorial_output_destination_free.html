@@ -50,24 +50,24 @@
             </div>     
             <div class="q6-tutorial-steps">
                 <div class="q6-tutorial-steps-container">
-                    <div class="q6-tutorial-step q6-tutorial-step--current">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 1</div>
                         <div class="q6-tutorial-step__title">Create Project</div>
                     </div>
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 2</div>
                         <div class="q6-tutorial-step__title">Define Input</div>
                     </div>
-                    <div class="q6-tutorial-steps-round-delimeter">
+                    <div class="q6-tutorial-steps-round-delimeter q6-tutorial-steps-round-delimeter--complete">
                         <div></div>
                         <div></div>
                         <div></div>
                     </div> 
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 3</div>
                         <div class="q6-tutorial-step__title">Define Output</div>
                     </div>
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--current">
                         <div class="q6-tutorial-step__number">Step 4</div>
                         <div class="q6-tutorial-step__title">Output Destination</div>
                     </div>
@@ -154,137 +154,127 @@
                     </div>
                 </div>
             </div>   
-            <div class="q6-tutorial-content-title">Create a Project</div>
+            <div class="q6-tutorial-content-title">Create Transfer Method</div>
             <p>
-                Projects allow you to organize your billing and output settings into separate projects to make them 
-                easier to manage. Each Project provide API Key that allows you to create transcoding jobs.
+                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
+                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
             </p>  
-            <div class="q6-tutorial-inputs-block">
 
-                <div class="q6-input-and-buttons--inline">
-                    <div class="q6-input q6-input--project-name">
-                        <div class="q6-input__label q6-input__label--with-question">
-                            <label>Enter a Project Name</label>
-                            <div class="q6-question-icon"></div>
+
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
+
+                <div class="q6-tutorial-inputs-block__controls">
+                    <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
+                    <div class="q6-tutorial-control" data-control="amazon">Amazon S3</div>
+                    <div class="q6-tutorial-control" data-control="google">Google Cloud</div>
+                    <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze S3</div>
+                    <div class="q6-tutorial-control" data-control="azure">Azure</div>
+                    <div class="q6-tutorial-control" data-control="ftp">FTP</div>
+                </div>           
+
+                <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
+
+                    <div class="q6-tutorial-cards-switch">
+                        <div class="q6-tutorial-cards-switch__block">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Qencode S3</div>
+                                <p>
+                                    <strong>$5/month <br> 250 GB </strong>
+                                    (additional $0.02/GB)
+                                </p>                            
+                            </div>
                         </div>
-                        <input id='user-project-name' class="q6-input__field" type="text" value="My Project">
-                    </div>        
-
-                    <div id="api-key" class="q6-input q6-input--api-key">
-                        <div class="q6-input__label">
-                            <label>API Key</label>
+                        <div class="q6-tutorial-cards-switch__block q6-tutorial-cards-switch__block--active">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Free</div>
+                                <p>
+                                    Store your files temporarily on our
+                                    server for free up to 24 hours
+                                </p>                            
+                            </div>
                         </div>
-                        <input class="q6-input__field" type="text" value="5c924a5b76341" disabled/>
-                        <button id='copy-api-key' class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>                        
-                    </div>                               
-                </div>                  
-
-                <script>
-                    $(function () {
-                        $('#create-project').click(function(){
-                            $(this).hide();
-                            $('#api-key').show();
-                            $('#api-block').show();
-                        });
-
-                        // copy input
-                        $(".q6-input .q6-button--copy").click(function (){
-
-                            try { 
-                                var inputText = $(this).closest('.q6-input').find('input')[0];
-
-                                $(inputText).removeAttr('disabled');  
-
-                                inputText.select();
-                                document.execCommand("copy");   
-
-                                $(inputText).attr('disabled','disabled');  
-
-                                var flashMessage = $(this).find('.q6-flash-message')[0];                                               
-
-                                //console.log("copied");                                
-                                $(flashMessage).html('Copied');
-                                $(flashMessage)
-                                    .animate({ opacity: 1 }, 200)
-                                    .delay(500)     
-                                    .animate({ opacity: 0 }, 200) 
-
-                            } catch (err) {
-                                console.log(err);
-                            }
-
-                        });   
-
-                    });
-                </script>                           
-
-            </div>
-
-
-            <div class="q6-tutorial-content-title">Authenticate API</div>
-            <p>
-                The API instance is used to communicate with the Qencode REST API. 
-                To authenticate, use your API key.
-            </p>   
-
-
-            <div class="q6-tutorial-codeblock-container">
-                <div class="q6-tutorial-codeblock__example">                    
-                    <div class="q6-tutorial-codeblock-controls">
-                        <div class="q6-btn_run-code"></div>
                     </div>
-                    <div class="q6-tutorial-codeblock-code">
-                        <button class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>
-                        <pre><code>const apiKey = "5c924a5b76341"; // taken from your account
-const qencodeApiClient = new QencodeApiClient(apiKey);</code></pre>                    
-                    </div>
-                </div>
-                <div class="q6-tutorial-codeblock__result" style="display:none;">
+                                                                                                                  
 
-                </div>                
-            </div>                
+                </div> 
 
+                <div class="q6-tutorial-controls__content" data-content="amazon">
+                    Amazon S3
+                </div>                 
 
-            <div class="q6-tutorial-content-title">Create a Task</div>
-            <p>
-                To begin, first create a task for your transcoding job.
-            </p>    
+                <div class="q6-tutorial-controls__content" data-content="google">
+                    Google Cloud
+                </div> 
 
-            <div class="q6-tutorial-codeblock-container">
-                <div class="q6-tutorial-codeblock__example">                    
-                    <div class="q6-tutorial-codeblock-controls">
-                        <div class="q6-btn_run-code"></div>
-                    </div>
-                    <div class="q6-tutorial-codeblock-code">
-                        <button class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>
-                        <pre><code>let task = qencodeApiClient.CreateTask();</code></pre>                    
-                    </div>
-                </div>
-                <div class="q6-tutorial-codeblock__result" style="display:none;">
+                <div class="q6-tutorial-controls__content" data-content="blackbaze">
+                    Blackbaze S3
+                </div> 
 
-                </div>                
-            </div>                    
+                <div class="q6-tutorial-controls__content" data-content="azure">
+                    Azure
+                </div> 
 
+                <div class="q6-tutorial-controls__content" data-content="ftp">
+                    FTP
+                </div>            
+                                                                     
 
+            </div>                      
+                            
+
+            
             <div class="q6-tutorial-buttons">
                 <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Back</button>
                 <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
-            </div>                
-
+            </div>                              
 
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>         
+            </script>          
+
+            <script>
+                $(function () {
+                    // switch active cards
+                    $('.q6-tutorial-cards-switch__block').click(function(){                                            
+                        $(this).closest('.q6-tutorial-cards-switch')
+                            .find('.q6-tutorial-cards-switch__block--active')
+                            .removeClass('q6-tutorial-cards-switch__block--active');
+                        
+                        $(this).addClass('q6-tutorial-cards-switch__block--active'); 
+                    });
+                });  
+            </script>                                
+
+            <script>
+                $(function () {
+                    // switch content based on selected control
+                    $('.q6-tutorial-control').click(function(e){
+
+                        var selectedMethod = $(e.target).attr('data-control');
+
+                        // switch controls
+                        $(e.target).parent()
+                            .find('.q6-tutorial-control--active')
+                            .removeClass('q6-tutorial-control--active');
+
+                        $(e.target).addClass('q6-tutorial-control--active');
+
+                        // switch content
+                        $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                            .find('.q6-tutorial-controls__content--active')
+                            .removeClass('q6-tutorial-controls__content--active');
+
+                        $(e.target).closest('.q6-tutorial-inputs-block--has-controls')
+                            .find(`[data-content="${selectedMethod}"]`)
+                            .addClass('q6-tutorial-controls__content--active');
+
+                    });
+                })
+            </script>               
+  
 
             <script>
                 $(function () {                

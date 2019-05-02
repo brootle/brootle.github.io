@@ -50,28 +50,28 @@
             </div>     
             <div class="q6-tutorial-steps">
                 <div class="q6-tutorial-steps-container">
-                    <div class="q6-tutorial-step q6-tutorial-step--current">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 1</div>
                         <div class="q6-tutorial-step__title">Create Project</div>
                     </div>
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 2</div>
                         <div class="q6-tutorial-step__title">Define Input</div>
                     </div>
-                    <div class="q6-tutorial-steps-round-delimeter">
+                    <div class="q6-tutorial-steps-round-delimeter q6-tutorial-steps-round-delimeter--complete">
                         <div></div>
                         <div></div>
                         <div></div>
                     </div> 
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 3</div>
                         <div class="q6-tutorial-step__title">Define Output</div>
                     </div>
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
                         <div class="q6-tutorial-step__number">Step 4</div>
                         <div class="q6-tutorial-step__title">Output Destination</div>
                     </div>
-                    <div class="q6-tutorial-step">
+                    <div class="q6-tutorial-step q6-tutorial-step--current">
                         <div class="q6-tutorial-step__number">Step 5</div>
                         <div class="q6-tutorial-step__title">Launch Transcode</div>
                     </div>                                                                                
@@ -85,6 +85,7 @@
             </div>   
         </div>
     </header>
+
 
     <main class="q6-page-content q6-tutorial-content">
         <div class="q6-container">
@@ -154,137 +155,99 @@
                     </div>
                 </div>
             </div>   
-            <div class="q6-tutorial-content-title">Create a Project</div>
+            <div class="q6-tutorial-content-title">Launch Transcode</div>
             <p>
-                Projects allow you to organize your billing and output settings into separate projects to make them 
-                easier to manage. Each Project provide API Key that allows you to create transcoding jobs.
+                Last step is to launch your transcoding tasks.
             </p>  
-            <div class="q6-tutorial-inputs-block">
 
-                <div class="q6-input-and-buttons--inline">
-                    <div class="q6-input q6-input--project-name">
-                        <div class="q6-input__label q6-input__label--with-question">
-                            <label>Enter a Project Name</label>
-                            <div class="q6-question-icon"></div>
-                        </div>
-                        <input id='user-project-name' class="q6-input__field" type="text" value="My Project">
-                    </div>        
-
-                    <div id="api-key" class="q6-input q6-input--api-key">
-                        <div class="q6-input__label">
-                            <label>API Key</label>
-                        </div>
-                        <input class="q6-input__field" type="text" value="5c924a5b76341" disabled/>
-                        <button id='copy-api-key' class="q6-button q6-button--round q6-button--copy">
+            <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-codeblock__example">                    
+                    <div class="q6-tutorial-codeblock-controls">
+                        <div class="q6-btn_run-code"></div>
+                    </div>
+                    <div class="q6-tutorial-codeblock-code">
+                        <button class="q6-button q6-button--round q6-button--copy">
                             Copy
                             <div class="q6-flash-message">copied</div>
-                        </button>                        
-                    </div>                               
-                </div>                  
+                        </button>
+                        <pre><code class="hljs">task.Start(transcodingProfiles, videoUrl, transferMethod);</code></pre>                    
+                    </div>
+                </div>
+                <div class="q6-tutorial-codeblock__result">
+                    
+                </div>                
+            </div>
 
-                <script>
-                    $(function () {
-                        $('#create-project').click(function(){
-                            $(this).hide();
-                            $('#api-key').show();
-                            $('#api-block').show();
-                        });
+            <div class="q6-tutorial-input-and-info">
+                <label class="q6-switch">
+                    <input id="callback-url-switch" class="q6-input__field" type="checkbox">
+                    <span class="q6-switch__slider"></span>
+                </label>            
 
-                        // copy input
-                        $(".q6-input .q6-button--copy").click(function (){
+                <div>
+                    <div class="q6-tutorial-content-title">Setup Webhook (Callback URL)</div>   
+                    <p>Some text.</p>                    
+                </div>                       
+            </div>
 
-                            try { 
-                                var inputText = $(this).closest('.q6-input').find('input')[0];
+            <script>
+                $(function () {
+                    // enable/disable inputs URL on callback
+                    $("#callback-url-switch").change(function() {
+                        if($(this).is(':checked')){
+                            $('#callback-url-input').show();
+                        } else{
+                            $('#callback-url-input').hide();                             
+                        }
+                    });                        
+                })
+            </script>               
 
-                                $(inputText).removeAttr('disabled');  
+            <div id="callback-url-input" style="display:none;">
 
-                                inputText.select();
-                                document.execCommand("copy");   
+                <div class="q6-tutorial-inputs-block">
+                    <div class="q6-input">
+                        <div class="q6-input__label">
+                            <label>Enter URL</label>
+                        </div>
+                        <input class="q6-input__field" type="text">
+                    </div>   
+                </div>
 
-                                $(inputText).attr('disabled','disabled');  
+                <p>
+                    Last step is to launch your transcoding tasks.
+                </p>  
 
-                                var flashMessage = $(this).find('.q6-flash-message')[0];                                               
-
-                                //console.log("copied");                                
-                                $(flashMessage).html('Copied');
-                                $(flashMessage)
-                                    .animate({ opacity: 1 }, 200)
-                                    .delay(500)     
-                                    .animate({ opacity: 0 }, 200) 
-
-                            } catch (err) {
-                                console.log(err);
-                            }
-
-                        });   
-
-                    });
-                </script>                           
+                <div class="q6-tutorial-codeblock-container">
+                    <div class="q6-tutorial-codeblock__example">                    
+                        <div class="q6-tutorial-codeblock-controls">
+                            <div class="q6-btn_run-code"></div>
+                        </div>
+                        <div class="q6-tutorial-codeblock-code">
+                            <button class="q6-button q6-button--round q6-button--copy">
+                                Copy
+                                <div class="q6-flash-message">copied</div>
+                            </button>
+                            <pre><code class="hljs">task.Start(transcodingProfiles, videoUrl, transferMethod);</code></pre>                    
+                        </div>
+                    </div>
+                    <div class="q6-tutorial-codeblock__result">
+                        
+                    </div>                
+                </div>
 
             </div>
 
 
-            <div class="q6-tutorial-content-title">Authenticate API</div>
-            <p>
-                The API instance is used to communicate with the Qencode REST API. 
-                To authenticate, use your API key.
-            </p>   
-
-
-            <div class="q6-tutorial-codeblock-container">
-                <div class="q6-tutorial-codeblock__example">                    
-                    <div class="q6-tutorial-codeblock-controls">
-                        <div class="q6-btn_run-code"></div>
-                    </div>
-                    <div class="q6-tutorial-codeblock-code">
-                        <button class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>
-                        <pre><code>const apiKey = "5c924a5b76341"; // taken from your account
-const qencodeApiClient = new QencodeApiClient(apiKey);</code></pre>                    
-                    </div>
-                </div>
-                <div class="q6-tutorial-codeblock__result" style="display:none;">
-
-                </div>                
-            </div>                
-
-
-            <div class="q6-tutorial-content-title">Create a Task</div>
-            <p>
-                To begin, first create a task for your transcoding job.
-            </p>    
-
-            <div class="q6-tutorial-codeblock-container">
-                <div class="q6-tutorial-codeblock__example">                    
-                    <div class="q6-tutorial-codeblock-controls">
-                        <div class="q6-btn_run-code"></div>
-                    </div>
-                    <div class="q6-tutorial-codeblock-code">
-                        <button class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>
-                        <pre><code>let task = qencodeApiClient.CreateTask();</code></pre>                    
-                    </div>
-                </div>
-                <div class="q6-tutorial-codeblock__result" style="display:none;">
-
-                </div>                
-            </div>                    
-
-
             <div class="q6-tutorial-buttons">
                 <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Back</button>
-                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
-            </div>                
-
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Continue</button>            
+            </div>            
 
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>         
+            </script>            
 
             <script>
                 $(function () {                
