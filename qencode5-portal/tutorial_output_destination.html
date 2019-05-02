@@ -173,6 +173,29 @@
                 </div>           
 
                 <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
+
+                    <div class="q6-tutorial-cards-switch">
+                        <div class="q6-tutorial-cards-switch__block q6-tutorial-cards-switch__block--active">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Qencode S3</div>
+                                <p>
+                                    <strong>$5/month <br> 250 GB </strong>
+                                    (additional $0.02/GB)
+                                </p>                            
+                            </div>
+                        </div>
+                        <div class="q6-tutorial-cards-switch__block">
+                            <div class="q6-tutorial-cards-switch__icon"></div>
+                            <div>
+                                <div class="q6-tutorial-cards-switch__title">Free</div>
+                                <p>
+                                    Store your files temporarily on our
+                                    server for free up to 24 hours
+                                </p>                            
+                            </div>
+                        </div>
+                    </div>
                 
                     <div class="q6-input-and-buttons--inline">
                         <div class="q6-input q6-input--region-name">
@@ -232,7 +255,20 @@
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>         
+            </script>          
+
+            <script>
+                $(function () {
+                    // switch active cards
+                    $('.q6-tutorial-cards-switch__block').click(function(){                                            
+                        $(this).closest('.q6-tutorial-cards-switch')
+                            .find('.q6-tutorial-cards-switch__block--active')
+                            .removeClass('q6-tutorial-cards-switch__block--active');
+                        
+                        $(this).addClass('q6-tutorial-cards-switch__block--active'); 
+                    });
+                });  
+            </script>                                
 
             <script>
                 $(function () {
@@ -260,22 +296,7 @@
                     });
                 })
             </script>               
-
-            <script>
-                $(function () { 
-                    // mockup events on Add custom sizes to encoding profiles   
-                    $('.q6-tutorial-profile__add-custom').click(function(){
-                        // close all open forms
-                        $('.q6-tutorial-profile__add-custom-form').hide();
-                        $(this).find('.q6-tutorial-profile__add-custom-form').show();
-                    });                     
-
-                    $('.q6-tutorial-profile__add-custom-form .q6-button').click(function(e){
-                        e.stopPropagation();
-                        $(this).closest('.q6-tutorial-profile__add-custom-form').hide();
-                    });
-                });  
-            </script>     
+  
 
             <script>
                 $(function () {                
