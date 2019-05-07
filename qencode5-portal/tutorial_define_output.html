@@ -159,30 +159,15 @@
                 These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
                 You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
             </p>  
+          
+            
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline">
+                <div class="q6-tutorial-input-and-info">        
+                    <div class="q6-tutorial-input-and-info__info">
+                        <div class="q6-tutorial-content-title">Profile output settings</div>   
+                        <p>Update formats and codecs below</p>                    
+                    </div>     
 
-            <div class="q6-tutorial-inputs-block">
-
-                <div class="q6-input-and-buttons--inline">
-                    <div class="q6-input">
-                        <div class="q6-input__label q6-input__label--with-question">
-                            <label for="input_minutes">Select Preferred Devices</label>
-                            <div class="q6-question-icon"></div>
-                        </div>
-                        <div class="q6-checkboxes-container">
-                            <label class="q6-image-text-checkbox-container">                                                              
-                                <input class="q6-input__field" type="checkbox">
-                                <span class="q6-image-text-checkbox q6-image-text-checkbox--web">Web</span>
-                            </label>            
-                            <label class="q6-image-text-checkbox-container">                                
-                                <input class="q6-input__field" type="checkbox">
-                                <span class="q6-image-text-checkbox q6-image-text-checkbox--mobile">Mobile</span>
-                            </label>   
-                            <label class="q6-image-text-checkbox-container">                                
-                                <input class="q6-input__field" type="checkbox">
-                                <span class="q6-image-text-checkbox q6-image-text-checkbox--ott">OTT</span>
-                            </label>                                                                           
-                        </div>                                  
-                    </div>                 
                     <div class="q6-input">
                         <div class="q6-input__label q6-input__label--with-question">
                             <label for="input_minutes">Optimize Bitrate</label>
@@ -194,29 +179,18 @@
                                 <span class="q6-switch__slider"></span>
                             </label>  
                         </div>                                  
-                    </div>    
-                    <div class="q6-input">
-                        <div class="q6-input__label q6-input__label--with-question">
-                            <label for="input_minutes">Optimize Ladder</label>
-                            <div class="q6-question-icon"></div>
-                        </div>
-                        <div class="q6-switch-container">
-                            <label class="q6-switch">
-                                <input class="q6-input__field" type="checkbox">
-                                <span class="q6-switch__slider"></span>
-                            </label>  
-                        </div>                                  
-                    </div>                     
-                    <button id="generate-profiles" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Generate Profiles</button>                                      
-                </div>                        
-
-            </div>           
-            
-            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline">
-                <div class="q6-tutorial-content-title">Recommended Transcoding Profiles</div>
+                    </div>                                  
+                </div>   
                 <div class="q6-tutorial-profiles-container">
                     <div class="q6-tutorial-profile">
-                        <div class="q6-tutorial-profile__title">Profile ID: 5c924a5b76341</div>
+                        <div class="q6-tutorial-profile-header">
+                            <div class="q6-tutorial-profile__title">Profile ID: <span class="q6-tutorial-profile__title-id">5c924a5b76341</span></div>
+                            <div class="q6-tutorial-profile-actions">
+                                <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                    <div class="q6-flash-message">Copied</div>
+                                </div>
+                            </div>                            
+                        </div>                        
                         <table class="q6-tutorial-profile__parameters-selector">
                             <tr>
                                 <td>Format:</td>
@@ -242,23 +216,254 @@
 
                         <table class="q6-tutorial-profile-details">
                             <thead>
-                                <tr><th>Resolution</th><th>Bitrate</th></tr>
+                                <tr><th>Resolution</th><th>Quality</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td>1920 x 1080</td><td><div>10 Mbps <div class="q6-tutorial-profile-details__delete"></div> </div></td></tr>
-                                <tr><td>1024 x 576</td><td><div>2.5 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>786 x 432</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>640 x 360</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>1920 x 1080</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>512 x 288</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>384 x 216</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
+                                <tr>
+                                    <td>1920 x 1080</td><td>10 Mbps</td> 
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td>1024 x 576</td><td>2.5 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr> 
+                                <tr>
+                                    <td>786 x 432</td><td>1 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>      
+                                <tr>
+                                    <td>640 x 360</td><td>1 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>  
+                                <tr>
+                                    <td>1920 x 1080</td><td>1 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>                                                                                                                            
+                                <tr>
+                                    <td>512 x 288</td><td>1 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>   
+                                <tr>
+                                    <td>384 x 216</td><td>1 Mbps</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>    
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Bitrate (Mbps)</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <div class="q6-tutorial-profile__add-custom">
                                             + Add custom
-                                            <div class="q6-tutorial-profile__add-custom-form">
+                                            <div class="q6-tutorial-profile__form">
                                                 <div class="q6-input-and-buttons--inline">
                                                     <div class="q6-input">
                                                         <div class="q6-input__label">
@@ -289,80 +494,17 @@
                         </table>   
 
                     </div>
+
                     <div class="q6-tutorial-profile">
-                        <div class="q6-tutorial-profile__title">Profile ID: 5c924a5b76122</div>
-                        <table class="q6-tutorial-profile__parameters-selector">
-                            <tr>
-                                <td>Format:</td>
-                                <td>
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select">
-                                            <option value="mp4">MP4</option>
-                                        </select>
-                                    </div>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Codec:</td>
-                                <td>
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select">
-                                            <option value="h264">h264</option>
-                                        </select>
-                                    </div>                                
-                                </td>
-                            </tr>                            
-                        </table>  
-                        <table class="q6-tutorial-profile-details">
-                            <thead>
-                                <tr><th>Resolution</th><th>Bitrate</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>1920 x 1080</td><td><div>10 Mbps <div class="q6-tutorial-profile-details__delete"></div> </div></td></tr>
-                                <tr><td>1024 x 576</td><td><div>2.5 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>786 x 432</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>640 x 360</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>1920 x 1080</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>512 x 288</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>384 x 216</td><td><div>1 Mbps <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="q6-tutorial-profile__add-custom">
-                                            + Add custom
-                                            <div class="q6-tutorial-profile__add-custom-form">
-                                                <div class="q6-input-and-buttons--inline">
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label for="input_minutes">Height</label>
-                                                        </div>
-                                                        <input id="user-project-name" class="q6-input__field" type="text">
-                                                    </div>     
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label for="input_minutes">Width</label>
-                                                        </div>
-                                                        <input id="user-project-name" class="q6-input__field" type="text">
-                                                    </div>    
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label for="input_minutes">Bitrate (Mbps)</label>
-                                                        </div>
-                                                        <input id="user-project-name" class="q6-input__field" type="text">
-                                                    </div>              
-                                                    <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
-                                                    <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Add</button>                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tfoot>                        
-                        </table>                                              
-                    </div>
-                    <div class="q6-tutorial-profile">
-                        <div class="q6-tutorial-profile__title">Profile ID: 5c924a5b76889</div>
+                        <div class="q6-tutorial-profile-header">
+                            <div class="q6-tutorial-profile__title">Profile ID: <span class="q6-tutorial-profile__title-id">5c924a5b76889</span></div>
+                            <div class="q6-tutorial-profile-actions">
+                                <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                    <div class="q6-flash-message">Copied</div>
+                                </div>
+                                <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                            </div>                            
+                        </div>  
                         <table class="q6-tutorial-profile__parameters-selector">
                             <tr>
                                 <td>Format:</td>
@@ -387,23 +529,212 @@
                         </table>    
                         <table class="q6-tutorial-profile-details">
                             <thead>
-                                <tr><th>Resolution</th><th>Bitrate</th></tr>
+                                <tr><th>Resolution</th><th>Quality</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td>1920 x 1080</td><td><div>optimized<div class="q6-tutorial-profile-details__delete"></div> </div></td></tr>
-                                <tr><td>1024 x 576</td><td><div>optimized <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>786 x 432</td><td><div>optimized <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>640 x 360</td><td><div>optimized<div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>1920 x 1080</td><td><div>optimized<div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>512 x 288</td><td><div>optimized <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
-                                <tr><td>384 x 216</td><td><div>optimized <div class="q6-tutorial-profile-details__delete"></div></div></td></tr>
+                                <tr>
+                                    <td>1920 x 1080</td><td>optimized</td> 
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>                
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td>1024 x 576</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>                
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr> 
+                                <tr>
+                                    <td>786 x 432</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>                
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>      
+                                <tr>
+                                    <td>640 x 360</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>  
+                                <tr>
+                                    <td>1920 x 1080</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>              
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>                                                                                                                            
+                                <tr>
+                                    <td>512 x 288</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>                 
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>   
+                                <tr>
+                                    <td>384 x 216</td><td>optimized</td>
+                                    <td>
+                                        <div class="q6-tutorial-profile-actions">
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit">                                                                             
+                                                <div class="q6-tutorial-profile__form">
+                                                    <div class="q6-input-and-buttons--inline">
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Height</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>     
+                                                        <div class="q6-input">
+                                                            <div class="q6-input__label">
+                                                                <label for="input_minutes">Width</label>
+                                                            </div>
+                                                            <input id="user-project-name" class="q6-input__field" type="text">
+                                                        </div>                 
+                                                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>                                                                                              
+                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>                                   
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                        </div>
+                                    </td> 
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <div class="q6-tutorial-profile__add-custom">
                                             + Add custom
-                                            <div class="q6-tutorial-profile__add-custom-form">
+                                            <div class="q6-tutorial-profile__form">
                                                 <div class="q6-input-and-buttons--inline">
                                                     <div class="q6-input">
                                                         <div class="q6-input__label">
@@ -427,6 +758,10 @@
                             </tfoot>                        
                         </table>                                               
                     </div>
+
+                    <div class="q6-tutorial-profile q6-tutorial-profile--add-new">
+                        <button class="q6-button q6-button--round">+ Add profile</button>
+                    </div>
                 </div>
             </div>               
 
@@ -437,6 +772,9 @@
             </p>              
 
             <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-code-block-flash-message">
+                    <div><img src="img/check_blue.png"> <span>Copied</span></div>
+                </div>
                 <div class="q6-tutorial-codeblock__example">                    
                     <div class="q6-tutorial-codeblock-controls">
                         <div class="q6-btn_run-code"></div>
@@ -466,31 +804,15 @@ const transcodingProfiles = ["5c924a5b76341", "5c924a5b76122", "5c924a5b76889"];
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>         
-
-            <script>
-                $(function () { 
-                    // mockup events on Add custom sizes to encoding profiles   
-                    $('.q6-tutorial-profile__add-custom').click(function(){
-                        // close all open forms
-                        $('.q6-tutorial-profile__add-custom-form').hide();
-                        $(this).find('.q6-tutorial-profile__add-custom-form').show();
-                    });                     
-
-                    $('.q6-tutorial-profile__add-custom-form .q6-button').click(function(e){
-                        e.stopPropagation();
-                        $(this).closest('.q6-tutorial-profile__add-custom-form').hide();
-                    });
-                });  
-            </script>     
+            </script>       
 
             <script>
                 $(function () {                
-                    // copy code
-                    $(".q6-tutorial-codeblock-container .q6-button--copy").click(function (){
+                    // copy profile ID
+                    $(".q6-tutorial-profile-details__copy").click(function (){
 
                         try { 
-                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                            var cellTextNode = $(this).closest('.q6-tutorial-profile-header').find('.q6-tutorial-profile__title-id')[0];
                            
                             var selection = window.getSelection();        
                             var range = document.createRange();
@@ -522,6 +844,61 @@ const transcodingProfiles = ["5c924a5b76341", "5c924a5b76122", "5c924a5b76889"];
                     });                           
                 });
             </script>
+           
+
+            <script>
+                $(function () { 
+                    // mockup events on Add custom sizes or Update sizes to encoding profiles   
+                    $('.q6-tutorial-profile__add-custom, .q6-tutorial-profile-details__edit').click(function(){
+                        // close all open forms
+                        $('.q6-tutorial-profile__form').hide();
+                        $(this).find('.q6-tutorial-profile__form').show();
+                    });                     
+
+                    $('.q6-tutorial-profile__form .q6-button').click(function(e){
+                        e.stopPropagation();
+                        $(this).closest('.q6-tutorial-profile__form').hide();
+                    });
+                });  
+            </script>     
+
+            <script>
+                $(function () {                
+                    // copy code
+                    $(".q6-tutorial-codeblock-container .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).closest('.q6-tutorial-codeblock-container').find('.q6-tutorial-code-block-flash-message')[0];                                                                         
+
+                            if(successful) {                       
+                                $(flashMessage)
+                                    .slideDown(100)
+                                    .delay(800)                                     
+                                    .fadeOut(200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+
 
 
         </div>

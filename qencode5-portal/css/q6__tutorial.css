@@ -717,9 +717,20 @@
     font-size: 14px;
 }
 
+.q6-tutorial-profile--add-new{
+    min-width: 250px;
+    border: 1px solid #dae0ea;
+    border-radius: 7px;
+    margin-right: 0;   
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+}
+
 
 .q6-tutorial-profile__title{
     white-space: nowrap;
+    margin-right: 5px;
 }
 
 .q6-tutorial-profile__parameters-selector{
@@ -735,6 +746,7 @@
 .q6-tutorial-profile__parameters-selector .q6-select{
     font-size: 14px;
     padding: 5px;
+    padding-left: 10px;
     font-weight: 400;
     border: none;
     background: #f0f5fe;
@@ -750,7 +762,7 @@
 }
 
 .q6-tutorial-profile__parameters-selector tr > td:nth-of-type(2){
-    width: 65%;
+    width: 73%;
 }
 
 .q6-tutorial-profile__parameters-selector tr:first-of-type .q6-select{
@@ -765,10 +777,11 @@
 
 
 .q6-tutorial-profile-details{
-    border-collapse: collapse;    
-    margin-top: 10px;   
+    margin-top: 10px;
     width: 105%;
     margin-left: -5px;
+    border-collapse: separate;
+    border-spacing: 0 5px;
 }
 
 
@@ -776,9 +789,7 @@
     padding: 5px;
 }
 
-.q6-tutorial-profile-details td > div{
-    position: relative;
-}
+
 
 
 .q6-tutorial-profile-details th{
@@ -786,14 +797,14 @@
     padding: 3px 5px;
     color: #a6a8af;
     font-weight: 500;
+    border-bottom: 1px solid #d7d7d7;
 }
 
-.q6-tutorial-profile-details tbody{
-    border-bottom: 1px solid #d7d7d7;
+.q6-tutorial-profile-details tfoot td{
     border-top: 1px solid #d7d7d7;
 }
 
-.q6-tutorial-profile-details tbody td:last-of-type{
+.q6-tutorial-profile-details tbody td:nth-last-of-type(2){
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     padding-right: 15px;
@@ -804,22 +815,73 @@
     border-bottom-left-radius: 6px;
 }
 
-.q6-tutorial-profile-details tbody tr:hover{
-    background: #ffebeb;
+.q6-tutorial-profile-details tbody tr:hover td{
+    background: #f0f5fe;
 }
 
-.q6-tutorial-profile-details__delete{
+.q6-tutorial-profile-details tbody tr:hover td:last-of-type{
+    background: none;
+}
+
+
+.q6-tutorial-profile-details tbody tr td:last-of-type {
+    padding: 0 5px;
+    min-width: 55px;
+}
+
+.q6-tutorial-profile-actions{
     display: none;
-    position: absolute;
-    top:1px;
-    right: -9px;
+}
+
+.q6-tutorial-profile-header .q6-tutorial-profile-actions{
+    display: block;
+}
+
+.q6-tutorial-profile-header{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-profile-actions__icon{
     cursor: pointer;
-    width: 10px;
-    height: 12px;
+    width: 23px;
+    height: 23px;    
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    margin-right: 2px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.q6-tutorial-profile-actions__icon:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-profile-actions__icon:hover{
+    background-color: #f0f5fe;
+}
+
+
+.q6-tutorial-profile-actions__icon .q6-tutorial-profile__form{
+    left: 0;
+    top: -12px;
+}
+
+
+.q6-tutorial-profile-details__delete{
     background-image: url(../img/profiles_delete_icon.png);    
 }
 
-.q6-tutorial-profile-details tbody tr:hover .q6-tutorial-profile-details__delete{
+.q6-tutorial-profile-details__edit{
+    background-image: url(../img/profiles_edit_icon.png);      
+}
+
+.q6-tutorial-profile-details__copy{
+    background-image: url(../img/profiles_copy_icon.png);       
+}
+
+.q6-tutorial-profile-details tbody tr:hover .q6-tutorial-profile-actions {
     display: block;
 }
 
@@ -831,7 +893,7 @@
     position: relative;
 }
 
-.q6-tutorial-profile__add-custom-form{
+.q6-tutorial-profile__form{
     display: none;
     position: absolute;
     top: -15px;
@@ -846,27 +908,27 @@
     z-index: 1;
 }
 
-.q6-tutorial-profile__add-custom-form .q6-input-and-buttons--inline {
+.q6-tutorial-profile__form .q6-input-and-buttons--inline {
     flex-wrap:nowrap;
 }
 
-.q6-tutorial-profile__add-custom-form .q6-button,
-.q6-tutorial-profile__add-custom-form input[type=text].q6-input__field{
+.q6-tutorial-profile__form .q6-button,
+.q6-tutorial-profile__form input[type=text].q6-input__field{
     padding: 0 13px;
     line-height: 32px;
     font-size: 15px;
 }
 
-.q6-tutorial-profile__add-custom-form .q6-input__label{
+.q6-tutorial-profile__form .q6-input__label{
     font-size: 14px;
 }
 
-.q6-tutorial-profile__add-custom-form .q6-input-and-buttons--inline .q6-input {
+.q6-tutorial-profile__form .q6-input-and-buttons--inline .q6-input {
     margin-top: 0;
     min-width: 80px;
 }
 
-.q6-tutorial-profile__add-custom-form:before {
+.q6-tutorial-profile__form:before {
     position: absolute;
     content: '';
     border-style: solid;
@@ -974,6 +1036,18 @@
 
 .q6-tutorial-input-and-info{
     display: flex;
+    align-items: flex-start;
+}
+
+.q6-tutorial-input-and-info .q6-input{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 0;
+}
+
+.q6-tutorial-input-and-info__info{
+    flex: 1;
 }
 
 .q6-tutorial-input-and-info .q6-switch{
