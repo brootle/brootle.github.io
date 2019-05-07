@@ -220,11 +220,33 @@
                         </div>                          
                     </div>
 
-                    <label class="q6-checkbox">
-                        Public permissions
-                        <input id="public-pernissions" type="checkbox" checked disabled>
-                        <span class="q6-checkmark"></span>
-                    </label>                                                                                                       
+                    <div class="q6-input-and-buttons--inline">
+                        <div class="q6-input">
+                            <div class="q6-input__label">
+                                <label>Type</label>
+                            </div>                        
+                            <div class="q6-custom-select">
+                                <select id="bucket-type" class="q6-select" disabled>
+                                    <option value="1">Public</option>
+                                </select>
+                            </div>
+                        </div>           
+
+                        <div class="q6-input">
+                            <div class="q6-input__label">
+                                <label>CORS Configurations:</label>
+                            </div>                        
+                            <div class="q6-custom-select">
+                                <select id="cors-selector" class="q6-select" disabled>
+                                    <option value="1">Share with this:</option>
+                                </select>
+                            </div>
+                        </div>                                       
+                        
+                        <div class="q6-input q6-input--cors-origin">
+                            <input id="cors-origin" class="q6-input__field" type="text" value="https://www.google.com/" disabled>
+                        </div>                          
+                    </div>                                                                                                         
 
                 </div> 
 
@@ -350,7 +372,7 @@
                 $(function () {
                     // Edit bucket 
                     $('#edit-bucket').click(function(){                                                                    
-                        $('#public-pernissions, #region, #bucket').prop('disabled', false);
+                        $('#public-pernissions, #region, #bucket, #bucket-type, #cors-selector, #cors-origin').prop('disabled', false);
                         $('#update-bucket').show();
                     });
                 });  
