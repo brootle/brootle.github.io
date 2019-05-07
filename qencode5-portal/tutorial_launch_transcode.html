@@ -161,6 +161,9 @@
             </p>  
 
             <div class="q6-tutorial-codeblock-container">
+                <div class="q6-tutorial-code-block-flash-message">
+                    <div><img src="img/check_blue.png"> <span>Copied</span></div>
+                </div>                 
                 <div class="q6-tutorial-codeblock__example">                    
                     <div class="q6-tutorial-codeblock-controls">
                         <div class="q6-btn_run-code"></div>
@@ -219,6 +222,9 @@
                 </p>  
 
                 <div class="q6-tutorial-codeblock-container">
+                    <div class="q6-tutorial-code-block-flash-message">
+                        <div><img src="img/check_blue.png"> <span>Copied</span></div>
+                    </div>                    
                     <div class="q6-tutorial-codeblock__example">                    
                         <div class="q6-tutorial-codeblock-controls">
                             <div class="q6-btn_run-code"></div>
@@ -265,15 +271,13 @@
 
                             var successful = document.execCommand('copy');         
 
-                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+                            var flashMessage = $(this).closest('.q6-tutorial-codeblock-container').find('.q6-tutorial-code-block-flash-message')[0];                                                                         
 
-                            if(successful) {
-                                //console.log("copied");                                
-                                $(flashMessage).html('Copied');
+                            if(successful) {                       
                                 $(flashMessage)
-                                    .animate({ opacity: 1 }, 200)
-                                    .delay(500)     
-                                    .animate({ opacity: 0 }, 200)                                                                             
+                                    .slideDown(100)
+                                    .delay(800)                                     
+                                    .fadeOut(200)                                                                             
                             }
                             else
                             { 
