@@ -7,6 +7,8 @@
 
     <link rel="icon" type="image/png" href="img/favicon.png">  
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -214,72 +216,25 @@
                     </div>
                     <div class="q6-authorize-window">
 
-                        <h2 id="card-form-title">Save billing details</h2>                        
+                        <h2 id="card-form-title">Add funds to wallet</h2>                        
 
                         <div class="q6-payment-switch">
-                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button q6-payment-switch__button--active">
+                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button q6-payment-switch__button--active">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
+                                <p>Use PayPal</p>
+                            </div>                            
+                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button">
                                 <div class="q6-payment-switch__icon q6-payment-switch__icon--card"></div>
                                 <p>Save Credit Card</p>
                             </div>
-                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button">
-                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
-                                <p>Add Funds with PayPal</p>
-                            </div>
+                            <div data-form="free-trial-form" data-title="Free Trial Account" class="q6-payment-switch__button">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--trial"></div>
+                                <p>14-day Trial</p>
+                            </div>                            
                         </div>
                         
-                        <div id="credit-card-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
-                            <div class="q6-input q6-lock-icon">
-                                <div class="q6-input__label">
-                                    <label>Name</label>
-                                </div>
-                                <input class="q6-input__field" type="text">
-                            </div>      
-    
-                            <div class="q6-input">
-                                <div class="q6-input__label">
-                                    <label for="user_card">Card number</label>
-                                </div>
 
-                                <div id="card-element"></div>
-                                <script src="https://js.stripe.com/v3/"></script> 
-                                <script> 
-                                    var stripe = Stripe('123');
-                                    var elements = stripe.elements();
-                                    var style = {
-                                        base: {
-                                            color: '#171717',
-                                            lineHeight: '22px',
-                                            height: '22px',
-                                            fontFamily: 'proxima-nova, sans-serif',
-                                            fontSmoothing: 'antialiased',
-                                            fontSize: '18px',
-                                            fontWeight: '600',
-                                            '::placeholder': {
-                                                color: '#aab7c4'
-                                            }
-                                        },
-                                        invalid: {
-                                            color: '#fa755a',
-                                            iconColor: '#fa755a'
-                                        }
-                                    };
-                                    var card = elements.create('card', {style: style});
-                                    card.mount('#card-element');
-                                </script>                                                                            
-                            </div>                                                                                   
-
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
-
-                            <div class="q6-powered-by-stripe">
-                                <div class="q6-lock-icon--left">
-                                    Billing information secured and protected.
-                                </div>
-                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
-                            </div>                              
-
-                        </div>   
-                        
-                        <div id="paypal-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
+                        <div id="paypal-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
 
                             <p class="q6-form-message">
                                 Add PayPal credit to your account. This is a one-time payment 
@@ -354,7 +309,83 @@
                             </p>
 
                             <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Continue</button>
-                        </div>
+                        </div>                        
+
+
+                        <div id="credit-card-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
+                            <div class="q6-input q6-lock-icon">
+                                <div class="q6-input__label">
+                                    <label>Name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">
+                            </div>      
+    
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="user_card">Card number</label>
+                                </div>
+
+                                <div id="card-element"></div>
+                                <script src="https://js.stripe.com/v3/"></script> 
+                                <script> 
+                                    var stripe = Stripe('123');
+                                    var elements = stripe.elements();
+                                    var style = {
+                                        base: {
+                                            color: '#171717',
+                                            lineHeight: '22px',
+                                            height: '22px',
+                                            fontFamily: 'proxima-nova, sans-serif',
+                                            fontSmoothing: 'antialiased',
+                                            fontSize: '18px',
+                                            fontWeight: '600',
+                                            '::placeholder': {
+                                                color: '#aab7c4'
+                                            }
+                                        },
+                                        invalid: {
+                                            color: '#fa755a',
+                                            iconColor: '#fa755a'
+                                        }
+                                    };
+                                    var card = elements.create('card', {style: style});
+                                    card.mount('#card-element');
+                                </script>                                                                            
+                            </div>                                                                                   
+
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
+
+                            <div class="q6-powered-by-stripe">
+                                <div class="q6-lock-icon--left">
+                                    Billing information secured and protected.
+                                </div>
+                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
+                            </div>                              
+
+                        </div>         
+
+                        <div id="free-trial-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
+                            
+                            <p class="q6-form-message">
+                                Get full access to try Qencode yourself for free up to 14 days.
+                            </p>                            
+                            
+                            <div class="q6-trial-details">
+                                <div class="q6-trial-details__list">
+                                    <div class="q6-trial-details__list-title">Trial is limited to:</div>
+                                    <p><span class="q6-blue-text">14</span> days</p>
+                                    <p><span class="q6-blue-text">80</span> videos</p>
+                                    <p><span class="q6-blue-text">1000</span> minutes</p>
+                                </div>
+                                <div class="q6-watermark-message">
+                                    <div class="q6-watermark-icon"></div>
+                                    <p class="q6-blue-text">Qencode watermark on every video</p>
+                                </div>
+                            </div>                                                                                 
+
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create Account</button>                           
+
+                        </div>                                             
 
 
                         <script>
