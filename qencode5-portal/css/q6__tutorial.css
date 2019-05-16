@@ -1108,3 +1108,156 @@
     margin-right: 10px;
 }
 /* COPY CODE FLASH MESSAGE */
+
+
+/* TRANSCODING PROGRESS */
+.q6-transcoding-progress{
+    display: flex;
+}
+
+.q6-transcoding-progress-block{
+    flex: 1;
+}
+
+.q6-transcoding-progress__bar{
+    height: 18px;
+    width: 100%;
+    background: #f0f3f7;
+    margin: 10px 0;
+    position: relative;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar{
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar{
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+}
+
+.q6-transcoding-progress__bar:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #b6c4cc;
+    left: 0px;
+    top: 5px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar:before {
+    left: 6px;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block--finished:first-of-type 
+    .q6-transcoding-progress__bar:before {
+    left: 1px;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar:before {
+    left: initial;
+    right: 6px;
+}
+
+.q6-transcoding-progress__status{
+    font-size: 14px;
+    font-weight: 500; 
+    line-height: 17px;  
+    color: #525252; 
+    white-space: nowrap;
+}
+
+.q6-transcoding-progress__status span{
+    color: #306eea;
+    font-size: 16px;
+}
+
+.q6-transcoding-progress__date{
+    font-size: 14px;
+    color: #838383;
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+
+.q6-transcoding-progress-block--current .q6-transcoding-progress__status {
+    color: #306eea;
+}
+
+.q6-transcoding-progress-block--current .q6-transcoding-progress__bar:before{
+    background: #306eea;
+}
+
+.q6-transcoding-progress-block--finished .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/checked_blue.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--finished 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/checked_blue.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 1px;
+    top: 1px;
+}
+
+.q6-transcoding-progress--finished  
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/checked_blue.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: initial;
+    right: 1px;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--finished .q6-transcoding-progress__bar{
+    background: #d7edff;
+}
+
+
+.q6-transcoding-progress-block--last-finished .q6-transcoding-progress__bar {
+    width: calc(100% + 15px);
+    z-index: 1;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-image: linear-gradient(to right, #d7edff , #e5f4ff);
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block--finished:last-of-type .q6-transcoding-progress__bar:before {
+    right: 1px;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block:last-of-type{
+    text-align: right;
+}
+
+.q6-small-loader {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background-image: url(../img/loader.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 2px;
+}
+/* TRANSCODING PROGRESS */
