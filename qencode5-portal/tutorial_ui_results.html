@@ -17,6 +17,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>    
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link href="css/q6.css" rel="stylesheet">
     
     <link href="css/hamburgers.css" rel="stylesheet">
@@ -368,7 +370,7 @@
                                     </div>
                                     <div class="q6-tutorial-files-table__cell">
                                         <div class="q6-tutorial-files-table__cell-buttons">
-                                            <button class="q6-button q6-button--round q6-button--play-video"></button>
+                                            <button data-toggle="modal" data-target="#videoModal" class="q6-button q6-button--round q6-button--play-video"></button>
                                             <button class="q6-button q6-button--round q6-button--copy">
                                                 Copy
                                                 <div class="q6-flash-message">copied</div>
@@ -407,7 +409,7 @@
                                     </div>
                                     <div class="q6-tutorial-files-table__cell">
                                         <div class="q6-tutorial-files-table__cell-buttons">
-                                            <button class="q6-button q6-button--round q6-button--play-video"></button>
+                                            <button data-toggle="modal" data-target="#videoModal" class="q6-button q6-button--round q6-button--play-video"></button>
                                             <button class="q6-button q6-button--round q6-button--copy">
                                                 Copy
                                                 <div class="q6-flash-message">copied</div>
@@ -433,7 +435,7 @@
                                     </div>
                                     <div class="q6-tutorial-files-table__cell">
                                         <div class="q6-tutorial-files-table__cell-buttons">
-                                            <button class="q6-button q6-button--round q6-button--play-video"></button>
+                                            <button data-toggle="modal" data-target="#videoModal" class="q6-button q6-button--round q6-button--play-video"></button>
                                             <button class="q6-button q6-button--round q6-button--copy">
                                                 Copy
                                                 <div class="q6-flash-message">copied</div>
@@ -472,7 +474,7 @@
                                     </div>
                                     <div class="q6-tutorial-files-table__cell">
                                         <div class="q6-tutorial-files-table__cell-buttons">
-                                            <button class="q6-button q6-button--round q6-button--play-video"></button>
+                                            <button data-toggle="modal" data-target="#videoModal" class="q6-button q6-button--round q6-button--play-video"></button>
                                             <button class="q6-button q6-button--round q6-button--copy">
                                                 Copy
                                                 <div class="q6-flash-message">copied</div>
@@ -491,6 +493,26 @@
                     <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Go to Dashboard</button>       
                 <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Transcode another video</button>            
             </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade q6-modal--video-player" id="videoModal" role="dialog">
+                <div class="modal-dialog">                 
+
+                    <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>                    
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="q6-video-preview-container">
+                            <div class="q6-video-preview__player">
+                                <video class="q6-video-player" id="video_player" controls="controls" autoplay="autoplay" src="https://dev-storage.qencode.com/storage/sfo2/qencode-temp-sfo2/dc92088f2a4219615873ff259ad49a77/mp4/1/e13c17647aec11e9ade21ecd7885d7ce.mp4"></video>
+                            </div>
+                        </div>                       
+                    </div>
+
+                </div>
+            </div>
+            <!-- Modal ends -->                 
             
             <script>
                 $(function () {                
