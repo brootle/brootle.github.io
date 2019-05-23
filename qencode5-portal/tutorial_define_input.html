@@ -124,10 +124,9 @@
                     </div>
                 </div>
             </div>   
-            <div class="q6-tutorial-content-title">Define Input Video</div>
+            <div class="q6-tutorial-content-title">Choose Video</div>
             <p>
-                Enter a URL for a video you want to transcode or use one of our sample videos from the dropdown.
-                You can also upload a video from your computer by switching to Upload tab.
+                Enter the URL of your source video or switch tabs to Upload your video to Qencode.
             </p>  
 
             <div class="q6-tutorial-add-videos-container">
@@ -211,19 +210,21 @@
                                             <span class="q6-switch__slider"></span>
                                         </label>  
                                     </div>                                  
-                                </div>      
-                                <div class="q6-input">
-                                    <div class="q6-input__label">
-                                        <label for="input_minutes">Start time</label>
-                                    </div>
-                                    <input class="q6-input__field" type="text" disabled>
-                                </div>   
-                                <div class="q6-input">
-                                    <div class="q6-input__label">
-                                        <label for="input_minutes">Duration (sec)</label>
-                                    </div>
-                                    <input class="q6-input__field" type="text" disabled>
-                                </div>                                                                                             
+                                </div>     
+                                <div class="q6-tutorial-clip-timers" style="display: none;">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Start time</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>   
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Duration (sec)</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>    
+                                </div>                                                                                          
                             </div>
                             
                         </div>    
@@ -337,18 +338,20 @@
                                         </label>  
                                     </div>                                  
                                 </div>      
-                                <div class="q6-input">
-                                    <div class="q6-input__label">
-                                        <label for="input_minutes">Start time</label>
-                                    </div>
-                                    <input class="q6-input__field" type="text" disabled>
-                                </div>   
-                                <div class="q6-input">
-                                    <div class="q6-input__label">
-                                        <label for="input_minutes">Duration (sec)</label>
-                                    </div>
-                                    <input class="q6-input__field" type="text" disabled>
-                                </div>                                                                                             
+                                <div class="q6-tutorial-clip-timers" style="display: none;">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Start time</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>   
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Duration (sec)</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>    
+                                </div>                                                                                              
                             </div>                            
                             
                         </div>      
@@ -476,14 +479,13 @@
                         $(".q6-tutorial-video-method__clip input[type='checkbox']").change(function() {
                             if($(this).is(':checked')){
                                 $(this).closest(".q6-tutorial-video-method__clip")
-                                    .find("input[type='text']")
-                                    .prop("disabled", false);
+                                    .find('.q6-tutorial-clip-timers')
+                                    .show();
                             } else{
                                 $(this).closest(".q6-tutorial-video-method__clip")
-                                    .find("input[type='text']")
-                                    .val('')
-                                    .prop("disabled", true);                                
-                            }
+                                    .find('.q6-tutorial-clip-timers')
+                                    .hide();                               
+                            }                            
                         });                        
                     })
                 </script>                  
@@ -524,10 +526,7 @@
                 </div>            
             </div>
 
-            <div class="q6-tutorial-content-title">Transcoding parameters API</div>
-            <p>
-                Define url for a video you want to transcode.
-            </p>
+
 
             <div class="q6-tutorial-codeblock-container">
                 <div class="q6-tutorial-code-block-flash-message">
