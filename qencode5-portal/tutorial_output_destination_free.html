@@ -162,6 +162,57 @@
                 You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
             </p>  
 
+            <div>
+                <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--equal-padding">
+                    <div class="q6-tutorial-inputs__message">
+                        Transfer Method ID: <span class="q6-tutorial__transfer-method-id">23523dlfkjalsdf34</span> 
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>                      
+                    </div>
+                </div>               
+            </div>             
+
+            <script>
+                $(function () {                
+                    // copy transfer method ID
+                    $(".q6-tutorial-inputs__message .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-inputs__message').find('.q6-tutorial__transfer-method-id')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>             
+
 
             <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
 

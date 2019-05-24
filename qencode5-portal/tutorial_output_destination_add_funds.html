@@ -211,9 +211,10 @@
 
                     });                           
                 });
-            </script>                 
+            </script>                
 
-            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
+
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--warning q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
 
                 <div class="q6-tutorial-inputs-block__controls">
                     <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
@@ -226,161 +227,232 @@
 
                 <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
 
-                    <div class="q6-tutorial-cards-switch">
-                        <div class="q6-tutorial-cards-switch__block q6-tutorial-cards-switch__block--active">
-                            <div class="q6-tutorial-cards-switch__icon"></div>
-                            <div>
-                                <div class="q6-tutorial-cards-switch__title">Qencode S3</div>
-                                <p>
-                                    <strong>$5/month <br> 250 GB </strong>
-                                    (additional $0.02/GB)
-                                </p>                            
-                            </div>
+                    <div class="q6-upgrade-account-window">                   
+
+                        <h2 id="card-form-title">Add funds to wallet</h2>                        
+
+                        <div class="q6-payment-switch">
+                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button q6-payment-switch__button--active">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
+                                <p>Use PayPal</p>
+                            </div>                            
+                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button">
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--card"></div>
+                                <p>Save Credit Card</p>
+                            </div>                          
                         </div>
-                        <div class="q6-tutorial-cards-switch__block">
-                            <div class="q6-tutorial-cards-switch__icon"></div>
-                            <div>
-                                <div class="q6-tutorial-cards-switch__title">Free</div>
-                                <p>
-                                    Store your files temporarily on our
-                                    server for free up to 24 hours
-                                </p>                            
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="q6-input-and-buttons--inline">
-                        <div class="q6-input q6-input--region-name">
-                            <div class="q6-input__label">
-                                <label>Region name</label>
-                            </div>                        
-                            <div class="q6-custom-select">
-                                <select class="q6-select">
-                                    <option value="1">Asia Pacific (Singapore)</option>
-                                </select>
-                            </div>
-                        </div>                      
                         
-                        <div class="q6-input q6-input--bucket-name">
-                            <div class="q6-input__label">
-                                <label>Bucket name</label>
-                            </div>
-                            <input class="q6-input__field" type="text">
-                        </div>                          
-                    </div>         
 
-                    <div class="q6-tutorial-controls__content-checkboxes">
-                        <label class="q6-checkbox">
-                            Public permissions
-                            <input type="checkbox" id="public-permission">
-                            <span class="q6-checkmark"></span>
-                        </label>             
-                    </div>                    
+                        <div id="paypal-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
 
-                    <div class="q6-input-and-buttons--inline" id="public-permission-content" style="display: none;">
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label>Type</label>
-                            </div>                        
-                            <div class="q6-custom-select">
-                                <select class="q6-select">
-                                    <option value="1">Public</option>
-                                </select>
-                            </div>
-                        </div>           
+                            <p class="q6-form-message">
+                                Add PayPal credit to your account. This is a one-time payment 
+                                and may take up to five minutes to process.
+                            </p>
 
-                        <div class="q6-input">
-                            <div class="q6-input__label">
-                                <label>CORS Configurations:</label>
-                            </div>                        
-                            <div class="q6-custom-select">
-                                <select class="q6-select">
-                                    <option value="1">Share with this:</option>
-                                </select>
+                            <div class="q6-input">
+
+                                <div class="q6-input__label">
+                                    <label>Amount</label>
+                                </div>
+
+                                <div class="q6-custom-select">
+                                    <select class="q6-select" id="amount">
+                                        <option value="custom_amount">Custom amount</option>
+                                        <option value="5" selected="selected">$5.00</option>
+                                        <option value="10">$10.00</option>
+                                        <option value="20">$20.00</option>
+                                        <option value="50">$50.00</option>
+                                        <option value="100">$100.00</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>                                       
-                        
-                        <div class="q6-input q6-input--cors-origin">
-                            <input class="q6-input__field" type="text">
-                        </div>                          
-                    </div>                                                                                                               
+
+                            <div id="custom-amount-input" class="q6-input" style="display: none">
+                                <div class="q6-input__label">
+                                    <label>Enter USD Amount</label>
+                                </div>
+                                <input class="q6-input__field" type="text" id="custom-funds">
+                            </div>        
+
+
+                            <script>
+                                $(function () {
+
+                                    // when user inputs value
+                                    document.getElementById('custom-funds').addEventListener('input', function (e) {
+
+                                        if(e.target.value.includes(".")){
+                                            // if number is decimal
+                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
+
+                                            // allow only two digits after dots
+                                            var afterDotDigits = e.target.value.split('.')[1];
+                                            if(afterDotDigits.length > 2){
+                                                e.target.value = e.target.value.replace(/.$/, '');
+                                            }
+
+                                        } else{
+                                            // if the number is not decimal add spaces after thousands
+                                            e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                        }
+                                    });
+                                });
+                            </script>
+
+
+                            <script>
+                                $(function () {
+                                    $("#amount").change(function() {
+                                        if($(this).val() == "custom_amount"){
+                                            $("#custom-amount-input").show(100);
+                                        } else{
+                                            $("#custom-amount-input").hide(100);
+                                        }
+                                    });
+                                });
+                            </script>                                                
+
+                            <p class="q6-form-message">
+                                Payment between $5.00 and $10,000.00 are accepted
+                            </p>
+
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Continue</button>
+                            <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Back</button>
+                        </div>                        
+
+
+                        <div id="credit-card-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
+                            <div class="q6-input q6-lock-icon">
+                                <div class="q6-input__label">
+                                    <label>Name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">
+                            </div>      
+    
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="user_card">Card number</label>
+                                </div>
+
+                                <div id="card-element"></div>
+                                <script src="https://js.stripe.com/v3/"></script> 
+                                <script> 
+                                    var stripe = Stripe('123');
+                                    var elements = stripe.elements();
+                                    var style = {
+                                        base: {
+                                            color: '#171717',
+                                            lineHeight: '22px',
+                                            height: '22px',
+                                            fontFamily: 'proxima-nova, sans-serif',
+                                            fontSmoothing: 'antialiased',
+                                            fontSize: '18px',
+                                            fontWeight: '600',
+                                            '::placeholder': {
+                                                color: '#aab7c4'
+                                            }
+                                        },
+                                        invalid: {
+                                            color: '#fa755a',
+                                            iconColor: '#fa755a'
+                                        }
+                                    };
+                                    var card = elements.create('card', {style: style});
+                                    card.mount('#card-element');
+                                </script>                                                                            
+                            </div>                                                                                   
+
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
+                            <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Back</button>
+
+                            <div class="q6-powered-by-stripe">
+                                <div class="q6-lock-icon--left">
+                                    Billing information secured and protected.
+                                </div>
+                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
+                            </div>                              
+
+                        </div>         
+                                          
+
+
+                        <script>
+                            $(function () {
+                                var tabLinks = document.querySelectorAll('.q6-payment-switch__button');
+
+                                tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                                function switchTab(e){
+                                    // find active elements and remove
+                                    $('.q6-payment-switch__button--active').removeClass("q6-payment-switch__button--active");
+                                    $('.q6-switch-content--active').removeClass("q6-switch-content--active");
+
+                                    // find what button was clicked and show form with that ID
+                                    var clickedLink = e.currentTarget;
+                                    $(clickedLink).addClass('q6-payment-switch__button--active');
+
+                                    var tabID = clickedLink.getAttribute("data-form");
+
+                                    $(`#${tabID}`).addClass('q6-switch-content--active');
+
+                                    // update form title
+                                    var formTitle = clickedLink.getAttribute("data-title");
+                                    $("#card-form-title").html(formTitle);
+                                }                                       
+                            });                 
+                        </script>
+
+                    </div> 
+
 
                 </div> 
 
                 <div class="q6-tutorial-controls__content" data-content="amazon">
-                    <div class="q6-input-and-buttons--inline">
-                        <div class="q6-input q6-input--region-name">
-                            <div class="q6-input__label">
-                                <label>Region name</label>
-                            </div>                        
-                            <div class="q6-custom-select">
-                                <select class="q6-select">
-                                    <option value="1">Asia Pacific (Singapore)</option>
-                                </select>
-                            </div>
-                        </div>                      
-                        
-                        <div class="q6-input q6-input--bucket-name">
-                            <div class="q6-input__label">
-                                <label>Bucket name</label>
-                            </div>
-                            <input class="q6-input__field" type="text">
-                        </div>                          
-                    </div>  
-
-                    <div class="q6-input-and-buttons--inline">
-                        <div class="q6-input q6-input--access-id">
-                            <div class="q6-input__label">
-                                <label>Access ID</label>
-                            </div>
-                            <input class="q6-input__field" type="text">
-                        </div>                   
-                        
-                        <div class="q6-input q6-input--access-key">
-                            <div class="q6-input__label">
-                                <label>Access Key</label>
-                            </div>
-                            <input class="q6-input__field" type="text">
-                        </div>                          
-                    </div>  
-
-                    <div class="q6-tutorial-controls__content-checkboxes">
-                        <div class="q6-input-and-buttons--inline">
-                            <label class="q6-checkbox">
-                                Public permissions
-                                <input type="checkbox">
-                                <span class="q6-checkmark"></span>
-                            </label>             
-
-                            <label class="q6-checkbox">
-                                Reduce redundancy storage
-                                <input type="checkbox">
-                                <span class="q6-checkmark"></span>
-                            </label>                         
-                        </div>                     
-                    </div>                         
-
+                    <div class="q6-tutorial-content-warning-message">Unable to create a Amazon S3 bucket with Free Trial</div>
+                    
+                    <div class="q6-input-and-buttons--inline"> 
+                        <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Use temporary storage</button>                      
+                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Upgrade account</button>            
+                    </div>                                         
                 </div>                 
 
                 <div class="q6-tutorial-controls__content" data-content="google">
-                    Google Cloud
+                    <div class="q6-tutorial-content-warning-message">Unable to upload to Google Cloud with Free Trial</div>
+                    
+                    <div class="q6-input-and-buttons--inline"> 
+                        <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Use temporary storage</button>                      
+                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Upgrade account</button>            
+                    </div>                                       
                 </div> 
 
                 <div class="q6-tutorial-controls__content" data-content="blackbaze">
-                    Blackbaze S3
+                    <div class="q6-tutorial-content-warning-message">Unable to create a Blackbaze S3 bucket with Free Trial</div>
+                    
+                    <div class="q6-input-and-buttons--inline"> 
+                        <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Use temporary storage</button>                      
+                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Upgrade account</button>            
+                    </div>                                       
                 </div> 
 
-                <div class="q6-tutorial-controls__content" data-content="azure">
-                    Azure
+                <div class="q6-tutorial-controls__content" data-content="azure">                    
+                    <div class="q6-tutorial-content-warning-message">Unable to upload to Azure with Free Trial</div>
+                    
+                    <div class="q6-input-and-buttons--inline"> 
+                        <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Use temporary storage</button>                      
+                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Upgrade account</button>            
+                    </div>                     
                 </div> 
 
                 <div class="q6-tutorial-controls__content" data-content="ftp">
-                    FTP
+                    <div class="q6-tutorial-content-warning-message">Unable to upload to FTP with Free Trial</div>
+                    
+                    <div class="q6-input-and-buttons--inline"> 
+                        <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Use temporary storage</button>                      
+                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Upgrade account</button>            
+                    </div>    
                 </div>            
-                
-                <div class="q6-tutorial-buttons">                        
-                    <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>            
-                </div>                                                       
+                                                                    
 
             </div>                      
                             
@@ -388,21 +460,7 @@
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>        
-            
-            <script>
-                $(function () {
-                    // enable/disable inputs for public permissions
-                    $("#public-permission").change(function() {
-                        if($(this).is(':checked')){
-                            $('#public-permission-content').show();
-                        } else{
-                            $('#public-permission-content').hide();                              
-                        }                            
-                    });                        
-                })
-            </script>              
-       
+            </script>          
 
             <script>
                 $(function () {

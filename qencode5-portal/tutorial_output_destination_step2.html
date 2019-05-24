@@ -163,6 +163,57 @@
             </p>  
 
 
+            <div>
+                <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--equal-padding">
+                    <div class="q6-tutorial-inputs__message">
+                        Transfer Method ID: <span class="q6-tutorial__transfer-method-id">23523dlfkjalsdf34</span> 
+                        <button class="q6-button q6-button--round q6-button--copy">
+                            Copy
+                            <div class="q6-flash-message">copied</div>
+                        </button>                      
+                    </div>
+                </div>               
+            </div>             
+
+            <script>
+                $(function () {                
+                    // copy transfer method ID
+                    $(".q6-tutorial-inputs__message .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-inputs__message').find('.q6-tutorial__transfer-method-id')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>   
+
             <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">
 
                 <div class="q6-tutorial-inputs-block__controls">
@@ -199,56 +250,67 @@
                         </div>
                     </div>
                 
-                    <div class="q6-input-and-buttons--inline">
-                        <div class="q6-input q6-input--region-name">
-                            <div class="q6-input__label">
-                                <label>Region name</label>
-                            </div>                        
-                            <div class="q6-custom-select">
-                                <select id="region" class="q6-select" disabled>
-                                    <option value="1">Asia Pacific (Singapore)</option>
-                                </select>
-                            </div>
-                        </div>                      
-                        
+                    <div class="q6-input-and-buttons--inline q6-input-and-buttons--inline-view">
                         <div class="q6-input q6-input--bucket-name">
                             <div class="q6-input__label">
                                 <label>Bucket name</label>
                             </div>
-                            <input id="bucket" class="q6-input__field" type="text" value="my-bucket" disabled>
-                            <button id="edit-bucket" class="q6-button q6-button--round q6-button--edit">
-                                Edit
-                            </button>                            
-                        </div>                          
+                            <div class="q6-input__field--view">new-bucket-2212</div>                         
+                        </div>                    
+                        <div class="q6-input q6-input--region-name">
+                            <div class="q6-input__label">
+                                <label>Region</label>
+                            </div>                        
+                            <div class="q6-input__field--view">US-East</div>  
+                        </div>                                                                    
                     </div>
 
-                    <div class="q6-input-and-buttons--inline">
+                    <div class="q6-input q6-input--cors-origin">
+                        <div class="q6-input__label">
+                            <label>URL</label>
+                        </div>                    
+                        <div class="q6-input__field--view">https://storage.qencode.com/new-bucket-2212</div> 
+                    </div>                       
+
+                    <div class="q6-input-and-buttons--inline q6-input-and-buttons--inline-view">
                         <div class="q6-input">
                             <div class="q6-input__label">
-                                <label>Type</label>
+                                <label>Created</label>
                             </div>                        
-                            <div class="q6-custom-select">
-                                <select id="bucket-type" class="q6-select" disabled>
-                                    <option value="1">Public</option>
-                                </select>
-                            </div>
+                            <div class="q6-input__field--view">May 3, 2019</div> 
                         </div>           
 
                         <div class="q6-input">
                             <div class="q6-input__label">
-                                <label>CORS Configurations:</label>
+                                <label>Type</label>
                             </div>                        
-                            <div class="q6-custom-select">
-                                <select id="cors-selector" class="q6-select" disabled>
-                                    <option value="1">Share with this:</option>
-                                </select>
-                            </div>
-                        </div>                                       
-                        
-                        <div class="q6-input q6-input--cors-origin">
-                            <input id="cors-origin" class="q6-input__field" type="text" value="https://www.google.com/" disabled>
-                        </div>                          
-                    </div>                                                                                                         
+                            <div class="q6-input__field--view">Public</div> 
+                        </div>
+                                                                                                        
+                    </div>     
+
+                    <div class="q6-input-and-buttons--inline q6-input-and-buttons--inline-view">
+                        <div class="q6-input">
+                            <div class="q6-input__label">
+                                <label>Size</label>
+                            </div>                        
+                            <div class="q6-input__field--view">232 GB</div> 
+                        </div>           
+
+                        <div class="q6-input">
+                            <div class="q6-input__label">
+                                <label>File</label>
+                            </div>                        
+                            <div class="q6-input__field--view">132,322</div> 
+                        </div>
+
+                        <div class="q6-input-and-buttons--inline-view__button-container">
+                            <button id="edit-bucket" class="q6-button q6-button--round q6-button--edit">
+                                Edit
+                            </button>                        
+                        </div>
+                                                                                                                                   
+                    </div>                                                                                                                                                            
 
                 </div> 
 
@@ -272,42 +334,14 @@
                     FTP
                 </div>                                                                               
 
-                <div class="q6-tutorial-buttons">                        
-                    <button id="update-bucket" style="display:none;" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>            
-                </div>    
+  
 
             </div>                
 
 
-            <div class="q6-tutorial-content-title">Define Transfer Method</div>
-            
-            <p>
-                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
-                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
-            </p>                  
+            <div class="q6-tutorial-content-title">Use Transfer Method</div>
                             
-            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline">
-                <div class="q6-tutorial-input-with-comment">
-                    <div class="q6-input q6-input--transfer-method">
-                        <div class="q6-input__label">
-                            <label for="input_minutes">Transfer Method ID</label>
-                        </div>
-                        <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
-                        <button class="q6-button q6-button--round q6-button--copy">
-                            Copy
-                            <div class="q6-flash-message">copied</div>
-                        </button>                        
-                    </div>           
-                    <div class="q6-tutorial-input-with-comment__comment">
-                        <p>Store your files temporarily on our server for free up to 24 hours</p>
-                    </div> 
-                </div>
-            </div>
-
-            <p>
-                These are the output files that will be transcoded. The settings for these are managed in your profile. We've taken the IDs below from your account.
-                You can change any settings on qencode.com. Currently these profiles output to resolutions lower or equal to the original for 4K, 1080, 720, and 480.
-            </p>  
+                         
             
             <div class="q6-tutorial-codeblock-container">
                 <div class="q6-tutorial-code-block-flash-message">
@@ -373,16 +407,7 @@
                 });
             </script>              
 
-            <script>
-                $(function () {
-                    // Edit bucket 
-                    $('#edit-bucket').click(function(){                                                                    
-                        $('#public-pernissions, #region, #bucket, #bucket-type, #cors-selector, #cors-origin').prop('disabled', false);
-                        $('#update-bucket').show();
-                        $(this).hide();
-                    });
-                });  
-            </script>                   
+                 
 
             <script>
                 $(function () {
