@@ -101,7 +101,22 @@
     <main class="q6-page-content q6-tutorial-content">
         <div class="q6-container">
             <div class="q6-tutorial-content-header">
-                <div>
+                <div class="q6-tutorial-content-header__links">
+                    <label>View our SDK on Github:</label>
+                    <div>
+                        <a href="">PHP</a>
+                        <a href="">Python</a>
+                        <a href="">Ruby</a>
+                        <a href="">Java</a>
+                        <a href="">Node.JS</a>
+                        <a href="">C#</a>
+                        <a href="">JavaScript</a>
+                    </div>
+                </div>
+            </div>    
+
+            <div class="q6-tutorial-content-header">
+                <div class="q6-tutorial-content-header__languages-selector">
                     <label>Choose a language:</label>
                     <div>
                         <div class="q6-tutorial-dd-selector">
@@ -109,51 +124,19 @@
                                 JavaScript
                             </div>
                             <div class="q6-tutorial-dd-selector__list">
-                                <div>JavaScript</div>
-                                <div>PHP</div>
-                                <div>Python</div>
-                                <div>Ruby</div>
-                                <div>Java</div>
-                                <div>Node.JS</div>
-                                <div>C#</div>                                
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="JavaScript">JavaScript</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="PHP">PHP</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Python">Python</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Ruby">Ruby</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Java">Java</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Node.JS">Node.JS</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="C#">C#</div>                              
                             </div>
                         </div>
 
-                        <script>
-                            $(function () {
-                                
-                                // close list when hover out of the list
-                                $(".q6-tutorial-dd-selector").hover(
-                                    function() {
-                                        // hover in
-                                        //$(this).find('.q6-tutorial-dd-selector__list').show();
-                                    }, function() {
-                                        // hover out
-                                        $(this).find('.q6-tutorial-dd-selector__list').hide();
-                                    }
-                                );                                  
-
-
-                                $(".q6-tutorial-dd-selector").click((e)=>{
-                                    // toggle hide and show selector list
-                                    // and update selected language
-                                    var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
-                                    var list = $(this).find('.q6-tutorial-dd-selector__list');
-                                    if($(list).is(':visible')){
-                                        $(list).hide();  
-                                        var selectedLanguage = $(e.target).text();
-                                        $(selectedListElement).html(selectedLanguage);  
-                                        // TODO - update content based on selected language                                 
-                                    } else{
-                                        $(list).show();
-                                    }
-                                })
-                            })
-                        </script>
-
                     </div>
                 </div>
-                <div>
+                <div class="q6-tutorial-content-header__links">
                     <label>View our SDK on Github:</label>
                     <div>
                         <a href="">PHP</a>
@@ -166,6 +149,7 @@
                     </div>
                 </div>
             </div>   
+
             <div class="q6-tutorial-content-title">Content Title</div>
             <p>
                 Content text
@@ -347,7 +331,60 @@ transcodingParams.source = videoUrl;</code></pre>
             <script>
                 // initialize code highlight
                 hljs.initHighlightingOnLoad();
-            </script>            
+            </script>   
+
+            <script>
+                $(function () {
+
+                    // this is for Dropdowns
+                    
+                    // close list when hover out of the list
+                    $(".q6-tutorial-dd-selector").hover(                            
+                        function() {
+                            // hover in
+                            //$(this).find('.q6-tutorial-dd-selector__list').show();
+                        }, function() {
+                            // hover out
+                            $(this).find('.q6-tutorial-dd-selector__list').hide();
+                        }
+                    );                                  
+
+
+                    $(".q6-tutorial-dd-selector").click(function(e){
+                        // toggle hide and show selector list
+                        // and update selected item                            
+                        var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                        var list = $(this).find('.q6-tutorial-dd-selector__list');
+                        if($(list).is(':visible')){
+                            $(list).hide();  
+
+                            var selectedItem='';
+                            var videoURL='';
+
+                            if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
+                                // for simple dropdown
+                                selectedItem = $(e.target).attr('data-item-name');
+                            } else{
+                                // for table type dropdown
+                                try {
+                                    selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
+                                    videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
+                                    $(e.target).closest('.q6-input').find('input').val(videoURL);  
+                                }
+                                catch(err) {
+                                    console.log(err.message);
+                                }                                                                      
+                            }
+            
+                            $(selectedListElement).html(selectedItem);  
+                            // TODO - update content based on selected item  
+                                                            
+                        } else{
+                            $(list).show();
+                        }
+                    })
+                })
+            </script>                         
 
         </div>
     </main>
