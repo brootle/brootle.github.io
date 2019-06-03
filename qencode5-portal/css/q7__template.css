@@ -1,0 +1,137 @@
+:root {
+    --vertical-menu-width: 180px; 
+    --header-hights: 94px; 
+    --blue: #366fe0;
+}
+
+.q7-html{
+    background: #f2f5f8;
+}
+
+.q7-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    font-family: "proxima-nova";
+    font-size: 16px;
+}
+
+.q7-page-content {
+    flex: 1;
+    background: #f0f3f6;
+}
+
+.q7-container{
+    width: calc(100% - var(--vertical-menu-width));
+    max-width: 1280px;
+    margin: auto;
+    margin-left: var(--vertical-menu-width);
+    padding: 0 30px;
+    box-sizing: border-box;  
+}
+
+
+/* VERTICAL MENU */
+.q7-menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: white;    
+    width: var(--vertical-menu-width);
+    display: flex;
+    flex-direction: column;    
+}
+
+.q7-menu__header{
+    height: var(--header-hights);
+    min-height: var(--header-hights);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.q7-logo img{
+    width: 120px;
+}
+
+.q7-menu__body{
+    box-shadow: 0px 7px 9px 1px rgba(208, 211, 213, 0.62);    
+    background: white;
+    flex: 1;
+}
+
+.q7-menu-block{
+    border-top: 1px solid #dddfe1;
+    box-sizing: border-box;   
+    margin-bottom: 20px; 
+}
+
+.q7-menu-block__title{
+    color: #abafb3;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 18px 10px;    
+}
+
+
+.q7-menu-block__element{
+    text-align: center;
+    padding: 14px 10px;   
+    display: block;
+    text-align: center;
+    position: relative;
+    color: #9ea2a9;
+}
+
+.q7-menu-block__element > svg{
+    height: 24px;
+    fill:#9ea2a9;
+}
+
+.q7-menu-block__element:hover,
+.q7-menu-block__element--selected {
+    background: #eff4fe;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.q7-menu-block__element:hover > svg,
+.q7-menu-block__element--selected > svg{
+    fill:var(--blue);
+}
+
+.q7-menu-block__element:hover:before,
+.q7-menu-block__element--selected:before{
+    position: absolute;
+    display: inline-block;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--blue);
+}
+
+/* VERTICAL MENU */
+
+/* PAGE CONTENT */
+.q7-page-content__header{
+    height: var(--header-hights);
+    min-height: var(--header-hights);
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    color: white;    
+}
+/* PAGE CONTENT */
+
+@media screen and (min-width: 1650px){
+    .q7-container{
+        margin-left: auto; 
+    }
+}
