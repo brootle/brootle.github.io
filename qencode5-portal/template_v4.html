@@ -17,6 +17,9 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>    
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="css/q6.css" rel="stylesheet">
@@ -159,8 +162,161 @@
                                 </div>                                
                             </div>
                             <div class="q7-content-block__body">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores nobis reprehenderit cumque labore at qui ipsum autem molestias magnam tempora dicta, ullam quasi aliquam a quos incidunt vero quae quisquam? <br>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores nobis reprehenderit cumque labore at qui ipsum autem molestias magnam tempora dicta, ullam quasi aliquam a quos incidunt vero quae quisquam? <br>
+                                <div class="q7-chart-container">
+                                    <canvas id="usage_chart"></canvas>
+                                </div> 
+                                
+                                <script>
+                                    // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                    var data = {
+                                        labels: ['1 MAY', '2 MAY', '3 MAY', '4 MAY', '5 MAY', '6 MAY', '7 MAY'],
+                                        datasets: [
+                                            {
+                                                backgroundColor: '#aa31cc',
+                                                borderColor: '#aa31cc',
+                                                data: [
+                                                    150,
+                                                    110,
+                                                    50,
+                                                    70,
+                                                    55,
+                                                    58,
+                                                    77
+                                                ],
+                                                borderWidth: 2,
+                                                pointBorderColor: "white",
+                                                pointRadius: 4,
+                                                pointBorderWidth: 2,
+                                                //pointHoverRadius: 6,
+                                                pointHoverBorderColor: "white",
+                                                label: 'UHD',
+                                                fill: false
+                                            },
+                                            {
+                                                backgroundColor: '#fea314',
+                                                borderColor: '#fea314',
+                                                data: [
+                                                    350,
+                                                    190,
+                                                    470,
+                                                    200,
+                                                    300,
+                                                    250,
+                                                    410
+                                                ],
+                                                borderWidth: 2,
+                                                pointBorderColor: "white",
+                                                pointRadius: 4,
+                                                pointBorderWidth: 2,
+                                                //pointHoverRadius: 6,
+                                                pointHoverBorderColor: "white",
+                                                label: 'HD',
+                                                fill: false
+                                            },
+                                            {
+                                                backgroundColor: '#ff0478',
+                                                borderColor: '#ff0478',
+                                                data: [
+                                                    60,
+                                                    90,
+                                                    20,
+                                                    120,
+                                                    90,
+                                                    170,
+                                                    43
+                                                ],
+                                                borderWidth: 2,
+                                                pointBorderColor: "white",
+                                                pointRadius: 4,
+                                                pointBorderWidth: 2,
+                                                //pointHoverRadius: 6,
+                                                pointHoverBorderColor: "white",
+                                                label: 'SD',
+                                                fill: false
+                                            }
+                                        ]
+                                    };
+
+                                    var options = {
+                                        maintainAspectRatio: false,
+                                        spanGaps: false,
+                                        elements: {
+                                            line: {
+                                                tension: 0
+                                            },
+                                            point: {
+                                                radius: 3
+                                            }
+                                        },
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales : {
+                                            xAxes : [ {
+                                                gridLines : {
+                                                    display : false
+                                                }
+                                            } ]
+                                        },
+
+
+                                        onHover: function(evt) {
+                                            var item = chart.getElementAtEvent(evt);
+                                            if (item.length) {
+                                                var currentDatasetIndex = item[0]._datasetIndex;
+
+                                                // set point hover radius to default 4
+                                                chart.data.datasets.forEach(dataset => {
+                                                    dataset.pointHoverRadius = 4;
+                                                });
+
+                                                // set point radius of selected dataset
+                                                chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+
+                                                // set color of tooltip title same as point color
+                                                chart.options.tooltips.titleFontColor=chart.data.datasets[currentDatasetIndex].backgroundColor;
+
+                                                chart.update();
+                                            }
+                                        },
+
+                                        tooltips: {
+                                            titleFontColor: 'black',
+                                            backgroundColor: 'white',
+                                            bodyFontColor: '#021519',
+                                            borderColor:'#eeeeee',
+                                            borderWidth:2,
+                                            bodyFontStyle: 'bold',
+                                            displayColors: false,
+                                            xPadding: 15,
+                                            yPadding: 10,
+
+                                            callbacks: {
+                                                title: function(tooltipItem, data) {
+                                                    //console.log(Chart.defaults.global.tooltips.titleFontColor);
+                                                    // console.log(tooltipItem[0]);
+                                                    //console.log(data.datasets[tooltipItem[0].datasetIndex]);
+                                                    return data.datasets[tooltipItem[0].datasetIndex].label;
+                                                },
+                                                label: function(tooltipItem, data) {
+                                                    // console.log(tooltipItem.yLabel);
+                                                    return "$" + tooltipItem.yLabel;
+                                                }
+                                            }
+
+                                        }
+
+                                    };
+
+                                    var chart = new Chart('usage_chart', {
+                                        type: 'line',
+                                        data: data,
+                                        options: options
+                                    });
+
+                                </script>
+
+
                             </div>
                         </div>
 
