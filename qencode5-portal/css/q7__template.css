@@ -252,6 +252,7 @@
 .q7-content-snippet-blocks .q7-content-block{
     margin-right: 26px;
     max-width: 50%;
+    height: fit-content;
 }
 
 .q7-content-snippet-blocks .q7-content-block:last-of-type{
@@ -287,7 +288,7 @@
 }
 
 .q7-content-block__body{
-    margin-top:15px;
+    margin-top: 20px;
     overflow: auto;
 }
 
@@ -512,7 +513,60 @@
     font-size: 14px;
     margin: 10px 0;    
 }
+
 /* BLOCKS CONTENT */
+
+/* IN SNIPPETS */
+.q7-main-content-snippets .q7-table td,
+.q7-content-snippet-blocks .q7-table td{
+    padding-left:0;
+}
+
+.q7-main-content-snippets .q7-table tbody tr:first-of-type td,
+.q7-content-snippet-blocks .q7-table tbody tr:first-of-type td{
+    padding-top: initial;
+}
+
+.q7-main-content-snippets .q7-table thead,
+.q7-content-snippet-blocks .q7-table thead{
+    background: initial;
+}
+
+.q7-main-content-snippets .q7-table thead th,
+.q7-content-snippet-blocks .q7-table thead th{
+    font-weight: 100;
+    color: #575757;
+    padding-left: 0;
+}
+
+.q7-table-cell-icon{
+    position: relative;
+    padding-left: 25px;
+}
+
+.q7-table-cell-icon:before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    top: calc(50% - 9px);
+    background-position: left center;
+    background-repeat: no-repeat;   
+}
+
+.q7-table-cell-icon--play:before{
+    background-image: url(../img/usageplay_icon.png);
+}
+
+.q7-table-cell-icon--time:before{
+    background-image: url(../img/usagetime_icon.png);
+}
+
+.q7-table-cell-icon--cost:before{
+    background-image: url(../img/usagecost_icon.png);
+}
+/* IN SNIPPETS */
 
 @media screen and (min-width: 1650px){
     .q7-container{
