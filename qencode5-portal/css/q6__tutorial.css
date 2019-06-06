@@ -1327,6 +1327,31 @@
     flex:1;
 }
 
+.q6-tutorial-files-table__info{
+    background: #f7f8fa;
+    padding: 25px;
+    margin: 10px 0;    
+}
+
+.q6-tutorial-files-table__info-stats{
+    display: flex;
+    flex-wrap: wrap;  
+    font-size: 15px;  
+}
+
+.q6-tutorial-files-table__info-stats > div{
+    margin-right: 35px;
+}
+
+.q6-tutorial-files-table__info-stats > div:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-files-table__info-stats > div span{
+    font-weight: 600;
+    margin-left: 10px;
+}
+
 .q6-tutorial-files-table__dynamic-cell{
     display: flex;
     flex:1;
@@ -1342,6 +1367,14 @@
     min-width: 210px;  
 }
 
+.q6-tutorial-files-table__cell-url a{
+    color: #575757;
+}
+
+.q6-tutorial-files-table__cell-url a:hover{
+    color: #306eea;
+    text-decoration: none;
+}
 
 .q6-tutorial-files-table__summary{
     margin-right: 25px;
@@ -1410,14 +1443,15 @@
     min-width: 80px;
     line-height: 25px;
     font-size: 14px;
-    min-width: 80px;
+    min-width: 75px;
 }
 
 .q6-tutorial-files-table__cell-buttons .q6-button.q6-button--copy:before {
     margin-right: 3px;
 }
 
-.q6-button.q6-button--round.q6-button--play-video{
+.q6-button.q6-button--round.q6-button--play-video,
+.q6-button.q6-button--round.q6-button--info{
     width: 25px;
     height: 25px;
     min-width: 25px; 
@@ -1435,9 +1469,21 @@
     background-image: url(../img/play_icon.png);
 }
 
+.q6-button.q6-button--info:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 6px;
+    left: 10px;
+    width: 3px;
+    height: 13px;
+    background-image: url(../img/info_icon.png);
+}
+
 .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
     width: 140px;
     min-width: 140px;
+    padding: 0;
     display: flex;
     align-items: center;    
 }
