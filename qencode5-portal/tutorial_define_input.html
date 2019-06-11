@@ -235,9 +235,10 @@
                                 </div>
                                 <div class="q6-tutorial-video-method__drag-and-drop">
                                     <div class="q6-drag-and-drop--blue-icon"></div>
+                                    <div class="q6-file-uploaded--blue-icon" style="display: none;"></div>
                                     <div>
                                         <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
-                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> uploaded, or </div>                                         
+                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> <span class="q6-delete-selected-file">Delete</span> or </div>                                         
                                         <label>
                                             <span>Browse</span>
                                             <input type="file">
@@ -362,9 +363,10 @@
                                 </div>
                                 <div class="q6-tutorial-video-method__drag-and-drop">
                                     <div class="q6-drag-and-drop--blue-icon"></div>
+                                    <div class="q6-file-uploaded--blue-icon" style="display: none;"></div>
                                     <div>
                                         <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
-                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> uploaded, or </div>                                         
+                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> <span class="q6-delete-selected-file">Delete</span> or </div>                                         
                                         <label>
                                             <span>Browse</span>
                                             <input type="file">
@@ -425,6 +427,16 @@
                             $(this).closest(".q6-tutorial-video-method__drag-and-drop")
                                 .find('.q6-drag-and-drop-filename').html(fileName);  
 
+                            //
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop--blue-icon').hide();     
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-file-uploaded--blue-icon').show();   
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('label > span').text('Choose another file');                                  
+
 
                             // Pass event to removeDragData for cleanup
                             removeDragData(e);                            
@@ -457,18 +469,47 @@
                             if(fileName){
                                 // display name of uploaded file to a user
                                 $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-message').hide();
+                                    .find('.q6-drag-and-drop-message').hide();                                   
 
                                 $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-message--file').show();  
+                                    .find('.q6-drag-and-drop-message--file').show();                                                                  
 
                                 $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-filename').html(fileName);                                                                       
+                                    .find('.q6-drag-and-drop-filename').html(fileName);     
+
+                                ////
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('.q6-drag-and-drop--blue-icon').hide();     
+
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('.q6-file-uploaded--blue-icon').show();   
+
+                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('label > span').text('Choose another file');                                                                                                                                          
                             }
 
                             // clear value in case same file will be selected
                             $(this).val('');
                         });
+
+                        // when delete selected file q6-delete-selected-file
+                        $(".q6-tutorial-video-method__drag-and-drop .q6-delete-selected-file").click(function(e) {
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                    .find('label > span').text('Browse');  
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop--blue-icon').show(); 
+
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-file-uploaded--blue-icon').hide();   
+                                
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop-message').show();     
+                                
+                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                                .find('.q6-drag-and-drop-message--file').hide();                                                                                                                                                              
+                        });                            
+
                     });                             
                 </script>
 
