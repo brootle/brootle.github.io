@@ -594,6 +594,12 @@
     border-color: #306eea;
 }
 
+.q6-tutorial-drag-and-drop__choose-file,
+.q6-tutorial-drag-and-drop__choose-another-file{
+    display: flex;
+    align-items: center;    
+}
+
 .q6-drag-and-drop--blue-icon{
     min-width: 49px;
     height: 42px;
@@ -616,17 +622,81 @@
     cursor: pointer;
     font-weight: 600;
     color: #e03636;
-    margin-left: 7px;
 }
 
 .q6-tutorial-video-method__drag-and-drop strong{
     font-weight: 600;
 }
 
+.q6-drag-and-drop-filename{
+    font-weight: 600;
+    text-align: center;    
+}
+
+.q6-file-upload-progress-container{
+    display: flex;
+    align-items: center;
+}
+
+.q6-file-upload-progress__bar{
+    background: #f0f3f7;
+    height: 10px;
+    min-width: 365px;
+    border-radius: 10px;
+    margin: 0 8px;
+    position: relative;
+}
+
+.q6-file-upload-progress__bar > div {
+    position: absolute;
+    height: 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #94ceff , #b0ddff);
+}
+
+.q6-button.q6-button--round.q6-button--upload-cancel{
+    background: #e22935;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin: 0;   
+    margin-left: 12px; 
+}
+
+.q6-button.q6-button--round.q6-button--upload-cancel:hover{
+    background: #f03e4a;
+}
+
+.q6-button.q6-button--upload-cancel:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 7px;
+    left: 7px;
+    width: 6px;
+    height: 6px;
+    background-image: url(../img/x_icon.png);
+}
+
+.q6-upload-progress-status{
+    color: #306eea;
+    font-size: 16px;
+    font-weight: 500;    
+    display: flex;
+    align-items: center;    
+}
+
+.q6-upload-progress-status .q6-small-loader{
+    margin: 0;
+    margin-right: 5px;
+}
+
 .q6-tutorial-video-method__drag-and-drop label{
     color: #366fe0;
     font-weight: 600;
     cursor: pointer;
+    margin: 0;
 }
 
 .q6-tutorial-video-method__drag-and-drop input{

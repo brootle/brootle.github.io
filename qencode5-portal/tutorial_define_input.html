@@ -234,15 +234,16 @@
                                     <label>Please use a single video file link</label>
                                 </div>
                                 <div class="q6-tutorial-video-method__drag-and-drop">
-                                    <div class="q6-drag-and-drop--blue-icon"></div>
-                                    <div class="q6-file-uploaded--blue-icon" style="display: none;"></div>
-                                    <div>
-                                        <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
-                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> <span class="q6-delete-selected-file">Delete</span> or </div>                                         
-                                        <label>
-                                            <span>Browse</span>
-                                            <input type="file">
-                                        </label>                                        
+
+                                    <div class="q6-tutorial-drag-and-drop__choose-file">
+                                        <div class="q6-drag-and-drop--blue-icon"></div>
+                                        <div>
+                                            <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>                                           
+                                            <label>
+                                                <span>Browse</span>
+                                                <input type="file">
+                                            </label>                                        
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
@@ -362,16 +363,19 @@
                                     <label>Please use a single video file link</label>
                                 </div>
                                 <div class="q6-tutorial-video-method__drag-and-drop">
-                                    <div class="q6-drag-and-drop--blue-icon"></div>
-                                    <div class="q6-file-uploaded--blue-icon" style="display: none;"></div>
-                                    <div>
-                                        <div class="q6-drag-and-drop-message"><strong>Drag & Drop</strong> your files here, or</div>   
-                                        <div class="q6-drag-and-drop-message--file" style="display: none;"><strong class="q6-drag-and-drop-filename">example.mpg</strong> <span class="q6-delete-selected-file">Delete</span> or </div>                                         
-                                        <label>
-                                            <span>Browse</span>
-                                            <input type="file">
-                                        </label>                                        
+
+                                    <div class="q6-tutorial-drag-and-drop__file-upload-progress">
+
+                                        <div class="q6-drag-and-drop-filename">example.mpg</div>
+                                        
+                                        <div class="q6-file-upload-progress-container">
+                                            <div class="q6-file-upload-progress__bar"> <div style="width:15%"></div> </div>
+                                            <div class="q6-upload-progress-status"><div class="q6-small-loader"></div> 15%</div>
+                                            <button class="q6-button q6-button--round q6-button--upload-cancel"></button>
+                                        </div>
+                                                                               
                                     </div>
+
                                 </div>
                             </div>
                         </div>    
@@ -379,6 +383,140 @@
                 </div>
 
 
+                <div class="q6-tutorial-add-video-block-container">
+
+                    <button class="q6-button q6-button--round q6-button--remove">Remove</button>
+                    
+                    <div class="q6-tutorial-videos-delimeter-container">
+                        <div class="q6-tutorial-vertical-delimeter"></div>
+                        <div class="q6-tutorial-videos-delimeter">stitched with</div>
+                        <div class="q6-tutorial-vertical-delimeter"></div>
+                    </div>
+
+                    <div class="q6-tutorial-add-video-block q6-tutorial-inputs-block--has-controls">                        
+                        <div class="q6-tutorial-inputs-block__controls">
+                            <div class="q6-tutorial-control q6-tutorial-control--active" data-control="url">URL</div>
+                            <div class="q6-tutorial-control" data-control="upload">Upload</div>
+                        </div>
+                        <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="url">
+                            
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Enter URL for video file</label>
+                                    
+                                    <div class="q6-tutorial-dd-selector">
+                                        <div class="q6-tutorial-dd-selector__selected">
+                                            Sample video (Qencode)
+                                        </div>
+                                        <div class="q6-tutorial-dd-selector__list">
+                                            <table class="q6-tutorial-demo-videos">
+                                                <tr class="q6-tutorial-dd-selector-item" 
+                                                    data-video-url="http://example1.com/video/myvideo.mp4"
+                                                    data-item-name="Sample video (Qencode)">
+                                                    <td>Sample video (Qencode)</td>
+                                                    <td>1920 x 1080 / 29 FPS / MP4 / H.264</td>
+                                                    <td>HD</td>
+                                                </tr>
+                                                <tr class="q6-tutorial-dd-selector-item"
+                                                    data-video-url="http://example2.com/video/myvideo.mp4"
+                                                    data-item-name="Big Buck Bunny">
+                                                    <td>Big Buck Bunny</td>
+                                                    <td>1920 x 1080 / 60 FPS / MP4 / H.264</td>
+                                                    <td>HD</td>                                                    
+                                                </tr>
+                                                <tr class="q6-tutorial-dd-selector-item"
+                                                    data-video-url="http://example3.com/video/myvideo.mp4"
+                                                    data-item-name="Sports Clip">
+                                                    <td>Sports Clip</td>
+                                                    <td>1280 x 720 / 29.9 FPS / MP4 / H.264</td>
+                                                    <td>SD</td>                                                    
+                                                </tr>
+                                                <tr class="q6-tutorial-dd-selector-item"
+                                                    data-video-url="http://example4.com/video/myvideo.mp4"
+                                                    data-item-name="User Content">
+                                                    <td>User Content</td>
+                                                    <td>640 x 480 / 29.9 FPS / MP4 / H.264</td>
+                                                    <td>SD</td>                                                    
+                                                </tr>
+                                                <tr class="q6-tutorial-dd-selector-item"
+                                                    data-video-url="http://example5.com/video/myvideo.mp4"
+                                                    data-item-name="Tears of Steel">
+                                                    <td>Tears of Steel</td>
+                                                    <td>4K / 29.9 FPS / MP4 / H.264</td>
+                                                    <td>UHD</td>                                                    
+                                                </tr>
+                                                <tr class="q6-tutorial-dd-selector-item"
+                                                    data-video-url="http://example6.com/video/myvideo.mp4"
+                                                    data-item-name="Sintel">
+                                                    <td>Sintel</td>
+                                                    <td>1280 x 720 / 29.9 FPS / MP4 / H.264</td>
+                                                    <td>HD</td>                                                    
+                                                </tr>
+                                            </table>                                 
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <input class="q6-input__field" type="text" placeholder="http://example.com/video/myvideo.mp4">
+                            </div>
+
+                            <div class="q6-tutorial-video-method__clip">
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="input_minutes">Create clip</label>
+                                    </div>
+                                    <div class="q6-switch-container">
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox">
+                                            <span class="q6-switch__slider"></span>
+                                        </label>  
+                                    </div>                                  
+                                </div>      
+                                <div class="q6-tutorial-clip-timers" style="display: none;">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Start time</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>   
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label for="input_minutes">Duration (sec)</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text">
+                                    </div>    
+                                </div>                                                                                              
+                            </div>                            
+                            
+                        </div>      
+                        <div class="q6-tutorial-controls__content" data-content="upload">
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Please use a single video file link</label>
+                                </div>
+                                <div class="q6-tutorial-video-method__drag-and-drop">
+
+                                    <div class="q6-tutorial-drag-and-drop__choose-another-file">
+                                        <div class="q6-file-uploaded--blue-icon"></div>
+                                        
+                                        <div class="q6-drag-and-drop-message--file">
+                                            <div class="q6-drag-and-drop-filename">example.mpg</div>
+                                            <div>
+                                                <span class="q6-delete-selected-file">Delete</span> or 
+                                                <label>
+                                                    <span>Choose another file</span>
+                                                    <input type="file">
+                                                </label>                                                     
+                                            </div>                                                
+                                        </div>                                                                                 
+                                                                               
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
 
                 <script>
                     $(function () {
@@ -418,24 +556,24 @@
                             }
 
                             // show uploaded filename to user
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop-message').hide();
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('.q6-drag-and-drop-message').hide();
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop-message--file').show();  
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('.q6-drag-and-drop-message--file').show();  
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop-filename').html(fileName);  
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('.q6-drag-and-drop-filename').html(fileName);  
 
-                            //
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop--blue-icon').hide();     
+                            // //
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('.q6-drag-and-drop--blue-icon').hide();     
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-file-uploaded--blue-icon').show();   
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('.q6-file-uploaded--blue-icon').show();   
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('label > span').text('Choose another file');                                  
+                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                            //     .find('label > span').text('Choose another file');                                  
 
 
                             // Pass event to removeDragData for cleanup
@@ -460,55 +598,55 @@
 
                 <script>
                     $(function (){
-                        // when we Browse for a file
-                        $(".q6-tutorial-video-method__drag-and-drop input[type='file']").change(function(e) {                            
-                            var fileName = e.target.value.split( '\\' ).pop();
+                        // // when we Browse for a file
+                        // $(".q6-tutorial-video-method__drag-and-drop input[type='file']").change(function(e) {                            
+                        //     var fileName = e.target.value.split( '\\' ).pop();
                             
-                            // if filename is not empty
-                            // filename can be empty if user clicks cancel instead of OK when chosing file
-                            if(fileName){
-                                // display name of uploaded file to a user
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-message').hide();                                   
+                        //     // if filename is not empty
+                        //     // filename can be empty if user clicks cancel instead of OK when chosing file
+                        //     if(fileName){
+                        //         // display name of uploaded file to a user
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('.q6-drag-and-drop-message').hide();                                   
 
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-message--file').show();                                                                  
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('.q6-drag-and-drop-message--file').show();                                                                  
 
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop-filename').html(fileName);     
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('.q6-drag-and-drop-filename').html(fileName);     
 
-                                ////
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-drag-and-drop--blue-icon').hide();     
+                        //         ////
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('.q6-drag-and-drop--blue-icon').hide();     
 
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('.q6-file-uploaded--blue-icon').show();   
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('.q6-file-uploaded--blue-icon').show();   
 
-                                $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('label > span').text('Choose another file');                                                                                                                                          
-                            }
+                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('label > span').text('Choose another file');                                                                                                                                          
+                        //     }
 
-                            // clear value in case same file will be selected
-                            $(this).val('');
-                        });
+                        //     // clear value in case same file will be selected
+                        //     $(this).val('');
+                        // });
 
-                        // when delete selected file q6-delete-selected-file
-                        $(".q6-tutorial-video-method__drag-and-drop .q6-delete-selected-file").click(function(e) {
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                    .find('label > span').text('Browse');  
+                        // // when delete selected file q6-delete-selected-file
+                        // $(".q6-tutorial-video-method__drag-and-drop .q6-delete-selected-file").click(function(e) {
+                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //             .find('label > span').text('Browse');  
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop--blue-icon').show(); 
+                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //         .find('.q6-drag-and-drop--blue-icon').show(); 
 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-file-uploaded--blue-icon').hide();   
+                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //         .find('.q6-file-uploaded--blue-icon').hide();   
                                 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop-message').show();     
+                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //         .find('.q6-drag-and-drop-message').show();     
                                 
-                            $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                .find('.q6-drag-and-drop-message--file').hide();                                                                                                                                                              
-                        });                            
+                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
+                        //         .find('.q6-drag-and-drop-message--file').hide();                                                                                                                                                              
+                        // });                            
 
                     });                             
                 </script>
