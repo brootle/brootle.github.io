@@ -705,8 +705,26 @@
                             Copy
                             <div class="q6-flash-message">copied</div>
                         </button>
-                        <pre><code>//already includes the Profile IDs above
-const transcodingProfiles = ["5c924a5b76341", "5c924a5b76122", "5c924a5b76889"];</code></pre>                    
+                        <pre><code>//define output template
+let output = {
+    "destination": {
+        "key": s3_key,
+        "secret": s3_secret
+    }
+};
+
+//custom video codec parameters
+let vcodec_params = {
+    "vprofile": "baseline",
+    "level": 31
+};
+
+//define an adaptive stream output
+let stream_720p = {
+    "size": "1280x720",
+    "audio_bitrate": 128,
+    "video_codec_parameters": vcodec_params
+};</code></pre>                    
                     </div>
                 </div>
                 <div class="q6-tutorial-codeblock__result" style="display:none;">
