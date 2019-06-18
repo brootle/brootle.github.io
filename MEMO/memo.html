@@ -11,6 +11,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+
     <link href="css/m1__variables.css" rel="stylesheet" />
     <link href="css/m1__template.css" rel="stylesheet" />
     <link href="css/m1__elements.css" rel="stylesheet" />
@@ -55,7 +58,7 @@
             <div>
                 <div class="m1-input-container m1-input-container--date">
                     <label class="m1-label">Date</label>
-                    <input class="m1-input" type="text" value="11/27/2018" disabled> 
+                    <input class="m1-input" type="text" value="Jul 10, 2019" disabled> 
                 </div>         
 
                 <div class="m1-memo-blocks">
@@ -106,7 +109,14 @@ www.qencode.com</textarea>
             <div>
                 <div class="m1-input-container m1-input-container--date">
                     <label class="m1-label">Date</label>
-                    <input class="m1-input" type="text" value="11/27/2018">
+                    <input id="date" class="m1-input" type="text" value="Jul 10, 2019" autocomplete="off">  
+                    <script>
+                        $("#date").datepicker({
+                            dateFormat: "MM d, yy",
+                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                        });                              
+                    </script>                                        
                 </div>         
 
                 <div class="m1-memo-blocks">
@@ -600,6 +610,39 @@ www.qencode.com</textarea>
                 </div>
             </div>            
                     
+
+            <script>
+                $(function () {
+                    // toggle show and hide menu on dots menu button click  
+                    $(".m1-menu-button").click(function(e){
+                        // check if current is opened
+                        if($(this).hasClass('m1-menu-button--opened')){
+                            $(this).removeClass('m1-menu-button--opened');
+                        } else{
+                            // close all opened menus
+                            $('.m1-menu-button--opened').removeClass('m1-menu-button--opened');
+
+                            // open current 
+                            $(this).addClass('m1-menu-button--opened');
+                        }
+                    });        
+
+                    // when we hover out - close the menu
+                    $('.m1-menu-button__menu').mouseleave(function() {
+                        $('.m1-menu-button--opened').removeClass('m1-menu-button--opened');
+                    });                                     
+
+                    // close if clicked outside
+                    $(window).click(function(e){
+                        if (!event.target.matches('.m1-menu-button')) {
+                            $('.m1-menu-button--opened').removeClass('m1-menu-button--opened')
+                        }
+                    });    
+
+                                                                         
+                });
+            </script>              
+
             
             <script>
                 $(function () {
