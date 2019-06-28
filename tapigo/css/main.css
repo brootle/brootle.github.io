@@ -1,7 +1,682 @@
+@font-face {
+    font-family: 'Rouble';
+    src: url('../fonts/rouble.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-.images {
-    max-width: 600px;
+.catNav {
     width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 25px auto 0;
+    text-align: center;
+}
+.catNav .control {
+    display: inline-block;
+    background: #eee;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.catNav .control.object {
+    padding: 5px 10px 8px;
+}
+.catNav .control img {
+    display: inline-block;
+    vertical-align: -3px;
+}
+.catNav .control span {
+    font: 900 1em Roboto;
+    color: #000;
+    line-height: 1;
+    padding-left: 7px;
+}
+.catNav .breadcrumbs {
+    display: inline-block;
+    font: 400 .75em Roboto;
+    margin-left: 15px;
+}
+.catNav .breadcrumbs a {
+    color: #999;
+    transition: color .5s;
+}
+.catNav .breadcrumbs a:hover {
+    color: #000;
+}
+.catNav .breadcrumbs span {
+    color: #999;
+    display: inline-block;
+    padding: 0 5px;
+    font: 400 .625em Roboto;
+}
+.catNav .sections {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -380px;
+    max-width: 760px;
+    min-width: 320px;
+    padding: 30px 0 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    z-index: 100000;
+    background: #fff;
+    box-shadow: 0 5px 45px 0 rgba(0, 0, 0, 0.20);
+    display: none;
+}
+.catNav .sections .select {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+.catNav .sections .select .item {
+    display: inline-block;
+    width: 160px;
+    margin: 2px 0;
+    padding: 25px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+.catNav .sections .select .item:hover {
+    background: #f6f6f6;
+}
+.catNav .sections .select .item > img {
+    width: 50px;
+    height: 50px;
+    display: inline;
+}
+.catNav .sections .select .item h3 {
+    font: 900 1em Roboto;
+    margin-top: 10px;
+    color: #000;
+    line-height: 1;
+}
+.catNav .sections .select .item.current {
+    background: #eee;
+}
+
+.userInfo {
+    width: 320px;
+    position: fixed;
+    background: #0c8dd0;
+    box-shadow: 0 3px 50px 0 rgba(3, 140, 211, 0.9);
+    border-radius: 5px;
+    top: 25%;
+    left: 50%;
+    margin-left: -160px;
+    z-index: 100001;
+    padding: 25px 0;
+    display: none;
+}
+.userInfo .userPic {
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+}
+.userInfo .userPic img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.userInfo .userPic .status {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    width: 16px;
+    height: 16px;
+    border: solid 2px #ffffff;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+.userInfo .userPic .status.online {
+    background: #05ef44;
+}
+.userInfo .userPic .status.offline {
+    background: #ddd;
+}
+.userInfo .userName {
+    margin: 10px auto 0;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+}
+.userInfo .userName p {
+    font: 900 1.25em Roboto;
+    line-height: 1;
+    color: #fff;
+}
+.userInfo .userName span {
+    font: 400 .6875em Roboto;
+    color: #eee;
+    line-height: 1;
+    display: inline-block;
+    margin-top: 5px;
+}
+.userInfo mark {
+    background: none;
+    font: 400 .625em Roboto;
+    text-align: center;
+    line-height: 1;
+    padding: 3px;
+    border-radius: 3px;
+    width: 40px;
+    display: block;
+    margin: 20px auto 0;
+}
+.userInfo mark.online {
+    border: 1px solid #05ef44;
+    color: #05ef44;
+}
+.userInfo mark.offline {
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+.userInfo .contacts {
+    position: relative;
+    box-sizing: border-box;
+    margin: 20px auto 0;
+    text-align: center;
+}
+.userInfo .contacts p {
+    font: 900 1em Roboto;
+    color: #fff;
+    line-height: 1;
+}
+.userInfo .contacts p:nth-child(2) {
+    margin-top: 8px;
+}
+.userInfo .contacts p.iphone::before {
+    content: url("../img/global/mobileIconUserInfo.svg");
+    width: 13px;
+    height: 20px;
+    vertical-align: -4px;
+    padding-right: 10px;
+}
+.userInfo .contacts p.phone::before {
+    content: url("../img/global/phoneIconUserInfo.svg");
+    width: 15px;
+    height: 15px;
+    vertical-align: -4px;
+    padding-right: 8px;
+}
+.userInfo .contacts .icons {
+    box-sizing: border-box;
+    margin: 20px auto 0;
+}
+.userInfo .contacts .icons img {
+    display: inline-block;
+    cursor: pointer;
+}
+.userInfo .contacts .icons img.email {
+    width: 24px;
+    height: 20px;
+}
+.userInfo .contacts .icons img.chat {
+    width: 23px;
+    height: 22px;
+    margin-left: 20px;
+    vertical-align: -1px;
+}
+.userInfo hr {
+    width: 30px;
+    height: 1px;
+    border: none;
+    background: #0080c3;
+    margin: 17px auto 0;
+}
+.userInfo > a {
+    border-radius: 5px;
+    background: #0080c3;
+    padding: 10px 0 9px;
+    color: #90ceef;
+    font: 400 .6875em Roboto;
+    text-align: center;
+    display: block;
+    margin: 20px auto 0;
+}
+.userInfo > a::before {
+    content: url("../img/global/allPageListUserInfo.svg");
+    width: 17px;
+    height: 15px;
+    vertical-align: -3px;
+    padding-right: 10px;
+}
+.userInfo > a.allList {
+    width: 135px;
+}
+.userInfo > a.pageList {
+    width: 155px;
+}
+.userInfo > p {
+    color: #90ceef;
+    font: 400 .6875em Roboto;
+    padding: 0 27px;
+    margin-top: 20px;
+}
+
+.catalogSettings {
+    max-width: 760px;
+    margin: 25px auto;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.catalogSettings > h2 {
+    font: 900 1em Roboto;
+    color: #000;
+    text-align: center;
+    padding: 8px 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin: 0 auto;
+    width: 150px;
+}
+.catalogSettings .typeSection {
+    width: 100%;
+    box-sizing: border-box;
+}
+.catalogSettings .typeSection .title {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 25px auto 0;
+}
+.catalogSettings .typeSection .title img.iconType {
+    float: left;
+    display: block;
+    margin-top: 3px;
+}
+.catalogSettings .typeSection .title img.door {
+    float: right;
+    display: block;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.catalogSettings .typeSection .title img.door.close {
+    transform: rotate(-90deg);
+}
+.catalogSettings .typeSection .title span{
+    float: left;
+    font: 900 1em Roboto;
+    color: #000;
+    display: block;
+    margin-left: 10px;
+}
+
+
+.catalogSettings .typeSection .objectList {
+    max-width: 760px;
+    margin: 25px auto 0;
+    box-sizing: border-box;
+    position: relative;
+}
+.catalogSettings .typeSection .objectList > a {
+    color: #000;
+}
+.catalogSettings .typeSection .objectList .left {
+    float: left;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    border-radius: 5px;
+    background-image: url("../img/preview/img.jpg");
+    background-size: cover;
+}
+.catalogSettings .typeSection .objectList .right {
+    float: left;
+    width: 590px;
+    height: 170px;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    position: relative;
+}
+.catalogSettings .typeSection .objectList .right .top {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+.catalogSettings .typeSection .objectList .right .top h2 {
+    font: 900 1.5625em Roboto;
+    line-height: 1;
+    float: left;
+}
+.catalogSettings .typeSection .objectList .right .top h2 span {
+    font-size: .7em;
+    display: inline;
+    padding-left: 4px;
+}
+.catalogSettings .typeSection .objectList .right .top h2 span sup {
+    font-size: .6em;
+
+}
+.catalogSettings .typeSection .objectList .right .top .price {
+    font-size: 1.5625em;
+    font-weight: 900;
+    float: right;
+}
+.catalogSettings .typeSection .objectList .right .top .price span {
+    font: .75em Rouble;
+    padding-left: 5px;
+}
+.catalogSettings .typeSection .objectList .right .middle {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+.catalogSettings .typeSection .objectList .right .middle p {
+    float: left;
+    font-size: .8125em;
+    line-height: 1;
+}
+.catalogSettings .typeSection .objectList .right .middle p strong {
+    font-size: 1.2em;
+}
+
+.catalogSettings .typeSection .objectList .right .bottom {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 30px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: default;
+}
+.catalogSettings .typeSection .objectList .right .bottom .status {
+    float: left;
+    width: 11px;
+    height: 11px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50%;
+    margin-top: 12px;
+}
+.catalogSettings .typeSection .objectList .right .bottom .status.green, .catalogSettings .typeSection .objectList .right .bottom .countdown .progress.green {
+    background: #04ef44;
+}
+.catalogSettings .typeSection .objectList .right .bottom .status.yellow, .catalogSettings .typeSection .objectList .right .bottom .countdown .progress.yellow  {
+    background: #ffba00;
+}
+.catalogSettings .typeSection .objectList .right .bottom .status.red, .catalogSettings .typeSection .objectList .right .bottom .countdown .progress.red {
+    background: #e94a49;
+}
+.catalogSettings .typeSection .objectList .right .bottom .countdown {
+    float: left;
+    width: 100px;
+    height: 5px;
+    border: none;
+    background: #eee;
+    border-radius: 50px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 15px 0 0 140px;
+    z-index: 1;
+}
+.catalogSettings .typeSection .objectList .right .bottom .countdown .progress {
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    border: none;
+    border-radius: 50px;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.catalogSettings .typeSection .objectList .right .bottom .controls {
+    float: right;
+    padding: 7px 20px;
+    background: #e0f4ff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+}
+.catalogSettings .typeSection .objectList .right .bottom .controls img {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: center;
+}
+.catalogSettings .typeSection .objectList .right .bottom .controls img.block {
+    opacity: .3;
+    cursor: default;
+}
+.catalogSettings .typeSection .objectList .right .bottom .controls img:nth-child(1) {
+    margin-left: 0;
+}
+
+.catalogList {
+    max-width: 100%;
+    margin: 25px auto 25px;
+    box-sizing: border-box;
+    position: relative;
+}
+.catalogList::after, .objectList::after, .catalogObject .object header .bottom::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.catalogList .objectList {
+    max-width: 760px;
+    margin: 0 auto 25px;
+    box-sizing: border-box;
+    position: relative;
+}
+.catalogList .objectList > a {
+    color: #000;
+}
+.catalogList .objectList .left {
+    float: left;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    border-radius: 5px;
+    background-image: url("../img/preview/img.jpg");
+    background-size: cover;
+}
+.catalogList .objectList .right {
+    float: left;
+    width: 590px;
+    height: 170px;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    position: relative;
+}
+.catalogList .objectList .right .top {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+.catalogList .objectList .right .top h2 {
+    font: 900 1.5625em Roboto;
+    line-height: 1;
+    float: left;
+}
+.catalogList .objectList .right .top h2 span {
+    font-size: .7em;
+    display: inline;
+    padding-left: 4px;
+}
+.catalogList .objectList .right .top h2 span sup {
+    font-size: .6em;
+
+}
+.catalogList .objectList .right .top .price {
+    font-size: 1.5625em;
+    font-weight: 900;
+    float: right;
+}
+.catalogList .objectList .right .top .price span {
+    font: .75em Rouble;
+    padding-left: 5px;
+}
+.catalogList .objectList .right .middle {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+.catalogList .objectList .right .middle p {
+    float: left;
+    font-size: .8125em;
+    line-height: 1;
+}
+.catalogList .objectList .right .middle p strong {
+    font-size: 1.2em;
+}
+.catalogList .objectList .right .bottom {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px 0;
+    margin-top: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+.catalogList .objectList .right .bottom p {
+    float: left;
+    font-size: .75em;
+    margin-top: 8px;
+    line-height: 1;
+}
+.catalogList .objectList .right .bottom p strong {
+    font: 900 1.16em Roboto;
+    padding-left: 5px;
+    line-height: 1;
+}
+.catalogList .objectList .right .bottom cite, .catalogList .objectList .right .bottom .settingsDirect {
+    display: inline-block;
+    float: right;
+    font: 900 .75em Roboto;
+    color: #038cd3;
+    background: #e0f4ff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    vertical-align: top;
+    transition: background .5s;
+}
+.catalogList .objectList .right .bottom .settingsDirect img {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+.catalogList .objectList .right .bottom cite:hover, .catalogList .objectList .right .bottom .settingsDirect:hover {
+    background: #bde8ff;
+}
+.catalogList .objectList .right .bottom cite.active {
+    color: #ccc;
+    background: #f6f6f6;
+}
+
+
+.catalogObject {
+    max-width: 100%;
+    margin: 25px auto 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+.catalogObject .object {
+    max-width: 840px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    background: #fff;
+}
+.catalogObject .object header {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding: 25px 25px;
+}
+.catalogObject .object header .top {
+    width: 100%;
+    overflow: hidden;
+}
+.catalogObject .object header .top h2 {
+    float: left;
+    font: 900 2.1875em Roboto;
+}
+.catalogObject .object header .top h2 span {
+    font-size: .6em;
+    padding-left: 5px;
+}
+.catalogObject .object header .top h2 span sup {
+    font-size: .6em;
+}
+.catalogObject .object header .top .price {
+    float: right;
+    font: 900 2.1875em Roboto;
+}
+.catalogObject .object header .top .price span {
+    font: .75em "Rouble";
+    padding-left: 6px;
+}
+.catalogObject .object header .bottom {
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+.catalogObject .object header .bottom .left {
+    float: left;
+}
+.catalogObject .object header .bottom .left p {
+    display: inline-block;
+    line-height: 1;
+}
+.catalogObject .object header .bottom .left .city {
+    font: 900 .875em Roboto;
+    background: #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px 10px 7px;
+}
+.catalogObject .object header .bottom .left .info {
+    padding-left: 15px;
+    font: 400 .875em Roboto;
+}
+.catalogObject .object header .bottom .right {
+    float: right;
+}
+.catalogObject .object header .bottom .right cite, .catalogObject .object header .bottom .right a.settingsDirect {
+    display: inline-block;
+    font: 900 .875em Roboto;
+    color: #038cd3;
+    background: #e0f4ff;
+    padding: 8px 15px 9px;
+    border-radius: 5px;
+    vertical-align: top;
+    transition: background .5s;
+    cursor: pointer;
+}
+.catalogObject .object header .bottom .right cite:hover, .catalogObject .object header .bottom .right a.settingsDirect:hover {
+    background: #bde8ff;
+}
+.catalogObject .object header .bottom .right a.settingsDirect img {
+    display: block;
+    width: 17px;
+    height: 17px;
+}
+.catalogObject .object .images {
+    width: 600px;
     height: 300px;
     margin: 0 auto;
     text-align: center;
@@ -9,47 +684,141 @@
     position: relative;
     border-radius: 5px;
 }
-
-.image-container img {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.image-container{
-    background: #e6e6e6;
-    height: 100%;
+.catalogObject .object .images img {
+    display: block;
+    max-width:100%;
     width: 100%;
+}
+.catalogObject .object .columns {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 30px auto 0;
+}
+.catalogObject .object .columns .item {
+    width: 175px;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.catalogObject .object .columns .item p {
+    font-size: .875em;
+    line-height: 1;
+}
+.catalogObject .object .columns .item p sup {
+    font-size: .7em;
+}
+.catalogObject .object .columns .item p strong {
+    font-size: 1.142em;
+}
+.catalogObject .object .columns .item p:nth-child(2) {
+    padding-top: 5px;
+}
+.catalogObject .object .columns .item:nth-child(2) {
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+.catalogObject .object .table {
+    max-width: 410px;
+    box-sizing: border-box;
+    margin: 30px auto 0;
+    padding: 0 25px;
+    font: 400 .875em Roboto;
+}
+.catalogObject .object .table h3 {
+    text-align: center;
+    font-weight: 700;
+    color: #ccc;
+}
+.catalogObject .object .table table {
+    width: 100%;
+    line-height: 1;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.catalogObject .object .table table tr {
+    height: 50px;
+    border-bottom: 1px solid #eee;
+}
+.catalogObject .object .table table tr td {
+    vertical-align: middle;
+}
+.catalogObject .object .table table tr td:first-child {
+    width: 70%;
+    padding-left: 5px;
+}
+.catalogObject .object .table table tr td:last-child {
+    font-weight: 700;
+}
+.catalogObject .object .tags {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 30px auto 0;
+    text-align: center;
+}
+.catalogObject .object .tags h3 {
+    font: 700 .875em Roboto;
+    line-height: 1;
+    color: #ccc;
+}
+.catalogObject .object .tags .list {
+    width: 320px;
+    margin: 13px auto 0;
+    padding: 0 0 4px;
+    box-sizing: border-box;
     overflow: hidden;
 }
-
-.gallery{
-    display: flex;
-    align-items: center;
-    justify-content: center;    
+.catalogObject .object .tags .list > p {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 2px 11px 4px;
+    margin: 15px 7px 0;
+    background: #eee;
+    border-radius: 50px;
+    font: .75em Roboto;
+    line-height: 1;
+    color: #000;
+}
+.catalogObject .object .map {
+    width: 99%;
+    overflow: hidden;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 35px auto 0;
+    height: 250px;
+}
+.catalogObject .object .desc {
+    width: 410px;
+    margin: 30px auto 0;
+    box-sizing: border-box;
+}
+.catalogObject .object .desc h3 {
+    font: 700 .875em Roboto;
+    color: #ccc;
+    text-align: center;
+}
+.catalogObject .object .desc p {
+    margin: 15px 0 30px;
+    font: 400 .875em Roboto;
+    color: #000;
+    line-height: 1.64em;
 }
 
-.gallery > div{
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.catalogObject footer {
     width: 100%;
-    align-items: center;
-    justify-content: center;  
-    min-width: 50%;  
+    box-sizing: border-box;
+    margin: 25px auto 0;
+    text-align: center;
 }
-
-.gallery > div + div{
-    margin-left: 5px;
-}
-
-.gallery > div > div + div{
-    margin-top: 5px;
-}
-
-
-.image-bg{
+.catalogObject footer ul {
     width: 100%;
-    height: 100%;
 }
-
+.catalogObject footer ul li {
+    display: inline;
+    font: 400 .675em Roboto;
+    line-height: 1;
+    padding-left: 30px;
+}
+.catalogObject footer ul li:first-child {
+    padding-left: 0;
+}
