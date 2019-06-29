@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=cyrillic-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/md-images.css">
+    <link rel="stylesheet" href="css/md-slider.css">
+
+    <title>Slider</title>
+</head>
+<body>
+
+    <section class="catalogObject">
+        <article class="object">
+
+            <section class="images">
+                <div class="md-images--triple">
+                    <div onclick="showSlider(0)" style="background: url(images/photo-1561598598-fb89955138c9.jpeg);background-repeat: no-repeat; background-size: cover;background-position: center;"></div>
+                    <div>
+                        <div onclick="showSlider(1)" style="background: url(images/photo-1556986124-8fb780a67cdc.jpeg);background-repeat: no-repeat; background-size: cover;background-position: center;"></div>
+                        <div onclick="showSlider(2)" style="background: url(images/photo-1561621828-b3b7f9e3b2e7.jpeg);background-repeat: no-repeat; background-size: cover;background-position: center;"></div>               
+                    </div>
+                </div>
+            </section>       
+
+        </article> 
+    </section>      
+
+    <section id="slider" class="md-slider">
+        
+        <div class="md-slider__header">
+            <div class="md-location">
+                <div class="md-location__city">Пермь</div>
+                <div class="md-location__address">ул. Адмирала Ушакова, 59/1</div>
+            </div>
+            <a href="https://tapigo.ru/">
+                <img class="md-logo" src="images/logo-light.svg" alt="Tapigo">
+            </a>
+            <div class="md-contacts-btn">Контакты</div>
+        </div>
+
+        <div class="md-slider__body">
+            <div class="md-slider__image-container">
+
+                <a class="md-prev" onclick="shiftSlides(-1)"></a>
+                <a class="md-next" onclick="shiftSlides(1)"></a>                
+                
+                <img class="md-slide md-fade" src="images/photo-1561598598-fb89955138c9.jpeg" alt="">
+                <img class="md-slide md-fade" src="images/photo-1556986124-8fb780a67cdc.jpeg" alt="">
+                <img class="md-slide md-fade" src="images/photo-1561621828-b3b7f9e3b2e7.jpeg" alt="">
+                <img class="md-slide md-fade" src="images/photo-1561662702-2f299776c2f4.jpeg" alt="">
+                <img class="md-slide md-fade" src="images/photo-1561532325-6bb975ae3fc7.jpeg" alt="">
+                
+
+                <a class="md-close" onclick="closeSlider()"></a>   
+
+            </div>
+        </div>   
+        
+        <script>
+
+            let slides = document.getElementsByClassName("md-slide");
+
+            let activeImage = 0;
+            showSlide(activeImage);
+
+            function shiftSlides(n) {
+                showSlide(activeImage += n);
+            }
+
+            function showSlide(n) {                
+                if (n > slides.length-1) {activeImage = 0};
+                if (n < 0) {activeImage = slides.length - 1};
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none"; 
+                }  
+                slides[activeImage].style.display = "block"; 
+            }
+
+            function closeSlider(){
+                const slider = document.getElementById("slider");
+                slider.style.display = "none"; 
+                activeImage = 0;
+            }
+
+            function showSlider(n){
+                const slider = document.getElementById("slider");
+                slider.style.display = "flex";       
+                activeImage = n;          
+                showSlide(activeImage);
+            }
+
+        </script>            
+
+    </section>
+  
+</body>
+</html>
