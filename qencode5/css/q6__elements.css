@@ -79,6 +79,23 @@ textarea {
     color: #171717; 
 }
 
+input[type=text]:disabled.q6-input__field, 
+input[type=tel]:disabled.q6-input__field, 
+input[type=password]:disabled.q6-input__field,
+textarea:disabled,
+.q6-select:disabled{
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
+.q6-input__field--view{
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: initial;
+    color: #366fe0;    
+}
+
 .q6-button--shadow {
     box-shadow: 0px 3px 13px 1px rgba(105, 109, 112, 0.41);
 }
@@ -121,6 +138,91 @@ textarea {
     border-color: #858c92    
 }
 
+.q6-button.q6-button--round{
+    display: inline-block;
+    line-height: 30px;
+    background-color: #e9effb;
+    margin: 7px 0;
+    padding: 0 17px;
+    border-radius: 20px;
+    color: #3270e9;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    border: none;
+}
+
+.q6-button.q6-button--round:hover {
+    background-color: #d8e7ff;
+    box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);
+}
+
+.q6-button.q6-button--remove{
+    line-height: 24px;
+    font-weight: 400;
+    background-color: #fcede9;
+    color: #e03636;
+}
+
+.q6-button.q6-button--remove:before {
+    content: "";
+    margin-right: 5px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-size: 12px 12px;
+    background-image: url(../img/profiles_delete_icon.svg);
+}
+
+.q6-button.q6-button--remove:hover{
+    background-color: #fde6df;
+    box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);
+}
+
+.q6-button.q6-button--copy,
+.q6-button.q6-button--edit {
+    line-height: 24px;
+    font-weight: 400;
+    background-color: #e9f0fc;
+    color: #3b76eb;
+    position: relative;
+}
+
+.q6-button.q6-button--copy:before {
+    content: "";
+    margin-right: 5px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(../img/copy_icon.svg);
+}
+
+.q6-flash-message {
+    position: absolute;
+    left: 0px;
+    /* right: 0; */
+    top: 0;
+    /* bottom: 0; */
+    min-width: 58px;
+    z-index: 1;
+    padding: 0 17px;
+    border-radius: 20px;
+    background-color: #e9f0fc;
+    opacity: 0;
+
+    color: #3b76eb;
+    line-height: 24px;
+    font-weight: 400;    
+
+    font-size: 15px;
+    text-align: center;    
+
+    cursor: default;
+    pointer-events: none;    
+}
 
 .q6-input__label {
     color: #171717;
@@ -129,14 +231,60 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+  
     font-family: "proxima-nova", sans-serif;
     margin: 4px 0;
+
+    white-space: nowrap;
 }
+
+.q6-input__label label{
+    font-weight: normal;
+    margin-bottom: 0; 
+} 
 
 .q6-input.q6-input--password{
     position: relative;
 }
+
+.q6-input.q6-input--project-name{
+    max-width: 290px;
+}
+
+.q6-input.q6-input--region-name,
+.q6-input.q6-input--bucket-name,
+.q6-input.q6-input--access-id,
+.q6-input.q6-input--access-key{
+    flex: 1;
+    min-width: 260px;
+}
+
+.q6-input.q6-input--cors-origin{
+    flex:1;
+}
+
+.q6-input.q6-input--bucket-name .q6-button.q6-button--edit {
+    position: absolute;
+    right: 14px;
+    bottom: 5px;
+}
+
+
+
+.q6-input.q6-input--api-key,
+.q6-input.q6-input--transfer-method{
+    position: relative;
+    min-width: 260px;
+}
+
+.q6-input.q6-input--api-key .q6-button.q6-button--copy,
+.q6-input.q6-input--transfer-method .q6-button.q6-button--copy{
+    position: absolute;
+    right: 14px;
+    bottom: 5px;    
+}
+
+
 
 .q6-pass-eye-button{
     position: absolute;
@@ -168,6 +316,311 @@ textarea {
 .q6-input__field--error{
     border-color: #e34d4d !important; 
 }
+
+.q6-input-and-buttons--inline{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.q6-input-and-buttons--inline > .q6-button{
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 10px;
+    margin-right: 20px;
+    line-height: initial;
+}
+
+.q6-input-and-buttons--inline > .q6-button:last-of-type{
+    margin-right: 0;
+}
+
+.q6-input-and-buttons--inline .q6-input{
+    margin: 0;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.q6-input-and-buttons--inline .q6-input:last-of-type{
+    margin-right: 0;
+}
+
+.q6-input-and-buttons--inline .q6-input + .q6-button{
+    margin-left: 20px;
+}
+
+.q6-input-and-buttons--inline .q6-checkbox{
+    margin-right: 20px;
+}
+
+.q6-input-and-buttons--inline .q6-checkbox:last-of-type{
+    margin-right: 0;
+}
+
+.q6-input-and-buttons--inline-view .q6-input{
+    min-width: 150px;
+    flex: 0;
+}
+
+.q6-input-and-buttons--inline-view__button-container{
+    flex: 1;
+    text-align: right;    
+}
+
+.q6-input-and-buttons--inline-view__button-container .q6-button{
+    margin-bottom:0;
+}
+
+
+.q6-input__label--with-question{
+    justify-content: flex-start;
+}
+
+.q6-input__label--with-question .q6-question-icon{
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* round switch */
+.q6-switch-container{
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    min-width: 44px;
+    height: 24px;
+    margin: 0;
+}
+  
+.q6-switch input {
+    display: none;
+}
+  
+.q6-switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f0f0f0;
+    -webkit-transition: .1s;
+    transition: .1s;
+    border-radius: 34px;
+}
+  
+.q6-switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 5px;
+    bottom: 4px;
+    background-color: #9ea2ae;
+    -webkit-transition: .1s;
+    transition: .1s;
+    border-radius: 50%;
+}
+  
+input:checked + .q6-switch__slider {
+    background-color: #e9f0fc;
+}
+  
+input:checked + .q6-switch__slider:before {
+    -webkit-transform: translateX(19px);
+    -ms-transform: translateX(19px);
+    transform: translateX(19px);
+    background-color: #306eea;
+}
+/* round switch */
+
+/* checkbox with images and text */
+.q6-checkboxes-container{
+    display: flex;
+    flex-wrap: nowrap;    
+}
+
+.q6-image-text-checkbox{
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #838383;
+    background-color: #f9f9f9;
+    border: 1px solid #dae0ea;
+    box-sizing: border-box;   
+    border-radius: 7px;
+    padding: 10px;
+    padding-right:45px;
+    padding-left: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+input:checked + .q6-image-text-checkbox {
+    background-color: #f5f9ff;
+    border-color:#306eea;
+    color: #171717;
+}
+
+input:checked + .q6-image-text-checkbox:after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-image: url(../img/checked_blue.png);
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    right: 10px;
+    top: 13px;
+}
+
+.q6-image-text-checkbox-container{
+    margin: 0;
+    margin-right: 15px;
+}
+
+.q6-image-text-checkbox-container:last-of-type{
+    margin-right: 0;
+}
+
+.q6-image-text-checkbox-container input {
+    display: none;
+}
+
+.q6-image-text-checkbox--web:before{
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 24px;
+    background-image: url(../img/device_web.png);
+    background-size: 27px 24px;
+    background-repeat: no-repeat;
+    left: 13px;
+    top: 11px;
+    opacity: 0.6;   
+}
+
+input:checked + .q6-image-text-checkbox--web:before{
+    opacity: 1; 
+}
+
+.q6-image-text-checkbox--mobile:before{
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 24px;
+    background-image: url(../img/device_mobile.png);
+    background-size: 27px 24px;
+    background-repeat: no-repeat;
+    left: 13px;
+    top: 11px;
+    opacity: 0.6;   
+}
+
+input:checked + .q6-image-text-checkbox--mobile:before{
+    opacity: 1; 
+}
+
+.q6-image-text-checkbox--ott:before{
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 24px;
+    background-image: url(../img/device_ott.png);
+    background-size: 27px 24px;
+    background-repeat: no-repeat;
+    left: 13px;
+    top: 11px;
+    opacity: 0.6;   
+}
+
+input:checked + .q6-image-text-checkbox--ott:before{
+    opacity: 1; 
+}
+/* checkbox with images and text */
+
+/* checkbox */
+.q6-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 100;
+    color: #171717;
+}
+
+.q6-checkbox input {
+    display: none;
+}
+
+.q6-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #e1e5ee;
+    border-radius: 3px;
+    transition: all 0.1s ease;
+    box-sizing: border-box;
+}
+
+.q6-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+}
+
+.q6-checkbox:hover input ~ .q6-checkmark {
+    background-color: #ededed;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: #306eea;
+}
+
+.q6-checkbox input:disabled ~ .q6-checkmark {
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
+.q6-checkbox input:disabled:checked ~ .q6-checkmark {
+    border-color: #9b9b9b;
+    background: #9b9b9b;
+}
+
+.q6-checkbox input:checked ~ .q6-checkmark:after {
+    display: block;
+}
+
+.q6-checkbox .q6-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* checkbox */
 
 
 .q6-anchor-link{
@@ -423,6 +876,20 @@ textarea {
 
 .q6-demo-links-buttons > a:hover:after {
     right: 22px;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--back > a{
+    padding-right: 25px;
+    padding-left: 50px;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--back > a:after {
+    left: 27px;
+    transform: rotate(135deg);
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--back > a:hover:after {
+    left: 22px;
 }
 
 .q6-demo-links-buttons > a:last-of-type{
