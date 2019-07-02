@@ -130,8 +130,33 @@
             <div class="q7-container">
                 <div class="q7-page-content__header-container">
                     <div class="q7-page-content__header-title">Dashboard</div>
-                    <div>
-                        <div class="q7-page-content__header-selector">Wallet: <strong>$2500.01</strong></div>                      
+                    <div class="q7-header-menu-container ">
+                        <div class="q7-page-content__header-selector">Wallet: <strong>$2500.01</strong></div>  
+                        <div class="q7-header-menu">
+                            <a href="">+ Add Funds</a>
+                            <a href="">Billing</a>
+                        </div>   
+                        
+                        <script>
+                            $(function () {                               
+                                // open-close menu
+                                $(".q7-page-content__header-selector").click(function(){
+                                    $(this).toggleClass('q7-page-content__header-selector--opened');
+                                    $(this).next().toggleClass('q7-header-menu--opened');
+                                });               
+                                
+                                $(".q7-header-menu-container").hover(                            
+                                    function() {
+                                        // hover in
+                                    }, function() {
+                                        // hover out
+                                        $('.q7-page-content__header-selector').removeClass('q7-page-content__header-selector--opened');
+                                        $('.q7-header-menu').removeClass('q7-header-menu--opened');
+                                    }
+                                );                                                      
+                            })
+                        </script>                             
+                        
                     </div>
                 </div>                
             </div>  
