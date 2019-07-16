@@ -42,6 +42,75 @@
     margin-bottom: 170px;
 }
 
+.q6-card--benefits{
+    display: flex;
+    margin-bottom:80px;
+}
+
+.q6-card--benefits > div:first-of-type{
+    margin-right: 70px;
+}
+
+.q6-card--benefits__message{
+    color: #383838;
+    font-family: "proxima-nova";
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: bold;   
+    margin: 15px 0;
+}
+
+@media screen and (max-width: 780px){
+    .q6-card--benefits__message{
+        font-size: 38px;
+        line-height: 50px;   
+    } 
+    .q6-card--benefits {
+        flex-direction: column;
+    }    
+    .q6-card--benefits > div:first-of-type {
+        margin-right: 0;
+    }    
+}
+
+@media screen and (max-width: 480px){
+    .q6-card--benefits__message{
+        font-size: 30px;
+        line-height: 40px;
+        margin: 10px 0; 
+    } 
+}
+
+.q6-card--benefits__list{
+    margin-bottom: 25px;
+    margin-top: 15px;    
+}
+
+.q6-card--benefits__list > div{
+    color: #4b4b4b;
+    font-size: 17px;
+    line-height: 25px;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 35px;
+    display: inline-block;
+}
+
+.q6-card--benefits__list > div:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 5px);
+    height: 7px;
+    width: 12px;
+    border-bottom: 2px solid #25de8d;
+    border-left: 2px solid #25de8d;
+    transform: rotate(-45deg);
+}
+
+
 .q6-card--lowest-cost-container{
     background: #f7f8fa;
     padding: 35px 0;
