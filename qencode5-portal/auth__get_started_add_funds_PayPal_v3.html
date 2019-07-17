@@ -184,181 +184,39 @@
 
 
     <main class="q6-main q6-page-content">
-        <div class="q6-authorize-component">
+
+
+        <div class="q6-paypal-confirmation-container">
+
             <div class="q6-container">
-                <div class="q6-authorize-container">
-                    <div class="q6-get-started-features">    
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--pay"></div>
-                            <p>
-                                <span class="q6-blue-text">Pay only for what you use.</span> <br>
-                                No subscriptions or minumum contracts.
-                            </p>                            
-                        </div>                          
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--gift"></div>
-                            <p>
-                                <span class="q6-blue-text">Free $5 Credit</span> <br>
-                                Try it all for yourself risk-free.                                                        
-                            </p>                            
-                        </div>                              
-                        <div class="q6-feature-item">
-                            <div class="q6-feature-item__icon q6-feature-item__icon--price"></div>
-                            <p>
-                                Our prices start from: <br>
-                                <span class="q6-blue-text">$0.004 per minute of SD output.</span>                                  
-                            </p>     
-                        </div>       
-                        <div class="q6-promo-saving-links">
-                                <div id="show-why-low-cost"><div class="q6-question-icon"></div> <span>Why is the cost so low?</span></div>
-                                <div id="show-price-table"><div class="q6-dollar-icon"></div><span>Price table</span></div>
-                        </div>                                                                                                                                                              
-                    </div>
-                    <div class="q6-authorize-window">
 
-                        <h2 id="card-form-title">Add funds to wallet</h2>                        
+                <div class="q6-paypal-confirmation">
 
-                        <div class="q6-payment-switch">
-                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button q6-payment-switch__button--active">
-                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
-                                <p>Use PayPal</p>
-                            </div>                            
-                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button">
-                                <div class="q6-payment-switch__icon q6-payment-switch__icon--card"></div>
-                                <p>Save Credit Card</p>
+                    <div class="q6-paypal-confirmation-window">
+
+                        <div class="q6-paypal-confirmation-window-content">
+
+                            <div class="q6-paypal-waiting-image"></div>
+                            
+                            <div class="q6-paypal-confirmation-info">
+                                <div class="q6-form-important-message q6-loading">
+                                    Please wait while we confirm your payment
+                                </div>     
+                                <p class="q6-form-message">
+                                    This could take a few minutes.
+                                </p>  
                             </div>
-                            <div data-form="free-trial-form" data-title="Free Trial Account" class="q6-payment-switch__button">
-                                <div class="q6-payment-switch__icon q6-payment-switch__icon--trial"></div>
-                                <p>14-day Trial</p>
-                            </div>                            
+
                         </div>
-                        
 
-                        <div id="paypal-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
-                            
-                            <div class="q6-paypal-confirmation-container">
-                                <div class="q6-paypal-waiting-image"></div>
-                                
-                                <div class="q6-paypal-confirmation-info">
-                                    <div class="q6-form-important-message q6-loading">
-                                        Please wait while we confirm your payment
-                                    </div>     
-                                    <p class="q6-form-message">
-                                        This could take a few minutes.
-                                    </p>  
-                                </div>
- 
-                            </div>
+                    </div>                    
 
-                        </div>                        
+                </div>
 
-
-                        <div id="credit-card-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
-                            <div class="q6-input q6-lock-icon">
-                                <div class="q6-input__label">
-                                    <label>Name</label>
-                                </div>
-                                <input class="q6-input__field" type="text">
-                            </div>      
-    
-                            <div class="q6-input">
-                                <div class="q6-input__label">
-                                    <label for="user_card">Card number</label>
-                                </div>
-
-                                <div id="card-element"></div>
-                                <script src="https://js.stripe.com/v3/"></script> 
-                                <script> 
-                                    var stripe = Stripe('123');
-                                    var elements = stripe.elements();
-                                    var style = {
-                                        base: {
-                                            color: '#171717',
-                                            lineHeight: '22px',
-                                            height: '22px',
-                                            fontFamily: 'proxima-nova, sans-serif',
-                                            fontSmoothing: 'antialiased',
-                                            fontSize: '18px',
-                                            fontWeight: '600',
-                                            '::placeholder': {
-                                                color: '#aab7c4'
-                                            }
-                                        },
-                                        invalid: {
-                                            color: '#fa755a',
-                                            iconColor: '#fa755a'
-                                        }
-                                    };
-                                    var card = elements.create('card', {style: style});
-                                    card.mount('#card-element');
-                                </script>                                                                            
-                            </div>                                                                                   
-
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
-
-                            <div class="q6-powered-by-stripe">
-                                <div class="q6-lock-icon--left">
-                                    Billing information secured and protected.
-                                </div>
-                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
-                            </div>                              
-
-                        </div>         
-
-                        <div id="free-trial-form" class="q6-authorize-form q6-authorize-form--get-started q6-switch-content">
-                            
-                            <p class="q6-form-message">
-                                Get full access to try Qencode yourself for free up to 14 days.
-                            </p>                            
-                            
-                            <div class="q6-trial-details">
-                                <div class="q6-trial-details__list">
-                                    <div class="q6-trial-details__list-title">Trial is limited to:</div>
-                                    <p><span class="q6-blue-text">14</span> days</p>
-                                    <p><span class="q6-blue-text">80</span> videos</p>
-                                    <p><span class="q6-blue-text">1000</span> minutes</p>
-                                </div>
-                                <div class="q6-watermark-message">
-                                    <div class="q6-watermark-icon"></div>
-                                    <p class="q6-blue-text">Qencode watermark on every video</p>
-                                </div>
-                            </div>                                                                                 
-
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create Account</button>                           
-
-                        </div>                                             
-
-
-                        <script>
-                            $(function () {
-                                var tabLinks = document.querySelectorAll('.q6-payment-switch__button');
-
-                                tabLinks.forEach(link => link.addEventListener('click', switchTab));
-
-                                function switchTab(e){
-                                    // find active elements and remove
-                                    $('.q6-payment-switch__button--active').removeClass("q6-payment-switch__button--active");
-                                    $('.q6-switch-content--active').removeClass("q6-switch-content--active");
-
-                                    // find what button was clicked and show form with that ID
-                                    var clickedLink = e.currentTarget;
-                                    $(clickedLink).addClass('q6-payment-switch__button--active');
-
-                                    var tabID = clickedLink.getAttribute("data-form");
-
-                                    $(`#${tabID}`).addClass('q6-switch-content--active');
-
-                                    // update form title
-                                    var formTitle = clickedLink.getAttribute("data-title");
-                                    $("#card-form-title").html(formTitle);
-                                }                                       
-                            });                 
-                        </script>
-
-                    </div>  
-                </div>              
             </div>
-        </div>           
+
+        </div>
+         
     </main>
 
     <footer class="q6-footer">
