@@ -147,7 +147,7 @@
     height: 16px;
     background-color: white;
     border-radius: 50%;    
-    background-image: url(../img/check_green.svg);
+    background-image: url(../img/checked_blue.svg);
     background-size: 16px 16px;
     background-repeat: no-repeat;
     right: 5px;
@@ -812,6 +812,10 @@
     max-width: 920px;
 }
 
+.q6-tutorial-buttons--max-width{
+    max-width: none;
+}
+
 .q6-tutorial-buttons > .q6-button{
     padding: 12px 36px;
     margin-right: 25px;
@@ -846,6 +850,12 @@
     box-sizing: border-box;
     max-width: 920px;
 }
+
+
+.q6-tutorial-inputs-block--max-width{
+    max-width: none;
+}
+
 
 .q6-tutorial-inputs-block .q6-input input[type=text]:disabled.q6-input__field,
 .q6-tutorial-inputs-block .q6-input .q6-select:disabled {
@@ -1353,6 +1363,7 @@
 
 .q6-transcoding-progress-block{
     flex: 1;
+    margin-top: 10px;
 }
 
 .q6-transcoding-progress__bar{
@@ -1515,6 +1526,29 @@
 
 
 /* TRANSCODING PROGRESS TABLE */
+.q6-tutorial-files-table{
+    margin-bottom: 50px;
+}
+
+.q6-tutorial-files-table--simple{
+
+}
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__row {
+    width: fit-content;
+}
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__cell {
+    width: 110px;
+    min-width: 110px;
+}
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type {
+    width: initial;
+    min-width: initial;
+    padding: 6px 6px;
+}
+
 .q6-tutorial-files-table__header{
     display: flex;
 }
@@ -1573,8 +1607,8 @@
 
 .q6-tutorial-files-table__summary{
     margin-right: 25px;
-    width: 170px;
-    min-width: 170px;
+    width: 210px;
+    min-width: 210px;
 }
 
 .q6-tutorial-files-table__cell{
@@ -1649,6 +1683,15 @@
     line-height: 25px;
     font-size: 14px;
     min-width: 75px;
+}
+
+.q6-tutorial-files-table__action-buttons .q6-button{
+    line-height: 25px;
+    font-size: 14px;    
+}
+
+.q6-tutorial-files-table__action-buttons .q6-button--play-video{
+    padding: 0;
 }
 
 .q6-tutorial-files-table__cell-buttons .q6-button.q6-button--copy:before {
