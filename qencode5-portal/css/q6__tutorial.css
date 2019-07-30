@@ -1550,14 +1550,16 @@
 .q6-tutorial-files-table__row{
     display: flex;
     flex:1;
-    max-width: 630px;
 }
 
 .q6-tutorial-files-table__info{
     background: #f7f8fa;
     padding: 20px 25px;
     margin: 10px 0;    
-    max-width: 630px;
+}
+
+.q6-tutorial-files-table__info .q6-tutorial-content-title{
+    margin-top: 0;
 }
 
 .q6-tutorial-files-table__info-stats{
@@ -1567,7 +1569,9 @@
 }
 
 .q6-tutorial-files-table__info-stats > div{
-    margin-right: 35px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .q6-tutorial-files-table__info-stats > div:last-of-type{
@@ -1577,6 +1581,34 @@
 .q6-tutorial-files-table__info-stats > div span{
     font-weight: 600;
     margin-left: 10px;
+}
+
+.q6-tutorial-files-table__info-stats > div:first-of-type span{
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 195px;
+    display: inline-block;    
+}
+
+.q6-tutorial-copy-url-btn{
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    background-position: center;
+
+    background-image: url(../img/profiles_copy_icon.svg);
+    background-size: 12px 12px;    
+}
+
+.q6-tutorial-copy-url-btn:hover {
+    background-color: white;
 }
 
 .q6-tutorial-files-table__dynamic-cell{
@@ -1597,9 +1629,9 @@
 }
 
 .q6-tutorial-files-table__summary{
-    margin-right: 25px;
-    width: 210px;
-    min-width: 210px;
+    margin-right: 15px;
+    width: 200px;
+    min-width: 200px;
 }
 
 .q6-tutorial-files-table__cell{
