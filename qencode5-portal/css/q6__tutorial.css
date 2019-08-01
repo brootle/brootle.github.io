@@ -857,6 +857,10 @@
     max-width: none;
 }
 
+.q6-tutorial-inputs-block--wide{
+    max-width: 970px;
+}
+
 
 .q6-tutorial-inputs-block .q6-input input[type=text]:disabled.q6-input__field,
 .q6-tutorial-inputs-block .q6-input .q6-select:disabled {
@@ -1539,8 +1543,10 @@
 }
 
 .q6-tutorial-files-table--simple .q6-tutorial-files-table__dynamic-cell{
-    min-width: calc(85px*5);
+    min-width: calc(85px*4);
+    max-width: calc(85px*4);
 }
+
 
 .q6-tutorial-files-table__header{
     display: flex;
@@ -1720,8 +1726,75 @@
     flex: 1;
 }
 
+.q6-tutorial-files-table__buttons{
+    min-width: 185px;
+    background: #f7f8fa;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    padding: 10px 15px;  
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--round.q6-button--play-video {
+    width: initial;
+    margin-right: 0;
+    padding: initial;
+    min-width: initial;
+    font-weight: normal;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--play-video:before {
+    left: 51px;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--round {
+    margin: 4px 0;
+}
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__header 
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
+    min-width: 185px;
+}
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__body 
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
+    max-width: 85px;
+}
+
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__header .q6-tutorial-files-table__dynamic-cell {
+    min-width: calc(85px*5);
+    max-width: calc(85px*5);
+}
+
 .q6-tutorial-files-table__cell-buttons{
     display: flex;
+}
+
+.q6-tutorial-before-complete-message{
+    max-width: 100px;
+    text-align: center;
+    color: #828ca1;
+    line-height: 18px;    
+}
+
+.q6-tutorial-before-complete-message__icon{
+    display: inline-block;
+    height: 46px;
+    min-width: 58px;
+    background-image: url(../img/video_file_icon.png);
+    background-size: 58px 46px;
+    background-repeat: no-repeat;    
 }
 
 .q6-tutorial-files-table__cell-buttons .q6-button.q6-button--round{
@@ -1782,6 +1855,8 @@
     display: flex;
     align-items: center;    
 }
+
+
 
 .q6-button.q6-button--round.q6-button--copy-url{
     padding: 0 10px;
