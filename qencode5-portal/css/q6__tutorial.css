@@ -1459,7 +1459,9 @@
     line-height: 17px;  
     color: #525252; 
     white-space: nowrap;
-    padding-right: 10px;
+    padding: 0 6px;
+    width: 85px;
+    min-width: 85px;
 }
 
 .q6-transcoding-progress__status span{
@@ -1569,11 +1571,6 @@
     margin-bottom: 50px;
 }
 
-.q6-tutorial-files-table--simple .q6-tutorial-files-table__dynamic-cell{
-    min-width: calc(85px*4);
-    max-width: calc(85px*4);
-}
-
 
 .q6-tutorial-files-table__header{
     display: flex;
@@ -1648,6 +1645,8 @@
     display: flex;
     flex:1;
     align-items: center;
+    min-width: calc(85px*5);
+    max-width: calc(85px*5);    
 }
 
 
@@ -1759,13 +1758,9 @@
 }
 
 .q6-tutorial-files-table__buttons{
-    min-width: 185px;
-    background: #f7f8fa;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    padding: 10px 15px;  
+    max-width: 175px;
+    min-width: 175px;
+    padding-left: 6px;
 }
 
 .q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons{
@@ -1785,7 +1780,7 @@
 
 .q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
 .q6-button.q6-button--play-video:before {
-    left: 51px;
+    left: 56px;
 }
 
 .q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
@@ -1793,10 +1788,6 @@
     margin: 4px 0;
 }
 
-.q6-tutorial-files-table--simple .q6-tutorial-files-table__header 
-.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
-    min-width: 185px;
-}
 
 .q6-tutorial-files-table--simple .q6-tutorial-files-table__body 
 .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
@@ -1870,6 +1861,11 @@
     background-image: url(../img/play_icon.svg);
 }
 
+.q6-button.q6-button--play-video:disabled:before {
+    background-image: url(../img/play_icon_disabled.svg);
+}
+
+
 .q6-button.q6-button--info:before {
     content: "";
     position: absolute;
@@ -1881,9 +1877,17 @@
     background-image: url(../img/info_icon.svg);
 }
 
+.q6-button.q6-button--info:disabled:before {
+    background-image: url(../img/info_icon_disabled.svg);
+}
+
 .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
-    max-width: 165px;
-    padding: 0;
+    max-width: 175px;
+    min-width: 175px;
+    /* padding: 0;    */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
     display: flex;
     align-items: center;    
 }
