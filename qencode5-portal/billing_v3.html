@@ -46,7 +46,6 @@
     <link href="css/q6__elements.css" rel="stylesheet" />
     <link href="css/q6__authorize.css" rel="stylesheet" />
 
-
     <script src="js/menu.js"></script>    
 
 
@@ -369,86 +368,6 @@
                                     chart.update();
                                 }
                             },
-
-                            // TODO - make completely custom tooltips
-                            // tooltips: {
-                            //     // Disable the on-canvas tooltip
-                            //     enabled: false,
-
-                            //     custom: function(tooltipModel) {
-
-                            //         console.log(tooltipModel);
-
-                            //         // Tooltip Element
-                            //         var tooltipEl = document.getElementById('chartjs-tooltip');
-
-                            //         // Create element on first render
-                            //         if (!tooltipEl) {
-                            //             tooltipEl = document.createElement('div');
-                            //             tooltipEl.id = 'chartjs-tooltip';
-                            //             tooltipEl.innerHTML = "<table></table>";
-                            //             document.body.appendChild(tooltipEl);
-                            //         }
-
-                            //         // Hide if no tooltip
-                            //         if (tooltipModel.opacity === 0) {
-                            //             tooltipEl.style.opacity = 0;
-                            //             return;
-                            //         }
-
-                            //         // Set caret Position
-                            //         tooltipEl.classList.remove('above', 'below', 'no-transform');
-                            //         if (tooltipModel.yAlign) {
-                            //             tooltipEl.classList.add(tooltipModel.yAlign);
-                            //         } else {
-                            //             tooltipEl.classList.add('no-transform');
-                            //         }
-
-                            //         function getBody(bodyItem) {
-                            //             return bodyItem.lines;
-                            //         }
-
-                            //         // Set Text
-                            //         if (tooltipModel.body) {
-                            //             var titleLines = tooltipModel.title || [];
-                            //             var bodyLines = tooltipModel.body.map(getBody);
-
-                            //             var innerHtml = '<thead>';
-
-                            //             titleLines.forEach(function(title) {
-                            //                 innerHtml += '<tr><th>' + title + '</th></tr>';
-                            //             });
-                            //             innerHtml += '</thead><tbody>';
-
-                            //             bodyLines.forEach(function(body, i) {
-                            //                 var colors = tooltipModel.labelColors[i];
-                            //                 var style = 'background:' + colors.backgroundColor;
-                            //                 style += '; border-color:' + colors.borderColor;
-                            //                 style += '; border-width: 2px';
-                            //                 var span = '<span style="' + style + '"></span>';
-                            //                 innerHtml += '<tr><td>' + span + body + '</td></tr>';
-                            //             });
-                            //             innerHtml += '</tbody>';
-
-                            //             var tableRoot = tooltipEl.querySelector('table');
-                            //             tableRoot.innerHTML = innerHtml;
-                            //         }
-
-                            //         // `this` will be the overall tooltip
-                            //         var position = this._chart.canvas.getBoundingClientRect();
-
-                            //         // Display, position, and set styles for font
-                            //         tooltipEl.style.opacity = 1;
-                            //         tooltipEl.style.position = 'absolute';
-                            //         tooltipEl.style.left = position.left + tooltipModel.caretX + 'px';
-                            //         tooltipEl.style.top = position.top + tooltipModel.caretY + 250 + 'px';
-                            //         tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
-                            //         tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
-                            //         tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
-                            //         tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
-                            //     }
-                            // }
-
 
 
                             tooltips: {
@@ -2012,40 +1931,110 @@
         </section>
 
         <section id="preferences" class="q6-tabcontent">
-            <div class="q6-container">
-                <h2 class="q6-section-title q6-black-text">General preferences</h2>
+            <div class="q6-lighter-gray-background">
+                <div class="q6-container">
 
-                <div class="q6-billing-preferences__checkboxes">
-                    <label class="q6-checkbox q6-black-text">
-                        Receive invoice by email
-                        <input type="checkbox" checked="checked">
-                        <span class="q6-checkmark"></span>
-                    </label>
-                    <label class="q6-checkbox q6-black-text">
-                        Receive billing alerts
-                        <input type="checkbox">
-                        <span class="q6-checkmark"></span>
-                    </label>
-                    <div class="q6-billing-alert">
-                        <p>
-                            Send an alert anytime my monthly usage has axceeded the amount of:
-                        </p>
-                        <div class="q6-input">
-                            <div class="q6-usd-input-wrapper q6-black-text">
-                                <span>$</span>
-                                <input type="text" placeholder="200" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">
-                            </div>
+                    <div class="q6-billing-preferences__checkboxes">
+
+                        <div class="q6-switch-input">
+
+                            <label class="q6-switch">
+                                <input checked class="q6-input__field" type="checkbox">
+                                <span class="q6-switch__slider"></span>
+                            </label>            
+
+                            <div>
+
+                                <div class="q6-switch-input__title">Receive invoice by email</div>                           
+
+                            </div>                       
+                        </div>                    
+
+                        <div class="q6-switch-input">
+
+                            <label class="q6-switch">
+                                <input checked class="q6-input__field" type="checkbox">
+                                <span class="q6-switch__slider"></span>
+                            </label>            
+
+                            <div>
+
+                                <div class="q6-switch-input__title">Billing email:</div>  
+
+                                <div class="q6-input q6-input--email">
+                                    <input class="q6-input__field" type="text" value="jack@gmail.com">
+                                </div>                            
+
+                            </div>                       
                         </div>
-                    </div>
+
+                        <div class="q6-switch-input">
+
+                            <label class="q6-switch">
+                                <input class="q6-input__field" type="checkbox">
+                                <span class="q6-switch__slider"></span>
+                            </label>            
+
+                            <div>
+
+                                <div class="q6-switch-input__title">Billing address:</div>  
+
+                                <div class="q6-input q6-input--address">
+                                    <input disabled class="q6-input__field" type="text">
+                                </div>                            
+
+                            </div>                       
+                        </div>          
+
+
+                        <div class="q6-switch-input">
+
+                            <label class="q6-switch">
+                                <input class="q6-input__field" type="checkbox">
+                                <span class="q6-switch__slider"></span>
+                            </label>            
+
+                            <div>
+
+                                <div class="q6-switch-input__title">Receive billing alerts:</div>  
+
+                                <div class="q6-billing-alert">
+                                    <p>
+                                        Send an alert anytime my monthly usage has axceeded the amount of:
+                                    </p>
+                                    <div class="q6-input">
+                                        <div class="q6-usd-input-wrapper q6-black-text">
+                                            <span>$</span>
+                                            <input type="text" placeholder="200" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">
+                                        </div>
+                                    </div>
+                                </div>                  
+
+                            </div>                       
+                        </div>   
+
+
+                        <div class="q6-switch-input">
+
+                            <label class="q6-switch">
+                                <input class="q6-input__field" type="checkbox">
+                                <span class="q6-switch__slider"></span>
+                            </label>            
+
+                            <div>
+
+                                <div class="q6-switch-input__title">VAT number:</div>  
+
+                                <div class="q6-input q6-input--vat">
+                                    <input disabled class="q6-input__field" type="text">
+                                </div>                            
+
+                            </div>                       
+                        </div>                                           
+
+                    <div>
+
                 </div>
-
-                <hr>
-
-                <div class="q6-billing-preferences__buttons">
-                     <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Save Changes</button>
-                </div>
-
-
             </div>
         </section>
 
