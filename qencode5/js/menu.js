@@ -60,10 +60,14 @@ $(function () {
         });   
         
         // 2. show or hide current submenu on click
-        if($(this).hasClass("q6-menu-item--submenu-closed")){
-            $(this).removeClass("q6-menu-item--submenu-closed");   
-        } else{
-            $(this).addClass("q6-menu-item--submenu-closed");  
+        // don't show or hide submenu on click in desktop mode
+        var mobileMode = $('.hamburger').is(':visible');
+        if(mobileMode){
+            if($(this).hasClass("q6-menu-item--submenu-closed")){
+                $(this).removeClass("q6-menu-item--submenu-closed");   
+            } else{
+                $(this).addClass("q6-menu-item--submenu-closed");  
+            }
         }
 
     });    
