@@ -222,49 +222,61 @@
                                 </button>                        
                             </div>                               
                         </div>                  
-
-                        <script>
-                            $(function () {
-                                $('#create-project').click(function(){
-                                    $(this).hide();
-                                    $('#api-key').show();
-                                    $('#api-block').show();
-                                });
-
-                                // copy input
-                                $(".q6-input .q6-button--copy").click(function (){
-
-                                    try { 
-                                        var inputText = $(this).closest('.q6-input').find('input')[0];
-
-                                        $(inputText).removeAttr('disabled');  
-
-                                        inputText.select();
-                                        document.execCommand("copy");   
-
-                                        $(inputText).attr('disabled','disabled');  
-
-                                        var flashMessage = $(this).find('.q6-flash-message')[0];                                               
-
-                                        //console.log("copied");                                
-                                        $(flashMessage).html('Copied');
-                                        $(flashMessage)
-                                            .animate({ opacity: 1 }, 200)
-                                            .delay(500)     
-                                            .animate({ opacity: 0 }, 200) 
-
-                                    } catch (err) {
-                                        console.log(err);
-                                    }
-
-                                });   
-
-                            });
-                        </script>                           
+                
 
                     </div>                          
 
                 </div>
+
+                <div class="q7-section">
+                
+                    <div class="q7-section-tittle-and-button">
+                        <div class="q7-section-tittle">Project Info</div>
+                        <button class="q6-button q6-button--round q6-button--back">
+                            Back to All Projects                         
+                        </button>
+                    </div>          
+                    
+                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline">
+
+                        <div class="q6-input-and-buttons--inline">
+                        
+                            <div class="q6-input q6-input--enter-project-name">
+                                <div class="q6-input__label q6-input__label--with-question">
+                                    <label>Enter a Project Name</label>
+                                    <div class="q6-question-icon"></div>
+                                </div>                 
+
+                                <div class="q6-input__field--action-btns q6-input__field--action-btns__two-btns">       
+                                    <input class="q6-input__field" type="text" value="Demo Project">   
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__cancel"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__confirm"></div>
+                                    </div>                                        
+                                </div>                             
+
+
+                            </div>      
+
+
+                            <div id="api-key" class="q6-input q6-input--api-key">
+                                <div class="q6-input__label">
+                                    <label>API Key</label>
+                                    <a href="">Recreate API Key</a>
+                                </div>
+                                <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
+                                <button id="copy-api-key" class="q6-button q6-button--round q6-button--copy">
+                                    Copy
+                                    <div class="q6-flash-message">copied</div>
+                                </button>                        
+                            </div>                               
+                        </div>                  
+
+                        
+
+                    </div>                          
+
+                </div>                
            
                 
                 <div class="q7-section">
@@ -1354,6 +1366,40 @@
                 })
             </script>    
 
+            <script>
+                $(function () {
+
+
+                    // copy input
+                    $(".q6-input .q6-button--copy").click(function (){
+
+                        try { 
+                            var inputText = $(this).closest('.q6-input').find('input')[0];
+
+                            $(inputText).removeAttr('disabled');  
+
+                            inputText.select();
+                            document.execCommand("copy");   
+
+                            $(inputText).attr('disabled','disabled');  
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            //console.log("copied");                                
+                            $(flashMessage).html('Copied');
+                            $(flashMessage)
+                                .animate({ opacity: 1 }, 200)
+                                .delay(500)     
+                                .animate({ opacity: 0 }, 200) 
+
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });   
+
+                });
+            </script>           
 
         </div>
                 
