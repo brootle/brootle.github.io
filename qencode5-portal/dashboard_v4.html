@@ -438,7 +438,7 @@
                             </div>
                             <div class="q7-content-block__body">
 
-                                <table class="q7-table">
+                                <table class="q7-table q7-table--latest-transcoding-jobs">
                                     <thead>
                                         <tr>
                                             <th>Job ID</th>
@@ -451,44 +451,99 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td> <a href="">fakdjfle394297ffwe</a> </td>
+                                            <td> 
+                                                <a href="">fakdjfle3942dfjasldfkjlas97ffwe</a>
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                                </div>                                                
+                                            </td>
                                             <td>00:03:00</td>
                                             <td>383 MB</td>
                                             <td>00:03:00</td>
                                             <td>00:03:00</td>
-                                            <td>Completed</td>
+                                            <td>
+                                                <div class="q6-status-message-container">
+                                                    <div class="q6-status">
+                                                        <div class="q6-status-icon q6-status__done">Completed</div>
+                                                    </div>
+                                                </div>                                            
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td> <a href="">fakdjfle394297ffwe</a> </td>
+                                            <td> 
+                                                <a href="">fakdjfle3942dfjasldfkjlas97ffwe</a>
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                                </div>                                                
+                                            </td>
                                             <td>00:03:00</td>
                                             <td>383 MB</td>
                                             <td>00:03:00</td>
                                             <td>00:03:00</td>
-                                            <td>Completed</td>
+                                            <td>
+                                                <div class="q6-status-message-container">
+                                                    <div class="q6-status">
+                                                        <div class="q6-status-icon q6-status__done">Completed</div>
+                                                    </div>
+                                                </div>                                            
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td> <a href="">fakdjfle394297ffwe</a> </td>
+                                            <td> 
+                                                <a href="">fakdjfle3942dfjasldfkjlas97ffwe</a>
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                                </div>                                                
+                                            </td>
                                             <td>00:03:00</td>
                                             <td>383 MB</td>
-                                            <td>00:03:00</td>
-                                            <td>00:03:00</td>
-                                            <td>Completed</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <div class="q6-status-message-container">
+                                                    <div class="q6-status">
+                                                        <div class="q6-status-icon q6-status__error">Error</div>
+                                                    </div>
+                                                </div>                                       
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td> <a href="">fakdjfle394297ffwe</a> </td>
+                                            <td> 
+                                                <a href="">fakdjfle3942dfjasldfkjlas97ffwe</a>
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                                </div>                                                
+                                            </td>
                                             <td>00:03:00</td>
                                             <td>383 MB</td>
                                             <td>00:03:00</td>
                                             <td>00:03:00</td>
-                                            <td>Completed</td>
+                                            <td>
+                                                <div class="q6-status-message-container">
+                                                    <div class="q6-status">
+                                                        <div class="q6-status-icon q6-status__done">Completed</div>
+                                                    </div>
+                                                </div>                                            
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td> <a href="">fakdjfle394297ffwe</a> </td>
+                                            <td> 
+                                                <a href="">fakdjfle3942dfjasldfkjlas97ffwe</a>
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                                </div>                                                
+                                            </td>
                                             <td>00:03:00</td>
                                             <td>383 MB</td>
                                             <td>00:03:00</td>
                                             <td>00:03:00</td>
-                                            <td>Completed</td>
+                                            <td>
+                                                <div class="q6-status-message-container">
+                                                    <div class="q6-status">
+                                                        <div class="q6-status-icon q6-status__done">Completed</div>
+                                                    </div>
+                                                </div>                                            
+                                            </td>
                                         </tr>                                                                                                                                                                
                                     </tbody>
                                 </table>
@@ -821,6 +876,39 @@
                 </div>
                      
             </div>            
+
+            <script>
+                $(function () {                
+                    // copy job ID
+                    $(".q6-tutorial-profile-details__copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('td').find('a')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');                                                   
+
+                            if(successful) {
+                                //console.log("copied");                                                                                                        
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+                       
 
         </div>
                 
