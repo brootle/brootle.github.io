@@ -851,9 +851,38 @@
     margin-bottom: 40px;
 }
 
+.q7-section .q6-tutorial-inputs-block,
+.q7-section .q6-tutorial-inputs-block--inline {
+    margin-top: 10px;
+}
+
 .q7-section-tittle{
     font-size: 24px;
     color: var(--blue);
+}
+
+.q7-section-tittle .q7-section-tittle__optional{
+    font-size: 15px;
+}
+
+.q7-section-tittle__optional--drop-down{
+    position: relative;
+    cursor: pointer;
+    padding-right: 11px;
+}
+
+.q7-section-tittle__optional--drop-down:after{
+    position: absolute;
+    right: 0;
+    top: calc(50% - 2px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid var(--blue);
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
 }
 
 .q7-section .q6-input__field--view {
@@ -864,11 +893,13 @@
     background: white;
     padding: 30px 35px;
     border-radius: 7px;
-    margin-top: 25px;
     min-width: 300px;
     margin-right: 25px;
     border: none;
     max-width: 300px;
+
+    margin-top: 10px;
+    margin-bottom: 25px;    
 
     display: flex;
     flex-direction: column;    
