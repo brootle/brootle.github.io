@@ -560,6 +560,75 @@
     overflow: hidden;
 }
 
+.q7-table-pagination{
+    border-top: 1px solid #e9e9e9;
+    margin-top: 15px;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;  
+    color: #575757;  
+}
+
+.q7-table-pagination__results{
+    background: #f8f8f8;
+    padding: 6px 14px;  
+}
+
+.q7-table-pagination__pages{
+    padding: 0 8px;
+}
+
+.q7-table-pagination__buttons{
+    margin-left: 25px;
+    display: flex;
+}
+
+.q7-table-pagination__button{
+    border: 1px solid #eeeeee;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    margin-right: 7px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.q7-table-pagination__button:hover{
+    border-color: #bdbdbd;
+}
+
+.q7-table-pagination__button:hover:after{
+    border-bottom: 1px solid #bdbdbd;
+    border-right: 1px solid #bdbdbd;
+}
+
+.q7-table-pagination__button:last-of-type{
+    margin-right: 0;
+}
+
+.q7-table-pagination__button:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+}
+
+.q7-table-pagination__button.q7-table-pagination__button--prev:after{
+    transform: rotate(135deg);
+    left: 8px;
+}
+
+.q7-table-pagination__button.q7-table-pagination__button--next:after{
+    transform: rotate(-45deg);
+    right: 8px;
+}
+
 
 .q7-bucket-icon{
     min-width: 14px;
