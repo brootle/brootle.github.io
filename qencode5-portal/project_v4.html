@@ -424,7 +424,7 @@
                             </div>
 
                             <div class="q6-tutorial-profile-footer">
-                                <button class="q6-button q6-button--round q6-button--settings">More Settings</button>    
+                                <button data-toggle="modal" data-target="#moreSettingsModal" class="q6-button q6-button--round q6-button--settings">More Settings</button>    
                                 <p>Edit thumbnails, audio bitrate, and aspect ratio</p>
                             </div>
 
@@ -560,7 +560,7 @@
                             </div>   
 
                             <div class="q6-tutorial-profile-footer">
-                                <button class="q6-button q6-button--round q6-button--settings">More Settings</button>    
+                                <button data-toggle="modal" data-target="#moreSettingsModal" class="q6-button q6-button--round q6-button--settings">More Settings</button>    
                                 <p>Edit thumbnails, audio bitrate, and aspect ratio</p>
                             </div>                                                                   
                         </div>
@@ -571,6 +571,137 @@
                             <button class="q6-button q6-button--round">+ Add profile</button>
                         </div>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade q7-modal" id="moreSettingsModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                
+                                <div class="modal-header">
+
+                                    <div class="q7-video-rendition-extra-header">
+                                        <div>Profile Name: Test 1</div>
+                                        <div>Format (Codec): MP4(H264)</div>
+                                    </div>
+                                    
+                                    <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                                </div>
+                                <div class="modal-body q7-modal-body--more-settings">
+
+                                    <div class="q7-modal-body-section">
+                                        <h5 class="modal-title">Profile Thumbnails Settings</h5>
+                                        <div class="q7-modal-body-section__content">
+
+                                            <div class="q7-modal-switch-and-title">
+                                                <label class="q6-switch">
+                                                    <input id="callback-url-switch" class="q6-input__field" type="checkbox">
+                                                    <span class="q6-switch__slider"></span>
+                                                </label>    
+                                                <div class="q7-modal-switch-title">Add Single Thumbnail</div>
+                                            </div>        
+
+
+                                        </div>
+                                        <div class="q7-modal-body-section__content">
+
+                                            <div class="q7-modal-switch-and-title">
+                                                <label class="q6-switch">
+                                                    <input id="callback-url-switch" class="q6-input__field" type="checkbox">
+                                                    <span class="q6-switch__slider"></span>
+                                                </label>    
+                                                <div class="q7-modal-switch-title">Add Interval Thumbnail</div>
+                                            </div>     
+
+                                        </div>                                        
+                                    </div>    
+
+                                    <div class="q7-modal-body-section">
+                                        <h5 class="modal-title">Profile Video Settings</h5>
+                                        <div class="q7-modal-body-section__content">
+
+                                            <div class="q6-input-and-checkbox">
+                                                <div class="q6-input q6-input--video-aspect-ratio">
+                                                    <div class="q6-input__label q6-input__label--with-question">
+                                                        <label>Aspect Ratio</label>
+                                                        <div class="q6-question-icon"></div>
+                                                    </div>
+                                                    <input class="q6-input__field" type="text" value="">
+                                                </div>       
+
+                                                <div class="q6-checkbox--with-question">
+                                                    <label class="q6-checkbox">
+                                                        Change Physical Dimentions
+                                                        <input checked type="checkbox">
+                                                        <span class="q6-checkmark"></span>
+                                                    </label>     
+                                                    <div class="q6-question-icon"></div> 
+                                                </div>                                                
+
+                                            </div>
+
+                                        </div>
+                                    </div>  
+
+                                    <div class="q7-modal-body-section">
+                                        <h5 class="modal-title">Profile Audio Settings <span>(optional)</span> </h5>
+                                        <div class="q7-modal-body-section__content">
+                                            
+                                            <div class="q6-input">
+                                                <div class="q6-input__label q6-input__label--with-question">
+                                                    <label>Max Audio Bitrate (kbps)</label>
+                                                    <div class="q6-question-icon"></div>
+                                                </div>                        
+                                                <div class="q6-input__field--view q6-input__field--action-btns">
+                                                    128
+                                                    <div class="q6-tutorial-profile-actions">
+                                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                                    </div>                                    
+                                                </div>  
+                                            </div>
+
+                                        </div>
+                                    </div>            
+
+                                    <div class="q7-modal-body-section">
+                                        <h5 class="modal-title">Profile Audio Settings <span>(optional)</span> </h5>
+                                        <div class="q7-modal-body-section__content">
+                                            
+                                            <div class="q6-input q6-input--enter-project-name">
+                                                <div class="q6-input__label q6-input__label--with-question">
+                                                    <label>Max Audio Bitrate (kbps)</label>
+                                                    <div class="q6-question-icon"></div>
+                                                </div>                 
+
+                                                <div class="q6-input__field--action-btns q6-input__field--action-btns__two-btns">       
+                                                    <input class="q6-input__field" type="text" value="128">   
+                                                    <div class="q6-tutorial-profile-actions">
+                                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__cancel"></div>
+                                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__confirm"></div>
+                                                    </div>                                        
+                                                </div>                             
+                                            </div>
+
+                                        </div>
+                                    </div>                                         
+
+                                            
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="q7-modal-footer-buttons">
+                                        <button data-dismiss="modal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                        <button data-dismiss="modal" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Save</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <!-- Modal ends -->   
+
 
                     <!-- Modal -->
                     <div class="modal fade q7-modal" id="editRendition" role="dialog">
@@ -728,8 +859,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <div class="q7-modal-footer-buttons">
-                                        <button data-dismiss="modal" id="cancel-transfer-method" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
-                                        <button data-dismiss="modal" id="create-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>
+                                        <button data-dismiss="modal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                        <button data-dismiss="modal" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>
                                     </div>
                                 </div>
 
@@ -898,8 +1029,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <div class="q7-modal-footer-buttons">
-                                        <button data-dismiss="modal" id="cancel-transfer-method" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
-                                        <button data-dismiss="modal" id="create-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>
+                                        <button data-dismiss="modal" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
+                                        <button data-dismiss="modal" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>
                                     </div>
                                 </div>
 
