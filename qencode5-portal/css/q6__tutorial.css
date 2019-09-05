@@ -1422,6 +1422,30 @@
     display: flex;
 }
 
+.q6-transcoding-errors{
+    background: #ffefef;
+    margin-top: 30px;
+    padding: 15px 13px;
+    border-radius: 10px;
+    color: #d64a4a;   
+    display: flex; 
+    align-items: flex-start;
+}
+
+.q6-transcoding-errors__icon{
+    background-image: url(../img/errors_icon.png);
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    width: 45px;
+    height: 36px;
+    min-width: 45px;   
+    margin-right: 25px; 
+}
+
+.q6-transcoding-errors__list{
+    margin-left: 10px;
+}
+
 .q6-transcoding-progress-block{
     flex: 1;
     margin-top: 10px;
@@ -1475,6 +1499,16 @@
     right: 6px;
 }
 
+.q6-transcoding-progress-block.q6-transcoding-progress-block--error
+    .q6-transcoding-progress__status{
+    color: #d64a4a;
+}   
+
+.q6-transcoding-progress-block.q6-transcoding-progress-block--after-error
+    .q6-transcoding-progress__status{
+    color: #9e9e9e;
+}   
+
 .q6-transcoding-progress__status{
     font-size: 14px;
     font-weight: 500; 
@@ -1484,6 +1518,7 @@
     padding: 0 6px;
     width: 85px;
     min-width: 85px;
+    padding-left: 0;
 }
 
 .q6-transcoding-progress__status span{
@@ -1513,6 +1548,30 @@
     background-color: white;
     border-radius: 50%;    
     background-image: url(../img/checked_blue.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--error .q6-transcoding-progress__bar:before {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    background-image: url(../img/checked_red.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--after-error .q6-transcoding-progress__bar:before {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    background-image: url(../img/checked_gray.svg);
     background-size: cover;
     background-repeat: no-repeat;
     left: 0;
@@ -1574,6 +1633,7 @@
 .q6-transcoding-progress .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__status{
     padding-right: 0;
     padding-left: 10px;
+    width: 100%;
 }
 
 .q6-small-loader {
