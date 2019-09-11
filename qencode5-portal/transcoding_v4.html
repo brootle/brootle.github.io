@@ -841,28 +841,7 @@
                                                 // Use DataTransfer interface to access the file
                                                 fileName=e.dataTransfer.files[0].name
                                             }
-
-                                            // show uploaded filename to user
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('.q6-drag-and-drop-message').hide();
-
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('.q6-drag-and-drop-message--file').show();  
-
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('.q6-drag-and-drop-filename').html(fileName);  
-
-                                            // //
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('.q6-drag-and-drop--blue-icon').hide();     
-
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('.q6-file-uploaded--blue-icon').show();   
-
-                                            // $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                            //     .find('label > span').text('Choose another file');                                  
-
-
+                                
                                             // Pass event to removeDragData for cleanup
                                             removeDragData(e);                            
 
@@ -882,61 +861,6 @@
                                     })
                                 </script>                  
 
-
-                                <script>
-                                    $(function (){
-                                        // // when we Browse for a file
-                                        // $(".q6-tutorial-video-method__drag-and-drop input[type='file']").change(function(e) {                            
-                                        //     var fileName = e.target.value.split( '\\' ).pop();
-                                            
-                                        //     // if filename is not empty
-                                        //     // filename can be empty if user clicks cancel instead of OK when chosing file
-                                        //     if(fileName){
-                                        //         // display name of uploaded file to a user
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('.q6-drag-and-drop-message').hide();                                   
-
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('.q6-drag-and-drop-message--file').show();                                                                  
-
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('.q6-drag-and-drop-filename').html(fileName);     
-
-                                        //         ////
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('.q6-drag-and-drop--blue-icon').hide();     
-
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('.q6-file-uploaded--blue-icon').show();   
-
-                                        //         $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('label > span').text('Choose another file');                                                                                                                                          
-                                        //     }
-
-                                        //     // clear value in case same file will be selected
-                                        //     $(this).val('');
-                                        // });
-
-                                        // // when delete selected file q6-delete-selected-file
-                                        // $(".q6-tutorial-video-method__drag-and-drop .q6-delete-selected-file").click(function(e) {
-                                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //             .find('label > span').text('Browse');  
-
-                                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //         .find('.q6-drag-and-drop--blue-icon').show(); 
-
-                                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //         .find('.q6-file-uploaded--blue-icon').hide();   
-                                                
-                                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //         .find('.q6-drag-and-drop-message').show();     
-                                                
-                                        //     $(this).closest(".q6-tutorial-video-method__drag-and-drop")
-                                        //         .find('.q6-drag-and-drop-message--file').hide();                                                                                                                                                              
-                                        // });                            
-
-                                    });                             
-                                </script>
 
 
                                 <script>
@@ -1000,6 +924,51 @@
 
                         <div class="q7-block__step">
                             <div class="q7-block__step-title">Step 2. Output Settings</div>
+
+                            <div class="q7-transcoding-output-settings">
+                            
+                                <div class="q6-input-and-buttons--inline">
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label >Project</label>
+                                            <a href="">Manage</a>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select">
+                                                <option value="0" selected="selected" label="NETFLIC_live"></option>
+                                                <option value="1" label="test2">test2</option>
+                                                <option value="2" label="My First Project">My First Project</option>
+                                            </select>                                   
+                                        </div>
+                                    </div>        
+                                    
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Storage</label>
+                                            <a href="">Manage</a>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select" required="">
+                                                <option value="0" selected="selected" label="Qencode (24 hours)"></option>
+                                            </select>                                   
+                                        </div>
+                                    </div>                                                            
+                            
+                                </div>    
+                                
+                                <div class="q6-input q6-input--transcoding-profiles">
+                                    <div class="q6-input__label">
+                                        <label>Transcoding Profiles</label>
+                                        <a href="">Manage Profiles</a>
+                                    </div>
+                                    <div>
+                                        checkbox
+                                    </div>
+                                </div>                                                           
+                            
+                            </div>
+
                         </div>                
 
                         <div class="q7-block__step">
