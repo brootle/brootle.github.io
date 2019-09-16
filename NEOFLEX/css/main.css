@@ -1,0 +1,243 @@
+.page-container{
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+    box-sizing: border-box;    
+    overflow: hidden;  
+}
+
+.main-container{
+    width: 100%;
+    padding: 0 5%;
+    max-width: 1430px;
+    margin: auto;
+    box-sizing: border-box;   
+}
+
+
+.page-title{
+    height: 283px;
+    font-family: Museo Sans Cyrl;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #3a015a;
+    font-weight: 600;
+}
+
+.slider-container{
+    position: relative;
+    height: 600px;
+}
+
+.slider{
+    position: absolute;
+    white-space: nowrap;
+    top: 0;
+    left: 0;    
+}
+
+.slide{
+    background: #FFFFFF;
+    box-shadow: 30px 30px 60px rgba(233, 243, 255, 0.44), 0px 20px 60px rgba(182, 202, 255, 0.9), 10px 10px 30px rgba(136, 176, 255, 0.15);
+    border-radius: 40px;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 40px;    
+}
+
+.slide:last-of-type{
+    margin-right: 0px;    
+}
+
+.slide__image{
+    width: 450px;
+    height: 475px;    
+}
+
+.slide__title{
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Museo Sans Cyrl;
+    font-size: 45px;
+    font-weight: 600;
+    color: #3a015a;    
+}
+
+.slider__control{
+    position: absolute;
+    top: 50%;
+    margin-top: -41px;
+    border-radius: 50%;    
+    width: 82px;
+    height: 82px;
+
+    box-shadow: 4px 3px 10px 1px rgba(36, 1, 82, 0.42);
+    cursor: pointer;
+}
+
+.slider__control--back{
+    left: -122px;
+
+    background: url(../img/arrow_left.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slider__control--forward{
+    right: -122px;
+
+    background: url(../img/arrow_right.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+
+@media screen and (max-width: 1440px){
+    .page-container{
+        max-width: 1440px;     
+    }
+
+    .main-container{
+        max-width: 1440px;
+    }    
+
+    .page-title{
+        height: 260px;
+        font-size: 50px;
+    }    
+
+    .slider-container{
+        height: 560px;
+    }    
+  
+    .slide__image{
+        width: 390px;
+        height: 440px;  
+    }    
+
+    .slide__title{
+        height: 120px;
+        font-size: 32px;   
+    }    
+
+    .slider__control{
+        margin-top: -37px;  
+        width: 75px;
+        height: 75px;
+    }
+    
+    .slider__control--back{
+        left: -37px;
+
+        background: url(../img/arrow_left_1440.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+        background-repeat: no-repeat;
+        background-position: center;        
+    }
+    
+    .slider__control--forward{
+        right: -37px;
+
+        background: url(../img/arrow_right_1440.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+        background-repeat: no-repeat;
+        background-position: center;         
+    }    
+}
+
+@media screen and (max-width: 990px){
+    .page-container{
+        max-width: 990px;     
+    }
+
+    .main-container{
+        max-width: 694px;    
+    }    
+
+    .page-title{
+        height: 190px;
+        font-size: 45px;
+    }        
+
+    .slider-container{
+        height: 483px;
+    }        
+
+    .slide__image{
+        width: 336px;
+        height: 380px;
+    }    
+
+    .slide__title{
+        height: 103px;
+        font-size: 25px; 
+    }        
+
+    .slider__control{
+        margin-top: -25px;  
+        width: 50px;
+        height: 50px;
+    }
+    
+    .slider__control--back{
+        left: -25px;
+
+        background: url(../img/arrow_left_990.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+        background-repeat: no-repeat;
+        background-position: center;           
+    }
+    
+    .slider__control--forward{
+        right: -25px;
+
+        background: url(../img/arrow_right_990.svg), linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D; 
+        background-repeat: no-repeat;
+        background-position: center;         
+    }        
+}
+
+@media screen and (max-width: 375px){
+    .page-container{
+        max-width: 375px;     
+    }
+
+    .main-container{
+        max-width: 375px;   
+        width: 100%;
+        padding: 0 24px;           
+    }    
+
+    .page-title{
+        height: 80px;
+        font-size: 22px;
+    }      
+
+    .slider-container{
+        height: 552px;
+    }      
+
+    .slide__image{
+        width: 328px;
+        height: 371px;
+    }    
+
+    .slide__title{
+        height: 101px;
+        font-size: 20px;
+    }        
+
+    .slider__control--back {
+        left: 20%;
+        bottom: 0;
+        top: initial;
+    }
+    
+    .slider__control--forward {
+        right: 20%;
+        bottom: 0;
+        top: initial;
+    }    
+}
