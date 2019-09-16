@@ -171,20 +171,22 @@
 
 .address-icon {
     height: 48px;
-    min-width: 30px;
+    min-width: 54px;
     background-size: 30px 48px;
     background-repeat: no-repeat;
     background-image: url(../img/address_icon.svg);
     margin-right: 24px;
+    background-position: center;
 }
 
 .phone-icon {
     height: 39px;
-    min-width: 50px;
+    min-width: 54px;
     background-size: 50px 39px;
     background-repeat: no-repeat;
     background-image: url(../img/phone_icon.svg);
     margin-right: 24px;
+    background-position: center;
 }
 
 .email-icon {
@@ -194,6 +196,7 @@
     background-repeat: no-repeat;
     background-image: url(../img/email_icon.svg);
     margin-right: 24px;
+    background-position: center;
 }
 
 @media screen and (max-width: 1440px){
@@ -323,6 +326,26 @@
         background-repeat: no-repeat;
         background-position: center;         
     }        
+
+    .address-block__contact-details {
+        flex-direction: column;
+        align-items: center;
+    }    
+
+    .address-block__contact-details > div {
+        min-width: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 600px;
+    }    
+
+    .address-block__contact-details > div {
+        margin-bottom: 25px;
+    }    
+
+    .address-block__contact-details > div:last-of-type {
+        margin-bottom: 0px;
+    }     
 }
 
 @media screen and (max-width: 375px){
@@ -365,5 +388,17 @@
         right: 20%;
         bottom: 0;
         top: initial;
+    }    
+
+    .address-block__contact-details {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }    
+
+    .address-block__contact-button button {
+        font-size: 18px;
+        line-height: 40px;
+        width: 248px;
+        border-width: 2px;
     }    
 }
