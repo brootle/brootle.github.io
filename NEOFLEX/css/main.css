@@ -1,3 +1,10 @@
+@font-face {
+    font-family: Museo Sans Cyrl;
+    src: url(../fonts/MuseoSansCyrl.otf);
+ }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .page-container{
     width: 100%;
     max-width: 1920px;
@@ -97,6 +104,98 @@
 }
 
 
+.address-block__contact-button button{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;  
+
+    color: #39015a;
+    border: 3px solid #39015a;
+    border-radius: 70px;
+    line-height: 81px;
+    box-sizing: border-box;
+    width: 455px;    
+
+    background: white;
+    cursor: pointer;    
+
+    margin: 0 auto;
+    display: block;    
+}
+
+.address-block{
+    margin-top: 65px;
+}
+
+.address-block__title{
+    font-family: Museo Sans Cyrl;
+    font-size: 60px;
+    font-weight: 600;
+    color: #150F1E;
+    text-align: center;    
+}
+
+.address-block__contact-details{
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 70px;    
+}
+
+.address-block__contact-details > div{
+    display: flex;
+    align-items: flex-start;    
+
+    width: fit-content;
+
+    margin-right: 6%;
+    max-width: 490px;
+    min-width: 383px;
+}
+
+.address-block__contact-details > div:last-of-type{
+    margin-right: 0px; 
+}
+
+.address-block__contact-details p{
+    margin: 0;
+    font-family: Roboto;
+    font-size: 25px;
+    line-height: 40px;    
+    color: #150F1E;
+}
+
+.address-block__contact-details p > span{
+    color:#828282;
+}
+
+.address-icon {
+    height: 48px;
+    min-width: 30px;
+    background-size: 30px 48px;
+    background-repeat: no-repeat;
+    background-image: url(../img/address_icon.svg);
+    margin-right: 24px;
+}
+
+.phone-icon {
+    height: 39px;
+    min-width: 50px;
+    background-size: 50px 39px;
+    background-repeat: no-repeat;
+    background-image: url(../img/phone_icon.svg);
+    margin-right: 24px;
+}
+
+.email-icon {
+    height: 39px;
+    min-width: 54px;
+    background-size: 54px 39px;
+    background-repeat: no-repeat;
+    background-image: url(../img/email_icon.svg);
+    margin-right: 24px;
+}
+
 @media screen and (max-width: 1440px){
     .page-container{
         max-width: 1440px;     
@@ -146,6 +245,33 @@
         background-repeat: no-repeat;
         background-position: center;         
     }    
+
+
+    .address-block {
+        margin-top: 63px;
+    }    
+
+    .address-block__title{
+        font-size: 50px;   
+    }    
+
+    .address-block__contact-details {
+        margin-top: 52px;
+        margin-bottom: 63px;
+    }    
+
+    .address-block__contact-details > div{
+        min-width: 0;
+        margin-right: 5%;
+        max-width: 400px;
+    }    
+
+    .address-block__contact-button button {
+        font-size: 30px;
+        line-height: 72px;
+        width: 390px;
+    }    
+  
 }
 
 @media screen and (max-width: 990px){
