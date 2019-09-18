@@ -514,6 +514,9 @@
     border-left: 1px solid #eeeff2;  
     width: 40px;
     padding-right: 0;    
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
 }
 
 
@@ -2023,6 +2026,7 @@ a.q7-bucket-url:hover{
     color: var(--blue);
     font-size: 15px;
     cursor: pointer;
+    font-weight: normal;
 }
 
 
@@ -2098,6 +2102,7 @@ a.q7-bucket-url:hover{
 .q7-table--storage tr td:first-of-type .q6-checkbox{
     margin: 0;
     margin-top: -2px;
+    height: 18px;
 }
 
 .q7-table--storage tr td:first-of-type .q6-checkbox input:checked ~ .q6-checkmark {
@@ -2120,7 +2125,7 @@ a.q7-bucket-url:hover{
     width: 18px;
     height: 15px;
     left: 0px;
-    top: calc(50% - 10px);
+    top: calc(50% - 9px);
     background-image: url(../img/folder_icon.png);
     background-size: 18px 15px;
     background-repeat: no-repeat;
@@ -2178,6 +2183,34 @@ a.q7-bucket-url:hover{
     padding-top: 0;
     padding-bottom: 0;
     vertical-align: middle;
+}
+
+.q7-table--storage td:first-of-type{
+    max-width: 46px;
+    min-width: 46px;
+}
+
+.q7-table--storage td{
+    min-width: 80px;
+}
+
+.q7-table--storage td:nth-of-type(2) {
+    min-width: 80px;
+    max-width: 420px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--blue);
+}
+
+.q7-table-cell--storage.q7-table-cell--storage-edit input[type=text].q6-input__field {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 3px 9px;
+    width: initial;
+    background: #f3f6f9;  
+    color: var(--blue); 
 }
 /* STORAGE */
 
