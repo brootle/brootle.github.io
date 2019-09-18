@@ -512,10 +512,110 @@
                 </section>   
 
                 <section id="settings" class="q6-tabcontent">
-                    <div class="q7-content-block">
-                        dfds
+                    <div class="q7-content-block q7-content-block--storage-settings">
+                        <div class="q7-storage-settings">
+                            <div>
+                                <div class="q7-block-title">API Transcoding Resources</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+                            </div>
+                            <div>
+                                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Edit</button>
+                            </div>
+                        </div>
+
+                        <div class="q7-storage-settings">
+                            <div>
+                                <div class="q7-block-title">CDN (Content Delivery Network)</div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la
+                                </p>
+                            </div>
+                            <div>
+                                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Edit</button>
+                            </div>
+                        </div>    
+
+                        <div class="q7-storage-settings">
+                            <div>
+                                <div class="q7-block-title">CORS Configurations</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+                            </div>
+                            <div>
+                                <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Add</button>
+                            </div>
+                        </div>    
+
+                        <div class="q7-storage-settings">
+                            <div>
+                                <div class="q7-block-title">Endpoint</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+
+                                <div class="q6-input q6-input--endpoint-url">
+                                    <input class="q6-input__field" type="text" value="https://nyc3.digitalocian.com/5ljfgf/4534rgd/dsasdfasfew" disabled="disabled">
+                                    <button class="q6-button q6-button--round q6-button--copy">
+                                        Copy
+                                        <div class="q6-flash-message">Copied</div>
+                                    </button>                        
+                                </div>
+
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </div>            
+
+                        <div class="q7-storage-settings__delimeter"></div>
+
+                        <div class="q7-storage-settings">
+                            <div>
+                                <div class="q7-block-title">Destroy this space</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+                            </div>
+                            <div>
+                                <button class="q6-button q6-button--danger">Destroy</button>
+                            </div>
+                        </div>                          
+
                     </div>
                 </section>         
+
+
+                <script>
+                    $(function () {
+
+                        // copy input
+                        $(".q6-input .q6-button--copy").click(function (){
+
+                            try { 
+                                var inputText = $(this).closest('.q6-input').find('input')[0];
+
+                                $(inputText).removeAttr('disabled');  
+
+                                inputText.select();
+                                document.execCommand("copy");   
+
+                                $(inputText).attr('disabled','disabled');  
+
+                                var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200) 
+
+                            } catch (err) {
+                                console.log(err);
+                            }
+
+                        });   
+
+                    });
+                </script>
+
 
                 <script>
                     var tabLinks = document.querySelectorAll('.q6-tablinks');
