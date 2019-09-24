@@ -1549,7 +1549,7 @@ td.q7-table-cell--edit-mode{
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    min-width: 400px;
+    min-width: 340px;
     max-width: fit-content;
     border: 1px solid var(--blue);
     margin-bottom: 20px;
@@ -1643,7 +1643,7 @@ td.q7-table-cell--edit-mode{
 }
 
 .q7-block__step .q6-tutorial-add-video-block {
-    background: #f3f4f7;
+    border: 1px solid #dddfe1;
 }
 
 .q7-block__step .q6-tutorial-inputs-block__controls {
@@ -1662,7 +1662,7 @@ td.q7-table-cell--edit-mode{
 .q7-transcoding-output-settings{
     padding: 25px 30px;
     border-radius: 7px;
-    background: #f3f4f7;
+    border: 1px solid #dddfe1;
     margin-bottom: 40px;
 }
 
@@ -1805,8 +1805,20 @@ input:checked + .q7-transcoding-profile__checkbox {
     margin-bottom: 10px;
 }
 
+.q7-transcoding-profile__checkbox--select-profile-enabled{
+    display: none;
+}
+
 input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__checkbox--select-profile {
     color:var(--blue);
+}
+
+input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__checkbox--select-profile {
+    display: none;
+}
+
+input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__checkbox--select-profile-enabled {
+    display: block;
 }
 
 .q7-profile-checkbox__profile-name{
@@ -1819,6 +1831,10 @@ input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__check
     font-size: 16px;
     font-weight: 500;
     line-height: 30px;    
+}
+
+.q7-profile-checkbox__profile-name > span{
+    color: var(--blue);
 }
 
 .q7-profile-checkbox__parameters{
@@ -1843,7 +1859,7 @@ input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__check
 
 .q7-profile-checkbox__profile-id > span,
 .q7-profile-checkbox__resolutions > span{
-    color:#777777;
+    color: var(--blue);
 }
 
 .q7-profile-checkbox-info{
@@ -1907,7 +1923,7 @@ input:checked + .q7-transcoding-profile__checkbox .q7-transcoding-profile__check
 .q7-transcoding-advanced-settings {
     padding: 25px 30px;
     border-radius: 7px;
-    background: #f3f4f7;
+    border: 1px solid #dddfe1;
     display: flex;
     align-items: baseline;    
 }
