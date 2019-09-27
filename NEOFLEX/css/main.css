@@ -433,19 +433,28 @@
     justify-content: center;    
 
     cursor: pointer;
+
+    position: relative;
 }
 
 .customers-list__block img{
     max-width: 100%;
 }
 
+
 .customers-list__description{
-    display: none;
+    opacity: 0;
+    box-sizing: border-box;
+    margin: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     font-family: Roboto;
     font-size: 16px;
     line-height: 20px;
     color: #150F1E;
-    height: 100%;
     overflow: hidden;
 }
 
@@ -454,7 +463,11 @@
 }
 
 .customers-list__block:hover .customers-list__description{
-    display: block;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+     opacity: 1;
 }
 /* CUSTOMERS */
 
