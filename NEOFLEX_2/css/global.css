@@ -1,0 +1,100 @@
+*, :after, :before {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.base-button {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    line-height: 1.4;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    outline: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    min-width: 200px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    font-family: Museo Sans Cyrl\ 700;
+}
+
+.base-button_default {
+    padding: 12px 48px;
+    font-size: 16px;
+}
+
+.base-button_rounded-gradient span {
+    position: relative;
+    background: -webkit-gradient(linear,left top,left bottom,from(#1a024f),to(#570066));
+    background: linear-gradient(180deg,#1a024f,#570066);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.base-button_rounded-gradient {
+    border-radius: 30px;
+}
+
+.base-button_rounded-gradient:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear,left top,left bottom,from(#1a024f),to(#570066));
+    background: linear-gradient(180deg,#1a024f,#570066);
+    border-radius: 30px;
+    z-index: -2;
+}
+
+.base-button_rounded-gradient:after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 1%;
+    width: 98%;
+    height: 90%;
+    background-color: #fff;
+    border-radius: 30px;
+    z-index: -1;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.base-button_rounded-gradient:hover:after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.base-button_rounded-gradient:hover span {
+    position: relative;
+    background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#fff));
+    background: linear-gradient(180deg,#fff,#fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px){
+    .base-button_rounded-gradient {
+        border-radius: 70px;
+    }
+}
+
+@media (min-width: 1025px){
+    .base-button_default {
+        font-size: 24px;
+        padding: 18px 96px;
+    }
+}
