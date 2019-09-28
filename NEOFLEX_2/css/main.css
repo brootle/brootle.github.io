@@ -104,9 +104,6 @@
     top: initial;    
 }
 
-.address-block {
-    margin-top: 63px;
-}
 
 .address-block__title {
     font-family: Museo Sans Cyrl;
@@ -119,8 +116,7 @@
 .address-block__contact-details {
     display: flex;
     flex-direction: column;  
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .address-block__contact-details > div {
@@ -128,6 +124,10 @@
     align-items: flex-start;
     width: 100%;
     margin-bottom: 25px;    
+}
+
+.address-block__contact-details > div:last-of-type {
+    margin-bottom: 0;    
 }
 
 .address-icon {
@@ -180,12 +180,12 @@
 }
 
 .directions-block {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 27px;
+    margin-bottom: 27px;
 }
 
 .directions-block__title {
-    font-family: Museo Sans Cyrl;
+    font-family: Roboto;
     font-size: 18px;
     color: #150F1E;
     font-weight: 600;
@@ -228,7 +228,7 @@
     position: absolute;
 
     background-repeat: no-repeat;
-    background-image: url(../img/metro.png);
+    background-image: url(../img/metro.svg);
     background-position: center;    
 }
 
@@ -241,7 +241,7 @@
     position: absolute;
 
     background-repeat: no-repeat;
-    background-image: url(../img/car.png);
+    background-image: url(../img/car_l.svg);
     background-position: center;    
 }
 
@@ -254,13 +254,14 @@
     position: absolute;
 
     background-repeat: no-repeat;
-    background-image: url(../img/car2.png);
+    background-image: url(../img/car_r.svg);
     background-position: center;    
 }
 
 .map-container {
-    height: 880px;
-    position: relative;
+    height: 262px;
+    margin-left: -15px;
+    margin-right: -15px;    
 }
 
 .top-wave {
@@ -594,6 +595,60 @@
 }
 /* MANAGMENT */
 
+.contacts-cities-container{
+    margin-left: -24px;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.contacts-cities-container > a{
+    font-size: 18px;
+    text-decoration: none;
+    font-family: Roboto;
+    background: -webkit-linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D;
+    background: -o-linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D;
+    background: -moz-linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D;
+    background: linear-gradient(180deg, #1A024F 0%, #570066 100%), #3C143D;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-right: 16px;
+    position: relative;
+}
+
+.contacts-cities-container > a.contacts-city--selected{
+    font-weight: bold;
+}
+
+.contacts-cities-container > a.contacts-city--selected:after {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    display: inline-block;
+    content: "";
+    height: 1px;
+    background: #150f1e;
+}
+
+.contacts-cities-container > a:last-of-type{
+    margin-right: 0;
+}
+
+.address-block__title{
+    display: none;
+}
+
+.selected-city-details{
+    padding: 0 15px;
+    padding-top: 24px;
+    background: #FFFFFF;
+    box-shadow: 30px 30px 60px rgba(233, 243, 255, 0.44), 0px 20px 60px rgba(182, 202, 255, 0.9), 10px 10px 30px rgba(136, 176, 255, 0.15);
+    border-radius: 20px;   
+    margin-bottom: 50px; 
+    overflow: hidden;
+}
+
 @media (min-width: 375px){
     .main-container {
         max-width: 785px;
@@ -670,6 +725,7 @@
     .directions-block__title {
         font-size: 30px;
         padding-left: 84px;
+        font-family: Museo Sans Cyrl;
     }    
 
     .directions-block__details {
@@ -720,7 +776,9 @@
     }    
 
     .map-container {
-        height: 1400px;
+        height: 980px;
+        margin-left: -46px;
+        margin-right: -46px;
     }    
 
     /* CUSTOMERS */
@@ -786,6 +844,28 @@
     }    
     /* MANAGMENT */
 
+    .contacts-cities-container > a {
+        font-size: 35px;
+        margin-right: 57px;
+    }    
+
+    .contacts-cities-container {
+        margin-bottom: 68px;
+        margin-left: 0;
+    }    
+
+    .address-block__title {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 45px;        
+    }    
+
+    .selected-city-details {
+        padding: 0 45px;
+        padding-top: 46px;
+
+    }    
+
 }
 
 @media (min-width: 660px){
@@ -805,7 +885,7 @@
 
     .page-title {
         margin: 100px 0;
-        font-size: 50px;
+        font-size: 60px;
     }    
 
     .slider-container {
@@ -844,8 +924,8 @@
 
     .address-block__contact-details {
         flex-direction: row;
-        margin-top: 52px;
-        margin-bottom: 63px;        
+        margin-top: 10px;
+        margin-bottom: 60px;      
     }    
 
     .address-block__contact-details > div {
@@ -867,6 +947,7 @@
         padding-left: 90px;
         font-size: 35px;
         line-height: 35px;
+        font-weight: normal;
     }    
 
     .directions-info__text {
@@ -962,8 +1043,21 @@
     }    
 
     .address-block__title {
-        font-size: 50px;
+        display: none;
     }        
+
+    .contacts-cities-container > a {
+        margin-right: 101px;
+    }
+    
+    .address-block__contact-button {
+        text-align: left;
+    }    
+
+    .selected-city-details {
+        padding: 0 38px;
+        padding-top: 46px;
+    }
 
 }
 
@@ -982,17 +1076,14 @@
         height: 82px;
     }
 
-    .address-block {
-        margin-top: 65px;
-    }    
 
     .address-block__title {
         font-size: 60px;
     }    
 
     .directions-block {
-        margin-top: 120px;
-        margin-bottom: 120px;
+        margin-top: 67px;
+        margin-bottom: 67px;
     }    
 
     .tab-links a {
@@ -1015,8 +1106,7 @@
     }    
 
     .page-title {
-        margin: 110px 0;
-        font-size: 60px;
+        margin: 100px 0;
     }    
 
     .tab-links {
@@ -1095,6 +1185,15 @@
     .directions-info__text {
         font-size: 25px;
         line-height: 40px;
+    }    
+
+    .contacts-cities-container > a {
+        margin-right: 107px;
+        font-size: 45px;
+    }    
+
+    .address-block__contact-button {
+        padding-left: 80px;
     }    
 
 }
