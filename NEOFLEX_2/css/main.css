@@ -117,13 +117,15 @@
     display: flex;
     flex-direction: column;  
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .address-block__contact-details > div {
     display: flex;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 25px;    
+    margin-bottom: 25px;   
+    max-width: 100%; 
 }
 
 .address-block__contact-details > div:last-of-type {
@@ -169,6 +171,8 @@
     font-size: 16px;
     line-height: 22px;
     color: #150F1E;
+    word-wrap: break-word;
+    max-width: calc(100% - 15px - 34px);
 }
 
 .address-block__contact-details p > span {
@@ -707,11 +711,9 @@
     .address-block__contact-details p {
         font-size: 25px;
         line-height: 40px;
+        max-width: calc(100% - 45px);
     }    
     
-    .address-block__contact-details > div {
-        width: fit-content; 
-    }
 
     .address-icon {
         height: 48px;
@@ -948,13 +950,8 @@
     }    
 
     .address-block__contact-details > div {
-        margin-bottom: 0;
-        margin-right: 5%;
-        max-width: 400px;
-    }    
-
-    .address-block__contact-details > div:last-of-type {
-        margin-right: 0px;
+        margin-right: 25px;
+        max-width: 335px;
     }    
 
     .directions-block {
@@ -1167,7 +1164,6 @@
 
     .address-block__contact-details > div {
         width: fit-content;
-        margin-right: 6%;
         max-width: 490px;
         min-width: 383px;
     }    
