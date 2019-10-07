@@ -848,7 +848,7 @@
 
 .q6-tutorial-inputs-block{
     background: white;
-    padding: 30px 25px;
+    padding: 30px 20px;
     border-radius: 7px;
     margin: 25px 0;  
     padding-top: 20px;
@@ -917,11 +917,19 @@
 }
 
 .q6-tutorial-profile{
+    border: 1px solid #dae0ea;
+    padding: 10px 15px;
+    padding-top: 30px;
+    box-sizing: border-box;
+    border-radius: 7px;
     margin-top: 10px;
-    margin-right: 35px;
+    margin-right: 10px;
     color: #444444;
     font-size: 14px;
     min-width: 250px;
+    width: 282px;
+    max-width: 282px;
+    position: relative;
 }
 
 .q6-tutorial-profile .q6-checkbox input:checked ~ .q6-checkmark,
@@ -1059,6 +1067,8 @@
 .q6-tutorial-profile-details tbody td:first-of-type{
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
+    color: #306eea;
+    font-weight: 500;
 }
 
 .q6-tutorial-profile-details tbody tr:hover td{
@@ -1132,6 +1142,16 @@
 .q6-tutorial-profile-details__delete{
     background-image: url(../img/profiles_delete_icon.svg);    
     background-size: 12px 12px;  
+}
+
+.q6-tutorial-profile-details__delete-profile{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+.q6-tutorial-profile-details__delete-profile:hover{
+    background-color: #fedfdf;
 }
 
 .q6-tutorial-profile-details__edit{
@@ -2128,6 +2148,11 @@
     display: flex;
     align-items: center;    
     white-space: nowrap;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
 }
 
 .q6-tutorial-profile-header .q6-tutorial-profile-actions {
