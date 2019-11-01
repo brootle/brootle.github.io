@@ -149,6 +149,41 @@
 }
 
 
+.q6-drm-button{
+    padding-left: 125px;
+}
+
+.q6-demo-links-buttons > a.q6-link-button--docs{
+    line-height: 70px;
+    padding-left: 90px;
+    padding-right: 65px;
+    white-space: nowrap;
+}
+
+.q6-demo-links-buttons > a.q6-link-button--docs:before{
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: calc(50% - 20px);
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/drm/icons/docs.png);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}
+
+
+@media screen and (max-width: 1024px){
+    .q6-drm-box.q6-drm-box--how-it-works {
+        flex-direction: column;
+    }
+
+    .q6-drm-box.q6-drm-box--how-it-works > div {
+        margin-right: 0;
+    }
+}
+
 @media screen and (max-width: 768px){
     .q6-drm-box {
         flex-direction: column;
@@ -161,6 +196,15 @@
     .q6-drm-providers {
         flex-direction: column;
     }    
+}
+
+@media screen and (max-width: 600px){
+    .q6-drm-button {
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -191,4 +235,9 @@
     .q6-drm-providers__logos img {
         margin: 10px 15px;
     }         
+
+    .q6-demo-links-buttons > a.q6-link-button--docs {
+        padding-left: 75px;
+        padding-right: 50px;
+    }    
 }
