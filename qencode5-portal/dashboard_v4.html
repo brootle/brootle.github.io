@@ -416,11 +416,15 @@
                                             } ]
                                         },
 
+                                        animation: {
+                                            duration: 0
+                                        },
 
                                         onHover: function(evt) {
                                             var item = chart.getElementAtEvent(evt);
                                             if (item.length) {
                                                 var currentDatasetIndex = item[0]._datasetIndex;
+                                                
 
                                                 // set point hover radius to default 4
                                                 chart.data.datasets.forEach(dataset => {
