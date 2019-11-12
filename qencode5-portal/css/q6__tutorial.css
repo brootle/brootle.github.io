@@ -1092,6 +1092,7 @@
 .q6-tutorial-profile-header{
     display: flex;
     align-items: center;    
+    position: relative;
 }
 
 .q6-tutorial-profile-footer{
@@ -1200,15 +1201,41 @@
     z-index: 1;
 }
 
+.q6-tutorial-profile__form--profile-name{
+    top: -105px;
+    left: 65px;
+}
+
+.q6-tutorial-profile__form.q6-tutorial-profile__form--profile-name:before {
+    position: absolute;
+    content: '';
+    border-style: solid;
+    top: initial;
+    bottom: -8px;
+    border-width: 0 8px 8px 8px;
+    left: 40px;
+    border-color:  transparent transparent #366fe0 transparent;
+}
+
 .q6-tutorial-profile__form .q6-input-and-buttons--inline {
     flex-wrap:nowrap;
 }
 
 .q6-tutorial-profile__form .q6-button,
-.q6-tutorial-profile__form input[type=text].q6-input__field{
+.q6-tutorial-profile__form input[type=text].q6-input__field,
+.q6-tutorial-profile-header .q6-tutorial-profile__form input[type=text].q6-input__field{
     padding: 0 13px;
     line-height: 32px;
     font-size: 15px;
+}
+
+.q6-tutorial-profile-header .q6-tutorial-profile__form input[type=text].q6-input__field{
+    margin: 0;
+    max-width: 100%;
+}
+
+.q6-tutorial-profile__form .q6-input-and-buttons--inline .q6-input.q6-input--profile-name{
+    min-width: 210px;
 }
 
 .q6-tutorial-profile__form .q6-input__label{
