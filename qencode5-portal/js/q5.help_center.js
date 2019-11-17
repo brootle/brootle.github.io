@@ -1,4 +1,5 @@
 $(function () {
+
     // console.log('DOM loaded with jQuery - short version');
     
     // soft scroll inside page clicking nav links
