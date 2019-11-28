@@ -31,6 +31,9 @@
     
     <link href="css/hamburgers.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
     <link href="css/q6__fonts.css" rel="stylesheet" />
     <link href="css/q6__template.css" rel="stylesheet" />
     <link href="css/q6__elements.css" rel="stylesheet" />
@@ -138,7 +141,11 @@
             <div class="q7-container">
                 <div class="q7-page-content__header-container">
                     <div class="q7-page-content__header-title-and-button">        
-                        <div class="q7-page-content__header-title">My Projects</div>           
+                        <div class="q7-page-content__header-title">Projects</div>   
+                        <div class="q7-page-content__header-description">
+                            Here you could create and edit Profiles and Storage 
+                            for your transcoding Projects.
+                        </div>                                   
                     </div>
                     
                     <div class="q7-header__balance-and-wallet">
@@ -185,109 +192,188 @@
             <div class="q7-container">
             
                 <div class="q7-section">
-                       
-                    
-                    <div class="q6-tutorial-inputs-block">
 
-                        <table class="q7-table q7-table--projects">
-                            <thead>
-                                <tr>
-                                    <th>Project Name</th>
-                                    <th>API Key</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="">BBC_First_Video_Best</a>
-                                    </td>
-                                    <td>elkjr935453dfdkjflasf893534</td>
-                                    <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
-                                    </td>
-                                </tr>           
-                                <tr>
-                                    <td>
-                                        <a href="">Super_long_project_name_from_user</a>
-                                    </td>
-                                    <td>elkjr935453dfdkjflasf893534</td>
-                                    <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
-                                    </td>
-                                </tr>   
-                                <tr>
-                                    <td>
-                                        <a href="">Test 1</a>
-                                    </td>
-                                    <td>elkjr935453dfdkjflasf893534</td>
-                                    <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
-                                    </td>
-                                </tr>   
-                                <tr>
-                                    <td>
-                                        <a href="">BBC_First_Video_Best</a>
-                                    </td>
-                                    <td>elkjr935453dfdkjflasf893534</td>
-                                    <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
-                                    </td>
-                                </tr>   
-                                <tr>
-                                    <td>
-                                        <a href="">BBC_First_Video_Best</a>
-                                    </td>
-                                    <td>elkjr935453dfdkjflasf893534</td>
-                                    <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
-                                    </td>
-                                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                     
-                            </tbody>
-                        </table>
 
-                        <div class="q7-table-pagination">
-
-                            <div class="q7-table-pagination__extra-block">
-                                <button class="q6-button q6-button--round">
-                                    + Add New Project                       
-                                </button>                            
-                            </div>
-
-                            <div class="q7-table-pagination__controls">                            
-                                <div class="q7-table-pagination__results">1-100</div>
-                                <div class="q7-table-pagination__pages">of 1</div>
-                                <div class="q7-table-pagination__buttons"> 
-                                    <div class="q7-table-pagination__button q7-table-pagination__button--prev"></div>
-                                    <div class="q7-table-pagination__button q7-table-pagination__button--next"></div>
+                    <div class="q6-filter-box">
+    
+                        <div class="q6-filter-box__options">   
+    
+                            <div class="q6-input q7-input--search">
+                                <div class="q6-input__label">
+                                    <label>Project name</label>
+                                </div>
+                                <div class="q7-search-input-container">  
+                                    <input class="q6-input__field" type="text"/>
+                                </div>
+                            </div>                    
+    
+                            <div class="q6-input q7-input--pick-date">
+                                <div class="q6-input__label">
+                                    <label for="project">Date</label>
+                                </div>
+                                <div class="q7-pick-date-container">                            
+                                    <input class="q6-input__field" id="date" autocomplete="off" name="date" placeholder="Today" type="text"/>
+                                    
+                                    <script>
+                                        $("#date").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });                              
+                                    </script>                              
                                 </div>
                             </div>
+                  
+                        </div>
+                        <div class="q6-filter-box__buttons">
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Search</button>
+                            <button class="q6-button q6-blue-text q6-blue-border">Clear</button>                            
+                        </div>    
 
+
+                        <div class="q6-filter-box__buttons q6-filter-box__buttons--extra">
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">+ Add New Project</button>                         
+                        </div>                          
+            
+                    </div>
+
+
+                    <table class="q7-table q7-table--projects">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>API Key</th>
+                                <th class="q7-table__sortable-column">Profiles</th>
+                                <th class="q7-table__sortable-column q7-table__sortable-column--sortedZA">Default storage</th>
+                                <th class="q7-table__sortable-column">Created on</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="">BBC_First_Video_Best</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>5bdk43lfsd435</span>
+                                        <div class="q7-copy-api-key"></div>                                    
+                                    </div>
+                                </td>
+                                <td>4</td>
+                                <td>Amazon S3</td>
+                                <td>Jun 18, 2018 13:48:27</td>
+                                <td>
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                    </div>
+                                </td>
+                            </tr>           
+                            <tr>
+                                <td>
+                                    <a href="">Super_long_project_name_from_user</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>5bdk43lfsd435</span>
+                                        <div class="q7-copy-api-key"></div>                                    
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>Qencode Free</td>
+                                <td>Jun 18, 2018 13:48:27</td>
+                                <td>
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                    </div>
+                                </td>
+                            </tr>   
+                            <tr>
+                                <td>
+                                    <a href="">Test 1</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>5bdk43lfsd435</span>
+                                        <div class="q7-copy-api-key"></div>                                    
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>Google Cloud</td>
+                                <td>Jun 18, 2018 13:48:27</td>
+                                <td>
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                    </div>
+                                </td>
+                            </tr>   
+                            <tr>
+                                <td>
+                                    <a href="">BBC_First_Video_Best</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>5bdk43lfsd435</span>
+                                        <div class="q7-copy-api-key"></div>                                    
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td>Blackbaze</td>
+                                <td>Jun 18, 2018 13:48:27</td>
+                                <td>
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                    </div>
+                                </td>
+                            </tr>   
+                            <tr>
+                                <td>
+                                    <a href="">BBC_First_Video_Best</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>5bdk43lfsd435</span>
+                                        <div class="q7-copy-api-key"></div>                                    
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td>Amazon S3</td>
+                                <td>Jun 18, 2018 13:48:27</td>
+                                <td>
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                    </div>
+                                </td>
+                            </tr>                                                                                                                                                                                                                                                                                                                                                                                                                     
+                        </tbody>
+                    </table>
+
+                    <div class="q7-table-pagination">
+
+
+                        <div class="q7-table-pagination__controls">     
+                            <div class="q7-table-pagination__button q7-table-pagination__button--prev q7-table-pagination__button--disabled">&#10229; Previous</div>                                             
+                            <div class="q7-table-pagination__page q7-table-pagination__page--selected">1</div>
+                            <div class="q7-table-pagination__page">2</div>
+                            <div class="q7-table-pagination__page">3</div>
+                            <div class="q7-table-pagination__delimeter">...</div>
+                            <div class="q7-table-pagination__page">10</div>
+                            <div class="q7-table-pagination__button q7-table-pagination__button--next">Next &#10230;</div>
                         </div>
 
-                    </div>                                               
+                    </div>
 
-                </div>          
+                </div>
 
                   
                                 
@@ -298,7 +384,7 @@
             <script>
                 $(function () {                
                     // copy API Key
-                    $(".q6-tutorial-profile-details__copy").click(function (){
+                    $(".q7-copy-api-key").click(function (){
 
                         try { 
                             var cellTextNode = $(this).closest('tr').find('td')[1];
