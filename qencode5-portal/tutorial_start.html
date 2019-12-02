@@ -52,10 +52,60 @@
         <div class="q6-container">
             <div class="q6-tutorial-intro">
                 <div class="q6-tutorial-intro__left">
+                    
+                    <div class="q6-tutorial-video-container q6-tutorial-video-container--image-background">
+                        <video id="started_video1" src="https://portal-qa.qencode.com/GettingStarted_pt1.mp4" type="video/mp4" preload="none">Loading ...
+                        </video>
+                        <div class="playpause" id="playpause" style="display: none;"></div>
+                        <div id="play_initial" class="q6-tutorial-video__initial-controls">
+                            <div class="q6-tutorial-video__playbtn"></div>
+                            <span>Watch Intro Video</span>   
+                        </div>
+                    </div>  
+                    
+                    <script>
 
-                    <div class="q6-tutorial-video-container">
-                        <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/XvoW-bwIeyY?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                    </div>                    
+                        // show initial controls that trigger video play
+                        var playInitialBtn = document.getElementById("play_initial");
+                        var loader = document.getElementById("loader");
+
+                        playInitialBtn.addEventListener("click",  function () {
+                            playInitialBtn.style.display = 'none';
+
+                            video.play();
+                        });                        
+
+                        var video = document.getElementById("started_video1");
+                        var ppbutton = document.getElementById("playpause");
+                        video.volume = 0.85;
+
+                        video.addEventListener("play",  function () {
+                            ppbutton.style.display = 'none';
+                        });
+
+                        video.addEventListener("pause",  function () {
+                            ppbutton.style.display = 'block';
+
+                        });
+
+                        ppbutton.addEventListener("click",  function () {
+                            if (video.paused) {
+                                video.play();
+                            }
+                            else  {
+                                video.pause();
+                            }
+                        });
+
+                        video.addEventListener("click",  function () {
+                            if (video.paused) {
+                                video.play();
+                            }
+                            else  {
+                                video.pause();
+                            }
+                        });
+                    </script>                    
 
                 </div>
                 <div class="q6-tutorial-intro__right">
