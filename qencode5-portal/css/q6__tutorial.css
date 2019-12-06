@@ -926,7 +926,7 @@
 }
 
 .q6-tutorial-inputs-block--wide{
-    max-width: 970px;
+    max-width: 1020px;
 }
 
 
@@ -1802,10 +1802,13 @@
     color: #3270e9;
     font-size: 22px;
     font-weight: 500;    
+    margin-bottom: 15px;
 }
 
 .q6-tutorial-files-table__header{
     display: flex;
+    background: #e2e6ee;
+    border-radius: 8px;    
 }
 
 
@@ -1893,9 +1896,9 @@
 }
 
 .q6-tutorial-files-table__summary{
-    margin-right: 15px;
-    width: 200px;
-    min-width: 200px;
+    width: 270px;
+    min-width: 270px;
+    padding-left:25px;
 }
 
 .q6-tutorial-files-table__cell{
@@ -1904,6 +1907,27 @@
     min-width: 85px;
     flex: 1;
     white-space: nowrap;
+}
+
+
+.q6-tutorial-files-table__cell--sortable{
+    position: relative;
+    cursor: pointer;
+}
+.q6-tutorial-files-table__cell--sortable:after{
+    margin-bottom: 2px;
+    margin-left: 5px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid #343131;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+.q6-tutorial-files-table__cell--sortable.q6-tutorial-files-table__cell--sortedZA:after {
+    transform: rotate(180deg);
 }
 
 .q6-tutorial-files-table__body .q6-tutorial-files-table__cell{
@@ -1948,11 +1972,9 @@
 }
 
 .q6-tutorial-files-table__header .q6-tutorial-files-table__block .q6-tutorial-files-table__row{
-    border-bottom: 1px solid #d7d7d7;
-
     font-size: 14px;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 14px;
     color: #171717;   
 }
 
@@ -2007,7 +2029,7 @@
     margin-right: 0;
     padding: initial;
     min-width: initial;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
@@ -2124,10 +2146,21 @@
     align-items: center;    
 }
 
+.q6-tutorial-files-table__summary
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type {
+    max-width: initial;
+    min-width: initial;
+    padding: 6px 6px;
+}
 
+.q6-tutorial-files-table__summary
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:first-of-type {
+    padding-left: 0;
+}
 
 .q6-button.q6-button--round.q6-button--copy-url{
     padding: 0 10px;
+    font-weight: 500;
 }
 
 .q6-tutorial-files-table__summary-title{
