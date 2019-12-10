@@ -343,12 +343,17 @@
     border-radius: 5px;
     min-width: 110px; 
     line-height: 33px;
-    background: #34d1bf;
+    background: var(--blue);
     color: white;       
 }
 
 .q7-button:hover{
-    background: #3adac7;
+    background-color: #265cc5;
+}
+
+.q7-button.q7-button--cancel{
+    background: transparent;
+    color: #959595;
 }
 
 .q7-button--round{
@@ -1293,7 +1298,7 @@
 }
 
 .q7-modal .modal-content{
-    padding: 36px 40px;
+    padding: 30px 50px;
     width: max-content;
 }
 
@@ -2878,6 +2883,223 @@ a.q7-bucket-url:hover{
     margin: 0;
     font-size: 16px;
     line-height: 22px;    
+}
+
+
+
+
+.q7-settings-block-container{
+    margin-top: 15px;
+    margin-bottom: 20px;    
+}
+
+.q7-settings-block{
+    border-top: 1px solid #e6e8eb;
+    padding: 14px 0;    
+    padding-left: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.q7-settings-block:last-of-type{
+    border-bottom: 1px solid #e6e8eb;
+}
+
+.q7-settings-block__value{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-settings-block__text-value{
+    margin-right: 15px;
+}
+
+.q7-settings-block .q7-button{
+    background: #e9f0fc;
+    color: var(--blue);
+    min-width: 80px;
+    font-weight: 500;
+    padding: 0 17px;
+}
+
+.q7-settings-block .q7-button:hover{
+    background: #e1ecff;
+}
+
+.q7-modal .q7-modal-body--update{
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 295px;
+}
+
+.q7-modal-footer-buttons.q7-modal-footer-buttons--vertical{
+    flex-direction: column;
+}
+
+.q7-modal-footer-buttons.q7-modal-footer-buttons--vertical .q7-button {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.q7-modal-footer-buttons.q7-modal-footer-buttons--vertical .q7-button:last-of-type {
+    margin-bottom: 0;
+}
+
+.q7-modal .q7-button{
+    line-height: 38px;
+}
+
+input[type=password].q7-input__field,
+input[type=text].q7-input__field {
+    width: 100%;
+    padding: 9px 14px;
+    margin: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #e1e5ee;
+    line-height: initial;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 6px;
+    color: #171717;
+}
+
+.q7-input__label label {
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.q7-input__label {
+    color: #171717;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "proxima-nova", sans-serif;
+    margin: 4px 0;
+    white-space: nowrap;
+}
+
+input[type=password].q7-input__field.q7-input__field--error,
+input[type=text].q7-input__field.q7-input__field--error {
+    border-color: #e34d4d;
+}
+
+.q7-input__error {
+    position: absolute;
+    color: #e13b3b;
+    font-size: 13px;
+    margin-top: 0px;
+}
+
+.q7-pass-eye-button:hover {
+    opacity: 0.8;
+}
+
+.q7-input.q6-input--password .q7-input__field {
+    padding-right: 45px;
+}
+
+.q7-pass-eye-button {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    right: 15px;
+    bottom: 13px;
+    cursor: pointer;
+    background-image: url(../img/eye_gs.svg);
+    background-repeat: no-repeat;
+    transition: opacity .2s ease;
+}
+
+input[type=text].q7-input__field + .q7-pass-eye-button{
+    background-image: url(../img/eye_blue.svg);
+}
+
+.q7-input.q7-input--password {
+    position: relative;
+}
+
+.q7-modal .q7-button.q7-button--close-window{
+    right: 50px;
+    top: 30px;
+}
+
+.q7-button.q7-button--close-window {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    min-width: 0;
+    border: none;
+    background-color: #bcc0ca;
+
+    background-image: url(../img/white_cross.svg);
+    background-size: 8px 8px;
+    background-position: center;
+    background-repeat: no-repeat; 
+
+    z-index: 9999;
+
+    transition: opacity .2s ease;
+}
+
+.q7-button.q7-button--close-window:hover{
+    opacity: 0.8;
+}
+
+.q7-modal-body--update .q7-input{
+    margin-bottom: 20px;
+}
+
+.q7-modal-body--update .q7-input:last-of-type{
+    margin-bottom: 0px;
+}
+
+.q7-input__label > a {
+    font-weight: normal;
+    color: #316fea;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.q7-modal-dialog--centered{
+    top: 10%;
+}
+
+.q7-modal-body__response{
+    text-align: center;
+    margin: 44px 0;
+}
+
+.q7-modal-body__response > img{
+    height: 100px;
+    margin: 20px 0;
+}
+
+.q7-modal-body__response > h2 {
+    color: #4f4f4f;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 15px 0;
+    margin-bottom: 10px;
+}
+
+.q7-modal-body__response > p {
+    color: #7b7d81;
+    margin: 0;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 @media screen and (min-width: 1650px){
