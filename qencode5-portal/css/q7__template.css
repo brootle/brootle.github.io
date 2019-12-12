@@ -3260,22 +3260,35 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-table-row.q7-expandable-row:before{
-    content: "\f054";
+    /* content: "\f054";
     font-family: "FontAwesome";
     position: absolute;
     left: 15px;
     font-size: 12px;
     top: calc(50% - 8px);
     transition: all 0.1s ease;
-    color: var(--blue);
+    color: var(--blue); */
+
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 14px;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(-45deg);
+    transition: all 0.1s ease;
 }
 
 .q7-table-row.q7-expandable-row > div:first-of-type{
-    padding-left: 30px;
+    padding-left: 35px;
 }
 
 .q7-table-row.q7-expandable-row.q7-table-row--active:before{
-    transform: rotate(90deg);
+    transform: rotate(45deg);
 }
 
 .q7-table-row .q7-button{
