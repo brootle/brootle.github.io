@@ -260,7 +260,43 @@
             
                     </div>
 
+                    <div class="q7-table q7-table--transcoding-jobs">
+                        <div class="q7-table-head">
+                            <div class="q7-table-row">
+                                <div class="q7-table__th">Job ID</div>
+                                <div class="q7-table__th q7-table__sortable-column">Project</div>
+                                <div class="q7-table__th q7-table__sortable-column">Video length</div>               
+                                <div class="q7-table__th q7-table__sortable-column">Size</div>   
+                                <div class="q7-table__th q7-table__sortable-column">Created at</div>          
+                                <div class="q7-table__th q7-table__sortable-column">Status</div>                                   
+                            </div>
+                        </div>   
+                        <div class="q7-table-body">
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                dfjasldfjak
+                            </div>
 
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                fdsjlkfjsadl
+                            </div>                            
+                        </div>                       
+                    </div>
 
                     <div class="q6-table q7-table--transcoding-jobs">
                         <div class="q6-table-head">
@@ -795,6 +831,29 @@ payload:"my data"</textarea>
     
                         </div>                            
                     </div>  
+
+
+                    <script>
+                        // have one event listerner onclick on q6-encoding-details-table
+    
+                        var expandButtons = document.querySelectorAll(".q7-expandable-row");
+                        expandButtons.forEach(button => {
+                            button.addEventListener('click', function(e){
+                                
+                                var currentRow = this;
+                                var nextRow = currentRow.nextElementSibling;
+                                var arrowElement = $(currentRow).find('.q7-table-dropdown');
+
+                                $(currentRow).toggleClass("q7-table-row--active");  
+                                $(nextRow).toggleClass("q7-table-dropdown-content--active");  
+                                $(arrowElement).toggleClass("q7-table-dropdown--active");                                  
+    
+                            });
+                        });                       
+                                                                            
+                    </script>     
+
+
 
                     <script>
                         $(".q6-copy-jobID-button").click(function() {
