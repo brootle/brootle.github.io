@@ -342,10 +342,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 5px;
     min-width: 110px; 
-    line-height: 33px;
+    line-height: 35px;
     background: var(--blue);
     color: white;       
 }
@@ -2961,7 +2961,7 @@ a.q7-bucket-url:hover{
 }
 
 .q7-modal .q7-button{
-    line-height: 38px;
+    line-height: 40px;
 }
 
 input[type=password].q7-input__field,
@@ -3142,6 +3142,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--transcoding-jobs .q6-table-row > div{
     font-size: 14px;
     line-height: 14px;
+    padding: 15px 15px;
 }
 
 .q7-table--transcoding-jobs .q6-input__text > input{
@@ -3217,7 +3218,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 
 .q7-table-row > div{
     flex: 1;
-    padding: 13px 15px;
+    padding: 15px 15px;
     padding-right: 5px;  
     
     word-wrap: break-word;
@@ -3228,6 +3229,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 
 .q7-table-row.q7-expandable-row{
     cursor: pointer;
+    position: relative;
 }
 
 .q7-table-body > .q7-table-row:hover {
@@ -3250,9 +3252,149 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     box-shadow: 0px 0px 1px 1px var(--blue);
 }
 
+.q7-table-row.q7-expandable-row:before{
+    content: "\f054";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 15px;
+    font-size: 12px;
+    top: calc(50% - 8px);
+    transition: all 0.1s ease;
+    color: var(--blue);
+}
+
+.q7-table-row.q7-expandable-row > div:first-of-type{
+    padding-left: 30px;
+}
+
+.q7-table-row.q7-expandable-row.q7-table-row--active:before{
+    transform: rotate(90deg);
+}
+
+.q7-table-row .q7-button{
+    line-height: 32px;
+}
+
+.q7-transcoding-status{
+    line-height: 32px;
+    padding: 0 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    position: relative;
+
+    padding-left: 34px;
+}
+
+.q7-transcoding-status:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 11px;
+    top: calc(50% - 8px);
+}
+
+.q7-transcoding-status--error{
+    background: #fff1f1;
+    color: #e46464;    
+}
+
+.q7-transcoding-status--error:before {
+    background-image: url(../img/transcoding_status/error.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-transcoding-status--encoding:before {
+    background-image: url(../img/transcoding_status/encoding.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-transcoding-status--queued:before {
+    width: 16px;
+    height: 15px;    
+    background-image: url(../img/transcoding_status/queue.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-transcoding-status--downloading:before {
+    background-image: url(../img/transcoding_status/downloading.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-transcoding-status--saving:before {
+    width: 18px;
+    height: 16px;    
+    background-image: url(../img/transcoding_status/saving.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-transcoding-status--completed:before {
+    background-image: url(../img/transcoding_status/complete.svg);
+    background-repeat: no-repeat;
+}
+
+
+.q7-transcoding-status--encoding,
+.q7-transcoding-status--saving,
+.q7-transcoding-status--downloading,
+.q7-transcoding-status--queued{
+    background: #fff7e8;
+    color: #e48600;     
+}
+
+.q7-transcoding-status--completed{
+    background: #eeffec;
+    color: #47991f;        
+}
+
+.q7-transcoding-resubmitted-message{
+    color: var(--blue);
+
+    line-height: 32px;
+    padding: 0 16px;
+    font-weight: 500;    
+    position: relative;
+
+    padding-left: 34px;
+}
+
+
+.q7-transcoding-resubmitted-message:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 11px;
+    top: calc(50% - 8px);
+
+    background-image: url(../img/transcoding_status/checked.svg);
+    background-repeat: no-repeat;    
+}
+
+.q7-button--resubmit{
+    position: relative;
+    padding-left: 34px;    
+}
+
+.q7-button--resubmit:before{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 12px;
+    left: 11px;
+    top: calc(50% - 7px);
+
+    background-image: url(../img/transcoding_status/resubmit.svg);
+    background-repeat: no-repeat;     
+}
+
 .q7-table--transcoding-jobs > .q7-table-head .q7-table-row > div:first-of-type,
 .q7-table--transcoding-jobs > .q7-table-body .q7-table-row > div:first-of-type{
     min-width: 175px;
+}
+
+.q7-table--transcoding-jobs > .q7-table-body .q7-table-row > div:first-of-type{
+    color: var(--blue);
 }
 
 .q7-table--transcoding-jobs > .q7-table-head .q7-table-row > div:nth-of-type(5),
@@ -3263,6 +3405,16 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--transcoding-jobs > .q7-table-head .q7-table-row > div:last-of-type,
 .q7-table--transcoding-jobs > .q7-table-body .q7-table-row > div:last-of-type{
     min-width: 330px;
+    overflow: initial;
+}
+
+.q7-table--transcoding-jobs > .q7-table-body .q7-table-row > div:last-of-type {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
 }
 
 .q7-tooltip{

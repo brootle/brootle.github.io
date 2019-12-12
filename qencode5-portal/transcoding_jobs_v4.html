@@ -268,35 +268,148 @@
                                 <div class="q7-table__th q7-table__sortable-column">Video length</div>               
                                 <div class="q7-table__th q7-table__sortable-column">Size</div>   
                                 <div class="q7-table__th q7-table__sortable-column">Created at</div>          
-                                <div class="q7-table__th q7-table__sortable-column">Status</div>                                   
+                                <div class="q7-table__th q7-table__sortable-column">Status</div>                              
                             </div>
                         </div>   
                         <div class="q7-table-body">
+
                             <div class="q7-table-row q7-expandable-row">
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids_fsdfwef</div>
+                                <div>00:03:00</div>
+                                <div>137.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>  
+                                    <div class="q7-transcoding-resubmitted-message">Job Resubmitted</div>
+                                </div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                fdsjlkfjsadl
+                            </div>                               
+
+
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--encoding">Encoding</div>                          
+                                </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
                                 dfjasldfjak
                             </div>
 
                             <div class="q7-table-row q7-expandable-row">
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids_fsdfwef</div>
+                                <div>00:03:00</div>
+                                <div>137.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>  
+                                    <button class="q7-button q7-button--resubmit">Resubmit Job</button>
+                                </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
                                 fdsjlkfjsadl
+                            </div>    
+                            
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--queued">Queued</div>                          
+                                </div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                dfjasldfjak
                             </div>                            
+
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--downloading">Downloading</div>                          
+                                </div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                dfjasldfjak
+                            </div>           
+                            
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--saving">Saving</div>                          
+                                </div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                dfjasldfjak
+                            </div>           
+                            
+                            <div class="q7-table-row q7-expandable-row">
+                                <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--completed">Completed</div>                          
+                                </div>
+                            </div>
+                            <div class="q7-table-dropdown-content" >
+                                dfjasldfjak
+                            </div>                               
+
                         </div>                       
                     </div>
+
+
+
+                    <script>
+                        // take care of expandable rows
+                        var expandButtons = document.querySelectorAll(".q7-expandable-row");
+                        expandButtons.forEach(button => {
+                            button.addEventListener('click', function(e){
+                                
+                                var currentRow = this;
+                                var nextRow = currentRow.nextElementSibling;
+
+                                $(currentRow).toggleClass("q7-table-row--active");  
+                                $(nextRow).toggleClass("q7-table-dropdown-content--active");                                   
+                            });
+                        });                       
+                                                                            
+                    </script>     
+
+                    <div class="q7-table-pagination">
+
+
+                        <div class="q7-table-pagination__controls">     
+                            <div class="q7-table-pagination__button q7-table-pagination__button--prev q7-table-pagination__button--disabled">&#10229; Previous</div>                                             
+                            <div class="q7-table-pagination__page q7-table-pagination__page--selected">1</div>
+                            <div class="q7-table-pagination__page">2</div>
+                            <div class="q7-table-pagination__page">3</div>
+                            <div class="q7-table-pagination__delimeter">...</div>
+                            <div class="q7-table-pagination__page">10</div>
+                            <div class="q7-table-pagination__button q7-table-pagination__button--next">Next &#10230;</div>
+                        </div>
+
+                    </div>                    
+
 
                     <div class="q6-table q7-table--transcoding-jobs">
                         <div class="q6-table-head">
@@ -831,27 +944,6 @@ payload:"my data"</textarea>
     
                         </div>                            
                     </div>  
-
-
-                    <script>
-                        // have one event listerner onclick on q6-encoding-details-table
-    
-                        var expandButtons = document.querySelectorAll(".q7-expandable-row");
-                        expandButtons.forEach(button => {
-                            button.addEventListener('click', function(e){
-                                
-                                var currentRow = this;
-                                var nextRow = currentRow.nextElementSibling;
-                                var arrowElement = $(currentRow).find('.q7-table-dropdown');
-
-                                $(currentRow).toggleClass("q7-table-row--active");  
-                                $(nextRow).toggleClass("q7-table-dropdown-content--active");  
-                                $(arrowElement).toggleClass("q7-table-dropdown--active");                                  
-    
-                            });
-                        });                       
-                                                                            
-                    </script>     
 
 
 
