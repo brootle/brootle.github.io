@@ -261,658 +261,541 @@
                     </div>
 
 
-                    table
 
-                    <div class="q7-table-pagination">
-
-
-                        <div class="q7-table-pagination__controls">     
-                            <div class="q7-table-pagination__button q7-table-pagination__button--prev q7-table-pagination__button--disabled">&#10229; Previous</div>                                             
-                            <div class="q7-table-pagination__page q7-table-pagination__page--selected">1</div>
-                            <div class="q7-table-pagination__page">2</div>
-                            <div class="q7-table-pagination__page">3</div>
-                            <div class="q7-table-pagination__delimeter">...</div>
-                            <div class="q7-table-pagination__page">10</div>
-                            <div class="q7-table-pagination__button q7-table-pagination__button--next">Next &#10230;</div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                  
-                                
-
-            </div>
-
-
-
-            <section class="section--transcoding-jobs">
-
-                <div class="q7-container">
-    
-    
-                    <div class="q6-filter-box">
-    
-                        <div class="q6-filter-box__options">   
-    
-                            <div class="q6-input q6-input--project">
-                                <div class="q6-input__label">
-                                    <label for="project">Project:</label>
-                                </div>
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="project" required="" name="project">
-                                        <option value="all_projects">All Projects</option>
-                                        <option value="some_projects">Some Projects</option>
-                                    </select>                                   
-                                </div>
-                            </div>
-    
-                            <div class="q6-input q6-input--jobID">
-                                <div class="q6-input__label">
-                                    <label for="input_url">Job ID:</label>
-                                </div>
-                                <input class="q6-input__field q6-black-text" type="text" id="input_url" placeholder="Enter ID">
-                            </div>                    
-    
-                            <div class="q6-input">
-                                <div class="q6-input__label">
-                                    <label for="project">Show by period:</label>
-                                </div>
-                                <div class="q6-date-picker q6-black-text">                            
-                                    <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text"/>
-    
-                                    <span class="q6-date-delimeter">‒</span>
-    
-                                    <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text"/>
-                                    
-                                    <script>
-                                        $("#date_start").datepicker({
-                                            dateFormat: "MM d, yy",
-                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
-                                        });
-                                        $("#date_end").datepicker({
-                                            dateFormat: "MM d, yy",
-                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
-                                        });                                
-                                    </script>                              
-                                </div>
-                            </div>
-    
-                            <div class="q6-input q6-input--status">
-                                <div class="q6-input__label">
-                                    <label for="status">Status:</label> 
-                                </div>
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" id="status" required="" name="status">
-                                        <option value="all_statuses">All Statuses</option>
-                                        <option value="some_statuses">Some Statuses</option>
-                                    </select>                                   
-                                </div>
-                            </div>
-                                                    
-                        </div>
-                        <div class="q6-filter-box__buttons">
-                            <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Clear</button>
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Filter</button>
-                        </div>    
-            
-                    </div>
-    
-                </div>
-                 
-    
-                <div class="q6-encoding-details-table">
-                    <div class="q6-table">
+                    <div class="q6-table q7-table--transcoding-jobs">
                         <div class="q6-table-head">
-                            <div class="q6-table-row q7-container">
-                                <div>Job ID</div>
-                                <div>Project</div>
-                                <div>Video length</div>               
-                                <div>Size</div>   
-                                <div>Created at</div>          
-                                <div>Status</div>    
+                            <div class="q6-table-row">
+                                <div class="q7-table__th">Job ID</div>
+                                <div class="q7-table__sortable-column">Project</div>
+                                <div class="q7-table__sortable-column">Video length</div>               
+                                <div class="q7-table__sortable-column">Size</div>   
+                                <div class="q7-table__sortable-column">Created at</div>          
+                                <div class="q7-table__sortable-column">Status</div>    
                             </div>
                         </div>
-                        <div class="q6-table-body q7-container">
+                        <div class="q6-table-body">
     
-                                <div class="q6-table-row q6-expandable-row">
-                                    <div><span class="q6-table-dropdown">erj4l35j344lktj34t949343fgd435434uo345923424oo</span></div>
-                                    <div>Stagevids</div>
-                                    <div>00:03:00</div>
-                                    <div>7.4 MB</div>
-                                    <div>June 18, 2018 13:48:27</div>
-                                    <div class="q6-status-message-container">
-                                        <div class="q6-encoding-status">
-                                            <div class="q6-status-icon q6-status__encoding">Encoding</div>
-                                        </div>
+                            <div class="q6-table-row q6-expandable-row">
+                                <div><span class="q6-table-dropdown">erj4l35j344lktj34t949343fgd435434uo345923424oo</span></div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div class="q6-status-message-container">
+                                    <div class="q6-encoding-status">
+                                        <div class="q6-status-icon q6-status__encoding">Encoding</div>
                                     </div>
-                                </div>         
-                                <div class="q6-table-dropdown-content q6-hidden" >
-                                                                    
-                                    <div class="q6-job__details-container">
-                                        <div class="q6-job__details">
+                                </div>
+                            </div>         
+                            <div class="q6-table-dropdown-content q6-hidden" >
+                                                                
+                                <div class="q6-job__details-container">
+                                    <div class="q6-job__details">
+                                        <div>
+
                                             <div>
-    
-                                                <div>
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label>Job ID</label>
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Job ID</label>
+                                                    </div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="erj4l35j344lktj34t949343fgd435434uo345923424oo">                                                                                                     
+                                                        <div class="q6-copy-jobID-button q6-copy-box-button"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Project</label>
+                                                    </div>
+                                                    <div class="q6-input__text">  
+                                                        <span>Stagevids</span>                                                                                                 
+                                                    </div>
+                                                </div>  
+                                            </div> 
+                                            
+                                            <div>
+                                                <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Resubmit Job</button>   
+                                            </div>
+                                                                                
+                                        </div>
+                                        <div>
+                                            <div class="q6-input">
+                                                <div class="q6-input__label">
+                                                    <label>Execution log</label>
+                                                </div>
+                                                    <div class="q6-execution-log">
+                                                        <div>
+                                                            <div>Created</div>
+                                                            <div>Downloaded</div>
+                                                            <div>Queued</div>
+                                                            <div>Encoding</div>
+                                                            <div>Saving</div>
+                                                            <div>Completed</div>
                                                         </div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="erj4l35j344lktj34t949343fgd435434uo345923424oo">                                                                                                     
-                                                            <div class="q6-copy-jobID-button q6-copy-box-button"></div>
+                                                        <div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
                                                         </div>
                                                     </div>
-    
+                                            </div>  
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="q6-job__input-info">
+                                    <h2>Input info</h2>   
+                                    <div class="q6-table">
+                                        <div class="q6-table-head">
+                                            <div class="q6-table-row">
+                                                <div>Video length</div>
+                                                <div>Format</div>
+                                                <div>Size</div>               
+                                                <div>Video codec</div>          
+                                                <div>Audio codec</div> 
+                                                <div>Resolution</div>  
+                                                <div>Source URL</div>    
+                                                <div>Actions</div>                         
+                                            </div>
+                                        </div>   
+                                        <div class="q6-table-body">                                     
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>  
+                                                </div>
+                                            </div>     
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>                                                         
+                                                </div>
+                                            </div>      
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>                                                        
+                                                </div>
+                                            </div>                                                                                                                                        
+                                        </div>
+                                    </div>                           
+                                </div>
+
+                                <div class="q6-job__output-info">
+                                    <h2>Output info</h2>  
+                                    <div class="q6-table">
+                                        <div class="q6-table-head">
+                                            <div class="q6-table-row">
+                                                <div>Format</div>
+                                                <div>Size</div>
+                                                <div>Video codec</div>               
+                                                <div>Audio codec</div>          
+                                                <div>Resolution</div> 
+                                                <div>Duration</div>    
+                                                <div>Link</div>    
+                                                <div>Actions</div>                       
+                                            </div>
+                                        </div>   
+                                        <div>                                     
+                                            <div class="q6-table-row q6-expandable-row">
+                                                <div>MP4</div>
+                                                <div>4.23 GB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>03:10:00</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div class="q6-output-info__action-buttons">
+                                                    <div class="q6-status-button q6-status-button__open">
+                                                        <div class="q6-tooltip">Open</div>
+                                                    </div>
+                                                    <div class="q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="q6-table-dropdown-content q6-video-preview-container q6-hidden">
+                                                <div class="q6-video-preview__player">
+                                                    <div class="q6-play-video-btn"></div>                                                
+                                                </div>
+                                                <div class="q6-video-preview__details">
+                                                    <div class="q6-two-columns">
+                                                        <div class="q6-preview-details-columns">
+                                                            <div>
+                                                                <div>Bitrate:</div>
+                                                                <div>Framerate:</div>
+                                                                <div>Duration:</div>
+                                                            </div>
+                                                            <div>
+                                                                <div>1863 kb/s</div>
+                                                                <div>60 fps</div>
+                                                                <div>01:35:05</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="q6-preview-details-columns">
+                                                            <div>
+                                                                <div>Ratio:</div>
+                                                                <div>WxH:</div>
+                                                            </div>
+                                                            <div>
+                                                                <div>16:9</div>
+                                                                <div>720x304 px</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="q6-input">
                                                         <div class="q6-input__label">
-                                                            <label>Project</label>
+                                                            <label for="input_url">Link</label>
                                                         </div>
-                                                        <div class="q6-input__text">  
-                                                            <span>Stagevids</span>                                                                                                 
-                                                        </div>
-                                                    </div>  
-                                                </div> 
-                                                
-                                                <div>
+                                                        <input class="q6-input__field q6-black-text" type="text" readonly="readonly" value="http://example.com/video/myvideo.mp4">
+                                                    </div>   
+
+                                                    <div class="q6-video-details-btns">
+                                                        <a href="http://example.com/video/myvideo.mp4" target="_blank" class="q6-button q6-green-background q6-green-border">Open video in a new window</a>
+                                                        <button class="q6-button q6-green-background q6-green-border q6-margin-left_10px q6-btn-copy">Copy link</button>
+                                                    </div>        
+
+                                                </div>
+                                            </div>   
+                                            
+                                        </div>
+                                    </div>                               
+                                </div>      
+
+                                <div class="q6-job__input-parameters">
+                                    <h2>Input parameters</h2>    
+                                    <div class="q6-input-parameters-box">
+
+                                        <div class="q6-input">
+                                            <div class="q6-input__label q6-align-start">
+                                                <label for="input_url">Object</label> 
+                                                <div class="q6-copy-input-parameters-button q6-copy-box-button q6-margin-left_15px"></div>                                                    
+                                            </div>
+
+
+                                            <textarea placeholder="">
+task_token: "fasfl348uotljslkjfaldf34"
+uri: "https://qa.stagevids.com/static/test_mini.mp4"
+profiles: "dfjk35jl34"
+payload:"my data"</textarea>
+
+                                    
+
+                                        </div>
+
+                                    </div>                            
+                                </div>                                                              
+
+                            </div>    
+
+                            <div class="q6-table-row q6-expandable-row">
+                                <div><span class="q6-table-dropdown">erj4l35j344lktj34t949343fgd435434uo345923424oo</span></div>
+                                <div>Stagevids</div>
+                                <div>00:03:00</div>
+                                <div>7.4 MB</div>
+                                <div>June 18, 2018 13:48:27</div>
+                                <div class="q6-status-message-container">
+                                    <div class="q6-encoding-status">
+                                        <div class="q6-status-icon q6-status__done">Done</div>
+                                    </div>
+                                </div>
+                            </div>         
+                            <div class="q6-table-dropdown-content q6-hidden" >
+                                                                
+                                <div class="q6-job__details-container">
+                                    <div class="q6-job__details">
+                                        <div>
+
+                                            <div>
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Job ID</label>
+                                                    </div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="erj4l35j344lktj34t949343fgd435434uo345923424oo">                                                                                                     
+                                                        <div class="q6-copy-jobID-button q6-copy-box-button"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Project</label>
+                                                    </div>
+                                                    <div class="q6-input__text">  
+                                                        <span>Stagevids</span>                                                                                                 
+                                                    </div>
+                                                </div>  
+                                            </div> 
+                                            
+                                            <div>
                                                     <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Resubmit Job</button>   
-                                                </div>
-                                                                                     
                                             </div>
-                                            <div>
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Execution log</label>
-                                                    </div>
-                                                        <div class="q6-execution-log">
-                                                            <div>
-                                                                <div>Created</div>
-                                                                <div>Downloaded</div>
-                                                                <div>Queued</div>
-                                                                <div>Encoding</div>
-                                                                <div>Saving</div>
-                                                                <div>Completed</div>
-                                                            </div>
-                                                            <div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                            </div>
-                                                        </div>
-                                                </div>  
-                                            </div>
-                                            
+                                                                                
                                         </div>
-                                    </div>
-    
-                                    <div class="q6-job__input-info">
-                                        <h2>Input info</h2>   
-                                        <div class="q6-table">
-                                            <div class="q6-table-head">
-                                                <div class="q6-table-row">
-                                                    <div>Video length</div>
-                                                    <div>Format</div>
-                                                    <div>Size</div>               
-                                                    <div>Video codec</div>          
-                                                    <div>Audio codec</div> 
-                                                    <div>Resolution</div>  
-                                                    <div>Source URL</div>    
-                                                    <div>Actions</div>                         
-                                                </div>
-                                            </div>   
-                                            <div>                                     
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>  
-                                                    </div>
-                                                </div>     
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>                                                         
-                                                    </div>
-                                                </div>      
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>                                                        
-                                                    </div>
-                                                </div>                                                                                                                                        
-                                            </div>
-                                        </div>                           
-                                    </div>
-    
-                                    <div class="q6-job__output-info">
-                                        <h2>Output info</h2>  
-                                        <div class="q6-table">
-                                            <div class="q6-table-head">
-                                                <div class="q6-table-row">
-                                                    <div>Format</div>
-                                                    <div>Size</div>
-                                                    <div>Video codec</div>               
-                                                    <div>Audio codec</div>          
-                                                    <div>Resolution</div> 
-                                                    <div>Duration</div>    
-                                                    <div>Link</div>    
-                                                    <div>Actions</div>                       
-                                                </div>
-                                            </div>   
-                                            <div>                                     
-                                                <div class="q6-table-row q6-expandable-row">
-                                                    <div>MP4</div>
-                                                    <div>4.23 GB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>03:10:00</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div class="q6-output-info__action-buttons">
-                                                        <div class="q6-status-button q6-status-button__open">
-                                                            <div class="q6-tooltip">Open</div>
-                                                        </div>
-                                                        <div class="q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="q6-table-dropdown-content q6-video-preview-container q6-hidden">
-                                                    <div class="q6-video-preview__player">
-                                                        <div class="q6-play-video-btn"></div>                                                
-                                                    </div>
-                                                    <div class="q6-video-preview__details">
-                                                        <div class="q6-two-columns">
-                                                            <div class="q6-preview-details-columns">
-                                                                <div>
-                                                                    <div>Bitrate:</div>
-                                                                    <div>Framerate:</div>
-                                                                    <div>Duration:</div>
-                                                                </div>
-                                                                <div>
-                                                                    <div>1863 kb/s</div>
-                                                                    <div>60 fps</div>
-                                                                    <div>01:35:05</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="q6-preview-details-columns">
-                                                                <div>
-                                                                    <div>Ratio:</div>
-                                                                    <div>WxH:</div>
-                                                                </div>
-                                                                <div>
-                                                                    <div>16:9</div>
-                                                                    <div>720x304 px</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-    
-                                                        <div class="q6-input">
-                                                            <div class="q6-input__label">
-                                                                <label for="input_url">Link</label>
-                                                            </div>
-                                                            <input class="q6-input__field q6-black-text" type="text" readonly="readonly" value="http://example.com/video/myvideo.mp4">
-                                                        </div>   
-    
-                                                        <div class="q6-video-details-btns">
-                                                            <a href="http://example.com/video/myvideo.mp4" target="_blank" class="q6-button q6-green-background q6-green-border">Open video in a new window</a>
-                                                            <button class="q6-button q6-green-background q6-green-border q6-margin-left_10px q6-btn-copy">Copy link</button>
-                                                        </div>        
-    
-                                                    </div>
-                                                </div>   
-                                                
-                                            </div>
-                                        </div>                               
-                                    </div>      
-    
-                                    <div class="q6-job__input-parameters">
-                                        <h2>Input parameters</h2>    
-                                        <div class="q6-input-parameters-box">
-    
+                                        <div>
                                             <div class="q6-input">
-                                                <div class="q6-input__label q6-align-start">
-                                                    <label for="input_url">Object</label> 
-                                                    <div class="q6-copy-input-parameters-button q6-copy-box-button q6-margin-left_15px"></div>                                                    
+                                                <div class="q6-input__label">
+                                                    <label>Execution log</label>
                                                 </div>
-    
-    
-                                                <textarea placeholder="">
-    task_token: "fasfl348uotljslkjfaldf34"
-    uri: "https://qa.stagevids.com/static/test_mini.mp4"
-    profiles: "dfjk35jl34"
-    payload:"my data"</textarea>
-    
-                                        
-    
-                                            </div>
-    
-                                        </div>                            
-                                    </div>                                                              
-    
-                                </div>    
-    
-                                <div class="q6-table-row q6-expandable-row">
-                                    <div><span class="q6-table-dropdown">erj4l35j344lktj34t949343fgd435434uo345923424oo</span></div>
-                                    <div>Stagevids</div>
-                                    <div>00:03:00</div>
-                                    <div>7.4 MB</div>
-                                    <div>June 18, 2018 13:48:27</div>
-                                    <div class="q6-status-message-container">
-                                        <div class="q6-encoding-status">
-                                            <div class="q6-status-icon q6-status__done">Done</div>
-                                        </div>
-                                    </div>
-                                </div>         
-                                <div class="q6-table-dropdown-content q6-hidden" >
-                                                                    
-                                    <div class="q6-job__details-container">
-                                        <div class="q6-job__details">
-                                            <div>
-    
-                                                <div>
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label>Job ID</label>
+                                                    <div class="q6-execution-log">
+                                                        <div>
+                                                            <div>Created</div>
+                                                            <div>Downloaded</div>
+                                                            <div>Queued</div>
+                                                            <div>Encoding</div>
+                                                            <div>Saving</div>
+                                                            <div>Completed</div>
                                                         </div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="erj4l35j344lktj34t949343fgd435434uo345923424oo">                                                                                                     
-                                                            <div class="q6-copy-jobID-button q6-copy-box-button"></div>
+                                                        <div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
+                                                            <div>Jun 18, 2018 14:20:25</div>
                                                         </div>
                                                     </div>
-    
-                                                    <div class="q6-input">
-                                                        <div class="q6-input__label">
-                                                            <label>Project</label>
-                                                        </div>
-                                                        <div class="q6-input__text">  
-                                                            <span>Stagevids</span>                                                                                                 
-                                                        </div>
+                                            </div>  
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="q6-job__input-info">
+                                    <h2>Input info</h2>   
+                                    <div class="q6-table">
+                                        <div class="q6-table-head">
+                                            <div class="q6-table-row">
+                                                <div>Video length</div>
+                                                <div>Format</div>
+                                                <div>Size</div>               
+                                                <div>Video codec</div>          
+                                                <div>Audio codec</div> 
+                                                <div>Resolution</div>  
+                                                <div>Source URL</div>    
+                                                <div>Actions</div>                         
+                                            </div>
+                                        </div>   
+                                        <div class="q6-table-body">                                     
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
                                                     </div>  
-                                                </div> 
-                                                
-                                                <div>
-                                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Resubmit Job</button>   
                                                 </div>
-                                                                                     
+                                            </div>     
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>                                                         
+                                                </div>
+                                            </div>      
+                                            <div class="q6-table-row">
+                                                <div>00:03:00</div>
+                                                <div>WEBM</div>
+                                                <div>285.69 MB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div>
+                                                    <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>                                                        
+                                                </div>
+                                            </div>                                                                                                                                        
+                                        </div>
+                                    </div>                           
+                                </div>
+
+                                <div class="q6-job__output-info">
+                                    <h2>Output info</h2>  
+                                    <div class="q6-table">
+                                        <div class="q6-table-head">
+                                            <div class="q6-table-row">
+                                                <div>Format</div>
+                                                <div>Size</div>
+                                                <div>Video codec</div>               
+                                                <div>Audio codec</div>          
+                                                <div>Resolution</div> 
+                                                <div>Duration</div>    
+                                                <div>Link</div>    
+                                                <div>Actions</div>                       
                                             </div>
-                                            <div>
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Execution log</label>
+                                        </div>   
+                                        <div>                                     
+                                            <div class="q6-table-row q6-expandable-row">
+                                                <div>MP4</div>
+                                                <div>4.23 GB</div>
+                                                <div>H.264</div>
+                                                <div>AAC</div>
+                                                <div>240</div>
+                                                <div>03:10:00</div>
+                                                <div>
+                                                    <div class="q6-input__text">
+                                                        <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
+                                                    </div>                                                                                                                
+                                                </div>
+                                                <div class="q6-output-info__action-buttons">
+                                                    <div class="q6-status-button q6-status-button__open">
+                                                        <div class="q6-tooltip">Open</div>
                                                     </div>
-                                                        <div class="q6-execution-log">
+                                                    <div class="q6-status-button q6-status-button__copy">
+                                                        <div class="q6-tooltip">Copy</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="q6-table-dropdown-content q6-video-preview-container q6-hidden">
+                                                <div class="q6-video-preview__player">
+                                                    <div class="q6-play-video-btn"></div>                                                
+                                                </div>
+                                                <div class="q6-video-preview__details">
+                                                    <div class="q6-two-columns">
+                                                        <div class="q6-preview-details-columns">
                                                             <div>
-                                                                <div>Created</div>
-                                                                <div>Downloaded</div>
-                                                                <div>Queued</div>
-                                                                <div>Encoding</div>
-                                                                <div>Saving</div>
-                                                                <div>Completed</div>
+                                                                <div>Bitrate:</div>
+                                                                <div>Framerate:</div>
+                                                                <div>Duration:</div>
                                                             </div>
                                                             <div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
-                                                                <div>Jun 18, 2018 14:20:25</div>
+                                                                <div>1863 kb/s</div>
+                                                                <div>60 fps</div>
+                                                                <div>01:35:05</div>
                                                             </div>
                                                         </div>
-                                                </div>  
-                                            </div>
+                                                        <div class="q6-preview-details-columns">
+                                                            <div>
+                                                                <div>Ratio:</div>
+                                                                <div>WxH:</div>
+                                                            </div>
+                                                            <div>
+                                                                <div>16:9</div>
+                                                                <div>720x304 px</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="q6-input">
+                                                        <div class="q6-input__label">
+                                                            <label for="input_url">Link</label>
+                                                        </div>
+                                                        <input class="q6-input__field q6-black-text" type="text" readonly="readonly" value="http://example.com/video/myvideo.mp4">
+                                                    </div>   
+
+                                                    <div class="q6-video-details-btns">
+                                                        <a href="http://example.com/video/myvideo.mp4" target="_blank" class="q6-button q6-green-background q6-green-border">Open video in a new window</a>
+                                                        <button class="q6-button q6-green-background q6-green-border q6-margin-left_10px q6-btn-copy">Copy link</button>
+                                                    </div>        
+
+                                                </div>
+                                            </div>   
                                             
                                         </div>
-                                    </div>
-    
-                                    <div class="q6-job__input-info">
-                                        <h2>Input info</h2>   
-                                        <div class="q6-table">
-                                            <div class="q6-table-head">
-                                                <div class="q6-table-row">
-                                                    <div>Video length</div>
-                                                    <div>Format</div>
-                                                    <div>Size</div>               
-                                                    <div>Video codec</div>          
-                                                    <div>Audio codec</div> 
-                                                    <div>Resolution</div>  
-                                                    <div>Source URL</div>    
-                                                    <div>Actions</div>                         
-                                                </div>
-                                            </div>   
-                                            <div>                                     
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>  
-                                                    </div>
-                                                </div>     
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>                                                         
-                                                    </div>
-                                                </div>      
-                                                <div class="q6-table-row">
-                                                    <div>00:03:00</div>
-                                                    <div>WEBM</div>
-                                                    <div>285.69 MB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div>
-                                                        <div class="q6-copy-sourceURL-button q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>                                                        
-                                                    </div>
-                                                </div>                                                                                                                                        
+                                    </div>                               
+                                </div>      
+
+                                <div class="q6-job__input-parameters">
+                                    <h2>Input parameters</h2>    
+                                    <div class="q6-input-parameters-box">
+
+                                        <div class="q6-input">
+                                            <div class="q6-input__label q6-align-start">
+                                                <label for="input_url">Object</label> 
+                                                <div class="q6-copy-input-parameters-button q6-copy-box-button q6-margin-left_15px"></div>                                                    
                                             </div>
-                                        </div>                           
-                                    </div>
+
+
+                                            <textarea placeholder="">
+task_token: "fasfl348uotljslkjfaldf34"
+uri: "https://qa.stagevids.com/static/test_mini.mp4"
+profiles: "dfjk35jl34"
+payload:"my data"</textarea>
+
+                                    
+
+                                        </div>
+
+                                    </div>                            
+                                </div>                                                              
+
+                            </div>                                                            
     
-                                    <div class="q6-job__output-info">
-                                        <h2>Output info</h2>  
-                                        <div class="q6-table">
-                                            <div class="q6-table-head">
-                                                <div class="q6-table-row">
-                                                    <div>Format</div>
-                                                    <div>Size</div>
-                                                    <div>Video codec</div>               
-                                                    <div>Audio codec</div>          
-                                                    <div>Resolution</div> 
-                                                    <div>Duration</div>    
-                                                    <div>Link</div>    
-                                                    <div>Actions</div>                       
-                                                </div>
-                                            </div>   
-                                            <div>                                     
-                                                <div class="q6-table-row q6-expandable-row">
-                                                    <div>MP4</div>
-                                                    <div>4.23 GB</div>
-                                                    <div>H.264</div>
-                                                    <div>AAC</div>
-                                                    <div>240</div>
-                                                    <div>03:10:00</div>
-                                                    <div>
-                                                        <div class="q6-input__text">
-                                                            <input type="text" readonly="readonly" value="https://master/fdsf434jlkdfjldsfjlsfdf.mp4">                                                                                                     
-                                                        </div>                                                                                                                
-                                                    </div>
-                                                    <div class="q6-output-info__action-buttons">
-                                                        <div class="q6-status-button q6-status-button__open">
-                                                            <div class="q6-tooltip">Open</div>
-                                                        </div>
-                                                        <div class="q6-status-button q6-status-button__copy">
-                                                            <div class="q6-tooltip">Copy</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="q6-table-dropdown-content q6-video-preview-container q6-hidden">
-                                                    <div class="q6-video-preview__player">
-                                                        <div class="q6-play-video-btn"></div>                                                
-                                                    </div>
-                                                    <div class="q6-video-preview__details">
-                                                        <div class="q6-two-columns">
-                                                            <div class="q6-preview-details-columns">
-                                                                <div>
-                                                                    <div>Bitrate:</div>
-                                                                    <div>Framerate:</div>
-                                                                    <div>Duration:</div>
-                                                                </div>
-                                                                <div>
-                                                                    <div>1863 kb/s</div>
-                                                                    <div>60 fps</div>
-                                                                    <div>01:35:05</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="q6-preview-details-columns">
-                                                                <div>
-                                                                    <div>Ratio:</div>
-                                                                    <div>WxH:</div>
-                                                                </div>
-                                                                <div>
-                                                                    <div>16:9</div>
-                                                                    <div>720x304 px</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-    
-                                                        <div class="q6-input">
-                                                            <div class="q6-input__label">
-                                                                <label for="input_url">Link</label>
-                                                            </div>
-                                                            <input class="q6-input__field q6-black-text" type="text" readonly="readonly" value="http://example.com/video/myvideo.mp4">
-                                                        </div>   
-    
-                                                        <div class="q6-video-details-btns">
-                                                            <a href="http://example.com/video/myvideo.mp4" target="_blank" class="q6-button q6-green-background q6-green-border">Open video in a new window</a>
-                                                            <button class="q6-button q6-green-background q6-green-border q6-margin-left_10px q6-btn-copy">Copy link</button>
-                                                        </div>        
-    
-                                                    </div>
-                                                </div>   
-                                                
-                                            </div>
-                                        </div>                               
-                                    </div>      
-    
-                                    <div class="q6-job__input-parameters">
-                                        <h2>Input parameters</h2>    
-                                        <div class="q6-input-parameters-box">
-    
-                                            <div class="q6-input">
-                                                <div class="q6-input__label q6-align-start">
-                                                    <label for="input_url">Object</label> 
-                                                    <div class="q6-copy-input-parameters-button q6-copy-box-button q6-margin-left_15px"></div>                                                    
-                                                </div>
-    
-    
-                                                <textarea placeholder="">
-    task_token: "fasfl348uotljslkjfaldf34"
-    uri: "https://qa.stagevids.com/static/test_mini.mp4"
-    profiles: "dfjk35jl34"
-    payload:"my data"</textarea>
-    
-                                        
-    
-                                            </div>
-    
-                                        </div>                            
-                                    </div>                                                              
-    
-                                </div>                                                            
-    
-                        </div>
-                    </div>
-    
-                    <div class="q7-container">
-    
-                        <div class="q6-table-navigation">
-                            <div class="q6-table-navigation__numbers">
-                                <span>1-4</span><span> of 3</span>
-                            </div>
-                            <div class="q6-table-navigation__buttons">
-                                <a><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                                <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                            </div>
-                        </div>    
-    
-                    </div>            
-    
+                        </div>                            
+                    </div>  
+
                     <script>
                         $(".q6-copy-jobID-button").click(function() {
                             var jobID = this.previousElementSibling;           
@@ -1011,13 +894,34 @@
                             document.execCommand("Copy");   
                         });                                                        
                     
-                    </script>
-    
-    
-                <div>
-    
-    
-            </section>
+                    </script>                        
+
+
+                    <div class="q7-table-pagination">
+
+
+                        <div class="q7-table-pagination__controls">     
+                            <div class="q7-table-pagination__button q7-table-pagination__button--prev q7-table-pagination__button--disabled">&#10229; Previous</div>                                             
+                            <div class="q7-table-pagination__page q7-table-pagination__page--selected">1</div>
+                            <div class="q7-table-pagination__page">2</div>
+                            <div class="q7-table-pagination__page">3</div>
+                            <div class="q7-table-pagination__delimeter">...</div>
+                            <div class="q7-table-pagination__page">10</div>
+                            <div class="q7-table-pagination__button q7-table-pagination__button--next">Next &#10230;</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                  
+                                
+
+            </div>
+
+
+
+
 
                                        
 
