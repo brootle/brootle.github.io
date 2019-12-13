@@ -285,9 +285,22 @@
                                 </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
-                                fdsjlkfjsadl
-                            </div>                               
 
+                                <div class="q7-project-job-table">
+                                    <div>
+                                        <div>Project:</div>
+                                        <div>Stagevids</div>
+                                    </div>
+                                    <div>
+                                        <div>Job ID:</div>
+                                        <div>
+                                            <span>$erj4l35j344lktj34t949343fgd435434uo345923424oo</span>
+                                            <div class="q7-copy-text-button"></div>
+                                        </div>
+                                    </div>                                    
+                                </div>                                
+
+                            </div>                                                        
 
                             <div class="q7-table-row q7-expandable-row">
                                 <div>erj4l35j344lktj34t949343fgd435434uo345923424oo</div>
@@ -378,6 +391,37 @@
                     </div>
 
 
+                    <script>
+                        $(function () {                
+                            // copy job ID
+                            $(".q7-copy-text-button").click(function (){
+
+                                try { 
+                                    var cellTextNode = $(this).prev()[0];
+                                
+                                    var selection = window.getSelection();        
+                                    var range = document.createRange();
+
+                                    range.selectNodeContents(cellTextNode);
+                                    selection.removeAllRanges();
+                                    selection.addRange(range);
+
+                                    var successful = document.execCommand('copy');
+
+                                    if(successful) {
+                                        //console.log("copied");                                                                                                         
+                                    }
+                                    else
+                                    { 
+                                        //console.log("can not copy");
+                                    } 
+                                } catch (err) {
+                                    console.log(err);
+                                }
+
+                            });                           
+                        });
+                    </script>                       
 
                     <script>
                         // take care of expandable rows
