@@ -327,6 +327,131 @@
     background: #37b934;
 }
 
+.q7-input-and-buttons--inline{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;    
+}
+
+.q7-input-and-buttons--inline .q7-input + .q7-button {
+    margin-left: 20px;
+}
+
+.q7-input-and-buttons--inline .q7-input {
+    margin: 0;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.q7-input-and-buttons--inline .q7-input:last-of-type {
+    margin-right: 0;
+}
+
+.q7-project-advanced-settings .q7-input-and-buttons--inline .q7-input {
+    min-width: 240px;
+}
+
+.q7-project-advanced-settings .q7-input-and-buttons--inline{
+    margin-bottom: 5px;
+}
+
+/* checkbox */
+.q7-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 100;
+    color: #171717;
+}
+
+.q7-checkbox input {
+    display: none;
+}
+
+.q7-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #e1e5ee;
+    border-radius: 3px;
+    transition: all 0.1s ease;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.q7-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+}
+
+.q7-checkbox:hover input ~ .q7-checkmark {
+    background-color: #ededed;
+}
+
+.q7-checkbox input:checked ~ .q7-checkmark {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.q7-checkbox input:disabled ~ .q7-checkmark {
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
+.q7-checkbox input:disabled:checked ~ .q7-checkmark {
+    border-color: #9b9b9b;
+    background: #9b9b9b;
+}
+
+.q7-checkbox input:checked ~ .q7-checkmark:after {
+    display: block;
+}
+
+.q7-checkbox .q7-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.q7-checkbox--with-question{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-checkbox--with-question .q7-question-icon {
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+/* checkbox */
+
+.q7-project-advanced-settings .q7-checkbox {
+    margin-top: 25px;
+}
+
+.q7-project-advanced-settings .q7-button{
+    min-width: 70px;
+}
+
 .q7-button{
     background: transparent;
     outline: none;
@@ -345,7 +470,7 @@
     border: none;
     border-radius: 5px;
     min-width: 110px; 
-    line-height: 35px;
+    line-height: 40px;
     background: var(--blue);
     color: white;       
 }
@@ -354,9 +479,30 @@
     background-color: #265cc5;
 }
 
+.q7-input__label.q7-input__label--with-question {
+    justify-content: flex-start;
+}
+
+.q7-question-icon {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    background-image: url(../img/pricing/question_p.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    margin-left: 8px;
+    cursor: pointer;
+    margin-bottom: 2px;    
+}
+
 .q7-button.q7-button--cancel{
     background: transparent;
     color: #959595;
+}
+
+.q7-input.q7-input--callback-url{
+    flex: 1;
 }
 
 .q7-button--round{
@@ -1211,6 +1357,7 @@
 
 .q7-block-title .q7-block-title__optional {
     font-size: 15px;
+    color: #9d9d9d;
 }
 
 .q7-section{
