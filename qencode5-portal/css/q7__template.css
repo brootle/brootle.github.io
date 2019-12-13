@@ -3507,6 +3507,47 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     filter: initial;
     opacity: initial;
 }
+
+.q7-expandable-block__title{
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+.q7-expandable-block__title h2{
+    color: #3270e9;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    display: inline-block; 
+    position: relative;
+}
+
+.q7-expandable-block__content{
+    display: none;
+}
+
+.q7-expandable-block__content--active{
+    display: block;
+}
+
+.q7-expandable-block__title h2:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: -20px;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(-45deg);
+    transition: all 0.1s ease;
+}
+
+.q7-expandable-block__title.q7-expandable-block__title--active h2:before{
+    transform: rotate(45deg);
+}
 /* NEW TABLE */
 
 @media screen and (min-width: 1650px){

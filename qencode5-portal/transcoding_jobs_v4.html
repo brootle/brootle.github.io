@@ -370,6 +370,93 @@
                                     </div>                                    
                                 </div>
 
+                                <div class="q7-expandable-block">
+                                    <div class="q7-expandable-block__title q7-expandable-block__title--active"><h2>Input Files</h2></div>
+                                    <div class="q7-expandable-block__content q7-expandable-block__content--active">
+
+
+                                        <table class="q7-table q7-table--projects">
+                                            <thead>
+                                                <tr>
+                                                    <th>Project Name</th>
+                                                    <th>API Key</th>
+                                                    <th class="q7-table__sortable-column">Profiles</th>
+                                                    <th class="q7-table__sortable-column q7-table__sortable-column--sortedZA">Default storage</th>
+                                                    <th class="q7-table__sortable-column">Created on</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <a href="">BBC_First_Video_Best</a>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <span>5bdk43lfsd435</span>
+                                                            <div class="q7-copy-api-key"></div>                                    
+                                                        </div>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>Amazon S3</td>
+                                                    <td>Jun 18, 2018 13:48:27</td>
+                                                    <td>
+                                                        <div class="q6-tutorial-profile-actions">
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                                <div class="q7-tooltip">Clone Project</div>
+                                                            </div>
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>           
+                                                <tr>
+                                                    <td>
+                                                        <a href="">Super_long_project_name_from_user</a>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <span>5bdk43lfsd435</span>
+                                                            <div class="q7-copy-api-key"></div>                                    
+                                                        </div>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>Qencode Free</td>
+                                                    <td>Jun 18, 2018 13:48:27</td>
+                                                    <td>
+                                                        <div class="q6-tutorial-profile-actions">
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                                <div class="q7-tooltip">Clone Project</div>
+                                                            </div>
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <div class="q7-expandable-block">
+                                    <div class="q7-expandable-block__title q7-expandable-block__title--active"><h2>Output Files</h2></div>
+                                    <div class="q7-expandable-block__content q7-expandable-block__content--active">
+
+                                        output files
+
+                                    </div>
+                                </div>        
+                                
+                                <div class="q7-expandable-block">
+                                    <div class="q7-expandable-block__title"><h2>Input Parameters</h2></div>
+                                    <div class="q7-expandable-block__content">
+
+                                        input parameters
+
+                                    </div>
+                                </div>                                 
+
                             </div>                                                        
 
                             <div class="q7-table-row q7-expandable-row">
@@ -491,7 +578,23 @@
 
                             });                           
                         });
-                    </script>                       
+                    </script>     
+                    
+                    <script>
+                        // take care of expandable blocks
+                        var expandButtons = document.querySelectorAll(".q7-expandable-block__title");
+                        expandButtons.forEach(button => {
+                            button.addEventListener('click', function(e){
+                                
+                                var currentRow = this;
+                                var nextRow = currentRow.nextElementSibling;
+
+                                $(currentRow).toggleClass("q7-expandable-block__title--active");  
+                                $(nextRow).toggleClass("q7-expandable-block__content--active");                                   
+                            });
+                        });                       
+                                                                            
+                    </script>                     
 
                     <script>
                         // take care of expandable rows
