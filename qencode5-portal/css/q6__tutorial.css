@@ -999,6 +999,36 @@
     position: relative;
 }
 
+
+.q6-tutorial-profile .q6-input.q6-input--horizontal-switch{
+    margin: 0;
+}
+.q6-tutorial-profile .q6-input.q6-input--horizontal-switch .q6-input__label {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.q6-tutorial-profile .q6-switch {
+    width: 32px;
+    min-width: 32px;
+    height: 16px;
+}
+.q6-tutorial-profile .q6-switch__slider:before {
+    height: 12px;
+    width: 12px;
+    left: 3px;
+    bottom: 2px;
+}
+.q6-tutorial-profile input:checked + .q6-switch__slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+    background-color: #306eea;
+}
+.q6-tutorial-profile .q6-switch-container {
+    height: initial;
+}
+
 .q6-tutorial-profile .q6-checkbox input:checked ~ .q6-checkmark,
 .q6-checkmark {
     background-color: #e9f0fc;
@@ -1097,9 +1127,6 @@
 }
 
 .q6-tutorial-profile-details{
-    margin-top: 10px;
-    width: 105%;
-    margin-left: -5px;
     border-collapse: separate;
     border-spacing: 0 5px;
 }
@@ -1122,7 +1149,7 @@
 }
 
 .q6-tutorial-profile-details tfoot td{
-    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
 }
 
 .q6-tutorial-profile-details tbody td:nth-last-of-type(2){
@@ -1153,8 +1180,97 @@
 }
 
 
+/* profile block */
+.q6-tutorial-profile__header{
+    padding: 5px 20px;
+    padding-right: 15px;
+    background: #f4f8ff;
+    position: relative;
+}
+
+.q6-tutorial-profile__header > .q6-tutorial-profile-actions {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 9999;
+
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+.q6-tutorial-profile__header:hover > .q6-tutorial-profile-actions,
+.q6-tutorial-profile__header:hover .q6-input__field--view .q6-tutorial-profile-actions {
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial; 
+}
+
+.q6-tutorial-profile__header .q6-input__field--view .q6-tutorial-profile-actions{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+
+.q6-tutorial-profile__header .q6-tutorial-profile-actions__icon {
+    background-color: white;
+}
 
 
+.q6-tutorial-profile__header 
+    .q6-input__field--view {
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 100%;
+
+    font-size: 16px;
+    padding: 9px 14px;
+    padding-left: 0;
+    padding-right: 25px;
+    font-weight: 500;    
+}
+
+.q6-tutorial-profile__header  .q6-input__label{
+    margin: 0;
+}
+
+.q6-tutorial-profile__header 
+    .q6-input__field--action-btns input[type=text].q6-input__field {
+    max-width: 100%;
+    font-size: 16px;
+    padding: 9px 14px;
+    font-weight: 500;
+}
+
+.q6-tutorial-profile__body{
+    flex: 1;
+}
+
+.q6-tutorial-profile__body-summary{
+    padding: 5px 20px;
+    padding-right: 15px;
+    line-height: 25px;
+}
+
+.q6-tutorial-profile__body-table{
+    padding: 0px 20px;
+}
+
+.q6-tutorial-profile__footer{
+    padding: 10px 20px;
+}
+.q6-tutorial-profile__footer .q6-button {
+    width: 100%;
+}
+.q6-tutorial-profile__footer p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #7f7a7a;
+}
+/* profile block */
 
 .q6-tutorial-profile-header{
     display: flex;
