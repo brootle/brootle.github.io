@@ -1031,23 +1031,19 @@
 
 .q6-tutorial-profile .q6-checkbox input:checked ~ .q6-checkmark,
 .q6-checkmark {
-    background-color: #e9f0fc;
-    border-color: #e9f0fc;
+    border-color: #306eea;;
 }
 
 .q6-tutorial-profile .q6-checkmark {
-    height: 12px;
-    width: 12px;
-    border: 1px solid #e9f0fc;
+    height: 13px;
+    width: 13px;
 }
 
 .q6-tutorial-profile .q6-checkbox .q6-checkmark:after {
     left: 3px;
-    top: -1px;
+    top: 0px;
     width: 5px;
     height: 9px;
-    border: solid #316fea;
-    border-width: 0 1px 1px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -1073,14 +1069,10 @@
 }
 
 .q6-tutorial-profile .q6-checkbox{
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0;
-    margin-bottom: 10px;  
-    margin-top: 5px;
-    line-height: 13px;  
-    padding-left: 20px;   
-    color: #a6a8af; 
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0 auto;
 }
 
 .q6-tutorial-profile__parameters-selector{
@@ -1145,33 +1137,44 @@
     text-align: left;
     padding: 3px 9px;
     color: #a6a8af;
-    font-weight: 500;
-    border-bottom: 1px solid #d7d7d7;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 1px solid #f0f1f2;
+}
+
+.q6-tutorial-profile-details th:first-of-type,
+.q6-tutorial-profile-details tbody td:first-of-type{
+    padding-left: 20px;
+}
+.q6-tutorial-profile-details th:last-of-type,
+.q6-tutorial-profile-details tbody td:last-of-type{
+    padding-right: 20px;
 }
 
 .q6-tutorial-profile-details tfoot td{
-    border-bottom: 1px solid #d7d7d7;
-}
-
-.q6-tutorial-profile-details tbody td:nth-last-of-type(2){
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-    padding-right: 15px;
+    border-bottom: 1px solid #f0f1f2;
 }
 
 .q6-tutorial-profile-details tbody td:first-of-type{
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
     color: #306eea;
-    font-weight: 500;
 }
 
-.q6-tutorial-profile-details tbody tr:hover td{
-    background: #e9f0fc;
+.q6-tutorial-profile-details tbody tr:hover td:nth-of-type(2),
+.q6-tutorial-profile-details tbody tr:hover td:nth-of-type(3){
+    color: #306eea;
+    cursor: pointer;
 }
 
-.q6-tutorial-profile-details tbody tr:hover td:last-of-type{
-    background: none;
+.q6-tutorial-profile-details tbody tr:hover td:last-of-type .q6-tutorial-profile-actions{
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;  
+}
+
+.q6-tutorial-profile-details tbody td:last-of-type .q6-tutorial-profile-actions {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;
 }
 
 
@@ -1255,7 +1258,11 @@
 }
 
 .q6-tutorial-profile__body-table{
-    padding: 0px 20px;
+    
+}
+
+.q6-tutorial-profile__body-table .q6-tutorial-profile-details {
+    width: 100%;
 }
 
 .q6-tutorial-profile__footer{
