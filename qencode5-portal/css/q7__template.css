@@ -697,7 +697,6 @@
 }
 
 .q7-table--latest-transcoding-jobs,
-.q7-table--transfer-methods,
 .q7-table--projects{
     border-spacing: 0;
     margin-top:18px;
@@ -842,28 +841,16 @@
 
 
 
-.q7-table--latest-transcoding-jobs td,
-.q7-table--transfer-methods td{
+.q7-table--latest-transcoding-jobs td{
     padding: 9px 15px;
 }
 
-.q7-table--transfer-methods td:last-of-type{
-    padding-top: 0;
-    padding-bottom: 3px; 
-}
 
-.q7-table--latest-transcoding-jobs tr:first-of-type td,
-.q7-table--transfer-methods tr:first-of-type td{
+.q7-table--latest-transcoding-jobs tr:first-of-type td{
     padding-top: 18px;
 }
 
-.q7-table--transfer-methods tr:first-of-type td:last-of-type{
-    padding-top: 4px;
-    padding-bottom: 0;    
-}
-
 .q7-table--latest-transcoding-jobs td:first-of-type,
-.q7-table--transfer-methods td:first-of-type,
 .q7-table--projects td:first-of-type{
     max-width: 160px;
     overflow: hidden;
@@ -1345,15 +1332,6 @@
     justify-content: space-between;       
 }
 
-.q7-block-title-and-button  .q6-button.q6-button--round {
-    margin: 0;
-    padding: 0 15px;
-    margin-left: 25px;
-    background: var(--blue);
-    color: white;
-    font-size: 14px;
-    line-height: 25px;
-}
 
 .q7-block-title .q7-block-title__optional {
     font-size: 15px;
@@ -3743,6 +3721,189 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     filter: initial;
     opacity: initial;    
 }
+
+
+/* standard talble */
+.q7-table--standard{
+
+}
+
+.q7-table.q7-table--standard thead tr th {
+    background: #e2e6ee;
+    color: #171717;
+}
+
+.q7-table.q7-table--standard thead th:first-of-type {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.q7-table.q7-table--standard thead th:last-of-type {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.q7-table.q7-table--standard tbody tr {
+    -webkit-box-shadow: 0px 0px 1px 1px #ebebeb;
+    -moz-box-shadow: 0px 0px 1px 1px #ebebeb;
+    box-shadow: 0px 0px 1px 1px #ebebeb;
+}
+
+.q7-table.q7-table--standard tr {
+    background: white;
+    border-radius: 5px;
+}
+
+.q7-table.q7-table--standard td {
+    padding: 15px 15px;
+}
+
+.q7-table.q7-table--standard tbody tr:hover {
+    -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
+    -moz-box-shadow: 0px 0px 1px 1px var(--blue);
+    box-shadow: 0px 0px 1px 1px var(--blue);
+}
+
+.q7-table.q7-table--standard td:first-of-type {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.q7-table.q7-table--standard td:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.q7-table.q7-table--standard {
+    border-collapse: separate;
+    border-spacing: 0 7px;
+}
+/* standard talble */
+
+
+/* transfer methods table modificates standard table*/
+.q7-table--transfer-methods{
+    margin-top: 5px;
+}
+
+.q7-table--transfer-methods td:last-of-type {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+
+.q7-table--transfer-methods tbody tr:hover td:last-of-type {
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;
+}
+
+.q7-table--transfer-methods td:nth-of-type(3) {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.q7-table--transfer-methods td:nth-of-type(3) > div {
+    display: flex;
+    align-items: center;
+}
+
+.q7-table--transfer-methods .q7-copy-text-button{
+    position: relative;
+    right: initial;
+}
+
+.q7-table--transfer-methods td:first-of-type {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.q7-table.q7-table--standard tbody tr.q7-transfer-method-row--selected{
+    background: #f4f8ff;
+}
+/* transfer methods table */
+
+/* radio button for table row */
+.q7-radio-btn {
+    width: 18px;    
+    height: 18px;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 100;
+    color: #171717;
+}
+
+.q7-radio-btn input {
+    display: none;
+}
+
+.q7-radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #e1e5ee;
+    border-radius: 50%;
+    transition: all 0.1s ease;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.q7-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+}
+
+.q7-radio-btn:hover input ~ .q7-radio-checkmark {
+    background-color: #f4f8ff;
+}
+
+.q7-radio-btn input:checked ~ .q7-radio-checkmark {
+    border-color: var(--blue);
+}
+
+.q7-radio-btn input:disabled ~ .q7-radio-checkmark {
+    border-color: #f7f8fa;
+    background: #f7f8fa;
+}
+
+.q7-radio-btn input:disabled:checked ~ .q7-radio-checkmarkk {
+    border-color: #9b9b9b;
+    background: #9b9b9b;
+}
+
+.q7-radio-btn input:checked ~ .q7-radio-checkmark:after {
+    display: block;
+}
+
+.q7-radio-btn .q7-radio-checkmark:after {
+    left: 3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+}
+/* radio button for table row */
+
+
 /* NEW TABLE */
 
 @media screen and (min-width: 1650px){

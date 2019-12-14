@@ -1423,77 +1423,150 @@
                             <div class="q7-block-title">Transfer Methods <span class="q7-block-title__optional">(optional)</span></div>
                             <button data-toggle="modal" data-target="#addTransferMethod" class="q6-button q6-button--round">
                                 + Add Transfer Method                         
-                            </button>                            
+                            </button>      
                         </div>
 
-                        <table class="q7-table q7-table--transfer-methods">
+                        <table class="q7-table q7-table--standard q7-table--transfer-methods">
                             <thead>
                                 <tr>
-                                    <th>Transfer Name</th>
+                                    <th>Default</th>
+                                    <th class="q7-table__sortable-column">Transfer Name</th>
                                     <th>Transfer ID</th>
-                                    <th>Type</th>
+                                    <th class="q7-table__sortable-column">Type</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>New 1</td>
-                                    <td>5439598sigfsuditu934</td>
-                                    <td>Qencode S3</td>
+                                <tr class="q7-transfer-method-row--selected">
                                     <td>
+                                        <label class="q7-radio-btn">
+                                            <input type="radio" name="transfer_method" value="1" checked>   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>                                  
+                                    </td>
+                                    <td>Qencode Free (24 hours)</td>
+                                    <td>-</td>
+                                    <td>Qencode S3</td>
+                                    <td>                                                    
                                         <div class="q6-tutorial-profile-actions">
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
                                         </div>
                                     </td>
-                                </tr> 
+                                </tr>     
                                 <tr>
-                                    <td>Very long transfer name that can not fit the talbe cell</td>
-                                    <td>5439598sigfsuditu934</td>
+                                    <td>
+                                        <label class="q7-radio-btn">
+                                            <input type="radio" name="transfer_method" value="2">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>    
+                                    </td>
+                                    <td>Test 2</td>
+                                    <td>
+                                        <div>
+                                            <span>5bdk43lfsd435</span>
+                                            <div class="q7-copy-text-button"></div>                                   
+                                        </div>                                        
+                                    </td>
                                     <td>Amazon</td>
-                                    <td>
+                                    <td>                                                    
                                         <div class="q6-tutorial-profile-actions">
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
                                         </div>
                                     </td>
-                                </tr> 
+                                </tr>              
                                 <tr>
-                                    <td>New 1</td>
-                                    <td>5439598sigfsuditu934</td>
-                                    <td>Qencode S3</td>
                                     <td>
-                                        <div class="q6-tutorial-profile-actions">
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
-                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
-                                        </div>
+                                        <label class="q7-radio-btn">
+                                            <input type="radio" name="transfer_method" value="3">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>    
                                     </td>
-                                </tr> 
-                                <tr>
-                                    <td>New 1</td>
-                                    <td>5439598sigfsuditu934</td>
+                                    <td>Test 3</td>
+                                    <td>
+                                        <div>
+                                            <span>5bdk43lfsd435</span>
+                                            <div class="q7-copy-text-button"></div>                                   
+                                        </div>                                        
+                                    </td>
                                     <td>Amazon</td>
-                                    <td>
+                                    <td>                                                    
                                         <div class="q6-tutorial-profile-actions">
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
                                         </div>
                                     </td>
-                                </tr> 
+                                </tr>     
                                 <tr>
-                                    <td>New 1</td>
-                                    <td>5439598sigfsuditu934</td>
-                                    <td>Qencode S3</td>
                                     <td>
+                                        <label class="q7-radio-btn">
+                                            <input type="radio" name="transfer_method" value="4">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>    
+                                    </td>
+                                    <td>Test 4</td>
+                                    <td>
+                                        <div>
+                                            <span>5bdk43lfsd435</span>
+                                            <div class="q7-copy-text-button"></div>                                   
+                                        </div>                                        
+                                    </td>
+                                    <td>Amazon</td>
+                                    <td>                                                    
                                         <div class="q6-tutorial-profile-actions">
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__edit"></div>
                                             <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
                                         </div>
                                     </td>
-                                </tr>                                                                                                                                                                                                                                                                                             
+                                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                             </tbody>
-                        </table>
+                        </table>                 
+                        
+                        <script>
+                            $(function () {                                    
+                                // when transfer method changed by radio button click
+                                $('input[type=radio][name="transfer_method"]').change(function () {   
+                                    // unselect any selected row
+                                    $('.q7-transfer-method-row--selected').removeClass('q7-transfer-method-row--selected');
 
+                                    // select current row
+                                    $(this).closest('tr').addClass('q7-transfer-method-row--selected');
+                                });                                
+                            });
+                        </script>                           
+
+                        <script>
+                            $(function () {                                    
+                                // copy previous text
+                                $(".q7-copy-text-button").click(function (){
+
+                                    try { 
+                                        var cellTextNode = $(this).prev()[0];
+                                    
+                                        var selection = window.getSelection();        
+                                        var range = document.createRange();
+
+                                        range.selectNodeContents(cellTextNode);
+                                        selection.removeAllRanges();
+                                        selection.addRange(range);
+
+                                        var successful = document.execCommand('copy');
+
+                                        if(successful) {
+                                            //console.log("copied");                                                                                                         
+                                        }
+                                        else
+                                        { 
+                                            //console.log("can not copy");
+                                        } 
+                                    } catch (err) {
+                                        console.log(err);
+                                    }
+
+                                });                           
+                            });
+                        </script>   
 
 
                     </div>    
