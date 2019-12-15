@@ -1742,15 +1742,14 @@
                     </div>    
                     
                     <!-- Modal -->
-                    <div class="modal fade q7-modal" id="addTransferMethod" role="dialog">
+                    <div class="modal fade q7-modal q7-modal--add-transfer-method" id="addTransferMethod" role="dialog">
                         <div class="modal-dialog">
                         
                             <!-- Modal content-->
                             <div class="modal-content">
                                 
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Create transfer method</h5>
-                                    <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+
                                 </div>
                                 <div class="modal-body q7-modal-body--transfer-method">
                                                              
@@ -1801,34 +1800,43 @@
 
                                             });                           
                                         });
-                                    </script>     
-
-                                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--equal-padding">
-                                        <div class="q6-input">
-                                            <div class="q6-input__label">
-                                                <label>Transfer name</label>
-                                            </div>
-                                            <input class="q6-input__field" type="text" value="Best_storage">
-                                        </div>
-                                    </div>                                        
-                                                                      
+                                    </script>                            
 
                                     <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">    
                                     
                                         <div class="q6-tutorial-inputs-block__controls">
                                             <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
-                                            <div class="q6-tutorial-control" data-control="custom">Custom S3</div>
-                                            <div class="q6-tutorial-control" data-control="amazon">AWS S3</div>
-                                            <div class="q6-tutorial-control" data-control="google">GCS</div>
-                                            <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze B2</div>
+                                            <div class="q6-tutorial-control" data-control="amazon">Amazon S3</div>
+                                            <div class="q6-tutorial-control" data-control="google">Google Cloud</div>
+                                            <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze S3</div>
                                             <div class="q6-tutorial-control" data-control="azure">Azure</div>
                                             <div class="q6-tutorial-control" data-control="ftp">FTP</div>
-                                            <div class="q6-tutorial-control" data-control="aspera">Aspera</div>
                                         </div>                                              
 
                                         <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
-                                        
+                                                                                                                                   
+
                                             <div class="q6-input-and-buttons--inline">
+
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Transfer name</label>
+                                                    </div>
+                                                    <input class="q6-input__field" type="text" value="Best_storage">
+                                                </div>
+
+                                                <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Bucket name</label>
+                                                    </div>
+                                                    <input class="q6-input__field" type="text">
+                                                </div>                                                 
+             
+                                            </div>       
+
+                 
+                                            <div class="q6-input-and-buttons--inline">
+
                                                 <div class="q6-input">
                                                     <div class="q6-input__label">
                                                         <label>Region name</label>
@@ -1839,23 +1847,7 @@
                                                         </select>
                                                     </div>
                                                 </div>                      
-                                                
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Bucket name</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                          
-                                            </div>       
-
-                 
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Access ID</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                      
+                                                                                                                            
                                                 
                                                 <div class="q6-input">
                                                     <div class="q6-input__label">
@@ -1864,6 +1856,15 @@
                                                     <input class="q6-input__field" type="text">
                                                 </div>                          
                                             </div>
+
+                                            <div class="q6-input-and-buttons--inline">
+                                                 <div class="q6-input">
+                                                    <div class="q6-input__label">
+                                                        <label>Access Secret</label>
+                                                    </div>
+                                                    <input class="q6-input__field" type="text">
+                                                </div>   
+                                            </div>                                               
 
                                             <div class="q7-inline-checkboxes">
                                                 <label class="q6-checkbox">
@@ -1880,14 +1881,10 @@
                                             </div>                                            
                                                                                                             
 
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="custom">
-                                            Custom S3
-                                        </div>                                             
+                                        </div>                                          
 
                                         <div class="q6-tutorial-controls__content" data-content="amazon">
-                                            Amazon
+                                            Amazon S3
                                         </div>                 
 
                                         <div class="q6-tutorial-controls__content" data-content="google">
@@ -1905,11 +1902,7 @@
                                         <div class="q6-tutorial-controls__content" data-content="ftp">
                                             FTP
                                         </div>            
-
-                                        <div class="q6-tutorial-controls__content" data-content="aspera">
-                                            Aspera
-                                        </div>                                            
-                                                                                            
+                                                                                                                                    
 
                                     </div>             
                                     
@@ -1939,14 +1932,12 @@
                                             });
                                         })
                                     </script>    
-                                                              
+                                                      
+                                    <button data-dismiss="modal" id="create-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>
                                             
                                 </div>
                                 <div class="modal-footer">
-                                    <div class="q7-modal-footer-buttons">
-                                        <button data-dismiss="modal" id="cancel-transfer-method" class="q6-button q6-gray-background q6-gray-border q6-gray-text">Cancel</button>
-                                        <button data-dismiss="modal" id="create-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>
-                                    </div>
+
                                 </div>
 
                             </div>
