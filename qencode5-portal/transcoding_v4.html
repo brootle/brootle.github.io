@@ -1408,6 +1408,19 @@
 
                                     </div>
 
+                                    <script>
+                                        $(function () {                                    
+                                            // when profile changed by checkbox click
+                                            $('.q6-tutorial-profile__footer-checkbox input[type=checkbox]').change(function () {  
+                                                if($(this).is(':checked')){
+                                                    $(this).closest('.q6-tutorial-profile').addClass('q6-tutorial-profile--selected');
+                                                }else{
+                                                    $(this).closest('.q6-tutorial-profile').removeClass('q6-tutorial-profile--selected');
+                                                }
+                                            });                                
+                                        });
+                                    </script>                                      
+
                                     <div class="q6-tutorial-profiles-buttons">
                                         <button class="q6-button q6-button--round q6-button--settings">Edit Output Settings</button>
                                     </div>
