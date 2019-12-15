@@ -1429,46 +1429,106 @@
                             
                             </div>
 
-                        </div>                
+                        </div>                                       
 
                         <div class="q7-block__step">
-                            <div class="q7-block__step-title q7-block__step-title--optional">Step 3. Advanced Settings (optional)</div>
-                            <div class="q7-transcoding-advanced-settings">
-                                <div class="q7-transcoding-advanced-settings__time">
-                                    <div class="q6-input-and-buttons--inline">
-                                        <div class="q6-input">
-                                            <div class="q6-input__label q6-input__label--with-question">
-                                                <label>Start time</label>
-                                                <div class="q6-question-icon"></div>
-                                            </div>
-                                            <input class="q6-input__field" type="text" placeholder="hh.mm.ss">
-                                        </div>     
-                                        <div class="q6-input">
-                                            <div class="q6-input__label q6-input__label--with-question">
-                                                <label>Duration</label>
-                                                <div class="q6-question-icon"></div>
-                                            </div>
-                                            <input class="q6-input__field" type="text" placeholder="hh.mm.ss">
-                                        </div>      
-                                    </div>                                                                 
+
+                            <div class="q7-expandable-block">
+                                <div class="q7-expandable-block__title q7-expandable-block__title--active">
+                                    <div class="q7-block__step-title q7-block__step-title--optional">Step 3. Advanced Settings (optional)</div>
                                 </div>
-                                <div class="q7-transcoding-advanced-settings__variables">
-                                    <div class="q6-input">
-                                        <div class="q6-input__label q6-input__label--with-question">
-                                            <label>Output path variables</label>
-                                            <div class="q6-question-icon"></div>
+                                <div class="q7-expandable-block__content q7-expandable-block__content--active">
+
+                                    <div class="q7-transcoding-advanced-settings">
+
+                                        <div>
+
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label q7-input__label--with-question">
+                                                        <label>Parameter</label>
+                                                        <div class="q7-question-icon"></div>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>              
+                                                
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label q7-input__label--with-question">
+                                                        <label>Value</label>
+                                                        <div class="q7-question-icon"></div>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>           
+                                            </div>
+
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Parameter</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>              
+                                                
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Value</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>       
+                                                
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                                </div>                                                
+                                            </div>         
+                                            
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Parameter</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>              
+                                                
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Value</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>       
+                                                
+                                                <div class="q6-tutorial-profile-actions">
+                                                    <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__delete"></div>
+                                                </div>                                                
+                                            </div>                                              
+
                                         </div>
 
-                                        <textarea placeholder="{
-&quot;param1&quot;: &quot;value1&quot;,
-&quot;param2&quot;: &quot;value2&quot;
-...
-}"></textarea>
+                                        
+                                        <div>
+                                            <div class="q7-link-button">+ Add Row</div>
+                                        </div>                                        
 
+                                    </div>
 
-                                    </div>                                 
                                 </div>
-                            </div>
+                            </div>            
+                            
+                            <script>
+                                // take care of expandable blocks
+                                var expandButtons = document.querySelectorAll(".q7-expandable-block__title");
+                                expandButtons.forEach(button => {
+                                    button.addEventListener('click', function(e){
+                                        
+                                        var currentRow = this;
+                                        var nextRow = currentRow.nextElementSibling;
+
+                                        $(currentRow).toggleClass("q7-expandable-block__title--active");  
+                                        $(nextRow).toggleClass("q7-expandable-block__content--active");                                   
+                                    });
+                                });                       
+                                                                                    
+                            </script> 
+
                         </div>                                      
 
                         <div class="q6-tutorial-buttons">                        
