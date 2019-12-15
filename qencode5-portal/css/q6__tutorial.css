@@ -1283,48 +1283,54 @@
 
 }
 
-.q6-tutorial-profile__footer-checkbox{
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox {
     height: 40px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;    
+    flex-direction: row-reverse;
     background: #f4f8ff;
+
+    border-color: #366fe0;
+
+    margin: 0;
+
+    font-size: 13px;    
+    color: #366fe0;
+    font-weight: 500;    
 }
 
 .q6-tutorial-profile__footer-checkbox .q6-checkmark {
     border-color: #366fe0;
+    position: relative;
 }
 
-.q6-tutorial-profile__footer-checkbox .q6-checkbox{
-    margin: 0;
-    padding-left: 22px;
-    line-height: 14px;
-    font-size: 13px;    
-    color: #366fe0;
-    font-weight: 500;
-}
-
-.q6-tutorial-profile--selected .q6-tutorial-profile__footer-checkbox {
-    background: #366fe0;
+.q6-tutorial-profile__footer-checkbox .q6-checkmark {
+    border-color: #366fe0;
+    margin-right: 8px;
+    margin-bottom: 2px;
 }
 
 .q6-tutorial-profile--selected .q6-tutorial-profile__footer-checkbox .q6-checkbox {
+    background:  #366fe0;
     color: white;
 }
 
-.q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark, .q6-checkmark {
-    border-color: #ffffff;
-    background: white;
+.q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: white;
+    border-color: white;
 }
 
-.q6-tutorial-profile__footer-checkbox  .q6-checkbox .q6-checkmark:after {
-    left: 3px;
-    top: 0px;
-    width: 5px;
-    height: 9px;    
+.q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark:after {
     border: solid #366fe0;
     border-width: 0 2px 2px 0;
 }
+
+
+
+
 
 .q6-tutorial-profile__footer .q6-tutorial-profile__footer-more-settings{
     padding: 10px 20px;
