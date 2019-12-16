@@ -1721,7 +1721,46 @@ input:checked + .q6-image-text-checkbox--ott:before{
     }
 }
 
+@media screen and (max-width: 600px){
+    .q6-add-video-block .q6-input.q6-input--video-file .q6-input__label {
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .q6-dd-selector {
+        width: 100%;
+    }  
+    .q6-dd-selector__selected {
+        justify-content: space-between;
+    }      
+    .q6-dd-selector-item{
+        display: flex;
+        flex-direction: column;      
+        position: relative;  
+    }
+    .q6-dd-selector__list > table td {
+        padding-right: 50px;
+    }    
+
+    .q6-dd-selector__list > table tr td:last-of-type{
+        position: absolute;
+        right: 4px;
+        top: 1px;
+        padding-right: 30px; 
+    }    
+
+    .q6-dd-selector__list > table tr:first-of-type td:last-of-type{
+        position: absolute;
+        right: 4px;
+        top: 1px;
+        padding-right: 10px; 
+    }
+}
+
 @media screen and (max-width: 480px){
+    .q6-dd-selector-item {
+        width: 270px;
+    }
+
     h1, h2 {
         font-size: 30px;
         line-height: 40px;
@@ -1733,6 +1772,11 @@ input:checked + .q6-image-text-checkbox--ott:before{
         line-height: 25px;
     }      
 
+    .q6-container.q6-container--q6-header-box{
+        width: 100%;
+        padding: 0;      
+    }
+
     .q6-demo-links-buttons > a {
         width: 100%;
         box-sizing: border-box;
@@ -1740,18 +1784,58 @@ input:checked + .q6-image-text-checkbox--ott:before{
 
     .q6-header-box {
         border: none;
+        border-radius: 0;
     }    
 
     .q6-header-box__title {
         font-size: 30px;
         line-height: 30px;
-        background: none;
-        padding: 0;
+
         margin-bottom: 15px;
+        border-radius: 0;
     }    
 
-    .q6-header-box__text {
+    .q6-drm-box__block .q6-button.q6-button--next {
+        min-width: 100px;
+    }    
+    
+    .q6-add-video-block {
         padding: 0;
+        border: 0;
+    }   
+
+    .q6-optimization-results > div > div:first-of-type {
+        padding: 20px 15px;
+        flex-direction: column;
+    }    
+
+    .q6-optimization-results > div .q6-add-video-block__title {
+        position: initial;
+    }    
+
+    .q6-optimization-results table {
+        margin: 10px 0;
+    }    
+
+    .q6-optimization-results > div:last-of-type {
+        padding: 15px;
+        min-width: 100%;
+    }    
+
+    .q6-add-video-block__controls {
+        border-bottom: 1px solid #e1e5ee;
+    }    
+    
+    .q6-optimization-results .q6-demo-links-buttons{
+        width: 100%;
+    }
+
+    .q6-header-box__text {
+        width: 98%;
+        max-width: 1280px;
+        margin: auto;
+        padding: 0 20px;
+        box-sizing: border-box;
     }       
 
     .q6-cards-box {
