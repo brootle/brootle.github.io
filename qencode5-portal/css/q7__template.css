@@ -496,6 +496,22 @@
     margin-bottom: 2px;    
 }
 
+.q6-tutorial-profile-details th.q6-tutorial-profile-td--has-question{
+    padding-right: 22px;
+    position: relative;
+}
+
+.q6-tutorial-profile-details th.q6-tutorial-profile-td--has-question .q7-question-icon{
+    position: absolute;
+    bottom: 5px;
+    right: 6px;
+    margin: 0;
+}
+
+.q6-input.q6-input--horizontal-switch .q7-question-icon{
+    margin-bottom: 0;
+}
+
 .q7-button.q7-button--cancel{
     background: transparent;
     color: #959595;
@@ -2521,13 +2537,17 @@ a.q7-bucket-url:hover{
     display: none;
 
     background: white;
-    padding: 10px 20px;
+
     white-space: nowrap;
     border: 1px solid var(--blue);
     border-radius: 6px;
-    margin-top: 20px;  
+    margin-top: 35px;
     
     text-align: left;
+    padding: 6px 0px;
+
+    right: -6px;
+    z-index: 1;
 }
 
 .q7-dd-menu__button--opened .q7-dd-menu{
@@ -2535,11 +2555,20 @@ a.q7-bucket-url:hover{
 }
 
 .q7-dd-menu-element{
-    line-height: 25px;
+    line-height: 20px;
     color: var(--blue);
     font-size: 15px;
     cursor: pointer;
     font-weight: normal;
+    padding: 6px 17px;
+}
+
+.q7-dd-menu-element:hover{
+    background: #f7f9fb;
+}
+
+.q7-dd-menu__critical-items .q7-dd-menu-element:hover{
+    background: #fdeeee;
 }
 
 
@@ -2663,12 +2692,16 @@ a.q7-bucket-url:hover{
 
 .q7-dd-menu__button--dots{
     display: inline-block;
-    position: relative;
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     background-position: center;
-    background-image: url(../img/menu.svg);    
+    background-image: url(../img/menu.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 5px;
+    top: 5px; 
+    z-index: 9999;
 }
 
 .q7-dd-menu__button.q7-dd-menu__button--dots:after {
@@ -2934,7 +2967,7 @@ a.q7-bucket-url:hover{
 }
 
 .q7-dd-menu__button--dots .q7-dd-menu:before{
-    right: 19px;
+    right: 14px;
     left: initial;
 }
 /* STORAGE */
