@@ -61,6 +61,76 @@
     background-image: url(../img/dbo/icons/money.svg);
 }
 
+.q6-button--alert{
+    background-color: #ff6161;
+    border-color: #ff6161;    
+}
+
+.q6-button--alert:hover{
+    background-color: #ef5555;
+    border-color: #ef5555;    
+}
+
+.q6-file-processing__error-buttons .q6-button{
+    min-width: 143px;
+    padding: 7px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 14px;
+}
+
+.q6-file-processing__error-buttons .q6-button:last-of-type{
+    margin-right: 0;
+}
+
+p.q6-file-upload-status__error-text{
+    color: #787878;
+    font-size: 15px;
+    margin: 13px 0;
+    line-height: 18px;  
+}
+
+.q6-button.q6-button--close-alert{
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    margin-right: 7px;
+    min-width: 0;
+    border-radius: 50px;
+    background-color: #ff6161;
+    border:none;
+    background-image: url(../img/no.svg);
+    background-size: 8px 8px;
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+.q6-button.q6-button--close-alert:hover{
+    background-color: #ef5555;    
+}
+
+.q6-file-upload-status__error-type{
+    display: flex;
+    align-items: center;    
+    color: #ff6161;
+    font-weight: 500;
+}
+
+.q6-file-processing__error-buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+@media screen and (max-width: 1024px){
+    .q6-file-processing__error-buttons .q6-button {
+        width: initial;
+    }
+}
+
+
 @media screen and (max-width: 768px){
     .q6-dbo-box {
         flex-direction: column;
@@ -85,4 +155,18 @@
     .q6-dbo-icon {
         margin-right: 15px;
     }       
+
+    .q6-file-processing__error-buttons .q6-button {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 15px;
+    }    
+
+    .q6-file-processing__error-buttons .q6-button:last-of-type {
+        margin-bottom: 0;
+    }       
+
+    .q6-file-processing__error-buttons {
+        flex-direction: column;
+    }    
 }
