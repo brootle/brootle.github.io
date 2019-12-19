@@ -4088,19 +4088,30 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     bottom: -2px;
 }
 
-.q6-switch__text--on, .q6-switch__text--off{
+.q6-switch__text{
     position: absolute;
     right: -23px;
-    color: #818080;
     font-size: 13px;
+    font-weight: 500;
 }
 
 
-input:checked + .q6-switch__slider + .q6-switch__text--on{
+.q6-switch__text .q6-switch__text--on{
+    display: none;
+}
+
+.q6-switch__text .q6-switch__text--off{
+    display: none;
+}
+
+input:checked + .q6-switch__slider + .q6-switch__text .q6-switch__text--on{
     display: block;
-    background: white;
-    z-index: 1;
-    color: var(--blue)
+    color:var(--blue);
+}
+
+input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--off{
+    display: block;
+    color:#818080;
 }
 
 .q7-advanced-settings__row .q7-button{
@@ -4151,6 +4162,40 @@ input:checked + .q6-switch__slider + .q6-switch__text--on{
 .q7-advanced-settings__row .q7-input-and-buttons--inline .q7-input{
     margin: 0;
 }
+
+.q7-advanced-settings__row input:disabled + .q6-switch__slider {
+    width: 17px;
+    cursor: initial;
+}
+
+.q7-advanced-settings__row .q7-input__label--with-switch input:disabled + .q6-switch__slider:before{
+    width: 17px;
+    height: 17px;
+    bottom: -1px;
+
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);       
+}
+
+.q7-advanced-settings__row .q7-input__label--with-switch input:disabled:checked + .q6-switch__slider:before {
+    background-image: url(../img/ok.svg);
+    background-size: 9px;
+    background-repeat: no-repeat;
+    background-position: center 6px; 
+}
+
+.q7-advanced-settings__row .q7-input__label--with-switch input:disabled:not(:checked) + .q6-switch__slider:before {
+    background-image: url(../img/no.svg);
+    background-size: 7px;
+    background-repeat: no-repeat;
+    background-position: center 5px;
+}
+
+input:disabled  + .q6-switch__slider + .q6-switch__text {
+    right: 0;
+}
+
 
 @media screen and (min-width: 1650px){
     .q7-container{
