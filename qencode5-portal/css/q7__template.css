@@ -337,6 +337,10 @@
     margin-left: 20px;
 }
 
+.q7-input-and-buttons--inline .q7-button + .q7-button {
+    margin-left: 8px;
+}
+
 .q7-input-and-buttons--inline .q7-input {
     margin: 0;
     margin-right: 20px;
@@ -479,6 +483,15 @@
     background-color: #265cc5;
 }
 
+.q7-button.q7-button--cancel{
+    background-color: #edeff3;
+    color:#818080;
+}
+
+.q7-button.q7-button--cancel:hover{
+    background-color: #e0e0e0;
+}
+
 .q7-input__label.q7-input__label--with-question {
     justify-content: flex-start;
 }
@@ -515,10 +528,6 @@
     margin-bottom: 0;
 }
 
-.q7-button.q7-button--cancel{
-    background: transparent;
-    color: #959595;
-}
 
 .q7-input.q7-input--callback-url{
     flex: 1;
@@ -1354,7 +1363,8 @@
 
 .q7-block-title .q7-block-title__optional {
     font-size: 15px;
-    color: #9d9d9d;
+    color: #c1c1c1;
+    font-weight: 400;
 }
 
 .q7-section{
@@ -4037,6 +4047,109 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-section .q7-inputs-block--project .q6-input.q6-input--enter-project-name .q6-input__field--view {
     max-width: 300px;
     width: fit-content;
+}
+
+
+.q7-advanced-settings__row .q7-input{
+    flex: 1;
+}
+
+.q7-input__label--with-switch .q6-switch {
+    display: flex;
+    align-items: center;    
+
+    width: 40px;
+    min-width: 40px;
+    height: 14px;
+    margin: 0;    
+}
+
+.q7-input__label.q7-input__label--with-switch {
+    justify-content: flex-start;
+    position: relative;
+    margin: 10px 0;
+}
+
+.q7-input__label--with-switch input:checked + .q6-switch__slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+.q7-input__label--with-switch .q6-switch-container {
+    position: absolute;
+    left: 260px;
+}
+
+.q7-input__label--with-switch .q6-switch__slider:before {
+    height: 20px;
+    width: 20px;
+    left: 0px;
+    bottom: -2px;
+}
+
+.q6-switch__text--on, .q6-switch__text--off{
+    position: absolute;
+    right: -23px;
+    color: #818080;
+    font-size: 13px;
+}
+
+
+input:checked + .q6-switch__slider + .q6-switch__text--on{
+    display: block;
+    background: white;
+    z-index: 1;
+    color: var(--blue)
+}
+
+.q7-advanced-settings__row .q7-button{
+    min-width: 90px;
+}
+
+.q7-advanced-settings__row .q7-button.q7-button--round{
+    background-color: #e9f0fc;
+    color: var(--blue);
+    font-weight: 500;
+    line-height: 33px;
+}
+
+.q7-advanced-settings__row .q7-button.q7-button--round:hover{
+    background-color: #d8e7ff;
+    box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);    
+}
+
+.q7-input.q7-input--in-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.q7-advanced-settings__row .q6-input__field--view {
+    color: #363232;
+    padding: 0;
+    font-size: 16px;
+}
+
+.q7-advanced-settings__row .q7-input.q7-input--in-row {
+    margin: 0;
+}
+
+.q7-input-and-buttons--inline.q7-input-and-buttons--inline-view-mode{
+    align-items: center;
+}
+
+.q7-advanced-settings__row{
+    padding: 15px 0;
+    border-top: 1px solid #e6e8eb;
+}
+
+.q7-advanced-settings__row:last-of-type{
+    border-bottom: 1px solid #e6e8eb;
+}
+
+.q7-advanced-settings__row .q7-input-and-buttons--inline .q7-input{
+    margin: 0;
 }
 
 @media screen and (min-width: 1650px){
