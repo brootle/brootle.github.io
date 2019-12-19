@@ -213,7 +213,7 @@
                             <div id="api-key" class="q6-input q6-input--api-key">
                                 <div class="q6-input__label">
                                     <label>API Key</label>
-                                    <a href="">Recreate API Key</a>
+                                    <a data-toggle="modal" data-target="#recreateAPIkey">Recreate API Key</a>
                                 </div>
                                 <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
                                 <button id="copy-api-key" class="q6-button q6-button--round q6-button--copy">
@@ -254,7 +254,7 @@
                             <div id="api-key" class="q6-input q6-input--api-key">
                                 <div class="q6-input__label">
                                     <label>API Key</label>
-                                    <a href="">Recreate API Key</a>
+                                    <a data-toggle="modal" data-target="#recreateAPIkey">Recreate API Key</a>
                                 </div>
                                 <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
                                 <button id="copy-api-key" class="q6-button q6-button--round q6-button--copy">
@@ -299,7 +299,7 @@
                             <div id="api-key" class="q6-input q6-input--api-key">
                                 <div class="q6-input__label">
                                     <label>API Key</label>
-                                    <a href="">Recreate API Key</a>
+                                    <a data-toggle="modal" data-target="#recreateAPIkey">Recreate API Key</a>
                                 </div>
                                 <input class="q6-input__field" type="text" value="5c924a5b76341" disabled="">
                                 <button id="copy-api-key" class="q6-button q6-button--round q6-button--copy">
@@ -313,7 +313,75 @@
 
                     </div>                          
 
-                </div>                
+                </div>            
+                
+                <!-- Modal -->
+                <div class="modal fade q7-modal" id="recreateAPIkey" role="dialog">
+                    <div class="modal-dialog q7-modal-dialog--centered">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            
+                            <div class="modal-body q7-modal-body--update">
+
+                                <div class="q7-modal-body__response">
+                                    <img src="img/api.svg">                        
+                                    <h2>Recreate API Key?</h2>                                               
+                                    <p>
+                                        Are you sure you want to recreate your API Key?<br>
+                                        This could affect applications currently using your <br>
+                                        current API Key for this Project.
+                                    </p>
+                                </div>
+                                                                                                                                                                        
+                            </div>
+
+                            <div class="modal-footer">
+                                <div class="q7-modal-footer-buttons">
+                                    <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                    <button data-dismiss="modal" class="q7-button">Recreate</button>                                                                             
+                                </div>
+                            </div>                            
+
+                        </div>
+                    
+                    </div>
+                </div>
+                <!-- Modal ends -->        
+                
+                <!-- Modal -->
+                <div class="modal fade q7-modal" id="deleteProfile" role="dialog">
+                    <div class="modal-dialog q7-modal-dialog--centered">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            
+                            <div class="modal-body q7-modal-body--update">
+
+                                <div class="q7-modal-body__response">
+                                    <img src="img/profile.svg">     
+                                    <div class="q7-modal-body__extra-info">Project_NDQ3AuBjacX</div>
+                                    <h2>Delete this profile?</h2>                                               
+                                    <p>
+                                        Are you sure you want to delete this Profile?<br>
+                                        This could affect jobs using this Profile for transcoding.
+                                    </p>
+                                </div>
+                                                                                                                                                                        
+                            </div>
+
+                            <div class="modal-footer">
+                                <div class="q7-modal-footer-buttons">
+                                    <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                    <button data-dismiss="modal" class="q7-button q7-button--delete">Delete</button>                                                                             
+                                </div>
+                            </div>                            
+
+                        </div>
+                    
+                    </div>
+                </div>
+                <!-- Modal ends -->                   
            
                 
                 <div class="q7-section">
@@ -855,7 +923,7 @@
                                             </div>
                                             <div class="q7-dd-menu__delimeter"></div>
                                             <div class="q7-dd-menu__critical-items">
-                                                <div class="q7-dd-menu-element">Delete</div>
+                                                <div data-toggle="modal" data-target="#deleteProfile" class="q7-dd-menu-element">Delete</div>
                                             </div>                                    
                                         </div>                                                
                                     
