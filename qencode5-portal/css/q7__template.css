@@ -484,28 +484,31 @@
 }
 
 .q7-question-icon {
-    width: 16px;
-    min-width: 16px;
-    height: 16px;
+    width: 13px;
+    min-width: 13px;
+    height: 13px;
+
     background-image: url(../img/question.svg);
     background-size: cover;
     background-repeat: no-repeat;
 
     margin-left: 8px;
     cursor: pointer;
-    margin-bottom: 2px;    
+    margin-bottom: 1px;    
 }
 
 .q6-tutorial-profile-details th.q6-tutorial-profile-td--has-question{
-    padding-right: 22px;
+    padding-right: 19px;
     position: relative;
+    display: flex;
+    align-items: center;    
 }
 
 .q6-tutorial-profile-details th.q6-tutorial-profile-td--has-question .q7-question-icon{
-    position: absolute;
-    bottom: 5px;
-    right: 6px;
     margin: 0;
+    margin-left: 6px;
+    margin-bottom: 1px;
+    display: inline-block;
 }
 
 .q6-input.q6-input--horizontal-switch .q7-question-icon{
@@ -1431,7 +1434,8 @@
 
 
 .q7-section .q6-input.q6-input--enter-project-name .q6-input__field--view{
-    max-width: 200px;
+    max-width: 260px;
+    width: fit-content;
     overflow: hidden;
     word-wrap: break-word;
     white-space: nowrap;
@@ -2059,17 +2063,12 @@ td.q7-table-cell--edit-mode{
 }
 
 .q7-transcoding-output-settings{
-    padding: 25px 30px;
+    padding: 25px 25px;
     border-radius: 7px;
     border: 1px solid #dddfe1;
     margin-bottom: 40px;
 }
 
-.q7-section .q7-transcoding-output-settings .q6-tutorial-profile {
-    min-width: 290px;
-    max-width: 290px;
-    width: 290px;
-}
 
 .q7-section .q7-transcoding-output-settings .q6-tutorial-profile:last-of-type{
     margin-right: 0;
@@ -2706,6 +2705,16 @@ a.q7-bucket-url:hover{
 
 .q7-dd-menu__button.q7-dd-menu__button--dots:after {
     border: none;
+}
+
+.q6-tutorial-profile-details tbody tr td:last-of-type .q7-dd-menu__button--dots {
+    top: 2px;
+    z-index: initial;
+    background-image: url(../img/menu_gray.svg);
+}
+
+.q6-tutorial-profile-details tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
+    background-image: url(../img/menu.svg);
 }
 
 .q7-storage-extra-menu .q7-table-cell--storage{
@@ -3813,6 +3822,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     -webkit-box-shadow: 0px 0px 1px 1px #ebebeb;
     -moz-box-shadow: 0px 0px 1px 1px #ebebeb;
     box-shadow: 0px 0px 1px 1px #ebebeb;
+    font-size: 15px;
 }
 
 .q7-table.q7-table--standard tr {
@@ -3828,6 +3838,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
     -moz-box-shadow: 0px 0px 1px 1px var(--blue);
     box-shadow: 0px 0px 1px 1px var(--blue);
+    background: #f7faff;
 }
 
 .q7-table.q7-table--standard td:first-of-type {
@@ -3853,18 +3864,19 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-table--transfer-methods td:last-of-type {
-    padding-top: 0;
-    padding-bottom: 0;
-    vertical-align: middle;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.4;
+    padding: 0 5px;
+    min-width: 30px;
+    position: relative;
 }
 
-.q7-table--transfer-methods tbody tr:hover td:last-of-type {
-    -webkit-filter: initial;
-    filter: initial;
-    opacity: initial;
+.q7-table--transfer-methods tbody tr td:last-of-type .q7-dd-menu__button--dots {
+    background-image: url(../img/menu_gray.svg);
+    top: 7px;
+    z-index: initial;
+}
+
+.q7-table--transfer-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots {
+    background-image: url(../img/menu.svg);
 }
 
 .q7-table--transfer-methods td:nth-of-type(3) {
@@ -3889,8 +3901,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     vertical-align: middle;
 }
 
-.q7-table.q7-table--standard tbody tr.q7-transfer-method-row--selected{
+.q7-table.q7-table--transfer-methods tbody tr.q7-transfer-method-row--selected{
     background: #f7faff;
+}
+
+.q7-table.q7-table--transfer-methods tbody tr.q7-transfer-method-row--selected td:nth-of-type(2){
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.q7-table.q7-table--transfer-methods tbody tr:hover td:nth-of-type(2){
+    color: var(--blue);
+    cursor: pointer;
 }
 /* transfer methods table */
 
