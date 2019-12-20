@@ -1006,8 +1006,9 @@
                                                                 <input class="q6-input__field" type="checkbox">
                                                                 <span class="q6-switch__slider"></span>
                                                             </label>  
-                                                        </div>                                                                            
-                                                    </div>                                        
+                                                        </div>  
+                                                        <div class="q7-question-icon"></div>                                                                          
+                                                    </div>                                         
                                                     
                                                     <div class="q6-tutorial-profile-header">                                                        
                                                         <div class="q6-tutorial-profile__title">Profile ID: <span class="q6-tutorial-profile__title-id">5c924a5b76341</span></div>
@@ -1023,7 +1024,7 @@
 
                                                     <table class="q6-tutorial-profile-details">
                                                         <thead>
-                                                            <tr><th>Use</th><th>Resolution</th><th>Quality</th></tr>
+                                                            <tr><th class="q6-select-all-checkboxes">Use</th><th>Resolution</th><th class="q6-tutorial-profile-td--has-question">Quality <div class="q7-question-icon"></div></th></tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
@@ -1108,15 +1109,20 @@
                                                 </div>
                                                 <div class="q6-tutorial-profile__footer-checkbox">
                                                     <label class="q6-checkbox">
-                                                        Select Profile
                                                         <input type="checkbox">
-                                                        <span class="q6-checkmark"></span>
+                                                        <div class="q6-checkbox-fullsize-container">
+                                                            <span class="q6-checkmark"></span>
+                                                            <span class="q6-checkbox-message">
+                                                                <span class="q6-checkbox-message--on">Profile Selected</span>
+                                                                <span class="q6-checkbox-message--off">Select Profile</span>
+                                                            </span>
+                                                        </div>
                                                     </label>
-                                                </div>                                                
+                                                </div>                                               
                                             </div>                                                               
                                         </div>
 
-                                        <div class="q6-tutorial-profile q6-tutorial-profile--selected">
+                                        <div class="q6-tutorial-profile">
                                             <div class="q6-tutorial-profile__header">
 
                                                 <div class="q6-input">
@@ -1168,7 +1174,7 @@
 
                                                     <table class="q6-tutorial-profile-details">
                                                         <thead>
-                                                            <tr><th>Use</th> <th>Resolution</th><th>Quality</th></tr>
+                                                            <tr><th class="q6-select-all-checkboxes">Use</th> <th>Resolution</th><th>Quality</th></tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
@@ -1253,15 +1259,20 @@
                                                 </div>
                                                 <div class="q6-tutorial-profile__footer-checkbox">
                                                     <label class="q6-checkbox">
-                                                        Profile Selected
                                                         <input type="checkbox" checked>
-                                                        <span class="q6-checkmark"></span>
+                                                        <div class="q6-checkbox-fullsize-container">
+                                                            <span class="q6-checkmark"></span>
+                                                            <span class="q6-checkbox-message">
+                                                                <span class="q6-checkbox-message--on">Profile Selected</span>
+                                                                <span class="q6-checkbox-message--off">Select Profile</span>
+                                                            </span>
+                                                        </div>
                                                     </label>
-                                                </div>
+                                                </div>     
                                             </div>                                                              
                                         </div>                            
 
-                                        <div class="q6-tutorial-profile q6-tutorial-profile--selected">
+                                        <div class="q6-tutorial-profile">
                                             <div class="q6-tutorial-profile__header">
 
                                                 <div class="q6-input">
@@ -1313,7 +1324,7 @@
 
                                                     <table class="q6-tutorial-profile-details">
                                                         <thead>
-                                                            <tr><th>Use</th><th>Resolution</th><th>Quality</th></tr>
+                                                            <tr><th class="q6-select-all-checkboxes">Use</th><th>Resolution</th><th>Quality</th></tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
@@ -1398,28 +1409,21 @@
                                                 </div>
                                                 <div class="q6-tutorial-profile__footer-checkbox">
                                                     <label class="q6-checkbox">
-                                                        Profile Selected
                                                         <input type="checkbox" checked>
-                                                        <span class="q6-checkmark"></span>
+                                                        <div class="q6-checkbox-fullsize-container">
+                                                            <span class="q6-checkmark"></span>
+                                                            <span class="q6-checkbox-message">
+                                                                <span class="q6-checkbox-message--on">Profile Selected</span>
+                                                                <span class="q6-checkbox-message--off">Select Profile</span>
+                                                            </span>
+                                                        </div>
                                                     </label>
-                                                </div>                                                
+                                                </div>                                                    
                                             </div>                                                                                                           
                                         </div>                  
 
                                     </div>
-
-                                    <script>
-                                        $(function () {                                    
-                                            // when profile changed by checkbox click
-                                            $('.q6-tutorial-profile__footer-checkbox input[type=checkbox]').change(function () {  
-                                                if($(this).is(':checked')){
-                                                    $(this).closest('.q6-tutorial-profile').addClass('q6-tutorial-profile--selected');
-                                                }else{
-                                                    $(this).closest('.q6-tutorial-profile').removeClass('q6-tutorial-profile--selected');
-                                                }
-                                            });                                
-                                        });
-                                    </script>                                      
+                                     
 
                                     <div class="q6-tutorial-profiles-buttons">
                                         <button class="q6-button q6-button--round q6-button--settings">Edit Output Settings</button>
@@ -1540,6 +1544,27 @@
                 </div>                
                 
             </div>
+
+            <script>
+                $(function () {     
+                    // select or unselect all checkboxes in a column 
+                    $(".q6-select-all-checkboxes").click(function(e){
+
+                        if($(this).hasClass("q6-select-all-checkboxes--all-selected")){
+                            // deselect all checkboxes
+                            $(this).closest("table").find("tr td:first-child input:checkbox").prop('checked', false);
+
+                            $(this).removeClass("q6-select-all-checkboxes--all-selected"); 
+                        }else{
+                            // select all checkboxes
+                            $(this).closest("table").find("tr td:first-child input:checkbox").prop('checked', true);
+
+                            $(this).addClass("q6-select-all-checkboxes--all-selected");                            
+                        }
+
+                    });
+                })
+            </script>             
 
             <script>
                 $(function () {
