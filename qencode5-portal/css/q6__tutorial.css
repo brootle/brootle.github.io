@@ -1315,20 +1315,23 @@
 
 .q6-tutorial-profile__footer-checkbox .q6-checkbox {
     height: 40px;
-    padding: 0 20px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;    
-    flex-direction: row-reverse;
+
     background: #f4f8ff;
-
-    border-color: #366fe0;
-
     margin: 0;
 
     font-size: 13px;    
     color: #366fe0;
     font-weight: 500;    
+
+    position: relative;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox:hover{
+    background: #ebf1fa;
 }
 
 .q6-tutorial-profile__footer-checkbox .q6-checkmark {
@@ -1342,11 +1345,6 @@
     margin-bottom: 2px;
 }
 
-.q6-tutorial-profile--selected .q6-tutorial-profile__footer-checkbox .q6-checkbox {
-    background:  #366fe0;
-    color: white;
-}
-
 .q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark {
     background-color: white;
     border-color: white;
@@ -1355,6 +1353,47 @@
 .q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark:after {
     border: solid #366fe0;
     border-width: 0 2px 2px 0;
+}
+
+.q6-checkbox-fullsize-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+input:checked + .q6-checkbox-fullsize-container {
+    background: #366fe0;
+    color: white;
+}
+
+input:checked + .q6-checkbox-fullsize-container .q6-checkmark {
+    background-color: white;
+
+    background-image: url(../img/ok_blue.svg);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+input:not(:checked) + .q6-checkbox-fullsize-container .q6-checkbox-message .q6-checkbox-message--off {
+    display: block;
+}
+
+input:checked + .q6-checkbox-fullsize-container .q6-checkbox-message .q6-checkbox-message--on {
+    display: block;
+}
+
+.q6-checkbox-message--on{
+    display: none;
+}
+
+.q6-checkbox-message--off{
+    display: none;
 }
 
 

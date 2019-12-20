@@ -396,15 +396,20 @@
 
                             <div class="q6-tutorial-profile__footer-checkbox">
                                 <label class="q6-checkbox">
-                                    <span class="q6-checkbox-message">Select Profile</span>
                                     <input type="checkbox">
-                                    <span class="q6-checkmark"></span>
+                                    <div class="q6-checkbox-fullsize-container">
+                                        <span class="q6-checkmark"></span>
+                                        <span class="q6-checkbox-message">
+                                            <span class="q6-checkbox-message--on">Profile Selected</span>
+                                            <span class="q6-checkbox-message--off">Select Profile</span>
+                                        </span>
+                                    </div>
                                 </label>
-                            </div>                                                
-                        </div>                                                               
+                            </div>
+                        </div>                                                                  
                     </div>
 
-                    <div class="q6-tutorial-profile q6-tutorial-profile--selected">
+                    <div class="q6-tutorial-profile">
                         <div class="q6-tutorial-profile__header">
 
                             <div class="q6-input">
@@ -658,15 +663,20 @@
 
                             <div class="q6-tutorial-profile__footer-checkbox">
                                 <label class="q6-checkbox">
-                                    <span class="q6-checkbox-message">Profile Selected</span>
                                     <input type="checkbox" checked>
-                                    <span class="q6-checkmark"></span>
+                                    <div class="q6-checkbox-fullsize-container">
+                                        <span class="q6-checkmark"></span>
+                                        <span class="q6-checkbox-message">
+                                            <span class="q6-checkbox-message--on">Profile Selected</span>
+                                            <span class="q6-checkbox-message--off">Select Profile</span>
+                                        </span>
+                                    </div>
                                 </label>
                             </div>
                         </div>                                                              
                     </div>                            
 
-                    <div class="q6-tutorial-profile q6-tutorial-profile--selected">
+                    <div class="q6-tutorial-profile">
                         <div class="q6-tutorial-profile__header">
                             
                             <div class="q7-dd-menu__button q7-dd-menu__button--dots">
@@ -929,12 +939,17 @@
 
                             <div class="q6-tutorial-profile__footer-checkbox">
                                 <label class="q6-checkbox">
-                                    <span class="q6-checkbox-message">Profile Selected</span>
                                     <input type="checkbox" checked>
-                                    <span class="q6-checkmark"></span>
+                                    <div class="q6-checkbox-fullsize-container">
+                                        <span class="q6-checkmark"></span>
+                                        <span class="q6-checkbox-message">
+                                            <span class="q6-checkbox-message--on">Profile Selected</span>
+                                            <span class="q6-checkbox-message--off">Select Profile</span>
+                                        </span>
+                                    </div>
                                 </label>
-                            </div>                                                
-                        </div>                                                                                                           
+                            </div>
+                        </div>                                                                                                              
                     </div>       
                     
                     <div class="q6-tutorial-profile q6-tutorial-profile--add-new">
@@ -942,25 +957,6 @@
                     </div>                    
 
                 </div>
-
-                <script>
-                    $(function () {                                    
-                        // when profile changed by checkbox click
-                        $('.q6-tutorial-profile__footer-checkbox input[type=checkbox]').change(function () {  
-                            if($(this).is(':checked')){
-                                $(this).closest('.q6-tutorial-profile').addClass('q6-tutorial-profile--selected');
-                                $(this).closest('label').find(".q6-checkbox-message").text("Profile Selected");
-                            }else{
-                                $(this).closest('.q6-tutorial-profile').removeClass('q6-tutorial-profile--selected');
-                                $(this).closest('label').find(".q6-checkbox-message").text("Select Profile");
-                            }
-                        });                                
-                    });
-                </script>  
-
-
-
-
 
 
             </div>               
