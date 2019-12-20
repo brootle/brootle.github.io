@@ -1936,7 +1936,9 @@
                                     <td>
                                         <div>
                                             <span>5bdk43lfsd435</span>
-                                            <div class="q7-copy-text-button"></div>                                   
+                                            <div class="q7-copy-text-button">
+                                                <div class="q7-flash-message">Copied</div>
+                                            </div>                                   
                                         </div>                                        
                                     </td>
                                     <td>Amazon</td>
@@ -1965,7 +1967,9 @@
                                     <td>
                                         <div>
                                             <span>5bdk43lfsd435</span>
-                                            <div class="q7-copy-text-button"></div>                                   
+                                            <div class="q7-copy-text-button">
+                                                <div class="q7-flash-message">Copied</div>
+                                            </div>                                    
                                         </div>                                        
                                     </td>
                                     <td>Amazon</td>
@@ -1994,7 +1998,9 @@
                                     <td>
                                         <div>
                                             <span>5bdk43lfsd435</span>
-                                            <div class="q7-copy-text-button"></div>                                   
+                                            <div class="q7-copy-text-button">
+                                                <div class="q7-flash-message">Copied</div>
+                                            </div>                                     
                                         </div>                                        
                                     </td>
                                     <td>Amazon</td>
@@ -2073,11 +2079,16 @@
 
                                         var successful = document.execCommand('copy');
 
+                                        var flashMessage = $(this).find('.q7-flash-message')[0];  
+
                                         if(successful) {
-                                            //console.log("copied");                                                                                                         
-                                        }
-                                        else
-                                        { 
+                                            //console.log("copied");              
+                                            $(flashMessage).html('Copied');
+                                            $(flashMessage)
+                                                .animate({ opacity: 1 }, 200)
+                                                .delay(500)     
+                                                .animate({ opacity: 0 }, 200)                                                                                                                                          
+                                        } else{ 
                                             //console.log("can not copy");
                                         } 
                                     } catch (err) {
