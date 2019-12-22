@@ -781,13 +781,9 @@
     border-radius: 5px;
 }
 .q7-table--projects td:last-of-type {
-    padding-top: 0;
-    padding-bottom: 0;
-    vertical-align: middle;
-
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.4;    
+    padding: 0 5px;
+    min-width: 30px;
+    position: relative;  
 }
 
 .q7-table--projects tbody tr:hover{
@@ -814,12 +810,7 @@
     color: var(--blue);
 }
 
-.q7-table--projects tbody tr:hover td:last-of-type{
- 
-    -webkit-filter: initial;
-    filter: initial;
-    opacity: initial;       
-}
+
 .q7-table th.q7-table__sortable-column {
     position: relative;
     cursor: pointer;
@@ -3899,15 +3890,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     position: relative;
 }
 
-.q7-table--transfer-methods tbody tr td:last-of-type .q7-dd-menu__button--dots {
+.q7-table--transfer-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--projects tbody tr td:last-of-type .q7-dd-menu__button--dots {
     background-image: url(../img/menu_gray.svg);
     top: 7px;
     z-index: initial;
 }
 
-.q7-table--transfer-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots {
+.q7-table--transfer-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--projects tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
     background-image: url(../img/menu.svg);
 }
+
 
 .q7-table--transfer-methods td:nth-of-type(3) {
     padding-top: 0;
@@ -3920,7 +3914,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     align-items: center;
 }
 
-.q7-table--transfer-methods .q7-copy-text-button{
+.q7-table--transfer-methods .q7-copy-text-button,
+.q7-table--projects .q7-copy-text-button{
     position: relative;
     right: initial;
     margin-left: 5px;
