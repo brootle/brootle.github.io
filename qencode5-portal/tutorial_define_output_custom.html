@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="img/favicon.png">    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>    
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="css/q6.css" rel="stylesheet">
+    
+    <link href="css/hamburgers.css" rel="stylesheet">
+
+    <link href="css/q6__fonts.css" rel="stylesheet" />
+    <link href="css/q6__template.css" rel="stylesheet" />
+    <link href="css/q6__elements.css" rel="stylesheet" />
+    <link href="css/q6__authorize.css" rel="stylesheet" />
+
+    <link href="css/q6__tutorial.css" rel="stylesheet" />
+
+    <link href="css/q7__template.css" rel="stylesheet" />
+
+    <script src="js/menu.js"></script>
+
+    <title>Qencode - Better Cloud Transcoding</title>
+</head>
+<body class="q6-page q6-body">
+
+    <header>
+        <div class="q6-container">
+            <div class="q6-tutorial-header">
+                <div class="q6-tutorial-header__logo"><a href=""><img src="img/logo.svg" alt=""></a></div>
+                <div class="q6-tutorial-header__content">
+                    <div class="q6-tutorial-title-container">
+                        <div class="q6-tutorial-section-title">getting started</div>
+                        <div class="q6-tutorial-title">Transcode with the API</div>
+                    </div>                    
+                    <div class="q6-tutorial-button">
+                        <div class="q6-demo-links-buttons q6-demo-links-buttons--back">
+                            <a href="">Go to Dashboard</a>
+                        </div>                        
+                    </div>
+                </div>
+            </div>     
+            <div class="q6-tutorial-steps">
+                <div class="q6-tutorial-steps-container">
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
+                        <div class="q6-tutorial-step__number">Step 1</div>
+                        <div class="q6-tutorial-step__title">Create Project</div>
+                    </div>
+                    <div class="q6-tutorial-step q6-tutorial-step--complete">
+                        <div class="q6-tutorial-step__number">Step 2</div>
+                        <div class="q6-tutorial-step__title">Define Input</div>
+                    </div>
+                    <div class="q6-tutorial-steps-round-delimeter q6-tutorial-steps-round-delimeter--complete">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div> 
+                    <div class="q6-tutorial-step q6-tutorial-step--current">
+                        <div class="q6-tutorial-step__number">Step 3</div>
+                        <div class="q6-tutorial-step__title">Define Output</div>
+                    </div>
+                    <div class="q6-tutorial-step">
+                        <div class="q6-tutorial-step__number">Step 4</div>
+                        <div class="q6-tutorial-step__title">Output Destination</div>
+                    </div>
+                    <div class="q6-tutorial-step">
+                        <div class="q6-tutorial-step__number">Step 5</div>
+                        <div class="q6-tutorial-step__title">Launch Transcode</div>
+                    </div>                  
+                    <div class="q6-tutorial-step">
+                        <div class="q6-tutorial-step__number">Step 6</div>
+                        <div class="q6-tutorial-step__title">Results</div>
+                    </div>                                                                                     
+                </div>                          
+            </div>   
+        </div>
+    </header>
+
+    <main class="q6-page-content q6-tutorial-content">
+        <div class="q6-container">
+            <div class="q6-tutorial-content-header">
+                <div class="q6-tutorial-content-header__languages-selector">
+                    <label>Choose a language:</label>
+                    <div>
+                        <div class="q6-tutorial-dd-selector">
+                            <div class="q6-tutorial-dd-selector__selected">
+                                JavaScript
+                            </div>
+                            <div class="q6-tutorial-dd-selector__list">
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="JavaScript">JavaScript</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="PHP">PHP</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Python">Python</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Ruby">Ruby</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Java">Java</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="Node.JS">Node.JS</div>
+                                <div class="q6-tutorial-dd-selector-item" data-item-name="C#">C#</div>                              
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="q6-tutorial-content-header__links">
+                    <label>View our SDK on Github:</label>
+                    <div>
+                        <a href="">PHP</a>
+                        <a href="">Python</a>
+                        <a href="">Ruby</a>
+                        <a href="">Java</a>
+                        <a href="">Node.JS</a>
+                        <a href="">C#</a>
+                        <a href="">JavaScript</a>
+                    </div>
+                </div>
+            </div>  
+            <div class="q6-tutorial-content-title">Define Output Settings</div>
+            <p>
+                Choose the output settings you would like to process your videos with. Add, delete and edit all the format, 
+                codec, resolution and quality combinations you need to your workflow.
+            </p>        
+            
+            <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--transcoding-profiles">
+
+
+                <div class="q6-tutorial-profiles-container">
+
+                    <div class="q6-tutorial-profile">
+                        <div class="q6-tutorial-profile__header">
+
+                            <div class="q7-dd-menu__button q7-dd-menu__button--dots">
+                            
+                                <div class="q7-dd-menu">
+                                    <div class="q7-dd-menu__items">
+                                        <div class="q7-dd-menu-element">Clone output</div>
+                                    </div>                                   
+                                </div>                                                
+                            
+                            </div>                            
+
+                            <div class="q6-input">
+                   
+                                <div class="q6-input__field--view q6-input__field--action-btns">
+                                    Output Format 1                                
+                                </div>  
+
+                            </div>
+                        </div>
+                        <div class="q6-tutorial-profile__body">
+                            <div class="q6-tutorial-profile__body-summary">
+                                <table class="q6-tutorial-profile__parameters-selector">
+                                    <tbody><tr>
+                                        <td>Format:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">HLS</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MP4">MP4</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="HLS">HLS</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MPEG-DASH">MPEG-DASH</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="WebM">WebM</div> 
+                                                </div>
+                                            </div>                             
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Codec:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">H.265</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.264">H.264</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.265">H.265</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP9">VP9</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP8">VP8</div> 
+                                                </div>
+                                            </div>                               
+                                        </td>
+                                    </tr>                            
+                                </tbody></table>                 
+
+                                <div class="q6-input q6-input--horizontal-switch">
+                                    <div class="q6-input__label">
+                                        <label for="input_minutes">Per-Title Encoding</label>
+                                    </div>                                              
+                                    <div class="q6-switch-container">
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox">
+                                            <span class="q6-switch__slider"></span>
+                                        </label>  
+                                    </div>  
+                                    <div class="q7-question-icon"></div>                                                                          
+                                </div>                                        
+                                
+                                     
+                            </div>
+
+                            <div class="q6-tutorial-profile__body-table">
+
+                                <table class="q6-tutorial-profile-details">
+                                    <thead>
+                                        <tr><th class="q6-select-all-checkboxes">Use</th><th>Resolution</th><th class="q6-tutorial-profile-td--has-question">Quality <div class="q7-question-icon"></div></th><th></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition" >10 Mbps</td> 
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">1024 x 576</td><td data-toggle="modal" data-target="#editRendition">2.5 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">786 x 432</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>      
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">640 x 360</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>  
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>                                                                                                                            
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">512 x 288</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>   
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">384 x 216</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div data-toggle="modal" data-target="#addRendition" class="q6-tutorial-profile__add-custom">
+                                                    + Add Custom
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>                        
+                                </table>  
+
+                            </div>
+                        </div>                                                                
+                    </div>
+
+                    <div class="q6-tutorial-profile">
+                        <div class="q6-tutorial-profile__header">
+
+                            <div class="q6-input">
+              
+                                <div class="q6-input__field--action-btns q6-input__field--action-btns__two-btns">       
+                                    <input class="q6-input__field" type="text" value="Output Format 2">   
+                                    <div class="q6-tutorial-profile-actions">
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__confirm"></div>
+                                        <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__cancel"></div>
+                                    </div>                                        
+                                </div>                             
+
+
+                            </div>                            
+
+                        </div>
+                        <div class="q6-tutorial-profile__body">
+                            <div class="q6-tutorial-profile__body-summary">
+                                <table class="q6-tutorial-profile__parameters-selector">
+                                    <tbody><tr>
+                                        <td>Format:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">HLS</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MP4">MP4</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="HLS">HLS</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MPEG-DASH">MPEG-DASH</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="WebM">WebM</div> 
+                                                </div>
+                                            </div>                             
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Codec:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">H.265</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.264">H.264</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.265">H.265</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP9">VP9</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP8">VP8</div> 
+                                                </div>
+                                            </div>                               
+                                        </td>
+                                    </tr>                            
+                                </tbody></table>           
+
+                                <div class="q6-input q6-input--horizontal-switch">
+                                    <div class="q6-input__label">
+                                        <label for="input_minutes">Per-Title Encoding</label>
+                                    </div>                                              
+                                    <div class="q6-switch-container">
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox">
+                                            <span class="q6-switch__slider"></span>
+                                        </label>  
+                                    </div>                                                                            
+                                </div>                                        
+                                
+                                      
+                            </div>
+
+                            <div class="q6-tutorial-profile__body-table">
+
+                                <table class="q6-tutorial-profile-details">
+                                    <thead>
+                                        <tr><th class="q6-select-all-checkboxes">Use</th><th>Resolution</th><th>Quality</th><th></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition" >10 Mbps</td> 
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">1024 x 576</td><td data-toggle="modal" data-target="#editRendition">2.5 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">786 x 432</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>      
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">640 x 360</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>  
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>                                                                                                                            
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">512 x 288</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>   
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">384 x 216</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div data-toggle="modal" data-target="#addRendition" class="q6-tutorial-profile__add-custom">
+                                                    + Add Custom
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>                        
+                                </table>  
+
+                            </div>
+                        </div>                                                              
+                    </div>                            
+
+                    <div class="q6-tutorial-profile">
+                        <div class="q6-tutorial-profile__header">
+                            
+                            <div class="q7-dd-menu__button q7-dd-menu__button--dots">
+                            
+                                <div class="q7-dd-menu">
+                                    <div class="q7-dd-menu__items">
+                                        <div class="q7-dd-menu-element">Clone output</div>
+                                    </div>
+                                    <div class="q7-dd-menu__delimeter"></div>
+                                    <div class="q7-dd-menu__critical-items">
+                                        <div class="q7-dd-menu-element">Remove</div>
+                                    </div>                                    
+                                </div>                                                
+                            
+                            </div>                             
+
+                            <div class="q6-input">
+                  
+                                <div class="q6-input__field--view q6-input__field--action-btns">
+                                    Output Format 3                               
+                                </div>  
+
+                            </div>
+                        </div>
+                        <div class="q6-tutorial-profile__body">
+                            <div class="q6-tutorial-profile__body-summary">
+                                <table class="q6-tutorial-profile__parameters-selector">
+                                    <tbody><tr>
+                                        <td>Format:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">HLS</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MP4">MP4</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="HLS">HLS</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="MPEG-DASH">MPEG-DASH</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="WebM">WebM</div> 
+                                                </div>
+                                            </div>                             
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Codec:</td>
+                                        <td>
+                                            <div class="q6-tutorial-dd-selector">
+                                                <div class="q6-tutorial-dd-selector__selected">H.265</div>
+                                                <div class="q6-tutorial-dd-selector__list" style="display: none;">
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.264">H.264</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="H.265">H.265</div> 
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP9">VP9</div>                             
+                                                    <div class="q6-tutorial-dd-selector-item" data-item-name="VP8">VP8</div> 
+                                                </div>
+                                            </div>                               
+                                        </td>
+                                    </tr>                            
+                                </tbody></table>         
+
+                                <div class="q6-input q6-input--horizontal-switch">
+                                    <div class="q6-input__label">
+                                        <label for="input_minutes">Per-Title Encoding</label>
+                                    </div>                                              
+                                    <div class="q6-switch-container">
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox">
+                                            <span class="q6-switch__slider"></span>
+                                        </label>  
+                                    </div>                                                                            
+                                </div>                                        
+                                
+                                      
+                            </div>
+
+                            <div class="q6-tutorial-profile__body-table">
+
+                                <table class="q6-tutorial-profile-details">
+                                    <thead>
+                                        <tr><th class="q6-select-all-checkboxes">Use</th><th>Resolution</th><th>Quality</th><th></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition" >10 Mbps</td> 
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">1024 x 576</td><td data-toggle="modal" data-target="#editRendition">2.5 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                    
+                                            <td data-toggle="modal" data-target="#editRendition">786 x 432</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                    
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>      
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">640 x 360</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                     
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>  
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">1920 x 1080</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>                                                                                                                            
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">512 x 288</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>   
+                                        <tr>
+                                            <td>
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                </label>                                                        
+                                            </td>                                                      
+                                            <td data-toggle="modal" data-target="#editRendition">384 x 216</td><td data-toggle="modal" data-target="#editRendition">1 Mbps</td>
+                                            <td>
+                                                <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                    <div class="q7-dd-menu">
+                                                        <div class="q7-dd-menu__items">
+                                                            <div data-toggle="modal" data-target="#editRendition" class="q7-dd-menu-element">Edit</div>
+                                                        </div>
+                                                        <div class="q7-dd-menu__delimeter"></div>
+                                                        <div class="q7-dd-menu__critical-items">
+                                                            <div class="q7-dd-menu-element">Delete</div>
+                                                        </div>                                      
+                                                    </div>                                                                                                          
+                                                </div> 
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div data-toggle="modal" data-target="#addRendition" class="q6-tutorial-profile__add-custom">
+                                                    + Add Custom
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>                        
+                                </table>  
+
+                            </div>
+                        </div>                                                                                                             
+                    </div>       
+                    
+                    <div class="q6-tutorial-profile q6-tutorial-profile--add-new">
+                        <button class="q6-button q6-button--round">+ Add format</button>
+                    </div>                    
+
+                </div>
+
+
+            </div>               
+
+         
+
+
+            <div class="q6-tutorial-buttons q6-tutorial-inputs-block--transcoding-profiles">
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Next step</button>            
+            </div>           
+            
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="editRendition" role="dialog">
+                <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+
+                            <div class="q7-video-rendition-extra-header">
+                                <div>Profile Name: Test 1</div>
+                                <div>Format (Codec): MP4(H264)</div>
+                            </div>
+
+                            <h5 class="modal-title">Video Rendition Settings</h5>
+                            <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                        </div>
+                        <div class="modal-body q7-modal-body--video-rendition-settings">
+                                                    
+                            <div>
+                        
+                                <div class="q6-input q6-input--output-resolution">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Output Resolution</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>                        
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select">
+                                            <option value="1">Custom</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-width">
+                                        <div class="q6-input__label">
+                                            <label>Width</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="1920">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-height">
+                                        <div class="q6-input__label">
+                                            <label>Height</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="1080">
+                                    </div>                          
+                                </div>           
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-bitrate">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Bitrate (kbps)</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="128">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-crf">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>CRF</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                          
+                                </div>        
+                                
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Output path</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>
+                                    <input class="q6-input__field" type="text" value="/720/{uuid}.mp4">
+                                </div>         
+
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Tag</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>
+                                    <input class="q6-input__field" type="text" value="best video">
+                                </div>                                                                                                                                            
+
+                            </div>      
+
+                            <div>
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-framerate">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Framerate</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-keyframe">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Keyframe</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                          
+                                </div>  
+
+                                <div class="q7-video-rendition-checkboxes-container">
+                                    <label class="q6-checkbox">
+                                        Two Pass
+                                        <input checked type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>          
+
+                                    <label class="q6-checkbox">
+                                        Mute Audio
+                                        <input checked type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>   
+                                </div>
+
+                                <div class="q7-video-rendition-watermark-block">
+                                    <label class="q6-checkbox">
+                                        Watermark
+                                        <input type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>        
+
+                                    <div class="q6-input-and-buttons--inline">
+                                        <div class="q6-input q6-input--video-url">
+                                            <div class="q6-input__label">
+                                                <label>URL</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="/video/bestever">
+                                        </div>                   
+                                        
+                                        <div class="q6-input q6-input--video-x">
+                                            <div class="q6-input__label">
+                                                <label>X</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="200">
+                                        </div>       
+
+                                        <div class="q6-input q6-input--video-y">
+                                            <div class="q6-input__label">
+                                                <label>Y</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="200">
+                                        </div>                                                                  
+                                    </div>                                            
+
+                                </div>                                                                     
+
+                            </div>                                                                                             
+                                    
+                        </div>
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button">Update</button>                                              
+                            </div>
+                        </div>
+
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Modal ends -->               
+
+
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="addRendition" role="dialog">
+                <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+
+                            <div class="q7-video-rendition-extra-header">
+                                <div>Profile Name: Test 1</div>
+                                <div>Format (Codec): MP4(H264)</div>
+                            </div>
+
+                            <h5 class="modal-title">Video Rendition Settings</h5>
+                            <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                        </div>
+                        <div class="modal-body q7-modal-body--video-rendition-settings">
+                                                    
+                            <div>
+                        
+                                <div class="q6-input q6-input--output-resolution">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Output Resolution</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>                        
+                                    <div class="q6-custom-select">
+                                        <select class="q6-select">
+                                            <option value="1">Custom</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-width">
+                                        <div class="q6-input__label">
+                                            <label>Width</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="1920">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-height">
+                                        <div class="q6-input__label">
+                                            <label>Height</label>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="1080">
+                                    </div>                          
+                                </div>           
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-bitrate">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Bitrate (kbps)</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="128">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-crf">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>CRF</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                          
+                                </div>        
+                                
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Output path</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>
+                                    <input class="q6-input__field" type="text" value="/720/{uuid}.mp4">
+                                </div>         
+
+                                <div class="q6-input">
+                                    <div class="q6-input__label q6-input__label--with-question">
+                                        <label>Tag</label>
+                                        <div class="q6-question-icon"></div>
+                                    </div>
+                                    <input class="q6-input__field" type="text" value="best video">
+                                </div>                                                                                                                                            
+
+                            </div>      
+
+                            <div>
+
+                                <div class="q6-input-and-buttons--inline">
+                                    <div class="q6-input q6-input--video-framerate">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Framerate</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                   
+                                    
+                                    <div class="q6-input q6-input--video-keyframe">
+                                        <div class="q6-input__label q6-input__label--with-question">
+                                            <label>Keyframe</label>
+                                            <div class="q6-question-icon"></div>
+                                        </div>
+                                        <input class="q6-input__field" type="text" value="26">
+                                    </div>                          
+                                </div>  
+
+                                <div class="q7-video-rendition-checkboxes-container">
+                                    <label class="q6-checkbox">
+                                        Two Pass
+                                        <input checked type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>          
+
+                                    <label class="q6-checkbox">
+                                        Mute Audio
+                                        <input checked type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>   
+                                </div>
+
+                                <div class="q7-video-rendition-watermark-block">
+                                    <label class="q6-checkbox">
+                                        Watermark
+                                        <input type="checkbox">
+                                        <span class="q6-checkmark"></span>
+                                    </label>        
+
+                                    <div class="q6-input-and-buttons--inline">
+                                        <div class="q6-input q6-input--video-url">
+                                            <div class="q6-input__label">
+                                                <label>URL</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="/video/bestever">
+                                        </div>                   
+                                        
+                                        <div class="q6-input q6-input--video-x">
+                                            <div class="q6-input__label">
+                                                <label>X</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="200">
+                                        </div>       
+
+                                        <div class="q6-input q6-input--video-y">
+                                            <div class="q6-input__label">
+                                                <label>Y</label>
+                                            </div>
+                                            <input disabled class="q6-input__field" type="text" value="200">
+                                        </div>                                                                  
+                                    </div>                                            
+
+                                </div>                                                                     
+
+                            </div>                                                                                             
+                                    
+                        </div>
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button">Create</button>                                              
+                            </div>
+                        </div>
+
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Modal ends -->               
+
+            <script>
+                // initialize code highlight
+                hljs.initHighlightingOnLoad();
+            </script>       
+
+
+            <script>
+                $(function () {     
+                    // select or unselect all checkboxes in a column 
+                    $(".q6-select-all-checkboxes").click(function(e){
+
+                        if($(this).hasClass("q6-select-all-checkboxes--all-selected")){
+                            // deselect all checkboxes
+                            $(this).closest("table").find("tr td:first-child input:checkbox").prop('checked', false);
+
+                            $(this).removeClass("q6-select-all-checkboxes--all-selected"); 
+                        }else{
+                            // select all checkboxes
+                            $(this).closest("table").find("tr td:first-child input:checkbox").prop('checked', true);
+
+                            $(this).addClass("q6-select-all-checkboxes--all-selected");                            
+                        }
+
+                    });
+                })
+            </script> 
+
+            <script>
+                $(function () {                               
+
+                    // toggle show and hide menu on dots menu button click  
+                    $(".q7-dd-menu__button").click(function(e){
+                        // check if current is opened
+                        if($(this).hasClass('q7-dd-menu__button--opened')){
+                            $(this).removeClass('q7-dd-menu__button--opened');
+                        } else{
+                            // close all opened menus
+                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+
+                            // open current 
+                            $(this).addClass('q7-dd-menu__button--opened');
+                        }
+                    });      
+
+                                
+                    // close if clicked outside
+                    $(window).click(function(e){
+                        if (!event.target.matches('.q7-dd-menu__button')) {
+                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened')
+                        }
+                    });                                                                                                                                                  
+
+                })
+            </script>              
+
+            <script>
+                $(function () {                
+                    // copy profile ID
+                    $(".q6-tutorial-profile-details__copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-profile-header').find('.q6-tutorial-profile__title-id')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                            if(successful) {
+                                //console.log("copied");                                
+                                $(flashMessage).html('Copied');
+                                $(flashMessage)
+                                    .animate({ opacity: 1 }, 200)
+                                    .delay(500)     
+                                    .animate({ opacity: 0 }, 200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+           
+
+            <script>
+                $(function () { 
+                    // mockup events on Add custom sizes or Update sizes to encoding profiles   
+                    $('.q6-tutorial-profile__add-custom, .q6-tutorial-profile-details__edit').click(function(){
+                        // close all open forms
+                        $('.q6-tutorial-profile__form').hide();
+                        $(this).find('.q6-tutorial-profile__form').show();
+                    });                     
+
+                    $('.q6-tutorial-profile__form .q6-button').click(function(e){
+                        e.stopPropagation();
+                        $(this).closest('.q6-tutorial-profile__form').hide();
+                    });
+
+                    // hide on settings window on mouse out
+                    $('.q6-tutorial-profile-details__edit').mouseleave(function() {
+                        $('.q6-tutorial-profile__form').hide();
+                    });                    
+                });  
+            </script>     
+
+            <script>
+                $(function () {                
+                    // copy code
+                    $(".q6-tutorial-codeblock-container .q6-button--copy").click(function (){
+
+                        try { 
+                            var cellTextNode = $(this).closest('.q6-tutorial-codeblock-code').find('code')[0];
+                           
+                            var selection = window.getSelection();        
+                            var range = document.createRange();
+
+                            range.selectNodeContents(cellTextNode);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            var successful = document.execCommand('copy');         
+
+                            var flashMessage = $(this).closest('.q6-tutorial-codeblock-container').find('.q6-tutorial-code-block-flash-message')[0];                                                                         
+
+                            if(successful) {                       
+                                $(flashMessage)
+                                    .slideDown(100)
+                                    .delay(800)                                     
+                                    .fadeOut(200)                                                                             
+                            }
+                            else
+                            { 
+                                //console.log("can not copy");
+                            } 
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });                           
+                });
+            </script>
+
+            <script>
+                $(function () {
+
+                    // this is for Dropdowns
+                    
+                    // close list when hover out of the list
+                    $(".q6-tutorial-dd-selector").hover(                            
+                        function() {
+                            // hover in
+                            //$(this).find('.q6-tutorial-dd-selector__list').show();
+                        }, function() {
+                            // hover out
+                            $(this).find('.q6-tutorial-dd-selector__list').hide();
+                        }
+                    );                                  
+
+
+                    $(".q6-tutorial-dd-selector").click(function(e){
+                        // toggle hide and show selector list
+                        // and update selected item                            
+                        var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                        var list = $(this).find('.q6-tutorial-dd-selector__list');
+                        if($(list).is(':visible')){
+                            $(list).hide();  
+
+                            var selectedItem='';
+                            var videoURL='';
+
+                            if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
+                                // for simple dropdown
+                                selectedItem = $(e.target).attr('data-item-name');
+                            } else{
+                                // for table type dropdown
+                                try {
+                                    selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
+                                    videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
+                                    $(e.target).closest('.q6-input').find('input').val(videoURL);  
+                                }
+                                catch(err) {
+                                    console.log(err.message);
+                                }                                                                      
+                            }
+            
+                            $(selectedListElement).html(selectedItem);  
+                            // TODO - update content based on selected item  
+                                                            
+                        } else{
+                            $(list).show();
+                        }
+                    })
+                })
+            </script>      
+
+        </div>
+    </main>
+
+
+</body>
+</html>
