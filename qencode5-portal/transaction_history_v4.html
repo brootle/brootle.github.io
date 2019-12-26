@@ -24,6 +24,9 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+
     <link href="css/q5.css" rel="stylesheet" />
     <link href="css/q5-menu.css" rel="stylesheet" />
 
@@ -141,7 +144,7 @@
                         <button class="q6-button q6-button--round q6-button--back">
                             Back                            
                         </button>          
-                        <div class="q7-page-content__header-title">Invoices</div>          
+                        <div class="q7-page-content__header-title">Transaction History</div>          
                     </div>
                     <div class="q7-header__balance-and-wallet">
                         <div class="q7-header-balance">
@@ -388,43 +391,47 @@
 
                     <div class="q7-content-block">
 
-                        <div class="q7-block-title">Invoices</div>
+                        <div class="q7-block-title">Transaction History</div>
 
                         <div class="q6-filter-box">
         
                             <div class="q6-filter-box__options">   
 
-                                <div class="q6-filter-box__label">
-                                    <span>Period:</span>
-                                </div>       
-
-                                <div class="q6-input q6-input--month">                                 
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select" id="month" required="" name="month">
-                                            <option value="all_months">All months</option>
-                                            <option value="january">January</option>
-                                            <option value="february">February</option>
-                                            <option value="march">March</option>
-                                            <option value="april">April</option>
-                                            <option value="may">May</option>
-                                            <option value="june">June</option>
-                                            <option value="july">July</option>
-                                            <option value="august">August</option>
-                                            <option value="september">September</option>
-                                            <option value="october">October</option>
-                                            <option value="november">November</option>
-                                            <option value="december">December</option>
-                                        </select>
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label for="project">Date:</label>
                                     </div>
-                                </div>       
+                                    <div class="q6-date-picker q6-black-text">                            
+                                        <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text"/>
+
+                                        <span class="q6-date-delimeter">‒</span>
+
+                                        <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text"/>
+                                        
+                                        <script>
+                                            $("#date_start").datepicker({
+                                                dateFormat: "MM d, yy",
+                                                monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                            });
+                                            $("#date_end").datepicker({
+                                                dateFormat: "MM d, yy",
+                                                monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                            });                                
+                                        </script>                              
+                                    </div>
+                                </div>                                
                                 
                                 <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label>Type</label>
+                                    </div>                                    
                                     <div class="q6-custom-select">
-                                        <select class="q6-select" id="year" required="" name="year">
-                                            <option value="all_years">All years</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
+                                        <select class="q6-select" required="">
+                                            <option value="all">All</option>
+                                            <option value="invoices">Invoices</option>
+                                            <option value="oayment_receipts">Payment Receipts</option>
                                         </select>
                                     </div>
                                 </div>                                
@@ -438,71 +445,98 @@
                         </div>                        
 
 
-                        <table class="q7-table q7-table--standard q7-table--invoices">
+                        <table class="q7-table q7-table--standard q7-table--transaction-history">
                             <thead>
                                 <tr>
-                                    <th>Invoice period</th>
-                                    <th>Invoice ID</th>
-                                    <th>Due date</th>
-                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Items</th>
                                     <th>Amount</th>
+                                    <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>December 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Dec 03, 2019</td>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Invoice</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2387932465-4234</a></td>
                                     <td>
-                                        <div class="q7-invoice-status q7-invoice-status--unpaid">Unpaid</div>
+                                        <div class="q7-transaction--negative">-$100.00</div>
                                     </td>
-                                    <td>$9,999,235.05</td>
-                                </tr>        
+                                    <td>$50.00</td>
+                                </tr>         
                                 <tr>
-                                    <td>November 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Oct 13, 2019</td>
+                                    <td>Sep 18, 2019</td>
+                                    <td>Payment (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
                                     <td>
-                                        <div class="q7-invoice-status q7-invoice-status--paid">Paid</div>                                        
+                                        <div class="q7-transaction--positive">+$100.00</div>
                                     </td>
-                                    <td>$21 245.31</td>
+                                    <td>$150.00</td>
                                 </tr>  
                                 <tr>
-                                    <td>November 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Oct 13, 2019</td>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Deposit (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
                                     <td>
-                                        <div class="q7-invoice-status q7-invoice-status--paid">Paid</div>                                        
+                                        <div class="q7-transaction--positive">+$1350.00</div>
                                     </td>
-                                    <td>$21 245.31</td>
+                                    <td>$0.00</td>
+                                </tr>     
+                                <tr>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Invoice</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2387932465-4234</a></td>
+                                    <td>
+                                        <div class="q7-transaction--negative">-$100.00</div>
+                                    </td>
+                                    <td>$50.00</td>
+                                </tr>         
+                                <tr>
+                                    <td>Sep 18, 2019</td>
+                                    <td>Payment (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
+                                    <td>
+                                        <div class="q7-transaction--positive">+$100.00</div>
+                                    </td>
+                                    <td>$150.00</td>
                                 </tr>  
                                 <tr>
-                                    <td>November 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Oct 13, 2019</td>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Deposit (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
                                     <td>
-                                        <div class="q7-invoice-status q7-invoice-status--paid">Paid</div>                                        
+                                        <div class="q7-transaction--positive">+$1350.00</div>
                                     </td>
-                                    <td>$21 245.31</td>
+                                    <td>$0.00</td>
+                                </tr>     
+                                <tr>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Invoice</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2387932465-4234</a></td>
+                                    <td>
+                                        <div class="q7-transaction--negative">-$100.00</div>
+                                    </td>
+                                    <td>$50.00</td>
+                                </tr>         
+                                <tr>
+                                    <td>Sep 18, 2019</td>
+                                    <td>Payment (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
+                                    <td>
+                                        <div class="q7-transaction--positive">+$100.00</div>
+                                    </td>
+                                    <td>$150.00</td>
                                 </tr>  
                                 <tr>
-                                    <td>November 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Oct 13, 2019</td>
+                                    <td>Dec 02, 2019</td>
+                                    <td>Deposit (Visa 2450)</td>
+                                    <td><a class="q7-link" href="">#4DFSFSDl2</a></td>
                                     <td>
-                                        <div class="q7-invoice-status q7-invoice-status--paid">Paid</div>                                        
+                                        <div class="q7-transaction--positive">+$1350.00</div>
                                     </td>
-                                    <td>$21 245.31</td>
-                                </tr>  
-                                <tr>
-                                    <td>November 2019</td>
-                                    <td><a class="q7-link" href="">42387932465-4234</a></td>
-                                    <td>Oct 13, 2019</td>
-                                    <td>
-                                        <div class="q7-invoice-status q7-invoice-status--paid">Paid</div>                                        
-                                    </td>
-                                    <td>$21 245.31</td>
-                                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                    <td>$0.00</td>
+                                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
                             </tbody>
                         </table>
 
