@@ -1039,6 +1039,31 @@
 }
 
 
+.q7-table-pagination.q7-table-pagination--on-white .q7-table-pagination__button,
+.q7-table-pagination.q7-table-pagination--on-white .q7-table-pagination__page{
+    background: #f1f6fd;
+}
+
+.q7-table-pagination.q7-table-pagination--on-white .q7-table-pagination__button:hover,
+.q7-table-pagination.q7-table-pagination--on-white .q7-table-pagination__page:hover{
+    background: var(--blue);
+}
+
+.q7-table-pagination.q7-table-pagination--on-white 
+    .q7-table-pagination__page.q7-table-pagination__page--selected {
+    background: var(--blue);
+    color: white;
+    cursor: initial;
+}
+
+.q7-table-pagination.q7-table-pagination--on-white 
+    .q7-table-pagination__button.q7-table-pagination__button--disabled {
+    cursor: initial;
+    color: #b7bfcf;
+    background: #f3f5f9;
+}
+
+
 
 
 .q7-bucket-icon{
@@ -3865,9 +3890,9 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-table.q7-table--standard tbody tr:hover {
-    -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
-    -moz-box-shadow: 0px 0px 1px 1px var(--blue);
-    box-shadow: 0px 0px 1px 1px var(--blue);
+    -webkit-box-shadow: 0px 0px 1px 1px #c5d8ff;
+    -moz-box-shadow: 0px 0px 1px 1px #c5d8ff;
+    box-shadow: 0px 0px 1px 1px #c5d8ff;
     background: #f7faff;
 }
 
@@ -4452,6 +4477,53 @@ a.q7-link{
 }
 /* INVOICES */
 
+/* INVOICES TABLE*/
+.q7-table--invoices{
+
+}
+
+.q7-table--invoices tbody tr td:nth-of-type(4){
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.q7-invoice-status{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-invoice-status:before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 11px;
+}
+
+.q7-invoice-status.q7-invoice-status--paid:before {
+    background-image: url(../img/transcoding_status/complete.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-invoice-status.q7-invoice-status--paid{
+    color: #3ab510;
+}
+
+.q7-invoice-status.q7-invoice-status--unpaid:before {
+    background-image: url(../img/transcoding_status/error.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-invoice-status.q7-invoice-status--unpaid{
+    color: #e46464;
+}
+
+.q7-table--invoices td:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 600;
+}
+/* INVOICES TABLE*/
 
 @media screen and (min-width: 1650px){
     .q7-container{
