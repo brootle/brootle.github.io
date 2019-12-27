@@ -24,6 +24,9 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+
     <link href="css/q5.css" rel="stylesheet" />
     <link href="css/q5-menu.css" rel="stylesheet" />
 
@@ -394,40 +397,31 @@
         
                             <div class="q6-filter-box__options">   
 
-                                <div class="q6-filter-box__label">
-                                    <span>Period:</span>
-                                </div>       
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="project">Date:</label>
+                                </div>
+                                <div class="q6-date-picker q6-black-text">                            
+                                    <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text"/>
 
-                                <div class="q6-input q6-input--month">                                 
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select" id="month" required="" name="month">
-                                            <option value="all_months">All months</option>
-                                            <option value="january">January</option>
-                                            <option value="february">February</option>
-                                            <option value="march">March</option>
-                                            <option value="april">April</option>
-                                            <option value="may">May</option>
-                                            <option value="june">June</option>
-                                            <option value="july">July</option>
-                                            <option value="august">August</option>
-                                            <option value="september">September</option>
-                                            <option value="october">October</option>
-                                            <option value="november">November</option>
-                                            <option value="december">December</option>
-                                        </select>
-                                    </div>
-                                </div>       
-                                
-                                <div class="q6-input">
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select" id="year" required="" name="year">
-                                            <option value="all_years">All years</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
-                                        </select>
-                                    </div>
-                                </div>                                
+                                    <span class="q6-date-delimeter">‒</span>
+
+                                    <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text"/>
+                                    
+                                    <script>
+                                        $("#date_start").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });
+                                        $("#date_end").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });                                
+                                    </script>                              
+                                </div>
+                            </div>                               
                                 
                             </div>
                             <div class="q6-filter-box__buttons">
