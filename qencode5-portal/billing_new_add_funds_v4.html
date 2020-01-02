@@ -629,12 +629,27 @@
                                             <a href="">+ Add</a>
                                         </div>                        
                                         <div class="q7-custom-select">
-                                            <select class="q7-select">
-                                                <option value="1">leonenko.vadym@gmail.com</option>
-                                                <option value="2">4343</option>
-                                                <option value="3">3254</option>
-                                            </select>
+                                            <select id="payment-method-selector" class="q7-select">
+                                                    <option value="1" data-imagesrc="img/mastercard.svg" data-description="&nbsp">4242</option>
+                                                    <option value="2" data-imagesrc="img/visa.svg" data-description="&nbsp">4242</option>
+                                                    <option value="3" data-imagesrc="img/amex.svg" data-description="&nbsp">4242</option>
+                                                    <option value="4" data-imagesrc="img/discover.svg" data-description="&nbsp">4242</option>
+                                                    <option value="5" data-imagesrc="img/paypal.svg" data-description="&nbsp">john.smith@example.com</option>
+                                            </select>                                            
                                         </div>
+                                        <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+                                        <script>
+                                            $(function () {
+                                                $('#payment-method-selector').ddslick({
+                                                    defaultSelectedIndex:0,
+                                                    width: "100%",
+                                                    background: "white",
+                                                    onSelected: function(selectedData){
+                                                        //callback function: do something with selectedData;
+                                                    }
+                                                });
+                                            });
+                                        </script>                                        
                                     </div>                                    
                                     
                                     <button class="q7-button">Confirm</button>     
