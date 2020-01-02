@@ -291,6 +291,7 @@
 .q7-warning-message-container.q7-warning-message-container--expired .q7-button{
     background: #e65100;
     font-weight: 500;
+    color: white;
 }
 
 .q7-warning-message-container.q7-warning-message-container--expired .q7-button:hover{
@@ -321,6 +322,7 @@
 .q7-warning-message-container.q7-warning-message-container--trial-started .q7-button {
     background: #2ea52b;
     font-weight: 500;
+    color:white;
 }
 
 .q7-warning-message-container.q7-warning-message-container--trial-started .q7-button:hover {
@@ -3242,8 +3244,13 @@ a.q7-bucket-url:hover{
     line-height: 40px;
 }
 
+.q7-custom-select {
+    position: relative;
+}
+
 input[type=password].q7-input__field,
-input[type=text].q7-input__field {
+input[type=text].q7-input__field,
+.q7-select {
     width: 100%;
     padding: 9px 14px;
     margin: 0;
@@ -3257,6 +3264,26 @@ input[type=text].q7-input__field {
     font-size: 16px;
     border-radius: 6px;
     color: #171717;
+}
+
+.q7-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 25px;
+}
+
+.q7-custom-select:after {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 3px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 5px solid #343131;
+    border-right: 5px solid transparent;
+    border-bottom: 0;
+    border-left: 5px solid transparent;
 }
 
 .q7-input__label label {
@@ -3275,6 +3302,12 @@ input[type=text].q7-input__field {
     font-family: "proxima-nova", sans-serif;
     margin: 4px 0;
     white-space: nowrap;
+}
+
+.q7-input__label.q7-input__label--row-title label{
+    color: #363232;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 input[type=password].q7-input__field.q7-input__field--error,
@@ -4234,8 +4267,12 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
     align-items: center;
 }
 
+.q7-advanced-settings{
+    margin: 15px 0;
+}
+
 .q7-advanced-settings__row{
-    padding: 15px 0;
+    padding: 15px 5px;
     border-top: 1px solid #e6e8eb;
 }
 
