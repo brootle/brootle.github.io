@@ -514,6 +514,68 @@
 
                     </div>
 
+                    <div class="q7-content-block">
+
+                        <div class="q7-block-title">Invoices</div>
+
+                        <div class="q6-filter-box">
+        
+                            <div class="q6-filter-box__options">   
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="project">Date:</label>
+                                </div>
+                                <div class="q6-date-picker q6-black-text">                            
+                                    <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text"/>
+
+                                    <span class="q6-date-delimeter">‒</span>
+
+                                    <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text"/>
+                                    
+                                    <script>
+                                        $("#date_start").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });
+                                        $("#date_end").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });                                
+                                    </script>                              
+                                </div>
+                            </div>                               
+                                
+                            </div>
+                            <div class="q6-filter-box__buttons">
+                                <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Filter</button>
+                                <button class="q6-button q6-blue-text q6-blue-border">Clear</button>                            
+                            </div>                         
+                
+                        </div>                        
+
+
+                        <table class="q7-table q7-table--standard q7-table--invoices">
+                            <thead>
+                                <tr>
+                                    <th>Invoice period</th>
+                                    <th>Invoice ID</th>
+                                    <th>Due date</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <div class="q7-no-invoices-container">
+                            <img src="img/invoice_empty.svg"> 
+                            <span>You have no invoices yet</span>
+                        </div>                       
+
+                    </div>                    
+
                 </div>
                 
             </div>
