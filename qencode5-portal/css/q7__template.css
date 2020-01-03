@@ -4008,17 +4008,20 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 
 
 /* transfer methods table modificates standard table*/
-.q7-table--transfer-methods{
+.q7-table--transfer-methods,
+.q7-table--payment-methods{
     margin-top: 5px;
 }
 
-.q7-table--transfer-methods td:last-of-type {
+.q7-table--transfer-methods td:last-of-type,
+.q7-table--payment-methods td:last-of-type {
     padding: 0 5px;
     min-width: 30px;
     position: relative;
 }
 
 .q7-table--transfer-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--payment-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr td:last-of-type .q7-dd-menu__button--dots {
     background-image: url(../img/menu_gray.svg);
     top: 7px;
@@ -4026,18 +4029,21 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-table--transfer-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--payment-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
     background-image: url(../img/menu.svg);
 }
 
 
-.q7-table--transfer-methods td:nth-of-type(3) {
+.q7-table--transfer-methods td:nth-of-type(3),
+.q7-table--payment-methods td:nth-of-type(3) {
     padding-top: 0;
     padding-bottom: 0;
     vertical-align: middle;
 }
 
-.q7-table--transfer-methods td:nth-of-type(3) > div {
+.q7-table--transfer-methods td:nth-of-type(3) > div,
+.q7-table--payment-methods td:nth-of-type(3) > div  {
     display: flex;
     align-items: center;
 }
@@ -4049,7 +4055,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     margin-left: 5px;
 }
 
-.q7-table--transfer-methods td:first-of-type {
+.q7-table--transfer-methods td:first-of-type,
+.q7-table--payment-methods td:first-of-type {
     padding-top: 0;
     padding-bottom: 0;
     vertical-align: middle;
@@ -4059,12 +4066,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     background: #f7faff;
 }
 
-.q7-table.q7-table--transfer-methods tbody tr.q7-transfer-method-row--selected td:nth-of-type(2){
+.q7-table tbody tr.q7-table-row--selected{
+    background: #f7faff;
+}
+
+.q7-table.q7-table--transfer-methods tbody tr.q7-transfer-method-row--selected td:nth-of-type(2),
+.q7-table.q7-table--payment-methods tbody tr.q7-table-row--selected td:nth-of-type(2){
     color: var(--blue);
     cursor: pointer;
 }
 
-.q7-table.q7-table--transfer-methods tbody tr:hover td:nth-of-type(2){
+.q7-table.q7-table--transfer-methods tbody tr:hover td:nth-of-type(2),
+.q7-table.q7-table--payment-methods tbody tr:hover td:nth-of-type(2){
     color: var(--blue);
     cursor: pointer;
 }
