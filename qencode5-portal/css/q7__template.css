@@ -4989,12 +4989,116 @@ a.q7-link{
 
 .q7-billing-chart-container--usage-stats{
     padding: 15px 0;
+    position: relative;
 }
 
 .q7-billing-chart-container--usage-stats .q6-billing-chart {
     height: 440px;
     box-shadow: none;
     padding: 0;
+}
+
+.q7-chart-checkboxes{
+    position: absolute;
+    right: 0;
+    top: -40px;
+    display: flex;
+}
+
+.q7-chart-checkboxes .q7-checkbox {
+    height: 40px;
+    width: 64px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    position: relative;
+    margin-right: 7px;
+}
+
+.q7-chart-checkboxes .q7-checkbox:last-of-type{
+    margin-right: 0;
+}
+
+.q7-chart-checkboxes .q7-checkbox-fullsize-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.q7-chart-checkboxes .q7-checkbox .q7-checkbox-fullsize-container{
+    color: #bfbfbf;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+}
+
+.q7-chart-checkboxes .q7-checkbox .q7-checkbox-fullsize-container .q7-checkbox-message{
+    text-align: center;
+}
+
+.q7-chart-checkboxes .q7-checkbox .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    content: "";
+    display: block;
+    width: 47px;
+    height: 4px;
+    border-radius: 7px;
+    background: #bfbfbf;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--sd input:checked + .q7-checkbox-fullsize-container{
+    color: #ff057b;
+    border: 1px solid #f8c5dd;
+}
+.q7-checkbox.q7-checkbox--sd input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #ff057b;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--hd input:checked + .q7-checkbox-fullsize-container{
+    color: #ff7112;
+    border: 1px solid #ffc49c;
+}
+.q7-checkbox.q7-checkbox--hd input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #ff7112;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--1440p input:checked + .q7-checkbox-fullsize-container{
+    color: #31cd82;
+    border: 1px solid #82eab8;
+}
+.q7-checkbox.q7-checkbox--1440p input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #31cd82;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--4k input:checked + .q7-checkbox-fullsize-container{
+    color: #ffc719;
+    border: 1px solid #fade88;
+}
+.q7-checkbox.q7-checkbox--4k input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #ffc719;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--8k input:checked + .q7-checkbox-fullsize-container{
+    color: #aa31cd;
+    border: 1px solid #dcafea;
+}
+.q7-checkbox.q7-checkbox--8k input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #aa31cd;
+}
+
+.q7-chart-checkboxes .q7-checkbox.q7-checkbox--total input:checked + .q7-checkbox-fullsize-container{
+    color: #1292ff;
+    border: 1px solid #9dcef8;
+}
+.q7-checkbox.q7-checkbox--total input:checked + .q7-checkbox-fullsize-container .q7-checkbox-message:after{
+    background: #1292ff;
 }
 /* USAGE STATS */
 
