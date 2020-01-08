@@ -828,6 +828,7 @@
     position: relative;
     cursor: pointer;
     padding-right: 25px;
+    white-space: nowrap;
 }
 .q7-table__sortable-column:after {
     display: inline-block;
@@ -4810,6 +4811,110 @@ a.q7-link{
     margin-left: 10px;
 }
 /* PAYMENT METHODS */
+
+
+/* USAGE STATS */
+.q7-table.q7-table--standard.q7-table--usage-stats td:nth-of-type(2){
+    max-width: 260px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    color: var(--blue);    
+    padding-left: 10px;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats td:last-of-type {
+    font-weight: 600;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expandable-row td:first-of-type{
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expandable-row td:first-of-type:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(-45deg);
+    transition: all 0.1s ease;
+    margin-bottom: 1px;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expandable-row.q7-table__expandable-row--active td:first-of-type:before {
+    transform: rotate(45deg);
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tbody tr{
+    cursor: pointer;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content{
+    box-shadow: none;
+    cursor: initial;
+    display: none;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content.q7-table__expanded-content--active{
+    display: table-row;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content td:nth-of-type(2){
+    color: initial;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content td:first-of-type{
+    border-bottom: 1px solid transparent;
+    padding-right: 0;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content td{
+    border-bottom: 1px solid #dadada;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content:last-of-type td{
+    border-bottom: 1px solid transparent;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content td:last-of-type{
+    font-weight: initial;
+    border-radius: 0;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats tr.q7-table__expanded-content:hover{
+    box-shadow:initial;
+    background: initial;
+}
+
+.q7-usage__symbol{
+    font-size: 13px;
+    font-weight: 600;
+}
+.q7-usage__symbol--sd{
+    color: #ff057b;
+}
+.q7-usage__symbol--hd{
+    color: #ff057b;
+}
+.q7-usage__symbol--1440p{
+    color: #ff057b;
+}
+.q7-usage__symbol--4k{
+    color: #ff057b;
+}
+.q7-usage__symbol--8k{
+    color: #ff057b;
+}
+/* USAGE STATS */
 
 @media screen and (min-width: 1650px){
     .q7-container{
