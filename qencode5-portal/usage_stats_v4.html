@@ -390,9 +390,228 @@
 
                         <div class="q7-block-title">General Statistics</div>
 
-                        <div>
-                            CHART
+                        <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
+                            <div class="q6-billing-chart">
+                                <canvas id="usage_chart"></canvas>
+                            </div>
                         </div>
+
+                        <script>
+                            // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                            var data = {
+                                labels: ['1 MAY', '2 MAY', '3 MAY', '4 MAY', '5 MAY', '6 MAY', '7 MAY'],
+                                datasets: [
+                                {
+                                        backgroundColor: '#1292ff',
+                                        borderColor: '#1292ff',
+                                        data: [
+                                            560,
+                                            490,
+                                            540,
+                                            390,
+                                            445,
+                                            478,
+                                            530
+                                        ],
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: 'Total',
+                                        fill: false
+                                    },                                            
+                                    {
+                                        backgroundColor: '#ffc705',
+                                        borderColor: '#ffc705',
+                                        data: [
+                                            350,
+                                            190,
+                                            470,
+                                            200,
+                                            300,
+                                            250,
+                                            410
+                                        ],                                                
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: '4K',
+                                        fill: false
+                                    },
+                                    {
+                                        backgroundColor: '#ff7112',
+                                        borderColor: '#ff7112',
+                                        data: [
+                                            150,
+                                            210,
+                                            110,
+                                            70,
+                                            55,
+                                            258,
+                                            77
+                                        ],
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: 'HD',
+                                        fill: false
+                                    },
+                                    {
+                                        backgroundColor: '#ff057b',
+                                        borderColor: '#ff057b',
+                                        data: [
+                                            60,
+                                            90,
+                                            20,
+                                            120,
+                                            90,
+                                            170,
+                                            43
+                                        ],
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: 'SD',
+                                        fill: false
+                                    },
+                                    {
+                                        backgroundColor: '#aa31cd',
+                                        borderColor: '#aa31cd',
+                                        data: [
+                                            160,
+                                            45,
+                                            230,
+                                            80,
+                                            146,
+                                            196,
+                                            110
+                                        ],
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: '8K',
+                                        fill: false
+                                    },
+                                    {
+                                        backgroundColor: '#31cd82',
+                                        borderColor: '#31cd82',
+                                        data: [
+                                            520,
+                                            410,
+                                            380,
+                                            340,
+                                            390,
+                                            420,
+                                            470
+                                        ],
+                                        borderWidth: 2,
+                                        pointBorderColor: "white",
+                                        pointRadius: 4,
+                                        pointBorderWidth: 2,
+                                        //pointHoverRadius: 6,
+                                        pointHoverBorderColor: "white",
+                                        label: '1440p',
+                                        fill: false
+                                    }
+                                ]
+                            };
+
+                            var options = {
+                                maintainAspectRatio: false,
+                                spanGaps: false,
+                                elements: {
+                                    line: {
+                                        tension: 0
+                                    },
+                                    point: {
+                                        radius: 3
+                                    }
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                scales : {
+                                    xAxes : [ {
+                                        gridLines : {
+                                            display : false
+                                        }
+                                    } ]
+                                },
+
+                                animation: {
+                                    duration: 0
+                                },
+
+                                onHover: function(evt) {
+                                    var item = chart.getElementAtEvent(evt);
+                                    if (item.length) {
+                                        var currentDatasetIndex = item[0]._datasetIndex;
+                                        
+
+                                        // set point hover radius to default 4
+                                        chart.data.datasets.forEach(dataset => {
+                                            dataset.pointHoverRadius = 4;
+                                        });
+
+                                        // set point radius of selected dataset
+                                        chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+
+                                        // set color of tooltip title same as point color
+                                        chart.options.tooltips.titleFontColor=chart.data.datasets[currentDatasetIndex].backgroundColor;
+
+                                        chart.update();
+                                    }
+                                },
+
+                                tooltips: {
+                                    titleFontColor: 'black',
+                                    backgroundColor: 'white',
+                                    bodyFontColor: '#021519',
+                                    borderColor:'#eeeeee',
+                                    borderWidth:2,
+                                    bodyFontStyle: 'bold',
+                                    displayColors: false,
+                                    xPadding: 15,
+                                    yPadding: 10,
+
+                                    callbacks: {
+                                        title: function(tooltipItem, data) {
+                                            //console.log(Chart.defaults.global.tooltips.titleFontColor);
+                                            // console.log(tooltipItem[0]);
+                                            //console.log(data.datasets[tooltipItem[0].datasetIndex]);
+                                            return data.datasets[tooltipItem[0].datasetIndex].label;
+                                        },
+                                        label: function(tooltipItem, data) {
+                                            // console.log(tooltipItem.yLabel);
+                                            return "$" + tooltipItem.yLabel;
+                                        }
+                                    }
+
+                                }
+
+                            };
+
+                            var chart = new Chart('usage_chart', {
+                                type: 'line',
+                                data: data,
+                                options: options
+                            });
+
+                        </script>
 
                         <div class="q6-filter-box">
         
