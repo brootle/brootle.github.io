@@ -394,37 +394,37 @@
 
                             <div class="q7-chart-checkboxes">
                                 <label class="q7-checkbox q7-checkbox--sd">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="SD">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">SD</div>                                        
                                     </div>
                                 </label>  
                                 <label class="q7-checkbox q7-checkbox--hd">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="HD">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">HD</div>                                        
                                     </div>
                                 </label>         
                                 <label class="q7-checkbox q7-checkbox--1440p">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="1440P">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">1440P</div>                                        
                                     </div>
                                 </label>     
                                 <label class="q7-checkbox q7-checkbox--4k">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="4K">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">4K</div>                                        
                                     </div>
                                 </label>     
                                 <label class="q7-checkbox q7-checkbox--8k">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="8K">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">8K</div>                                        
                                     </div>
                                 </label>        
                                 <label class="q7-checkbox q7-checkbox--total">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" checked data-array="Total">
                                     <div class="q7-checkbox-fullsize-container">
                                         <div class="q7-checkbox-message">Total</div>                                        
                                     </div>
@@ -438,136 +438,53 @@
 
                         <script>
                             // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                            var dataArray = {
+                                "Total":{
+                                    data: [560, 490, 540, 390, 445, 478, 540],
+                                    color: "#1292ff"
+                                },
+                                "4K":{
+                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                    color: "#ffc705"
+                                },
+                                "HD":{
+                                    data: [150, 210, 110, 70, 55, 258, 77],
+                                    color: "#ff7112"
+                                },
+                                "SD":{
+                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                    color: "#ff057b"
+                                },
+                                "8K":{
+                                    data: [160, 45, 230, 80, 146, 196, 110],
+                                    color: "#aa31cd"
+                                },
+                                "1440P":{
+                                    data: [520, 410, 380, 340, 390, 420, 470],
+                                    color: "#31cd82"
+                                }
+                            }                          
+
+                            var datasets = [];       
+
+                            $.each(dataArray, function(key, value) {
+                                datasets.push({
+                                    backgroundColor: value.color,
+                                    borderColor: value.color,
+                                    data: value.data,
+                                    borderWidth: 2,
+                                    pointBorderColor: "white",
+                                    pointRadius: 4,
+                                    pointBorderWidth: 2,
+                                    pointHoverBorderColor: "white",
+                                    label: key,
+                                    fill: false
+                                });                                
+                            });                                                             
+                    
                             var data = {
                                 labels: ['1 MAY', '2 MAY', '3 MAY', '4 MAY', '5 MAY', '6 MAY', '7 MAY'],
-                                datasets: [
-                                {
-                                        backgroundColor: '#1292ff',
-                                        borderColor: '#1292ff',
-                                        data: [
-                                            560,
-                                            490,
-                                            540,
-                                            390,
-                                            445,
-                                            478,
-                                            530
-                                        ],
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: 'Total',
-                                        fill: false
-                                    },                                            
-                                    {
-                                        backgroundColor: '#ffc705',
-                                        borderColor: '#ffc705',
-                                        data: [
-                                            350,
-                                            190,
-                                            470,
-                                            200,
-                                            300,
-                                            250,
-                                            410
-                                        ],                                                
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: '4K',
-                                        fill: false
-                                    },
-                                    {
-                                        backgroundColor: '#ff7112',
-                                        borderColor: '#ff7112',
-                                        data: [
-                                            150,
-                                            210,
-                                            110,
-                                            70,
-                                            55,
-                                            258,
-                                            77
-                                        ],
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: 'HD',
-                                        fill: false
-                                    },
-                                    {
-                                        backgroundColor: '#ff057b',
-                                        borderColor: '#ff057b',
-                                        data: [
-                                            60,
-                                            90,
-                                            20,
-                                            120,
-                                            90,
-                                            170,
-                                            43
-                                        ],
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: 'SD',
-                                        fill: false
-                                    },
-                                    {
-                                        backgroundColor: '#aa31cd',
-                                        borderColor: '#aa31cd',
-                                        data: [
-                                            160,
-                                            45,
-                                            230,
-                                            80,
-                                            146,
-                                            196,
-                                            110
-                                        ],
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: '8K',
-                                        fill: false
-                                    },
-                                    {
-                                        backgroundColor: '#31cd82',
-                                        borderColor: '#31cd82',
-                                        data: [
-                                            520,
-                                            410,
-                                            380,
-                                            340,
-                                            390,
-                                            420,
-                                            470
-                                        ],
-                                        borderWidth: 2,
-                                        pointBorderColor: "white",
-                                        pointRadius: 4,
-                                        pointBorderWidth: 2,
-                                        //pointHoverRadius: 6,
-                                        pointHoverBorderColor: "white",
-                                        label: '1440p',
-                                        fill: false
-                                    }
-                                ]
+                                datasets: datasets
                             };
 
                             var options = {
@@ -650,6 +567,42 @@
                                 data: data,
                                 options: options
                             });
+
+
+                            // on chart checkbox clicked we update the chart with new dataset
+                            $(".q7-chart-checkboxes input[type='checkbox']").change(function() {
+                                // make array of cheched checkboxes
+                                var checkedValues = [];
+                                $(".q7-chart-checkboxes input[type='checkbox']:checked").each(function(){
+                                    checkedValues.push($(this).attr('data-array'));
+                                });                               
+
+                                // generate new datasets including only selected checkboxes
+                                var newDatasets = [];
+                                $.each(dataArray, function(key, value) {
+                                    
+                                    if(jQuery.inArray(key, checkedValues) >= 0){
+                                        newDatasets.push({
+                                            backgroundColor: value.color,
+                                            borderColor: value.color,
+                                            data: value.data,
+                                            borderWidth: 2,
+                                            pointBorderColor: "white",
+                                            pointRadius: 4,
+                                            pointBorderWidth: 2,
+                                            pointHoverBorderColor: "white",
+                                            label: key,
+                                            fill: false
+                                        }); 
+                                    }
+                                                                   
+                                });                                   
+                                
+                                chart.data.datasets = newDatasets;
+
+                                // update chart
+                                chart.update();                                
+                            });                            
 
                         </script>
 
