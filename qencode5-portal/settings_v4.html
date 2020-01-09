@@ -24,6 +24,8 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
     <link href="css/q5.css" rel="stylesheet" />
     <link href="css/q5-menu.css" rel="stylesheet" />
 
@@ -387,268 +389,239 @@
 
                     <div class="q7-content-block">
 
+
                         <div class="q7-block-title">General Settings</div>
 
-                        <div class="q7-settings-block-container">
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Name
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <div class="q7-settings-block__text-value">Vadym</div> 
-                                    <button data-toggle="modal" data-target="#editName" class="q7-button q7-button--round">Edit</button>
-                                </div>                                
-                            </div>
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Email
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <div class="q7-settings-block__text-value">vadym@gmail.com</div> 
-                                    <button data-toggle="modal" data-target="#editEmail" class="q7-button q7-button--round">Edit</button>
-                                </div>                                
-                            </div>                            
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Password
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <button data-toggle="modal" data-target="#editPass" class="q7-button q7-button--round">Change password</button>
-                                </div>                                
-                            </div> 
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Phone
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <div class="q7-settings-block__text-value">+38 093 075 97 17</div> 
-                                    <button class="q7-button q7-button--round">Edit</button>
-                                </div>                                
+                        <div class="q7-advanced-settings">
+
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Username</label>                                     
+                                        </div>
+
+                                        <div class="q6-input__field--view">vadym.leonenko@gmail.com (Google)</div>
+                                                                       
+                                    </div>                
+                                </div>                                  
+
+                            </div>      
+
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Name</label>                                     
+                                        </div>
+
+                                        <div class="q6-input__field--view">Vadym Leonenko</div>
+                                                                       
+                                    </div>              
+                                    
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>                                  
+
+                            </div>   
+                            
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Phone</label>                                     
+                                        </div>
+
+                                        <input id="phone_view-mode" class="q7-input__field q7-input__field--phone-view-mode" type="text" value="+13109058600" type="tel" disabled>  
+                                             
+                                        <script src="build/js/intlTelInput.js"></script>     
+                                        <script src="build/js/utils.js"></script>    
+                                        <script>
+                                            // set input width to width of text
+                                            $("#phone_view-mode").attr("size", $("#phone_view-mode").val().length + 2);
+
+                                            // https://github.com/jackocnr/intl-tel-input
+                                            // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                            $("#phone_view-mode").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite",
+                                                allowDropdown: false
+                                            })
+                                        </script>                                           
+                                                                       
+                                    </div>              
+                                    
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>                                  
+
+                            </div>              
+                            
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Company name</label>                                     
+                                        </div>
+
+                                        <div class="q6-input__field--view">Qencode</div>
+                                                                       
+                                    </div>              
+                                    
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>                                  
+
+                            </div>   
+                            
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Website</label>                                     
+                                        </div>
+
+                                        <div class="q6-input__field--view">qencode.com</div>
+                                                                       
+                                    </div>              
+                                    
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>          
                             </div>        
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Company name
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <div class="q7-settings-block__text-value">Qencode</div> 
-                                    <button class="q7-button q7-button--round">Edit</button>
-                                </div>                                
-                            </div>
-                            <div class="q7-settings-block">
-                                <div class="q7-settings-block__name">
-                                    Website
-                                </div>
-                                <div class="q7-settings-block__value">
-                                    <div class="q7-settings-block__text-value">qencode.com</div> 
-                                    <button class="q7-button q7-button--round">Edit</button>
-                                </div>                                
-                            </div>                                                                                                       
-                        </div>
-
-
-                        <!-- Modal -->
-                        <div class="modal fade q7-modal" id="editName" role="dialog">
-                            <div class="modal-dialog q7-modal-dialog--centered">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Change Name</h5>
-                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
-                                    </div>
-                                    <div class="modal-body q7-modal-body--update">
-
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>Name</label>
-                                            </div>
-                                            <input class="q7-input__field" type="text">
-                                            <div class="q7-input__error"></div>                                
-                                        </div>                                         
-                                                                                                                                                                              
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="q7-modal-footer-buttons q7-modal-footer-buttons--vertical">
-                                            <button data-dismiss="modal" class="q7-button">Change name</button>
-                                            <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>                                            
+                                
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Time Zone</label>                                     
                                         </div>
-                                    </div>
 
-                                </div>
-                            
-                            </div>
-                        </div>
-                        <!-- Modal ends -->                             
-
-
-                        <!-- Modal -->
-                        <div class="modal fade q7-modal" id="editEmail" role="dialog">
-                            <div class="modal-dialog q7-modal-dialog--centered">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
+                                        <div class="q6-input__field--view">(GMT+2:00) Eastern European Standard Time - Kyiv</div>
+                                                                       
+                                    </div>              
                                     
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Change Email</h5>
-                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
-                                    </div>
-                                    <div class="modal-body q7-modal-body--update">
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>                                  
 
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>New Email</label>
-                                            </div>
-                                            <input class="q7-input__field" type="text">
-                                            <div class="q7-input__error"></div>                                
-                                        </div>                                         
-                                                            
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>Password</label>
-                                            </div>
-                                            <input class="q7-input__field" type="password">
-                                            <div class="q7-pass-eye-button"></div>
-                                            <div class="q7-input__error"></div>
-                                        </div>                             
-                                                                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="q7-modal-footer-buttons q7-modal-footer-buttons--vertical">
-                                            <button data-dismiss="modal" data-toggle="modal" data-target="#emailChanged"  class="q7-button">Change Email</button>
-                                            <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>                                            
-                                        </div>
-                                    </div>
+                            </div>                               
+                                                      
 
-                                </div>
-                            
-                            </div>
-                        </div>
-                        <!-- Modal ends -->           
+                        </div>             
+
                         
-                        <!-- Modal -->
-                        <div class="modal fade q7-modal" id="emailChanged" role="dialog">
-                            <div class="modal-dialog q7-modal-dialog--centered">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    
-                                    <div class="modal-body q7-modal-body--update">
+                    </div>  
+                    
+                    <div class="q7-content-block">
 
-                                        <div class="q7-modal-body__response">
-                                            <img src="img/mail.svg">                        
-                                            <h2>Email Changed!</h2>                                               
-                                            <p>
-                                                Your email has been changed successfully.
-                                            </p>
+
+                        <div class="q7-block-title">General Settings</div>
+
+                        <div class="q7-advanced-settings">
+
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Username</label>                                     
                                         </div>
-                                                                                                                                                                              
-                                    </div>
 
-                                </div>
+                                        <div class="q6-input__field--view">vadym.leonenko@gmail.com (Google)</div>
+                                                                       
+                                    </div>                
+                                </div>                                  
+
+                            </div>   
                             
-                            </div>
-                        </div>
-                        <!-- Modal ends -->                           
-
-
-                        <!-- Modal -->
-                        <div class="modal fade q7-modal" id="editPass" role="dialog">
-                            <div class="modal-dialog q7-modal-dialog--centered">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Change Password</h5>
-                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
-                                    </div>
-                                    <div class="modal-body q7-modal-body--update">
-
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>Old Password</label>
-                                                <a href="">Forgot password?</a>
-                                            </div>
-                                            <input class="q7-input__field" type="password">
-                                            <div class="q7-pass-eye-button"></div>
-                                            <div class="q7-input__error"></div>                                
-                                        </div>                                         
-                                                                
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>New Password</label>
-                                            </div>
-                                            <input class="q7-input__field q7-input__field--error" type="password">
-                                            <div class="q7-pass-eye-button"></div>
-                                            <div class="q7-input__error">Password is too short</div>                                
-                                        </div> 
-
-                                        <div class="q7-input q7-input--password">
-                                            <div class="q7-input__label">
-                                                <label>Confirm Password</label>
-                                            </div>
-                                            <input class="q7-input__field" type="password">
-                                            <div class="q7-pass-eye-button"></div>
-                                            <div class="q7-input__error"></div>
-                                        </div>                             
-                                        
-                                                
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="q7-modal-footer-buttons q7-modal-footer-buttons--vertical">
-                                            <button data-dismiss="modal" data-toggle="modal" data-target="#passChanged" class="q7-button">Change Password</button>
-                                            <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>                                            
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Name</label>
                                         </div>
-                                    </div>
+                                        <input class="q7-input__field" type="text" value="Vadym Leonenko">                                
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>                               
 
-                                </div>
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Phone</label>
+                                        </div>
+                                        <input id="phone" class="q7-input__field" type="text" value="+380930759717" type="tel">  
+                                             
+                                        <script src="build/js/intlTelInput.js"></script>     
+                                        <script src="build/js/utils.js"></script>    
+                                        <script>
+                                            // https://github.com/jackocnr/intl-tel-input
+                                            // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                            $("#phone").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite"
+                                            })
+                                        </script>                                        
+
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>                                 
+ 
+                             <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Company name</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="Qencode">                                
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>                                     
+                              
                             
-                            </div>
-                        </div>
-                        <!-- Modal ends -->           
+                             <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Website</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="qencode.com">                                
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>        
+
+                             <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Time Zone</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="(GMT+2:00) Eastern European Standard Time - Kyiv">                                
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>                                  
+                                                                                                          
+                        </div>             
+
                         
-                        <!-- Modal -->
-                        <div class="modal fade q7-modal" id="passChanged" role="dialog">
-                            <div class="modal-dialog q7-modal-dialog--centered">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    
-                                    <div class="modal-body q7-modal-body--update">
-
-                                        <div class="q7-modal-body__response">
-                                            <img src="img/security.svg">                        
-                                            <h2>Password Changed!</h2>                                               
-                                            <p>
-                                                Your password has been changed successfully. <br>
-                                                We sent a letter to your email.
-                                            </p>
-                                        </div>
-                                                                                                                                                                              
-                                    </div>
-
-                                </div>
-                            
-                            </div>
-                        </div>
-                        <!-- Modal ends -->                           
-                        
-                        <script>
-                            $(function () {
-                                $(".q7-pass-eye-button").click(function() {
-                                    var fieldType = $(this).closest(".q7-input--password").find('.q7-input__field').attr('type');
-                                    if(fieldType == "password"){
-                                        $(this).closest(".q7-input--password").find('.q7-input__field').attr('type', 'text')
-                                    } else{
-                                        $(this).closest(".q7-input--password").find('.q7-input__field').attr('type', 'password')
-                                    }
-                                });
-                            });
-                        </script>                           
-                           
-
-                    </div>
+                    </div>                      
 
                 </div>
                 
