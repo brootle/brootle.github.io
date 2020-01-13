@@ -1505,13 +1505,31 @@
 }
 
 .q7-modal .modal-content{
-    padding: 40px 50px;
+    padding: 25px 40px;
     width: max-content;
 }
 
 
 .q7-modal .modal-content .modal-header{
-    padding:0;
+    padding: 0;
+    display: flex;
+    align-items: center;    
+    position: relative;
+}
+
+.q7-modal-header-description{
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    line-height: 18px;
+    font-weight: 500;
+    margin: 0 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #e6e8eb;
+    position: relative;   
+    color: #707070;
+    font-size: 14px; 
 }
 
 .q7-modal .modal-footer {
@@ -1530,8 +1548,8 @@
 
 
 .q7-modal .q6-button.q6-button--close-window {
-    right: 30px;
-    top: 30px;
+    right: 0px;
+    top: 0px;
 }
 
 .q7-modal .modal-title {
@@ -1574,17 +1592,70 @@
     flex-direction: column;    
 }
 
-.q7-modal-body--video-rendition-settings{
-    background:#f3f6f9;
-    border-radius: 5px;
-    margin:25px 0;
-    display: flex;    
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings{  
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e6e8eb;    
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.q7-modal-body--video-rendition-settings > div:first-of-type{
-    max-width: 280px;
-    margin-right: 70px;
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings > div{
+    display: flex;
 }
+
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings > div > div{
+    width: 400px;
+    margin-right: 50px;
+}
+
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings > div > div:last-of-type{
+    margin-right: 0px;
+}
+
+.q7-input.q7-input--width,
+.q7-input.q7-input--height{
+    flex: 1;
+}
+
+.q7-input.q7-input--output-resolutions{
+    width: 175px;
+    min-width: 175px;
+    max-width: 175px;
+}
+
+.q7-input.q7-input--bitrate{
+    width: 95px;
+    min-width: 95px;
+    max-width: 95px;
+}
+
+.q7-input.q7-input--crf{
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+}
+
+.q7-input.q7-input--watermark-x,
+.q7-input.q7-input--watermark-y{
+    width: 95px;
+    min-width: 95px;
+    max-width: 95px;
+}
+
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings .q7-input{
+    flex: 1;
+}
+
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings .q7-input__label--with-switch .q6-switch-container {
+    left: initial;
+    right: 35px;
+}
+
+.q7-modal .modal-body.q7-modal-body--video-rendition-settings .q7-input__label.q7-input__label--with-switch {
+    padding: 17px 0;
+    margin: 0;
+}
+
 
 .q7-modal-body--add-funds{
 
@@ -3396,35 +3467,26 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     position: relative;
 }
 
-.q7-modal .q7-button.q7-button--close-window{
-    right: 50px;
-    top: 30px;
-}
-
 .q7-button.q7-button--close-window {
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 0px;
+    top: 0px;
     padding: 0;
-    height: 18px;
-    width: 18px;
+    height: 22px;
+    width: 22px;
     border-radius: 50%;
     min-width: 0;
     border: none;
-    background-color: #bcc0ca;
-
-    background-image: url(../img/white_cross.svg);
-    background-size: 8px 8px;
+    background-color: var(--blue);
+    background-image: url(../img/no.svg);
+    background-size: 8px;
     background-position: center;
-    background-repeat: no-repeat; 
-
+    background-repeat: no-repeat;
     z-index: 9999;
-
-    transition: opacity .2s ease;
 }
 
 .q7-button.q7-button--close-window:hover{
-    opacity: 0.8;
+    background-color: #265cc5;
 }
 
 .q7-modal-body--update .q7-input{

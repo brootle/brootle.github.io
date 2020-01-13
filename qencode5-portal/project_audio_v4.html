@@ -1517,149 +1517,222 @@
                                 <div class="modal-content">
                                     
                                     <div class="modal-header">
-
-                                        <div class="q7-video-rendition-extra-header">
-                                            <div>Profile Name: Test 1</div>
-                                            <div>Format (Codec): MP4(H264)</div>
-                                        </div>
-
                                         <h5 class="modal-title">Video Rendition Settings</h5>
-                                        <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                                        <div class="q7-modal-header-description">
+                                            Profile Name: Netflix_Sabrina_Season2_Episode1 <br>
+                                            Rendition: 1080p
+                                        </div>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                     </div>
                                     <div class="modal-body q7-modal-body--video-rendition-settings">
                                                                 
-                                        <div>
-                                    
-                                            <div class="q6-input q6-input--output-resolution">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Output Resolution</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>                        
-                                                <div class="q6-custom-select">
-                                                    <select class="q6-select">
-                                                        <option value="1">Custom</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                        <div>                                    
+                                            <div>
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--output-resolutions">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Output Resolutions</label>
+                                                            <div class="q7-question-icon"></div>
+                                                        </div>                
+                                                        <div class="q7-custom-select">
+                                                            <select class="q7-select" id="output_resolutions">
+                                                                <option value="custom_settings">Custom Settings</option>
+                                                                <option value="1080p" selected>1080p</option>
+                                                                <option value="720p">720p</option>
+                                                                <option value="480p">480p</option>
+                                                                <option value="360p">360p</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>    
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-width">
-                                                    <div class="q6-input__label">
-                                                        <label>Width</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="1920">
-                                                </div>                   
+                                                    <div id="output_width" class="q7-input q7-input--width">
+                                                        <div class="q7-input__label">
+                                                            <label>Width</label>                                                                   
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>      
+                                                    
+                                                    <div id="output_height" class="q7-input q7-input--height">
+                                                        <div class="q7-input__label">
+                                                            <label>Height</label>                                                                   
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                      
+                                                    
+                                                    <script>
+                                                        $(function () {
+                                                            // when we render window
+                                                            if($("#output_resolutions").val()=="custom_settings"){
+                                                                $("#output_width, #output_height").show(0);
+                                                            } else{
+                                                                $("#output_width, #output_height").hide(0);
+                                                            }
+
+                                                            // when dropdown changed
+                                                            $("#output_resolutions").change(function() {
+                                                                if($(this).val() == "custom_settings"){
+                                                                    $("#output_width, #output_height").show(0);
+                                                                } else{
+                                                                    $("#output_width, #output_height").hide(0);
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>                                                    
+                                                </div>    
+
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--bitrate">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Bitrate</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input q7-input--crf">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>CRF</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Framerate</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Keyframe</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                   
+                                                </div>                                                                                            
+                                            </div>   
+                                            <div>
                                                 
-                                                <div class="q6-input q6-input--video-height">
-                                                    <div class="q6-input__label">
-                                                        <label>Height</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="1080">
-                                                </div>                          
-                                            </div>           
-
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-bitrate">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Bitrate (kbps)</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="128">
-                                                </div>                   
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Two Pass</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input class="q6-input__field" type="checkbox" checked>
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>          
                                                 
-                                                <div class="q6-input q6-input--video-crf">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>CRF</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                          
-                                            </div>        
-                                            
-                                            <div class="q6-input">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Output path</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>
-                                                <input class="q6-input__field" type="text" value="/720/{uuid}.mp4">
-                                            </div>         
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Mute Audio</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input class="q6-input__field" type="checkbox" checked>
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>     
+                                                
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Watermark</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input id="watermark" class="q6-input__field" type="checkbox">
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>                                                   
 
-                                            <div class="q6-input">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Tag</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>
-                                                <input class="q6-input__field" type="text" value="best video">
-                                            </div>                                                                                                                                            
-
+                                            </div>                                                                                                                                    
                                         </div>      
 
                                         <div>
+                                            <div>
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Output Path</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>   
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Tag</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>                                                    
+                                            </div>   
+                                            <div id="watermark_settings">
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>URL</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>  
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--watermark-x">
+                                                        <div class="q7-input__label">
+                                                            <label>X</label>                                                              
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>  
+                                                    <div class="q7-input q7-input--watermark-y">
+                                                        <div class="q7-input__label">
+                                                            <label>Y</label>                                                                  
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                                                                       
+                                                </div>                                                  
+                                            </div> 
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-framerate">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Framerate</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                   
-                                                
-                                                <div class="q6-input q6-input--video-keyframe">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Keyframe</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                          
-                                            </div>  
+                                            <script>
+                                                $(function () {
+                                                    // when we render window
+                                                    if($("#watermark").prop("checked")){
+                                                        $("#watermark_settings").show(0);
+                                                    } else{
+                                                        $("#watermark_settings").hide(0);
+                                                    }
 
-                                            <div class="q7-video-rendition-checkboxes-container">
-                                                <label class="q6-checkbox">
-                                                    Two Pass
-                                                    <input checked type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>          
-
-                                                <label class="q6-checkbox">
-                                                    Mute Audio
-                                                    <input checked type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>   
-                                            </div>
-
-                                            <div class="q7-video-rendition-watermark-block">
-                                                <label class="q6-checkbox">
-                                                    Watermark
-                                                    <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>        
-
-                                                <div class="q6-input-and-buttons--inline">
-                                                    <div class="q6-input q6-input--video-url">
-                                                        <div class="q6-input__label">
-                                                            <label>URL</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="/video/bestever">
-                                                    </div>                   
-                                                    
-                                                    <div class="q6-input q6-input--video-x">
-                                                        <div class="q6-input__label">
-                                                            <label>X</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="200">
-                                                    </div>       
-
-                                                    <div class="q6-input q6-input--video-y">
-                                                        <div class="q6-input__label">
-                                                            <label>Y</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="200">
-                                                    </div>                                                                  
-                                                </div>                                            
-
-                                            </div>                                                                     
-
+                                                    // when dropdown changed
+                                                    $("#watermark").change(function() {
+                                                        if($(this).prop("checked")){
+                                                            $("#watermark_settings").show(0);
+                                                        } else{
+                                                            $("#watermark_settings").hide(0);
+                                                        }
+                                                    });
+                                                });
+                                            </script>                                               
                                         </div>                                                                                             
                                                 
                                     </div>
@@ -1687,156 +1760,229 @@
                                 <div class="modal-content">
                                     
                                     <div class="modal-header">
-
-                                        <div class="q7-video-rendition-extra-header">
-                                            <div>Profile Name: Test 1</div>
-                                            <div>Format (Codec): MP4(H264)</div>
-                                        </div>
-
                                         <h5 class="modal-title">Video Rendition Settings</h5>
-                                        <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                                        <div class="q7-modal-header-description">
+                                            Profile Name: Netflix_Sabrina_Season2_Episode1 <br>
+                                            Rendition: 1080p
+                                        </div>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                     </div>
                                     <div class="modal-body q7-modal-body--video-rendition-settings">
                                                                 
-                                        <div>
-                                    
-                                            <div class="q6-input q6-input--output-resolution">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Output Resolution</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>                        
-                                                <div class="q6-custom-select">
-                                                    <select class="q6-select">
-                                                        <option value="1">Custom</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                        <div>                                    
+                                            <div>
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--output-resolutions">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Output Resolutions</label>
+                                                            <div class="q7-question-icon"></div>
+                                                        </div>                
+                                                        <div class="q7-custom-select">
+                                                            <select class="q7-select" id="add_output_resolutions">
+                                                                <option value="custom_settings">Custom Settings</option>
+                                                                <option value="1080p" selected>1080p</option>
+                                                                <option value="720p">720p</option>
+                                                                <option value="480p">480p</option>
+                                                                <option value="360p">360p</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>    
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-width">
-                                                    <div class="q6-input__label">
-                                                        <label>Width</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="1920">
-                                                </div>                   
+                                                    <div id="add_output_width" class="q7-input q7-input--width">
+                                                        <div class="q7-input__label">
+                                                            <label>Width</label>                                                                   
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>      
+                                                    
+                                                    <div id="add_output_height" class="q7-input q7-input--height">
+                                                        <div class="q7-input__label">
+                                                            <label>Height</label>                                                                   
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                      
+                                                    
+                                                    <script>
+                                                        $(function () {
+                                                            // when we render window
+                                                            if($("#add_output_resolutions").val()=="custom_settings"){
+                                                                $("#add_output_width, #add_output_height").show(0);
+                                                            } else{
+                                                                $("#add_output_width, #add_output_height").hide(0);
+                                                            }
+
+                                                            // when dropdown changed
+                                                            $("#add_output_resolutions").change(function() {
+                                                                if($(this).val() == "custom_settings"){
+                                                                    $("#add_output_width, #add_output_height").show(0);
+                                                                } else{
+                                                                    $("#add_output_width, #add_output_height").hide(0);
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>                                                    
+                                                </div>    
+
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--bitrate">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Bitrate</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input q7-input--crf">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>CRF</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Framerate</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div> 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Keyframe</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                   
+                                                </div>                                                                                            
+                                            </div>   
+                                            <div>
                                                 
-                                                <div class="q6-input q6-input--video-height">
-                                                    <div class="q6-input__label">
-                                                        <label>Height</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="1080">
-                                                </div>                          
-                                            </div>           
-
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-bitrate">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Bitrate (kbps)</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="128">
-                                                </div>                   
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Two Pass</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input class="q6-input__field" type="checkbox" checked>
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>          
                                                 
-                                                <div class="q6-input q6-input--video-crf">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>CRF</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                          
-                                            </div>        
-                                            
-                                            <div class="q6-input">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Output path</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>
-                                                <input class="q6-input__field" type="text" value="/720/{uuid}.mp4">
-                                            </div>         
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Mute Audio</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input class="q6-input__field" type="checkbox" checked>
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>     
+                                                
+                                                <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
+                                                    <label>Watermark</label>
+                                                    <div class="q7-question-icon"></div>
+        
+                                                    <div class="q6-switch-container">
+                                                        <label class="q6-switch">
+                                                            <input id="add_watermark" class="q6-input__field" type="checkbox">
+                                                            <span class="q6-switch__slider"></span>
+                                                            <span class="q6-switch__text">
+                                                                    <span class="q6-switch__text--on">On</span>
+                                                                    <span class="q6-switch__text--off">Off</span>
+                                                            </span>
+                                                        </label>  
+                                                    </div>                                            
+        
+                                                </div>                                                   
 
-                                            <div class="q6-input">
-                                                <div class="q6-input__label q6-input__label--with-question">
-                                                    <label>Tag</label>
-                                                    <div class="q6-question-icon"></div>
-                                                </div>
-                                                <input class="q6-input__field" type="text" value="best video">
-                                            </div>                                                                                                                                            
-
+                                            </div>                                                                                                                                    
                                         </div>      
 
                                         <div>
+                                            <div>
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Output Path</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>   
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>Tag</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>                                                    
+                                            </div>   
+                                            <div id="add_watermark_settings">
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-question">
+                                                            <label>URL</label>   
+                                                            <div class="q7-question-icon"></div>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                    
+                                                </div>  
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input q7-input--watermark-x">
+                                                        <div class="q7-input__label">
+                                                            <label>X</label>                                                              
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>  
+                                                    <div class="q7-input q7-input--watermark-y">
+                                                        <div class="q7-input__label">
+                                                            <label>Y</label>                                                                  
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                                                                                                                                                                                       
+                                                </div>                                                  
+                                            </div> 
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                <div class="q6-input q6-input--video-framerate">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Framerate</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                   
-                                                
-                                                <div class="q6-input q6-input--video-keyframe">
-                                                    <div class="q6-input__label q6-input__label--with-question">
-                                                        <label>Keyframe</label>
-                                                        <div class="q6-question-icon"></div>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="26">
-                                                </div>                          
-                                            </div>  
+                                            <script>
+                                                $(function () {
+                                                    // when we render window
+                                                    if($("#add_watermark").prop("checked")){
+                                                        $("#add_watermark_settings").show(0);
+                                                    } else{
+                                                        $("#add_watermark_settings").hide(0);
+                                                    }
 
-                                            <div class="q7-video-rendition-checkboxes-container">
-                                                <label class="q6-checkbox">
-                                                    Two Pass
-                                                    <input checked type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>          
-
-                                                <label class="q6-checkbox">
-                                                    Mute Audio
-                                                    <input checked type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>   
-                                            </div>
-
-                                            <div class="q7-video-rendition-watermark-block">
-                                                <label class="q6-checkbox">
-                                                    Watermark
-                                                    <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
-                                                </label>        
-
-                                                <div class="q6-input-and-buttons--inline">
-                                                    <div class="q6-input q6-input--video-url">
-                                                        <div class="q6-input__label">
-                                                            <label>URL</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="/video/bestever">
-                                                    </div>                   
-                                                    
-                                                    <div class="q6-input q6-input--video-x">
-                                                        <div class="q6-input__label">
-                                                            <label>X</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="200">
-                                                    </div>       
-
-                                                    <div class="q6-input q6-input--video-y">
-                                                        <div class="q6-input__label">
-                                                            <label>Y</label>
-                                                        </div>
-                                                        <input disabled class="q6-input__field" type="text" value="200">
-                                                    </div>                                                                  
-                                                </div>                                            
-
-                                            </div>                                                                     
-
+                                                    // when dropdown changed
+                                                    $("#add_watermark").change(function() {
+                                                        if($(this).prop("checked")){
+                                                            $("#add_watermark_settings").show(0);
+                                                        } else{
+                                                            $("#add_watermark_settings").hide(0);
+                                                        }
+                                                    });
+                                                });
+                                            </script>                                               
                                         </div>                                                                                             
                                                 
                                     </div>
                                     <div class="modal-footer">
                                         <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
                                             <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
-                                            <button data-dismiss="modal" class="q7-button">Create</button>                                              
+                                            <button data-dismiss="modal" class="q7-button">Update</button>                                              
                                         </div>
                                     </div>
 
