@@ -2105,139 +2105,190 @@
 
 
                     </div>    
+
+                    
                     
                     <!-- Modal -->
-                    <div class="modal fade q7-modal q7-modal--add-transfer-method" id="addTransferMethod" role="dialog">
+                    <div class="modal fade q7-modal" id="addTransferMethod" role="dialog">
                         <div class="modal-dialog">
                         
                             <!-- Modal content-->
                             <div class="modal-content">
                                 
                                 <div class="modal-header">
-                                    <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                                    <h5 class="modal-title">Transfer Method Settings</h5>
+                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                 </div>
-                                <div class="modal-body q7-modal-body--transfer-method">
-                                                             
-                                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--equal-padding">
-                                        <div class="q6-tutorial-inputs__message">
-                                            Transfer Method ID: <span class="q6-tutorial__transfer-method-id">23523dlfkjalsdf34</span> 
-                                            <button class="q6-button q6-button--round q6-button--copy">
-                                                Copy
-                                                <div class="q6-flash-message" style="opacity: 0;">Copied</div>
-                                            </button>                      
-                                        </div>
-                                    </div>                         
-
-                                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">    
-                                    
-                                        <div class="q6-tutorial-inputs-block__controls">
-                                            <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
-                                            <div class="q6-tutorial-control" data-control="amazon">Amazon S3</div>
-                                            <div class="q6-tutorial-control" data-control="google">Google Cloud</div>
-                                            <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze S3</div>
-                                            <div class="q6-tutorial-control" data-control="azure">Azure</div>
-                                            <div class="q6-tutorial-control" data-control="ftp">FTP</div>
-                                        </div>                                              
-
-                                        <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
-                                                                                                                                   
-
-                                            <div class="q6-input-and-buttons--inline">
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Transfer name</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="Best_storage">
-                                                </div>
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Bucket name</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                                                 
-             
-                                            </div>       
-
-                 
-                                            <div class="q6-input-and-buttons--inline">
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Region name</label>
-                                                    </div>                        
-                                                    <div class="q6-custom-select">
-                                                        <select class="q6-select">
-                                                            <option value="1">Asia Pacific (Singapore)</option>
+                                <div class="modal-body q7-modal-body--transfer-method-setting">                                                       
+                                    <div>
+                                        <div>
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Type</label>
+                                                    </div>                
+                                                    <div class="q7-custom-select">
+                                                        <select class="q7-select">
+                                                            <option value="qencode">Qencode S3</option>
+                                                            <option value="amazon" selected>Amazon S3</option>
+                                                            <option value="google">Google Cloud</option>
+                                                            <option value="blackbaze">Blackbaze S3</option>
+                                                            <option value="azure">Azure</option>
+                                                            <option value="ftp">FTP</option>
                                                         </select>
                                                     </div>
-                                                </div>                      
-                                                                                                                            
+                                                </div>      
                                                 
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Access Key</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                          
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Transfer method name</label>                                                                
+                                                    </div>                
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>                                                
+                                            </div>                                            
+                                        </div>
+                                        <div>
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input q7-input--inline">
+                                                    <div class="q7-input__label">
+                                                        <label>Transfer method ID:</label>                                                                
+                                                    </div>                
+                                                    <div class="q7-input__field--view">23523dlfkjalsdf34</div>                           
+                                                </div>                                                 
+                                                <button id="copy_transfer_id" class="q6-button q6-button--round q6-button--copy">
+                                                    Copy
+                                                    <div class="q6-flash-message" style="opacity: 0;">Copied</div>
+                                                </button>                                                
+                                            </div>     
+                                            <script>
+                                                $(function () {                
+                                                    // copy transfer method ID
+                                                    $("#copy_transfer_id").click(function (){
+
+                                                        try { 
+                                                            var cellTextNode = $(this).prev().find('.q7-input__field--view')[0];
+                                                        
+                                                            var selection = window.getSelection();        
+                                                            var range = document.createRange();
+
+                                                            range.selectNodeContents(cellTextNode);
+                                                            selection.removeAllRanges();
+                                                            selection.addRange(range);
+
+                                                            var successful = document.execCommand('copy');         
+
+                                                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                                                            if(successful) {
+                                                                //console.log("copied");                                
+                                                                $(flashMessage).html('Copied');
+                                                                $(flashMessage)
+                                                                    .animate({ opacity: 1 }, 200)
+                                                                    .delay(500)     
+                                                                    .animate({ opacity: 0 }, 200)                                                                             
+                                                            }
+                                                            else
+                                                            { 
+                                                                //console.log("can not copy");
+                                                            } 
+                                                        } catch (err) {
+                                                            console.log(err);
+                                                        }
+
+                                                    });                           
+                                                });
+                                            </script>                                                                                 
+                                        </div>
+                                    </div> 
+                                    <div>
+                                        <div>
+                                            <div class="q7-multiline-input">
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Bucket name</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Region name</label>
+                                                        </div>                
+                                                        <div class="q7-custom-select">
+                                                            <select class="q7-select">
+                                                                <option value="1">South America (São Paulo)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>                                                                                                     
+                                                </div>         
+                                                
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Access Secret</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>   
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Access Key</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                  
+                                                </div>
                                             </div>
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                 <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Access Secret</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>   
-                                            </div>                                               
-
                                             <div class="q7-inline-checkboxes">
-                                                <label class="q6-checkbox">
+                                                <label class="q7-checkbox">
                                                     Public permissions
                                                     <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q7-checkmark"></span>
                                                 </label>   
 
-                                                <label class="q6-checkbox">
+                                                <label class="q7-checkbox">
                                                     Reduce redundancy storage
                                                     <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q7-checkmark"></span>
                                                 </label>                                                        
                                             </div>                                            
-                                                                                                            
+                                        </div>
+                                        <div>
+                                            <div class="q7-test-connection-block">
+                                                <p>
+                                                    Please test connection with your service provider.
+                                                </p>
+                                                <p>
+                                                    We will upload and delete a small file. <span class="q7-question-icon"></span>
+                                                </p>   
+                                                
+                                                <button id="test_connection" class="q7-button q7-button--round">&#8646; Test connection</button>
 
-                                        </div>                                          
+                                                <textarea style="display: none;" id="connection_status" class="q7-input__field">12:01:15 &nbsp; Sending file... 
+12:01:27 &nbsp; Checking... 
+12:01:40 &nbsp; Removing... 
+12:01:55 &nbsp; Success</textarea>  
+                                                <button style="display: none;" id="retest_connection" class="q7-button q7-button--round">&#8646; Retest connection</button>      
+                                                
+                                                <script>
+                                                    $(function () { 
+                                                        // mockup Test Connection button click
+                                                        $("#test_connection").click(function(){
+                                                            $("#test_connection").hide(0);
 
-                                        <div class="q6-tutorial-controls__content" data-content="amazon">
-                                            Amazon S3
-                                        </div>                 
-
-                                        <div class="q6-tutorial-controls__content" data-content="google">
-                                            Google Cloud
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="blackbaze">
-                                            Blackbaze S3
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="azure">
-                                            Azure
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="ftp">
-                                            FTP
-                                        </div>            
-                                                                                                                                    
-
-                                    </div>             
-                                    
-                                                      
-                                    <button data-dismiss="modal" id="create-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Create</button>
-                                            
+                                                            $("#connection_status").show(0);
+                                                            $("#retest_connection").show(0);
+                                                        });
+                                                    });  
+                                                </script>                                                
+                                            </div>
+                                        </div>                                        
+                                    </div>                                                                                                                              
                                 </div>
                                 <div class="modal-footer">
-
+                                    <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
+                                        <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                        <button data-dismiss="modal" class="q7-button">Create</button>                                              
+                                    </div>
                                 </div>
 
                             </div>
@@ -2245,140 +2296,189 @@
                         </div>
                     </div>
 
-                    <!-- Modal ends -->                
+                    <!-- Modal ends -->           
                     
                     <!-- Modal -->
-                    <div class="modal fade q7-modal q7-modal--add-transfer-method" id="editTransferMethod" role="dialog">
+                    <div class="modal fade q7-modal" id="editTransferMethod" role="dialog">
                         <div class="modal-dialog">
                         
                             <!-- Modal content-->
                             <div class="modal-content">
                                 
                                 <div class="modal-header">
-                                    <button data-dismiss="modal" class="q6-button q6-button--close-window"></button>
+                                    <h5 class="modal-title">Transfer Method Settings</h5>
+                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                 </div>
-                                <div class="modal-body q7-modal-body--transfer-method">
-                                                             
-                                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--equal-padding">
-                                        <div class="q6-tutorial-inputs__message">
-                                            Transfer Method ID: <span class="q6-tutorial__transfer-method-id">23523dlfkjalsdf34</span> 
-                                            <button class="q6-button q6-button--round q6-button--copy">
-                                                Copy
-                                                <div class="q6-flash-message" style="opacity: 0;">Copied</div>
-                                            </button>                      
-                                        </div>
-                                    </div>                                  
-
-                                    <div class="q6-tutorial-inputs-block q6-tutorial-inputs-block--inline q6-tutorial-inputs-block--has-controls">    
-                                    
-                                        <div class="q6-tutorial-inputs-block__controls">
-                                            <div class="q6-tutorial-control q6-tutorial-control--active" data-control="qencode">Qencode S3</div>
-                                            <div class="q6-tutorial-control" data-control="amazon">Amazon S3</div>
-                                            <div class="q6-tutorial-control" data-control="google">Google Cloud</div>
-                                            <div class="q6-tutorial-control" data-control="blackbaze">Blackbaze S3</div>
-                                            <div class="q6-tutorial-control" data-control="azure">Azure</div>
-                                            <div class="q6-tutorial-control" data-control="ftp">FTP</div>
-                                        </div>                                              
-
-                                        <div class="q6-tutorial-controls__content q6-tutorial-controls__content--active" data-content="qencode">
-                                                                                                                                   
-
-                                            <div class="q6-input-and-buttons--inline">
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Transfer name</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text" value="Best_storage">
-                                                </div>
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Bucket name</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                                                 
-             
-                                            </div>       
-
-                 
-                                            <div class="q6-input-and-buttons--inline">
-
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Region name</label>
-                                                    </div>                        
-                                                    <div class="q6-custom-select">
-                                                        <select class="q6-select">
-                                                            <option value="1">Asia Pacific (Singapore)</option>
+                                <div class="modal-body q7-modal-body--transfer-method-setting">                                                       
+                                    <div>
+                                        <div>
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Type</label>
+                                                    </div>                
+                                                    <div class="q7-custom-select">
+                                                        <select class="q7-select">
+                                                            <option value="qencode">Qencode S3</option>
+                                                            <option value="amazon" selected>Amazon S3</option>
+                                                            <option value="google">Google Cloud</option>
+                                                            <option value="blackbaze">Blackbaze S3</option>
+                                                            <option value="azure">Azure</option>
+                                                            <option value="ftp">FTP</option>
                                                         </select>
                                                     </div>
-                                                </div>                      
-                                                                                                                            
+                                                </div>      
                                                 
-                                                <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Access Key</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>                          
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Transfer method name</label>                                                                
+                                                    </div>                
+                                                    <input class="q7-input__field" type="text">                                
+                                                </div>                                                
+                                            </div>                                            
+                                        </div>
+                                        <div>
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input q7-input--inline">
+                                                    <div class="q7-input__label">
+                                                        <label>Transfer method ID:</label>                                                                
+                                                    </div>                
+                                                    <div class="q7-input__field--view">23523dlfkjalsdf34</div>                           
+                                                </div>                                                 
+                                                <button id="copy_transfer_id_update" class="q6-button q6-button--round q6-button--copy">
+                                                    Copy
+                                                    <div class="q6-flash-message" style="opacity: 0;">Copied</div>
+                                                </button>                                                
+                                            </div>     
+                                            <script>
+                                                $(function () {                
+                                                    // copy transfer method ID
+                                                    $("#copy_transfer_id_update").click(function (){
+
+                                                        try { 
+                                                            var cellTextNode = $(this).prev().find('.q7-input__field--view')[0];
+                                                        
+                                                            var selection = window.getSelection();        
+                                                            var range = document.createRange();
+
+                                                            range.selectNodeContents(cellTextNode);
+                                                            selection.removeAllRanges();
+                                                            selection.addRange(range);
+
+                                                            var successful = document.execCommand('copy');         
+
+                                                            var flashMessage = $(this).find('.q6-flash-message')[0];                                               
+
+                                                            if(successful) {
+                                                                //console.log("copied");                                
+                                                                $(flashMessage).html('Copied');
+                                                                $(flashMessage)
+                                                                    .animate({ opacity: 1 }, 200)
+                                                                    .delay(500)     
+                                                                    .animate({ opacity: 0 }, 200)                                                                             
+                                                            }
+                                                            else
+                                                            { 
+                                                                //console.log("can not copy");
+                                                            } 
+                                                        } catch (err) {
+                                                            console.log(err);
+                                                        }
+
+                                                    });                           
+                                                });
+                                            </script>                                                                                 
+                                        </div>
+                                    </div> 
+                                    <div>
+                                        <div>
+                                            <div class="q7-multiline-input">
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Bucket name</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                 
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Region name</label>
+                                                        </div>                
+                                                        <div class="q7-custom-select">
+                                                            <select class="q7-select">
+                                                                <option value="1">South America (São Paulo)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>                                                                                                     
+                                                </div>         
+                                                
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Access Secret</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>   
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Access Key</label>                                                                
+                                                        </div>                
+                                                        <input class="q7-input__field" type="text">                                
+                                                    </div>                                                                                                  
+                                                </div>
                                             </div>
 
-                                            <div class="q6-input-and-buttons--inline">
-                                                 <div class="q6-input">
-                                                    <div class="q6-input__label">
-                                                        <label>Access Secret</label>
-                                                    </div>
-                                                    <input class="q6-input__field" type="text">
-                                                </div>   
-                                            </div>                                               
-
                                             <div class="q7-inline-checkboxes">
-                                                <label class="q6-checkbox">
+                                                <label class="q7-checkbox">
                                                     Public permissions
                                                     <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q7-checkmark"></span>
                                                 </label>   
 
-                                                <label class="q6-checkbox">
+                                                <label class="q7-checkbox">
                                                     Reduce redundancy storage
                                                     <input type="checkbox">
-                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q7-checkmark"></span>
                                                 </label>                                                        
                                             </div>                                            
-                                                                                                            
+                                        </div>
+                                        <div>
+                                            <div class="q7-test-connection-block">
+                                                <p>
+                                                    Please test connection with your service provider.
+                                                </p>
+                                                <p>
+                                                    We will upload and delete a small file. <span class="q7-question-icon"></span>
+                                                </p>   
+                                                
+                                                <button id="test_connection_edit" class="q7-button q7-button--round">&#8646; Test connection</button>
 
-                                        </div>                                          
+                                                <textarea style="display: none;" id="connection_status_edit" class="q7-input__field">12:01:15 &nbsp; Sending file... 
+12:01:27 &nbsp; Checking... 
+12:01:40 &nbsp; Removing... 
+12:01:55 &nbsp; Success</textarea>  
+                                                <button style="display: none;" id="retest_connection_edit" class="q7-button q7-button--round">&#8646; Retest connection</button>      
+                                                
+                                                <script>
+                                                    $(function () { 
+                                                        // mockup Test Connection button click
+                                                        $("#test_connection_edit").click(function(){
+                                                            $("#test_connection_edit").hide(0);
 
-                                        <div class="q6-tutorial-controls__content" data-content="amazon">
-                                            Amazon S3
-                                        </div>                 
-
-                                        <div class="q6-tutorial-controls__content" data-content="google">
-                                            Google Cloud
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="blackbaze">
-                                            Blackbaze S3
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="azure">
-                                            Azure
-                                        </div> 
-
-                                        <div class="q6-tutorial-controls__content" data-content="ftp">
-                                            FTP
-                                        </div>            
-                                                                                                                                    
-
-                                    </div>             
-                                    
-                                                      
-                                    <button data-dismiss="modal" id="update-transfer-method" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Update</button>
-                                            
+                                                            $("#connection_status_edit").show(0);
+                                                            $("#retest_connection_edit").show(0);
+                                                        });
+                                                    });  
+                                                </script>                                                
+                                            </div>
+                                        </div>                                        
+                                    </div>                                                                                                                              
                                 </div>
                                 <div class="modal-footer">
-
+                                    <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
+                                        <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                        <button data-dismiss="modal" class="q7-button">Update</button>                                              
+                                    </div>
                                 </div>
 
                             </div>
@@ -2386,7 +2486,7 @@
                         </div>
                     </div>
 
-                    <!-- Modal ends -->                      
+                    <!-- Modal ends -->                       
 
                 </div>          
 
