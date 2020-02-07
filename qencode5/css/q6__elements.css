@@ -58,6 +58,15 @@ p {
     position: relative;
 }
 
+.q6-input.q6-input__label--with-switch{
+    display: flex;
+    align-items: center;
+}
+
+.q6-input.q6-input__label--with-switch .q6-input__label{
+    margin-right: 15px;
+}
+
 input[type=text].q6-input__field, 
 input[type=tel].q6-input__field, 
 input[type=password].q6-input__field,
@@ -437,6 +446,35 @@ input:checked + .q6-switch__slider:before {
     -ms-transform: translateX(19px);
     transform: translateX(19px);
     background-color: #306eea;
+}
+
+.q6-switch__text {
+    position: absolute;
+    right: -23px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.q6-switch__text .q6-switch__text--on {
+    display: none;
+}
+
+.q6-switch__text .q6-switch__text--off {
+    display: none;
+}
+
+input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--off {
+    display: block;
+    color: #818080;
+}
+
+input:checked + .q6-switch__slider + .q6-switch__text .q6-switch__text--on {
+    display: block;
+    color: #366fe0;
+}
+
+input:checked ~ .q6-checkbox-text {
+    color: #366fe0;
 }
 /* round switch */
 
