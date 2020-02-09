@@ -94,9 +94,7 @@
 
 .q6-pricing-box__saving{
     display: flex;
-    border-right: 1px solid #e1e5ee;
-    padding-right: 60px;
-    margin-right: 45px;
+    flex: 1;
 }
 
 
@@ -111,10 +109,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 25px;
 }
 
 .q6-pricing-box__saving > div:nth-of-type(2) p{
     margin: 8px 0;
+    display: flex;
+    align-items: center;
 }
 
 .q6-pricing-box__saving > div:nth-of-type(2) p:first-of-type{
@@ -127,14 +128,24 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    flex: 1;
+}
+
+.q6-pricing-box__vertical-delimeter{
+    width: 1px;
+    min-width: 1px;
+    border-left: 1px solid #e1e5ee;
+    margin: 0 35px;
 }
 
 .q6-pricing-box__feature-items{
     display: flex;
+    width: 100%;
 }
 
 .q6-pricing-box__feature-items > div{
     margin-right: 25px;
+    flex: 1;
 }
 
 .q6-pricing-box__feature-items > div:last-of-type{
@@ -147,15 +158,16 @@ p.q6-pricing-box__start-rate{
 }
 
 .q6-pricing-box__start-rate > span{
-    font-size: 46px;
+    font-size: 51px;
     font-weight: 500;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 
 
 .q6-calc-and-table-container{
     display: flex;
+    margin-bottom: 60px;
 }
 
 .q6-calc-and-table-container > div{
@@ -212,11 +224,11 @@ p.q6-calc-block__message{
     min-width: 158px;
 }
 
-.q6-calc-block__input .q6-input.q6-input__label--with-switch {
+.q6-calc-and-table-container .q6-input.q6-input__label--with-switch {
     margin: 18px 0;
 }
 
-.q6-calc-block__input .q6-switch {
+.q6-calc-and-table-container .q6-switch {
     display: flex;
     align-items: center;
     width: 40px;
@@ -225,7 +237,7 @@ p.q6-calc-block__message{
     margin: 0;
 }
 
-.q6-calc-block__input .q6-switch__slider:before {
+.q6-calc-and-table-container .q6-switch__slider:before {
     height: 20px;
     width: 20px;
     left: 0px;
@@ -308,6 +320,73 @@ p.q6-calc-block__message{
 
 .q6-calculated-results tr.q6-calculated-results__no-data td{
     color: #a5a5a5;
+}
+
+.q6-price-table{
+    border: 1px solid #e1e5ee;
+    border-radius: 8px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+
+    border-spacing: 0px;
+    overflow: hidden;    
+}
+
+.q6-price-table td,
+.q6-price-table th{
+    padding: 15px 22px;
+}
+
+.q6-price-table th{
+    font-weight: normal;
+}
+
+.q6-price-table tfoot td{
+    background-color: #f7f8fa;
+}
+
+.q6-price-table tbody tr td{
+    border-top: 1px solid #e1e5ee;
+}
+
+.q6-price-table .q6-input.q6-input__label--with-switch{
+    margin: 0;
+    justify-content: space-between;
+    padding-right: 38px;    
+}
+
+.q6-price-table input:checked + .q6-switch__slider,
+.q6-price-table .q6-switch__slider  {
+    background-color: white;
+    border: 1px solid #cdcdcd;
+}
+
+.q6-price-table  .q6-switch__slider:before {
+    left: -1px;
+    bottom: -3px;
+}
+
+.q6-price-table input:checked + .q6-switch__slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+.q6-calc-and-table-container .q6-pricing__average p {
+    font-weight: 500;
+}
+
+.q6-calc-and-table-container .q6-pricing__average {
+    border-top: 1px solid #e6e8eb;
+    border-bottom: 1px solid #e6e8eb;
+    margin: 20px 0;
+}
+
+.q6-calc-and-table-container .q6-calc-summary__buttons {
+    padding: 0 15px;
 }
 
 @media screen and (max-width: 1024px){
