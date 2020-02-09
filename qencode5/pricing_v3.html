@@ -355,14 +355,129 @@
 
                             </div>
                             <div class="q6-calc-block__output">
-                                <div>1</div>
-                                <div>2</div>
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Details:</label>
+                                        </div>
+
+                                        <table class="q6-calculated-results">
+                                            <tr class="q6-calculated-results__no-data">
+                                                <td>SD:</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr class="q6-calculated-results__no-data">
+                                                <td>HD:</td>
+                                                <td>-</td>
+                                            </tr>         
+                                            <tr>
+                                                <td>144p:</td>
+                                                <td>$ 1,500.00</td>
+                                            </tr>       
+                                            <tr>
+                                                <td>4K:</td>
+                                                <td>$ 9,156,310.00</td>
+                                            </tr>                                                                                                                    
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Total cost:</label>
+                                        </div>
+
+                                        <div id="calculated_cost" class="q6-calc-total-cost" value="9342419.00">
+                                            
+                                        </div>
+
+                                        <script>
+                                            $(function () {
+                                                // on load
+
+                                                var inputValue = document.getElementById('calculated_cost').getAttribute("value");
+                                                if(inputValue.includes(".")){
+                                                    // if number is decimal
+                                                    // format part before dot
+                                                    var integerValue = parseInt(inputValue).toString();
+                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim() + '.' + inputValue.split('.')[1];
+
+                                                } else{
+                                                    // if the number is not decimal add spaces after thousands
+                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + document.getElementById('calculated_cost').getAttribute("value").replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                }
+                                            });
+                                        </script>                                        
+
+                                    </div>
+                                </div>
                             </div>                            
                         </div>                   
                     </div>
                 </div>
                 <div>
                     <h4>Price Table</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Standard</th>   
+                                <th>HEVC/VP9</th>   
+                                <th>AV1</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SD</td>
+                                <td>$0.004</td>
+                                <td>$0.008</td>
+                                <td>$0.24</td>
+                            </tr>
+                            <tr>
+                                <td>HD</td>
+                                <td>$0.008</td>
+                                <td>$0.016</td>
+                                <td>$0.48</td>
+                            </tr>    
+                            <tr>
+                                <td>3K</td>
+                                <td>$0.016</td>
+                                <td>$0.032</td>
+                                <td>$0.96</td>
+                            </tr>         
+                            <tr>
+                                <td>4K</td>
+                                <td>$0.32</td>
+                                <td>$0.064</td>
+                                <td>$1.92</td>
+                            </tr>                                                                       
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+
+                    <h4>Why the is cost so low?</h4>
+                    <p>
+                        Qencode applies the latest trends in computer science and leverages 
+                        economies of scale to create powerful video distributed encoding solutions. 
+                        We've been focused on creating the most efficient cloud video transcoding 
+                        technology since day one.
+                    </p>
+
+                    <div class="q6-pricing__average">
+                        <p>75%</p>
+                        <p>
+                            average savings on transcoding costs when switching to Qencode.
+                        </p>
+                    </div>             
+                    
+                    <div class="q6-calc-summary__buttons">
+                        <button class="q6-button q6-blue-background q6-blue-border q6-white-text">Get $5 Free Credit</button>
+                        <button class="q6-button q6-gray-background q6-gray-border q6-gray-text">Browse formats</button>
+                    </div>                    
                 </div>
             </div>
         </div>
