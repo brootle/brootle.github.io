@@ -95,6 +95,7 @@
 .q6-pricing-box__saving{
     display: flex;
     flex: 1;
+    min-width: 440px;
 }
 
 
@@ -389,6 +390,22 @@ p.q6-calc-block__message{
     padding: 0 15px;
 }
 
+@media screen and (max-width: 1250px){
+    .q6-pricing-box__saving > div:nth-of-type(2) {
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 1120px){
+    .q6-pricing-box__vertical-delimeter {
+        margin: 0px 20px;
+    }
+
+    .q6-calc-and-table-container > div:first-of-type {
+        margin-right: 40px;
+    }    
+}
+
 @media screen and (max-width: 1024px){
     .q6-pricing-table-container {
         flex-direction: column;
@@ -421,6 +438,15 @@ p.q6-calc-block__message{
         top: 17px;
     }    
 
+    .q6-calc-and-table-container {
+        flex-direction: column;
+    }    
+
+    .q6-calc-and-table-container > div:first-of-type {
+        margin-bottom: 40px;
+        margin-right: 0;
+    }    
+
 }
 
 @media screen and (max-width: 630px){
@@ -428,6 +454,30 @@ p.q6-calc-block__message{
         padding: 15px 10px;
         font-size: 14px;
     } 
+}
+
+@media screen and (max-width: 550px){
+    .q6-pricing-box__saving > div:nth-of-type(2) p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .q6-pricing-box__start-rate > span {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }    
+
+    .q6-calc-block > div {
+        flex-direction: column;
+    }    
+
+    .q6-calc-block > div > div:last-of-type {
+        margin-left: 0;
+    }    
+
+    .q6-price-table td, .q6-price-table th {
+        padding: 12px 15px;
+    }    
 }
 
 @media screen and (max-width: 480px){
