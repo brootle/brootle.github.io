@@ -740,8 +740,241 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
                 </div>
             </div>
 
+            <div class="q6-transcoding-demo-container">
+                <div id="transcoding-module" class="q6-anchor-link"></div>
 
-            <div class="q6-transcoding-demo">
+                <h4>Transcoding Demo</h4>
+                <div class="q6-transcoding-demo-block">
+
+                    <div class="q6-add-video-block">
+                        <div class="q6-add-video-block__controls">
+                            <div class="q6-add-video-control q6-add-video-control--active" data-control="url">URL</div>
+                            <div class="q6-add-video-control" data-control="upload">Upload</div>
+                        </div>
+                        <div class="q6-add-video-controls__content q6-add-video-controls__content--active" data-content="url">
+
+                            <div class="q6-input q6-input--video-file">
+                                <div class="q6-input__label">
+                                    <label>Enter URL for video file</label>
+                                    
+                                    <div class="q6-dd-selector">
+                                        <div class="q6-dd-selector__selected">Choose our demo file</div>
+                                        <div class="q6-dd-selector__list">
+                                            <table class="q6-demo-videos">
+                                                <tbody>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Sample video (Qencode)">
+                                                        <td>Sample video (Qencode)</td>
+                                                        <td>1920 x 1080 / 29 FPS / MP4 / H.264</td>
+                                                        <td>HD</td>
+                                                    </tr>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example2.com/video/myvideo.mp4" data-item-name="Big Buck Bunny">
+                                                        <td>Big Buck Bunny</td>
+                                                        <td>1920 x 1080 / 60 FPS / MP4 / H.264</td>
+                                                        <td>HD</td>                                                    
+                                                    </tr>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example3.com/video/myvideo.mp4" data-item-name="Sports Clip">
+                                                        <td>Sports Clip</td>
+                                                        <td>1280 x 720 / 29.9 FPS / MP4 / H.264</td>
+                                                        <td>SD</td>                                                    
+                                                    </tr>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example4.com/video/myvideo.mp4" data-item-name="User Content">
+                                                        <td>User Content</td>
+                                                        <td>640 x 480 / 29.9 FPS / MP4 / H.264</td>
+                                                        <td>SD</td>                                                    
+                                                    </tr>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example5.com/video/myvideo.mp4" data-item-name="Tears of Steel">
+                                                        <td>Tears of Steel</td>
+                                                        <td>4K / 29.9 FPS / MP4 / H.264</td>
+                                                        <td>UHD</td>                                                    
+                                                    </tr>
+                                                    <tr class="q6-dd-selector-item" data-video-url="http://example6.com/video/myvideo.mp4" data-item-name="Sintel">
+                                                        <td>Sintel</td>
+                                                        <td>1280 x 720 / 29.9 FPS / MP4 / H.264</td>
+                                                        <td>HD</td>                                                    
+                                                    </tr>
+                                                </tbody>
+                                            </table>  
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <input class="q6-input__field" type="text" value="http://example.com/video/myvideo.mp4">
+                            </div>
+                            
+                        </div>    
+                        <div class="q6-add-video-controls__content" data-content="upload">
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Please use a single video file link</label>
+                                </div>
+                                <div class="q6-video-method__drag-and-drop">
+
+                                    <div class="q6-drag-and-drop__choose-file">
+                                        <div class="q6-drag-and-drop--blue-icon"></div>
+                                        <div>
+                                            <div class="q6-drag-and-drop-message"><strong>Drag &amp; Drop</strong> your files here, or</div>                                           
+                                            <label>
+                                                <span>Browse</span>
+                                                <input type="file">
+                                            </label>                                        
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                        
+                        
+
+
+                    </div> 
+
+                </div>
+                <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow q6-button--max-width">
+                    Start Transcoding
+                </button>     
+                                           
+            </div>
+
+
+            <script>
+                $(function () {
+                    // switch content based on selected control
+                    $('.q6-add-video-control').click(function(e){
+
+                        var selectedMethod = $(e.target).attr('data-control');
+
+                        // switch controls
+                        $(e.target).parent()
+                            .find('.q6-add-video-control--active')
+                            .removeClass('q6-add-video-control--active');
+
+                        $(e.target).addClass('q6-add-video-control--active');
+
+                        // switch content
+                        $(e.target).closest('.q6-add-video-block')
+                            .find('.q6-add-video-controls__content--active')
+                            .removeClass('q6-add-video-controls__content--active');
+
+                        $(e.target).closest('.q6-add-video-block')
+                            .find(`[data-content="${selectedMethod}"]`)
+                            .addClass('q6-add-video-controls__content--active');
+
+                    });
+                })
+            </script>                
+
+
+            <script>
+                $(function () {
+
+                    // this is for Dropdowns
+                    
+                    // close list when hover out of the list
+                    $(".q6-dd-selector").hover(                            
+                        function() {
+                            // hover in                                
+                        }, function() {
+                            // hover out
+                            $(this).find('.q6-dd-selector__list').hide();
+                        }
+                    );                                  
+
+
+                    $(".q6-dd-selector").click(function(e){
+                        // toggle hide and show selector list
+                        // and update selected item                            
+                        var selectedListElement = $(this).find('.q6-dd-selector__selected');
+                        var list = $(this).find('.q6-dd-selector__list');
+                        if($(list).is(':visible')){
+                            $(list).hide();  
+
+                            var selectedItem='';
+                            var videoURL='';
+
+                            if($(e.target).hasClass('q6-dd-selector-item')){
+                                // for simple dropdown
+                                selectedItem = $(e.target).attr('data-item-name');
+                            } else{
+                                // for table type dropdown
+                                try {
+                                    selectedItem = $(e.target).closest('.q6-dd-selector-item').attr('data-item-name');
+                                    videoURL = $(e.target).closest('.q6-dd-selector-item').attr('data-video-url');
+                                    $(e.target).closest('.q6-input').find('input').val(videoURL);  
+                                }
+                                catch(err) {
+                                    console.log(err.message);
+                                }                                                                      
+                            }
+            
+                            $(selectedListElement).html(selectedItem);  
+                            // TODO - update content based on selected item  
+                                                            
+                        } else{
+                            $(list).show();
+                        }
+                    })
+                })
+            </script>                
+
+
+            <script>
+                $(function () {
+                    // handle DRAG AND DROP         
+
+                    // when over
+                    $(".q6-video-method__drag-and-drop").on('dragover',function(e){
+                        e.preventDefault();
+                        $(this).addClass('q6-video-method__drag-and-drop--over');
+                    });    
+
+                    // when leave drop zone
+                    $(".q6-video-method__drag-and-drop").on('dragleave',function(e){
+                        e.preventDefault();
+                        $(this).removeClass('q6-video-method__drag-and-drop--over');                            
+                    });
+
+                    // when dropped over drag and drop zone
+                    $(".q6-video-method__drag-and-drop").on('drop',function(e){
+                        e.preventDefault();
+
+                        e.dataTransfer = e.originalEvent.dataTransfer;
+
+                        var fileName = '';
+
+                        // Only take 1st file if user drops several files
+                        if (e.dataTransfer.items) {
+                            // Use DataTransferItemList interface to access the file
+                            // If dropped items aren't files, reject them
+                            if (e.dataTransfer.items[0].kind === 'file') {
+                                var file = e.dataTransfer.items[0].getAsFile();
+                                fileName=file.name;
+                            }
+                        } else {
+                            // Use DataTransfer interface to access the file
+                            fileName=e.dataTransfer.files[0].name
+                        }
+                            
+                        // Pass event to removeDragData for cleanup
+                        removeDragData(e);                            
+
+                        $(this).removeClass('q6-video-method__drag-and-drop--over');                            
+                    });                                          
+                            
+                    function removeDragData(e) {
+                        if (e.dataTransfer.items) {
+                            // Use DataTransferItemList interface to remove the drag data
+                            e.dataTransfer.items.clear();
+                        } else {
+                            // Use DataTransfer interface to remove the drag data
+                            e.dataTransfer.clearData();
+                        }
+                    }                                                                     
+                                                    
+                })
+            </script>        
+
+
+            <!-- <div class="q6-transcoding-demo">
                 <div id="transcoding-module" class="q6-anchor-link"></div>
 
                 <div class="q6-input-output-container">
@@ -1077,7 +1310,7 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
                         });
                     });
                 </script>
-            </div>
+            </div> -->
 
 
             <div class="q6-card q6-card--api">
