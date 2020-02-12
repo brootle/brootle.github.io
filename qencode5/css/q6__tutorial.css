@@ -1,0 +1,2729 @@
+
+/* TEMPLATE */
+.q6-tutorial-content{
+    background: #f7f8fa;
+    padding: 30px 0;
+}
+
+.q6-tutorial-header{
+    display: flex;
+    margin: 25px 0;
+    min-height: 50px;
+}
+
+.q6-tutorial-header__logo{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-header__content{
+    flex: 1;
+    border-left: 1px solid #dae0ea;
+    margin-left: 30px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-tutorial-header__logo img {
+    width: 131px;
+    border-style: none;
+    padding-top: 0;
+    vertical-align: initial;
+}
+
+.q6-tutorial-title-container{
+    display: inline-block;
+    flex: 1;  
+}
+
+.q6-tutorial-title{
+    color: #525252;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.q6-tutorial-section-title{
+    color: #838383;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 2px 0;    
+}
+
+.q6-tutorial-steps{
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.q6-tutorial-steps-delimeter{
+    flex: 1;
+    height: 1px;
+    border-top: 1px dashed #dae0ea;    
+    box-sizing: border-box;
+    margin: 0 15px;
+    min-width: 40px;
+}
+
+.q6-tutorial-steps-delimeter--complete{
+    border-top: 1px solid #dae0ea;  
+}
+
+.q6-tutorial-steps-container{
+    display: flex;
+    align-items: center;
+}
+
+.q6-tutorial-step{
+    margin-right: 8px;
+    padding: 10px 15px;
+    border: 1px dashed #dae0ea;  
+    border-radius: 7px;
+    height: 54px;
+    box-sizing: border-box;
+    display: flex;
+    color: #b3b7c3;
+    font-size: 16px;  
+    flex-direction: column;
+    justify-content: center;   
+    white-space: nowrap;           
+    min-width: 110px;
+}
+
+.q6-tutorial-step:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-steps-round-delimeter{
+    margin-right: 8px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-steps-round-delimeter > div{
+    height: 1px;
+    border-top: 1px dashed #dae0ea;
+    box-sizing: border-box;
+    min-width: 8px;
+}
+
+.q6-tutorial-steps-round-delimeter > div:nth-of-type(2){
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 1px dashed #dae0ea;    
+}
+
+.q6-tutorial-step__number{
+    font-size: 14px; 
+    line-height: 19px;
+}
+
+.q6-tutorial-step__title{
+    font-weight: 500;
+}
+
+.q6-tutorial-step--complete{
+    color: #838383;
+    background-color: #f9f9f9;
+    border-style: solid;
+    position: relative;
+}
+
+.q6-tutorial-steps-round-delimeter--complete > div{
+    border-top: 1px solid #dae0ea;
+}
+.q6-tutorial-steps-round-delimeter--complete > div:nth-of-type(2){
+    border: 1px solid #dae0ea;
+}
+
+.q6-tutorial-step--complete:after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;    
+    background-image: url(../img/checked_blue.svg);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    right: 5px;
+    top: 6px;
+}
+
+.q6-tutorial-step--current{
+    color: #3b3b3b;
+    border-style: solid;
+    border-color: #306eea;
+}
+
+.q6-tutorial-steps-round-delimeter--current > div:nth-of-type(2),
+.q6-tutorial-steps-round-delimeter--current > div{
+    border-color: #306eea;
+}
+
+.q6-tutorial-steps-round-delimeter--current > div:nth-of-type(2){
+    border-style: solid;
+}
+
+.q6-tutorial-step--current .q6-tutorial-step__title{
+    color: #306eea;
+}
+/* TEMPLATE */
+
+
+.q6-tutorial-content-title{
+    color: #525252;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.q6-tutorial-content p{
+    margin: 5px 0;
+    line-height: 20px;
+    font-size: 15px;    
+    max-width: 920px;
+}
+
+.q6-tutorial-video-container {
+    display: block;
+    width: 560px;
+    height: 315px;
+    background: black;
+    position: relative;
+}
+
+.q6-tutorial-video-container--image-background{
+    background-image: url(../img/tutorial-video-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q6-tutorial-video-container > video{
+    width: 100%;
+    height: 100%;
+}
+
+.playpause {
+    background-image: url(../img/play_icon.svg);
+    background-repeat: no-repeat;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+
+
+
+.q6-tutorial-video__initial-controls{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;    
+
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.q6-tutorial-video__playbtn{
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 50%;
+    margin-right: 17px;
+
+    background-image: url(../img/play_icon.svg);
+    background-repeat: no-repeat;    
+    background-position: center;
+    background-position: 15px center;
+    background-size: 14px 16px;
+}
+
+
+.q6-tutorial-intro{
+    display: flex;
+    padding-top: 20px;
+}
+
+.q6-tutorial-intro__left{
+    margin-right: 70px;
+}
+
+.q6-tutorial-intro__right{
+    /* max-width: 420px; */
+    flex: 1;
+}
+
+.q6-tutorial-intro-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;    
+    margin-bottom: 15px;
+}
+
+.q6-tutorial-intro-header--fluid{
+    min-height: 0px;
+}
+
+.q6-tutorial-intro-header p{
+    margin-bottom: 0;
+    color: #363940;
+}
+
+.q6-tutorial-intro-header .q6-tutorial-content-title{
+    margin: 0;
+}
+
+.q6-tutorial-link-block{
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 25px 25px;
+    border: 1px solid white;
+    box-sizing: border-box;
+    border-radius: 7px;
+    color: #525252;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;    
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.q6-tutorial-link-block:hover{
+    border-color:#306eea;
+    color: #525252;
+    text-decoration: none;
+}
+
+.q6-tutorial-link-text{
+    flex: 1;
+    margin: 0 20px;
+    color: #3270e9;
+}
+
+.q6-tutorial-link-text p{
+    font-weight: normal;
+}
+
+.q6-tutorial-link-icon{
+    height: 60px;
+    min-width: 60px;
+    background-size: 59px 60px;
+    background-repeat: no-repeat;    
+}
+
+.q6-tutorial-link-icon--ui{
+    background-image: url(../img/tutorial_ui_icon.svg);
+    background-size: 54px 54px;
+    background-position: center;    
+}
+
+.q6-tutorial-link-icon--api{
+    background-image: url(../img/tutorial_api_icon.svg);
+}
+
+.q6-tutorial-link-icon--output{
+    background-image: url(../img/tutorial_output_icon.svg);
+}
+
+.q6-tutorial-link-icon--template{
+    background-image: url(../img/tutorial_template_icon.svg);
+}
+
+.q6-tutorial-link-icon--settings{
+    background-image: url(../img/tutorial_settings_icon.svg);
+}
+
+.q6-tutorial-next-icon{
+    height: 32px;
+    min-width: 32px;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;    
+    background-image: url(../img/link_button.png);    
+}
+
+.q6-tutorial-link-block-container{
+    margin-bottom: 20px;
+}
+
+
+/* TUTORIAL CONTENT HEADER */
+.q6-tutorial-content-header{
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.q6-tutorial-content-header > div{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-content-header__links{
+    flex: 1;
+    justify-content: flex-end;
+    margin-left: 30px;
+}
+
+
+.q6-tutorial-content-header label{
+    color: #363940;
+    font-size: 16px;
+    margin: 0;
+    margin-right: 10px;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.q6-tutorial-content-header a{
+    color: #979ca6;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 15px;    
+}
+
+.q6-tutorial-content-header a:hover{
+    text-decoration: underline;
+    color: #787d87;
+}
+
+.q6-tutorial-content-header a:last-of-type{
+    margin-right: 0;
+}
+
+
+.q6-tutorial-dd-selector{
+    background: #e9f0fc;
+    color: #306eea;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    cursor: pointer; 
+    position: relative; 
+}
+
+.q6-tutorial-dd-selector__selected{
+    display: flex;
+    align-items: center;  
+    justify-content: flex-end;
+    font-size: 16px;
+    line-height: 20px;    
+}
+
+.q6-tutorial-dd-selector__selected:after {
+    content: "";
+    margin-left: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 4px solid #366fe0;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+
+.q6-tutorial-dd-selector__list{
+    display: none;
+    position: absolute;
+    right: -1px;
+    text-align: right;
+    background: white;
+    top: -11px;
+    border: 1px solid #306eea;
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.q6-tutorial-dd-selector__list > div{
+    padding: 7px 14px;
+    padding-right: 31px;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 20px;    
+}
+
+.q6-tutorial-dd-selector__list > div:hover{
+    background: #e9f0fc;
+}
+
+.q6-tutorial-dd-selector__list > div:first-of-type{
+    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+}
+
+.q6-tutorial-dd-selector__list > div:first-of-type:after{
+    content: "";
+    margin-left: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 4px solid #366fe0;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;    
+}
+
+.q6-tutorial-dd-selector__list > table{
+    border-collapse: collapse;
+}
+
+.q6-tutorial-dd-selector__list > table td{
+    padding: 0 14px;
+    line-height: 32px;
+    white-space: nowrap;   
+    text-align: left; 
+}
+
+
+.q6-tutorial-dd-selector__list > table tr:hover{
+    background: #e9f0fc;
+}
+
+.q6-tutorial-dd-selector__list > table tr:first-of-type td:last-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.q6-tutorial-dd-selector__list > table tr:first-of-type td:last-of-type:after{
+    content: "";
+    margin-left: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 4px solid #366fe0;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;    
+}
+
+.q6-tutorial-demo-videos tr td:nth-of-type(2){
+    color:#878787;
+}
+
+.q6-tutorial-demo-videos tr td:nth-of-type(3){
+    color: #fb6614;
+    font-size: 10px;
+    font-weight: 600;
+}
+/* TUTORIAL CONTENT HEADER */
+
+/* TUTORIAL CONTENT */
+.q6-tutorial-add-video-button-container{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.q6-tutorial-add-video-button-container .q6-button{
+    margin: 0;
+}
+
+.q6-tutorial-vertical-delimeter{
+    height: 24px;
+    width: 1px;
+    background: #e9effb;
+    margin: 0 auto
+}
+
+.q6-tutorial-add-video-block{
+    background: white;
+    padding: 25px 30px;
+    border-radius: 7px;
+    position: relative;
+    box-shadow: 0px 1px 2px 1px rgba(79, 79, 79, 0.08);
+}
+
+.q6-tutorial-add-video-block:first-of-type{
+    margin-top: 70px;
+}
+
+.q6-tutorial-videos-delimeter{
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 19px;
+    line-height: 22px;
+    border: 1px solid #e9effb;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+
+.q6-tutorial-videos-delimeter-container{
+    text-align: center;
+    margin-bottom: -60px;
+}
+
+.q6-tutorial-inputs-block__controls{
+    position: absolute;
+    top: -45px;
+    white-space: nowrap;
+}
+
+.q6-tutorial-add-videos-container{
+    max-width: 920px;
+}
+
+.q6-tutorial-inputs-block--max-width .q6-tutorial-add-videos-container {
+    max-width: none;
+}
+
+.q6-tutorial-add-video-block-container{
+    position: relative;
+}
+
+.q6-tutorial-add-video-block-container > .q6-button{
+    position: absolute;
+    right: 0;
+    top: 25px;    
+}
+
+.q6-tutorial-control{
+    display: inline-block;
+    font-weight: 500;
+    color: #838383;
+    font-size: 16px;
+    margin-right: 15px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    line-height: 28px;    
+}
+
+.q6-tutorial-control.q6-tutorial-control--active{
+    color: #306eea; 
+    border-color: #306eea;   
+}
+
+.q6-tutorial-controls__content{
+    display: none;
+}
+
+.q6-tutorial-controls__content.q6-tutorial-controls__content--active{
+    display: block;
+}
+
+.q6-tutorial-controls__content .q6-tutorial-dd-selector{
+    font-size: 15px;
+    background: none;
+    padding: 0;    
+}
+
+.q6-tutorial-controls__content .q6-tutorial-dd-selector__list{
+    top: -18px;
+    right: -15px;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-tutorial-dd-selector{
+    font-size: 14px;
+    background: none;
+    padding: 0;     
+    display: inline-block; 
+}
+
+.q6-tutorial-profile__parameters-selector .q6-tutorial-dd-selector__selected {
+    font-size: 14px;
+}
+
+.q6-tutorial-profile__parameters-selector  .q6-tutorial-dd-selector__list > div {
+    font-size: 14px;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-tutorial-dd-selector__list{
+    top: -18px;
+    right: -15px;    
+}
+
+.q6-tutorial-video-method__clip{
+    display: flex;
+}
+
+.q6-tutorial-video-method__clip .q6-input{
+    margin-right: 15px;
+    max-width: 105px;
+}
+
+.q6-tutorial-video-method__clip > .q6-input{
+    max-width: none;
+}
+
+.q6-tutorial-clip-timers{
+    display: flex;
+}
+
+.q6-tutorial-video-method__drag-and-drop{
+    border: 1px dashed #dae0ea;
+    border-radius: 7px;    
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    font-size: 16px; 
+    min-height: 90px;
+}
+
+.q6-tutorial-video-method__drag-and-drop--over{
+    border-color: #306eea;
+}
+
+.q6-tutorial-drag-and-drop__choose-file,
+.q6-tutorial-drag-and-drop__choose-another-file{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-drag-and-drop--blue-icon{
+    min-width: 49px;
+    height: 42px;
+    display: inline-block;
+    background-image: url(../img/blue_cloud.svg);
+    background-repeat: no-repeat;  
+    margin-right: 20px;  
+}
+
+.q6-file-uploaded--blue-icon{
+    min-width: 32px;
+    height: 44px;
+    display: inline-block;
+    background-image: url(../img/video_file.svg);
+    background-repeat: no-repeat;  
+    margin-right: 20px;     
+}
+
+.q6-delete-selected-file{
+    cursor: pointer;
+    font-weight: 600;
+    color: #e03636;
+}
+
+.q6-tutorial-video-method__drag-and-drop strong{
+    font-weight: 600;
+}
+
+.q6-drag-and-drop-filename{
+    font-weight: 600;
+    text-align: center;    
+}
+
+.q6-file-upload-progress-container{
+    display: flex;
+    align-items: center;
+}
+
+.q6-file-upload-progress__bar{
+    background: #f0f3f7;
+    height: 10px;
+    min-width: 365px;
+    border-radius: 10px;
+    margin: 0 8px;
+    position: relative;
+}
+
+.q6-file-upload-progress__bar > div {
+    position: absolute;
+    height: 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #94ceff , #b0ddff);
+}
+
+.q6-button.q6-button--round.q6-button--upload-cancel{
+    background: #e22935;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin: 0;   
+    margin-left: 12px; 
+}
+
+.q6-button.q6-button--round.q6-button--upload-cancel:hover{
+    background: #f03e4a;
+}
+
+.q6-button.q6-button--upload-cancel:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 7px;
+    left: 7px;
+    width: 6px;
+    height: 6px;
+    background-image: url(../img/x_icon.svg);
+}
+
+.q6-upload-progress-status{
+    color: #306eea;
+    font-size: 16px;
+    font-weight: 500;    
+    display: flex;
+    align-items: center;    
+}
+
+.q6-upload-progress-status .q6-small-loader{
+    margin: 0;
+    margin-right: 5px;
+}
+
+.q6-tutorial-video-method__drag-and-drop label{
+    color: #366fe0;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+.q6-tutorial-video-method__drag-and-drop input{
+    display: none;
+}
+
+.q6-drag-and-drop-message{
+    display: inline-block;
+}
+
+.q6-drag-and-drop-message--file{
+    display: inline-block;
+}
+
+
+.q6-tutorial-codeblock-container{
+    margin: 15px 0;
+    border-radius: 7px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    max-width: 920px;
+}
+
+.q6-tutorial-codeblock__example{
+    display: flex;
+}
+
+.q6-tutorial-codeblock-code{
+    flex:1;
+    position: relative;
+    overflow-x: auto;
+}
+
+.q6-tutorial-codeblock-container .hljs{
+    background: white;
+}
+
+.q6-tutorial-codeblock-container code{
+    font-size: 14px;
+    padding: 20px 20px;
+    padding-bottom: 30px;
+}
+
+.q6-tutorial-codeblock-container pre{
+    margin: 0;
+    background: white;
+    padding: 0;
+    line-height: 16px;
+    max-height: 325px;
+}
+
+.q6-tutorial-codeblock__result{
+    padding-left: 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.q6-tutorial-codeblock-controls{
+    width: 30px;
+    min-width: 30px;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.q6-btn_run-code{
+    height: 18px;
+    min-width: 18px;
+    background-repeat: no-repeat;
+    background: white;
+    border-radius: 50%;    
+    background-image: url(../img/run_code.svg);    
+    cursor: pointer;
+}
+
+.q6-btn_run-code:hover {
+    opacity: 0.8;
+}
+
+.q6-tutorial-buttons{
+    text-align: right;
+    margin-top: 15px;
+    max-width: 920px;
+}
+
+.q6-tutorial-buttons.q6-tutorial-buttons--inline > .q6-button{
+    width: initial;
+    min-width: 240px;
+}
+
+.q6-tutorial-buttons--max-width{
+    max-width: none;
+}
+
+.q6-tutorial-buttons > .q6-button{
+    padding: 12px 36px;
+    margin-right: 25px;
+    margin-top: 15px;
+    line-height: initial;
+    width: 100%;
+}
+
+.q6-tutorial-buttons > .q6-button:last-of-type{
+    margin-right: 0;
+}
+
+
+.q6-tutorial-codeblock-code > .q6-button {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+}
+
+.q6-tutorial-codeblock-code:hover .q6-button{
+    display: block;
+}
+
+
+.q6-tutorial-inputs-block{
+    background: white;
+    padding: 30px 30px;
+    border-radius: 7px;
+    margin: 25px 0;  
+    padding-top: 20px;
+    min-width: 650px;
+    box-sizing: border-box;
+    max-width: 920px;
+    box-shadow: 0px 1px 2px 1px rgba(79, 79, 79, 0.08);
+}
+
+
+.q6-tutorial-inputs-block--max-width{
+    max-width: none;
+}
+
+.q6-tutorial-inputs-block--wide{
+    max-width: 1020px;
+}
+
+
+.q6-tutorial-inputs-block .q6-input input[type=text]:disabled.q6-input__field,
+.q6-tutorial-inputs-block .q6-input .q6-select:disabled {
+    color: #3270eb;
+    font-weight: 400;
+}
+
+.q6-tutorial-inputs-block--inline{
+    display: inline-block;
+    min-width: 420px;
+}
+
+.q6-tutorial-inputs-block--transcoding-profiles{
+    max-width: 972px;
+}
+
+.q6-tutorial-inputs-block--transcoding-profiles.q6-tutorial-inputs-block--transcoding-profiles_wide{
+    max-width: 1024px;
+}
+
+.q6-tutorial-inputs-block--equal-padding{
+    padding: 20px 30px;
+}
+
+.q6-tutorial-inputs__message{
+    font-size: 15px;
+    font-weight: 500;
+    color: #525252;    
+    display: inline-flex;
+    align-items: center;    
+}
+
+.q6-tutorial__transfer-method-id{
+    color: #3270e9;
+    margin: 0 10px;
+}
+
+.q6-tutorial-inputs__message .q6-button.q6-button--copy{
+    margin: 0;
+}
+
+.q6-tutorial-inputs__message .q6-button.q6-button--copy:before {
+    margin-right: 4px;
+}
+
+.q6-tutorial-inputs-block--has-controls{
+    position: relative;
+    margin-top:60px;
+}
+/* TUTORIAL CONTENT */
+
+/* TUTORIAL PROFILES */
+.q6-tutorial-profiles-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;    
+}
+
+.q6-tutorial-profiles-buttons{
+    width: 100%;
+    margin: 0 12px;
+}
+
+.q6-tutorial-profiles-buttons .q6-button{
+    width: 100%;
+}
+
+.q6-tutorial-profile{
+    box-sizing: border-box;
+
+    color: #444444;
+    font-size: 14px;
+
+    width: 288px;
+
+    position: relative;
+
+    background: white;
+    padding: 0;
+    border-radius: 7px;
+    min-width: 288px;
+    margin-left: 12px;
+    margin-right: 12px;
+    border: 1px solid #f0f1f2;
+    max-width: 288px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;    
+}
+
+
+.q6-tutorial-profile .q6-input.q6-input--horizontal-switch{
+    margin: 0;
+}
+.q6-tutorial-profile .q6-input.q6-input--horizontal-switch .q6-input__label {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.q6-tutorial-profile .q6-switch {
+    width: 32px;
+    min-width: 32px;
+    height: 16px;
+}
+.q6-tutorial-profile .q6-switch__slider:before {
+    height: 12px;
+    width: 12px;
+    left: 3px;
+    bottom: 2px;
+}
+.q6-tutorial-profile input:checked + .q6-switch__slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+    background-color: #306eea;
+}
+.q6-tutorial-profile .q6-switch-container {
+    height: initial;
+}
+
+.q6-tutorial-profile .q6-checkbox input:checked ~ .q6-checkmark {
+    border-color: #306eea;;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkmark{
+    border-color: #306eea;;
+}
+
+
+.q6-tutorial-profile .q6-tutorial-profile__body .q6-checkmark {
+    height: 16px;
+    width: 16px;
+    top: -2px;
+}
+
+.q6-tutorial-profile .q6-tutorial-profile__body .q6-checkbox .q6-checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.q6-select-all-checkboxes{
+    cursor: pointer;
+}
+
+.q6-tutorial-profile-details th.q6-select-all-checkboxes{
+    color: #316fea;
+    font-weight: 500;
+}
+
+.q6-tutorial-profile--add-new{
+    min-width: 250px;
+    border: 1px solid #f0f1f2;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+    padding: 20px;
+    min-height: 100px;
+}
+
+
+.q6-tutorial-profile__title{
+    white-space: nowrap;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.q6-tutorial-profile__title span{
+    color: #306eea;
+}
+
+.q6-tutorial-profile-details .q6-checkbox{
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0 15%;
+}
+
+.q6-tutorial-profile__parameters-selector{
+    border-collapse: collapse;    
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.q6-tutorial-profile__parameters-selector td{
+    padding: 0;
+    padding-right: 10px;
+}
+
+.q6-tutorial-profile__parameters-selector td:nth-of-type(2){
+    color: #366eea;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-select{
+    font-size: 14px;
+    padding: 5px;
+    padding-left: 10px;
+    font-weight: 400;
+    border: none;
+    background: #f0f5fe;
+    color: #366fe0;  
+    border-radius: 0;
+}
+
+.q6-tutorial-profile__parameters-selector .q6-custom-select:after {
+    border-top: 3px solid #366fe0;
+    border-right: 3px solid transparent;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+}
+
+
+.q6-tutorial-profile__parameters-selector tr:first-of-type .q6-select{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.q6-tutorial-profile__parameters-selector tr:last-of-type .q6-select{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.q6-tutorial-profile-details-container{
+    flex: 1;
+}
+
+.q6-tutorial-profile-details{
+    border-collapse: separate;
+    border-spacing: 0 0px;
+}
+
+
+.q6-tutorial-profile-details td{
+    padding: 7px 9px;
+    white-space: nowrap;
+}
+
+
+
+
+.q6-tutorial-profile-details th{
+    text-align: left;
+    padding: 3px 9px;
+    color: #a6a8af;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 1px solid #f0f1f2;
+}
+
+.q6-tutorial-profile-details th:first-of-type,
+.q6-tutorial-profile-details tbody td:first-of-type{
+    padding-left: 20px;
+    width: 56px;
+}
+.q6-tutorial-profile-details th:last-of-type,
+.q6-tutorial-profile-details tbody td:last-of-type{
+    padding-right: 20px;
+}
+
+.q6-tutorial-profile-details tfoot td{
+    padding-left: 30px;
+}
+
+.q6-tutorial-profile-details tbody td:first-of-type{
+    color: #306eea;
+}
+
+.q6-tutorial-profile-details tbody tr:hover td:nth-of-type(2),
+.q6-tutorial-profile-details tbody tr:hover td:nth-of-type(3){
+    color: #306eea;
+    cursor: pointer;
+}
+
+.q6-tutorial-profile-details tbody tr:hover td:last-of-type .q6-tutorial-profile-actions{
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;  
+}
+
+.q6-tutorial-profile-details tbody td:last-of-type .q6-tutorial-profile-actions {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+
+
+.q6-tutorial-profile-details tbody tr td:last-of-type {
+    padding: 0 5px;
+    min-width: 30px;
+    position: relative;
+}
+
+
+/* profile block */
+.q6-tutorial-profile__header{
+    padding: 7px 20px;
+    padding-right: 15px;
+    background: #f4f8ff;
+    position: relative;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;    
+}
+
+.q6-tutorial-profile__header > .q6-tutorial-profile-actions {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 9999;
+
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+.q6-tutorial-profile__header:hover > .q6-tutorial-profile-actions,
+.q6-tutorial-profile__header:hover .q6-input__field--view .q6-tutorial-profile-actions {
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial; 
+}
+
+.q6-tutorial-profile__header .q6-input__field--view .q6-tutorial-profile-actions{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+
+.q6-tutorial-profile__header .q6-tutorial-profile-actions__icon {
+    background-color: white;
+}
+
+
+.q6-tutorial-profile__header 
+    .q6-input__field--view {
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 100%;
+
+    font-size: 16px;
+    padding: 5px 14px;
+    padding-left: 0;
+    padding-right: 25px;
+    font-weight: 500;    
+}
+
+.q6-tutorial-profile__header  .q6-input__label{
+    margin: 0;
+}
+
+.q6-tutorial-profile__header 
+    .q6-input__field--action-btns input[type=text].q6-input__field {
+    max-width: 100%;
+    font-size: 16px;
+    padding: 5px 14px;
+    font-weight: 500;
+}
+
+.q6-tutorial-profile__body{
+    flex: 1;
+}
+
+.q6-tutorial-profile__body-summary{
+    padding: 5px 20px;
+    padding-right: 15px;
+    line-height: 25px;
+}
+
+.q6-tutorial-profile__body-table{
+    
+}
+
+.q6-tutorial-profile__body-table .q6-tutorial-profile-details {
+    width: 100%;
+}
+
+.q6-tutorial-profile__footer{
+    border-top: 1px solid #f0f1f2
+}
+
+.q6-tutorial-profile__footer-checkbox{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow: hidden;    
+}
+
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox {
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+
+    background: #f4f8ff;
+    margin: 0;
+
+    font-size: 13px;    
+    color: #366fe0;
+    font-weight: 500;    
+
+    position: relative;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox:hover{
+    background: #ebf1fa;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkmark {
+    border-color: #366fe0;
+    position: relative;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkmark {
+    border-color: #366fe0;
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark {
+    background-color: white;
+    border-color: white;
+}
+
+.q6-tutorial-profile__footer-checkbox .q6-checkbox input:checked ~ .q6-checkmark:after {
+    border: solid #366fe0;
+    border-width: 0 2px 2px 0;
+}
+
+.q6-checkbox-fullsize-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+input:checked + .q6-checkbox-fullsize-container {
+    background: #366fe0;
+    color: white;
+}
+
+input:checked + .q6-checkbox-fullsize-container .q6-checkmark {
+    background-color: white;
+
+    background-image: url(../img/ok_blue.svg);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+input:not(:checked) + .q6-checkbox-fullsize-container .q6-checkbox-message .q6-checkbox-message--off {
+    display: block;
+}
+
+input:checked + .q6-checkbox-fullsize-container .q6-checkbox-message .q6-checkbox-message--on {
+    display: block;
+}
+
+.q6-checkbox-message--on{
+    display: none;
+}
+
+.q6-checkbox-message--off{
+    display: none;
+}
+
+
+
+
+
+.q6-tutorial-profile__footer .q6-tutorial-profile__footer-more-settings{
+    padding: 10px 20px;
+}
+
+.q6-tutorial-profile__footer .q6-button {
+    width: 100%;
+}
+.q6-tutorial-profile__footer p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #7f7a7a;
+}
+/* profile block */
+
+.q6-tutorial-profile-header{
+    display: flex;
+    align-items: center;    
+    position: relative;
+}
+
+.q6-tutorial-profile-footer{
+    margin-top: 10px;
+}
+
+.q6-tutorial-profile-footer .q6-button{
+    width: 100%;
+}
+
+.q6-tutorial-profile-footer p{
+    margin: 0;
+    margin-top: 5px;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #7f7a7a;    
+}
+
+.q6-tutorial-profile-actions__icon{
+    cursor: pointer;
+    width: 23px;
+    height: 23px;    
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 50%;
+    position: relative;
+    background-position: center; 
+}
+
+.q6-tutorial-profile-actions__icon:last-of-type{
+    margin-right: 0;
+}
+
+.q6-input__field--action-btns.q6-input__field--action-btns__two-btns .q6-tutorial-profile-actions__icon{
+    margin-right: 8px;
+}
+.q6-input__field--action-btns.q6-input__field--action-btns__two-btns .q6-tutorial-profile-actions__icon:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-profile-actions__icon:hover{
+    background-color: #f0f5fe;
+}
+
+
+.q6-tutorial-profile-actions__icon .q6-tutorial-profile__form{
+    left: 0;
+    top: -12px;
+}
+
+
+.q6-tutorial-profile-details__delete{
+    background-image: url(../img/profiles_delete_icon.svg);    
+    background-size: 12px 12px;  
+}
+
+.q6-tutorial-profile-details__delete-profile{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+.q6-tutorial-profile-details__delete-profile:hover{
+    background-color: #fedfdf;
+}
+
+.q6-tutorial-profile-details__edit{
+    background-image: url(../img/profiles_edit_icon.svg);    
+    background-size: 12px 12px;    
+}
+
+.q6-tutorial-profile-details__copy{
+    background-image: url(../img/profiles_copy_icon.svg);     
+    background-size: 12px 12px;  
+}
+
+.q6-tutorial-profile-actions__icon.q6-tutorial-profile-details__confirm{
+    background-color: #3470e2;
+    background-image: url(../img/ok.svg);
+    background-size: 10px;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+}
+
+.q6-tutorial-profile-actions__icon.q6-tutorial-profile-details__cancel{
+    background-color: #bcc0c9;
+    background-image: url(../img/no.svg);   
+    background-size: 8px; 
+    width: 20px;
+    height: 20px;    
+    margin-top: 2px;
+}
+
+.q6-tutorial-profile-actions__icon.q6-tutorial-profile-details__confirm:hover{
+    background-color: #0E62DD;
+}
+
+.q6-tutorial-profile-actions__icon.q6-tutorial-profile-details__cancel:hover{
+    background-color: #A6AAB2;
+}
+
+.q6-tutorial-profile-details__play{
+    width: 16px;
+    height: 16px;
+    background-color: #306eea;
+    background-image: url(../img/play_icon_white.svg);
+    background-size: 5px 6px;
+}
+
+.q6-tutorial-profile-details__play:hover{
+    background-color: #245bc9;
+}
+
+
+
+.q6-tutorial-profile__add-custom{
+    color: #366fe0;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+}
+
+.q6-tutorial-profile__form{
+    display: none;
+    position: absolute;
+    top: -15px;
+    left: 99px;
+    padding: 15px 30px;
+    background: white;
+    border: 2px solid #366fe0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    box-shadow: 0px 3px 13px 1px rgba(105, 109, 112, 0.41);
+    cursor: default;
+    z-index: 1;
+}
+
+.q6-tutorial-profile__form--profile-name{
+    top: -105px;
+    left: 65px;
+}
+
+.q6-tutorial-profile__form.q6-tutorial-profile__form--profile-name:before {
+    position: absolute;
+    content: '';
+    border-style: solid;
+    top: initial;
+    bottom: -8px;
+    border-width: 0 8px 8px 8px;
+    left: 40px;
+    border-color:  transparent transparent #366fe0 transparent;
+}
+
+.q6-tutorial-profile__form .q6-input-and-buttons--inline {
+    flex-wrap:nowrap;
+}
+
+.q6-tutorial-profile__form .q6-button,
+.q6-tutorial-profile__form input[type=text].q6-input__field,
+.q6-tutorial-profile-header .q6-tutorial-profile__form input[type=text].q6-input__field{
+    padding: 0 13px;
+    line-height: 32px;
+    font-size: 15px;
+}
+
+.q6-tutorial-profile-header .q6-tutorial-profile__form input[type=text].q6-input__field{
+    margin: 0;
+    max-width: 100%;
+}
+
+.q6-tutorial-profile__form .q6-input-and-buttons--inline .q6-input.q6-input--profile-name{
+    min-width: 210px;
+}
+
+.q6-tutorial-profile__form .q6-input__label{
+    font-size: 14px;
+}
+
+.q6-tutorial-profile__form .q6-input-and-buttons--inline .q6-input {
+    margin-top: 0;
+    min-width: 80px;
+}
+
+.q6-tutorial-profile__form:before {
+    position: absolute;
+    content: '';
+    border-style: solid;
+    top: 10px;
+    border-width: 12px 0 12px 12px;
+    left: -12px;
+    border-color:  transparent transparent transparent #366fe0 ;   
+    transform: rotate(0.5turn);
+}
+/* TUTORIAL PROFILES */
+
+/* CARDS SWITCH */
+.q6-tutorial-cards-switch{
+    display: flex;
+}
+
+.q6-tutorial-cards-switch__block{
+    border: 1px solid #e1e5ee;
+    border-radius: 6px;
+    margin: 10px 0;
+    margin-right: 20px;
+    padding: 15px;
+    cursor: pointer;
+    flex: 1;
+    display: flex; 
+    max-width: 300px;  
+    box-sizing: content-box;
+    height: -moz-fit-content;
+    height: fit-content;
+}
+
+.q6-tutorial-cards-switch__block:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-cards-switch__block--active{
+    border-color:#366fe0;
+    background: #f5f9ff;
+}
+
+.q6-tutorial-cards-switch__block strong{
+    font-size: 16px;
+}
+
+.q6-tutorial-cards-switch__block--active strong{
+    color:#366fe0;
+}
+
+.q6-tutorial-cards-switch__icon{
+    box-sizing: border-box;
+    min-width: 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #e1e5ee;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+
+.q6-tutorial-cards-switch__block--active .q6-tutorial-cards-switch__icon{
+    background-image: url(../img/checked_blue.svg);
+    background-position: center;
+    border: none;
+}
+
+.q6-tutorial-cards-switch__title{
+    font-weight: 500;
+    color: #171717;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.q6-tutorial-cards-switch__info-box{
+    flex: 1;
+    margin-top: 10px;
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-around;
+    text-align: center;    
+}
+
+.q6-storage__details-icon-1, .q6-storage__details-icon-2 {
+    height: 46px;
+    min-width: 46px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.q6-storage__details-icon-1 {
+    background-size: 43px 43px;
+    background-image: url(../img/storage/storage.png);
+}
+
+.q6-storage__details-icon-2 {
+    background-size: 46px 46px;
+    background-image: url(../img/storage/transfer.png);
+}
+
+.q6-storage-details > div:nth-of-type(2) {
+    font-weight: 600;
+    color: #316fea;
+    margin-top: 6px;
+}
+
+.q6-storage-details > div:nth-of-type(3) {
+    color: #868686;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.q6-storage__price{
+    font-weight: 600;
+    color: #316fea;
+    text-align: center;
+    font-size: 19px;
+    line-height: 35px;
+    border-bottom: 1px solid #a1c2fa;    
+}
+
+.q6-storage__extra{
+    border-top: 1px solid #a1c2fa;  
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+.q6-storage__extra p{
+    color: #868686;
+    font-size: 15px;
+    line-height: 18px;    
+}
+/* CARDS SWITCH */
+
+
+.q6-tutorial-input-with-comment{
+    display: flex;
+}
+
+.q6-tutorial-input-with-comment .q6-input{
+    margin: 10px 0;
+}
+
+.q6-tutorial-input-with-comment__comment{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    max-width: 340px;
+    padding-left: 25px;
+    margin-left: 25px;
+    border-left: 1px solid #e4e6ea;    
+}
+
+
+.q6-tutorial-inputs-block--warning {
+    border: 1px solid #265cc5;
+}
+
+.q6-tutorial-inputs-block--warning .q6-tutorial-controls__content .q6-input-and-buttons--inline{
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.q6-tutorial-content-warning-message{
+    text-align: center;
+    font-size: 18px;
+    color: #363940;
+    font-weight: 500;
+    margin: 30px 0;    
+}
+
+.q6-tutorial-input-and-info{
+    display: flex;
+    align-items: flex-start;
+    max-width: 920px;
+}
+
+.q6-tutorial-input-and-info .q6-input{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 0;
+}
+
+.q6-tutorial-input-and-info__info{
+    flex: 1;
+}
+
+.q6-tutorial-input-and-info .q6-switch{
+    margin: 7px 0;
+    margin-right: 15px;    
+}
+
+
+/* COPY CODE FLASH MESSAGE */
+.q6-tutorial-code-block-flash-message{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: #e8f0fb;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 7px;
+    color: #306eea;
+    box-sizing:border-box;
+    box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);
+}
+
+.q6-tutorial-code-block-flash-message > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.q6-tutorial-code-block-flash-message > div img{
+    margin-right: 10px;
+    height: 22px;
+    width: 22px;
+}
+/* COPY CODE FLASH MESSAGE */
+
+
+/* TRANSCODING PROGRESS */
+.q6-transcoding-progress{
+    display: flex;
+}
+
+.q6-transcoding-errors{
+    background: #ffefef;
+    margin-top: 30px;
+    padding: 25px 25px;
+    border-radius: 10px;
+    color: #d64a4a;   
+    display: flex; 
+    align-items: flex-start;
+}
+
+.q6-transcoding-errors__icon{
+    background-image: url(../img/error_text.svg);
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    width: 45px;
+    height: 36px;
+    min-width: 45px;   
+    margin-right: 25px; 
+}
+
+.q6-transcoding-errors > .q6-button{
+    background-color: #ff6161;
+    font-size: 15px;
+    padding: 6px 14px;  
+    border-color: #ff6161;  
+}
+
+.q6-transcoding-errors > .q6-button:hover{
+    background-color: #ea5959; 
+    border-color: #ea5959; 
+}
+
+.q6-transcoding-errors__list{
+    margin-left: 10px;
+    margin-right: 60px;
+    flex: 1;
+}
+
+.q6-transcoding-errors__list > div{
+    font-weight: 500;
+}
+
+
+.q6-transcoding-errors__list > p{
+    font-size: 14px;
+    color: #787878;
+    line-height: 17px;
+}
+
+.q6-transcoding-progress-block{
+    flex: 1;
+    margin-top: 10px;
+}
+
+.q6-transcoding-progress__bar{
+    height: 18px;
+    width: 100%;
+    background: #f0f3f7;
+    margin: 10px 0;
+    position: relative;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar{
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar{
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+}
+
+.q6-transcoding-progress__bar:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #b6c4cc;
+    left: 0px;
+    top: 5px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar:before {
+    left: 6px;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block--finished:first-of-type 
+    .q6-transcoding-progress__bar:before {
+    left: 1px;
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar:before {
+    left: initial;
+    right: 6px;
+}
+
+.q6-transcoding-progress-block.q6-transcoding-progress-block--error
+    .q6-transcoding-progress__status{
+    color: #d64a4a;
+}   
+
+.q6-transcoding-progress-block.q6-transcoding-progress-block--error
+    .q6-transcoding-progress__date{
+    color: #d64a4a;
+}   
+
+.q6-transcoding-progress-block.q6-transcoding-progress-block--after-error
+    .q6-transcoding-progress__status{
+    color: #9e9e9e;
+}   
+
+.q6-transcoding-progress__status{
+    font-size: 14px;
+    font-weight: 500; 
+    line-height: 17px;  
+    color: #9e9e9e;
+    white-space: nowrap;
+    padding: 0 6px;
+    width: 85px;
+    min-width: 85px;
+    padding-left: 0;
+}
+
+.q6-transcoding-progress-block--finished .q6-transcoding-progress__status {
+    color: #171717;
+}
+
+.q6-transcoding-progress__status span{
+    color: #306eea;
+    font-size: 16px;
+}
+
+.q6-transcoding-progress__date{
+    font-size: 14px;
+    color: #838383;
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+
+.q6-transcoding-progress-block--current .q6-transcoding-progress__status {
+    color: #306eea;
+}
+
+.q6-transcoding-progress-block--current .q6-transcoding-progress__bar:before{
+    background: #306eea;
+}
+
+.q6-transcoding-progress-block--finished .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;    
+    background-image: url(../img/checked_blue.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--error .q6-transcoding-progress__bar:before {
+    width: 16px;
+    height: 16px;
+    background-color: #ff6161;
+    border-radius: 50%;
+    background-image: url(../img/white_cross.svg);
+    background-size: 6px 6px;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--after-error .q6-transcoding-progress__bar:before {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    background-image: url(../img/checked_gray.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--finished 
+    .q6-transcoding-progress-block:first-of-type .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;    
+    background-image: url(../img/checked_blue.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 1px;
+    top: 1px;
+}
+
+.q6-transcoding-progress--finished  
+    .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar:before{
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/checked_blue.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: initial;
+    right: 1px;
+    top: 1px;
+}
+
+.q6-transcoding-progress-block--finished .q6-transcoding-progress__bar{
+    background: #d7edff;
+}
+
+
+.q6-transcoding-progress-block--last-finished .q6-transcoding-progress__bar {
+    width: calc(100% + 15px);
+    z-index: 1;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-image: linear-gradient(to right, #d7edff , #e5f4ff);
+}
+
+.q6-transcoding-progress 
+    .q6-transcoding-progress-block--finished:last-of-type .q6-transcoding-progress__bar:before {
+    right: 1px;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block:last-of-type{
+    text-align: right;
+    flex: 0.6;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block:nth-last-of-type(2){
+    flex: 0.5;
+}
+
+.q6-transcoding-progress .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__status{
+    padding-right: 0;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.q6-small-loader {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background-image: url(../img/loader.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 2px;
+}
+/* TRANSCODING PROGRESS */
+
+
+/* TRANSCODING PROGRESS TABLE */
+.q6-tutorial-files-table{
+    margin-bottom: 50px;
+    overflow-x: auto;
+}
+
+.q6-tutorial-results-title{
+    color: #3270e9;
+    font-size: 22px;
+    font-weight: 500;    
+    margin-bottom: 15px;
+}
+
+.q6-tutorial-files-table__header{
+    display: flex;
+    min-width: fit-content;
+    background: #e2e6ee;
+    border-radius: 8px;    
+}
+
+
+.q6-tutorial-files-table__row{
+    display: flex;
+    flex:1;
+}
+
+.q6-tutorial-files-table__info{
+    background: #f7f8fa;
+    padding: 20px 25px;
+    margin: 10px 0;    
+}
+
+.q6-tutorial-files-table__info .q6-tutorial-content-title{
+    margin-top: 0;
+}
+
+.q6-tutorial-files-table__info-stats{
+    display: flex;
+    flex-wrap: wrap;  
+    font-size: 15px;  
+}
+
+.q6-tutorial-files-table__info-stats > div{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-tutorial-files-table__info-stats > div:last-of-type{
+    margin-right: 0;
+}
+
+.q6-tutorial-files-table__info-stats > div span{
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.q6-tutorial-files-table__info-stats > div:first-of-type span{
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 195px;
+    display: inline-block;    
+}
+
+.q6-tutorial-copy-url-btn{
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    background-position: center;
+
+    background-image: url(../img/profiles_copy_icon.svg);
+    background-size: 12px 12px;    
+}
+
+.q6-tutorial-copy-url-btn:hover {
+    background-color: white;
+}
+
+.q6-tutorial-files-table__dynamic-cell{
+    display: flex;
+    flex:1;
+    align-items: center;
+    min-width: calc(85px*5);
+    max-width: calc(85px*5);    
+}
+
+
+
+.q6-tutorial-files-table__cell-url a{
+    color: #575757;
+}
+
+.q6-tutorial-files-table__cell-url a:hover{
+    color: #306eea;
+    text-decoration: none;
+}
+
+.q6-tutorial-files-table__summary{
+    width: 255px;
+    min-width: 255px;
+    padding-left: 25px;
+}
+
+.q6-tutorial-files-table__cell{
+    padding: 6px 6px;
+    max-width: 85px;
+    min-width: 85px;
+    flex: 1;
+    white-space: nowrap;
+}
+
+
+.q6-tutorial-files-table__cell--sortable{
+    position: relative;
+    cursor: pointer;
+}
+.q6-tutorial-files-table__cell--sortable:after{
+    margin-bottom: 2px;
+    margin-left: 5px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid #343131;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+.q6-tutorial-files-table__cell--sortable.q6-tutorial-files-table__cell--sortedZA:after {
+    transform: rotate(180deg);
+}
+
+.q6-tutorial-files-table__body .q6-tutorial-files-table__cell{
+    min-height: 32px;
+}
+
+.q6-tutorial-files-table__cell--ratio{
+    max-width: 50px;
+    min-width: 50px;    
+}
+
+.q6-tutorial-files-table__cell--duration{
+    max-width: 75px;
+    min-width: 75px;   
+}
+
+.q6-tutorial-files-table__cell--size{
+    max-width: 75px;
+    min-width: 75px;   
+}
+
+
+
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell.q6-tutorial-files-table__cell--resolution:first-of-type{
+    max-width: 95px;
+    min-width: 95px;  
+}
+
+
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:first-of-type{
+    max-width: 105px;
+    min-width: 105px;
+}
+
+.q6-tutorial-files-table--input-files
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:first-of-type {
+    padding-left: 25px;
+    max-width: 170px;
+    min-width: 170px;
+}
+
+.q6-tutorial-files-table--input-files 
+    .q6-tutorial-files-table__body
+        .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:first-of-type {
+    color: #3270e9;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;    
+}
+
+.q6-tutorial-files-table--input-files
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:nth-of-type(3) {
+    max-width: 105px;
+    min-width: 105px;
+}
+
+.q6-tutorial-files-table__cell-url{
+    flex: 1;
+    word-wrap: break-word;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.q6-tutorial-files-table__header .q6-tutorial-files-table__block .q6-tutorial-files-table__row{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #171717;   
+}
+
+.q6-tutorial-files-table__block{
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    color: #575757;
+}
+
+.q6-tutorial-files-table__header .q6-tutorial-files-table__block{
+    margin: 0;
+}
+
+
+
+.q6-tutorial-files-table__progress-container{
+    background: #f0f3f7;
+    height: 10px;
+    width: 100%;
+    border-radius: 10px; 
+    margin: 0 6px;
+    position: relative;
+}
+
+.q6-tutorial-files-table__progress-bar{
+    position: absolute;
+    height: 10px;  
+    border-radius: 10px; 
+    background-image: linear-gradient(to right, #94ceff , #b0ddff);
+}
+
+.q6-tutorial-files-table__rows{
+    flex: 1;
+}
+
+.q6-tutorial-files-table__buttons{
+    max-width: 175px;
+    min-width: 175px;
+    padding-left: 6px;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--round.q6-button--play-video {
+    width: initial;
+    margin-right: 0;
+    padding: initial;
+    min-width: initial;
+    font-weight: 500;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--play-video:before {
+    left: 56px;
+}
+
+.q6-tutorial-files-table__buttons .q6-tutorial-files-table__action-buttons
+.q6-button.q6-button--round {
+    margin: 4px 0;
+}
+
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__body 
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
+    max-width: 85px;
+}
+
+
+.q6-tutorial-files-table--simple .q6-tutorial-files-table__header .q6-tutorial-files-table__dynamic-cell {
+    min-width: calc(85px*5);
+    max-width: calc(85px*5);
+}
+
+.q6-tutorial-files-table__cell-buttons{
+    display: flex;
+}
+
+.q6-tutorial-before-complete-message{
+    max-width: 100px;
+    text-align: center;
+    color: #828ca1;
+    line-height: 18px;    
+}
+
+.q6-tutorial-before-complete-message__icon{
+    display: inline-block;
+    height: 46px;
+    min-width: 58px;
+    background-image: url(../img/video_file_icon.png);
+    background-size: 58px 46px;
+    background-repeat: no-repeat;    
+}
+
+.q6-tutorial-files-table__cell-buttons .q6-button.q6-button--round{
+    margin: 0;
+    min-width: 80px;
+    line-height: 25px;
+    font-size: 14px;
+    min-width: 75px;
+}
+
+.q6-tutorial-files-table__action-buttons .q6-button{
+    line-height: 25px;
+    font-size: 14px;    
+}
+
+.q6-tutorial-files-table__action-buttons .q6-button--play-video{
+    padding: 0;
+}
+
+.q6-tutorial-files-table__cell-buttons .q6-button.q6-button--copy:before {
+    margin-right: 3px;
+}
+
+.q6-button.q6-button--round.q6-button--play-video,
+.q6-button.q6-button--round.q6-button--info{
+    width: 25px;
+    height: 25px;
+    min-width: 25px; 
+    margin-right: 8px;   
+    padding: 0;
+}
+
+.q6-button.q6-button--play-video:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 8px;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    background-image: url(../img/play_icon.svg);
+}
+
+.q6-button.q6-button--play-video:disabled:before {
+    background-image: url(../img/play_icon_disabled.svg);
+}
+
+
+.q6-button.q6-button--info:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 6px;
+    left: 10px;
+    width: 3px;
+    height: 13px;
+    background-image: url(../img/info_icon.svg);
+}
+
+.q6-button.q6-button--info:disabled:before {
+    background-image: url(../img/info_icon_disabled.svg);
+}
+
+.q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type{
+    max-width: 175px;
+    min-width: 175px;
+    /* padding: 0;    */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-files-table__summary
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:last-of-type {
+    max-width: initial;
+    min-width: initial;
+    padding: 6px 6px;
+}
+
+.q6-tutorial-files-table__summary
+    .q6-tutorial-files-table__row > .q6-tutorial-files-table__cell:first-of-type {
+    padding-left: 0;
+}
+
+.q6-button.q6-button--round.q6-button--copy-url{
+    padding: 0 10px;
+    font-weight: 500;
+}
+
+.q6-tutorial-files-table__summary-title{
+    color: #306eea;
+    font-size: 16px;    
+}
+
+.q6-tutorial-files-table__profile-name{
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;    
+}
+
+.q6-tutorial-files-table__summary p{
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.q6-tutorial-files-table__summary p strong{
+    font-weight: 600;
+}
+/* TRANSCODING PROGRESS TABLE */
+
+
+/* VIDEO PLAYER */
+.q6-modal--video-player{
+
+}
+
+.q6-modal--video-player .q6-button.q6-button--close-window{
+    top: -18px;
+    right: -34px;
+}
+
+.q6-modal--video-player .q6-video-preview-container {
+    margin: 0;
+    padding: 10px;
+    background: white;
+    border-radius: 13px;
+}
+
+.q6-video-player{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: #000;
+}
+
+
+.q6-modal--video-player .modal-dialog {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+@media (min-width: 320px){
+    .q6-modal--video-player .modal-dialog {
+        margin: 60px auto;
+    }
+}
+
+/* VIDEO PLAYER */
+
+.q6-tutorial-controls__content-checkboxes{
+    margin-top: 20px;
+}
+
+.q6-upgrade-account-window{
+    width: 520px;    
+}
+
+.q6-upgrade-account-window h2{
+    text-align: center;
+}
+
+
+.q6-tutorial-profile-actions{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-tutorial-two-colums{
+    display: flex;
+    align-items: center;
+}
+
+
+.q6-tutorial-two-colums .q6-switch{
+    margin-right: 20px;
+}
+
+.q6-tutorial-two-colums > .q6-tutorial-two-colums{
+    margin-right: 40px;
+}
+
+.q6-tutorial-content p.q6-tutorial-switch-message{
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.q6-tutorial-content-lists-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.q6-tutorial-content-list{
+    color: #4b4b4b;
+    font-size: 15px;
+    line-height: 25px;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 45px;    
+}
+
+.q6-tutorial-content-list li {
+    padding-left: 21px;
+    position: relative;
+}
+
+.q6-tutorial-content-list li:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 8px;
+    height: 6px;
+    width: 10px;
+    border-bottom: 2px solid #46d797;
+    border-left: 2px solid #46d797;
+    transform: rotate(-45deg);
+}
+
+.q6-tutorial-profile__name{
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 5px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;    
+    white-space: nowrap;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
+}
+
+.q6-tutorial-profile-header .q6-tutorial-profile-actions {
+    margin-bottom: 2px;
+}
+
+.q6-tutorial-profile__name span{
+    color: #306eea;
+    display: inline-block;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 98px;
+    margin-left: 5px;
+}
+
+.q6-tutorial-profile-header input[type=text].q6-input__field{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px 7px;
+    width: initial;
+    max-width: 94px;
+    margin-left: 5px;
+}
+
+
+.q6-modal--video-player .modal-content {
+    width: max-content;
+    height: max-content;
+}
+
+.q6-modal--video-player .modal-dialog {
+    width: max-content;
+    height: max-content;
+}
+
+
+
+.q6-input-and-buttons--inline-view{
+    display: block;
+    max-width: 620px;
+}
+
+.q6-input-and-buttons--inline-view .q6-input {
+    display: inline-block;
+}
+
+.q6-input.q6-input--bucket-name,
+.q6-input.q6-input--cors-origin{
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+
+
+
+
+@media (max-width: 1160px){
+    .q6-tutorial-intro {
+        flex-direction: column;
+    }
+    .q6-tutorial-intro__right {
+        max-width: 560px;
+        margin: 0 auto;
+    }    
+    .q6-tutorial-intro__left {
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }    
+}
