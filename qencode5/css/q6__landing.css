@@ -1271,7 +1271,62 @@ a.q6-button{
     text-align: center;    
 }
 
+
+.q6-card.q6-card--header > div:first-of-type {
+    position: relative;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--st-val{
+    position: absolute;
+    top: -30px;    
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--st-val > a {
+    background-color: #fdeff1;
+    color: #f98f98;
+    white-space: nowrap;
+
+    line-height: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;    
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--st-val > a:after {
+    border-bottom: 1px solid #f98f98;
+    border-right: 1px solid #f98f98;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--st-val > a:hover {
+    background-color: #ffebee;
+    box-shadow: 0px 1px 6px 1px rgba(249, 143, 152, 0.1);
+}
+
+.q6-stval-icon{
+    display: inline-block;
+
+    width: 18px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    background-image: url(../img/heart.png);
+
+    position: relative;
+    top: 2px;
+    margin: 0 1px;
+}
+
 @media screen and (max-width: 1024px){
+    .q6-demo-links-buttons.q6-demo-links-buttons--st-val {
+        position: relative;
+        top: initial;
+        width: fit-content;
+    }
+
+    .q6-demo-links-buttons.q6-demo-links-buttons--st-val > a {
+        white-space: normal;
+    }    
+
     .q6-transcoding-demo__progress .q6-button {
         width: initial;
     }
