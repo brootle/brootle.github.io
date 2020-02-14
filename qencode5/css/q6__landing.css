@@ -1276,7 +1276,7 @@ a.q6-button{
     position: relative;
 }
 
-.q6-demo-links-buttons.q6-demo-links-buttons--st-val{
+.q6-card--header .q6-demo-links-buttons.q6-demo-links-buttons--st-val{
     position: absolute;
     top: -30px;    
 }
@@ -1316,8 +1316,33 @@ a.q6-button{
     margin: 0 1px;
 }
 
+.q6-stval-box p{
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.q6-stval-box{
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 70px;    
+}
+
+.q6-stval-box > div{
+    flex: 1;
+}
+
+.q6-stval-box__card{
+    padding: 12px 40px;
+    padding-right: 20px;
+    background-color: #fef6f8;
+    border-radius: 7px; 
+    margin-right: 40px;
+    max-width: 550px;
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 1024px){
-    .q6-demo-links-buttons.q6-demo-links-buttons--st-val {
+    .q6-card--header .q6-demo-links-buttons.q6-demo-links-buttons--st-val {
         position: relative;
         top: initial;
         width: fit-content;
@@ -1334,6 +1359,17 @@ a.q6-button{
     .q6-transcoding-demo__progress .q6-tutorial-files-table__summary {
         width: 180px;
         min-width: 180px;
+    }    
+}
+
+@media screen and (max-width: 1024px){
+    .q6-stval-box {
+        flex-direction: column;
+    }    
+
+    .q6-stval-box__card {
+        margin-right: 0px;
+        margin-bottom: 30px;
     }    
 }
 
@@ -1361,6 +1397,12 @@ a.q6-button{
     }    
 }
 
+@media screen and (max-width: 530px){
+    .q6-stval-box__card {
+        padding: 10px 20px;
+        padding-right: 14px;
+    }
+}
 /********************* NEW TRANSCODING DEMO   **************/
 
 
