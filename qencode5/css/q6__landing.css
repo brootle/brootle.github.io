@@ -1342,6 +1342,51 @@ a.q6-button{
     box-sizing: border-box;
 }
 
+
+/* transcoding progress for mobile  */
+@media screen and (max-width: 850px){
+    .q6-transcoding-demo-block .q6-transcoding-progress {
+        display: flex;
+        flex-direction: column;
+    }
+    .q6-transcoding-demo-block .q6-transcoding-progress-block--last-finished .q6-transcoding-progress__bar {
+        width: 100%;
+    } 
+    .q6-transcoding-demo-block .q6-transcoding-progress__bar {
+        border-radius: 15px;
+    }
+    .q6-transcoding-demo-block .q6-transcoding-progress__bar:before {
+        left: 5px;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress .q6-transcoding-progress-block--finished:first-of-type .q6-transcoding-progress__bar:before {
+        left: initial;
+        right: 1px;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress-block--finished .q6-transcoding-progress__bar:before {
+        left: initial;
+        right: 0;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress .q6-transcoding-progress-block:last-of-type {
+        text-align: left;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__status {
+        padding-left: 0;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress .q6-transcoding-progress-block:last-of-type .q6-transcoding-progress__bar:before {
+        left: 5px;
+    }    
+
+    .q6-transcoding-demo-block .q6-transcoding-progress .q6-transcoding-progress-block--finished:last-of-type .q6-transcoding-progress__bar:before {
+        left: initial;
+    }    
+}
+/* transcoding progress for mobile  */
+
 @media screen and (max-width: 1024px){
     .q6-card--header .q6-demo-links-buttons.q6-demo-links-buttons--st-val {
         position: relative;
