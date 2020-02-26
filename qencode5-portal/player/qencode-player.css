@@ -79,12 +79,6 @@
   height: 3px;
 }
 
-.video-js .vjs-progress-holder {
-	margin: 0px;
-	top: 0%;
-	width: 100%; 
-}
-
 .video-js .vjs-fast-nav-rew-button > .vjs-icon-placeholder::before {
 	font-family: "Material Icons";
 	content: "\e059";
@@ -623,9 +617,7 @@
 	width: 44px;
 }
 
-.video-js.vjs-fullscreen .vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button.vjs-quality-wrapper{
-	width: 44px;
-}
+
 
 .video-js.vjs-fullscreen .vjs-fullscreen-control.vjs-control.vjs-button{
 	width: 44px;
@@ -790,6 +782,41 @@
 .vjs-subs-caps-button.vjs-menu-button-popup .vjs-menu {
     right: -106px;
 }
+
+
+.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+    transition: visibility 0.5s, opacity 0.5s;
+}
+
+.video-js .vjs-progress-holder {
+    height: 2px;
+}
+
+
+
+.vjs-progress-control:hover .vjs-progress-holder {
+	height: 4px;
+}
+
+.video-js .vjs-play-progress:before {
+    font-size: 12px;
+    top: -5px;
+}
+
+.video-js .vjs-progress-control:hover .vjs-play-progress:before {
+    font-size: 16px;
+    top: -6px;
+}
+
+.video-js .vjs-tech {
+    outline: none;
+}
+
+.video-js .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control:hover.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
+    left: -32px;
+}
+
+
 
 
 /* .video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-vertical {
