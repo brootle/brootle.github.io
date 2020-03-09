@@ -1107,6 +1107,7 @@ a.q6-button{
     border-radius: 8px;
     padding: 25px 35px;
     margin: 15px 0;    
+    position: relative;
 }
 
 .q6-transcoding-demo-block .q6-add-video-block{
@@ -1343,6 +1344,153 @@ a.q6-button{
 }
 
 
+.q6-demo-links-buttons.q6-demo-links-buttons--transcoding-results{
+    position: absolute;
+    top: 23px;
+    right: 13px;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--transcoding-results > a{
+    background-color: white;
+    font-size: 14px;
+    min-width: 0;
+    font-weight: 500;
+    padding-right: 25px;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--transcoding-results > a:hover {
+    background-color: white;
+    box-shadow: none;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--transcoding-results > a:after {
+    right: 14px;
+}
+
+.q6-demo-links-buttons.q6-demo-links-buttons--transcoding-results > a:hover:after {
+    right: 8px;
+}
+
+.q6-transcoding-demo__stats .q6-button--create-account > span:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-image: url(../img/user.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+}
+
+.q6-transcoding-demo__resuts{
+    display: flex;
+}
+
+.q6-transcoding-demo__stats{
+    display: flex;
+    margin-left: 5%;
+    flex: 1;
+}
+
+.q6-transcoding-demo__stats > div{
+    flex: 1;
+}
+
+.q6-transcodint-demo__results-image img{
+    width: 321px;  
+    height: auto;
+    max-width: 100%;
+}
+
+.q6-transcoding-demo__stats .q6-button--next > span:after {
+    content: "";
+    margin-left: 10px;
+    display: inline-block;
+    width: 15px;
+    height: 12px;
+    background-image: url(../img/arrow_right.png);
+    background-size: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+.q6-button.q6-button--round.q6-button--create-account {
+    line-height: 38px;
+}
+
+.q6-transcoding-demo__stats h4{
+    color: #3270eb;
+    font-weight: 600;    
+    margin: 0;
+    font-size: 32px;    
+}
+
+.q6-transcoding-demo__stats h5{
+    color: #242424;
+    margin: 13px 0;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.q6-transcoding-demo__stats p {
+    color: #242424;
+    font-weight: 400;
+    margin: 3px 0;
+    line-height: 21px;
+    font-size: 16px;    
+}
+
+.q6-transcoding-demo__stats > div.q6-transcoding-demo__vertical-delimeter{
+    flex: none;
+    width: 1px;
+    background-color: #dedfdd;
+    margin: 0 7%;
+}
+
+.q6-transcoding-demo__stats p.q6-transcoding-demo__message{
+    color: #a09fa0;
+    font-size: 14px;    
+}
+
+.q6-transcoding-demo__stats table{
+    width: 100%;
+    margin: 18px 0;
+    border-collapse: collapse;    
+}
+
+.q6-transcoding-demo__stats table td{
+    padding: 9px 0;
+    color: #353435;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 1px solid #deddde; 
+    border-top: 1px solid #deddde;   
+    white-space: nowrap;
+    padding-right: 15px; 
+}
+
+.q6-transcoding-demo__stats table tr td:last-of-type{
+    width: 20px;
+    padding: 0;
+}
+
+.q6-transcoding-demo__stats table tr td:first-of-type{
+    width: 100%;
+}
+
+.q6-download-button{
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    background-image: url(../img/download.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;   
+}
+
+.q6-transcoding-demo__stats > div:last-of-type h5{
+    margin-top: 35px;
+}
+
 /* transcoding progress for mobile  */
 @media screen and (max-width: 850px){
     .q6-transcoding-demo-block .q6-transcoding-progress {
@@ -1392,6 +1540,21 @@ a.q6-button{
 /* transcoding progress for mobile  */
 
 @media screen and (max-width: 1024px){
+
+
+    .q6-transcoding-demo__resuts {
+        flex-direction: column;
+    }
+
+    .q6-transcoding-demo__stats {
+        margin-left: 0;
+        margin-top: 30px;
+    }    
+
+    .q6-transcodint-demo__results-image {
+        margin: 0 auto;
+    }    
+
     .q6-card--header .q6-demo-links-buttons.q6-demo-links-buttons--st-val {
         position: relative;
         top: initial;
@@ -1444,6 +1607,28 @@ a.q6-button{
     .q6-transcoding-demo__progress .q6-transcoding-errors__icon {
         margin-right: 0;
         margin-bottom: 5px;
+    }    
+}
+
+@media screen and (max-width: 750px){
+    .q6-transcoding-demo__stats {
+        flex-direction: column;
+    }
+
+    .q6-transcoding-demo__stats h4 {
+        text-align: center;
+    }    
+
+    .q6-transcoding-demo__stats h5 {
+        text-align: center;
+    }    
+
+    .q6-button.q6-button--round.q6-button--create-account {
+        width: 100%;
+    }    
+
+    .q6-transcoding-demo__stats > div:last-of-type h5 {
+        text-align: left;
     }    
 }
 
