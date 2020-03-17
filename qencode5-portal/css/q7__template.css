@@ -3473,6 +3473,13 @@ textarea.q7-input__field{
     height: 100px;    
 }
 
+input[type=password].q7-input__field.q7-input__field--error,
+input[type=text].q7-input__field.q7-input__field--error,
+.q7-select.q7-input__field--error,
+textarea.q7-input__field.q7-input__field--error {
+    border-color: #e34d4d;
+}
+
 .q7-select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -5395,6 +5402,47 @@ a.q7-link{
     /* max-width: 854px; */
     height: 31vw;
     max-height: 480px;
+}
+
+
+.q7-modal-errors{
+    max-width: 850px;
+    max-width: fit-content;
+    display: flex;
+    color: #d64a4a;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e6e8eb;
+}
+
+.q7-transcoding-errors__icon {
+    background-image: url(../img/error_text.svg);
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    width: 45px;
+    height: 36px;
+    min-width: 45px;
+}
+
+.q7-modal-errors > div.q7-transcoding-errors__icon{
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.q7-modal-errors > div{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.q7-modal-errors > div:last-of-type{
+    margin-right: 0;
+}
+
+.q7-modal-errors p{
+    font-size: 14px;
+    line-height: 17px;
+    color: #787878;
+    margin-top: 5px;   
 }
 
 @media screen and (min-width: 1650px){
