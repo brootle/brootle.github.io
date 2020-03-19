@@ -183,7 +183,8 @@
 
 /* updating styles for player Nov 2019 */
 
-.vjs-icon-play:before, .video-js .vjs-big-play-button .vjs-icon-placeholder:before, .video-js .vjs-play-control .vjs-icon-placeholder:before {
+.vjs-icon-play:before, .video-js .vjs-big-play-button .vjs-icon-placeholder:before, 
+.video-js .vjs-play-control .vjs-icon-placeholder:before {
 	content: "";
 	display: flex;
 	align-items: center;
@@ -191,19 +192,28 @@
 
 	background-image: url(../src/img/icons/play.svg);
 
-	background-size: 23px 15px;
+	background-size: 30%;
 	background-repeat: no-repeat;
 	background-position: center;	
 }
 
-.vjs-icon-pause:before, .video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder:before {
+.video-js .vjs-play-control:hover .vjs-icon-placeholder:before {
+    background-size: 35%;
+}
+
+.vjs-icon-pause:before, 
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder:before {
 	content: "";
 
 	background-image: url(../src/img/icons/pause.svg);
 
-	background-size: 23px 15px;
+	background-size: 25%;
 	background-repeat: no-repeat;
 	background-position: center;		
+}
+
+.video-js .vjs-play-control.vjs-playing:hover .vjs-icon-placeholder:before {
+	background-size: 30%;		
 }
 
 .vjs-icon-replay:before, .video-js .vjs-play-control.vjs-ended .vjs-icon-placeholder:before {
@@ -211,9 +221,13 @@
 
 	background-image: url(../src/img/icons/replay.svg);
 
-	background-size: 23px 20px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;		
+}
+
+.video-js .vjs-play-control.vjs-ended:hover .vjs-icon-placeholder:before {
+	background-size: 45%;		
 }
 
 .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
@@ -239,24 +253,32 @@
 }
 
 
-.video-js .vjs-fast-nav-rew-button > .vjs-icon-placeholder::before {
+.video-js .vjs-fast-nav-rew-button > .vjs-icon-placeholder:before {
 	content: "";
 
 	background-image: url(../src/img/icons/backward_10s.svg);
 
-	background-size: 23px 22px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;	
 }
 
-.video-js .vjs-fast-nav-ff-button > .vjs-icon-placeholder::before {
+.video-js .vjs-fast-nav-rew-button:hover > .vjs-icon-placeholder:before {
+	background-size: 45%;
+}
+
+.video-js .vjs-fast-nav-ff-button > .vjs-icon-placeholder:before {
 	content: "";
 
 	background-image: url(../src/img/icons/forward_10s.svg);
 
-	background-size: 23px 22px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;	
+}
+
+.video-js .vjs-fast-nav-ff-button:hover > .vjs-icon-placeholder:before {
+	background-size: 45%;
 }
 
 .video-js .vjs-time-control {
@@ -327,11 +349,14 @@
 
 	background-image: url(../src/img/icons/settings.svg);
 
-	background-size: 20px 20px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
+.vjs-control.vjs-button.vjs-qencode-settings-button-wrapper:hover .vjs-icon-placeholder:before {
+	background-size: 45%;
+}
 
 
 .vjs-quality-button .vjs-icon-placeholder:before {
@@ -349,20 +374,29 @@
 
 	background-image: url(../src/img/icons/share.svg);
 
-	background-size: 20px 20px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
+.video-js .vjs-qencode-share-button:hover > .vjs-icon-placeholder:before {
+	background-size: 45%;
+}
 
-.vjs-icon-fullscreen-enter:before, .video-js .vjs-fullscreen-control .vjs-icon-placeholder:before {
+
+.vjs-icon-fullscreen-enter:before, 
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder:before {
 	content: "";
 
 	background-image: url(../src/img/icons/fullscreen.svg);
 
-	background-size: 20px 20px;
+	background-size: 40%;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.video-js .vjs-fullscreen-control:hover .vjs-icon-placeholder:before {
+	background-size: 45%;
 }
 
 .video-js .vjs-control.vjs-play-control {
@@ -395,44 +429,40 @@
 }
 
 
-.vjs-icon-volume-high:before, .video-js .vjs-mute-control.vjs-vol-3 .vjs-icon-placeholder:before {
+.vjs-icon-volume-high:before, 
+.video-js .vjs-mute-control .vjs-icon-placeholder:before {
 	content: "";
+	background-size: 40%;
+	background-repeat: no-repeat;
+	background-position: center;	
+}
 
+.video-js .vjs-volume-panel:hover .vjs-mute-control .vjs-icon-placeholder:before {
+	background-size: 45%;	
+}
+
+.vjs-icon-volume-high:before, 
+.video-js .vjs-mute-control.vjs-vol-3 .vjs-icon-placeholder:before {
+	content: "";
 	background-image: url(../src/img/icons/volume_3.svg);
-
-	background-size: 24px 17px;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-.vjs-icon-volume-high:before, .video-js .vjs-mute-control.vjs-vol-2 .vjs-icon-placeholder:before {
+.vjs-icon-volume-high:before, 
+.video-js .vjs-mute-control.vjs-vol-2 .vjs-icon-placeholder:before {
 	content: "";
-
 	background-image: url(../src/img/icons/volume_2.svg);
-
-	background-size: 24px 17px;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-.vjs-icon-volume-high:before, .video-js .vjs-mute-control.vjs-vol-1 .vjs-icon-placeholder:before {
+.vjs-icon-volume-high:before, 
+.video-js .vjs-mute-control.vjs-vol-1 .vjs-icon-placeholder:before {
 	content: "";
-
 	background-image: url(../src/img/icons/volume_1.svg);
-
-	background-size: 24px 17px;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-.vjs-icon-volume-high:before, .video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder:before {
+.vjs-icon-volume-high:before, 
+.video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder:before {
 	content: "";
-
 	background-image: url(../src/img/icons/volume_0.svg);
-
-	background-size: 24px 17px;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
 .video-js .vjs-mute-control.vjs-control {
@@ -963,6 +993,14 @@
     font-size: 9px;
     position: absolute;
     top: -6px;
+}
+
+.vjs-control--inactive{
+	opacity: 0.5;
+}
+
+.vjs-control--inactive:hover{
+	opacity: 1;
 }
 
 /* .video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-vertical {
