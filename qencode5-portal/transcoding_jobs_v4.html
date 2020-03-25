@@ -400,8 +400,8 @@
                                                     <td>03:10:12</td>
                                                     <td>16:10</td>
                                                     <td>                                                    
-                                                        <div class="q6-tutorial-profile-actions">
-                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                        <div class="q6-tutorial-profile-actions">                                                        
+                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">                                                              
                                                                 <div class="q7-tooltip">Copy URL</div>
                                                             </div>
                                                             <div  data-toggle="modal" data-target="#videoModal" class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__play">
@@ -446,9 +446,15 @@
                                                     <td>16:10</td>
                                                     <td>                                                    
                                                         <div class="q6-tutorial-profile-actions">
-                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                            <div class="q7-dd-menu__button q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                                <div class="q7-dd-menu">
+                                                                    <div class="q7-dd-menu__items">
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49545345348034.mp4</div>
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49543435348034.mp4</div>
+                                                                    </div>                                  
+                                                                </div>                                                                 
                                                                 <div class="q7-tooltip">Copy URL</div>
-                                                            </div>
+                                                            </div>                                                            
                                                             <div  data-toggle="modal" data-target="#videoModal" class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__play">
                                                                 <div class="q7-tooltip">Play video</div>
                                                             </div>                                                            
@@ -467,9 +473,15 @@
                                                     <td>16:10</td>
                                                     <td>                                                    
                                                         <div class="q6-tutorial-profile-actions">
-                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                            <div class="q7-dd-menu__button q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                                <div class="q7-dd-menu">
+                                                                    <div class="q7-dd-menu__items">
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49545345348034.mp4</div>
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49543435348034.mp4</div>
+                                                                    </div>                                  
+                                                                </div>                                                                 
                                                                 <div class="q7-tooltip">Copy URL</div>
-                                                            </div>
+                                                            </div>   
                                                             <div  data-toggle="modal" data-target="#videoModal" class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__play">
                                                                 <div class="q7-tooltip">Play video</div>
                                                             </div>                                                            
@@ -488,9 +500,15 @@
                                                     <td>16:10</td>
                                                     <td>                                                    
                                                         <div class="q6-tutorial-profile-actions">
-                                                            <div class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                            <div class="q7-dd-menu__button q6-tutorial-profile-actions__icon q6-tutorial-profile-details__copy">
+                                                                <div class="q7-dd-menu">
+                                                                    <div class="q7-dd-menu__items">
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49545345348034.mp4</div>
+                                                                        <div class="q7-dd-menu-element">SomeVideo_file_45439573_49543435348034.mp4</div>
+                                                                    </div>                                  
+                                                                </div>                                                                 
                                                                 <div class="q7-tooltip">Copy URL</div>
-                                                            </div>
+                                                            </div>   
                                                             <div  data-toggle="modal" data-target="#videoModal" class="q6-tutorial-profile-actions__icon q6-tutorial-profile-details__play">
                                                                 <div class="q7-tooltip">Play video</div>
                                                             </div>                                                            
@@ -634,6 +652,36 @@ payload:"my data"</textarea>
                         </div>
                     </div>
                     <!-- Modal ends -->  
+
+
+                    <script>
+                        $(function () {                               
+        
+                            // toggle show and hide menu on dots menu button click  
+                            $(".q7-dd-menu__button").click(function(e){
+                                // check if current is opened
+                                if($(this).hasClass('q7-dd-menu__button--opened')){
+                                    $(this).removeClass('q7-dd-menu__button--opened');
+                                } else{
+                                    // close all opened menus
+                                    $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+        
+                                    // open current 
+                                    $(this).addClass('q7-dd-menu__button--opened');
+                                }
+                            });      
+        
+                                        
+                            // close if clicked outside
+                            $(window).click(function(e){
+                                if (!event.target.matches('.q7-dd-menu__button')) {
+                                    $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened')
+                                }
+                            });                                                                                                                                                  
+        
+                        })
+                    </script>                    
+
                     
                     <script>
                         // copy parameters
