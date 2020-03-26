@@ -338,13 +338,18 @@
     position: absolute;
 	background-color: #1aa6d9;
 	
-	right: 1px;
-	top: 9px;
-    padding: 2px 3px;
-	padding-top: 3px;
+	right: 4px;
+	top: 11px;
+    padding: 1px 2px;
+	padding-top: 2px;
 	border-radius: 3px;	
 }
 
+.vjs-control-bar.vjs-control-bar--small .vjs-video-quality--hd .vjs-qencode-settings-button:after {
+	font-size: 7px;
+	right: 1px;
+	top: 11px;
+}
 
 
 
@@ -385,21 +390,35 @@
 
 
 
-.video-js .vjs-control,
-.video-js .vjs-control.vjs-play-control,
-.video-js .vjs-volume-panel.vjs-volume-panel-vertical,
-.video-js .vjs-control.vjs-qencode-share-button-wrapper,
-.vjs-subs-caps-button.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button,
-.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button.vjs-quality-wrapper,
-.vjs-menu-button.vjs-fast-nav-rew-wrapper,
-.vjs-menu-button.vjs-fast-nav-ff-wrapper,
-.vjs-fullscreen-control.vjs-control.vjs-button  {
-	/* min-width: 30px;
-    max-width: 50px;
-	width: 7%; */
-	
+/* .vjs-control-bar .vjs-control,
+.vjs-control-bar .vjs-control.vjs-play-control,
+.vjs-control-bar .vjs-volume-panel.vjs-volume-panel-vertical,
+.vjs-control-bar .vjs-control.vjs-qencode-share-button-wrapper,
+.vjs-control-bar .vjs-subs-caps-button.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button,
+.vjs-control-bar .vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button.vjs-quality-wrapper,
+.vjs-control-bar .vjs-menu-button.vjs-fast-nav-rew-wrapper,
+.vjs-control-bar .vjs-menu-button.vjs-fast-nav-ff-wrapper,
+.vjs-control-bar .vjs-fullscreen-control.vjs-control.vjs-button  {	
+	width: 40px;
+} */
+
+.vjs-control-bar .vjs-control,
+.vjs-control-bar .vjs-volume-panel.vjs-volume-panel-vertical{
 	width: 40px;
 }
+
+.vjs-control-bar.vjs-control-bar--small .vjs-control,
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel.vjs-volume-panel-vertical{
+	width: 32px;
+}
+
+.vjs-control-bar.vjs-control-bar--small .vjs-control.vjs-progress-control{
+	width: 100%;
+}
+
+
+
+
 
 .vjs-icon-volume-high:before, 
 .video-js .vjs-mute-control .vjs-icon-placeholder:before {
@@ -482,7 +501,7 @@
     left: 0;
 }
 
-.video-js .vjs-progress-control {
+.vjs-control-bar .vjs-control.vjs-progress-control {
 	top: 3px;
 	height: 2px;
     padding: 15px 0;
@@ -725,10 +744,19 @@
 .vjs-workinghover .vjs-menu-button-popup:hover .vjs-menu { display: none; }
 
 .vjs-menu-button-popup .vjs-menu {
-    width: 250px;
+    width: 230px;
     left: initial;
-    right: -34px;
+    right: 0;
 }
+
+.vjs-menu-button-popup.vjs-qencode-settings-button-wrapper .vjs-menu {
+    right: -34px;	
+}
+
+.vjs-control-bar.vjs-control-bar--small .vjs-menu-button-popup.vjs-qencode-settings-button-wrapper .vjs-menu {
+    right: -26px;	
+}
+
 
 .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
 	background-color: #262626;
@@ -924,8 +952,24 @@
     outline: none;
 }
 
-.video-js .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control:hover.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, .video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
+.vjs-control-bar .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel .vjs-volume-control:hover.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel .vjs-volume-control:active.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
     left: -32px;
+}
+
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-volume-control:hover.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-volume-control:active.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
+    left: -28px;
 }
 
 .vjs-menu-item.vjs-texttrack-settings{
