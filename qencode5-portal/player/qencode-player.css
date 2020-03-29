@@ -262,12 +262,17 @@
 	justify-content: center;
 }
 
-.video-js .vjs-time-control {
+.vjs-control-bar .vjs-time-control {
 	padding: 0 6px;
 	font-size: 12px;
 	font-weight: 500;
 	line-height: initial;
 }
+
+.vjs-control-bar.vjs-control-bar--big .vjs-time-control{
+	font-size: 18px;
+}
+
 
 .video-js .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical{
 	left: -21px;
@@ -351,6 +356,13 @@
 	top: 11px;
 }
 
+.vjs-control-bar.vjs-control-bar--big .vjs-video-quality--hd .vjs-qencode-settings-button:after {
+	font-size: 9px;
+	right: 8px;
+	top: 9px;
+    padding: 2px 3px;
+	padding-top: 3px;	
+}
 
 
 
@@ -405,6 +417,7 @@
 .vjs-control-bar .vjs-control,
 .vjs-control-bar .vjs-volume-panel.vjs-volume-panel-vertical{
 	width: 40px;
+	transition: none;
 }
 
 .vjs-control-bar.vjs-control-bar--small .vjs-control,
@@ -413,6 +426,15 @@
 }
 
 .vjs-control-bar.vjs-control-bar--small .vjs-control.vjs-progress-control{
+	width: 100%;
+}
+
+.vjs-control-bar.vjs-control-bar--big .vjs-control,
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel.vjs-volume-panel-vertical{
+	width: 60px;
+}
+
+.vjs-control-bar.vjs-control-bar--big .vjs-control.vjs-progress-control{
 	width: 100%;
 }
 
@@ -490,6 +512,10 @@
 	opacity: 1;
 	background-color: rgba(0,0,0,0) !important; 
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.34) 44%, rgba(0, 0, 0, 0.76) 100%);
+}
+
+.video-js .vjs-control-bar.vjs-control-bar--big {
+	height: 70px;
 }
 
 
@@ -757,6 +783,10 @@
     right: -26px;	
 }
 
+.vjs-control-bar.vjs-control-bar--big .vjs-menu-button-popup.vjs-qencode-settings-button-wrapper .vjs-menu {
+    right: -54px;	
+}
+
 
 .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
 	background-color: #262626;
@@ -764,6 +794,10 @@
 	/* max-height: 160px; */
 	color: #ffffff;
 	opacity: 0.85;
+}
+
+.vjs-control-bar.vjs-control-bar--big .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+	bottom: 38px;
 }
 
 .vjs-menu li {
@@ -970,6 +1004,16 @@
 .vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, 
 .vjs-control-bar.vjs-control-bar--small .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
     left: -28px;
+}
+
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel .vjs-volume-control:hover.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel .vjs-volume-control:active.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-vertical, 
+.vjs-control-bar.vjs-control-bar--big .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-vertical {
+    left: -42px;
 }
 
 .vjs-menu-item.vjs-texttrack-settings{
