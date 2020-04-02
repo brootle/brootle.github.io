@@ -1,9 +1,38 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  
 </head>
-<body>  
-    <script src='https://player.qencode.com/fdf81060-39ef-eba2-676f-71e6b2047659/player.js'></script> 
+<body>
+
+    <script>
+       window.qencode_player_path_prefix = 'https://player-static.qencode.com/release/';
+    </script>  
+
+  <script src='https://player-static.qencode.com/release/qencode-bootstrapper.min.js'></script>  
+  
+
+  <h1>playlist.m3u8 video with audio tracks</h1>
+  <div id='mycontainer'></div>
+  <script>
+    var params = {
+      videoSources: {
+        src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+      },
+      titleBar: {
+        text: 'Hello Qencode Player'
+      },     
+      bypassOptions: {
+        loop: false
+      }
+    };
+    qencodePlayer('mycontainer', params, function() { 
+      console.log('Qencode Player is up and running'); 
+    });
+  </script>
+
+
+  <br>
+  <br>
+
 </body>
 </html>
