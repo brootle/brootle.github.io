@@ -13,9 +13,20 @@
 
     <link href="css/hamburgers.css" rel="stylesheet">
 
-    <link href="css/q6__template.css" rel="stylesheet" />
+    <link href="css/q6__landing.css" rel="stylesheet">
+    <link href="css/q6__template.css" rel="stylesheet">
+    <link href="css/q6__elements.css" rel="stylesheet">
+    <link href="css/q6__index.css" rel="stylesheet">
+
+    <link href="css/q6__calculator.css" rel="stylesheet">
+    <link href="css/q6__features.css" rel="stylesheet">
+    <link href="css/q6__pricing.css" rel="stylesheet">
+    <link href="css/q6__dbo.css" rel="stylesheet">
+    <link href="css/q6__tutorial.css" rel="stylesheet">
 
     <link href="css/q6__fonts.css" rel="stylesheet" />
+
+    <link href="css/q6__player.css" rel="stylesheet" />
 
     <script src="js/menu.js"></script>
 
@@ -206,7 +217,62 @@
 
     <main class="q6-main q6-page-content">
         <div class="q6-container">
-            <h1>Template</h1>           
+            <h1>Test Qencode Video Player</h1>    
+            
+            <div class="q6-test-video-player">
+
+                <div class="q6-test-video__block">
+                    <div id='example_video'></div>
+
+                    <!-- <script>
+                        window.qencode_player_path_prefix = 'player/';
+                    </script>  
+                    <script src='player/qencode-bootstrapper.min.js'></script>                               -->
+
+                    <script>
+                        window.qencode_player_path_prefix = 'https://player-static.qencode.com/release/';
+                        </script>                               
+                    <script src='https://player-static.qencode.com/release/qencode-bootstrapper.min.js'></script>
+
+                    <script>
+                        var paramsVideo = {
+                            playbackRates: [0.7, 1.0, 1.5, 2.0],
+                            fill: true,
+                            videoSources: {
+                                src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+                            },
+                            titleBar: {
+                                text: 'Hello Qencode Player'
+                            },     
+                            bypassOptions: {
+                                loop: false
+                            }
+                        };
+                        qencodePlayer('example_video', paramsVideo, function() { 
+                            console.log('Qencode Player is up and running');    
+
+                            document.querySelector('#video_url').removeAttribute("disabled");    
+                            document.querySelector('#upload_video').removeAttribute("disabled");                                                 
+                        });
+                    </script>                                
+                </div>
+
+
+                <div class="q6-test-video__url">
+                    <div class="q6-input-and-buttons--inline">
+                        <div class="q6-input">
+                            <div class="q6-input__label q6-input__label--row-title">
+                                <label>Field to enter the URL</label>
+                            </div>
+                            <input id="video_url" disabled class="q6-input__field" type="text" value="https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd">                                
+                        </div>              
+                        
+                        <button id="upload_video" disabled class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Load video</button>      
+                    </div>                                                                 
+                </div>
+            </div>
+
+
         </div>
     </main>
 
