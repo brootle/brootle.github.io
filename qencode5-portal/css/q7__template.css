@@ -2165,7 +2165,7 @@ td.q7-table-cell--edit-mode{
 
 .q7-block-title{
     color: #4f4f4f;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     margin: 8px 0;
 
@@ -5610,6 +5610,173 @@ input[type=text].q7-input__field:disabled{
     flex: 1;
 }
 
+.q7-player-settings__row > div + div{
+    margin-left: 80px;
+}
+
+.q7-switch-container {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.q7-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    min-width: 44px;
+    height: 24px;
+    margin: 0;
+}
+
+.q7-input__label--with-switch .q7-switch {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    min-width: 40px;
+    height: 14px;
+    margin: 0;
+}
+
+.q7-switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e8eaed;
+    -webkit-transition: .1s;
+    transition: .1s;
+    border-radius: 34px;
+}
+
+.q7-switch__text {
+    position: absolute;
+    right: -23px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+input:checked + .q7-switch__slider {
+    background-color: #e9f0fc;
+}
+
+.q7-switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 5px;
+    bottom: 4px;
+    background-color: #9ea2ae;
+    -webkit-transition: .1s;
+    transition: .1s;
+    border-radius: 50%;
+}
+
+.q7-input__label--with-switch .q7-switch__slider:before {
+    height: 20px;
+    width: 20px;
+    left: 0px;
+    bottom: -2px;
+}
+
+input:checked + .q7-switch__slider:before {
+    -webkit-transform: translateX(19px);
+    -ms-transform: translateX(19px);
+    transform: translateX(19px);
+    background-color: #306eea;
+}
+
+.q7-input__label--with-switch input:checked + .q7-switch__slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+.q7-switch__text .q7-switch__text--on {
+    display: none;
+}
+
+input:checked + .q7-switch__slider + .q7-switch__text .q7-switch__text--on {
+    display: block;
+    color: var(--blue);
+}
+
+.q7-switch__text .q7-switch__text--off {
+    display: none;
+}
+
+input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--off {
+    display: block;
+    color: #818080;
+}
+
+.q7-input__label--with-switch .q7-switch-container {
+    position: absolute;
+    left: 240px;
+}
+
+.q7-switch input {
+    display: none;
+}
+
+
+.q7-player-settings__block{
+    margin-bottom: 25px;
+}
+ 
+.q7-player-settings__block .q7-input__label.q7-input__label--with-switch + input[type=text].q7-input__field {
+    margin-top: 15px;
+}
+
+.q7-player-settings__block .q7-advanced-settings__row {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.q7-player-settings__block .q7-input__label.q7-input__label--row-title label {
+    font-weight: 400;
+    color: #171717;
+}
+
+.q7-player-settings__block .q7-advanced-settings__row .q7-input__label.q7-input__label--with-switch {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding-right: 40px;
+}
+
+.q7-player-settings__block .q7-input__label--with-switch .q7-switch-container {
+    position: initial;
+}
+
+.q7-player-settings__block .q7-switch-container {
+    height: 16px;
+}
+
+.q7-player-settings__block-title{
+    color: #171717;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.q7-player-settings__block-title a{
+    font-size: 13px;
+    color: #306eea;
+    font-weight: 500;    
+    cursor: pointer;
+}
+
+.q7-settings-player-container{
+    margin-top: 20px;
+    margin-bottom: 40px;    
+}
 
 @media screen and (min-width: 1650px){
     .q7-container{
