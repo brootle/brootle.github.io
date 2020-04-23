@@ -932,6 +932,20 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            // handle color change when color picker clicked
+                            $('input[type=color]').on('change', function() {
+                                $(this).parent().css("background-color", this.value);
+                                $(this).parent().next().val(this.value);
+                            });  
+
+                            // when value changed in the field update colored box
+                            $('.q7-input.q7-input--color input[type=text].q7-input__field').keyup(function() {
+                                $(this).prev().css("background-color", this.value);
+                                $(this).prev().children('input[type=color]').val(this.value);
+                            });                                                        
+                        </script>
                         
                         <script>
                             var params = {
