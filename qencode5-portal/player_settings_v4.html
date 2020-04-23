@@ -401,13 +401,15 @@
                         
                         <div class="q7-settings-player-container">
                             <div id='my_player'></div>
-                        </div>                        
+                        </div>                     
+                                                
+                        <button disabled id="reload_player" class="q7-button q7-button--reload-player">Reload player with new parameters</button>
 
                         <div class="q7-player-settings">
                             <div class="q7-player-settings__row">
                                 <div>
                                     <div class="q7-player-settings__block">
-                                        <div class="q7-player-settings__block-title">Control Bar  <a>Reset to Defaults</a> </div>
+                                        <div class="q7-player-settings__block-title">Control Bar  <a id="resetControlBar">Reset to Defaults</a> </div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
 
@@ -428,7 +430,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="controlBarTextColor" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                                  
@@ -453,7 +455,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="controlBarIconsColor" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                                  
@@ -479,7 +481,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color" value="#010225">                                                                 
                                                         </label>  
-                                                        <input class="q7-input__field" type="text" value="#010225">
+                                                        <input id="controlBarTimesliderColor" class="q7-input__field" type="text" value="#010225">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>           
@@ -493,7 +495,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color" value="#010225">                                                                 
                                                         </label>  
-                                                        <input class="q7-input__field" type="text" value="#010225">
+                                                        <input id="controlBarTimesliderRailColor" class="q7-input__field" type="text" value="#010225">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>                                               
@@ -518,7 +520,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color" value="#010225">                                                                 
                                                         </label>  
-                                                        <input class="q7-input__field" type="text" value="#010225">
+                                                        <input id="controlBarBackgroundColor" class="q7-input__field" type="text" value="#010225">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>           
@@ -528,7 +530,7 @@
                                                     <div class="q7-input__label">
                                                         <label>Opacity</label>
                                                     </div>                                                                           
-                                                    <input class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
+                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>                                               
             
@@ -548,9 +550,9 @@
                                                             <label>Size</label>
                                                         </div>
                                                         <div class="q7-custom-select">
-                                                            <select class="q7-select">
+                                                            <select id="playerLayoutSize" class="q7-select">
                                                                 <option value="fixed">Fixed</option>
-                                                                <option value="aspect_ratio">Aspect Ratio</option>
+                                                                <option selected value="aspect_ratio">Aspect Ratio</option>
                                                             </select>
                                                         </div>
                                                     </div>                                                    
@@ -559,14 +561,14 @@
                                                         <div class="q7-input__label">
                                                             <label>Width</label>
                                                         </div>                                                        
-                                                        <input class="q7-input__field" type="text" value="640">                                                                                  
+                                                        <input id="playerLayoutSizeWidth" class="q7-input__field" type="text" value="16">                                                                                  
                                                     </div>  
                                                     
                                                     <div class="q7-input q7-input--height"> 
                                                         <div class="q7-input__label">
                                                             <label>Height</label>
                                                         </div>                                                        
-                                                        <input class="q7-input__field" type="text" value="360">                                                                                  
+                                                        <input id="playerLayoutSizeHeight" class="q7-input__field" type="text" value="9">                                                                                  
                                                     </div>                                                      
                                                     
                                                 </div>                                  
@@ -581,7 +583,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playerLayoutFluid" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -604,7 +606,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playerLayoutFill" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -627,7 +629,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox" >
+                                                                    <input id="playerLayoutResponsive" class="q7-input__field" type="checkbox" >
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -790,7 +792,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="menuTextColor" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>     
@@ -804,7 +806,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="menuHoverColor" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>           
@@ -818,7 +820,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="menuSelectedItemColor" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>       
@@ -832,7 +834,7 @@
                                                             <label class="q7-color-input">
                                                                 <input type="color" value="#010225">                                                                 
                                                             </label>  
-                                                            <input class="q7-input__field" type="text" value="#010225">
+                                                            <input id="menuSelectedItemMark" class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                                   
@@ -855,7 +857,7 @@
                                                         </div>                       
                                                         <div class="q7-color-input-container">
                                                             <label class="q7-color-input">
-                                                                <input type="color" value="#010225">                                                                 
+                                                                <input id="menuBackgroundColor" type="color" value="#010225">                                                                 
                                                             </label>  
                                                             <input class="q7-input__field" type="text" value="#010225">
                                                         </div>                                                                                                                                                                                                                                  
@@ -867,7 +869,7 @@
                                                         <div class="q7-input__label">
                                                             <label>Opacity</label>
                                                         </div>                                                                           
-                                                        <input class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
+                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                               
                 
@@ -898,7 +900,7 @@
                                                             </div>                                            
                 
                                                         </div>    
-                                                        <input class="q7-input__field" type="text" value="Qencode reach 1 million users">                                                                                  
+                                                        <input id="playerTitle" class="q7-input__field" type="text" value="Qencode reach 1 million users">                                                                                  
                                                     </div>                 
                                                 </div>                                  
                 
@@ -922,7 +924,7 @@
                                                             </div>                                            
                 
                                                         </div>   
-                                                        <input class="q7-input__field" type="text" value="https://www.youtube.com/watch?v=6byRchYizJY">                             
+                                                        <input id="shareVideoUrl" class="q7-input__field" type="text" value="https://www.youtube.com/watch?v=6byRchYizJY">                             
                                                     </div>                 
                                                 </div>                                  
                 
@@ -948,12 +950,15 @@
                         </script>
                         
                         <script>
+                        
+                            // default parameters
                             var params = {
+                        
                                 videoSources: {
                                     src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
                                 },
                                 titleBar: {
-                                    text: 'Qencode reach 1 million users'
+                                    text: 'Qencode Player'
                                 },   
                                 social: {
                                     shareUrl: 'https://www.youtube.com/watch?v=6byRchYizJY',
@@ -962,40 +967,59 @@
                                 },   
 
                                 controlBar: {
-                                    textColor: "#010225",
-                                    iconsColor: "#020cff",
-                                    timeSliderProgressColor: "#53f528",
-                                    timeSliderRailColor: "#e0d436",
-                                    backgroundColor: "#03fc35",
+                                    textColor: "#ffffff",
+                                    iconsColor: "#ffffff",
+                                    timeSliderProgressColor: "#366fe0",
+                                    timeSliderRailColor: "#366fe0",
+                                    backgroundColor: "#000000",
                                     backgroundOpacity: 0.76,        
                                 },    
                                 
                                 menu:{
-                                    backgroundOpacity: 0.77,
-                                    backgroundColor: "#ae2d2d",
-                                    textColor: "#22db18",
-                                    hoverColor: "#be5353",
-                                    selectedColor: "#6a1616",
-                                    selectedMarkColor: "#da2323"
+                                    backgroundOpacity: 0.85,
+                                    backgroundColor: "#262626",
+                                    textColor: "#ffffff",
+                                    hoverColor: "#333333",
+                                    selectedColor: "#4b4b4b",
+                                    selectedMarkColor: "#09aade"
                                 },
 
 
                                 bypassOptions: {
+                                    // playbackRates: [0.7, 1.0, 1.5, 2.0],
                                     // loop: true,
                                     // muted: true,
                                     // autoplay: true,
                                     // controls: false,
                                     // see for layout https://docs.videojs.com/tutorial-layout.html
                                     // fluid: true,
-                                    // aspectRatio: '16:9',
+                                    aspectRatio: '16:7',
                                     // fill: true
                                     // responsive: true
-                                    width: 640,
-                                    height: 360        
+                                    // width: 640,
+                                    // height: 360        
                                 }
                             };
+
+                            // load user parameters if they are present
+
+                            // set all inputs based on parameters
+                            
                             qencodePlayer('my_player', params, function() { 
                                 console.log('Qencode Player is up and running'); 
+
+                                // reload_player
+                                document.querySelector('#reload_player').removeAttribute("disabled");     
+
+                                document.getElementById("reload_player").addEventListener('click', function(){
+                                    // var src = document.getElementById("video_url").value;
+                                    // sessionStorage.setItem('QencodeTestPlayerVideoSrc', src);
+                                    
+                                    // set new parameters
+
+                                    // reload page
+                                    window.location.reload();
+                                });                                         
                             });
                         </script>                        
 
