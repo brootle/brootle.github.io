@@ -530,7 +530,7 @@
                                                     <div class="q7-input__label">
                                                         <label>Opacity</label>
                                                     </div>                                                                           
-                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
+                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="number" value="0.8" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>                                               
             
@@ -869,7 +869,7 @@
                                                         <div class="q7-input__label">
                                                             <label>Opacity</label>
                                                         </div>                                                                           
-                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="text" value="0.8">                                                                                                                                                                                                                                                                                  
+                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="number" value="0.8" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                               
                 
@@ -943,7 +943,7 @@
                             });  
 
                             // when value changed in the field update colored box
-                            $('.q7-input.q7-input--color input[type=text].q7-input__field').keyup(function() {
+                            $('.q7-input.q7-input--color input[type=text].q7-input__field').on("keyup change", function() {
                                 $(this).prev().css("background-color", this.value);
                                 $(this).prev().children('input[type=color]').val(this.value);
                             });                                                        
@@ -1003,7 +1003,32 @@
 
                             // load user parameters if they are present
 
+                            // OR
+                            
                             // set all inputs based on parameters
+                            function loadDefaultControlBarParameters(){
+                                $("#controlBarTextColor").val(params.controlBar.textColor);
+                                $("#controlBarTextColor").trigger("change"); 
+                                
+                                $("#controlBarIconsColor").val(params.controlBar.iconsColor);
+                                $("#controlBarIconsColor").trigger("change");  
+
+                                $("#controlBarTimesliderColor").val(params.controlBar.timeSliderProgressColor);
+                                $("#controlBarTimesliderColor").trigger("change");
+
+                                $("#controlBarTimesliderRailColor").val(params.controlBar.timeSliderRailColor);
+                                $("#controlBarTimesliderRailColor").trigger("change");     
+
+                                $("#controlBarBackgroundColor").val(params.controlBar.backgroundColor);
+                                $("#controlBarBackgroundColor").trigger("change");                                                    
+
+                                $("#controlBarBackgroundOpacity").val(params.controlBar.backgroundOpacity);  
+                            }              
+
+                            loadDefaultControlBarParameters();
+                            
+                            $("#resetControlBar").click(loadDefaultControlBarParameters);                                                                                                
+                            
                             
                             qencodePlayer('my_player', params, function() { 
                                 console.log('Qencode Player is up and running'); 
