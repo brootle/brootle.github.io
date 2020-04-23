@@ -530,7 +530,7 @@
                                                     <div class="q7-input__label">
                                                         <label>Opacity</label>
                                                     </div>                                                                           
-                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="number" value="0.8" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
+                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="number" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
                                                 </div>                                                                  
                                             </div>                                               
             
@@ -551,8 +551,8 @@
                                                         </div>
                                                         <div class="q7-custom-select">
                                                             <select id="playerLayoutSize" class="q7-select">
-                                                                <option value="fixed">Fixed</option>
-                                                                <option selected value="aspect_ratio">Aspect Ratio</option>
+                                                                <option selected value="fixed">Fixed</option>
+                                                                <option value="aspect_ratio">Aspect Ratio</option>
                                                             </select>
                                                         </div>
                                                     </div>                                                    
@@ -561,14 +561,14 @@
                                                         <div class="q7-input__label">
                                                             <label>Width</label>
                                                         </div>                                                        
-                                                        <input id="playerLayoutSizeWidth" class="q7-input__field" type="text" value="16">                                                                                  
+                                                        <input id="playerLayoutSizeWidth" class="q7-input__field" value="640" type="number" step="1" min="1">                                                                                  
                                                     </div>  
                                                     
                                                     <div class="q7-input q7-input--height"> 
                                                         <div class="q7-input__label">
                                                             <label>Height</label>
                                                         </div>                                                        
-                                                        <input id="playerLayoutSizeHeight" class="q7-input__field" type="text" value="9">                                                                                  
+                                                        <input id="playerLayoutSizeHeight" class="q7-input__field" value="360" type="number" step="1" min="1">                                                                                  
                                                     </div>                                                      
                                                     
                                                 </div>                                  
@@ -869,7 +869,7 @@
                                                         <div class="q7-input__label">
                                                             <label>Opacity</label>
                                                         </div>                                                                           
-                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="number" value="0.8" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
+                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="number" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
                                                     </div>                                                                  
                                                 </div>                                               
                 
@@ -993,11 +993,11 @@
                                     // controls: false,
                                     // see for layout https://docs.videojs.com/tutorial-layout.html
                                     // fluid: true,
-                                    aspectRatio: '16:7',
-                                    // fill: true
-                                    // responsive: true
-                                    // width: 640,
-                                    // height: 360        
+                                    // aspectRatio: '16:7',
+                                    // fill: true,
+                                    // responsive: true,
+                                    width: 640,
+                                    height: 360        
                                 }
                             };
 
@@ -1054,7 +1054,35 @@
 
                             $("#resetMenu").click(loadDefaultMenuParameters);     
 
-                            // Player Layout                                                                   
+                            // Player Layout   
+                            function loadLayoutParameters(){
+                                if(params.bypassOptions.width && params.bypassOptions.height){
+                                    $("#playerLayoutSize").val("fixed");
+                                    $("#playerLayoutSizeWidth").val(params.bypassOptions.width);
+                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.height);
+                                } 
+
+                                // aspectRatio ratio parameter overcomes width and height if they are present
+                                if(params.bypassOptions.aspectRatio){
+                                    $("#playerLayoutSize").val("aspect_ratio");
+                                    $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
+                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);
+                                } 
+
+                                // fluid - takes all available space
+                                if(params.bypassOptions.fluid){
+                                    $('#playerLayoutFluid').prop('checked', 'true');
+                                }                             
+
+                                // fill - video element takes space of its container element
+                                if(params.bypassOptions.fill){
+                                    $('#playerLayoutFill').prop('checked', 'true');
+                                }                          
+                            } 
+
+                            loadLayoutParameters();
+
+                            // Player Playback                                                                                     
                             
                             
                             qencodePlayer('my_player', params, function() { 
