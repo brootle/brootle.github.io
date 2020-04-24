@@ -657,7 +657,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playbackLoopContent" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -680,7 +680,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playbackMuteOnStart" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -703,7 +703,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playbackPauseNotVisible" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -726,7 +726,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox">
+                                                                    <input id="playbackAutostart" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -749,7 +749,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox" checked="">
+                                                                    <input id="playbackShowControls" class="q7-input__field" type="checkbox" checked="">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -890,7 +890,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox" checked="">
+                                                                    <input id="dynamicFieldsShowTitle" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -900,7 +900,7 @@
                                                             </div>                                            
                 
                                                         </div>    
-                                                        <input id="playerTitle" class="q7-input__field" type="text" value="Qencode reach 1 million users">                                                                                  
+                                                        <input id="dynamicFieldsTitle" class="q7-input__field" type="text">                                                                                  
                                                     </div>                 
                                                 </div>                                  
                 
@@ -914,7 +914,7 @@
                 
                                                             <div class="q7-switch-container">
                                                                 <label class="q7-switch">
-                                                                    <input class="q7-input__field" type="checkbox" checked="">
+                                                                    <input id="dynamicFieldsShareUrl" class="q7-input__field" type="checkbox">
                                                                     <span class="q7-switch__slider"></span>
                                                                     <span class="q7-switch__text">
                                                                         <span class="q7-switch__text--on">On</span>
@@ -924,7 +924,7 @@
                                                             </div>                                            
                 
                                                         </div>   
-                                                        <input id="shareVideoUrl" class="q7-input__field" type="text" value="https://www.youtube.com/watch?v=6byRchYizJY">                             
+                                                        <input id="dynamicFieldsShareUrlLink" class="q7-input__field" type="text">                             
                                                     </div>                 
                                                 </div>                                  
                 
@@ -993,17 +993,20 @@
                                     // controls: false,
                                     // see for layout https://docs.videojs.com/tutorial-layout.html
                                     // fluid: true,
-                                    // aspectRatio: '16:7',
+                                    aspectRatio: '16:7',
                                     // fill: true,
                                     // responsive: true,
-                                    width: 640,
-                                    height: 360        
+                                    // width: 640,
+                                    // height: 360        
                                 }
                             };
 
                             // load user parameters if they are present
+                            if(sessionStorage.getItem('QencodePlayerParams')){                            
+                                var savedParamsJSON = sessionStorage.getItem('QencodePlayerParams');                                
+                                params = JSON.parse(savedParamsJSON);                                
+                            }
 
-                            // OR
                             
                             // set all inputs based on parameters
                             // Control Bar
@@ -1071,31 +1074,151 @@
 
                                 // fluid - takes all available space
                                 if(params.bypassOptions.fluid){
-                                    $('#playerLayoutFluid').prop('checked', 'true');
+                                    $('#playerLayoutFluid').prop('checked', true);
                                 }                             
 
                                 // fill - video element takes space of its container element
                                 if(params.bypassOptions.fill){
-                                    $('#playerLayoutFill').prop('checked', 'true');
+                                    $('#playerLayoutFill').prop('checked', true);
                                 }                          
                             } 
 
                             loadLayoutParameters();
 
-                            // Player Playback                                                                                     
+                            // Player Playback                                
+                            function loadPlaybackParameters(){
+                                // loop
+                                if(params.bypassOptions.loop){
+                                    $('#playbackLoopContent').prop('checked', true);
+                                }   
+
+                                // muted
+                                if(params.bypassOptions.muted){
+                                    $('#playbackMuteOnStart').prop('checked', true);
+                                }   
+
+                                // autoplay
+                                if(params.bypassOptions.autoplay){
+                                    $('#playbackAutostart').prop('checked', true);
+                                }    
+
+                                // controls
+                                if(params.bypassOptions.controls === false){
+                                    $('#playbackShowControls').prop('checked', false);
+                                }                                                                                               
+                            }                              
+
+                            loadPlaybackParameters();         
+
+                            // Dynamic Fields                            
+                            function loadDynamicFields(){
+                                if(params.titleBar){
+                                    $('#dynamicFieldsShowTitle').prop('checked', true);
+                                    $("#dynamicFieldsTitle").val(params.titleBar.text);
+                                }                      
+                                if(params.social){
+                                    $('#dynamicFieldsShareUrl').prop('checked', true);
+                                    $("#dynamicFieldsShareUrlLink").val(params.social.shareUrl);
+                                }                                                                            
+                            }                         
+
+                            loadDynamicFields();                              
                             
-                            
+                            function loadParamsFromUI(){
+
+                                // Load all values from fields
+
+                                var ui_params = {
+                                    controlBar: {
+                                        textColor: $("#controlBarTextColor").val(),
+                                        iconsColor: $("#controlBarIconsColor").val(),
+                                        timeSliderProgressColor: $("#controlBarTimesliderColor").val(),
+                                        timeSliderRailColor: $("#controlBarTimesliderRailColor").val(),
+                                        backgroundColor: $("#controlBarBackgroundColor").val(),
+                                        backgroundOpacity: parseFloat($("#controlBarBackgroundOpacity").val())                                        
+                                    },
+
+                                    menu:{
+                                        textColor: $("#menuTextColor").val(),
+                                        hoverColor: $("#menuHoverColor").val(),
+                                        selectedColor: $("#menuSelectedItemColor").val(),
+                                        selectedMarkColor: $("#menuSelectedItemMark").val(),
+                                        backgroundColor: $("#menuBackgroundColor").val(),  
+                                        backgroundOpacity: parseFloat($("#menuBackgroundOpacity").val())                                      
+                                    },  
+
+                                    bypassOptions:{
+
+                                    }                     
+                                };
+                                                                                                                                                   
+                                if($("#playerLayoutSize").val() == "fixed"){
+                                    ui_params.bypassOptions.width = parseInt($("#playerLayoutSizeWidth").val());
+                                    ui_params.bypassOptions.height = parseInt($("#playerLayoutSizeHeight").val());
+                                }
+
+                                if($("#playerLayoutSize").val() == "aspect_ratio"){
+                                    ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' +  $("#playerLayoutSizeHeight").val();
+                                }                                    
+
+                                if($('#playerLayoutFluid').prop("checked")){
+                                    ui_params.bypassOptions.fluid = true;
+                                }
+
+                                if($('#playerLayoutFill').prop("checked")){
+                                    ui_params.bypassOptions.fill = true;
+                                }
+
+                                // MUST UPDATE ON PLAYER SIDE FIRST
+                                // if($('#playerLayoutResponsive').prop("checked")){
+                                //     ui_params.bypassOptions.responsive = true;
+                                // }        
+                                // AND playbackPauseNotVisible
+
+                                if($('#playbackLoopContent').prop("checked")){
+                                    ui_params.bypassOptions.loop = true;
+                                }       
+
+                                if($('#playbackMuteOnStart').prop("checked")){
+                                    ui_params.bypassOptions.muted = true;
+                                }   
+
+                                if($('#playbackAutostart').prop("checked")){
+                                    ui_params.bypassOptions.autoplay = true;
+                                }    
+
+                                if(!$('#playbackShowControls').prop("checked")){
+                                    ui_params.bypassOptions.controls = false;
+                                }                                                                                                                                              
+                               
+                                if($('#dynamicFieldsShowTitle').prop("checked")){ 
+                                    ui_params.titleBar = {};
+                                    ui_params.titleBar.text = $("#dynamicFieldsTitle").val();
+                                }  
+
+                                if($('#dynamicFieldsShareUrl').prop("checked")){ 
+                                    ui_params.social = {};
+                                    ui_params.social.shareUrl = $("#dynamicFieldsShareUrlLink").val();
+                                    ui_params.social.twitter = 'https://twitter.com/intent/tweet?text='+$("#dynamicFieldsShareUrlLink").val();
+                                    ui_params.social.facebook = 'https://www.facebook.com/sharer/sharer.php?u='+$("#dynamicFieldsShareUrlLink").val();
+                                }                        
+
+                                // MUST LOAD NEW SRC FROM UI
+                                ui_params.videoSources = {};
+                                ui_params.videoSources.src = 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8';                                                                                                                                            
+
+                                return ui_params;
+                            }
+
                             qencodePlayer('my_player', params, function() { 
                                 console.log('Qencode Player is up and running'); 
 
-                                // reload_player
                                 document.querySelector('#reload_player').removeAttribute("disabled");     
 
                                 document.getElementById("reload_player").addEventListener('click', function(){
-                                    // var src = document.getElementById("video_url").value;
-                                    // sessionStorage.setItem('QencodeTestPlayerVideoSrc', src);
-                                    
-                                    // set new parameters
+                                    // load params from UI and save to session storage
+                                    var new_params = loadParamsFromUI();
+                                    sessionStorage.setItem('QencodePlayerParams',  JSON.stringify(new_params));
 
                                     // reload page
                                     window.location.reload();
