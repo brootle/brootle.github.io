@@ -406,6 +406,25 @@
                         <button disabled id="reload_player" class="q7-button q7-button--reload-player">Reload player with new parameters</button>
 
                         <div class="q7-player-settings">
+
+                            <div class="q7-player-settings__row">
+                                <div>
+                                    <div class="q7-player-settings__block">
+                                        <div class="q7-player-settings__block-title">Video Source</div>
+                                        <div class="q7-player-settings__block-content">
+                                            <div class="q7-advanced-settings__row">                            
+                                                <div class="q7-input"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Field to enter the URL</label>
+                                                    </div>                                                        
+                                                    <input id="playerVideoUrl" class="q7-input__field" type="text">                                                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="q7-player-settings__row">
                                 <div>
                                     <div class="q7-player-settings__block">
@@ -1014,6 +1033,9 @@
 
                             
                             // set all inputs based on parameters
+                            // Video Source
+                            $("#playerVideoUrl").val(params.videoSources.src);
+
                             // Control Bar
                             function loadControlBarParameters(){
                                 $("#controlBarTextColor").val(params.controlBar.textColor);
@@ -1248,7 +1270,7 @@
 
                                 // MUST LOAD NEW SRC FROM UI
                                 ui_params.videoSources = {};
-                                ui_params.videoSources.src = 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8';                                                                                                                                            
+                                ui_params.videoSources.src = $("#playerVideoUrl").val();                                                                                                                                            
 
                                 return ui_params;
                             }
