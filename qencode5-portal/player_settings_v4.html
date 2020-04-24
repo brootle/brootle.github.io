@@ -952,6 +952,25 @@
                         <script>
                         
                             // default parameters
+
+                            var defaultControlBar = {
+                                textColor: "#ffffff",
+                                iconsColor: "#ffffff",
+                                timeSliderProgressColor: "#366fe0",
+                                timeSliderRailColor: "#366fe0",
+                                backgroundColor: "#000000",
+                                backgroundOpacity: 0.76,                                 
+                            }; 
+
+                            var defaultMenu = {
+                                backgroundOpacity: 0.85,
+                                backgroundColor: "#262626",
+                                textColor: "#ffffff",
+                                hoverColor: "#333333",
+                                selectedColor: "#4b4b4b",
+                                selectedMarkColor: "#09aade"
+                            };                            
+
                             var params = {
                         
                                 videoSources: {
@@ -966,23 +985,9 @@
                                     facebook: 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=6byRchYizJY',
                                 },   
 
-                                controlBar: {
-                                    textColor: "#ffffff",
-                                    iconsColor: "#ffffff",
-                                    timeSliderProgressColor: "#366fe0",
-                                    timeSliderRailColor: "#366fe0",
-                                    backgroundColor: "#000000",
-                                    backgroundOpacity: 0.76,        
-                                },    
+                                controlBar: defaultControlBar,    
                                 
-                                menu:{
-                                    backgroundOpacity: 0.85,
-                                    backgroundColor: "#262626",
-                                    textColor: "#ffffff",
-                                    hoverColor: "#333333",
-                                    selectedColor: "#4b4b4b",
-                                    selectedMarkColor: "#09aade"
-                                },
+                                menu: defaultMenu,
 
 
                                 bypassOptions: {
@@ -1010,7 +1015,7 @@
                             
                             // set all inputs based on parameters
                             // Control Bar
-                            function loadDefaultControlBarParameters(){
+                            function loadControlBarParameters(){
                                 $("#controlBarTextColor").val(params.controlBar.textColor);
                                 $("#controlBarTextColor").trigger("change"); 
                                 
@@ -1029,12 +1034,31 @@
                                 $("#controlBarBackgroundOpacity").val(params.controlBar.backgroundOpacity);  
                             }              
 
-                            loadDefaultControlBarParameters();
+                            loadControlBarParameters();      
+
+                            function resetControlBarParameters(){
+                                $("#controlBarTextColor").val(defaultControlBar.textColor);
+                                $("#controlBarTextColor").trigger("change"); 
+                                
+                                $("#controlBarIconsColor").val(defaultControlBar.iconsColor);
+                                $("#controlBarIconsColor").trigger("change");  
+
+                                $("#controlBarTimesliderColor").val(defaultControlBar.timeSliderProgressColor);
+                                $("#controlBarTimesliderColor").trigger("change");
+
+                                $("#controlBarTimesliderRailColor").val(defaultControlBar.timeSliderRailColor);
+                                $("#controlBarTimesliderRailColor").trigger("change");     
+
+                                $("#controlBarBackgroundColor").val(defaultControlBar.backgroundColor);
+                                $("#controlBarBackgroundColor").trigger("change");                                                    
+
+                                $("#controlBarBackgroundOpacity").val(defaultControlBar.backgroundOpacity);  
+                            }                                                       
                             
-                            $("#resetControlBar").click(loadDefaultControlBarParameters); 
+                            $("#resetControlBar").click(resetControlBarParameters); 
 
                             // Menu
-                            function loadDefaultMenuParameters(){
+                            function loadMenuParameters(){
                                 $("#menuTextColor").val(params.menu.textColor);
                                 $("#menuTextColor").trigger("change");   
 
@@ -1053,9 +1077,28 @@
                                 $("#menuBackgroundOpacity").val(params.menu.backgroundOpacity);                                                                                                                                                 
                             }                   
 
-                            loadDefaultMenuParameters();     
+                            loadMenuParameters();     
 
-                            $("#resetMenu").click(loadDefaultMenuParameters);     
+                            function resetMenuParameters(){
+                                $("#menuTextColor").val(defaultMenu.textColor);
+                                $("#menuTextColor").trigger("change");   
+
+                                $("#menuHoverColor").val(defaultMenu.hoverColor);
+                                $("#menuHoverColor").trigger("change"); 
+
+                                $("#menuSelectedItemColor").val(defaultMenu.selectedColor);
+                                $("#menuSelectedItemColor").trigger("change");      
+
+                                $("#menuSelectedItemMark").val(defaultMenu.selectedMarkColor);
+                                $("#menuSelectedItemMark").trigger("change");            
+
+                                $("#menuBackgroundColor").val(defaultMenu.backgroundColor);
+                                $("#menuBackgroundColor").trigger("change");     
+
+                                $("#menuBackgroundOpacity").val(defaultMenu.backgroundOpacity);                                                                                                                                                 
+                            }                              
+
+                            $("#resetMenu").click(resetMenuParameters);     
 
                             // Player Layout   
                             function loadLayoutParameters(){
