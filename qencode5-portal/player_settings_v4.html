@@ -1298,6 +1298,7 @@
                                 console.log("Update Code");
                                 
                                 var code_params = loadParamsFromUI();
+                                console.log(code_params);
 
                                 var keys = Object.keys(code_params);
 
@@ -1314,10 +1315,14 @@
                                     for (var prop in obj) {
                                         // skip loop if the property is from prototype
                                         if (!obj.hasOwnProperty(prop)) continue;
-
-                                        // your code
+                                        
+                                        var paramValue = obj[prop];
+                                        if(typeof paramValue === 'string'){
+                                            paramValue = `"${paramValue}"`;
+                                        }
+                                       
                                         outputCode+=`
-        ${prop}:  "${obj[prop]}",`;
+        ${prop}:  ${paramValue},`;
                                     }
 
                                     outputCode+=`
