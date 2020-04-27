@@ -954,6 +954,24 @@
                             </div>
                         </div>
 
+                        <div>
+                            <div class="q7-player-settings__block-title">Your code</div>
+                            <div class="q7-codeblock-container">
+                                <div class="q7-codeblock__flash-message">
+                                    <div><img src="img/check_blue.svg"> <span>Copied</span></div>
+                                </div>                 
+                                <div class="q7-codeblock__example">                    
+                                    <div class="q7-codeblock__code">
+                                        <button class="q7-button q7-button--round q7-button--copy">
+                                            Copy
+                                            <div class="q6-flash-message">copied</div>
+                                        </button>
+                                        <pre><code id="playerCodeJS" class="hljs"></code></pre>                    
+                                    </div>
+                                </div>              
+                            </div>                            
+                        </div>
+
                         <script>
                             // handle color change when color picker clicked
                             $('input[type=color]').on('change', function() {
@@ -1275,6 +1293,61 @@
                                 return ui_params;
                             }
 
+                            // this function is used to update code block
+                            function updateCodeblockWithNewParams(){
+                                console.log("Update Code");
+                                
+                                var code_params = loadParamsFromUI();
+
+                                var keys = Object.keys(code_params);
+
+                                var outputCode = `var params = {`;
+
+                                for (var key in code_params) {
+                                    // skip loop if the property is from prototype
+                                    if (!code_params.hasOwnProperty(key)) continue;
+
+                                    outputCode+=`
+    ${key}: {`
+
+                                    var obj = code_params[key];
+                                    for (var prop in obj) {
+                                        // skip loop if the property is from prototype
+                                        if (!obj.hasOwnProperty(prop)) continue;
+
+                                        // your code
+                                        outputCode+=`
+        ${prop}:  "${obj[prop]}",`;
+                                    }
+
+                                    outputCode+=`
+    },`
+
+                                }   
+                                                              
+
+                                outputCode+=`
+}
+
+qencodePlayer('my_player', params, function() { 
+    // optional callback function after player is loaded   
+    console.log("Player is loaded");                                    
+});   
+`
+
+                                $("#playerCodeJS").text(outputCode);                             
+
+                                hljs.initHighlighting.called = false;
+                                hljs.initHighlighting();
+                            }
+
+                            // update code block with new params - playerCodeJS
+                            updateCodeblockWithNewParams();      
+                            
+                            $(".q7-player-settings input, .q7-player-settings select").on('change keyup', function(){
+                                updateCodeblockWithNewParams(); 
+                            });
+
                             qencodePlayer('my_player', params, function() { 
                                 console.log('Qencode Player is up and running'); 
 
@@ -1287,7 +1360,49 @@
 
                                     // reload page
                                     window.location.reload();
-                                });                                         
+                                });                                                                                       
+                            });
+                        </script>                        
+
+                        <script>
+                            // initialize code highlight
+                            hljs.initHighlightingOnLoad();
+                        </script>            
+
+                        <script>
+                            $(function () {                
+                                // copy code
+                                $(".q7-codeblock-container .q7-button--copy").click(function (){
+
+                                    try { 
+                                        var cellTextNode = $(this).closest('.q7-codeblock__code').find('code')[0];
+                                    
+                                        var selection = window.getSelection();        
+                                        var range = document.createRange();
+
+                                        range.selectNodeContents(cellTextNode);
+                                        selection.removeAllRanges();
+                                        selection.addRange(range);
+
+                                        var successful = document.execCommand('copy');         
+
+                                        var flashMessage = $(this).closest('.q7-codeblock-container').find('.q7-codeblock__flash-message')[0];                                                                         
+
+                                        if(successful) {                       
+                                            $(flashMessage)
+                                                .slideDown(100)
+                                                .delay(800)                                     
+                                                .fadeOut(200)                                                                             
+                                        }
+                                        else
+                                        { 
+                                            //console.log("can not copy");
+                                        } 
+                                    } catch (err) {
+                                        console.log(err);
+                                    }
+
+                                });                           
                             });
                         </script>                        
 
