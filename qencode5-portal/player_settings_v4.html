@@ -24,6 +24,10 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="plugins/spectrum/spectrum.js"></script>
+    <link href="plugins/spectrum/spectrum.css" rel="stylesheet">
+    
+
     <link href="css/q5.css" rel="stylesheet" />
     <link href="css/q5-menu.css" rel="stylesheet" />
 
@@ -386,6 +390,30 @@
                     <div class="q7-content-block">
 
                         <div class="q7-block-title">Player Settings</div>
+                        
+
+                        <div class="q7-input q7-input--color" style="width: 370px;"> 
+                            <div class="q7-input__label">
+                                <label>Control Bar text</label>
+                            </div>                       
+                            <div class="q7-color-input-container">
+                                <label class="q7-color-input">
+                                    <input type="color">                                                                 
+                                </label>  
+                                <input id="color-picker" value="#276cb8" class="q7-input__field" type="text">
+                            </div>                                                                                                                                                                                                                                  
+                        </div>                        
+
+                        <script>
+                            $('#color-picker').spectrum({
+                                type: "component",
+                                hideAfterPaletteSelect: "true"
+                            });            
+
+                            $('#color-picker').change(function(){
+                                console.log("Color changed by color picker");
+                            });
+                        </script>
 
                     </div>
 
