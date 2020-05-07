@@ -390,30 +390,7 @@
                     <div class="q7-content-block">
 
                         <div class="q7-block-title">Player Settings</div>
-                        
-
-                        <div class="q7-input q7-input--color" style="width: 370px;"> 
-                            <div class="q7-input__label">
-                                <label>Control Bar text</label>
-                            </div>                       
-                            <div class="q7-color-input-container">
-                                <label class="q7-color-input">
-                                    <input type="color">                                                                 
-                                </label>  
-                                <input id="color-picker" value="#276cb8" class="q7-input__field" type="text">
-                            </div>                                                                                                                                                                                                                                  
-                        </div>                        
-
-                        <script>
-                            $('#color-picker').spectrum({
-                                type: "component",
-                                hideAfterPaletteSelect: "true"
-                            });            
-
-                            $('#color-picker').change(function(){
-                                console.log("Color changed by color picker");
-                            });
-                        </script>
+                    
 
                     </div>
 
@@ -430,8 +407,7 @@
                         <div class="q7-settings-player-container">
                             <div id='my_player'></div>
                         </div>                     
-                                                
-                        <button disabled id="reload_player" class="q7-button q7-button--reload-player">Reload player with new parameters</button>
+                                                                        
 
                         <div class="q7-player-settings">
 
@@ -440,13 +416,16 @@
                                     <div class="q7-player-settings__block">
                                         <div class="q7-player-settings__block-title">Video Source</div>
                                         <div class="q7-player-settings__block-content">
-                                            <div class="q7-advanced-settings__row">                            
-                                                <div class="q7-input"> 
-                                                    <div class="q7-input__label">
-                                                        <label>Field to enter the URL</label>
-                                                    </div>                                                        
-                                                    <input id="playerVideoUrl" class="q7-input__field" type="text">                                                                                  
-                                                </div>
+                                            <div class="q7-advanced-settings__row">    
+                                                <div class="q7-input-and-buttons--inline">                      
+                                                    <div class="q7-input"> 
+                                                        <div class="q7-input__label">
+                                                            <label>Field to enter the URL</label>
+                                                        </div>                                                        
+                                                        <input id="playerVideoUrl" class="q7-input__field" type="text">                                                                                  
+                                                    </div>
+                                                    <button disabled id="reload_player" class="q7-button">Reload parameters</button>
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>
@@ -456,137 +435,7 @@
                             <div class="q7-player-settings__row">
                                 <div>
                                     <div class="q7-player-settings__block">
-                                        <div class="q7-player-settings__block-title">Control Bar  <a id="resetControlBar">Reset to Defaults</a> </div>
-                                        <div class="q7-player-settings__block-content">
-                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--row-title">
-                                                            <label>Text:</label>                                                                         
-                                                        </div>                              
-                                                    </div>                                                                   
-                                                </div>  
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Color</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color">                                                                 
-                                                            </label>  
-                                                            <input id="controlBarTextColor" class="q7-input__field" type="text">
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>                                                  
-                
-                                            </div>   
-                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--row-title">
-                                                            <label>Icons:</label>                                                                         
-                                                        </div>                              
-                                                    </div>                                                                   
-                                                </div>  
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Default</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="controlBarIconsColor" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>                                                  
-                
-                                            </div>                                                 
-                                        </div>                                 
-                                        <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input">
-                                                    <div class="q7-input__label q7-input__label--row-title">
-                                                        <label>Timeslider:</label>                                                                         
-                                                    </div>                              
-                                                </div>                                                                   
-                                            </div>  
-                                            
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input q7-input--color"> 
-                                                    <div class="q7-input__label">
-                                                        <label>Color</label>
-                                                    </div>                       
-                                                    <div class="q7-color-input-container">
-                                                        <label class="q7-color-input">
-                                                            <input type="color" >                                                                 
-                                                        </label>  
-                                                        <input id="controlBarTimesliderColor" class="q7-input__field" type="text" >
-                                                    </div>                                                                                                                                                                                                                                  
-                                                </div>                                                                  
-                                            </div>           
-                                            
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input q7-input--color"> 
-                                                    <div class="q7-input__label">
-                                                        <label>Rail</label>
-                                                    </div>                       
-                                                    <div class="q7-color-input-container">
-                                                        <label class="q7-color-input">
-                                                            <input type="color" >                                                                 
-                                                        </label>  
-                                                        <input id="controlBarTimesliderRailColor" class="q7-input__field" type="text" >
-                                                    </div>                                                                                                                                                                                                                                  
-                                                </div>                                                                  
-                                            </div>                                               
-            
-                                        </div>                                    
-                                        <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input">
-                                                    <div class="q7-input__label q7-input__label--row-title">
-                                                        <label>Background:</label>                                                                         
-                                                    </div>                              
-                                                </div>                                                                   
-                                            </div>  
-                                            
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input q7-input--color"> 
-                                                    <div class="q7-input__label">
-                                                        <label>Color</label>
-                                                    </div>                       
-                                                    <div class="q7-color-input-container">
-                                                        <label class="q7-color-input">
-                                                            <input type="color" >                                                                 
-                                                        </label>  
-                                                        <input id="controlBarBackgroundColor" class="q7-input__field" type="text" >
-                                                    </div>                                                                                                                                                                                                                                  
-                                                </div>                                                                  
-                                            </div>           
-                                            
-                                            <div class="q7-input-and-buttons--inline">
-                                                <div class="q7-input"> 
-                                                    <div class="q7-input__label">
-                                                        <label>Opacity</label>
-                                                    </div>                                                                           
-                                                    <input id="controlBarBackgroundOpacity" class="q7-input__field" type="number" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
-                                                </div>                                                                  
-                                            </div>                                               
-            
-                                        </div>                                                                                                                                                                                                                  
-                                    </div>                                 
-                                </div>
-                                <div>
-                                    <div class="q7-player-settings__block">
-                                        <div class="q7-player-settings__block-title">Player Layout</div>
+                                        <div class="q7-player-settings__block-title">Player Size</div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -598,7 +447,7 @@
                                                         </div>
                                                         <div class="q7-custom-select">
                                                             <select id="playerLayoutSize" class="q7-select">
-                                                                <option selected value="fixed">Fixed</option>
+                                                                <option selected value="fluid">Fluid</option>
                                                                 <option value="aspect_ratio">Aspect Ratio</option>
                                                             </select>
                                                         </div>
@@ -621,75 +470,8 @@
                                                 </div>                                  
                 
                                             </div>  
-                                            <div class="q7-advanced-settings__row">
 
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--with-switch q7-input__label--row-title">
-                                                            <label>Fluid</label>
-                
-                                                            <div class="q7-switch-container">
-                                                                <label class="q7-switch">
-                                                                    <input id="playerLayoutFluid" class="q7-input__field" type="checkbox">
-                                                                    <span class="q7-switch__slider"></span>
-                                                                    <span class="q7-switch__text">
-                                                                        <span class="q7-switch__text--on">On</span>
-                                                                        <span class="q7-switch__text--off">Off</span>
-                                                                    </span>
-                                                                </label>  
-                                                            </div>                                            
-                
-                                                        </div>                              
-                                                    </div>                 
-                                                </div>                                  
-                
-                                            </div>                                                  
-                                            <div class="q7-advanced-settings__row">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--with-switch q7-input__label--row-title">
-                                                            <label>Fill</label>
-                
-                                                            <div class="q7-switch-container">
-                                                                <label class="q7-switch">
-                                                                    <input id="playerLayoutFill" class="q7-input__field" type="checkbox">
-                                                                    <span class="q7-switch__slider"></span>
-                                                                    <span class="q7-switch__text">
-                                                                        <span class="q7-switch__text--on">On</span>
-                                                                        <span class="q7-switch__text--off">Off</span>
-                                                                    </span>
-                                                                </label>  
-                                                            </div>                                            
-                
-                                                        </div>                              
-                                                    </div>                 
-                                                </div>                                  
-                
-                                            </div>   
-                                            <div class="q7-advanced-settings__row">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--with-switch q7-input__label--row-title">
-                                                            <label>Responsive</label>
-                
-                                                            <div class="q7-switch-container">
-                                                                <label class="q7-switch">
-                                                                    <input id="playerLayoutResponsive" class="q7-input__field" type="checkbox" >
-                                                                    <span class="q7-switch__slider"></span>
-                                                                    <span class="q7-switch__text">
-                                                                        <span class="q7-switch__text--on">On</span>
-                                                                        <span class="q7-switch__text--off">Off</span>
-                                                                    </span>
-                                                                </label>  
-                                                            </div>                                            
-                
-                                                        </div>                              
-                                                    </div>                 
-                                                </div>                                  
-                
-                                            </div>                                                                                        
+                                                                                   
                                         </div>                                                                                                                                                                                                  
                                     </div>  
                                     <div class="q7-player-settings__block">
@@ -812,119 +594,7 @@
                                             </div>      
                                         </div>                                                                                                                                                                                                  
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="q7-player-settings__row">
-                                <div>
-                                    <div class="q7-player-settings__block">
-                                        <div class="q7-player-settings__block-title">Menus  <a id="resetMenu">Reset to Defaults</a> </div>
-                                        <div class="q7-player-settings__block-content">
-                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--row-title">
-                                                            <label>Links:</label>                                                                         
-                                                        </div>                              
-                                                    </div>                                                                   
-                                                </div>  
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Text</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="menuTextColor" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>     
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Hover</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="menuHoverColor" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>           
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Selected Item</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="menuSelectedItemColor" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>       
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Selected Mark</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="menuSelectedItemMark" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>                                                   
-                
-                                            </div>      
-                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label q7-input__label--row-title">
-                                                            <label>Background:</label>                                                                         
-                                                        </div>                              
-                                                    </div>                                                                   
-                                                </div>  
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input q7-input--color"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Color</label>
-                                                        </div>                       
-                                                        <div class="q7-color-input-container">
-                                                            <label class="q7-color-input">
-                                                                <input type="color" >                                                                 
-                                                            </label>  
-                                                            <input id="menuBackgroundColor" class="q7-input__field" type="text" >
-                                                        </div>                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>           
-                                                
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Opacity</label>
-                                                        </div>                                                                           
-                                                        <input id="menuBackgroundOpacity" class="q7-input__field" type="number" step="0.01" min="0" max="1">                                                                                                                                                                                                                                                                                  
-                                                    </div>                                                                  
-                                                </div>                                               
-                
-                                            </div>                                                                                                                   
-                                        </div>                                                                                                                                                                                                  
-                                    </div>                                                                       
-                                </div>
-                                <div>
                                     <div class="q7-player-settings__block">
                                         <div class="q7-player-settings__block-title">Dynamic Fields</div>
                                         <div class="q7-player-settings__block-content">
@@ -977,9 +647,176 @@
                 
                                             </div>   
                                         </div>                                                                                                                                                                                                  
-                                    </div>  
+                                    </div>                                    
+
+
+                                </div>                                
+                                <div>
+                                    <div class="q7-player-settings__block">
+                                        <div class="q7-player-settings__block-title">Color Customization  <a id="resetColors">Reset to Defaults</a> </div>
+                                        <div class="q7-player-settings__block-content">
+
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Control Bar text</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="controlBarText" value="#ffffff" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>
+
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Control Bar icons</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="controlBarIcons" value="#ffffff" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>   
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Timeslider rail</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="timeSliderRail" value="#366fe0" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>   
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Timeslider progress</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="timeSliderProgress" value="#366fe0" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>  
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Timeslider loaded</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="timeSliderLoaded" value="#9a9a9a" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div> 
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Interface background</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="interfaceBackground" value="rgba(0, 0, 0, 0.76)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>        
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Menu text color</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="menuText" value="rgba(255, 255, 255, 0.85)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>          
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Menu background</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="menuBackground" value="rgba(38, 38, 38, 0.85)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>     
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Menu option hovered</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="menuOptionHovered" value="rgba(38, 38, 38, 0.85)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>         
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Menu option selected</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="menuOptionSelected" value="rgba(75, 75, 75, 0.74)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>         
+                                            
+                                            <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
+                                                <div class="q7-input q7-input--color"> 
+                                                    <div class="q7-input__label">
+                                                        <label>Menu option marker</label>
+                                                    </div>                       
+                                                    <div class="q7-color-input-container">
+                                                        <label class="q7-color-input">
+                                                            <input type="color">                                                                 
+                                                        </label>  
+                                                        <input id="menuOptionSelectedMarker" value="rgba(9, 170, 222, 0.85)" class="q7-input__field" type="text">
+                                                    </div>                                                                                                                                                                                                                                  
+                                                </div>                                                   
+                                            </div>                                                  
+                     
+                                                               
+                                        </div>                                 
+                                                                                                                                                                                                                 
+                                    </div>                                 
                                 </div>
                             </div>
+
                         </div>
 
                         <div>
@@ -1018,42 +855,43 @@
                         
                             // default parameters
 
-                            var defaultControlBar = {
-                                textColor: "#ffffff",
-                                iconsColor: "#ffffff",
-                                timeSliderProgressColor: "#366fe0",
-                                timeSliderRailColor: "#366fe0",
-                                backgroundColor: "#000000",
-                                backgroundOpacity: 0.76,                                 
-                            }; 
+                            var defaultColors = {
+                                controlBarText: "#ffffff",
+                                controlBarIcons: "#ffffff",
 
-                            var defaultMenu = {
-                                backgroundOpacity: 0.85,
-                                backgroundColor: "#262626",
-                                textColor: "#ffffff",
-                                hoverColor: "#333333",
-                                selectedColor: "#4b4b4b",
-                                selectedMarkColor: "#09aade"
+                                timeSliderRail: "#366fe0",
+                                timeSliderProgress: "#366fe0",
+                                timeSliderLoaded: "#9a9a9a",
+
+                                interfaceBackground: '#000000c2',
+
+                                menuText: '#ffffffd9',
+                                menuText: 'red',
+                                menuBackground: '#262626d9',
+                                menuOptionHovered: '#38383880',
+                                menuOptionSelected: '#4b4b4bbf',
+                                menuOptionSelectedMarker: '#09aaded9'      
                             };                            
+                            
+                                          
 
                             var params = {
                         
                                 videoSources: {
                                     src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
                                 },
+
                                 titleBar: {
                                     text: 'Qencode Player'
                                 },   
+
                                 social: {
                                     shareUrl: 'https://www.youtube.com/watch?v=6byRchYizJY',
                                     twitter: 'https://twitter.com/intent/tweet?text=https://www.youtube.com/watch?v=6byRchYizJY',
                                     facebook: 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=6byRchYizJY',
                                 },   
 
-                                controlBar: defaultControlBar,    
-                                
-                                menu: defaultMenu,
-
+                                colors: defaultColors,
 
                                 bypassOptions: {
                                     // playbackRates: [0.7, 1.0, 1.5, 2.0],
@@ -1062,14 +900,16 @@
                                     // autoplay: true,
                                     // controls: false,
                                     // see for layout https://docs.videojs.com/tutorial-layout.html
-                                    // fluid: true,
-                                    aspectRatio: '16:7',
+                                    fluid: true,
+                                    // aspectRatio: '16:7',
                                     // fill: true,
                                     // responsive: true,
                                     // width: 640,
                                     // height: 360        
                                 }
                             };
+
+                            console.log("params: ",params);
 
                             // load user parameters if they are present
                             if(sessionStorage.getItem('QencodePlayerParams')){                            
@@ -1083,90 +923,46 @@
                             $("#playerVideoUrl").val(params.videoSources.src);
 
                             // Control Bar
-                            function loadControlBarParameters(){
-                                $("#controlBarTextColor").val(params.controlBar.textColor);
+                            function loadColorParameters(){
+                                $("#controlBarTextColor").val(params.colors.controlBarText);
                                 $("#controlBarTextColor").trigger("change"); 
                                 
-                                $("#controlBarIconsColor").val(params.controlBar.iconsColor);
+                                $("#controlBarIconsColor").val(params.colors.controlBarIcons);
                                 $("#controlBarIconsColor").trigger("change");  
 
-                                $("#controlBarTimesliderColor").val(params.controlBar.timeSliderProgressColor);
+                                // timeSliderLoaded: "#9a9a9a",
+
+                                $("#controlBarTimesliderColor").val(params.colors.timeSliderProgress);
                                 $("#controlBarTimesliderColor").trigger("change");
 
-                                $("#controlBarTimesliderRailColor").val(params.controlBar.timeSliderRailColor);
+                                $("#controlBarTimesliderRailColor").val(params.colors.timeSliderRail);
                                 $("#controlBarTimesliderRailColor").trigger("change");     
 
-                                $("#controlBarBackgroundColor").val(params.controlBar.backgroundColor);
-                                $("#controlBarBackgroundColor").trigger("change");                                                    
-
-                                $("#controlBarBackgroundOpacity").val(params.controlBar.backgroundOpacity);  
+                                // add timeSliderLoaded: "#9a9a9a", 
                             }              
 
-                            loadControlBarParameters();      
+                            loadColorParameters();      
 
-                            function resetControlBarParameters(){
-                                $("#controlBarTextColor").val(defaultControlBar.textColor);
+                            function resetColorParameters(){
+                                $("#controlBarTextColor").val(defaultColors.controlBarText);
                                 $("#controlBarTextColor").trigger("change"); 
                                 
-                                $("#controlBarIconsColor").val(defaultControlBar.iconsColor);
+                                $("#controlBarIconsColor").val(defaultColors.controlBarIcons);
                                 $("#controlBarIconsColor").trigger("change");  
 
-                                $("#controlBarTimesliderColor").val(defaultControlBar.timeSliderProgressColor);
+                                // timeSliderLoaded: "#9a9a9a",
+
+                                $("#controlBarTimesliderColor").val(defaultColors.timeSliderProgress);
                                 $("#controlBarTimesliderColor").trigger("change");
 
-                                $("#controlBarTimesliderRailColor").val(defaultControlBar.timeSliderRailColor);
-                                $("#controlBarTimesliderRailColor").trigger("change");     
+                                $("#controlBarTimesliderRailColor").val(defaultColors.timeSliderRail);
+                                $("#controlBarTimesliderRailColor").trigger("change");   
+                                
 
-                                $("#controlBarBackgroundColor").val(defaultControlBar.backgroundColor);
-                                $("#controlBarBackgroundColor").trigger("change");                                                    
-
-                                $("#controlBarBackgroundOpacity").val(defaultControlBar.backgroundOpacity);  
                             }                                                       
                             
-                            $("#resetControlBar").click(resetControlBarParameters); 
-
-                            // Menu
-                            function loadMenuParameters(){
-                                $("#menuTextColor").val(params.menu.textColor);
-                                $("#menuTextColor").trigger("change");   
-
-                                $("#menuHoverColor").val(params.menu.hoverColor);
-                                $("#menuHoverColor").trigger("change"); 
-
-                                $("#menuSelectedItemColor").val(params.menu.selectedColor);
-                                $("#menuSelectedItemColor").trigger("change");      
-
-                                $("#menuSelectedItemMark").val(params.menu.selectedMarkColor);
-                                $("#menuSelectedItemMark").trigger("change");            
-
-                                $("#menuBackgroundColor").val(params.menu.backgroundColor);
-                                $("#menuBackgroundColor").trigger("change");     
-
-                                $("#menuBackgroundOpacity").val(params.menu.backgroundOpacity);                                                                                                                                                 
-                            }                   
-
-                            loadMenuParameters();     
-
-                            function resetMenuParameters(){
-                                $("#menuTextColor").val(defaultMenu.textColor);
-                                $("#menuTextColor").trigger("change");   
-
-                                $("#menuHoverColor").val(defaultMenu.hoverColor);
-                                $("#menuHoverColor").trigger("change"); 
-
-                                $("#menuSelectedItemColor").val(defaultMenu.selectedColor);
-                                $("#menuSelectedItemColor").trigger("change");      
-
-                                $("#menuSelectedItemMark").val(defaultMenu.selectedMarkColor);
-                                $("#menuSelectedItemMark").trigger("change");            
-
-                                $("#menuBackgroundColor").val(defaultMenu.backgroundColor);
-                                $("#menuBackgroundColor").trigger("change");     
-
-                                $("#menuBackgroundOpacity").val(defaultMenu.backgroundOpacity);                                                                                                                                                 
-                            }                              
-
-                            $("#resetMenu").click(resetMenuParameters);     
+                            $("#resetColors").click(resetColorParameters); 
+ 
 
                             // Player Layout   
                             function loadLayoutParameters(){
@@ -1395,6 +1191,13 @@ qencodePlayer('my_player', params, function() {
                                     window.location.reload();
                                 });                                                                                       
                             });
+                        </script>           
+                        
+                        <script>
+                            $('.q7-input.q7-input--color .q7-input__field').spectrum({
+                                type: "component",
+                                hideAfterPaletteSelect: "true"
+                            });  
                         </script>                        
 
                         <script>
