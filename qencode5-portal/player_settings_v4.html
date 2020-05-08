@@ -441,30 +441,32 @@
 
                                                 <div class="q7-input-and-buttons--inline">
 
-                                                    <div class="q7-input">
+                                                    <div class="q7-input" style="margin-right: 0;">
                                                         <div class="q7-input__label">
                                                             <label>Size</label>
                                                         </div>
                                                         <div class="q7-custom-select">
                                                             <select id="playerLayoutSize" class="q7-select">
-                                                                <option selected value="fluid">Fluid</option>
+                                                                <option value="fluid">Fluid</option>
                                                                 <option value="aspect_ratio">Aspect Ratio</option>
                                                             </select>
                                                         </div>
                                                     </div>                                                    
 
-                                                    <div class="q7-input q7-input--width"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Width</label>
-                                                        </div>                                                        
-                                                        <input id="playerLayoutSizeWidth" class="q7-input__field" value="640" type="number" step="1" min="1">                                                                                  
-                                                    </div>  
-                                                    
-                                                    <div class="q7-input q7-input--height"> 
-                                                        <div class="q7-input__label">
-                                                            <label>Height</label>
-                                                        </div>                                                        
-                                                        <input id="playerLayoutSizeHeight" class="q7-input__field" value="360" type="number" step="1" min="1">                                                                                  
+                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline" style="display: none;">
+                                                        <div class="q7-input q7-input--width"> 
+                                                            <div class="q7-input__label">
+                                                                <label>Width</label>
+                                                            </div>                                                        
+                                                            <input id="playerLayoutSizeWidth" class="q7-input__field" value="640" type="number" step="1" min="1">                                                                                  
+                                                        </div>  
+                                                        
+                                                        <div class="q7-input q7-input--height"> 
+                                                            <div class="q7-input__label">
+                                                                <label>Height</label>
+                                                            </div>                                                        
+                                                            <input id="playerLayoutSizeHeight" class="q7-input__field" value="360" type="number" step="1" min="1">                                                                                  
+                                                        </div>
                                                     </div>                                                      
                                                     
                                                 </div>                                  
@@ -617,7 +619,7 @@
                                                             </div>                                            
                 
                                                         </div>    
-                                                        <input id="dynamicFieldsTitle" class="q7-input__field" type="text">                                                                                  
+                                                        <input id="dynamicFieldsTitle" class="q7-input__field" type="text" style="display: none;">                                                                                  
                                                     </div>                 
                                                 </div>                                  
                 
@@ -641,7 +643,7 @@
                                                             </div>                                            
                 
                                                         </div>   
-                                                        <input id="dynamicFieldsShareUrlLink" class="q7-input__field" type="text">                             
+                                                        <input id="dynamicFieldsShareUrlLink" class="q7-input__field" type="text" style="display: none;">                             
                                                     </div>                 
                                                 </div>                                  
                 
@@ -665,7 +667,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="controlBarText" value="#ffffff" class="q7-input__field" type="text">
+                                                        <input id="controlBarText"  class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>
@@ -679,7 +681,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="controlBarIcons" value="#ffffff" class="q7-input__field" type="text">
+                                                        <input id="controlBarIcons" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>   
@@ -693,7 +695,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="timeSliderRail" value="#366fe0" class="q7-input__field" type="text">
+                                                        <input id="timeSliderRail" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>   
@@ -707,7 +709,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="timeSliderProgress" value="#366fe0" class="q7-input__field" type="text">
+                                                        <input id="timeSliderProgress" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>  
@@ -721,7 +723,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="timeSliderLoaded" value="#9a9a9a" class="q7-input__field" type="text">
+                                                        <input id="timeSliderLoaded" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div> 
@@ -735,7 +737,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="interfaceBackground" value="rgba(0, 0, 0, 0.76)" class="q7-input__field" type="text">
+                                                        <input id="interfaceBackground" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>        
@@ -749,7 +751,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="menuText" value="rgba(255, 255, 255, 0.85)" class="q7-input__field" type="text">
+                                                        <input id="menuText" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>          
@@ -763,7 +765,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="menuBackground" value="rgba(38, 38, 38, 0.85)" class="q7-input__field" type="text">
+                                                        <input id="menuBackground" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>     
@@ -777,7 +779,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="menuOptionHovered" value="rgba(38, 38, 38, 0.85)" class="q7-input__field" type="text">
+                                                        <input id="menuOptionHovered" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>         
@@ -791,7 +793,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="menuOptionSelected" value="rgba(75, 75, 75, 0.74)" class="q7-input__field" type="text">
+                                                        <input id="menuOptionSelected" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>         
@@ -805,7 +807,7 @@
                                                         <label class="q7-color-input">
                                                             <input type="color">                                                                 
                                                         </label>  
-                                                        <input id="menuOptionSelectedMarker" value="rgba(9, 170, 222, 0.85)" class="q7-input__field" type="text">
+                                                        <input id="menuOptionSelectedMarker" class="q7-input__field" type="text">
                                                     </div>                                                                                                                                                                                                                                  
                                                 </div>                                                   
                                             </div>                                                  
@@ -837,19 +839,6 @@
                             </div>                            
                         </div>
 
-                        <script>
-                            // handle color change when color picker clicked
-                            $('input[type=color]').on('change', function() {
-                                $(this).parent().css("background-color", this.value);
-                                $(this).parent().next().val(this.value);
-                            });  
-
-                            // when value changed in the field update colored box
-                            $('.q7-input.q7-input--color input[type=text].q7-input__field').on("keyup change", function() {
-                                $(this).prev().css("background-color", this.value);
-                                $(this).prev().children('input[type=color]').val(this.value);
-                            });                                                        
-                        </script>
                         
                         <script>
                         
@@ -863,33 +852,30 @@
                                 timeSliderProgress: "#366fe0",
                                 timeSliderLoaded: "#9a9a9a",
 
-                                interfaceBackground: '#000000c2',
+                                interfaceBackground: 'rgba(0, 0, 0, 0.76)',
 
-                                menuText: '#ffffffd9',
-                                menuText: 'red',
-                                menuBackground: '#262626d9',
-                                menuOptionHovered: '#38383880',
-                                menuOptionSelected: '#4b4b4bbf',
-                                menuOptionSelectedMarker: '#09aaded9'      
+                                menuText: 'rgba(255, 255, 255, 0.85)',
+                                menuBackground: 'rgba(38, 38, 38, 0.85)',
+                                menuOptionHovered: 'rgba(56, 56, 56, 0.5)',
+                                menuOptionSelected: 'rgba(75, 75, 75, 0.74)',
+                                menuOptionSelectedMarker: 'rgba(9, 170, 222, 0.85)'      
                             };                            
-                            
-                                          
-
+                                                                    
                             var params = {
                         
                                 videoSources: {
                                     src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
                                 },
 
-                                titleBar: {
-                                    text: 'Qencode Player'
-                                },   
+                                // titleBar: {
+                                //     text: 'Qencode Player'
+                                // },   
 
-                                social: {
-                                    shareUrl: 'https://www.youtube.com/watch?v=6byRchYizJY',
-                                    twitter: 'https://twitter.com/intent/tweet?text=https://www.youtube.com/watch?v=6byRchYizJY',
-                                    facebook: 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=6byRchYizJY',
-                                },   
+                                // social: {
+                                //     shareUrl: 'https://www.youtube.com/watch?v=6byRchYizJY',
+                                //     twitter: 'https://twitter.com/intent/tweet?text=https://www.youtube.com/watch?v=6byRchYizJY',
+                                //     facebook: 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=6byRchYizJY',
+                                // },   
 
                                 colors: defaultColors,
 
@@ -922,72 +908,125 @@
                             // Video Source
                             $("#playerVideoUrl").val(params.videoSources.src);
 
-                            // Control Bar
+                            // Load Color Customization parameters
                             function loadColorParameters(){
-                                $("#controlBarTextColor").val(params.colors.controlBarText);
-                                $("#controlBarTextColor").trigger("change"); 
+                                $("#controlBarText").val(params.colors.controlBarText);
+                                $("#controlBarText").trigger("change"); 
                                 
-                                $("#controlBarIconsColor").val(params.colors.controlBarIcons);
-                                $("#controlBarIconsColor").trigger("change");  
+                                $("#controlBarIcons").val(params.colors.controlBarIcons);
+                                $("#controlBarIcons").trigger("change");  
 
-                                // timeSliderLoaded: "#9a9a9a",
+                                $("#timeSliderRail").val(params.colors.timeSliderRail);
+                                $("#timeSliderRail").trigger("change");   
 
-                                $("#controlBarTimesliderColor").val(params.colors.timeSliderProgress);
-                                $("#controlBarTimesliderColor").trigger("change");
+                                $("#timeSliderProgress").val(params.colors.timeSliderProgress);
+                                $("#timeSliderProgress").trigger("change");  
 
-                                $("#controlBarTimesliderRailColor").val(params.colors.timeSliderRail);
-                                $("#controlBarTimesliderRailColor").trigger("change");     
+                                $("#timeSliderLoaded").val(params.colors.timeSliderLoaded);
+                                $("#timeSliderLoaded").trigger("change");   
 
-                                // add timeSliderLoaded: "#9a9a9a", 
+
+                                $("#interfaceBackground").val(params.colors.interfaceBackground);
+                                $("#interfaceBackground").trigger("change"); 
+
+
+                                $("#menuText").val(params.colors.menuText);
+                                $("#menuText").trigger("change"); 
+
+                                $("#menuBackground").val(params.colors.menuBackground);
+                                $("#menuBackground").trigger("change");  
+
+                                $("#menuOptionHovered").val(params.colors.menuOptionHovered);
+                                $("#menuOptionHovered").trigger("change");  
+
+                                $("#menuOptionSelected").val(params.colors.menuOptionSelected);
+                                $("#menuOptionSelected").trigger("change"); 
+
+                                $("#menuOptionSelectedMarker").val(params.colors.menuOptionSelectedMarker);
+                                $("#menuOptionSelectedMarker").trigger("change");                                                                                                                                                                                                                                  
                             }              
 
                             loadColorParameters();      
 
                             function resetColorParameters(){
-                                $("#controlBarTextColor").val(defaultColors.controlBarText);
-                                $("#controlBarTextColor").trigger("change"); 
+                                // defaultColors
+                                $("#controlBarText").val(defaultColors.controlBarText);
+                                $("#controlBarText").trigger("change"); 
                                 
-                                $("#controlBarIconsColor").val(defaultColors.controlBarIcons);
-                                $("#controlBarIconsColor").trigger("change");  
+                                $("#controlBarIcons").val(defaultColors.controlBarIcons);
+                                $("#controlBarIcons").trigger("change");  
 
-                                // timeSliderLoaded: "#9a9a9a",
+                                $("#timeSliderRail").val(defaultColors.timeSliderRail);
+                                $("#timeSliderRail").trigger("change");   
 
-                                $("#controlBarTimesliderColor").val(defaultColors.timeSliderProgress);
-                                $("#controlBarTimesliderColor").trigger("change");
+                                $("#timeSliderProgress").val(defaultColors.timeSliderProgress);
+                                $("#timeSliderProgress").trigger("change");  
 
-                                $("#controlBarTimesliderRailColor").val(defaultColors.timeSliderRail);
-                                $("#controlBarTimesliderRailColor").trigger("change");   
+                                $("#timeSliderLoaded").val(defaultColors.timeSliderLoaded);
+                                $("#timeSliderLoaded").trigger("change");   
+
+
+                                $("#interfaceBackground").val(defaultColors.interfaceBackground);
+                                $("#interfaceBackground").trigger("change"); 
+
+
+                                $("#menuText").val(defaultColors.menuText);
+                                $("#menuText").trigger("change"); 
+
+                                $("#menuBackground").val(defaultColors.menuBackground);
+                                $("#menuBackground").trigger("change");  
+
+                                $("#menuOptionHovered").val(defaultColors.menuOptionHovered);
+                                $("#menuOptionHovered").trigger("change");  
+
+                                $("#menuOptionSelected").val(defaultColors.menuOptionSelected);
+                                $("#menuOptionSelected").trigger("change"); 
+
+                                $("#menuOptionSelectedMarker").val(defaultColors.menuOptionSelectedMarker);
+                                $("#menuOptionSelectedMarker").trigger("change");     
                                 
-
                             }                                                       
                             
                             $("#resetColors").click(resetColorParameters); 
  
 
                             // Player Layout   
-                            function loadLayoutParameters(){
-                                if(params.bypassOptions.width && params.bypassOptions.height){
-                                    $("#playerLayoutSize").val("fixed");
-                                    $("#playerLayoutSizeWidth").val(params.bypassOptions.width);
-                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.height);
-                                } 
 
-                                // aspectRatio ratio parameter overcomes width and height if they are present
+                            function hideWidthHeight(){
+                                $("#widthAndHeight").hide();
+                                $("#widthAndHeight").prev().css("margin-right", "0");
+                            }
+
+                            function showWidthHeight(){
+                                $("#widthAndHeight").show();
+                                $("#widthAndHeight").prev().css("margin-right", "");
+                            }             
+
+                            $("#playerLayoutSize").change(function(){
+                                if($(this).val() === "aspect_ratio"){
+                                    showWidthHeight();
+                                }
+
+                                if($(this).val() === "fluid"){
+                                    hideWidthHeight();
+                                }                                
+                            });             
+
+                            function loadLayoutParameters(){
+                                // aspectRatio ratio parameter 
                                 if(params.bypassOptions.aspectRatio){
                                     $("#playerLayoutSize").val("aspect_ratio");
                                     $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
-                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);
+                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);  
+                                    showWidthHeight();                                  
                                 } 
 
                                 // fluid - takes all available space
                                 if(params.bypassOptions.fluid){
-                                    $('#playerLayoutFluid').prop('checked', true);
-                                }                             
-
-                                // fill - video element takes space of its container element
-                                if(params.bypassOptions.fill){
-                                    $('#playerLayoutFill').prop('checked', true);
-                                }                          
+                                    $("#playerLayoutSize").val("fluid");
+                                    // if fluid - hide widht and height options and set margin-right to 0
+                                    hideWidthHeight();
+                                }                                                    
                             } 
 
                             loadLayoutParameters();
@@ -1022,65 +1061,77 @@
                                 if(params.titleBar){
                                     $('#dynamicFieldsShowTitle').prop('checked', true);
                                     $("#dynamicFieldsTitle").val(params.titleBar.text);
+                                    $("#dynamicFieldsTitle").show();
+                                }else{
+                                    $("#dynamicFieldsTitle").hide();
                                 }                      
+
                                 if(params.social){
                                     $('#dynamicFieldsShareUrl').prop('checked', true);
                                     $("#dynamicFieldsShareUrlLink").val(params.social.shareUrl);
+                                    $("#dynamicFieldsShareUrlLink").show();
+                                }else{
+                                    $("#dynamicFieldsShareUrlLink").hide();
                                 }                                                                            
                             }                         
 
-                            loadDynamicFields();                              
+                            loadDynamicFields();   
+
+                            $("#dynamicFieldsShowTitle").change(function(){
+                                if($(this).is(":checked")){
+                                    $("#dynamicFieldsTitle").show();
+                                }else{
+                                    $("#dynamicFieldsTitle").hide();
+                                }
+                            });                           
+
+                            $("#dynamicFieldsShareUrl").change(function(){
+                                if($(this).is(":checked")){
+                                    $("#dynamicFieldsShareUrlLink").show();
+                                }else{
+                                    $("#dynamicFieldsShareUrlLink").hide();
+                                }
+                            });                               
                             
                             function loadParamsFromUI(){
 
                                 // Load all values from fields
 
                                 var ui_params = {
-                                    controlBar: {
-                                        textColor: $("#controlBarTextColor").val(),
-                                        iconsColor: $("#controlBarIconsColor").val(),
-                                        timeSliderProgressColor: $("#controlBarTimesliderColor").val(),
-                                        timeSliderRailColor: $("#controlBarTimesliderRailColor").val(),
-                                        backgroundColor: $("#controlBarBackgroundColor").val(),
-                                        backgroundOpacity: parseFloat($("#controlBarBackgroundOpacity").val())                                        
-                                    },
 
-                                    menu:{
-                                        textColor: $("#menuTextColor").val(),
-                                        hoverColor: $("#menuHoverColor").val(),
-                                        selectedColor: $("#menuSelectedItemColor").val(),
-                                        selectedMarkColor: $("#menuSelectedItemMark").val(),
-                                        backgroundColor: $("#menuBackgroundColor").val(),  
-                                        backgroundOpacity: parseFloat($("#menuBackgroundOpacity").val())                                      
-                                    },  
+                                    colors:{
+                                        controlBarText: $("#controlBarText").val(),
+                                        controlBarIcons: $("#controlBarIcons").val(),
+
+                                        timeSliderRail: $("#timeSliderRail").val(),
+                                        timeSliderProgress: $("#timeSliderProgress").val(),
+                                        timeSliderLoaded: $("#timeSliderLoaded").val(),
+
+                                        interfaceBackground: $("#interfaceBackground").val(),
+
+                                        menuText: $("#menuText").val(),
+                                        menuBackground: $("#menuBackground").val(),
+                                        menuOptionHovered: $("#menuOptionHovered").val(),
+                                        menuOptionSelected: $("#menuOptionSelected").val(),
+                                        menuOptionSelectedMarker: $("#menuOptionSelectedMarker").val()  
+                                    },
 
                                     bypassOptions:{
 
                                     }                     
                                 };
                                                                                                                                                    
-                                if($("#playerLayoutSize").val() == "fixed"){
-                                    ui_params.bypassOptions.width = parseInt($("#playerLayoutSizeWidth").val());
-                                    ui_params.bypassOptions.height = parseInt($("#playerLayoutSizeHeight").val());
-                                }
 
                                 if($("#playerLayoutSize").val() == "aspect_ratio"){
                                     ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' +  $("#playerLayoutSizeHeight").val();
-                                }                                    
+                                }                                                                  
 
-                                if($('#playerLayoutFluid').prop("checked")){
+                                if($("#playerLayoutSize").val() == "fluid"){
                                     ui_params.bypassOptions.fluid = true;
-                                }
-
-                                if($('#playerLayoutFill').prop("checked")){
-                                    ui_params.bypassOptions.fill = true;
-                                }
+                                }        
 
                                 // MUST UPDATE ON PLAYER SIDE FIRST
-                                // if($('#playerLayoutResponsive').prop("checked")){
-                                //     ui_params.bypassOptions.responsive = true;
-                                // }        
-                                // AND playbackPauseNotVisible
+                                // playbackPauseNotVisible
 
                                 if($('#playbackLoopContent').prop("checked")){
                                     ui_params.bypassOptions.loop = true;
