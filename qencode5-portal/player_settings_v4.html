@@ -879,6 +879,8 @@
 
                                 colors: defaultColors,
 
+                                //pauseWhenNotVisible: true,
+
                                 bypassOptions: {
                                     // playbackRates: [0.7, 1.0, 1.5, 2.0],
                                     // loop: true,
@@ -1033,6 +1035,11 @@
 
                             // Player Playback                                
                             function loadPlaybackParameters(){
+                                // pause when not visible
+                                if(params.pauseWhenNotVisible){
+                                    $('#playbackPauseNotVisible').prop('checked', true);
+                                }                                  
+
                                 // loop
                                 if(params.bypassOptions.loop){
                                     $('#playbackLoopContent').prop('checked', true);
@@ -1129,9 +1136,10 @@
                                 if($("#playerLayoutSize").val() == "fluid"){
                                     ui_params.bypassOptions.fluid = true;
                                 }        
-
-                                // MUST UPDATE ON PLAYER SIDE FIRST
-                                // playbackPauseNotVisible
+                                
+                                if($('#playbackPauseNotVisible').prop("checked")){
+                                    ui_params.pauseWhenNotVisible = true;
+                                }  
 
                                 if($('#playbackLoopContent').prop("checked")){
                                     ui_params.bypassOptions.loop = true;
@@ -1168,6 +1176,9 @@
                                 return ui_params;
                             }
 
+
+                            console.log("loadParamsFromUI()", loadParamsFromUI());
+
                             // this function is used to update code block
                             function updateCodeblockWithNewParams(){
                                 console.log("Update Code");
@@ -1183,26 +1194,32 @@
                                     // skip loop if the property is from prototype
                                     if (!code_params.hasOwnProperty(key)) continue;
 
-                                    outputCode+=`
+                                    if(typeof code_params[key] === 'object'){
+                                
+                                        outputCode+=`
     ${key}: {`
 
-                                    var obj = code_params[key];
-                                    for (var prop in obj) {
-                                        // skip loop if the property is from prototype
-                                        if (!obj.hasOwnProperty(prop)) continue;
+                                        var obj = code_params[key];
+
+                                        for (var prop in obj) {
+                                            // skip loop if the property is from prototype
+                                            if (!obj.hasOwnProperty(prop)) continue;
+                                            
+                                            var paramValue = obj[prop];
+                                            if(typeof paramValue === 'string'){
+                                                paramValue = `"${paramValue}"`;
+                                            }
                                         
-                                        var paramValue = obj[prop];
-                                        if(typeof paramValue === 'string'){
-                                            paramValue = `"${paramValue}"`;
-                                        }
-                                       
-                                        outputCode+=`
+                                            outputCode+=`
         ${prop}:  ${paramValue},`;
-                                    }
+                                        }
 
-                                    outputCode+=`
+                                        outputCode+=`
     },`
-
+                                    }else{
+                                        outputCode+=`
+    ${key}: ${code_params[key]},`                                        
+                                    }
                                 }   
                                                               
 
