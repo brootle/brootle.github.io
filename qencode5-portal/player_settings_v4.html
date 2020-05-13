@@ -1266,6 +1266,13 @@ qencodePlayer('my_player', params, function() {
                                 type: "component",
                                 hideAfterPaletteSelect: "true"
                             });  
+
+                            // toggle hide and show pallete when entire input container click
+                            // so it is also triggered when we click colored box
+                            $(".q7-color-input-container").click(function() {
+                                $(this).find("input").spectrum("toggle");
+                                return false;
+                            });                            
                         </script>                        
 
                         <script>
