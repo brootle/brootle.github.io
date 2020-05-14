@@ -434,7 +434,7 @@
 
                             <div class="q7-player-settings__row">
                                 <div>
-                                    <div class="q7-player-settings__block">
+                                    <!-- <div class="q7-player-settings__block">
                                         <div class="q7-player-settings__block-title">Player Size</div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
@@ -475,7 +475,7 @@
 
                                                                                    
                                         </div>                                                                                                                                                                                                  
-                                    </div>  
+                                    </div>   -->
                                     <div class="q7-player-settings__block">
                                         <div class="q7-player-settings__block-title">Playback</div>
                                         <div class="q7-player-settings__block-content">
@@ -888,7 +888,7 @@
                                     // autoplay: true,
                                     // controls: false,
                                     // see for layout https://docs.videojs.com/tutorial-layout.html
-                                    fluid: true,
+                                    // fluid: true,
                                     // aspectRatio: '16:7',
                                     // fill: true,
                                     // responsive: true,
@@ -993,45 +993,45 @@
  
 
                             // Player Layout   
+                            // function hideWidthHeight(){
+                            //     $("#widthAndHeight").hide();
+                            //     $("#widthAndHeight").prev().css("margin-right", "0");
+                            // }
+                            // function showWidthHeight(){
+                            //     $("#widthAndHeight").show();
+                            //     $("#widthAndHeight").prev().css("margin-right", "");
+                            // }             
+                            // $("#playerLayoutSize").change(function(){
+                            //     if($(this).val() === "aspect_ratio"){
+                            //         showWidthHeight();
+                            //     }
 
-                            function hideWidthHeight(){
-                                $("#widthAndHeight").hide();
-                                $("#widthAndHeight").prev().css("margin-right", "0");
-                            }
+                            //     if($(this).val() === "fluid"){
+                            //         hideWidthHeight();
+                            //     }                                
+                            // });             
 
-                            function showWidthHeight(){
-                                $("#widthAndHeight").show();
-                                $("#widthAndHeight").prev().css("margin-right", "");
-                            }             
+                            // function loadLayoutParameters(){
+                            //     // aspectRatio ratio parameter 
+                            //     if(params.bypassOptions.aspectRatio){
+                            //         $("#playerLayoutSize").val("aspect_ratio");
+                            //         $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
+                            //         $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);  
+                            //         showWidthHeight();                                  
+                            //     } 
 
-                            $("#playerLayoutSize").change(function(){
-                                if($(this).val() === "aspect_ratio"){
-                                    showWidthHeight();
-                                }
+                            //     // fluid - takes all available space
+                            //     if(params.bypassOptions.fluid){
+                            //         $("#playerLayoutSize").val("fluid");
+                            //         // if fluid - hide widht and height options and set margin-right to 0
+                            //         hideWidthHeight();
+                            //     }                                                    
+                            // } 
 
-                                if($(this).val() === "fluid"){
-                                    hideWidthHeight();
-                                }                                
-                            });             
+                            // loadLayoutParameters();
 
-                            function loadLayoutParameters(){
-                                // aspectRatio ratio parameter 
-                                if(params.bypassOptions.aspectRatio){
-                                    $("#playerLayoutSize").val("aspect_ratio");
-                                    $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
-                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);  
-                                    showWidthHeight();                                  
-                                } 
 
-                                // fluid - takes all available space
-                                if(params.bypassOptions.fluid){
-                                    $("#playerLayoutSize").val("fluid");
-                                    // if fluid - hide widht and height options and set margin-right to 0
-                                    hideWidthHeight();
-                                }                                                    
-                            } 
 
-                            loadLayoutParameters();
 
                             // Player Playback                                
                             function loadPlaybackParameters(){
