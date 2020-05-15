@@ -862,6 +862,8 @@
                             };                            
                                                                     
                             var params = {
+
+                                licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
                         
                                 videoSources: {
                                     src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
@@ -1106,6 +1108,8 @@
 
                                 var ui_params = {
 
+                                    licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
+
                                     colors:{
                                         controlBarText: $("#controlBarText").val(),
                                         controlBarIcons: $("#controlBarIcons").val(),
@@ -1217,8 +1221,15 @@
                                         outputCode+=`
     },`
                                     }else{
-                                        outputCode+=`
-    ${key}: ${code_params[key]},`                                        
+                                        // check if string
+                                        if(typeof code_params[key] === 'string'){
+                                            outputCode+=`
+    ${key}: "${code_params[key]}",`                                               
+                                        }else{
+                                            outputCode+=`
+    ${key}: ${code_params[key]},`   
+                                        }
+                                     
                                     }
                                 }   
                                                               
@@ -1226,7 +1237,7 @@
                                 outputCode+=`
 }
 
-qencodePlayer('my_player', params, function() { 
+qPlayer('my_player', params, function() { 
     // optional callback function after player is loaded   
     console.log("Player is loaded");                                    
 });   
@@ -1245,8 +1256,10 @@ qencodePlayer('my_player', params, function() {
                                 updateCodeblockWithNewParams(); 
                             });
 
-                            qencodePlayer('my_player', params, function() { 
-                                console.log('Qencode Player is up and running'); 
+                            console.log("Params just before Player initialization: ",params);
+                            
+                            qPlayer('my_player', params, function() { 
+                                console.log('Qencode Player is up and running!!!'); 
 
                                 document.querySelector('#reload_player').removeAttribute("disabled");     
 
