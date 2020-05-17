@@ -390,9 +390,142 @@
                     <div class="q7-content-block">
 
                         <div class="q7-block-title">Player Settings</div>
+
+                        <div class="q7-player-settings__header">
                     
+                            <div class="q7-input-and-buttons--inline">
+
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>License Key</label>   
+                                        <button class="q7-button q7-button--round q7-button--copy q7-button--copy-field">
+                                            Copy
+                                            <div class="q7-flash-message">Copied</div>
+                                        </button>                                 
+                                    </div>
+                                    <div class="q7-input__field--view">f223fb50-8d26-6b9e-637c-eb62a5e79edb</div>  
+                                    <a>Recreate</a>                    
+                                </div>      
+                                                            
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Player name:</label>
+                                    </div>                        
+                                    <div class="q7-input__field--view q7-input__field--view-player-name q7-input__field--action-btns">
+                                        Project_NDQ3Afsdfjlskjdflasdfwkejflkdjflaksjdf4234324ekrqlerj23lkajwel           
+                                        <div class="q7-actions-container">
+                                            <div class="q7-actions__icon q7-actions__icon--edit"></div>
+                                        </div>                                                                
+                                    </div>  
+
+                                </div>    
+                                
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Date Created:</label>
+                                    </div>                        
+                                    <div class="q7-input__field--view">
+                                        June 9, 2020                                  
+                                    </div>  
+
+                                </div>                                   
+                                
+                            
+                            </div>                        
+
+                        </div>
 
                     </div>
+
+                    <div class="q7-content-block">
+
+                        <div class="q7-block-title">Player Settings</div>
+
+                        <div class="q7-player-settings__header">
+                    
+                            <div class="q7-input-and-buttons--inline">
+
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>License Key</label>   
+                                        <button class="q7-button q7-button--round q7-button--copy q7-button--copy-field">
+                                            Copy
+                                            <div class="q7-flash-message">Copied</div>
+                                        </button>                                 
+                                    </div>
+                                    <div class="q7-input__field--view">f223fb50-8d26-6b9e-637c-eb62a5e79edb</div>  
+                                    <a>Recreate</a>                    
+                                </div>      
+                                                            
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Player name:</label>
+                                    </div>                        
+                                    <div class="q7-input__field--action-btns q7-input__field--action-btns__two-btns">       
+                                        <input class="q7-input__field" type="text" value="Project_NDQ3Afsdfjlskjdflasdfwkejflkdjflaksjdf4234324ekrqlerj23lkajwel">   
+                                        <div class="q7-actions-container">
+                                            <div class="q7-actions__icon q7-actions__icon--confirm"></div>
+                                            <div class="q7-actions__icon q7-actions__icon--cancel"></div>
+                                        </div>                                      
+                                    </div>
+
+                                </div>    
+                                
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Date Created:</label>
+                                    </div>                        
+                                    <div class="q7-input__field--view">
+                                        June 9, 2020                                  
+                                    </div>  
+
+                                </div>                                   
+                                
+                            
+                            </div>                        
+
+                        </div>
+
+                    </div>                    
+
+                    <script>
+                        $(function () {                
+                            // copy license key
+                            $(".q7-button--copy-field").click(function (){
+
+                                try { 
+                                    var cellTextNode = $(this).closest('.q7-input').find('.q7-input__field--view')[0];
+                                
+                                    console.log("cellTextNode");
+
+                                    var selection = window.getSelection();        
+                                    var range = document.createRange();
+
+                                    range.selectNodeContents(cellTextNode);
+                                    selection.removeAllRanges();
+                                    selection.addRange(range);
+
+                                    var successful = document.execCommand('copy');         
+
+                                    var flashMessage = $(this).find('.q7-flash-message')[0];       
+                                                          
+                                    if(successful) {                       
+                                        $(flashMessage)
+                                            .slideDown(100)
+                                            .delay(800)                                     
+                                            .fadeOut(200)                                                                             
+                                    }
+                                    else
+                                    { 
+                                        //console.log("can not copy");
+                                    } 
+                                } catch (err) {
+                                    console.log(err);
+                                }
+
+                            });                           
+                        });
+                    </script>                        
 
                     <div class="q7-content-block">
 
@@ -831,7 +964,6 @@
                                     <div class="q7-codeblock__code">
                                         <button class="q7-button q7-button--round q7-button--copy">
                                             Copy
-                                            <div class="q6-flash-message">copied</div>
                                         </button>
                                         <pre><code id="playerCodeJS" class="hljs"></code></pre>                    
                                     </div>
