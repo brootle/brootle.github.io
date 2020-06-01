@@ -514,7 +514,7 @@
                             
                         </div>
                         
-                        <div class="q7-transcoding-api__block-title">Source Video</div>
+                        <div class="q7-transcoding-api__block-title"><span>1</span> Source Video</div>
                         <div class="q7-transcoding-api__source-video-block">
 
                             <div class="q6-tutorial-add-videos-container">
@@ -992,13 +992,13 @@
                             
                         </div>
 
-                        <div class="q7-transcoding-api__block-title">Define Destination</div>
+                        <div class="q7-transcoding-api__block-title"><span>2</span> Define Destination</div>
 
                         <div class="q7-transcoding-api__two-blocks">
                             <div>
-                                <div class="q7-transcoding-api__block-title">Output Formats</div>
+                                <div class="q7-transcoding-api__block-title"><span>3</span> Output Formats</div>
 
-                                <div class="q7-transcoding-api__block-title">More Settings</div>
+                                <div class="q7-transcoding-api__block-title"><span>4</span> More Settings</div>
                             </div>
 
                             <div class="q7-transcoding-api__json">
@@ -1009,6 +1009,9 @@
                                     </button>
                                 </div>
                                 <div class="q7-transcoding-api__json-body">
+                                    <div class="q7-codeblock__flash-message">
+                                        <div><img src="img/check_blue.svg"> <span>Copied</span></div>
+                                    </div>                                       
                                     <pre><code id="transcodingApiJson" class="hljs">var a = 1;</code></pre>    
                                 </div>
 
@@ -1061,12 +1064,49 @@
                                 <script>
                                     // initialize code highlight
                                     hljs.initHighlightingOnLoad();
-                                </script>                                  
+                                </script>                   
+                                
+                                <script>
+                                    $(function () {                
+                                        // copy code
+                                        $(".q7-transcoding-api__json .q7-button--copy").click(function (){
+
+                                            try { 
+                                                var cellTextNode = $(this).closest('.q7-transcoding-api__json').find('code')[0];
+                                            
+                                                var selection = window.getSelection();        
+                                                var range = document.createRange();
+
+                                                range.selectNodeContents(cellTextNode);
+                                                selection.removeAllRanges();
+                                                selection.addRange(range);
+
+                                                var successful = document.execCommand('copy');         
+
+                                                var flashMessage = $(this).closest('.q7-transcoding-api__json').find('.q7-codeblock__flash-message')[0];                                                                         
+
+                                                if(successful) {                       
+                                                    $(flashMessage)
+                                                        .slideDown(100)
+                                                        .delay(800)                                     
+                                                        .fadeOut(200)                                                                             
+                                                }
+                                                else
+                                                { 
+                                                    //console.log("can not copy");
+                                                } 
+                                            } catch (err) {
+                                                console.log(err);
+                                            }
+
+                                        });                           
+                                    });
+                                </script>                                   
 
                                 <script>
                                     $(function () {                               
                     
-                                        // toggle show and hide menu on dots menu button click  
+                                        // toggle show and hide menu on menu button click  
                                         $(".q7-dd-menu__button").click(function(e){
                                             // check if current is opened
                                             if($(this).hasClass('q7-dd-menu__button--opened')){
