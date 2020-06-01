@@ -993,6 +993,133 @@
                         </div>
 
                         <div class="q7-transcoding-api__block-title"><span>2</span> Define Destination</div>
+                        <div class="q7-transcoding-api__choose-bucket">
+
+                            <div class="q6-tab">
+                                <div class="q6-tabs-container">
+                                    <span class="q6-tablinks q6-tablinks--active" data-tabcontent="qencode_s3">Qencode S3</span>
+                                    <span class="q6-tablinks" data-tabcontent="generic_s3">Generic S3</span>
+                                    <span class="q6-tablinks" data-tabcontent="aws">AWS</span>
+                                    <span class="q6-tablinks" data-tabcontent="google_cloud">Google Cloud</span>
+                                    <span class="q6-tablinks" data-tabcontent="blackblaze_b2">Blackblaze B2</span>
+                                    <span class="q6-tablinks" data-tabcontent="azure">Azure</span>
+                                    <span class="q6-tablinks" data-tabcontent="digital_ocean">DigitalOcean</span>
+                                    <span class="q6-tablinks" data-tabcontent="ftp">FTP</span>
+                                </div>
+                            </div>     
+
+                            <div id="qencode_s3" class="q6-tabcontent q6-tabcontent--active">
+                                <div class="q7-qencode-storage-promo">
+                                    <div>
+                                        left
+                                    </div>
+                                    <div>
+                                        <div class="q7-qencode-storage-promo__block">
+                                            <div class="q7-storage-icon-container">
+                                                <div class="q7-storage-icon q7-storage-icon--s3-storage"></div>
+                                            </div>
+                                            <div>
+                                                <div class="q7-storage-block-title">S3 Storage</div>
+                                                <p>
+                                                    Instantly scale your storage requirements
+                                                    as files are added and removed.
+                                                </p>
+                                            </div>                    
+                                        </div>   
+                                        <div class="q7-qencode-storage-promo__block">
+                                            <div class="q7-storage-icon-container">
+                                                <div class="q7-storage-icon q7-storage-icon--cdn"></div>
+                                            </div>
+                                            <div>
+                                                <div class="q7-storage-block-title">Content Delivery Network</div>
+                                                <p>
+                                                    High-speed CDN built-in and optimized 
+                                                    to boost performance and user experience.
+                                                </p>
+                                            </div>                    
+                                        </div>           
+                                        <div class="q7-qencode-storage-promo__block">
+                                            <div class="q7-storage-icon-container">
+                                                <div class="q7-storage-icon q7-storage-icon--global"></div>
+                                            </div>
+                                            <div>
+                                                <div class="q7-storage-block-title">Global Availability</div>
+                                                <p>
+                                                    Fast and reliable delivery of your content 
+                                                    around the world, including 40 edge locations 
+                                                    for complete coverage
+                                                </p>
+                                            </div>                    
+                                        </div>  
+                                        <div class="q7-qencode-storage-promo__block">
+                                            <div class="q7-storage-icon-container">
+                                                <div class="q7-storage-icon q7-storage-icon--secure"></div>
+                                            </div>
+                                            <div>
+                                                <div class="q7-storage-block-title">Secure and Reliable</div>
+                                                <p>
+                                                    Fully encrypted SSL data transfer, with 
+                                                    adjustable privacy and expiration settings.
+                                                </p>
+                                            </div>                    
+                                        </div>                                                                                                                                                                                       
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div id="generic_s3" class="q6-tabcontent">
+                                Generic S3
+                            </div>     
+                            
+                            <div id="aws" class="q6-tabcontent">
+                                AWS
+                            </div>     
+                            
+                            <div id="google_cloud" class="q6-tabcontent">
+                                Google Cloud
+                            </div>     
+                            
+                            <div id="blackblaze_b2" class="q6-tabcontent">
+                                Blackblaze B2
+                            </div>     
+                            
+                            <div id="azure" class="q6-tabcontent">
+                                Azure
+                            </div>     
+                            
+                            <div id="digital_ocean" class="q6-tabcontent">
+                                DigitalOcean
+                            </div>     
+                            
+                            <div id="ftp" class="q6-tabcontent">
+                                FTP
+                            </div>                                 
+
+                            <script>
+                                var tabLinks = document.querySelectorAll('.q6-tablinks');
+                
+                                tabLinks.forEach(link => link.addEventListener('click', switchTab));
+                
+                                function switchTab(e){
+                
+                                    // find active elements and remove -> tablinks--active tabcontent--active
+                
+                                    $('.q6-tablinks--active').removeClass("q6-tablinks--active");
+                                    $('.q6-tabcontent--active').removeClass("q6-tabcontent--active");
+                
+                                    // find what tab link was clicked and show tab content with that ID
+                                    var clickedLink = e.currentTarget;
+                                    $(clickedLink).addClass('q6-tablinks--active');
+                
+                                    var tabID = clickedLink.getAttribute("data-tabcontent");
+                
+                                    $(`#${tabID}`).addClass('q6-tabcontent--active');
+                                    var tabContent = document.querySelector(`#${tabID}`);
+                
+                                }
+                            </script>                               
+
+                        </div>
 
                         <div class="q7-transcoding-api__two-blocks">
                             <div>
