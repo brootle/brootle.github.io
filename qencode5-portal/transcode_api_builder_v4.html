@@ -1349,136 +1349,115 @@
                                 </div>
                             </div>
 
-                            <div class="q7-transcoding-api__json">
-                                <div class="q7-transcoding-api__json-header">
-                                    <div class="q7-transcoding-api__block-title">JSON</div>
-                                    <button class="q7-button q7-button--round q7-button--copy">
-                                        Copy
-                                    </button>
-                                </div>
-                                <div class="q7-transcoding-api__json-body">
-                                    <div class="q7-codeblock__flash-message">
-                                        <div><img src="img/check_blue.svg"> <span>Copied</span></div>
-                                    </div>                                       
-                                    <pre><code id="transcodingApiJson" class="hljs">var a = 1;</code></pre>    
-                                </div>
-
-                                <script>
-                                    var query = {
-                                        query: {
-                                            source: "https://your-server.com/test_mini.mp4",
-                                            format: [
-                                                {
-                                                    output: "mp4",
-                                                    destination: {
-                                                        url:"s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4",
-                                                        key:"abcde12345",
-                                                        secret:"abcde12345",
-                                                        permissions: "public-read"
-                                                    },
-                                                    framerate: 29.97,
-                                                    keyframe: 25,
-                                                    file_extension: "mp4",
-                                                    size: "360x240",
-                                                    video_codec_parameters: {
-                                                        vprofile: "baseline",
-                                                        level: 31,
-                                                        coder: 0,
-                                                        flags2: "-bpyramid+fastpskip-dct8x8",
-                                                        partitions: "+parti8x8+parti4x4+partp8x8+partb8x8",
-                                                        directpred: 2,
-                                                        me_method: "hex"
-                                                    },
-                                                    start_time: 10,
-                                                    duration: 20,
-                                                    audio_bitrate: 64,
-                                                    audio_sample_rate: 44100,
-                                                    audio_channels_number: 2
-                                                }
-                                            ]
+                            <div>
+                                <div class="q7-transcoding-api__json">
+                                    <div class="q7-transcoding-api__json-header">
+                                        <div class="q7-transcoding-api__block-title">JSON</div>
+                                        <button class="q7-button q7-button--round q7-button--copy">
+                                            Copy
+                                        </button>
+                                    </div>
+                                    <div class="q7-transcoding-api__json-body">
+                                        <div class="q7-codeblock__flash-message">
+                                            <div><img src="img/check_blue.svg"> <span>Copied</span></div>
+                                        </div>                                       
+                                        <pre><code id="transcodingApiJson" class="hljs"></code></pre>    
+                                    </div>
+                        
+                                    <script>
+                                        var query = {
+                                            query: {
+                                                source: "https://your-server.com/test_mini.mp4",
+                                                format: [
+                                                    {
+                                                        output: "mp4",
+                                                        destination: {
+                                                            url:"s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4",
+                                                            key:"abcde12345",
+                                                            secret:"abcde12345",
+                                                            permissions: "public-read"
+                                                        },
+                                                        framerate: 29.97,
+                                                        keyframe: 25,
+                                                        file_extension: "mp4",
+                                                        size: "360x240",
+                                                        video_codec_parameters: {
+                                                            vprofile: "baseline",
+                                                            level: 31,
+                                                            coder: 0,
+                                                            flags2: "-bpyramid+fastpskip-dct8x8",
+                                                            partitions: "+parti8x8+parti4x4+partp8x8+partb8x8",
+                                                            directpred: 2,
+                                                            me_method: "hex"
+                                                        },
+                                                        start_time: 10,
+                                                        duration: 20,
+                                                        audio_bitrate: 64,
+                                                        audio_sample_rate: 44100,
+                                                        audio_channels_number: 2
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    }
 
-                                    var queryJSON = JSON.stringify(query, null, 2);
-                                    console.log(queryJSON);
+                                        var queryJSON = JSON.stringify(query, null, 2);
+                                        console.log(queryJSON);
 
-                                    $('#transcodingApiJson').text(queryJSON);
+                                        $('#transcodingApiJson').text(queryJSON);
 
-                                    hljs.initHighlighting.called = false;
-                                    hljs.initHighlighting();                      
-      
-                                </script>
+                                        hljs.initHighlighting.called = false;
+                                        hljs.initHighlighting();                      
+        
+                                    </script>
 
-                                <script>
-                                    // initialize code highlight
-                                    hljs.initHighlightingOnLoad();
-                                </script>                   
-                                
-                                <script>
-                                    $(function () {                
-                                        // copy code
-                                        $(".q7-transcoding-api__json .q7-button--copy").click(function (){
+                                    <script>
+                                        // initialize code highlight
+                                        hljs.initHighlightingOnLoad();
+                                    </script>                   
+                                    
+                                    <script>
+                                        $(function () {                
+                                            // copy code
+                                            $(".q7-transcoding-api__json .q7-button--copy").click(function (){
 
-                                            try { 
-                                                var cellTextNode = $(this).closest('.q7-transcoding-api__json').find('code')[0];
-                                            
-                                                var selection = window.getSelection();        
-                                                var range = document.createRange();
+                                                try { 
+                                                    var cellTextNode = $(this).closest('.q7-transcoding-api__json').find('code')[0];
+                                                
+                                                    var selection = window.getSelection();        
+                                                    var range = document.createRange();
 
-                                                range.selectNodeContents(cellTextNode);
-                                                selection.removeAllRanges();
-                                                selection.addRange(range);
+                                                    range.selectNodeContents(cellTextNode);
+                                                    selection.removeAllRanges();
+                                                    selection.addRange(range);
 
-                                                var successful = document.execCommand('copy');         
+                                                    var successful = document.execCommand('copy');         
 
-                                                var flashMessage = $(this).closest('.q7-transcoding-api__json').find('.q7-codeblock__flash-message')[0];                                                                         
+                                                    var flashMessage = $(this).closest('.q7-transcoding-api__json').find('.q7-codeblock__flash-message')[0];                                                                         
 
-                                                if(successful) {                       
-                                                    $(flashMessage)
-                                                        .slideDown(100)
-                                                        .delay(800)                                     
-                                                        .fadeOut(200)                                                                             
+                                                    if(successful) {                       
+                                                        $(flashMessage)
+                                                            .slideDown(100)
+                                                            .delay(800)                                     
+                                                            .fadeOut(200)                                                                             
+                                                    }
+                                                    else
+                                                    { 
+                                                        //console.log("can not copy");
+                                                    } 
+                                                } catch (err) {
+                                                    console.log(err);
                                                 }
-                                                else
-                                                { 
-                                                    //console.log("can not copy");
-                                                } 
-                                            } catch (err) {
-                                                console.log(err);
-                                            }
 
-                                        });                           
-                                    });
-                                </script>                                   
+                                            });                           
+                                        });
+                                    </script>                                   
+                                
 
-                                <script>
-                                    $(function () {                               
-                    
-                                        // toggle show and hide menu on menu button click  
-                                        $(".q7-dd-menu__button").click(function(e){
-                                            // check if current is opened
-                                            if($(this).hasClass('q7-dd-menu__button--opened')){
-                                                $(this).removeClass('q7-dd-menu__button--opened');
-                                            } else{
-                                                // close all opened menus
-                                                $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
-                    
-                                                // open current 
-                                                $(this).addClass('q7-dd-menu__button--opened');
-                                            }
-                                        });      
-                    
-                                                    
-                                        // close if clicked outside
-                                        $(window).click(function(e){
-                                            if (!event.target.matches('.q7-dd-menu__button')) {
-                                                $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened')
-                                            }
-                                        });                                                                                                                                                  
-                    
-                                    })
-                                </script>                                   
-
+                                </div>
+                                <div class="q7-input-and-buttons--inline">
+                                    <button class="q7-button">Start Transcoding</button>   
+                                    <button class="q7-button">Save Template</button>                                              
+                                </div>                                
                             </div>
                         </div>
 
@@ -1488,7 +1467,33 @@
                 
             </div>
 
-                                       
+            <script>
+                $(function () {                               
+
+                    // toggle show and hide menu on menu button click  
+                    $(".q7-dd-menu__button").click(function(e){
+                        // check if current is opened
+                        if($(this).hasClass('q7-dd-menu__button--opened')){
+                            $(this).removeClass('q7-dd-menu__button--opened');
+                        } else{
+                            // close all opened menus
+                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+
+                            // open current 
+                            $(this).addClass('q7-dd-menu__button--opened');
+                        }
+                    });      
+
+                                
+                    // close if clicked outside
+                    $(window).click(function(e){
+                        if (!event.target.matches('.q7-dd-menu__button')) {
+                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened')
+                        }
+                    });                                                                                                                                                  
+
+                })
+            </script>                                           
 
         </div>
                 
