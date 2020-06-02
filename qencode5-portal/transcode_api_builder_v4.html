@@ -1009,7 +1009,7 @@
                             </div>     
 
                             <div id="qencode_s3" class="q6-tabcontent q6-tabcontent--active">
-                                <div class="q7-qencode-storage-promo">
+                                <div id="q3_bucket_step1" class="q7-qencode-storage-promo">
                                     <div class="q7-qencode-storage-promo__card">
                                         <div class="q7-qencode-storage-promo__card-header">
                                             It's easy to get started with Qencode S3
@@ -1027,7 +1027,7 @@
                                                 <div>$0.02/GB per additional GB stored</div>
                                                 <div>$0.01/GB per additional GB transfered</div>
                                             </div>                                            
-                                            <button class="q7-button">Create Bucket</button>
+                                            <button id="create_q3_bucket_btn" class="q7-button">Create Bucket</button>
                                         </div>
                                     </div>
                                     <div>
@@ -1082,6 +1082,73 @@
                                         </div>                                                                                                                                                                                       
                                     </div>
                                 </div>
+                                <div id="q3_bucket_step2" style="display: none;">
+                                    <div class="q7-block-title">Enter new bucket info</div>
+                                    <div class="q7-qs3bucket-form">
+                                        <div>
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Bucket name</label>         
+                                                    <a class="q7-input__label__extra-info"><span id="char_left">63</span>/63 characters left</a>                                                       
+                                                </div>                
+                                                <input id="bucket_name" class="q7-input__field" type="text">                                
+                                            </div>
+                                            <script>
+                                                    // limit bucket name to 63 char
+                                                    const maxBucketNameLenght = 63;
+                                                    document.getElementById('bucket_name').addEventListener('input', function (e) {
+                                                        if(e.target.value.length > maxBucketNameLenght){
+                                                            e.target.value = e.target.value.substr(0, maxBucketNameLenght);
+                                                        }
+                                                        document.getElementById('char_left').textContent = maxBucketNameLenght - e.target.value.length;
+                                                    });
+                                            </script>                                            
+                                            <div class="q7-checkbox-with-tooltip">
+                                                <label class="q7-checkbox">
+                                                    Apply CORS settings for adaptive streaming
+                                                    <input type="checkbox">
+                                                    <span class="q7-checkmark"></span>                                                
+                                                </label>                                             
+                                                <div class="q7-question-icon"></div>     
+                                            </div>                                      
+                                        </div>
+                                        <div>
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Region name</label>
+                                                </div>                
+                                                <div class="q7-custom-select">
+                                                    <select class="q7-select">
+                                                        <option value="1">New York 3 (NYC3)</option>
+                                                    </select>
+                                                </div>
+                                            </div>    
+                                            <div class="q7-input-and-buttons--inline">
+                                                <button id="cancel_q3_bucket_btn" class="q7-button q7-button--cancel">Cancel</button>   
+                                                <button id="confirm_q3_bucket_btn" class="q7-button">Create bucket</button>                                              
+                                            </div>                                                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="q3_bucket_step3" style="display: none;">
+                                    step 3
+                                </div>             
+                                <script>
+                                    $('#create_q3_bucket_btn').click(function(){
+                                        $('#q3_bucket_step1').hide();
+                                        $('#q3_bucket_step2').show();
+                                    });
+
+                                    $('#cancel_q3_bucket_btn').click(function(){
+                                        $('#q3_bucket_step1').show();
+                                        $('#q3_bucket_step2').hide();
+                                    });      
+
+                                    $('#confirm_q3_bucket_btn').click(function(){                                        
+                                        $('#q3_bucket_step2').hide();
+                                        $('#q3_bucket_step3').show();
+                                    });                                                                        
+                                </script>                   
                             </div> 
 
                             <div id="generic_s3" class="q6-tabcontent">
