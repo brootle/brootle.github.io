@@ -6545,6 +6545,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-transcoding-api__output-formats{
     margin-bottom: 25px;
+    margin-top: 20px;
 }
 
 .q7-transcoding-api__more-settings{
@@ -6580,6 +6581,67 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-transcoding-api__two-blocks > div .q7-input-and-buttons--inline{
     margin-top: 30px;
     justify-content: flex-end;
+}
+
+.q7-output-format__actions{
+    margin-top: 25px;
+    text-align: right;
+}
+
+.q7-output-format__body{
+    display: none;
+}
+
+.q7-output-format__body.q7-output-format__body--active{
+    display: initial;
+}
+
+.q7-output-format__header{
+    display: flex;
+    background-color: #f6f9ff;
+    color: var(--blue);
+    padding: 6px 6px;
+    align-items: center;
+    border: 1px solid #b3ccfe;
+
+    margin-top: -1px;
+
+    /* -webkit-box-shadow: 0px 0px 1px 1px #b3ccfe;
+    -moz-box-shadow: 0px 0px 1px 1px #b3ccfe;
+    box-shadow: 0px 0px 1px 1px #b3ccfe; */
+}
+
+
+.q7-output-format__header > div:first-of-type{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;    
+    border-right: 1px solid #cce0ff;
+    padding: 0 13px;
+    font-weight: 500;
+    font-size: 15px;    
+
+    min-height: 33px;
+    align-items: center;    
+}
+
+.q7-output-format__header > .q7-transcoding-api__delete-format-icon{
+    width: 33px;
+    height: 33px;
+
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;    
+    background-image: url(../img/profiles_delete_icon.svg);
+    background-size: 12px 12px;    
+
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+
+.q7-output-format__header > div:last-of-type:hover{
+    filter: initial;
+    opacity: initial;      
 }
 
 @media screen and (min-width: 1650px){

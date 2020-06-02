@@ -1307,6 +1307,66 @@
                                 <div class="q7-transcoding-api__block-title"><span>3</span> Output Formats</div>
                                 <div class="q7-transcoding-api__output-formats">
 
+                                    <div>
+
+                                        <div class="q7-output-format__header"> 
+                                            <div>
+                                                <div>Output 1</div>
+                                                <div>MP4/H.264</div>
+                                            </div>
+                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                        </div>
+                                        <div class="q7-output-format__body"> 
+                                            body
+                                        </div>    
+
+                                        <div class="q7-output-format__header"> 
+                                            <div>
+                                                <div>Output 2</div>
+                                                <div>HLS/H.264</div>
+                                            </div>
+                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                        </div>
+                                        <div class="q7-output-format__body"> 
+                                            body
+                                        </div>       
+                                            
+                                        <div class="q7-output-format__header"> 
+                                            <div>
+                                                <div>Output 3</div>
+                                                <div>MPEG-DASH/H.264</div>
+                                            </div>
+                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                        </div>
+                                        <div class="q7-output-format__body"> 
+                                            body
+                                        </div>    
+
+                                    </div>
+                                    
+                                                            
+                                    <div class="q7-output-format__actions">
+                                        <button class="q7-button q7-button--round"> + Add Output Format</button> 
+                                    </div>            
+                                    
+                                    <script>
+                                        // take care of expandable content
+                                        var expandButtons = document.querySelectorAll(".q7-output-format__header");
+                                        expandButtons.forEach(button => {
+                                            button.addEventListener('click', function(e){
+
+                                                if(e.target.className !== "q7-transcoding-api__delete-format-icon"){
+                                                    var currentRow = this;
+                                                    var nextRow = currentRow.nextElementSibling;
+                    
+                                                    $(currentRow).toggleClass("q7-output-format__header--active");  
+                                                    $(nextRow).toggleClass("q7-output-format__body--active"); 
+                                                }
+                                                                                                                  
+                                            });
+                                        });                                                                                                                   
+                                    </script>                                    
+                                    
                                 </div>
 
                                 <div class="q7-transcoding-api__block-title"><span>4</span> More Settings</div>
