@@ -6623,6 +6623,29 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
     min-height: 33px;
     align-items: center;    
+    
+    position: relative;
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+.q7-output-format__header > div:first-of-type:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 7px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(45deg);
+}
+
+.q7-output-format__header.q7-output-format__header--active > div:first-of-type:after {
+    transform: rotate(-135deg);
+    top: calc(50% - 3px);
 }
 
 .q7-output-format__header > .q7-transcoding-api__delete-format-icon{
