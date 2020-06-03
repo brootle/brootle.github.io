@@ -6578,7 +6578,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     align-items: center;    
 }
 
-.q7-transcoding-api__two-blocks > div .q7-input-and-buttons--inline{
+.q7-transcoding-api__action-btns .q7-input-and-buttons--inline{
     margin-top: 30px;
     justify-content: flex-end;
 }
@@ -6590,6 +6590,26 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-output-format__body{
     display: none;
+    margin-bottom: 30px;
+}
+
+.q7-output-format__body > div{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.q7-output-format__body .q7-input-and-buttons--inline .q7-input {
+    flex: 1;
+    margin-top: 0;
+}
+
+.q7-output-format__body .q7-input-and-buttons--inline .q7-input.q7-input--with-switch{
+    margin-top: 5px;
+}
+
+.q7-output-format__body .q7-input-and-buttons--inline {
+    margin: 10px 0;
+    margin-bottom: 15px;
 }
 
 .q7-output-format__body.q7-output-format__body--active{
@@ -6665,6 +6685,90 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-output-format__header > div:last-of-type:hover{
     filter: initial;
     opacity: initial;      
+}
+
+.q7-transcoding-api__resolutions-table{
+    border-bottom: 1px solid #e6e8eb;
+    margin-top: 15px;
+}
+
+.q7-transcoding-api__resolutions-table table{
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0 0px;    
+}
+
+.q7-transcoding-api__resolutions-table table th,
+.q7-transcoding-api__resolutions-table table td{
+    border-bottom: 1px dashed #e6e8eb;
+    border-top: 1px dashed #e6e8eb;
+
+    padding: 7px 9px;
+    white-space: nowrap;
+}
+
+.q7-transcoding-api__resolutions-table table th{
+    padding: 2px 9px;
+    font-weight: 600;
+    color: #171717;    
+    font-size: 13px;
+}
+
+.q7-transcoding-api__resolutions-table table tfoot td{
+    border-bottom: none;
+}
+
+.q7-th-with-question{
+    position: relative;
+}
+
+.q7-with-question{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-transcoding-api__resolutions-table table tbody td:last-of-type{
+    padding: 0;
+    text-align: center;
+}
+
+.q7-transcoding-api__resolutions-table table tbody td:nth-last-of-type(2){
+    text-align: right;
+}
+
+.q7-delete-resolution-btn{
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../img/profiles_delete_icon.svg);
+    background-size: 12px 12px;
+    filter: grayscale(100%);
+    opacity: 0.4;    
+}
+
+.q7-delete-resolution-btn:hover{
+    filter: initial;
+    opacity: initial;
+}
+
+.q7-resolutions-more-settings{
+    cursor: pointer;
+    color: var(--blue);
+}
+
+.q7-resolutions-add-size{
+    cursor: pointer;
+    color: var(--blue);
+    display: inline;    
+}
+
+.q7-resolutions-more-settings:hover,
+.q7-resolutions-add-size:hover{
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 1650px){
