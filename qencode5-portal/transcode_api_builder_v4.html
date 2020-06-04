@@ -2741,7 +2741,19 @@
                 </div>
             </div>
 
-            <!-- Modal ends -->               
+            <!-- Modal ends -->   
+
+            
+            <script>
+                // show/hide extra input data assosiated to the switch
+                $(".q7-input.q7-input--with-switch .q6-switch input").change(function(){
+                    if($(this).is(":checked")){
+                        $(this).closest('.q7-input.q7-input--with-switch').find(".q7-extra-switch-on-input").show();
+                    }else{
+                        $(this).closest('.q7-input.q7-input--with-switch').find(".q7-extra-switch-on-input").hide();
+                    }
+                });                   
+            </script>
 
             <script>
                 $(function () {                               
