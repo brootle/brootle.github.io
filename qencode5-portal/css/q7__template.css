@@ -6833,7 +6833,13 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-transcoding-api__more-settings input[type=text].q7-input__field, 
 .q7-transcoding-api__more-settings input[type=number].q7-input__field, 
 .q7-transcoding-api__more-settings .q7-select, 
-.q7-transcoding-api__more-settings textarea.q7-input__field{
+.q7-transcoding-api__more-settings textarea.q7-input__field,
+
+.q7-modal-body--api-resolution-settings input[type=password].q7-input__field,
+.q7-modal-body--api-resolution-settings input[type=text].q7-input__field, 
+.q7-modal-body--api-resolution-settings input[type=number].q7-input__field, 
+.q7-modal-body--api-resolution-settings .q7-select, 
+.q7-modal-body--api-resolution-settings textarea.q7-input__field{
     padding: 7px 10px;
     font-size: 15px;
 }
@@ -6863,6 +6869,137 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-output-format__body .q7-input.q7-input--image-format{
     max-width: 48%;
+}
+
+.modal-body.q7-modal-body--api-resolution-settings{
+    padding-left: 0;
+    padding-right: 0;    
+    width: 900px;
+}
+
+.q7-api-respolition-settings__body{
+    display: none;
+}
+
+.q7-api-respolition-settings__body > div{
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.q7-api-respolition-settings__body.q7-api-respolition-settings__body--active{
+    display: initial;
+}
+
+.q7-api-respolition-settings__header{
+    border-top: 1px solid #e6e8eb;
+    border-bottom: 1px solid #e6e8eb;    
+
+    margin-top: -1px;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--blue);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px;
+}
+
+.q7-api-respolition-settings__header:first-of-type{
+    border-top: none;
+}
+
+.q7-api-respolition-settings__header > div:last-of-type > div:last-of-type{
+    display: none;
+}
+
+.q7-api-respolition-settings__header.q7-api-respolition-settings__header--active > div:last-of-type > div:last-of-type{
+    display: initial;
+}
+
+.q7-api-respolition-settings__header.q7-api-respolition-settings__header--active > div:last-of-type > div:first-of-type{
+    display: none;
+}
+
+.q7-api-respolition-settings__header > div:last-of-type{
+    font-size: 15px;
+}
+
+.q7-api-respolition-settings__header:after{
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 7px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(45deg);    
+}
+
+.q7-api-respolition-settings__header.q7-api-respolition-settings__header--active:after{
+    transform: rotate(-135deg);
+    top: calc(50% - 3px);    
+}
+
+.q7-api-respolition-settings__video{
+    display: flex;
+}
+
+.q7-api-respolition-settings__video > div{
+    flex:1;
+}
+
+.q7-api-respolition-settings__video > div + div{
+    margin-left: 90px;
+}
+
+.q7-api-respolition-settings__video > div:last-of-type .q7-input.q7-input--with-switch{
+    margin-top: -1px;
+}
+
+.q7-api-respolition-settings__video > div:last-of-type .q7-input.q7-input--with-switch:first-of-type{
+    border-top: none;
+}
+
+.q7-modal-body--api-resolution-settings .q7-extra-switch-on-input {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+.q7-input.q7-input--adjust-crf,
+.q7-input.q7-input--min-crf,
+.q7-input.q7-input--max-crf,
+.q7-input.q7-input--start-time,
+.q7-input.q7-input--duration{
+    max-width: 104px;
+}
+
+.q7-modal-body--api-resolution-settings .q7-input.q7-input--crf,
+.q7-modal-body--api-resolution-settings .q7-input.q7-input--bitrate{
+    max-width: 104px;
+    width: initial;
+}
+
+.q7-input.q7-input--min-bitrate,
+.q7-input.q7-input--max-bitrate,
+.q7-input.q7-input--buffer-size{
+    flex: 1;
+}
+
+.q7-modal-body--api-resolution-settings .q7-input.q7-input--width, 
+.q7-modal-body--api-resolution-settings .q7-input.q7-input--height {
+    max-width:none;
+}
+
+.q7-input.q7-input--watermark-url{
+    flex: 1;
 }
 
 @media screen and (min-width: 1650px){
