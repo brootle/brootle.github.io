@@ -487,6 +487,7 @@
                                     </div>
                                     <div class="q7-custom-select">
                                         <select id="templates_list" class="q7-select">
+                                            <option value="">None</option>
                                             <option value="1" data-description="Qencode S3 / HLS(H.264) / MP4(H.264)">Best_Template</option>
                                             <option value="2" data-description="AWS / HLS(H.264) / MP4(H.264)">Template_2</option>
                                         </select>
@@ -501,6 +502,12 @@
                                                 background: "white",
                                                 onSelected: function(selectedData){
                                                     //callback function: do something with selectedData;
+                                                    if(selectedData.selectedIndex){
+                                                        $('.q7-transcoding-template__controls').show();
+                                                    } else{
+                                                        $('.q7-transcoding-template__controls').hide();
+                                                    }
+                                                    
                                                 }
                                             });
                                         });
@@ -508,8 +515,11 @@
 
                                 </div>
 
-                                <button class="q7-button">Edit Template</button>
-                                <button class="q7-button q7-button--delete">Delete</button>
+                                <div class="q7-transcoding-template__controls">
+                                    <button class="q7-button">Load</button>
+                                    <button data-toggle="modal" data-target="#deleteTemplate" class="q7-button q7-button--delete">Delete</button>
+                                </div>
+
                             </div>
                             
                         </div>
@@ -2096,8 +2106,8 @@
                                 </div>
                                 <div class="q7-transcoding-api__action-btns">
                                     <div class="q7-input-and-buttons--inline">
-                                        <button class="q7-button">Start Transcoding</button>   
-                                        <button class="q7-button">Save Template</button>                                              
+                                        <button data-toggle="modal" data-target="#saveTemplate"  class="q7-button q7-button--secondary">Save Template</button>   
+                                        <button class="q7-button">Launch Transcode</button>                                                                                      
                                     </div>  
                                 </div>                              
                             </div>
@@ -2108,6 +2118,76 @@
                 </div>
                 
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="deleteTemplate" role="dialog">
+                <div class="modal-dialog q7-modal-dialog--centered">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        
+                        <div class="modal-body q7-modal-body--update">
+
+                            <div class="q7-modal-body__response">
+                                <img src="img/delete_template_icon.png">     
+                                <div class="q7-modal-body__extra-info">My_new_template</div>
+                                <h2>Delete this Template?</h2>                                               
+                                <p>
+                                    Are you sure you want to delete this Template?
+                                </p>
+                            </div>
+                                                                                                                                                                    
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button q7-button--delete">Delete</button>                                                                             
+                            </div>
+                        </div>                            
+
+                    </div>
+                
+                </div>
+            </div>
+            <!-- Modal ends -->              
+
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="saveTemplate" role="dialog">
+                <div class="modal-dialog q7-modal-dialog--centered">                
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">                  
+                        
+                        <div class="modal-body q7-modal-body--update">
+
+                            <div class="q7-modal-body__response">
+                                <img src="img/save_template_icon.png">     
+  
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input q7-input--template-name">
+                                        <div class="q7-input__label">
+                                            <label>Enter template name</label>                                                          
+                                        </div>                
+                                        <input class="q7-input__field" type="text">                                
+                                    </div>                                                                                                                                                                                                                                                                   
+                                </div>                                
+                            </div>
+                                                                                                                                                                    
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button">Save</button>                                                                             
+                            </div>
+                        </div>                            
+
+                    </div>
+                
+                </div>
+            </div>
+            <!-- Modal ends -->               
 
             <!-- Modal -->
             <div class="modal fade q7-modal" id="moreSettings" role="dialog">
