@@ -42,6 +42,10 @@
 
     <script src="js/menu.js"></script>
 
+    <!-- <script src="js/sct_tooltip.js"></script>
+    <link href="css/sct_tooltip_styles.css" rel="stylesheet" /> --> 
+
+
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
 <body class="q7-page">
@@ -1964,7 +1968,9 @@
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--with-question">
                                             <label>Callback URL</label>     
-                                            <div class="q7-question-icon"></div>                                                           
+                                            <div data-tippy-content="<div class='q7-tooltip__close-btn'>close</div><div>header</div><div>content</div><div>footer</div>" class="q7-question-icon"></div>                                         
+                                            <!-- <div data-sct_tooltip='tooltip-button' class="q7-question-icon"></div>
+                                            <div data-sct_tooltip='tooltip-window' class="sct__tooltip">My tooltip</div>                                                              -->
                                         </div>                
                                         <input class="q7-input__field" type="text" placeholder="http://your-server.com/task_callback.php">                                
                                     </div>   
@@ -1972,7 +1978,9 @@
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--with-question">
                                             <label>Sub-task Callback URL</label>     
-                                            <div class="q7-question-icon"></div>                                                           
+                                            <div data-tippy-content="<div class='q7-tooltip__close-btn'>close 2</div><div>header</div><div>content</div><div>footer</div>" class="q7-question-icon"></div>  
+                                            <!-- <div data-sct_tooltip='tooltip-button' class="q7-question-icon"></div>
+                                            <div data-sct_tooltip='tooltip-window' class="sct__tooltip">My tooltip</div>                                                                                                                                             -->
                                         </div>                
                                         <input class="q7-input__field" type="text">                                
                                     </div>    
@@ -1981,7 +1989,15 @@
 
                                         <div class="q7-input__label q7-input__label--with-question q7-input__label--with-switch">
                                             
-                                            <label>Upscale <div class="q7-question-icon"></div></label>                                                                                    
+                                            <label>
+                                                Upscale 
+                                                <div data-tippy-content="<div class='q7-tooltip__close-btn'>close 3</div><div>header</div><div>content</div><div>footer</div>" class="q7-question-icon"></div>                                               
+                                                <!-- <div data-sct_tooltip='tooltip-button' class="q7-question-icon"></div>
+                                                <div data-sct_tooltip='tooltip-window' class="sct__tooltip">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium tenetur consequatur error repellat doloribus 
+                                                    adipisci beatae expedita quas harum vitae nemo, temporibus impedit. Voluptates soluta, et quas alias error quis?
+                                                </div>      -->
+                                            </label>                                                                                    
 
                                             <div class="q6-switch-container">
                                                 <label class="q6-switch">
@@ -2866,6 +2882,41 @@
         </div>
                 
     </main>
+
+    <div id="template" style="display: none;">
+        <strong>Bolded content</strong>
+    </div>    
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>       
+
+    <script>
+        // https://atomiks.github.io/tippyjs/
+        const tooltip_btns = tippy('[data-tippy-content]', {
+            offset: [160, 12],
+            maxWidth: 380,
+            theme: 'qencode',
+            trigger: 'click',
+            interactive: true,
+            allowHTML: true,
+            onShow(instance) {
+                var closeBtn = instance.popper.querySelector('.q7-tooltip__close-btn');             
+                if(closeBtn){
+                    closeBtn.addEventListener('click', function(){
+                        instance.hide();
+                    })
+                } 
+            },
+            onHide(instance) {
+                var closeBtn = instance.popper.querySelector('.q7-tooltip__close-btn');  
+                if(closeBtn){
+                    var clonedCloseBtn = closeBtn.cloneNode(true);
+                    closeBtn.parentNode.replaceChild(clonedCloseBtn, closeBtn);                    
+                } 
+            },            
+        });
+
+    </script>
 
 
 </body>

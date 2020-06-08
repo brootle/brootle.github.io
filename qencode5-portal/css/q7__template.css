@@ -63,7 +63,7 @@
     width: var(--vertical-menu-width);
     display: flex;
     flex-direction: column;  
-    z-index: 99999;  
+    z-index: 9999;
 }
 
 .q7-menu__header{
@@ -537,6 +537,8 @@
     margin-left: 8px;
     cursor: pointer;
     margin-bottom: 1px;    
+
+    position: relative;
 }
 
 .q6-tutorial-profile-details th.q6-tutorial-profile-td--has-question{
@@ -7058,6 +7060,43 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-transcoding-api__source-video-block .q6-tutorial-add-videos-container {
     max-width: none;
 }
+
+
+
+.tippy-box[data-theme~='qencode'] {
+    background-color: white;
+    color: #292f4b;
+    border: 1px solid #898d95;
+    white-space: normal;
+    min-width: 380px;
+    box-shadow: 0 7px 25px 1px rgba(105,109,112,.2);
+}
+
+.tippy-box[data-theme~='qencode'] .tippy-arrow:before {
+    bottom: -9px;
+}
+
+.tippy-box[data-theme~='qencode'].tippy-box[data-placement^=bottom] > .tippy-arrow:before {
+    bottom: initial;
+}
+
+.tippy-box[data-theme~='qencode'].tippy-box[data-placement^=bottom]>.tippy-arrow {
+    top: -1px;
+}
+
+.tippy-box[data-theme~='qencode'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: #767981;
+}
+.tippy-box[data-theme~='qencode'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: #767981;
+}
+.tippy-box[data-theme~='qencode'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: #767981;
+}
+.tippy-box[data-theme~='qencode'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: #767981;
+}
+
 
 @media screen and (min-width: 1650px){
     .q7-container{
