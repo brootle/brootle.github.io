@@ -1095,51 +1095,55 @@
                                 </div>
                                 <div id="q3_bucket_step2" style="display: none;">
                                     <div class="q7-block-title">Enter new bucket info</div>
-                                    <div class="q7-qs3bucket-form">
-                                        <div>
-                                            <div class="q7-input">
-                                                <div class="q7-input__label">
-                                                    <label>Bucket name</label>         
-                                                    <a class="q7-input__label__extra-info"><span id="char_left">63</span>/63 characters left</a>                                                       
-                                                </div>                
-                                                <input id="bucket_name" class="q7-input__field" type="text">                                
-                                            </div>
-                                            <script>
-                                                    // limit bucket name to 63 char
-                                                    const maxBucketNameLenght = 63;
-                                                    document.getElementById('bucket_name').addEventListener('input', function (e) {
-                                                        if(e.target.value.length > maxBucketNameLenght){
-                                                            e.target.value = e.target.value.substr(0, maxBucketNameLenght);
-                                                        }
-                                                        document.getElementById('char_left').textContent = maxBucketNameLenght - e.target.value.length;
-                                                    });
-                                            </script>                                            
-                                            <div class="q7-checkbox-with-tooltip">
-                                                <label class="q7-checkbox">
-                                                    Apply CORS settings for adaptive streaming
-                                                    <input type="checkbox">
-                                                    <span class="q7-checkmark"></span>                                                
-                                                </label>                                             
-                                                <div class="q7-question-icon"></div>     
-                                            </div>                                      
-                                        </div>
-                                        <div>
-                                            <div class="q7-input">
-                                                <div class="q7-input__label">
-                                                    <label>Region name</label>
-                                                </div>                
-                                                <div class="q7-custom-select">
-                                                    <select class="q7-select">
-                                                        <option value="1">New York 3 (NYC3)</option>
-                                                    </select>
+                                    <div class="q7-bucket-form">
+                                        <div class="q7-bucket-form__content">
+                                            <div class="q7-input-and-buttons--inline">
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Bucket name</label>         
+                                                        <a class="q7-input__label__extra-info"><span id="char_left">63</span>/63 characters left</a>                                                       
+                                                    </div>                
+                                                    <input id="bucket_name" class="q7-input__field" type="text">                                
                                                 </div>
-                                            </div>    
+                                                <script>
+                                                        // limit bucket name to 63 char
+                                                        const maxBucketNameLenght = 63;
+                                                        document.getElementById('bucket_name').addEventListener('input', function (e) {
+                                                            if(e.target.value.length > maxBucketNameLenght){
+                                                                e.target.value = e.target.value.substr(0, maxBucketNameLenght);
+                                                            }
+                                                            document.getElementById('char_left').textContent = maxBucketNameLenght - e.target.value.length;
+                                                        });
+                                                </script>                                                  
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label>Region name</label>
+                                                    </div>                
+                                                    <div class="q7-custom-select">
+                                                        <select class="q7-select">
+                                                            <option value="1">New York 3 (NYC3)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>                                                  
+                                            </div>     
+                                            <div class="q7-inline-checkboxes">
+                                                <div class="q7-checkbox-with-tooltip">
+                                                    <label class="q7-checkbox">
+                                                        Apply CORS settings for adaptive streaming
+                                                        <input type="checkbox">
+                                                        <span class="q7-checkmark"></span>                                                
+                                                    </label>                                             
+                                                    <div class="q7-question-icon"></div>     
+                                                </div>     
+                                            </div>                                        
+                                        </div>
+                                        <div class="q7-bucket-form__buttons"> 
                                             <div class="q7-input-and-buttons--inline">
                                                 <button id="cancel_q3_bucket_btn" class="q7-button q7-button--cancel">Cancel</button>   
                                                 <button id="confirm_q3_bucket_btn" class="q7-button">Create bucket</button>                                              
-                                            </div>                                                                                    
-                                        </div>
-                                    </div>
+                                            </div>    
+                                        </div>                                        
+                                    </div>                                    
                                 </div>
                                 <div id="q3_bucket_step3" style="display: none;">
                                     <div class="q7-block-title-and-button">
@@ -1260,11 +1264,134 @@
                             </div> 
 
                             <div id="generic_s3" class="q6-tabcontent">
-                                Generic S3
+                                <div class="q7-block-title">Enter new bucket info</div>
+                                <div class="q7-bucket-form">
+                                    <div class="q7-bucket-form__content">
+
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Bucket name</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field q7-input__field--error" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Endpoint</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text" placeholder="s3://mydomain.com">                                
+                                            </div>                                              
+                                        </div>   
+                                        
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Access Key ID</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Secret Access Key</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                              
+                                        </div>    
+                                        
+                                        <div class="q7-inline-checkboxes">
+                                            <label class="q7-checkbox">
+                                                Public permissions
+                                                <input type="checkbox">
+                                                <span class="q7-checkmark"></span>                                                
+                                            </label>                                  
+                                        </div>      
+                                        
+                                    </div>
+                                    <div class="q7-errors-block">
+                                        <div class="q7-errors-block__icon"></div>
+                                        <div>Errors:</div>
+                                        <div class="q7-errors-block__list">
+                                            <div>S3ResponseError: 403 Forbidden profile: 123klsfjldfa-0-0</div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                                                incididunt ut labore et dolore magna aliqua.    
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit                                                                     
+                                            </p>
+                                            <div>S3ResponseError: 403 Forbidden</div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit                                 
+                                            </p>                                    
+                                        </div>                                    
+                                    </div>                                    
+                                    <div class="q7-bucket-form__buttons"> 
+                                        <div class="q7-input-and-buttons--inline">
+                                            <button class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button class="q7-button">Create bucket</button>                                              
+                                        </div>                                                                                    
+                                    </div>
+                                </div>
                             </div>     
                             
                             <div id="aws" class="q6-tabcontent">
-                                AWS
+                                <div class="q7-block-title">Enter new bucket info</div>
+                                <div class="q7-bucket-form">
+                                    <div class="q7-bucket-form__content">
+
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Bucket name</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Region name</label>
+                                                </div>                
+                                                <div class="q7-custom-select">
+                                                    <select class="q7-select">
+                                                        <option value="1">New York 3 (NYC3)</option>
+                                                    </select>
+                                                </div>
+                                            </div>                                             
+                                        </div>   
+                                        
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Access Key ID</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Secret Access Key</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                              
+                                        </div>    
+                                        
+                                        <div class="q7-inline-checkboxes">
+                                            <label class="q7-checkbox">
+                                                Public permissions
+                                                <input type="checkbox">
+                                                <span class="q7-checkmark"></span>                                                
+                                            </label>        
+                                            <label class="q7-checkbox">
+                                                Reduce redundancy storage
+                                                <input type="checkbox">
+                                                <span class="q7-checkmark"></span>
+                                            </label>                                                                      
+                                        </div>      
+                                        
+                                    </div>                                  
+                                    <div class="q7-bucket-form__buttons"> 
+                                        <div class="q7-input-and-buttons--inline">
+                                            <button class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button class="q7-button">Create bucket</button>                                              
+                                        </div>                                                                                    
+                                    </div>
+                                </div>
                             </div>     
                             
                             <div id="google_cloud" class="q6-tabcontent">
@@ -1272,11 +1399,85 @@
                             </div>     
                             
                             <div id="blackblaze_b2" class="q6-tabcontent">
-                                Blackblaze B2
+                                <div class="q7-block-title">Enter new bucket info</div>
+                                <div class="q7-bucket-form">
+                                    <div class="q7-bucket-form__content">
+
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Bucket name</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                             
+                                        </div>   
+                                        
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Access Key ID</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Secret Access Key</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                              
+                                        </div>                                                                                         
+                                    </div>                                  
+                                    <div class="q7-bucket-form__buttons"> 
+                                        <div class="q7-input-and-buttons--inline">
+                                            <button class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button class="q7-button">Create bucket</button>                                              
+                                        </div>                                                                                    
+                                    </div>
+                                </div>
                             </div>     
                             
                             <div id="azure" class="q6-tabcontent">
-                                Azure
+                                <div class="q7-block-title">Enter new bucket info</div>
+                                <div class="q7-bucket-form">
+                                    <div class="q7-bucket-form__content">
+
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Container</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                      
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Endpoint</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                                                      
+                                        </div>   
+                                        
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Access Key ID</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Secret Access Key</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                              
+                                        </div>                                                                                         
+                                    </div>                                  
+                                    <div class="q7-bucket-form__buttons"> 
+                                        <div class="q7-input-and-buttons--inline">
+                                            <button class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button class="q7-button">Create bucket</button>                                              
+                                        </div>                                                                                    
+                                    </div>
+                                </div>
                             </div>     
                             
                             <div id="digital_ocean" class="q6-tabcontent">
@@ -1284,7 +1485,61 @@
                             </div>     
                             
                             <div id="ftp" class="q6-tabcontent">
-                                FTP
+                                <div class="q7-block-title">Enter new bucket info</div>
+                                <div class="q7-bucket-form">
+                                    <div class="q7-bucket-form__content">
+
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Path</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Endpoint</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text" placeholder="ftp://mydomain.com">                                
+                                            </div>                                           
+                                        </div>   
+                                        
+                                        <div class="q7-input-and-buttons--inline">
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>User Name</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>  
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Password</label>                                                             
+                                                </div>                
+                                                <input class="q7-input__field" type="text">                                
+                                            </div>                                              
+                                        </div>    
+                                        
+                                        <div class="q7-inline-checkboxes">
+                                            <label class="q7-checkbox">
+                                                Use TLS
+                                                <input type="checkbox">
+                                                <span class="q7-checkmark"></span>                                                
+                                            </label>        
+                                            <label class="q7-checkbox">
+                                                Use Passive Mode
+                                                <input type="checkbox" checked>
+                                                <span class="q7-checkmark"></span>
+                                            </label>                                                                      
+                                        </div>      
+                                        
+                                    </div>                                  
+                                    <div class="q7-bucket-form__buttons"> 
+                                        <div class="q7-input-and-buttons--inline">
+                                            <button class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button class="q7-button">Create bucket</button>                                              
+                                        </div>                                                                                    
+                                    </div>
+                                </div>
                             </div>                                 
 
                             <script>
