@@ -1,6 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
+import sidebarStyles from "./sidebar.module.css"
+
 export default function Sidebar() {
     const data = useStaticQuery(graphql`
         query {
@@ -19,7 +21,7 @@ export default function Sidebar() {
     `)    
     console.log("Data is sidebar: ", data)
     return (
-        <nav>
+        <nav className={sidebarStyles.sidebar}>
             navigation       
         </nav>
     )

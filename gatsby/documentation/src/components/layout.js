@@ -1,13 +1,15 @@
 import React from "react"
 import Header from "./header"
-import Sidebar from "./sidebar"
+
+import "normalize.css"
 
 export default function Layout({ children }) {  
     return (
         <>
             <Header />
-            <Sidebar />
-            {children}
+            <main>
+                {children}
+            </main>
         </>
     )
 }
