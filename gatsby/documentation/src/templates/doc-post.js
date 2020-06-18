@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Sidebar from "../components/sidebar"
 
@@ -10,6 +11,7 @@ export default function DocPost({ data }) {
     const document = data.markdownRemark
     return (
         <Layout>
+            <SEO title={document.frontmatter.post_title} description={document.excerpt} />
             <div className={docPostStyles.article}>
                 <h1>{document.frontmatter.category_title}</h1>
                 <h2>{document.frontmatter.section_title}</h2>

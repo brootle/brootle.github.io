@@ -25,3 +25,6 @@ Use Custom Paths in Gatsby
 https://dev.to/mercatante/use-custom-paths-in-gatsby-4mof
 
 https://www.jerriepelser.com/blog/sorting-out-gatsby-folder-structure/
+
+
+http://www.objgen.com/json

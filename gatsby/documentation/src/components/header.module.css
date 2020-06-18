@@ -1,21 +1,25 @@
 .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: rgba(19,18,23,0.975 );
-    height: 4rem;
+    height: var(--header-nav-height);
     left: 0rem;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-left);
-    position: relative;
+    position: fixed;
     right: 0rem;
     top: 0;
-    z-index: 5;    
+    z-index: 5;   
+
+    display: flex;
+    align-items: center;    
+
+    border-bottom: 1px solid #eeeeee;
 }
 
-@media (min-width: 42rem){
-    .header {
-        position: fixed;
-    }
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 93px;
 }
