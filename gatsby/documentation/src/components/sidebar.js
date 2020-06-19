@@ -46,12 +46,12 @@ export default function Sidebar() {
                         <ul>                            
                             {category.sections.map((section, index) => (
                                 <li key={index}>
-                                    <Link to={`/${item.dir}/${category.dir}/${section.dir}`}>{section.name}</Link>  
+                                    <Link to={`/${item.dir}/${category.dir}/${section.dir}/`}>{section.name}</Link>  
 
                                     <ul>                            
                                         {section.posts.map((post, index) => (
                                             <li key={index}>
-                                                <Link to={`/${item.dir}/${category.dir}/${section.dir}/${post.dir}`}>{post.name}</Link>   
+                                                <Link to={`/${item.dir}/${category.dir}/${section.dir}/${post.dir}/`}>{post.name}</Link>   
                                             </li>
                                         ))}                            
                                     </ul>                                    
@@ -61,7 +61,7 @@ export default function Sidebar() {
 
                             {category.posts.map((post, index) => (
                                 <li key={index}>
-                                    <Link to={`/${item.dir}/${category.dir}/${post.dir}`}>{post.name}</Link>   
+                                    <Link to={`/${item.dir}/${category.dir}/${post.dir}/`}>{post.name}</Link>   
                                 </li>
                             ))}                            
                         </ul>
