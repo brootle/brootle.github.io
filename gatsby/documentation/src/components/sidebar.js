@@ -1,6 +1,8 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import _ from "lodash"
+
+import { menu } from "../../content/docs-map.json"
 
 import sidebarStyles from "./sidebar.module.css"
 
@@ -29,20 +31,52 @@ export default function Sidebar() {
         }
     `)    
     
-    console.log("Data is sidebar: ", data)
+    console.log("menu array from docsMapJSON: ", menu);
 
-    let menu_items = data.allMarkdownRemark.edges.map( ({ node }) => {
-        return {
-            url: node.fields.slug,
-            name: node.frontmatter.post_title
-        } 
-    })    
 
-    console.log("menu_items: ", menu_items)
+    let menu_items = menu.map( (item, index) => 
+        <li key={index}>
+            <Link to={`/${item.dir}/`}>{item.name}</Link>      
+
+            <ul>
+                {item.categories.map((category, index) => (
+                    <li key={index}>
+                        <Link to={`/${item.dir}/${category.dir}/`}>{category.name}</Link>   
+
+                        <ul>                            
+                            {category.sections.map((section, index) => (
+                                <li key={index}>
+                                    <Link to={`/${item.dir}/${category.dir}/${section.dir}`}>{section.name}</Link>  
+
+                                    <ul>                            
+                                        {section.posts.map((post, index) => (
+                                            <li key={index}>
+                                                <Link to={`/${item.dir}/${category.dir}/${section.dir}/${post.dir}`}>{post.name}</Link>   
+                                            </li>
+                                        ))}                            
+                                    </ul>                                    
+
+                                </li>
+                            ))}
+
+                            {category.posts.map((post, index) => (
+                                <li key={index}>
+                                    <Link to={`/${item.dir}/${category.dir}/${post.dir}`}>{post.name}</Link>   
+                                </li>
+                            ))}                            
+                        </ul>
+
+                    </li>
+                ))}
+            </ul>
+
+        </li>        
+    )    
+
 
     return (
         <nav className={sidebarStyles.sidebar}>
-            navigation       
+            <ul>{menu_items}</ul>
         </nav>
     )
 }
@@ -53,7 +87,14 @@ export default function Sidebar() {
 
 
 
+    // let menu_items = data.allMarkdownRemark.edges.map( ({ node }) => {
+    //     return {
+    //         url: node.fields.slug,
+    //         name: node.frontmatter.post_title
+    //     } 
+    // })    
 
+    // console.log("menu_items: ", menu_items)
 
 
 
