@@ -1,9 +1,6 @@
 ---
-category_title: "API Reference"
-category_weight: 9
-category_icon: "url-to-icon"
-
-post_title: "Welcome to API Reference"
+dir: "API Reference"
+post_title: "API Reference"
 post_weight: 999
 ---
 

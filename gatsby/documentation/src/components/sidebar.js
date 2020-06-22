@@ -1,12 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import _ from "lodash"
 
-import { menu } from "../../content/docs-map.json"
+//import { menu } from "../../content/docs-map.json"
 
 import sidebarStyles from "./sidebar.module.css"
 
 export default function Sidebar() {
+
     const data = useStaticQuery(graphql`
         query {
             allMarkdownRemark {
@@ -15,12 +15,8 @@ export default function Sidebar() {
                     node {
                         id
                         frontmatter {
-                            category_title
-                            category_weight
                             post_title
-                            post_weight
-                            section_title
-                            section_weight
+                            dir
                         }
                         fields {
                             slug
@@ -30,28 +26,181 @@ export default function Sidebar() {
             }
         }
     `)    
+
+    // check URL against List of URL, it is unique if we find it only once
+    function isUrlUniqueInUrlsList(url, urlList){
+        let counter = -1
+        urlList.forEach(item => {
+            if(item.includes(url)){
+                counter++
+            }
+        })
+        return !counter
+    }    
+
+    function findAllSectionPostsInList(section, nodes){
+        // posts will have matching urls /Tutorials/Storage/Qencode-Storage/  
+        let posts = nodes.map(( {url, name} ) => {
+            return {
+                dir: url,
+                name
+            }
+        })
+        posts = posts.filter( ({ dir }) => dir.includes(section) && dir !== section)   
+        
+        // replace  "/Tutorials/Storage/Third-Party-Storage/microsoft-azure/" with "microsoft-azure"
+        posts = posts.map(({ dir, name }) => {
+            dir = dir.slice(1, -1).split('/')[3]
+            return {
+                dir: dir,
+                name
+            }
+        })
+            
+        return posts
+    }      
+
+
+    let menu_from_data = []   
+
+    let urlList = []
+
+    let nodes = data.allMarkdownRemark.edges.map( ({ node }) => {
+        urlList.push(node.fields.slug)
+        return {
+            url: node.fields.slug,
+            name: node.frontmatter.dir
+        } 
+    })      
+
+    // add top level Docs first
+    nodes.forEach( ({ url, name }) => {
+        let urlArray = url.slice(1, -1).split('/')
+        if(urlArray.length === 1){
+            menu_from_data.push({
+                "name": name,
+                "dir": urlArray[0],
+                "categories":[]                
+            })
+        }
+    })   
     
-    console.log("menu array from docsMapJSON: ", menu);
+    // add categories
+    nodes.forEach( ({ url, name }) => {
+        let urlArray = url.slice(1, -1).split('/')
+        if(urlArray.length === 2){
+            // find relevant Doc and add categories in there 
+            menu_from_data.forEach(({ dir }, index) => {
+                if(urlArray[0] === dir){
+                    menu_from_data[index].categories.push({
+                        "name": name,
+                        "dir": urlArray[1],
+                        "sections":[],
+                        "posts":[]
+                    })
+                }
+                
+            })
+        }
+    })      
+
+    // add sections[] and posts[] inside categories
+    nodes.forEach( ({ url, name }) => {
+        let urlArray = url.slice(1, -1).split('/')
+        if(urlArray.length === 3){
+            // if this part of URL is unique in URL list, this is POST
+            // otherwise this is sectio
+            // if URL is unique in the URLs list, push it to posts array of their category
+ 
+            if(isUrlUniqueInUrlsList(url, urlList)){
+                // find relevant Doc
+                menu_from_data.forEach(({ dir }, index) => {
+                    if(urlArray[0] === dir){
+                        // find relevant category
+                        menu_from_data[index].categories.forEach((category) => {
+                            if(category.dir === urlArray[1]){
+                                category.posts.push({
+                                    "name": name,
+                                    "dir": urlArray[2]
+                                })
+                            }
+                        })
+                    }                     
+                })      
+            } else{
+                // find all posts relvant to this section and add them also      
+                let posts = []
+                posts = findAllSectionPostsInList(url, nodes)
+
+                // this is a name of section, push it to the array of sections
+                // find relevant Doc
+                menu_from_data.forEach(({ dir }, index) => {
+                    if(urlArray[0] === dir){
+                        // find relevant category
+                        menu_from_data[index].categories.forEach((category) => {
+                            if(category.dir === urlArray[1]){          
+                                category.sections.push({
+                                    "name": name,
+                                    "dir": urlArray[2],
+                                    posts: posts
+                                })                                
+                            }
+                        })
+                    }                     
+                }) 
+            }    
+  
+        }
+    })      
 
 
+
+    // BUILDING UI
+    const menu = menu_from_data
+
+    //let menu_items = menu.map( (item, index) => 
+    // let menu_items = menu_from_data.map( (item, index) => 
     let menu_items = menu.map( (item, index) => 
         <li key={index}>
-            <Link to={`/${item.dir}/`}>{item.name}</Link>      
+            <Link 
+                to={`/${item.dir}/`}
+                activeClassName={sidebarStyles.active}
+                partiallyActive={true}
+            >
+                {item.name}
+            </Link>      
 
-            <ul>
+            <ul className={sidebarStyles.section}>
                 {item.categories.map((category, index) => (
                     <li key={index}>
-                        <Link to={`/${item.dir}/${category.dir}/`}>{category.name}</Link>   
+                        <Link 
+                            to={`/${item.dir}/${category.dir}/`}
+                            activeClassName={sidebarStyles.active}
+                            partiallyActive={true}
+                        >
+                            {category.name}
+                        </Link>   
 
-                        <ul>                            
+                        <ul className={sidebarStyles.section}>                            
                             {category.sections.map((section, index) => (
                                 <li key={index}>
-                                    <Link to={`/${item.dir}/${category.dir}/${section.dir}/`}>{section.name}</Link>  
+                                    <Link 
+                                        to={`/${item.dir}/${category.dir}/${section.dir}/`}
+                                        activeClassName={sidebarStyles.active}
+                                        partiallyActive={true}
+                                    >
+                                        {section.name}
+                                    </Link>  
 
-                                    <ul>                            
+                                    <ul className={sidebarStyles.section}>                            
                                         {section.posts.map((post, index) => (
                                             <li key={index}>
-                                                <Link to={`/${item.dir}/${category.dir}/${section.dir}/${post.dir}/`}>{post.name}</Link>   
+                                                <Link 
+                                                    to={`/${item.dir}/${category.dir}/${section.dir}/${post.dir}/`}
+                                                    activeClassName={sidebarStyles.active}
+                                                >
+                                                    {post.name}
+                                                </Link>   
                                             </li>
                                         ))}                            
                                     </ul>                                    
@@ -61,7 +210,12 @@ export default function Sidebar() {
 
                             {category.posts.map((post, index) => (
                                 <li key={index}>
-                                    <Link to={`/${item.dir}/${category.dir}/${post.dir}/`}>{post.name}</Link>   
+                                    <Link 
+                                        to={`/${item.dir}/${category.dir}/${post.dir}/`}
+                                        activeClassName={sidebarStyles.active}
+                                    >
+                                        {post.name}
+                                    </Link>   
                                 </li>
                             ))}                            
                         </ul>
@@ -87,54 +241,5 @@ export default function Sidebar() {
 
 
 
-    // let menu_items = data.allMarkdownRemark.edges.map( ({ node }) => {
-    //     return {
-    //         url: node.fields.slug,
-    //         name: node.frontmatter.post_title
-    //     } 
-    // })    
-
-    // console.log("menu_items: ", menu_items)
 
 
-
-
-
-
-
-    // // TODO build menu tree 
-    // // get list of categories with their names and weight and sort in desc order by weight
-    // let categories = data.allMarkdownRemark.edges.map( ({ node }) => {
-    //     return {
-    //         category_name: node.frontmatter.category_title,
-    //         category_weight: node.frontmatter.category_weight, 
-    //         url: node.fields.slug, 
-    //     }
-    // })
-    // categories = _.uniqWith(categories, function(first, second){
-    //     return first.category_name === second.category_name
-    // });
-    // categories = _.remove(categories, function(element) {
-    //     return element.category_name != null;
-    // });    
-    // categories = _.sortBy(categories, 'category_weight').reverse();
-    // console.log(categories);
-
-    // //{category_name: "Tutorials", category_weight: 10, url: "/Tutorials/"}
-    // //{category_name: "API Reference", category_weight: 9, url: "/API-Reference/"}
-
-    // // category -> Tutorials
-    // // get list of all Sections -> section_title: "Transcoding"
-    // let sections = data.allMarkdownRemark.edges.map( ({ node }) => {
-    //     return {
-    //         category_name: node.frontmatter.category_title,
-    //         section_title: node.frontmatter.section_title,
-    //         section_weight: node.frontmatter.section_weight, 
-    //         url: node.fields.slug, 
-    //     }
-    // })    
-
-    // sections = _.uniqWith(sections, function(first, second){
-    //     return first.section_title === second.section_title
-    // });    
-    // console.log("sections: ", sections);

@@ -1,7 +1,8 @@
 ---
-title: "How to start"
-weight: 5
+dir: "How to start"
+post_title: "How to start"
+post_weight: 3
 ---
 
-This is How to Start article of Introduction in API Reference
+How to start
 

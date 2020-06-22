@@ -1,9 +1,6 @@
 ---
-category_title: "Tutorials"
-category_weight: 10
-category_icon: "url-to-icon"
-
-post_title: "Welcome to Tutorials"
+dir: "Tutorials"
+post_title: "Tutorials"
 post_weight: 5
 ---
 

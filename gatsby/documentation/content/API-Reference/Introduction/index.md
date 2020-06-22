@@ -1,12 +1,6 @@
 ---
-category_title: "API Reference"
-category_weight: 10
-category_icon: "url-to-icon"
-
-section_title: "Introduction"
-section_weight: 10
-
-post_title: "Welcome to Introduction"
+dir: "Introduction"
+post_title: "Introduction"
 post_weight: 5
 ---
 

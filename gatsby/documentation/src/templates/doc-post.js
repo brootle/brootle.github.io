@@ -13,8 +13,6 @@ export default function DocPost({ data }) {
         <Layout>
             <SEO title={document.frontmatter.post_title} description={document.excerpt} />
             <div className={docPostStyles.article}>
-                <h1>{document.frontmatter.category_title}</h1>
-                <h2>{document.frontmatter.section_title}</h2>
                 <h3>{document.frontmatter.post_title}</h3>
                 <div dangerouslySetInnerHTML={{ __html: document.html }} />
             </div>
@@ -29,8 +27,6 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        category_title
-        section_title
         post_title
       }
     }

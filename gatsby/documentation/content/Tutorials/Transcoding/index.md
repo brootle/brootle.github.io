@@ -1,11 +1,5 @@
 ---
-category_title: "Tutorials"
-category_weight: 10
-category_icon: "url-to-icon"
-
-section_title: "Transcoding"
-section_weight: 20
-
+dir: "Welcome to Transcoding"
 post_title: "Welcome to Transcoding"
 post_weight: 999
 ---
