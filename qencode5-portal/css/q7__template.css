@@ -2837,6 +2837,18 @@ a.q7-bucket-url:hover{
     border-top: 4px solid var(--blue);
 }
 
+.q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--no-drop-down{
+    padding-right: 0;
+}
+
+.q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--no-drop-down::after{
+    content: none;
+}
+
+a.q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--no-drop-down:hover{
+    text-decoration: none;
+}
+
 .q7-dd-menu .q7-icons-container{
     flex-wrap: nowrap;
 }
@@ -2877,6 +2889,8 @@ a.q7-bucket-url:hover{
     margin-top: 7px;
     padding-left: 17px;
     padding-right: 10px;    
+
+    z-index: 9999;
 }
 
 .q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--opened .q7-dd-menu:before {
@@ -5839,6 +5853,16 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     height: 16px;
 }
 
+.q7-transcoding-api__results-block{
+
+}
+
+.q7-transcoding-api__results-block .q6-transcoding-progress{
+    border-top: 1px solid #dae0ea;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
 .q7-player-settings__block-title,
 .q7-transcoding-api__block-title{
     color: #171717;
@@ -5865,6 +5889,18 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     font-size: 16px;
     line-height: 24px;
     margin-right: 15px;    
+}
+
+.q7-transcoding-api__input-files{
+    margin-top: 25px;
+}
+
+.q7-transcoding-api__input-files h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    display: inline-block;
+    position: relative;
 }
 
 .q7-player-settings__block-title a{
@@ -6742,10 +6778,13 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-transcoding-api__resolutions-table table th,
 .q7-transcoding-api__resolutions-table table td{
     border-bottom: 1px dashed #e6e8eb;
-    border-top: 1px dashed #e6e8eb;
 
-    padding: 7px 9px;
+    padding: 9px 9px;
     white-space: nowrap;
+}
+
+.q7-transcoding-api__resolutions-table table th{
+    border-bottom: none;
 }
 
 .q7-transcoding-api__resolutions-table table th{
@@ -6753,6 +6792,17 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     font-weight: 600;
     color: #171717;    
     font-size: 13px;
+    background-color: #e8eaed;
+}
+
+.q7-transcoding-api__resolutions-table table th:first-of-type{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.q7-transcoding-api__resolutions-table table th:last-of-type{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .q7-transcoding-api__resolutions-table table tfoot td{
