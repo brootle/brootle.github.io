@@ -5891,16 +5891,167 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     margin-right: 15px;    
 }
 
-.q7-transcoding-api__input-files{
+.q7-transcoding-api__input-files,
+.q7-transcoding-api__output-files,
+.q7-transcoding-api__audio,
+.q7-transcoding-api__thumbnail-vtt{
     margin-top: 25px;
 }
 
-.q7-transcoding-api__input-files h2 {
+.q7-transcoding-api__input-files h2,
+.q7-transcoding-api__output-files h2,
+.q7-transcoding-api__audio h2,
+.q7-transcoding-api__thumbnail-vtt h2 {
     font-size: 22px;
     font-weight: 500;
     margin: 0;
     display: inline-block;
     position: relative;
+}
+
+.q7-transcoding-api__thumbnail-vtt .q7-table--projects td:nth-of-type(1) {
+    color: initial;
+}
+
+.q7-transcoding-api__file-progress{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-transcoding-api__file-progress .q6-transcoding-progress__status {
+    width: initial;
+    min-width: initial;
+    padding-right: 25px;
+}
+
+.q7-transcoding-api__file-progress .q6-tutorial-files-table__progress-container {
+    margin-left: 0;
+}
+
+
+.q7-table.q7-table--results .q7-output-files-multiple-resolutions > td:last-of-type {
+    padding: 0;
+    overflow: initial;
+    color: initial;
+}
+
+.q7-table--results .q7-output-files-multiple-resolutions tbody tr {
+    box-shadow: none;
+}
+
+.q7-output-files-multiple-resolutions > td > table{
+    width:100%;
+    color: #575757;
+}
+
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(1), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(1),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(1){
+    min-width: 186px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(2), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(2),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(2){
+    width: 129px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(3), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(3),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(3){
+    width: 97px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(4), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(4),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(4){
+    width: 130px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(5), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(5),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(5){
+    width: 115px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(6), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(6),
+.q7-transcoding-api__audio .q7-table--projects td:nth-of-type(6){
+    width: 112px;
+}
+
+.q7-transcoding-api__input-files .q7-table--projects td:nth-of-type(7), 
+.q7-transcoding-api__output-files .q7-table--projects td:nth-of-type(7){
+    width: 74px;
+}
+
+
+.q7-transcoding-api__input-files .q7-table--projects td:last-of-type, 
+.q7-transcoding-api__output-files .q7-table--projects td:last-of-type,
+.q7-transcoding-api__audio .q7-table--projects td:last-of-type,
+.q7-transcoding-api__thumbnail-vtt .q7-table--projects td:last-of-type{
+    width: 94px;
+}
+
+.q7-transcoding-api__thumbnail-vtt > div > h3{
+    color: #939393;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0;
+    margin-bottom: 0;
+    line-height: 20px;
+}
+
+.q7-multiple-formats-toggle{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.q7-multiple-formats-toggle:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(-45deg);
+    transition: all 0.1s ease;
+}
+
+.q7-output-files-multiple-resolutions--opened .q7-multiple-formats-toggle:before {
+    transform: rotate(45deg);
+    top: calc(50% - 7px);
+}
+
+.q7-output-files-multiple-resolutions table tr.q7-output-files__extra-resolution td{
+    border-bottom: 1px dashed #dee4ec;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.q7-output-files-multiple-resolutions table tr td:first-of-type,
+.q7-output-files-multiple-resolutions table tr td:last-of-type{
+    border-bottom: none;
+}
+
+.q7-output-files-multiple-resolutions table tr:last-of-type td{
+    border-bottom: none;
+}
+
+.q7-output-files-multiple-resolutions table tr:first-of-type td{
+    border-bottom: none;
+}
+
+.q7-output-files-multiple-resolutions table tr.q7-output-files-multiple-resolutions__header td{
+    border-bottom: 1px solid #ebebeb;
 }
 
 .q7-player-settings__block-title a{
