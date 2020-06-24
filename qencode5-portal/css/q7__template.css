@@ -5909,6 +5909,19 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     position: relative;
 }
 
+.q7-transcoding-api__input-files h3,
+.q7-transcoding-api__output-files h3,
+.q7-transcoding-api__audio h3,
+.q7-transcoding-api__thumbnail-vtt h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+}
+
 .q7-transcoding-api__thumbnail-vtt .q7-table--projects td:nth-of-type(1) {
     color: initial;
 }
@@ -5994,10 +6007,10 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     width: 94px;
 }
 
-.q7-transcoding-api__thumbnail-vtt > div > h3{
+.q7-transcoding-api__thumbnail-vtt > div > h4{
     color: #939393;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: normal;
     margin: 10px 0;
     margin-bottom: 0;
@@ -6394,6 +6407,56 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-actions__icon.q7-actions__icon--cancel:hover{
     background-color: #A6AAB2;
+}
+
+.q7-actions-container.q7-actions-container--teble-cell{
+    position: relative;
+
+    filter: grayscale(1);
+    opacity: 0.4;    
+}
+
+.q7-table tr:hover .q7-actions-container.q7-actions-container--teble-cell{
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;   
+}
+
+.q7-actions-container.q7-actions-container--teble-cell .q7-actions__icon{
+    width: 17px;
+    height: 17px;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.q7-actions__icon.q7-actions__icon--copy-url{
+    background-image: url(../img/link.svg);
+    background-size: cover;
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;       
+}
+
+.q7-actions__icon.q7-actions__icon--storage{
+    background-image: url(../img/cloud_storage.svg);
+    background-size: cover;
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;       
+}
+
+.q7-actions-container.q7-actions-container--teble-cell .q7-actions__icon.q7-actions__icon--play-file{
+    background-image: url(../img/play_icon_white.svg);
+    background-size: 6px 6px;
+    background-color: #316fea;
+    -webkit-filter: initial;
+    filter: initial;
+    opacity: initial;  
+    border-radius: 50%;     
+}
+
+.q7-actions__icon:hover > .q7-tooltip {
+    display: block;
 }
 
 .q7-transcoding-api__two-blocks{
@@ -7460,6 +7523,11 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-errors-block__list{
 
+}
+
+.q7-error-cell{
+    color: #e46464;
+    font-weight: 500;
 }
 
 @media screen and (min-width: 1650px){
