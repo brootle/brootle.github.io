@@ -1,5 +1,12 @@
 tutorial https://www.youtube.com/watch?v=8t0vNu2fCCM
 
+keep parent link active
+github.com/gatsbyjs/gatsby/issues/7208
+
+docs themes
+https://www.apollographql.com/docs/tutorial/mutation-resolvers/
+https://rocketdocs.netlify.app/usage/navigation
+
 https://www.gatsbyjs.org/starters/hasura/gatsby-gitbook-starter/
 
 https://hasura.io/learn/graphql/react/introduction/
@@ -32,3 +39,5 @@ http://www.objgen.com/json
 https://medium.com/gammastack/making-a-nested-sidebar-menu-in-react-f8595031995e
 https://openbase.io/js/react-nested-menu
 https://www.erichowey.dev/writing/building-a-sub-menu-with-gatsby/
+
+https://fireship.io/lessons/dropdown-menu-multi-level-react/

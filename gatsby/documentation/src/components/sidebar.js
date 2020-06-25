@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-//import { menu } from "../../content/docs-map.json"
+import logo from "../images/logo.svg"
 
 import sidebarStyles from "./sidebar.module.css"
 
@@ -9,7 +9,7 @@ export default function Sidebar() {
 
     const data = useStaticQuery(graphql`
         query {
-            allMarkdownRemark {
+            allMarkdownRemark (sort: { fields: [frontmatter___weight], order: DESC }) {
                 totalCount
                 edges {
                     node {
@@ -17,6 +17,7 @@ export default function Sidebar() {
                         frontmatter {
                             post_title
                             dir
+                            weight
                         }
                         fields {
                             slug
@@ -66,6 +67,7 @@ export default function Sidebar() {
     let urlList = []
 
     let nodes = data.allMarkdownRemark.edges.map( ({ node }) => {
+        console.log(node.fields.slug)
         urlList.push(node.fields.slug)
         return {
             url: node.fields.slug,
@@ -153,10 +155,13 @@ export default function Sidebar() {
         }
     })      
 
-
+    // remove index page from top level docs
+    menu_from_data = menu_from_data.filter(({ dir }) => dir !=='');
 
     // BUILDING UI
+    // menu is sorted by 'weight' from md file frontmatter by Graphql request
     const menu = menu_from_data
+    
 
     //let menu_items = menu.map( (item, index) => 
     // let menu_items = menu_from_data.map( (item, index) => 
@@ -230,6 +235,12 @@ export default function Sidebar() {
 
     return (
         <nav className={sidebarStyles.sidebar}>
+            <div>
+                <Link to='/'>
+                    <img className={sidebarStyles.logo} src={logo} alt="Qencode" />
+                </Link> 
+            </div>   
+
             <ul>{menu_items}</ul>
         </nav>
     )

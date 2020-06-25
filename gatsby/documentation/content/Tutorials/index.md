@@ -1,7 +1,7 @@
 ---
 dir: "Tutorials"
 post_title: "Tutorials"
-post_weight: 5
+weight: 10
 ---
 
 This is Main Page for tutorials
