@@ -1,7 +1,6 @@
 ---
-dir: "API Reference"
-post_title: "API Reference"
-icon: "api.svg"
+dir: API Reference
+post_title: API Reference
 weight: 4000
 ---
 

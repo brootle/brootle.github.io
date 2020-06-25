@@ -3,6 +3,11 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 import logo from "../images/logo.svg"
 
+import imgTutorials from "../images/menu/tutorials.svg"
+import imgApiReference from "../images/menu/api-reference.svg"
+import imgFAQ from "../images/menu/faq.svg"
+import imgSupport from "../images/menu/support.svg"
+
 import sidebarStyles from "./sidebar.module.css"
 
 export default function Sidebar() {
@@ -18,7 +23,6 @@ export default function Sidebar() {
                             post_title
                             dir
                             weight
-                            icon
                         }
                         fields {
                             slug
@@ -72,19 +76,17 @@ export default function Sidebar() {
         urlList.push(node.fields.slug)
         return {
             url: node.fields.slug,
-            name: node.frontmatter.dir,
-            icon: node.frontmatter.icon
+            name: node.frontmatter.dir
         } 
     })      
 
     // add top level Docs first
-    nodes.forEach( ({ url, name, icon }) => {
+    nodes.forEach( ({ url, name }) => {
         let urlArray = url.slice(1, -1).split('/')
         if(urlArray.length === 1){
             menu_from_data.push({
                 "name": name,
                 "dir": urlArray[0],
-                "icon": icon,
                 "categories":[]                
             })
         }
@@ -166,6 +168,22 @@ export default function Sidebar() {
     const menu = menu_from_data
     console.log("menu", menu);
     
+    // TODO
+    // need to associate top level articles with images
+    function menuIcon(dir){
+        switch(dir) {
+            case 'tutorials':
+                return imgTutorials
+            case 'api-reference':
+                return imgApiReference
+            case 'faq':
+                return imgFAQ
+            case 'support':
+                return imgSupport                                                
+            default:
+                return imgTutorials
+        }        
+    }
 
     //let menu_items = menu.map( (item, index) => 
     // let menu_items = menu_from_data.map( (item, index) => 
@@ -177,7 +195,9 @@ export default function Sidebar() {
                 activeClassName={sidebarStyles.active}
                 partiallyActive={true}
             >
-                {item.name}
+
+                <img src={menuIcon(item.dir)} />
+                <div>{item.name}</div>
             </Link>      
 
             <ul className={sidebarStyles.section}>

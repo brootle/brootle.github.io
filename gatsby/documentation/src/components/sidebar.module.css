@@ -15,7 +15,7 @@
     height: var(--header-hight);
     min-height: var(--header-hight);
     box-sizing: border-box;
-    padding: 40px 25px 0px 30px;    
+    padding: 40px 25px 10px 30px;
 }
 
 .logo{
@@ -23,28 +23,38 @@
 }
 
 .content {
-    padding: 0px 25px 40px 30px;  
+    padding: 10px 25px 40px 30px;  
     flex: 1;
     overflow-y: auto;
 }
 
-.sidebar ul{
+.content > ul {
     list-style-type: none;
-    margin: 20px 0;
-    padding: 0;
+    padding:0;
+    margin: 0;
 }
 
-.sidebar li{
-    display: block;
+.content a{
+    text-decoration: none;
+    color: #383838;
 }
 
 .doc{
-    line-height: 38px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;    
+}
+
+.doc > img{
+    width: 29px;
+    height: 26px;    
+    margin-right: 13px;
 }
 
 .active{
-    background-color: red;
+    /* background-color: red; */
 }
+
 
 .active + .section {
     display: block;

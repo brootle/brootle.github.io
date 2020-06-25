@@ -1,7 +1,6 @@
 ---
-dir: "Support"
-post_title: "Support"
-icon: "support.svg"
+dir: Support
+post_title: Support
 weight: 1000
 ---
 
