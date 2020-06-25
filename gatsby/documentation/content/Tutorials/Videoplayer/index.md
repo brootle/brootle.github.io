@@ -1,7 +1,7 @@
 ---
-dir: "Welcome to Videoplayer"
+dir: "Videoplayer"
 post_title: "Welcome to Videoplayer"
-weight: 4
+weight: 1000
 ---
 
 This is Main Page for Videoplayer in Tutorials

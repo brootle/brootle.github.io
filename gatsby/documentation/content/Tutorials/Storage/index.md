@@ -1,7 +1,7 @@
 ---
 dir: "Storage"
 post_title: "Storage"
-weight: 30
+weight: 2000
 ---
 
 This is Main Page for Storage in Tutorials

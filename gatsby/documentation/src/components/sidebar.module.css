@@ -1,21 +1,19 @@
 .logo{
-    width: 93px;
+    width: 135px;
 }
 
 .sidebar {
+    padding: 40px 25px 40px 30px;
     border: 0;
-    bottom: 0rem;
+    bottom: 0;
     display: block;
     height: 100vh;
     position: fixed;
-    top: 0rem;
-    -webkit-transition: opacity 250ms cubic-bezier(0.4,0,0.2,1);
-    transition: opacity 250ms cubic-bezier(0.4,0,0.2,1);
-    width: 320px;
+    top: 0;
+    width: var(--sidebar-width);
     z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-
+    border-right: 1px solid #eeeeee;
+    box-sizing: border-box;
 }
 
 .active{
@@ -30,19 +28,6 @@
     display: none;
 }
 
-@media (min-width: 750px){
-    .sidebar {
-        height: calc(100vh - var(--header-nav-height));
-        max-width: none;
-        opacity: 1 !important;
-        pointer-events: auto;
-        top: var(--header-nav-height);;
-        width: 16.5rem;
-    }
-}
-
-@media (min-width: 1000px){
-    .sidebar {
-        width: 18rem;
-    }
+.root-menu{
+    
 }
