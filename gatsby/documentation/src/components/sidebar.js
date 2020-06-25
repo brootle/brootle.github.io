@@ -200,12 +200,13 @@ export default function Sidebar() {
                 <div>{item.name}</div>
             </Link>      
 
-            <ul className={sidebarStyles.section}>
+            <ul className={`${sidebarStyles.section} ${sidebarStyles.categories}`}>
                 {item.categories.map((category, index) => (
                     <li key={index}>
                         <Link 
                             to={`/${item.dir}/${category.dir}/`}
                             activeClassName={sidebarStyles.active}
+                            className={sidebarStyles.category}
                             partiallyActive={true}
                         >
                             {category.name}
