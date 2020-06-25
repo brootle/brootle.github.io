@@ -1,19 +1,45 @@
+.menu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: white;
+    width: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;    
+    border-right: 1px solid #eeeeee;
+}
+
+.header{
+    height: var(--header-hight);
+    min-height: var(--header-hight);
+    box-sizing: border-box;
+    padding: 40px 25px 0px 30px;    
+}
+
 .logo{
     width: 135px;
 }
 
-.sidebar {
-    padding: 40px 25px 40px 30px;
-    border: 0;
-    bottom: 0;
+.content {
+    padding: 0px 25px 40px 30px;  
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar ul{
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.sidebar li{
     display: block;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    width: var(--sidebar-width);
-    z-index: 10;
-    border-right: 1px solid #eeeeee;
-    box-sizing: border-box;
+}
+
+.doc{
+    line-height: 38px;
 }
 
 .active{
@@ -26,8 +52,4 @@
  
 .section {
     display: none;
-}
-
-.root-menu{
-    
 }

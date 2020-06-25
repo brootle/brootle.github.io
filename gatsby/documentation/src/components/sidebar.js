@@ -18,6 +18,7 @@ export default function Sidebar() {
                             post_title
                             dir
                             weight
+                            icon
                         }
                         fields {
                             slug
@@ -71,17 +72,19 @@ export default function Sidebar() {
         urlList.push(node.fields.slug)
         return {
             url: node.fields.slug,
-            name: node.frontmatter.dir
+            name: node.frontmatter.dir,
+            icon: node.frontmatter.icon
         } 
     })      
 
     // add top level Docs first
-    nodes.forEach( ({ url, name }) => {
+    nodes.forEach( ({ url, name, icon }) => {
         let urlArray = url.slice(1, -1).split('/')
         if(urlArray.length === 1){
             menu_from_data.push({
                 "name": name,
                 "dir": urlArray[0],
+                "icon": icon,
                 "categories":[]                
             })
         }
@@ -161,6 +164,7 @@ export default function Sidebar() {
     // BUILDING UI
     // menu is sorted by 'weight' from md file frontmatter by Graphql request
     const menu = menu_from_data
+    console.log("menu", menu);
     
 
     //let menu_items = menu.map( (item, index) => 
@@ -169,6 +173,7 @@ export default function Sidebar() {
         <li key={index}>
             <Link 
                 to={`/${item.dir}/`}
+                className={sidebarStyles.doc}
                 activeClassName={sidebarStyles.active}
                 partiallyActive={true}
             >
@@ -234,15 +239,16 @@ export default function Sidebar() {
 
 
     return (
-        <nav className={sidebarStyles.sidebar}>
-            <div>
+        <div className={sidebarStyles.menu}>
+            <div className={sidebarStyles.header}>
                 <Link to='/'>
                     <img className={sidebarStyles.logo} src={logo} alt="Qencode" />
-                </Link> 
-            </div>   
-
-            <ul>{menu_items}</ul>
-        </nav>
+                </Link>             
+            </div>
+            <nav className={sidebarStyles.content}>
+                <ul>{menu_items}</ul>
+            </nav>
+        </div>
     )
 }
 

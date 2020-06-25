@@ -1,6 +1,7 @@
 ---
 dir: "FAQ"
 post_title: "FAQ"
+icon: "faq.svg"
 weight: 2000
 ---
 

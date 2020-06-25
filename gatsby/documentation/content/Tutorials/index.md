@@ -1,6 +1,7 @@
 ---
 dir: "Tutorials"
 post_title: "Tutorials"
+icon: "tutorials.svg"
 weight: 3000
 ---
 
