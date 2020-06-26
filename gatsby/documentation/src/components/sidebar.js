@@ -193,7 +193,7 @@ export default function Sidebar() {
                             {category.name}
                         </Link>   
 
-                        <ul className={sidebarStyles.section}>                            
+                        <ul className={`${sidebarStyles.section} ${sidebarStyles.sections}`}>                            
                             {category.sections.map((section, index) => (
                                 <li key={index}>
                                     <Link 
@@ -204,7 +204,7 @@ export default function Sidebar() {
                                         {section.name}
                                     </Link>  
 
-                                    <ul className={sidebarStyles.section}>                            
+                                    <ul className={`${sidebarStyles.section} ${sidebarStyles.posts}`}>                            
                                         {section.posts.map((post, index) => (
                                             <li key={index}>
                                                 <Link 
