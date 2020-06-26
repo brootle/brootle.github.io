@@ -1,3 +1,9 @@
+DEPLOY
+https://www.gatsbyjs.org/tutorial/part-one/#deploying-a-gatsby-site
+gatsby build
+surge login
+surge public/
+
 tutorial https://www.youtube.com/watch?v=8t0vNu2fCCM
 
 keep parent link active
@@ -41,3 +47,17 @@ https://openbase.io/js/react-nested-menu
 https://www.erichowey.dev/writing/building-a-sub-menu-with-gatsby/
 
 https://fireship.io/lessons/dropdown-menu-multi-level-react/
+
+
+Inline SVG
+https://stackoverflow.com/a/56258761/6261255
+
+Inline SVG for Gatsby
+https://www.gatsbyjs.org/packages/gatsby-plugin-react-svg/
+
+MDX in Gatsby 
+digitalocean.com/community/tutorials/gatsbyjs-mdx-in-gatsby
+
+
+Images in frontmatter 
+https://github.com/d4rekanguok/gatsby-schema-field-absolute-path
