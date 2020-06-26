@@ -37,6 +37,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,       
-    `gatsby-plugin-lodash`, 
+    `gatsby-plugin-lodash`,  
   ],
 }

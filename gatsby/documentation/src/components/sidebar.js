@@ -3,11 +3,6 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 import logo from "../images/logo.svg"
 
-import imgTutorials from "../images/menu/tutorials.svg"
-import imgApiReference from "../images/menu/api-reference.svg"
-import imgFAQ from "../images/menu/faq.svg"
-import imgSupport from "../images/menu/support.svg"
-
 import sidebarStyles from "./sidebar.module.css"
 
 export default function Sidebar() {
@@ -170,20 +165,7 @@ export default function Sidebar() {
     
     // TODO
     // need to associate top level articles with images
-    function menuIcon(dir){
-        switch(dir) {
-            case 'tutorials':
-                return imgTutorials
-            case 'api-reference':
-                return imgApiReference
-            case 'faq':
-                return imgFAQ
-            case 'support':
-                return imgSupport                                                
-            default:
-                return imgTutorials
-        }        
-    }
+
 
     //let menu_items = menu.map( (item, index) => 
     // let menu_items = menu_from_data.map( (item, index) => 
@@ -195,8 +177,7 @@ export default function Sidebar() {
                 activeClassName={sidebarStyles.active}
                 partiallyActive={true}
             >
-
-                <img src={menuIcon(item.dir)} />
+                <img src={`/images/docs/${item.dir}.svg`} alt={item.dir} />
                 <div>{item.name}</div>
             </Link>      
 
