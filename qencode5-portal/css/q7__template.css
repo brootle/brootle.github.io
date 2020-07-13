@@ -6435,15 +6435,13 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-actions__icon.q7-actions__icon--copy-url{
     background-image: url(../img/link.svg);
-    background-size: cover;
     -webkit-filter: initial;
     filter: initial;
     opacity: initial;       
 }
 
 .q7-actions__icon.q7-actions__icon--storage{
-    background-image: url(../img/cloud_storage.svg);
-    background-size: cover;
+    background-image: url(../img/folder.svg);
     -webkit-filter: initial;
     filter: initial;
     opacity: initial;       
@@ -6451,7 +6449,6 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-actions-container.q7-actions-container--teble-cell .q7-actions__icon.q7-actions__icon--play-file{
     background-image: url(../img/play_btn.svg);
-    background-size: cover;
     -webkit-filter: initial;
     filter: initial;
     opacity: initial;   
@@ -6463,6 +6460,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-transcoding-api__two-blocks{
     display: flex;
+    margin-bottom: 60px;
 }
 
 .q7-transcoding-api__two-blocks > div{
@@ -6612,6 +6610,8 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     color: #838383;
     font-size: 16px;    
     line-height: 28px;
+
+    border-bottom: 2px solid transparent;
 }
 
 .q7-transcoding-api__choose-bucket .q6-tablinks.q6-tablinks--active {
@@ -6913,7 +6913,6 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .q7-output-format__header > div:first-of-type{
     flex: 1;
     display: flex;
-    border-right: 1px solid #cce0ff;
     padding: 0 13px;
     padding-left: 7px;
     font-weight: 500;
@@ -6925,6 +6924,10 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     position: relative;
     padding-right: 32px;
     cursor: pointer;
+}
+
+.q7-output-format__header > div:last-of-type{
+    border-left: 1px solid #cce0ff;
 }
 
 .q7-output-format__header > div:first-of-type > div:first-of-type{
@@ -6947,20 +6950,20 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     box-sizing: border-box;
     position: absolute;
     right: 12px;
-    top: calc(50% - 7px);
+    top: calc(50% - 5px);
     height: 9px;
     width: 9px;
     border-bottom: 2px solid var(--blue);
     border-right: 2px solid var(--blue);
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
 }
 
 .q7-output-format__header.q7-output-format__header--active > div:first-of-type:after {
-    transform: rotate(-135deg);
-    top: calc(50% - 3px);
+    transform: rotate(45deg);
+    top: calc(50% - 7px);
 }
 
-.q7-output-format__header > .q7-transcoding-api__delete-format-icon{
+.q7-output-format__header .q7-transcoding-api__delete-format-icon{
     width: 33px;
     height: 33px;
 
@@ -6974,7 +6977,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     opacity: 0.4;    
 }
 
-.q7-output-format__header > div:last-of-type:hover{
+.q7-output-format__header .q7-transcoding-api__delete-format-icon:hover{
     filter: initial;
     opacity: initial;      
 }
@@ -7353,6 +7356,16 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     margin-left: 5px;
 }
 
+.q7-output-format__header-icons > div:nth-of-type(2){
+    color: #44b454;
+    border-color: #44b454;
+}
+
+.q7-output-format__header-icons > div:nth-of-type(3){
+    color: #8d9eca;
+    border-color: #8d9eca;
+}
+
 .q7-output-format__header-details{
     color: #8d9ec7;
     line-height: 26px;
@@ -7365,7 +7378,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     border: 1px solid #898d95;
     white-space: normal;
     min-width: 380px;
-    box-shadow: 0 7px 25px 1px rgba(105,109,112,.2);
+    box-shadow: 0 4px 7px 3px rgba(105,109,112,.06);
     padding: 15px 30px;
     padding-right: 50px;
     font-weight: normal;
@@ -7548,6 +7561,109 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     color: #e46464;
     font-weight: 500;
 }
+
+
+.q7-input.q7-input--project{
+    min-width: 250px;
+}
+
+.q6-tab.q7-tab--with-extra{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.q7-tabs-container--more-link .q7-dd-menu__button.q7-dd-menu__button--with-title{
+    text-transform: initial;
+    color: var(--blue);
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.q6-tablinks.q7-dd-menu-element{
+    display: block;
+
+    line-height: 20px;
+    color: var(--blue);
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 6px 17px;
+    
+    margin: 0;
+}
+
+.q7-tabs-container--more-link .q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--opened .q7-dd-menu{
+    padding: 6px 0px;
+    box-shadow: none;
+    border-color: initial;
+}
+
+.q7-transcoding-api__choose-bucket .q7-tabs-container--more-link .q6-tablinks.q6-tablinks--active {
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.q7-tabs-container--more-link .q7-dd-menu__button.q7-dd-menu__button--with-title.q7-dd-menu__button--opened .q7-dd-menu:before {
+    display: initial;
+    left: initial;
+    right: 30px;    
+}
+
+.q7-input__comments{
+    color: #616161;
+    margin-bottom: 15px;
+    line-height: 18px;    
+}
+
+.q7-button.q7-dd-menu__button{
+    position: relative;
+    min-width: 160px;
+}
+
+.q7-dd-menu__button:after {
+    border-top-color: white;
+}
+
+.q7-button.q7-dd-menu__button.q7-dd-menu__button--opened .q7-dd-menu {
+    display: block;
+}
+
+.q7-button.q7-dd-menu__button .q7-dd-menu:before {
+    display: none;
+}
+
+.q7-button.q7-dd-menu__button .q7-dd-menu{
+    margin-top: 0;
+    left: 0;
+    right: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;    
+}
+
+.q7-button.q7-dd-menu__button.q7-dd-menu__button--opened{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;    
+}
+
+/* .q7-button.q7-button--dropdown{
+    position: relative;
+}
+
+.q7-button.q7-button--dropdown:after {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 2px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid white;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+} */
 
 @media screen and (min-width: 1650px){
     .q7-container{

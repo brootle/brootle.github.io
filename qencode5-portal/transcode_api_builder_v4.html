@@ -401,6 +401,10 @@
                         <div class="q7-block-title-and-button">
                             <div class="q7-block-title">Transcoding API Request Builder</div>
                             <div>
+
+                                <a href="" class="q7-dd-menu__button q7-dd-menu__button--with-title q7-dd-menu__button--no-drop-down">
+                                    Usage Stats
+                                </a>                                
                                 
                                 <div class="q7-dd-menu__button q7-dd-menu__button--with-title">
                                     Resources
@@ -481,6 +485,20 @@
 
                         <div class="q7-transcoding-api__load-template-block">
 
+                            <div class="q7-input-and-buttons--inline">
+                                <div class="q7-input q7-input--project">
+                                    <div class="q7-input__label">
+                                        <label>Select Project</label>                                                   
+                                    </div>                
+                                    <div class="q7-custom-select">
+                                        <select class="q7-select">
+                                            <option value="1">BBC_Project_2020</option>
+                                            <option value="2">Netflix_Project_2022</option>
+                                        </select>
+                                    </div>
+                                </div>                            
+                            </div>
+
                             <div class="q7-input-and-buttons--inline">                      
                                 <div class="q7-input q7-input--transcoding-templates">
                                     <div class="q7-input__label">
@@ -517,7 +535,7 @@
                                 </div>
 
                                 <div class="q7-transcoding-template__controls">
-                                    <button class="q7-button">Load</button>
+                                    <button class="q7-button">Edit Template</button>
                                     <button data-toggle="modal" data-target="#deleteTemplate" class="q7-button q7-button--delete">Delete</button>
                                 </div>
 
@@ -1006,16 +1024,25 @@
                         <div class="q7-transcoding-api__block-title"><span>2</span> Define Destination</div>
                         <div class="q7-transcoding-api__choose-bucket">
 
-                            <div class="q6-tab">
+                            <div class="q6-tab q7-tab--with-extra">
                                 <div class="q6-tabs-container">
                                     <span class="q6-tablinks q6-tablinks--active" data-tabcontent="qencode_s3">Qencode S3</span>
                                     <span class="q6-tablinks" data-tabcontent="generic_s3">Generic S3</span>
                                     <span class="q6-tablinks" data-tabcontent="aws">AWS</span>
                                     <span class="q6-tablinks" data-tabcontent="google_cloud">Google Cloud</span>
                                     <span class="q6-tablinks" data-tabcontent="blackblaze_b2">Blackblaze B2</span>
-                                    <span class="q6-tablinks" data-tabcontent="azure">Azure</span>
-                                    <span class="q6-tablinks" data-tabcontent="digital_ocean">DigitalOcean</span>
-                                    <span class="q6-tablinks" data-tabcontent="ftp">FTP</span>
+                                </div>
+                                <div class="q7-tabs-container--more-link">
+                                    <div class="q7-dd-menu__button q7-dd-menu__button--with-title">
+                                        More
+                                        <div class="q7-dd-menu">
+                                            <div class="q7-dd-menu__items">
+                                                <span class="q6-tablinks q7-dd-menu-element" data-tabcontent="azure">Azure</span>
+                                                <span class="q6-tablinks q7-dd-menu-element" data-tabcontent="digital_ocean">DigitalOcean</span>
+                                                <span class="q6-tablinks q7-dd-menu-element" data-tabcontent="ftp">FTP</span>
+                                            </div>                                   
+                                        </div>                                                                               
+                                    </div>
                                 </div>
                             </div>     
 
@@ -1580,10 +1607,13 @@
                                                 <div>1</div>
                                                 <div class="q7-output-format__header-icons">
                                                     <div>mp4</div>
+                                                    <div>h.264</div>
+                                                    <div>1920</div>
                                                 </div>
-                                                <div class="q7-output-format__header-details">(h.264 | 1920)</div>
                                             </div>
-                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            <div style="display: none;">
+                                                <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            </div>                                            
                                         </div>
                                         <div class="q7-output-format__body"> 
                                             <div>
@@ -1682,7 +1712,12 @@
                                                                     </span>
                                                                 </label>  
                                                             </div>                                            
-                                                        </div>                              
+                                                        </div>    
+                                                        <div class="q7-input__comments">
+                                                            Reduce file size with frame-by-frame optimization without sactificing 
+                                                            video quality, providing a 70% improvement in load times, as well as 
+                                                            lowering storage and bandwidth costs
+                                                        </div>                          
                                                     </div>   
                                                 </div>
 
@@ -1906,10 +1941,13 @@
                                                 <div>2</div>
                                                 <div class="q7-output-format__header-icons">
                                                     <div>hls</div>
+                                                    <div>h.264</div>
+                                                    <div>720</div>                                                    
                                                 </div>
-                                                <div class="q7-output-format__header-details">(h.264 | 720)</div>
                                             </div>
-                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            <div>
+                                                <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            </div>     
                                         </div>
                                         <div class="q7-output-format__body"> 
                                             <div>
@@ -1961,7 +1999,12 @@
                                                                     </span>
                                                                 </label>  
                                                             </div>                                            
-                                                        </div>                              
+                                                        </div>     
+                                                        <div class="q7-input__comments">
+                                                            Reduce file size with frame-by-frame optimization without sactificing 
+                                                            video quality, providing a 70% improvement in load times, as well as 
+                                                            lowering storage and bandwidth costs
+                                                        </div>                                                                                    
                                                     </div>   
                                                 </div>
 
@@ -2095,10 +2138,12 @@
                                                 <div>3</div>
                                                 <div class="q7-output-format__header-icons">
                                                     <div>mp3</div>
+                                                    <div>aac</div>
                                                 </div>
-                                                <div class="q7-output-format__header-details">(aac)</div>
                                             </div>
-                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            <div>
+                                                <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            </div>     
                                         </div>
                                         <div class="q7-output-format__body"> 
                                             <div>
@@ -2177,10 +2222,12 @@
                                                 <div>4</div>
                                                 <div class="q7-output-format__header-icons">
                                                     <div>Thumbnails</div>
-                                                </div>              
-                                                <div class="q7-output-format__header-details">(VTT)</div>                                  
+                                                    <div>VTT</div>
+                                                </div>                                 
                                             </div>
-                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            <div>
+                                                <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            </div>     
                                         </div>
                                         <div class="q7-output-format__body"> 
                                             <div>
@@ -2259,7 +2306,9 @@
                                                 </div>          
                                                 <div class="q7-output-format__header-details"></div>                                        
                                             </div>
-                                            <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            <div>
+                                                <div class="q7-transcoding-api__delete-format-icon"></div>
+                                            </div>     
                                         </div>
                                         <div class="q7-output-format__body"> 
                                             <div>
@@ -2520,8 +2569,16 @@
                                 </div>
                                 <div class="q7-transcoding-api__action-btns">
                                     <div class="q7-input-and-buttons--inline">
-                                        <button data-toggle="modal" data-target="#saveTemplate"  class="q7-button q7-button--secondary">Save Template</button>   
-                                        <button class="q7-button">Launch Transcode</button>                                                                                      
+                                        <button class="q7-button q7-button--secondary">Start Transcoding</button>     
+                                        <button class="q7-button q7-dd-menu__button">
+                                            Save Template
+                                            <div class="q7-dd-menu">
+                                                <div class="q7-dd-menu__items">
+                                                    <div class="q7-dd-menu-element">Save</div>
+                                                    <div class="q7-dd-menu-element" data-toggle="modal" data-target="#saveTemplate" >Save Template As</div>
+                                                </div>                                   
+                                            </div>                                            
+                                        </button>                                                                                                                         
                                     </div>  
                                 </div>                              
                             </div>
