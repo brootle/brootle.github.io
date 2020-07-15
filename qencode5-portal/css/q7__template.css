@@ -6268,17 +6268,16 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 }
 
 
-.q7-player-settings__header .q7-input-and-buttons--inline > .q7-input{
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type > .q7-input{
     margin-right: 7%;
-    flex: 1;
 }
 
-.q7-player-settings__header .q7-input-and-buttons--inline > .q7-input:last-of-type{
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type > .q7-input:last-of-type{
     margin-right: 0;
     max-width: 200px;
 }
 
-.q7-player-settings__header .q7-input__field--view {
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type .q7-input__field--view {
     color: #171717;
     font-size: 15px;
     font-weight: normal;
@@ -6286,7 +6285,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     white-space: nowrap;
 }
 
-.q7-player-settings__header .q7-input__field--view.q7-input__field--view-player-name{
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type .q7-input__field--view.q7-input__field--view-player-name{
     max-width: 320px;
     width: fit-content;
     overflow: hidden;
@@ -6295,7 +6294,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     text-overflow: ellipsis;    
 }
 
-.q7-player-settings__header  .q7-input__label label {
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type .q7-input__label label {
     font-size: 18px;
     line-height: 20px;
     font-weight: 500;
@@ -6315,8 +6314,17 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     font-weight: normal;
 }
 
-.q7-player-settings__header .q7-input-and-buttons--inline {
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type {
     align-items: flex-start;
+}
+
+.q7-player-settings__header .q7-input-and-buttons--inline{
+    margin-bottom: 10px;
+}
+
+.q7-player-settings__header .q7-input-and-buttons--inline:last-of-type {
+    margin-top: 20px;
+    justify-content: flex-end;
 }
 
 .q7-player-settings__header .q7-button--copy .q7-flash-message{
@@ -6333,14 +6341,46 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     right: 0;    
 }
 
-.q7-player-settings__header .q7-input__label{
+.q7-input.q7-input--player-name,
+.q7-input.q7-input--license-domain{
+    flex: 1;
+}
+
+.q7-input.q7-input--license-domain .q7-input__comments{
+    margin: 0;
+    margin-top: 5px;
+}
+
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type .q7-input__label{
     position: relative;
 }
 
-.q7-player-settings__header .q7-input > a{
+.q7-player-settings__header .q7-input-and-buttons--inline:first-of-type .q7-input > a{
     color: #808080;
     cursor: pointer;
 }
+
+.q7-player-settings__header .q7-inline-checkboxes{
+    margin: 0;
+}
+
+.q7-player-settings__header .q7-checkbox{
+    margin: 4px 0;
+    padding-left: 23px;
+}
+
+.q7-player-settings__header .q7-checkmark {
+    height: 15px;
+    width: 15px;
+    top: 1px;
+}
+
+.q7-player-settings__header .q7-checkbox .q7-checkmark:after {
+    left: 4px;
+    top: 1px;
+    height: 9px;
+}
+
 
 .q7-input__field--view.q7-input__field--action-btns{
     position: relative;
