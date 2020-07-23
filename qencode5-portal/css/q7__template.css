@@ -4157,6 +4157,78 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     opacity: initial;
 }
 
+.q7-edit-text-button {
+    cursor: pointer;
+    width: 23px;
+    min-width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    background-position: center;
+    background-image: url(../img/profiles_edit_icon.svg);
+    background-size: 12px 12px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;
+    position: absolute;
+    right: -30px;
+    top: calc(50% - 13px);
+}
+.q7-edit-text-button:hover {
+    background-color: #f0f5fe;
+    filter: initial;
+    opacity: initial;
+}
+
+.q7-confirm-button {
+    background-color: var(--blue);
+    background-image: url(../img/ok.svg);
+    background-size: 10px;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-position: center;    
+
+    margin-left: 5px;
+}
+
+.q7-confirm-button:hover{
+    background-color: #0E62DD;
+}
+
+.q7-cancel-button {
+    background-color: #bcc0c9;
+    background-image: url(../img/no.svg);
+    background-size: 8px;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-position: center;    
+
+    margin-left: 5px;
+}
+
+.q7-cancel-button:hover{
+    background-color: #A6AAB2;
+}
+
+
+
 .q7-expandable-block__title{
     margin-top: 25px;
     cursor: pointer;
@@ -4342,6 +4414,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 
 .q7-table--transfer-methods .q7-copy-text-button,
 .q7-table--projects .q7-copy-text-button,
+.q7-table--projects .q7-edit-text-button,
 .q7-table--players .q7-copy-text-button{
     position: relative;
     right: initial;
@@ -7718,6 +7791,32 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     border-left: 4px solid transparent;
 } */
 
+td.q7-cell--content-right{
+    text-align: right;
+}
+
+td.q7-cell--with-btns{
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;   
+}
+
+td.q7-cell--with-btns > div{
+    display: flex;
+    align-items: center;    
+}
+
+td.q7-cell--with-btns > div input[type=text].q7-input__field{
+    background-color: #f3f7fa;
+    color: var(--blue);
+    font-size: 14px;
+    line-height: 14px;
+    padding: 5px 14px;    
+}
+
+.q7-table--projects td:first-of-type.q7-cell--with-btns{
+    max-width: none;
+}
 
 @media screen and (min-width: 1650px){
     .q7-container{
