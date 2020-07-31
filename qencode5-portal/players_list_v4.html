@@ -341,6 +341,78 @@
 
                 </div>
 
+                <div class="q7-section">
+
+
+                    <div class="q6-filter-box">
+    
+                        <div class="q6-filter-box__options">   
+    
+                            <div class="q6-input q7-input--search">
+                                <div class="q6-input__label">
+                                    <label>Video Player name</label>
+                                </div>
+                                <div class="q7-search-input-container">  
+                                    <input class="q6-input__field" type="text"/>
+                                </div>
+                            </div>       
+                            
+                            <div class="q6-input q7-input--pick-date">
+                                <div class="q6-input__label">
+                                    <label>Date range</label>
+                                </div>
+                                <div class="q7-pick-date-container">                            
+                                    <input class="q6-input__field" id="date" autocomplete="off" name="date" placeholder="Today" type="text"/>
+                                    
+                                    <script>
+                                        $("#date").datepicker({
+                                            dateFormat: "MM d, yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
+                                        });                              
+                                    </script>                              
+                                </div>
+                            </div>                            
+    
+
+                  
+                        </div>
+                        <div class="q6-filter-box__buttons">
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Search</button>
+                            <button class="q6-button q6-blue-text q6-blue-border">Clear</button>                            
+                        </div>    
+
+
+                        <div class="q6-filter-box__buttons q6-filter-box__buttons--extra">
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Create New Player</button>                         
+                        </div>                          
+            
+                    </div>
+
+
+                    <table class="q7-table q7-table--players">
+                        <thead>
+                            <tr>
+                                <th>Video Player Name</th>
+                                <th>License Key</th>
+                                <th>Domain name</th>
+                                <th class="q7-table__sortable-column">Date created</th>
+                                <th class="q7-table__sortable-column q7-table__sortable-column--sortedZA">Impressions</th>
+                                <th class="q7-table__sortable-column">Plays</th>
+                                <th class="q7-table__sortable-column">Minutes</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div class="q7-no-players-container">
+                        <img src="img/video_player.svg"> 
+                        <span>You don't have any Video Player yet</span>
+                        <button class="q7-button q7-button--round">Create New Player</button>
+                    </div>
+
+                </div>                
+
                   
                                 
 
