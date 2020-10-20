@@ -916,7 +916,7 @@
 
                                                     var gradientStroke = ctx.createLinearGradient(0, 0, 0, 140);
                                                     gradientStroke.addColorStop(0, '#caaaf6');
-                                                    gradientStroke.addColorStop(0.8, '#e1c9ff');
+                                                    gradientStroke.addColorStop(0.7, '#e1c9ff');
                                                     gradientStroke.addColorStop(1, '#fcf7fe');
 
                                                     // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
@@ -958,6 +958,8 @@
                                                         options: options
                                                     });
 
+                                                    chart_total_minutes.canvas.style.height = '80px';
+
                                                 </script>                                                
                                             </div>
                                         </div>
@@ -973,6 +975,62 @@
                                                 </div>
                                                 <a href="">Billing details</a>
                                             </div>
+                                            <div class="q7-summary-card__chart-graph">
+                                                <canvas id="total"></canvas>
+                                                <script>
+
+                                                    var ctx = document.getElementById('total').getContext("2d");
+
+                                                    // background: linear-gradient(180deg, rgba(202,170,246,1) 0%, rgba(225,201,255,1) 4%, rgba(252,247,254,1) 100%);
+
+                                                    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 140);
+                                                    gradientStroke.addColorStop(0, '#caaaf6');
+                                                    gradientStroke.addColorStop(0.7, '#e1c9ff');
+                                                    gradientStroke.addColorStop(1, '#fcf7fe');
+
+                                                    // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                    var data = {
+                                                        labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
+                                                        fill: true,
+                                                        // backgroundColor: "blue",
+                                                        borderColor: "blue",
+
+                                                        datasets: [
+                                                            {
+                                                                data: [10, 4, 32, 55, 25, 7, 78, 4, 64],
+                                                                pointRadius: 0,
+                                                                borderColor: '#ae67fe',
+                                                                borderWidth: 3,
+                                                                backgroundColor: gradientStroke,
+                                                            }
+                                                        ]
+                                                    };
+
+                                                    var options = {
+                                                        legend: {
+                                                            display: false
+                                                        },
+                                                        responsive: true,
+                                                        scales: {
+                                                            xAxes: [{
+                                                                display: false
+                                                            }],
+                                                            yAxes: [{
+                                                                display: false
+                                                            }]
+                                                        }
+                                                    };
+
+                                                    var chart_total = new Chart('total', {
+                                                        type: 'line',
+                                                        data: data,
+                                                        options: options
+                                                    });
+
+                                                    chart_total.canvas.style.height = '80px';
+
+                                                </script>
+                                            
                                         </div>
                                     </div>
                                 </div>
