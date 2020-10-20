@@ -8183,6 +8183,10 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 
     display: flex;
     flex-direction: column;    
+
+    border: 1px solid #e5e5ef;
+    border-radius: 6px;    
+    overflow: hidden;
 }
 
 .q7-summary-card > table td { 
@@ -8198,17 +8202,17 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 }
 
 .q7-summary-card > table thead th:first-of-type{
-    border-top-left-radius: 6px;
+    /* border-top-left-radius: 6px;
     border-top: 1px solid #e5e5ef;
-    border-left: 1px solid #e5e5ef;
+    border-left: 1px solid #e5e5ef; */
     white-space: nowrap;
 
 }
 
 .q7-summary-card > table thead th:last-of-type{
-    border-top-right-radius: 6px;
+    /* border-top-right-radius: 6px;
     border-top: 1px solid #e5e5ef;
-    border-right: 1px solid #e5e5ef;
+    border-right: 1px solid #e5e5ef; */
     text-align: right;
     text-align: right;
     font-size: 12px;
@@ -8224,21 +8228,22 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 }
 
 .q7-summary-card > table tbody td:first-of-type{
-    border-left: 1px solid #e5e5ef;
+    /* border-left: 1px solid #e5e5ef; */
     white-space: nowrap;
 }
 
 .q7-summary-card > table tbody td:last-of-type{
-    border-right: 1px solid #e5e5ef;
+    /* border-right: 1px solid #e5e5ef; */
     padding-left: 0;
     width: 100%;
 }
 
 .q7-summary-card > table tfoot td{
-    border-right: 1px solid #e5e5ef;
+    /* border-right: 1px solid #e5e5ef;
     border-bottom-right-radius: 6px;
     border-left: 1px solid #e5e5ef;
-    border-bottom-left-radius: 6px;      
+    border-bottom-left-radius: 6px;       */
+    border-bottom: none;
     width: 100%;
     display: block;
     height: 100%;      
@@ -8261,12 +8266,10 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     margin-bottom: 7px;  
 }
 
-.q7-stats-change{
-    display: flex;
-    align-items: center;   
+.q7-stats-change{ 
     font-size: 14px; 
     display: flex;
-    align-items: center;    
+    align-items: flex-start; 
 }
 
 .q7-stats-change > div:nth-of-type(2) > img{
@@ -8275,7 +8278,8 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 
 .q7-stats-change > div:nth-of-type(2){
     display: flex;
-    align-items: center;      
+    align-items: center;
+    font-weight: 500;      
 }
 
 .q7-stats-change.q7-stats-change--positive{
@@ -8284,9 +8288,9 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 
 .q7-stats-change > div:first-of-type{
     color: #001717;
-    font-size: 16px;
-    font-weight: 500;
-    margin-right: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    margin-right: 8px;
 }
 
 .q7-summary-card > table > tfoot tr{
@@ -8298,6 +8302,76 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     flex: 1;
     display: block;    
 }
+
+.q7-summary-card.q7-summary-card--charts{
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-width: 295px;
+    max-width: 33.3%;
+}
+
+.q7-summary-card__chart{
+    margin: 7px;
+    border-radius: 6px;
+    border: 1px solid #e5e5ef;
+    min-height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.q7-summary-card__chart-header{
+    color: #6d788c;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;     
+}
+
+.q7-summary-card__chart-header-container{
+    padding: 10px 13px;   
+}
+
+.q7-summary-card__chart-header > div:nth-of-type(2){
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+    color: #858b97;
+    padding-left: 0;    
+}
+
+.q7-summary-card__chart a{
+    position: relative;
+    color: var(--blue);
+    padding-right: 10px;
+    font-weight: 500;    
+}
+
+.q7-summary-card__chart > a:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 4px);
+    height: 7px;
+    width: 7px;
+    border-bottom: 1px solid var(--blue);
+    border-right: 1px solid var(--blue);
+    transform: rotate(-45deg);
+}
+
+.q7-summary-card__chart-graph{
+    /* height: 80px; */
+    /* position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 18px;  
+
+    height: 120px;   */
+}
+
 
 @media screen and (min-width: 1650px){
     .q7-container{

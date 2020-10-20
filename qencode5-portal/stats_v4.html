@@ -894,8 +894,86 @@
                                             </tfoot>
                                         </table>
                                     </div>
-                                    <div class="q7-summary-card">
-                                        1
+                                    <div class="q7-summary-card q7-summary-card--charts">
+                                        <div class="q7-summary-card__chart">
+                                            <div class="q7-summary-card__chart-header-container">
+                                                <div class="q7-summary-card__chart-header">
+                                                    <div>Total minutes</div>
+                                                    <div>Last 7 days</div>
+                                                </div>
+                                                <div class="q7-stats-change q7-stats-change--positive">
+                                                    <div>18,4M</div>
+                                                    <div> <img src="./img/change_positive.png"> +3.49</div>
+                                                </div>
+                                            </div>
+                                            <div class="q7-summary-card__chart-graph">
+                                                <canvas id="total_minutes"></canvas>
+                                                <script>
+
+                                                    var ctx = document.getElementById('total_minutes').getContext("2d");
+
+                                                    // background: linear-gradient(180deg, rgba(202,170,246,1) 0%, rgba(225,201,255,1) 4%, rgba(252,247,254,1) 100%);
+
+                                                    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 140);
+                                                    gradientStroke.addColorStop(0, '#caaaf6');
+                                                    gradientStroke.addColorStop(0.8, '#e1c9ff');
+                                                    gradientStroke.addColorStop(1, '#fcf7fe');
+
+                                                    // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                    var data = {
+                                                        labels: ["0", "1", "2", "3", "4", "5"],
+                                                        fill: true,
+                                                        // backgroundColor: "blue",
+                                                        borderColor: "blue",
+                                                        
+                                                        datasets: [
+                                                            {
+                                                                data: [30,20,40,15,45,67],
+                                                                pointRadius: 0,
+                                                                borderColor: '#ae67fe',
+                                                                borderWidth: 3,
+                                                                backgroundColor: gradientStroke,
+                                                            }
+                                                        ]
+                                                    };
+
+                                                    var options = {
+                                                        legend: {
+                                                            display: false
+                                                        },                                                                                                
+                                                        responsive: true,
+                                                        scales: {
+                                                            xAxes: [{
+                                                                display: false
+                                                            }],
+                                                            yAxes: [{
+                                                                display: false
+                                                            }]
+                                                        }
+                                                    };
+
+                                                    var chart_total_minutes = new Chart('total_minutes', {
+                                                        type: 'line',
+                                                        data: data,
+                                                        options: options
+                                                    });
+
+                                                </script>                                                
+                                            </div>
+                                        </div>
+                                        <div class="q7-summary-card__chart">
+                                            <div class="q7-summary-card__chart-header-container">
+                                                <div class="q7-summary-card__chart-header">
+                                                    <div>Total</div>
+                                                    <div>Last 7 days</div>
+                                                </div>
+                                                <div class="q7-stats-change q7-stats-change--positive">
+                                                    <div>$12350.50</div>
+                                                    <div> <img src="./img/change_positive.png"> +0.05</div>
+                                                </div>
+                                                <a href="">Billing details</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
