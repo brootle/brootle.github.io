@@ -659,7 +659,7 @@
 .q7-content-block__header{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;  
+    align-items: center;
     margin: 5px 0;
 }
 
@@ -698,7 +698,7 @@
     width: 16px;
     height: 16px;
     left: 0;
-    top: calc(50% - 10px);
+    top: calc(50% - 9px);
     background-position: left center;
     background-repeat: no-repeat;
 }
@@ -8003,6 +8003,301 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     width: 39px;      
 }
 
+.q7-input.q7-input--combined{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+}
+
+.q7-tittle-and-inputs{
+    display: flex;
+    align-items: center;
+}
+
+.q7-tittle-and-inputs > div{
+    flex:1;
+}
+
+.q7-input.q7-input--combined > .q7-input__label label{
+    margin-right: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #171717;    
+}
+
+.q7-input-blocks{
+    display: flex;
+    align-items: center;    
+}
+
+.q7-input-blocks .q7-custom-select .q7-select{
+    line-height: 38px;
+    padding: 0 14px;
+    min-width: 140px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;    
+}
+
+.q7-input-blocks .q7-date-picker input {
+    line-height: 38px;
+    width: 100px;
+}
+
+.q7-input-blocks .q7-date-picker{
+    padding: 0 14px;
+    width: initial;
+    padding-right: 37px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;    
+}
+
+.q7-date-picker {
+    padding: 9px 14px;
+    padding-right: 36px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 270px;
+    position: relative;
+    border: 1px solid #e1e5ee;
+    border-radius: 6px;
+    background: white;
+}
+
+.q7-date-picker:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 9px;
+    top: 8px;
+    background-image: url(../img/calendar.svg);
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.q7-date-picker input {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: initial;
+    width: 100px;
+    text-align: center;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    font-size: 16px;    
+    color: #171717;
+    border-radius: 6px;
+}
+
+
+.q7-stats-tabs{
+    margin: 30px 0;
+}
+
+.q7-tab{
+    display: flex;
+    border-bottom: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+
+.q7-tablink {
+    font-weight: 100;
+    line-height: 45px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 6px;
+    color: #939ca4;
+    background-color: #f8fafb;
+    min-width: 150px;
+    border: 1px solid #dae0ea;
+    padding: 0 15px;
+    text-align: center;
+    margin-bottom: -1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.q7-tablink.q7-tablink--active {
+    border-bottom: 1px solid white;
+    background-color: white;
+    position: relative;
+}
+
+.q7-tablink.q7-tablink--active:before {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    top: -1px;
+    content: '';
+    display: block;
+    height: 4px;
+    left: 0;
+    margin: 0 -1px;
+    position: absolute;
+    right: 0;
+    background-color: #366fe0;
+}
+
+.q7-tabcontent {
+    display: none;
+    padding: 20px 0;
+}
+
+.q7-tabcontent.q7-tabcontent--active {
+    display: block;
+}
+
+.q7-tabcontent .q7-content-block__header {
+    justify-content: flex-start;
+}
+
+.q7-content-block__header-link{
+    margin-left: 7px;
+}
+
+
+.q7-stats-summary__cards{
+    display: flex;
+    flex-wrap: wrap;  
+    margin: -7px -7px;  
+}
+
+.q7-summary-card{
+    flex: 1;
+    margin: 7px;
+    min-width: 225px;
+}
+
+.q7-summary-card > table{
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;    
+    font-size: 14px;
+    color: #6d788c;
+    font-weight: 500;    
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;    
+}
+
+.q7-summary-card > table td { 
+    border-bottom: dashed 1px #e8e8e8; 
+    padding: 8px 13px;    
+}
+
+.q7-summary-card > table thead th{
+    background-color: #f8fafb;
+    color: #6d788c;
+    padding: 10px 13px;
+    font-weight: 500;    
+}
+
+.q7-summary-card > table thead th:first-of-type{
+    border-top-left-radius: 6px;
+    border-top: 1px solid #e5e5ef;
+    border-left: 1px solid #e5e5ef;
+    white-space: nowrap;
+
+}
+
+.q7-summary-card > table thead th:last-of-type{
+    border-top-right-radius: 6px;
+    border-top: 1px solid #e5e5ef;
+    border-right: 1px solid #e5e5ef;
+    text-align: right;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+    color: #858b97;   
+    padding-left: 0; 
+    width: 100%;
+}
+
+
+.q7-summary-card > table tbody tr:first-of-type td{
+    border-top: none;
+}
+
+.q7-summary-card > table tbody td:first-of-type{
+    border-left: 1px solid #e5e5ef;
+    white-space: nowrap;
+}
+
+.q7-summary-card > table tbody td:last-of-type{
+    border-right: 1px solid #e5e5ef;
+    padding-left: 0;
+    width: 100%;
+}
+
+.q7-summary-card > table tfoot td{
+    border-right: 1px solid #e5e5ef;
+    border-bottom-right-radius: 6px;
+    border-left: 1px solid #e5e5ef;
+    border-bottom-left-radius: 6px;      
+    width: 100%;
+    display: block;
+    height: 100%;      
+}
+
+.q7-stats__progress-bar{
+    color: #001717;
+    font-size: 16px;
+}
+
+.q7-stats__progress-bar > div:nth-of-type(2){
+    height: 3px;
+    background-color: #d4c7ff;
+    border-radius: 20px;
+}
+
+.q7-stats-footer-message{
+    color: #7e848f;
+    font-weight: 400;  
+    margin-bottom: 7px;  
+}
+
+.q7-stats-change{
+    display: flex;
+    align-items: center;   
+    font-size: 14px; 
+    display: flex;
+    align-items: center;    
+}
+
+.q7-stats-change > div:nth-of-type(2) > img{
+    margin-right: 5px;
+}
+
+.q7-stats-change > div:nth-of-type(2){
+    display: flex;
+    align-items: center;      
+}
+
+.q7-stats-change.q7-stats-change--positive{
+    color: #00cd98;
+}
+
+.q7-stats-change > div:first-of-type{
+    color: #001717;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.q7-summary-card > table > tfoot tr{
+    display: block;
+    height: 100%;
+}
+
+.q7-summary-card > table tfoot{
+    flex: 1;
+    display: block;    
+}
 
 @media screen and (min-width: 1650px){
     .q7-container{
