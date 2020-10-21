@@ -2440,11 +2440,712 @@
                             </div>
 
                             <div id="video_player" class="q7-tabcontent">
-                                video_player
+                                
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-stats-summary__cards">
+
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Impressions</div>
+                                                        <div class="q7-stats-change__numbers">1,14M</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--negative"> <img src="./img/change_negative.png"> -0.13</div>
+                                                        <div class="q7-stats-change__period">Last 7 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="player_impressions_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('player_impressions_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#fdccad');
+                                                        gradientStroke.addColorStop(0.7, '#fdd8bf');
+                                                        gradientStroke.addColorStop(1, '#feeee4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [13,34,8,15,5,30],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f98132',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var player_impressions_tab = new Chart('player_impressions_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+                                                        //player_impressions.canvas.style.height = '80px';
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>             
+                                        
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Plays</div>
+                                                        <div class="q7-stats-change__numbers">501K</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--negative"> <img src="./img/change_negative.png"> -0.03</div>
+                                                        <div class="q7-stats-change__period">Last 7 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="player_plays_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('player_plays_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#fdccad');
+                                                        gradientStroke.addColorStop(0.7, '#fdd8bf');
+                                                        gradientStroke.addColorStop(1, '#feeee4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [43,5,56,15,5,30],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f98132',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var player_plays_tab = new Chart('player_plays_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>             
+
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Minutes played</div>
+                                                        <div class="q7-stats-change__numbers">311M</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--negative"> <img src="./img/change_negative.png"> +5.03</div>
+                                                        <div class="q7-stats-change__period">Last 7 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="player_minutes_played_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('player_minutes_played_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#fdccad');
+                                                        gradientStroke.addColorStop(0.7, '#fdd8bf');
+                                                        gradientStroke.addColorStop(1, '#feeee4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [0,32,56,15,32,70],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f98132',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var player_minutes_played_tab = new Chart('player_minutes_played_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>                                                                           
+
+                                        <div class="q7-summary-card q7-summary-card--charts">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>TOTAL</div>
+                                                        <div class="q7-stats-change__period">Last 7 days</div>
+                                                    </div>
+                                                    <div class="q7-stats-change q7-stats-change--positive">
+                                                        <div class="q7-stats-change__numbers">$12350,50</div>
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--positive"> <img src="./img/change_positive.png"> +3.49</div>
+                                                    </div>
+                                                    <a href="">Billing details</a>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="player_total_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('player_total_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#fdccad');
+                                                        gradientStroke.addColorStop(0.7, '#fdd8bf');
+                                                        gradientStroke.addColorStop(1, '#feeee4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [0,4,23,10,45,12],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f98132',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var player_total_tab = new Chart('player_total_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+                                                        //player_total.canvas.style.height = '80px';
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+
+                                </div>
+
+                                <div class="q7-tab-content__section">
+                                    <div class="q7-tittle-and-inputs">
+
+                                        <div class="q7-block-title">Video Player</div>
+
+                                    
+                                        <div class="q7-input q7-input--combined">
+
+                                            <div class="q7-input__label">
+                                                <label for="project">Show:</label>
+                                            </div>
+
+                                            <div class="q7-input-blocks">
+                                                <div class="q7-custom-select q7-custom-select--long">
+                                                    <select class="q7-select">
+                                                        <option value="0">Impressions</option>
+                                                        <option value="1">Plays</option>
+                                                        <option value="2">Minites played</option>
+                                                        <option value="3">Cost</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="q7-tab-content__section">
+                                    <div class="q7-tittle-and-inputs">
+
+                                        <div class="q7-block-title">Players</div>
+
+                                    
+                                        <div class="q7-input q7-input--combined">
+
+                                            <div class="q7-input__label">
+                                                <label for="project">Show by player name:</label>
+                                            </div>
+
+                                            <div class="q7-input-blocks">
+                                                <div class="q7-custom-select q7-custom-select--long">
+                                                    <select class="q7-select">
+                                                        <option value="0">All</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    
+                                    
+                                    </div>                                
+                                </div>
+
                             </div>
 
                             <div id="Storage" class="q7-tabcontent">
-                                Storage
+
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-stats-summary__cards">
+
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Stored</div>
+                                                        <div class="q7-stats-change__numbers">255GB</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--positive"> <img src="./img/change_positive.png"> +1.22</div>
+                                                        <div class="q7-stats-change__period">Last 30 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="storage_stored_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('storage_stored_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#f9c3e8');
+                                                        gradientStroke.addColorStop(0.7, '#fdcee7');
+                                                        gradientStroke.addColorStop(1, '#fee8f4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [5,65,3,7,56,30],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f962b7',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var storage_stored_tab = new Chart('storage_stored_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+                                                        //player_impressions.canvas.style.height = '80px';
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>             
+                                        
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Number of files</div>
+                                                        <div class="q7-stats-change__numbers">23,1K</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--negative"> <img src="./img/change_negative.png"> -0.03</div>
+                                                        <div class="q7-stats-change__period">Last 12 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="storage_files_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('storage_files_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#f9c3e8');
+                                                        gradientStroke.addColorStop(0.7, '#fdcee7');
+                                                        gradientStroke.addColorStop(1, '#fee8f4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [34,43,2,67,3,50],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f962b7',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var storage_files_tab = new Chart('storage_files_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>             
+
+                                        <div class="q7-summary-card q7-summary-card--charts q7-summary-card--charts--small">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>Transfer</div>
+                                                        <div class="q7-stats-change__numbers">2,5TB</div>
+                                                    </div>
+                                                    <div class="q7-stats-change">                                                        
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--positive"> <img src="./img/change_positive.png"> +5.03</div>
+                                                        <div class="q7-stats-change__period">Last 56 days</div>
+                                                    </div>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="storage_transfer_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('storage_transfer_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#f9c3e8');
+                                                        gradientStroke.addColorStop(0.7, '#fdcee7');
+                                                        gradientStroke.addColorStop(1, '#fee8f4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [14,3,8,44,33,10],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f962b7',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var storage_transfer_tab = new Chart('storage_transfer_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>                                                                           
+
+                                        <div class="q7-summary-card q7-summary-card--charts">
+                                            <div class="q7-summary-card__chart">
+                                                <div class="q7-summary-card__chart-header-container">
+                                                    <div class="q7-summary-card__chart-header">
+                                                        <div>TOTAL</div>
+                                                        <div class="q7-stats-change__period">Last 7 days</div>
+                                                    </div>
+                                                    <div class="q7-stats-change q7-stats-change--positive">
+                                                        <div class="q7-stats-change__numbers">$12350,50</div>
+                                                        <div class="q7-stats-change__colored q7-stats-change__colored--positive"> <img src="./img/change_positive.png"> +3.49</div>
+                                                    </div>
+                                                    <a href="">Billing details</a>
+                                                </div>
+                                                <div class="q7-summary-card__chart-graph">
+                                                    <canvas id="storage_total_tab"></canvas>
+                                                    <script>
+
+                                                        var ctx = document.getElementById('storage_total_tab').getContext("2d");
+
+                                                        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 80);
+                                                        gradientStroke.addColorStop(0, '#f9c3e8');
+                                                        gradientStroke.addColorStop(0.7, '#fdcee7');
+                                                        gradientStroke.addColorStop(1, '#fee8f4');
+
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                        var data = {
+                                                            labels: ["0", "1", "2", "3", "4", "5"],
+                                                            fill: true,
+                                                            
+                                                            datasets: [
+                                                                {
+                                                                    data: [1,4,8,16,10,36],
+                                                                    pointRadius: 0,
+                                                                    borderColor: '#f962b7',
+                                                                    borderWidth: 3,
+                                                                    backgroundColor: gradientStroke,
+                                                                }
+                                                            ]
+                                                        };
+
+                                                        var options = {
+                                                            legend: {
+                                                                display: false
+                                                            },                                                                                                
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    display: false
+                                                                }],
+                                                                yAxes: [{
+                                                                    display: false
+                                                                }]
+                                                            }
+                                                        };
+
+                                                        var storage_total_tab = new Chart('storage_total_tab', {
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+
+                                                        //player_total.canvas.style.height = '80px';
+
+                                                    </script>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+
+                                </div>
+
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-tittle-and-inputs">
+                                
+                                        <div class="q7-block-title">Storage</div>
+                                
+                                
+                                        <div class="q7-input q7-input--combined">
+                                
+                                            <div class="q7-input__label">
+                                                <label for="project">Show:</label>
+                                            </div>
+                                
+                                            <div class="q7-input-blocks">
+                                                <div class="q7-custom-select q7-custom-select--long">
+                                                    <select class="q7-select">
+                                                        <option value="0">Cost</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                
+                                        </div>
+                                
+                                
+                                    </div>
+
+                                </div>
+
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-tittle-and-inputs">
+                                
+                                        <div class="q7-block-title">Transfer</div>
+                                
+                                
+                                        <div class="q7-input q7-input--combined">
+                                
+                                            <div class="q7-input__label">
+                                                <label for="project">Show:</label>
+                                            </div>
+                                
+                                            <div class="q7-input-blocks">
+                                                <div class="q7-custom-select q7-custom-select--long">
+                                                    <select class="q7-select">
+                                                        <option value="0">Delivered</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                
+                                        </div>
+                                
+                                
+                                    </div>
+                                    
+                                </div>     
+                                
+                                <div class="q7-tab-content__section">
+                                
+                                    <div class="q7-tittle-and-inputs">
+                                
+                                        <div class="q7-block-title">Projects</div>
+                                
+                                
+                                        <div class="q7-input q7-input--combined">
+                                
+                                            <div class="q7-input__label">
+                                                <label for="project">Show by bucket name:</label>
+                                            </div>
+                                
+                                            <div class="q7-input-blocks">
+                                                <div class="q7-custom-select q7-custom-select--long">
+                                                    <select class="q7-select">
+                                                        <option value="0">All</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                
+                                        </div>
+                                
+                                
+                                    </div>
+                                
+                                </div>
+
                             </div>
 
                             <script>
