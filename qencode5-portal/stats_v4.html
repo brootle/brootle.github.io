@@ -2821,6 +2821,7 @@
                                 </div>
 
                                 <div class="q7-tab-content__section">
+
                                     <div class="q7-tittle-and-inputs">
 
                                         <div class="q7-block-title">Video Player</div>
@@ -2834,20 +2835,232 @@
 
                                             <div class="q7-input-blocks">
                                                 <div class="q7-custom-select q7-custom-select--long">
-                                                    <select class="q7-select">
-                                                        <option value="0">Impressions</option>
-                                                        <option value="1">Plays</option>
-                                                        <option value="2">Minites played</option>
-                                                        <option value="3">Cost</option>
+                                                    <select id="player_big_chart_selector" class="q7-select">
+                                                        <option value="Impressions">Impressions</option>
+                                                        <option value="Plays">Plays</option>
+                                                        <option value="Minutes played">Minutes played</option>
+                                                        <option value="Cost">Cost</option>
                                                     </select>
                                                 </div>
                                             </div>
 
 
                                         </div>
-                                    
+                                                    
                                     
                                     </div>
+
+
+
+                                        <div class="q7-player-stats__chart-container">
+                                        
+                                            <canvas id="player_big_chart"></canvas>
+                                        
+                                            <script>
+                                                // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+                                                var playerDataArray = {
+                                                    "Impressions": {
+                                                        data: [284, 670, 45, 800, 1300, 2500, 3800],
+                                                        color: "#1292ff"
+                                                    },
+                                                    "Plays": {
+                                                        data: [90, 150, 20, 250, 400, 845, 670],
+                                                        color: "#ffc705"
+                                                    },
+                                                    "Minutes played": {
+                                                        data: [150, 210, 110, 70, 55, 258, 77],
+                                                        color: "#ff7112"
+                                                    },
+                                                    "Cost": {
+                                                        data: [60, 90, 20, 120, 90, 170, 43],
+                                                        color: "#ff057b"
+                                                    }
+                                                }
+
+                                                var datasets = [];
+
+                                                $.each(playerDataArray, function (key, value) {
+                                                    datasets.push({
+                                                        backgroundColor: value.color,
+                                                        borderColor: value.color,
+                                                        data: value.data,
+                                                        borderWidth: 3,
+                                                        pointBorderColor: "white",
+                                                        pointRadius: 3,
+                                                        pointBorderWidth: 2,
+                                                        pointHoverBorderColor: "white",
+                                                        label: key,
+                                                        fill: false
+                                                    });
+                                                });
+
+                                                var data = {
+                                                    labels: ['01.04', '02.04', '03.04', '04.04', '05.04', '06.04', '07.04'],
+                                                    datasets: [datasets[0]] // show 1st data set by default
+                                                };
+
+                                                var options = {
+
+                                                    maintainAspectRatio: false,
+                                                    spanGaps: false,
+                                                    elements: {
+                                                        line: {
+                                                            tension: 0.2
+                                                        },
+                                                        point: {
+                                                            radius: 3
+                                                        }
+                                                    },
+                                                    legend: {
+                                                        display: false
+                                                    },
+                                                    scales: {
+                                                        xAxes: [{
+                                                            gridLines: {
+                                                                display: false
+                                                            },
+                                                            ticks: {
+                                                                padding: 15,
+                                                                fontColor: '#9a989e'
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            gridLines: {
+                                                                borderDash: [3],
+                                                                drawTicks: false
+                                                            },
+                                                            ticks: {
+                                                                padding: 20,
+                                                                fontColor: '#9a989e'
+                                                            }
+                                                        }]
+                                                    },
+
+                                                    animation: {
+                                                        duration: 0
+                                                    },
+
+                                                    onHover: function (evt) {
+                                                        var item = player_big_chart.getElementAtEvent(evt);
+                                                        if (item.length) {
+                                                            var currentDatasetIndex = item[0]._datasetIndex;
+
+
+                                                            // set point hover radius to default 4
+                                                            player_big_chart.data.datasets.forEach(dataset => {
+                                                                dataset.pointHoverRadius = 4;
+                                                            });
+
+                                                            // set point radius of selected dataset
+                                                            player_big_chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+
+                                                            // set color of tooltip title same as point color
+                                                            player_big_chart.options.tooltips.titleFontColor = player_big_chart.data.datasets[currentDatasetIndex].backgroundColor;
+
+                                                            player_big_chart.update();
+                                                        }
+                                                    },
+
+
+                                                    tooltips: {
+                                                        intersect: false,
+                                                        titleFontColor: 'black',
+                                                        backgroundColor: 'white',
+                                                        bodyFontColor: '#021519',
+                                                        borderColor: '#eeeeee',
+                                                        borderWidth: 1,
+                                                        bodyFontStyle: 'bold',
+                                                        displayColors: false,
+                                                        xPadding: 15,
+                                                        yPadding: 10,
+
+                                                        cornerRadius: 1,
+
+                                                        callbacks: {
+                                                            title: function (tooltipItem, data) {
+                                                                return data.datasets[tooltipItem[0].datasetIndex].label;
+                                                            },
+                                                            label: function (tooltipItem, data) {
+                                                                return `${tooltipItem.yLabel}`;
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                };
+
+                                                // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
+                                                Chart.defaults.LineWithLine = Chart.defaults.line;
+                                                Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+                                                    draw: function (ease) {
+                                                        Chart.controllers.line.prototype.draw.call(this, ease);
+
+                                                        if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+                                                            var activePoint = this.chart.tooltip._active[0],
+                                                                ctx = this.chart.ctx,
+                                                                x = activePoint.tooltipPosition().x,
+                                                                topY = this.chart.legend.bottom,
+                                                                bottomY = this.chart.chartArea.bottom;
+
+                                                            //console.log("activePoint: ", activePoint)
+
+                                                            // draw line
+                                                            ctx.save();
+                                                            ctx.beginPath();
+                                                            ctx.setLineDash([3, 4]);
+                                                            ctx.moveTo(x, topY);
+                                                            ctx.lineTo(x, bottomY);
+                                                            ctx.lineWidth = 1;
+                                                            ctx.strokeStyle = activePoint._model.backgroundColor;
+                                                            ctx.stroke();
+                                                            ctx.restore();
+                                                        }
+                                                    }
+                                                });
+
+                                                var player_big_chart = new Chart('player_big_chart', {
+                                                    type: 'LineWithLine',
+                                                    data: data,
+                                                    options: options
+                                                });
+
+
+                                                // player_big_chart_selector
+                                                $('#player_big_chart_selector').change(function(){
+                                                    
+                                                    var selectedDatasetName = $(this).val()
+                                                    var selectedDataSet = playerDataArray[selectedDatasetName]
+
+                                                    var newDatasets = [];
+
+                                                    newDatasets.push({
+                                                        backgroundColor: selectedDataSet.color,
+                                                        borderColor: selectedDataSet.color,
+                                                        data: selectedDataSet.data,
+                                                        borderWidth: 2,
+                                                        pointBorderColor: "white",
+                                                        pointRadius: 4,
+                                                        pointBorderWidth: 2,
+                                                        pointHoverBorderColor: "white",
+                                                        label: selectedDatasetName,
+                                                        fill: false
+                                                    });                          
+                                                    
+                                                    player_big_chart.data.datasets = newDatasets;
+
+                                                    // update chart
+                                                    player_big_chart.update();                                                    
+                                                    
+                                                })
+                                        
+
+
+                                            </script>
+                                        
+                                        </div>
+                                    
+
+
                                 </div>
 
                                 <div class="q7-tab-content__section">
