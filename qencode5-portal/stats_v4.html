@@ -2005,7 +2005,7 @@
                                             <canvas id="usage_chart"></canvas>
                                         </div>
 
-                                        <script>
+                                        <script>                                            
                                             // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
                                             var dataArray = {
                                                 "Total": {
@@ -2041,9 +2041,9 @@
                                                     backgroundColor: value.color,
                                                     borderColor: value.color,
                                                     data: value.data,
-                                                    borderWidth: 2,
+                                                    borderWidth: 3,
                                                     pointBorderColor: "white",
-                                                    pointRadius: 4,
+                                                    pointRadius: 3,
                                                     pointBorderWidth: 2,
                                                     pointHoverBorderColor: "white",
                                                     label: key,
@@ -2052,7 +2052,7 @@
                                             });
 
                                             var data = {
-                                                labels: ['1 MAY', '2 MAY', '3 MAY', '4 MAY', '5 MAY', '6 MAY', '7 MAY'],
+                                                labels: ['01.04', '02.04', '03.04', '04.04', '05.04', '06.04', '07.04'],
                                                 datasets: datasets
                                             };
 
@@ -2061,7 +2061,7 @@
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0
+                                                        tension: 0.2
                                                     },
                                                     point: {
                                                         radius: 3
@@ -2103,16 +2103,20 @@
                                                     }
                                                 },
 
+
                                                 tooltips: {
+                                                    intersect: false,
                                                     titleFontColor: 'black',
                                                     backgroundColor: 'white',
                                                     bodyFontColor: '#021519',
                                                     borderColor: '#eeeeee',
-                                                    borderWidth: 2,
+                                                    borderWidth: 1,
                                                     bodyFontStyle: 'bold',
                                                     displayColors: false,
                                                     xPadding: 15,
                                                     yPadding: 10,
+
+                                                    cornerRadius: 1,
 
                                                     callbacks: {
                                                         title: function (tooltipItem, data) {
@@ -2123,7 +2127,7 @@
                                                         },
                                                         label: function (tooltipItem, data) {
                                                             // console.log(tooltipItem.yLabel);
-                                                            return "$" + tooltipItem.yLabel;
+                                                            return `$${tooltipItem.yLabel}`;
                                                         }
                                                     }
 
@@ -2131,8 +2135,37 @@
 
                                             };
 
+                                            // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
+                                            Chart.defaults.LineWithLine = Chart.defaults.line;
+                                            Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+                                                draw: function (ease) {
+                                                    Chart.controllers.line.prototype.draw.call(this, ease);
+
+                                                    if (this.chart.tooltip._active && this.chart.tooltip._active.length) {                                
+                                                        var activePoint = this.chart.tooltip._active[0],
+                                                            ctx = this.chart.ctx,
+                                                            x = activePoint.tooltipPosition().x,
+                                                            topY = this.chart.legend.bottom,
+                                                            bottomY = this.chart.chartArea.bottom;
+
+                                                        //console.log("activePoint: ", activePoint)
+
+                                                        // draw line
+                                                        ctx.save();
+                                                        ctx.beginPath();
+                                                        ctx.setLineDash([3, 4]);
+                                                        ctx.moveTo(x, topY);
+                                                        ctx.lineTo(x, bottomY);
+                                                        ctx.lineWidth = 1;
+                                                        ctx.strokeStyle = activePoint._model.backgroundColor;
+                                                        ctx.stroke();
+                                                        ctx.restore();
+                                                    }
+                                                }
+                                            });                                            
+
                                             var chart = new Chart('usage_chart', {
-                                                type: 'line',
+                                                type: 'LineWithLine',
                                                 data: data,
                                                 options: options
                                             });
