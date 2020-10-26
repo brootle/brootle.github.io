@@ -191,55 +191,63 @@
             
                 <div class="q7-section">
 
-
-                    <div class="q6-filter-box q7-filter-box--transcoding-jobs">
+                    <div class="q7-filter-box">
     
-                        <div class="q6-filter-box__options">   
+                        <div class="q7-filter-box__options">   
 
-                            <div class="q6-input q6-input--jobID">
-                                <div class="q6-input__label">
+                            <div class="q7-input">
+                                <div class="q7-input__label">
                                     <label>Job ID:</label>
                                 </div>
-                                <input class="q6-input__field q6-black-text" type="text" placeholder="Enter ID">
-                            </div>           
-                            
-                            <div class="q6-input q6-input--project">
-                                <div class="q6-input__label">
+                                <input class="q7-input__field" type="text" placeholder="Enter ID">
+                            </div>
+
+                            <div class="q7-input">
+                                <div class="q7-input__label">
                                     <label>Project:</label>
-                                </div>
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" required="" name="project">
+                                </div>                            
+                                <div class="q7-custom-select">
+                                    <select class="q7-select">
                                         <option value="all_projects">All Projects</option>
                                         <option value="project_00001">My First Project</option>
                                         <option value="project_00002">Project_342ldfjas</option>
                                         <option value="project_00003">TestProject21</option>
-                                    </select>                                   
-                                </div>
-                            </div>                            
-    
-                            <div class="q6-input q7-input--pick-date">
-                                <div class="q6-input__label">
-                                    <label>Date</label>
-                                </div>
-                                <div class="q7-pick-date-container">                            
-                                    <input class="q6-input__field" id="date" autocomplete="off" name="date" placeholder="Today" type="text"/>
-                                    
-                                    <script>
-                                        $("#date").datepicker({
-                                            dateFormat: "MM d, yy",
-                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]              
-                                        });                              
-                                    </script>                              
+                                    </select>
                                 </div>
                             </div>
 
-                            <div class="q6-input q6-input--status">
-                                <div class="q6-input__label">
-                                    <label>Status:</label> 
+                            <div class="q7-input">
+                                <div class="q7-input__label">
+                                    <label>Date:</label>
                                 </div>
-                                <div class="q6-custom-select">
-                                    <select class="q6-select" required="" name="status">
+                                <div class="q7-date-picker">
+                                    <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text" />
+                    
+                                    <span class="q7-date-delimeter">‒</span>
+                    
+                                    <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text" />
+                    
+                                    <script>
+                                        $("#date_start").datepicker({
+                                            dateFormat: "m/d/yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                        });
+                                        $("#date_end").datepicker({
+                                            dateFormat: "m/d/yy",
+                                            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                        });                                
+                                    </script>
+                                </div>                                
+                            </div>
+
+                            <div class="q7-input">
+                                <div class="q7-input__label">
+                                    <label>Status:</label>
+                                </div>
+                                <div class="q7-custom-select">
+                                    <select class="q7-select" name="status">
                                         <option value="all_statuses">All Statuses</option>
                                         <option value="status_1">Downloading</option>
                                         <option value="status_2">Queued</option>
@@ -248,17 +256,17 @@
                                         <option value="status_5">Saving</option>
                                         <option value="status_6">Completed</option>
                                         <option value="status_7">Waiting</option>
-                                    </select>                                   
+                                    </select>
                                 </div>
-                            </div>                          
-                  
+                            </div>
+
                         </div>
-                        <div class="q6-filter-box__buttons">
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Filter</button>
-                            <button class="q6-button q6-blue-text q6-blue-border">Clear</button>                            
+                        <div class="q7-filter-box__buttons">
+                            <button class="q7-button">Filter</button>
+                            <button class="q7-button">Clear</button>                            
                         </div>                         
             
-                    </div>
+                    </div>                    
 
                     <div class="q7-table q7-table--transcoding-jobs">
                         <div class="q7-table-head">
@@ -268,7 +276,10 @@
                                 <div class="q7-table__th q7-table__sortable-column">Video length</div>               
                                 <div class="q7-table__th q7-table__sortable-column">Size</div>   
                                 <div class="q7-table__th q7-table__sortable-column">Created at</div>          
-                                <div class="q7-table__th q7-table__sortable-column">Status</div>                              
+                                <div class="q7-table__th q7-table__sortable-column">Status</div>      
+                                <div>
+
+                                </div>
                             </div>
                         </div>   
                         <div class="q7-table-body">
@@ -280,8 +291,10 @@
                                 <div>137.4 MB</div>
                                 <div>June 18, 2018 13:48:27</div>
                                 <div>
-                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>  
-                                    <div class="q7-transcoding-resubmitted-message">Job Resubmitted</div>
+                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>                                      
+                                </div>
+                                <div>
+                                    <div class="q7-transcoding-resubmitted-message">Resubmitted</div>
                                 </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
@@ -554,6 +567,9 @@ payload:"my data"</textarea>
                                 <div>
                                     <div class="q7-transcoding-status q7-transcoding-status--encoding">Encoding</div>                          
                                 </div>
+                                <div>
+
+                                </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
                                 
@@ -566,7 +582,9 @@ payload:"my data"</textarea>
                                 <div>137.4 MB</div>
                                 <div>June 18, 2018 13:48:27</div>
                                 <div>
-                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>  
+                                    <div class="q7-transcoding-status q7-transcoding-status--error">Error</div>                                      
+                                </div>
+                                <div>
                                     <button class="q7-button q7-button--resubmit">Resubmit Job</button>
                                 </div>
                             </div>
@@ -583,6 +601,9 @@ payload:"my data"</textarea>
                                 <div>
                                     <div class="q7-transcoding-status q7-transcoding-status--queued">Queued</div>                          
                                 </div>
+                                <div>
+
+                                </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
                                 
@@ -596,6 +617,9 @@ payload:"my data"</textarea>
                                 <div>June 18, 2018 13:48:27</div>
                                 <div>
                                     <div class="q7-transcoding-status q7-transcoding-status--downloading">Downloading</div>                          
+                                </div>
+                                <div>
+
                                 </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
@@ -611,6 +635,9 @@ payload:"my data"</textarea>
                                 <div>
                                     <div class="q7-transcoding-status q7-transcoding-status--saving">Saving</div>                          
                                 </div>
+                                <div>
+
+                                </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
                                 
@@ -624,6 +651,9 @@ payload:"my data"</textarea>
                                 <div>June 18, 2018 13:48:27</div>
                                 <div>
                                     <div class="q7-transcoding-status q7-transcoding-status--completed">Completed</div>                          
+                                </div>
+                                <div>
+
                                 </div>
                             </div>
                             <div class="q7-table-dropdown-content" >
