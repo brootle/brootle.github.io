@@ -855,9 +855,19 @@
 
 .q7-table--projects tbody tr:hover,
 .q7-table--players tbody tr:hover{
-    -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
+    /* -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
     -moz-box-shadow: 0px 0px 1px 1px var(--blue);
-    box-shadow: 0px 0px 1px 1px var(--blue);
+    box-shadow: 0px 0px 1px 1px var(--blue); */
+
+    -webkit-box-shadow: 0px 0px 1px 1px #b0caff;
+    -moz-box-shadow: 0px 0px 1px 1px #b0caff;
+    box-shadow: 0px 0px 1px 1px #b0caff;   
+    background: #f7faff; 
+}
+
+.q7-table--projects tbody tr:hover td, 
+.q7-table--players tbody tr:hover td {
+    background: #f7faff; 
 }
 
 .q7-table--results tbody tr{
@@ -3899,10 +3909,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     position: relative;
 }
 
+.q7-table-row.q7-expandable-row:hover{
+    /* -webkit-box-shadow: 0px 0px 1px 1px #b0caff;
+    -moz-box-shadow: 0px 0px 1px 1px #b0caff;
+    box-shadow: 0px 0px 1px 1px #b0caff; */
+    background: #f7faff; 
+}
+
 .q7-table-body > .q7-table-row:hover {
-    -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
-    -moz-box-shadow: 0px 0px 1px 1px var(--blue);
-    box-shadow: 0px 0px 1px 1px var(--blue);
+    -webkit-box-shadow: 0px 0px 1px 1px #b0caff;
+    -moz-box-shadow: 0px 0px 1px 1px #b0caff;
+    box-shadow: 0px 0px 1px 1px #b0caff;
+    background: #f7faff; 
 }
 
 .q7-table-dropdown-content{
@@ -3934,9 +3952,15 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-table-body > .q7-table-card:hover {
-    -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
-    -moz-box-shadow: 0px 0px 1px 1px var(--blue);
-    box-shadow: 0px 0px 1px 1px var(--blue);
+    -webkit-box-shadow: 0px 0px 1px 1px #b0caff;
+    -moz-box-shadow: 0px 0px 1px 1px #b0caff;
+    box-shadow: 0px 0px 1px 1px #b0caff;
+}
+
+.q7-table-body > .q7-table-card.q7-table-card--active{
+    -webkit-box-shadow: 0px 0px 1px 1px #b0caff;
+    -moz-box-shadow: 0px 0px 1px 1px #b0caff;
+    box-shadow: 0px 0px 1px 1px #b0caff;
 }
 
 .q7-table-row.q7-expandable-row:before{
@@ -4278,7 +4302,13 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     background-color: #A6AAB2;
 }
 
+.q7-table--transcoding-jobs .q7-expandable-block__title{
+    cursor: initial;
+}
 
+.q7-table--transcoding-jobs .q7-expandable-block__title h2:before {
+    content: none;
+}
 
 .q7-expandable-block__title{
     margin-top: 25px;

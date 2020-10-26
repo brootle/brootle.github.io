@@ -536,8 +536,8 @@
                                     </div>        
                                     
                                     <div class="q7-expandable-block">
-                                        <div class="q7-expandable-block__title"><h2>Input Parameters</h2></div>
-                                        <div class="q7-expandable-block__content">                                     
+                                        <div class="q7-expandable-block__title q7-expandable-block__title--active"><h2>Input Parameters</h2></div>
+                                        <div class="q7-expandable-block__content q7-expandable-block__content--active">  
 
                                             <div class="q7-transcoding-input-parameters">
                                                 <textarea placeholder="">
@@ -773,7 +773,7 @@
                         });
                     </script>     
                     
-                    <script>
+                    <!-- <script>
                         // take care of expandable blocks
                         var expandButtons = document.querySelectorAll(".q7-expandable-block__title");
                         expandButtons.forEach(button => {
@@ -787,7 +787,7 @@
                             });
                         });                       
                                                                             
-                    </script>                        
+                    </script>                         -->
 
                     <script>
                         // take care of expandable rows
@@ -797,7 +797,9 @@
                                                                 
                                 var currentRow = this;
                                 var nextRow = currentRow.nextElementSibling;
+                                var table_tab = currentRow.closest('.q7-table-card')
 
+                                $(table_tab).toggleClass("q7-table-card--active");   
                                 $(currentRow).toggleClass("q7-table-row--active");  
                                 $(nextRow).toggleClass("q7-table-dropdown-content--active");                                   
                             });
