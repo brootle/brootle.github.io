@@ -8907,14 +8907,33 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     display: inline-block;
     box-sizing: border-box;
     position: absolute;
-    right: 0;
-    top: calc(50% - 5px);
-    height: 9px;
-    width: 9px;
+    right: 3px;
+    top: 3px;
+    height: 7px;
+    width: 7px;
     border-bottom: 2px solid #e3241b;
     border-right: 2px solid #e3241b;
     transform: rotate(-45deg);
     transition: all 0.1s ease;
+}
+
+.q7-table-td-error.q7-table-td-error--opened .q7-table-row-error__message:before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.q7-table-td-error.q7-table-td-error--opened .q7-table-row-error__message {
+    white-space: normal;
+    line-height: 16px;
+}
+
+.q7-table.q7-table--standard td.q7-table-td-error.q7-table-td-error--opened {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.q7-table.q7-table--standard .q7-table-row-error.q7-table-row-error--opened td {
+    vertical-align: baseline;
 }
 
 @media screen and (min-width: 1650px){
