@@ -8879,6 +8879,44 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     vertical-align: middle;
 }
 
+.q7-table.q7-table--standard tbody tr.q7-table-row-error{
+    -webkit-box-shadow: 0px 0px 1px 1px #f2a7a5;
+    -moz-box-shadow: 0px 0px 1px 1px #f2a7a5;
+    box-shadow: 0px 0px 1px 1px #f2a7a5;
+    background-color: #fff2f1;
+}
+
+.q7-table.q7-table--standard td.q7-table-td-error {
+    max-width: 300px;
+}
+
+.q7-table-row-error__message{
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #e3241b;    
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+.q7-table-row-error__message:before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid #e3241b;
+    border-right: 2px solid #e3241b;
+    transform: rotate(-45deg);
+    transition: all 0.1s ease;
+}
+
 @media screen and (min-width: 1650px){
     .q7-container{
         margin-left: auto; 
