@@ -2060,38 +2060,83 @@
 
                                         <script>                                            
                                             // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+
+                                            var ctx = document.getElementById('usage_chart').getContext("2d");
+                                            
+                                            var gradientStrokeTotal = ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeTotal.addColorStop(0, '#1292ff');
+                                            gradientStrokeTotal.addColorStop(0.7, 'rgba(82, 177, 255, 0.7)');     
+                                            gradientStrokeTotal.addColorStop(1, 'rgba(82, 177, 255, 0.2)');   
+
+                                            var gradientStroke8K= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke8K.addColorStop(0, 'rgba(170, 49, 205, 1)');
+                                            gradientStroke8K.addColorStop(0.7, 'rgba(170, 49, 205, 0.7)');     
+                                            gradientStroke8K.addColorStop(1, 'rgba(170, 49, 205, 0.2)');  
+
+                                            var gradientStroke4K= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke4K.addColorStop(0, 'rgba(255, 199, 25, 1)');
+                                            gradientStroke4K.addColorStop(0.7, 'rgba(255, 199, 25, 0.7)');     
+                                            gradientStroke4K.addColorStop(1, 'rgba(255, 199, 25, 0.2)'); 
+
+                                            var gradientStroke1440P= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke1440P.addColorStop(0, 'rgba(49, 205, 130, 1)');
+                                            gradientStroke1440P.addColorStop(0.7, 'rgba(49, 205, 130, 0.7)');     
+                                            gradientStroke1440P.addColorStop(1, 'rgba(49, 205, 130, 0.2)');           
+
+                                            var gradientStrokeHD= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeHD.addColorStop(0, 'rgba(255, 113, 18, 1)');
+                                            gradientStrokeHD.addColorStop(0.7, 'rgba(255, 113, 18, 0.7)');     
+                                            gradientStrokeHD.addColorStop(1, 'rgba(255, 113, 18, 0.2)');        
+
+                                            var gradientStrokeSD= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeSD.addColorStop(0, 'rgba(255, 5, 123, 1)');
+                                            gradientStrokeSD.addColorStop(0.7, 'rgba(255, 5, 123, 0.7)');     
+                                            gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
+
                                             var dataArray = {
-                                                "Total": {
-                                                    data: [560, 490, 540, 390, 445, 478, 540],
-                                                    color: "#1292ff"
-                                                },
-                                                "4K": {
-                                                    data: [350, 190, 470, 200, 300, 250, 410],
-                                                    color: "#ffc705"
-                                                },
-                                                "HD": {
-                                                    data: [150, 210, 110, 70, 55, 258, 77],
-                                                    color: "#ff7112"
-                                                },
                                                 "SD": {
                                                     data: [60, 90, 20, 120, 90, 170, 43],
-                                                    color: "#ff057b"
+                                                    color: "#ff057b",
+                                                    //background: "rgba(255, 5, 123, 0.9)"
+                                                    background: gradientStrokeSD
+                                                },                
+                                                "HD": {
+                                                    data: [150, 210, 110, 70, 55, 258, 77],
+                                                    color: "#ff7112",
+                                                    //background: "rgba(255, 113, 18, 0.8)"
+                                                    background: gradientStrokeHD
+                                                },                           
+                                                "1440P": {
+                                                    data: [520, 410, 380, 340, 390, 420, 470],
+                                                    color: "#31cd82",
+                                                    //background: "rgba(49, 205, 130, 0.7)"
+                                                    background: gradientStroke1440P
+                                                },                                                                                                     
+                                                "4K": {
+                                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                                    color: "#ffc705",
+                                                    //background: "rgba(255, 199, 5, 0.6)"
+                                                    background: gradientStroke4K
                                                 },
                                                 "8K": {
                                                     data: [160, 45, 230, 80, 146, 196, 110],
-                                                    color: "#aa31cd"
+                                                    color: "#aa31cd",
+                                                    //background: "rgba(170, 49, 205, 0.5)"
+                                                    background: gradientStroke8K
                                                 },
-                                                "1440P": {
-                                                    data: [520, 410, 380, 340, 390, 420, 470],
-                                                    color: "#31cd82"
-                                                }
+                                                "Total": {
+                                                    data: [560, 490, 540, 390, 445, 478, 540],
+                                                    color: "#1292ff",
+                                                    //background: "rgba(20, 146, 255, 0.4)"
+                                                    background: gradientStrokeTotal
+                                                }                                                
                                             }
 
                                             var datasets = [];
 
                                             $.each(dataArray, function (key, value) {
                                                 datasets.push({
-                                                    backgroundColor: value.color,
+                                                    backgroundColor: value.background,
                                                     borderColor: value.color,
                                                     data: value.data,
                                                     borderWidth: 3,
@@ -2100,22 +2145,21 @@
                                                     pointBorderWidth: 2,
                                                     pointHoverBorderColor: "white",
                                                     label: key,
-                                                    fill: false
+                                                    fill: true
                                                 });
                                             });
 
                                             var data = {
                                                 labels: ['01.04', '02.04', '03.04', '04.04', '05.04', '06.04', '07.04'],
-                                                datasets: datasets
+                                                datasets: datasets                                            
                                             };
 
                                             var options = {
-
                                                 maintainAspectRatio: false,
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0.2
+                                                        tension: 0.3
                                                     },
                                                     point: {
                                                         radius: 3
@@ -2142,7 +2186,8 @@
                                                         ticks: {
                                                             padding: 20,
                                                             fontColor: '#9a989e'
-                                                        }                                                        
+                                                        },
+                                                        stacked: true,                                                        
                                                     }]                                                    
                                                 },
 
@@ -2165,7 +2210,7 @@
                                                         chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
 
                                                         // set color of tooltip title same as point color
-                                                        chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].backgroundColor;
+                                                        chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].borderColor;
 
                                                         chart.update();
                                                     }
@@ -2233,7 +2278,8 @@
                                             });                                            
 
                                             var chart = new Chart('usage_chart', {
-                                                type: 'LineWithLine',
+                                                //type: 'LineWithLine',
+                                                type: 'line',
                                                 data: data,
                                                 options: options
                                             });
@@ -2253,7 +2299,7 @@
 
                                                     if (jQuery.inArray(key, checkedValues) >= 0) {
                                                         newDatasets.push({
-                                                            backgroundColor: value.color,
+                                                            backgroundColor: value.background,
                                                             borderColor: value.color,
                                                             data: value.data,
                                                             borderWidth: 2,
@@ -2262,7 +2308,7 @@
                                                             pointBorderWidth: 2,
                                                             pointHoverBorderColor: "white",
                                                             label: key,
-                                                            fill: false
+                                                            fill: true
                                                         });
                                                     }
 
@@ -2903,7 +2949,7 @@
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0.2
+                                                        tension: 0.3
                                                     },
                                                     point: {
                                                         radius: 3
@@ -3515,7 +3561,7 @@
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0.2
+                                                        tension: 0.3
                                                     },
                                                     point: {
                                                         radius: 3
@@ -3744,7 +3790,7 @@
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0.2
+                                                        tension: 0.3
                                                     },
                                                     point: {
                                                         radius: 3
