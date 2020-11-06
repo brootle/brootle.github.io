@@ -541,7 +541,71 @@
                         </div>                           
 
                      
-                    </div>            
+                    </div>       
+                    
+                    <div class="q7-content-block">
+                        <div class="q7-block-title">Table with expandable rows <span class="q7-block-title__optional">columns must have fixed width and one not fixed to fill available space</span></div>
+
+                        <div class="q7-table q7-table--standard">
+                            <div class="q7-table-head">
+                                <div class="q7-table-row">
+                                    <div class="q7-table__th">Template name</div>
+                                    <div class="q7-table__th">Description</div>
+                                    <div class="q7-table__th q7-table__sortable-column">Created</div>
+                                    <div class="q7-table__th q7-table__sortable-column q7-table__sortable-column--sortedAZ">Modified</div>
+                                    <div class="q7-table__th">Last</div>
+                                </div>
+                            </div>
+                            <div class="q7-table-body">
+                        
+                                <div class="q7-table-card">
+                                    <div class="q7-table-row q7-expandable-row">
+                                        <div>1</div>
+                                        <div>2</div>
+                                        <div>3</div>
+                                        <div>4</div>
+                                        <div>5</div>
+                                    </div>
+                                    <div class="q7-table-dropdown-content">
+                        
+                                    </div>
+                                </div>
+                        
+                                <div class="q7-table-card">
+                                    <div class="q7-table-row q7-expandable-row">
+                                        <div>1</div>
+                                        <div>2</div>
+                                        <div>3</div>
+                                        <div>4</div>
+                                        <div>5</div>
+                                    </div>
+                                    <div class="q7-table-dropdown-content">
+                        
+                                    </div>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <script>
+                            // take care of expandable rows
+                            var expandButtons = document.querySelectorAll(".q7-expandable-row");
+                            expandButtons.forEach(button => {
+                                button.addEventListener('click', function (e) {
+
+                                    var currentRow = this;
+                                    var nextRow = currentRow.nextElementSibling;
+                                    var table_tab = currentRow.closest('.q7-table-card')
+
+                                    $(table_tab).toggleClass("q7-table-card--active");
+                                    $(currentRow).toggleClass("q7-table-row--active");
+                                    $(nextRow).toggleClass("q7-table-dropdown-content--active");
+                                });
+                            });
+
+                        </script>
+
+                    </div>
                     
                     <div class="q7-table-pagination">
 
