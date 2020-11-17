@@ -206,7 +206,7 @@
                             <div class="q6-feature-item__icon q6-feature-item__icon--price"></div>
                             <p>
                                 Our prices start from: <br>
-                                <span class="q6-blue-text">$0.004 per minute of SD output.</span>                                  
+                                <span class="q6-blue-text">$0.005 per minute of SD output.</span>                                  
                             </p>     
                         </div>       
                         <div class="q6-promo-saving-links">
@@ -216,18 +216,26 @@
                     </div>
                     <div class="q6-authorize-window">
 
-                        <h2 id="card-form-title">Add funds to wallet</h2>                        
+                        <h2 id="card-form-title">Add funds to wallet</h2>  
+                        
+                        <h3 class="q6-authorize-window__subtitle" id="card-form-subtitle">Fund your account to get started</h3>
+                        
+                        <div class="q6-auth-steps">
+                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
+                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
+                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
+                        </div>
 
                         <div class="q6-payment-switch">
-                            <div data-form="paypal-form" data-title="Add funds to wallet" class="q6-payment-switch__button q6-payment-switch__button--active">
+                            <div data-form="paypal-form" data-title="Add funds to wallet" data-subtitle="Fund your account to get started" class="q6-payment-switch__button q6-payment-switch__button--active">
                                 <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
                                 <p>Use PayPal</p>
                             </div>                            
-                            <div data-form="credit-card-form" data-title="Save billing details" class="q6-payment-switch__button">
+                            <div data-form="credit-card-form" data-title="Save billing details" data-subtitle="Get billed only for the minutes you use" class="q6-payment-switch__button">
                                 <div class="q6-payment-switch__icon q6-payment-switch__icon--card"></div>
                                 <p>Save Credit Card</p>
                             </div>
-                            <div data-form="free-trial-form" data-title="Free Trial Account" class="q6-payment-switch__button">
+                            <div data-form="free-trial-form" data-title="Free Trial Account" data-subtitle="Try the features for a limited time" class="q6-payment-switch__button">
                                 <div class="q6-payment-switch__icon q6-payment-switch__icon--trial"></div>
                                 <p>14-day Trial</p>
                             </div>                            
@@ -308,8 +316,7 @@
                                 Payment between $5.00 and $10,000.00 are accepted
                             </p>
 
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Continue</button>
-                            <button class="q6-button q6-light-blue-background q6-light-blue-border q6-blue-text">Back</button>                            
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Finish</button>                         
                         </div>                        
 
 
@@ -411,6 +418,10 @@
                                     // update form title
                                     var formTitle = clickedLink.getAttribute("data-title");
                                     $("#card-form-title").html(formTitle);
+
+                                    // update form subtitle
+                                    var formSubTitle = clickedLink.getAttribute("data-subtitle");
+                                    $("#card-form-subtitle").html(formSubTitle);                                    
                                 }                                       
                             });                 
                         </script>
