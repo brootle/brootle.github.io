@@ -15,6 +15,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script src="build/js/intlTelInput.js"></script>
+    <script src="build/js/utils.js"></script>
+
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>    
@@ -390,54 +393,88 @@
                     <div class="q7-content-block">
 
 
-                        <div class="q7-block-title">General Settings</div>
+                        <div class="q7-block-title">User Settings</div>
 
                         <div class="q7-advanced-settings">
 
                             <div class="q7-advanced-settings__row">
-
+                            
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Username</label>                                     
+                                            <label>First Name</label>
                                         </div>
-
-                                        <div class="q6-input__field--view">vadym.leonenko@gmail.com (Google)</div>
-                                                                       
-                                    </div>                
-                                </div>                                  
-
-                            </div>      
+                            
+                                        <div class="q6-input__field--view">Vadym</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            
+                            </div>
 
                             <div class="q7-advanced-settings__row">
-
+                            
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Name</label>                                     
+                                            <label>Last Name</label>
                                         </div>
+                            
+                                        <div class="q6-input__field--view">Leonenko</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            
+                            </div>
 
-                                        <div class="q6-input__field--view">Vadym Leonenko</div>
-                                                                       
-                                    </div>              
-                                    
-                                    <button class="q7-button q7-button--round">Edit</button>  
-                                </div>                                  
+                            <div class="q7-advanced-settings__row">
+                            
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Password</label>
+                                        </div>
+                            
+                                        <div class="q6-input__field--view">&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Reset</button>
+                                </div>
+                            
+                            </div>
 
-                            </div>   
+                            <div class="q7-advanced-settings__row">
+                            
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Email</label>
+                                        </div>
+                            
+                                        <div class="q6-input__field--view">vadym.leonenko@gmail.com</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            
+                            </div>
                             
                             <div class="q7-advanced-settings__row">
 
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label q7-input__label--row-title">
-                                            <label>Phone</label>                                     
+                                            <label>Office Phone</label>                                     
                                         </div>
 
                                         <input id="phone_view-mode" class="q7-input__field q7-input__field--phone-view-mode" type="text" value="+13109058600" type="tel" disabled>  
                                              
-                                        <script src="build/js/intlTelInput.js"></script>     
-                                        <script src="build/js/utils.js"></script>    
                                         <script>
                                             // set input width to width of text
                                             $("#phone_view-mode").attr("size", $("#phone_view-mode").val().length + 2);
@@ -456,17 +493,45 @@
                                     <button class="q7-button q7-button--round">Edit</button>  
                                 </div>                                  
 
-                            </div>              
+                            </div>   
+                            
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Mobile Phone</label>                                     
+                                        </div>
+
+                                        <input id="mobile-phone_view-mode" class="q7-input__field q7-input__field--phone-view-mode" type="text" value="+13109058600" type="tel" disabled>  
+                                             
+                                        <script>
+                                            // set input width to width of text
+                                            $("#mobile-phone_view-mode").attr("size", $("#mobile-phone_view-mode").val().length + 2);
+
+                                            $("#mobile-phone_view-mode").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite",
+                                                allowDropdown: false
+                                            })
+                                        </script>                                           
+                                                                       
+                                    </div>              
+                                    
+                                    <button class="q7-button q7-button--round">Edit</button>  
+                                </div>                                  
+
+                            </div>                               
                             
                             <div class="q7-advanced-settings__row">
 
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Company name</label>                                     
+                                            <label>Role</label>                                     
                                         </div>
 
-                                        <div class="q6-input__field--view">Qencode</div>
+                                        <div class="q6-input__field--view">Engineer</div>
                                                                        
                                     </div>              
                                     
@@ -480,35 +545,102 @@
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Website</label>                                     
+                                            <label>Job Title</label>                                     
                                         </div>
 
-                                        <div class="q6-input__field--view">qencode.com</div>
+                                        <div class="q6-input__field--view">Designer</div>
                                                                        
                                     </div>              
                                     
                                     <button class="q7-button q7-button--round">Edit</button>  
                                 </div>          
                             </div>        
-                                
+                                                              
+                                                      
+
+                        </div>   
+                        
+                        <div class="q7-block-title">Company Settings</div>
+                        
+                        <div class="q7-advanced-settings">
                             <div class="q7-advanced-settings__row">
+                            
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
                                     <div class="q7-input q7-input--in-row">
                                         <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Time Zone</label>                                     
+                                            <label>Company Name</label>
+                                        </div>
+                            
+                                        <div class="q6-input__field--view">Qencode</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            </div>
+
+                            <div class="q7-advanced-settings__row">
+                            
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Website</label>
+                                        </div>
+                            
+                                        <div class="q6-input__field--view">www.qencode.com</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            </div>
+
+                            <div class="q7-advanced-settings__row">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Phone Number</label>                                     
                                         </div>
 
-                                        <div class="q6-input__field--view">(GMT+2:00) Eastern European Standard Time - Kyiv</div>
+                                        <input id="company-phone_view-mode" class="q7-input__field q7-input__field--phone-view-mode" type="text" value="+13109058600" type="tel" disabled>  
+                                             
+                                        <script>
+                                            // set input width to width of text
+                                            $("#company-phone_view-mode").attr("size", $("#company-phone_view-mode").val().length + 2);
+
+                                            $("#company-phone_view-mode").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite",
+                                                allowDropdown: false
+                                            })
+                                        </script>                                           
                                                                        
                                     </div>              
                                     
                                     <button class="q7-button q7-button--round">Edit</button>  
                                 </div>                                  
 
-                            </div>                               
-                                                      
+                            </div>                             
 
-                        </div>             
+                            <div class="q7-advanced-settings__row">
+                            
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
+                                    <div class="q7-input q7-input--in-row">
+                                        <div class="q7-input__label   q7-input__label--row-title">
+                                            <label>Address</label>
+                                        </div>
+                            
+                                        <div class="q6-input__field--view">464 N Rexford Dr, Beverly Hills, California 90210</div>
+                            
+                                    </div>
+                            
+                                    <button class="q7-button q7-button--round">Edit</button>
+                                </div>
+                            </div>
+
+                        </div>
+                     
 
                         
                     </div>  
@@ -516,110 +648,222 @@
                     <div class="q7-content-block">
 
 
-                        <div class="q7-block-title">General Settings</div>
+                        <div class="q7-block-title">User Settings</div>
 
                         <div class="q7-advanced-settings">
-
-                            <div class="q7-advanced-settings__row">
-
-                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-view-mode">
-                                    <div class="q7-input q7-input--in-row">
-                                        <div class="q7-input__label   q7-input__label--row-title">
-                                            <label>Username</label>                                     
-                                        </div>
-
-                                        <div class="q6-input__field--view">vadym.leonenko@gmail.com (Google)</div>
-                                                                       
-                                    </div>                
-                                </div>                                  
-
-                            </div>   
                             
                             <div class="q7-advanced-settings__row">
                                 <div class="q7-input-and-buttons--inline">
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--row-title">
-                                            <label>Name</label>
+                                            <label>First Name</label>
                                         </div>
-                                        <input class="q7-input__field" type="text" value="Vadym Leonenko">                                
+                                        <input class="q7-input__field" type="text" value="Vadym">                                
                                     </div>              
                                     
                                     <button class="q7-button">Update</button>     
                                     <button class="q7-button q7-button--cancel">Cancel</button>    
                                 </div>                                                                 
-                            </div>                               
+                            </div>     
+                            
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Last Name</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="Leonenko">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
 
                             <div class="q7-advanced-settings__row">
                                 <div class="q7-input-and-buttons--inline">
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--row-title">
-                                            <label>Phone</label>
+                                            <label>Old Password</label>
                                         </div>
-                                        <input id="phone" class="q7-input__field" type="text" value="+380930759717" type="tel">  
-                                             
-                                        <script src="build/js/intlTelInput.js"></script>     
-                                        <script src="build/js/utils.js"></script>    
+                                        <input class="q7-input__field" type="password">
+                                    </div>
+
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>New Password</label>
+                                        </div>
+                                        <input class="q7-input__field" type="password">
+                                    </div>
+
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Repeat Password</label>
+                                        </div>
+                                        <input class="q7-input__field" type="password">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Email</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="vadym.leonenko@gmail.com">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input q7-input--phone">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Office Phone</label>
+                                        </div>
+                                        <input id="phone" class="q7-input__field" type="text" value="+380930759717" type="tel">                                                 
                                         <script>
-                                            // https://github.com/jackocnr/intl-tel-input
-                                            // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
                                             $("#phone").intlTelInput({
                                                 nationalMode: false,
                                                 autoPlaceholder: "polite"
                                             })
                                         </script>                                        
-
                                     </div>              
                                     
                                     <button class="q7-button">Update</button>     
                                     <button class="q7-button q7-button--cancel">Cancel</button>    
                                 </div>                                                                 
-                            </div>                                 
- 
-                             <div class="q7-advanced-settings__row">
+                            </div>                
+                            
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input q7-input--phone">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Mobile Phone</label>
+                                        </div>
+                                        <input id="mobile-phone" class="q7-input__field" type="text" value="+380930759717" type="tel">                                                 
+                                        <script>
+                                            $("#mobile-phone").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite"
+                                            })
+                                        </script>                                        
+                                    </div>              
+                                    
+                                    <button class="q7-button">Update</button>     
+                                    <button class="q7-button q7-button--cancel">Cancel</button>    
+                                </div>                                                                 
+                            </div>          
+                            
+                            
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Role</label>
+                                        </div>
+                                        <div class="q7-custom-select">
+                                            <select class="q7-select">
+                                                <option value="0">Engineer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Job Title</label>
+                                        </div>
+                                        <input class="q7-input__field" type="text" value="Designer">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>                              
+                                                                                                          
+                        </div>             
+
+                        <div class="q7-block-title">Company Settings</div>
+                        
+                        <div class="q7-advanced-settings">
+                            <div class="q7-advanced-settings__row">
                                 <div class="q7-input-and-buttons--inline">
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--row-title">
                                             <label>Company name</label>
                                         </div>
-                                        <input class="q7-input__field" type="text" value="Qencode">                                
-                                    </div>              
-                                    
-                                    <button class="q7-button">Update</button>     
-                                    <button class="q7-button q7-button--cancel">Cancel</button>    
-                                </div>                                                                 
-                            </div>                                     
-                              
+                                        <input class="q7-input__field" type="text" value="Qencode">
+                                    </div>
                             
-                             <div class="q7-advanced-settings__row">
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="q7-advanced-settings__row">
                                 <div class="q7-input-and-buttons--inline">
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--row-title">
                                             <label>Website</label>
                                         </div>
-                                        <input class="q7-input__field" type="text" value="qencode.com">                                
-                                    </div>              
-                                    
-                                    <button class="q7-button">Update</button>     
-                                    <button class="q7-button q7-button--cancel">Cancel</button>    
-                                </div>                                                                 
-                            </div>        
+                                        <input class="q7-input__field" type="text" value="www.qencode.com">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
 
-                             <div class="q7-advanced-settings__row">
+                            <div class="q7-advanced-settings__row">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input q7-input--phone">
+                                        <div class="q7-input__label q7-input__label--row-title">
+                                            <label>Phone Number</label>
+                                        </div>
+                                        <input id="company-phone" class="q7-input__field" type="text" value="+380930759717" type="tel">
+                                        <script>
+                                            $("#company-phone").intlTelInput({
+                                                nationalMode: false,
+                                                autoPlaceholder: "polite"
+                                            })
+                                        </script>
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+
+                            
+                            <div class="q7-advanced-settings__row">
                                 <div class="q7-input-and-buttons--inline">
                                     <div class="q7-input">
                                         <div class="q7-input__label q7-input__label--row-title">
-                                            <label>Time Zone</label>
+                                            <label>Address</label>
                                         </div>
-                                        <input class="q7-input__field" type="text" value="(GMT+2:00) Eastern European Standard Time - Kyiv">                                
-                                    </div>              
-                                    
-                                    <button class="q7-button">Update</button>     
-                                    <button class="q7-button q7-button--cancel">Cancel</button>    
-                                </div>                                                                 
-                            </div>                                  
-                                                                                                          
-                        </div>             
-
+                                        <input class="q7-input__field" type="text" value="464 N Rexford Dr, Beverly Hills, California 90210">
+                                    </div>
+                            
+                                    <button class="q7-button">Update</button>
+                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>                      
 
