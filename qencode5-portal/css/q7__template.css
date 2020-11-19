@@ -7884,12 +7884,11 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 .tippy-box[data-theme~='qencode'] {
     background-color: white;
     color: #292f4b;
-    border: 1px solid #898d95;
+    border: 1px solid #d3d6dc;
     white-space: normal;
     min-width: 380px;
     box-shadow: 0 4px 7px 3px rgba(105,109,112,.06);
-    padding: 15px 30px;
-    padding-right: 50px;
+    padding: 15px 25px;
     font-weight: normal;
 }
 
@@ -7924,17 +7923,17 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-tooltip__close-btn {
     position: absolute;
-    right: -30px;
-    top: 0;
+    right: -12px;
+    top: 4px;
     padding: 0;
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+
     min-width: 0;
     border: none;
-    background-color: #B2B6BC;
-    background-image: url(../img/no.svg);
-    background-size: 8px;
+
+    background-image: url(../img/x_icon_blue.svg);
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 9999;
@@ -7942,9 +7941,6 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     cursor: pointer;
 }
 
-.q7-tooltip__close-btn:hover{
-    background-color: #a1a4aa;
-}
 
 .q7-tooltip__footer a{
     color: var(--blue);
@@ -7958,7 +7954,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-tooltip__content{
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 5px;
     font-weight: normal;
 }
@@ -7969,9 +7965,25 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     font-weight: 500;
     display: flex;
     align-items: center;    
+    justify-content: space-between;
+    padding-right: 15px;
+    margin-bottom: 7px;
 }
 
-.q7-tooltip__header > span{
+.q7-tooltip__header > div{
+    display: flex;
+    align-items: center;
+}
+
+
+.q7-tooltip__header .q7-tooltip__type{
+    color: #a8b2c4;
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.q7-tooltip__header .q7-tooltip__optional{
     background-color: #9fa5b0;
     color: white;
     font-size: 13px;
@@ -7982,7 +7994,18 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     margin-left: 8px;
 }
 
-.q7-tooltip__header > div {
+.q7-tooltip__header .q7-tooltip__required{
+    background-color: #39b972;
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 16px;
+    padding: 0px 9px;
+    border-radius: 4px;
+    margin-left: 8px;    
+}
+
+.q7-tooltip__header .q7-tooltip__method {
     background-color: var(--blue);
     color: white;
     font-size: 12px;
