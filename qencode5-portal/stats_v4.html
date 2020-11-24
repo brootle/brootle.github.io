@@ -2034,52 +2034,32 @@
 
                                         </div>                                        
 
-                                        <!-- <div class="q7-chart-checkboxes">
-
-                                            <label class="q7-checkbox q7-checkbox--sd">
-                                                <input type="checkbox" checked data-array="SD">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">SD</div>                                        
-                                                </div>
-                                            </label>  
-                                            
-                                            <label class="q7-checkbox q7-checkbox--hd">
-                                                <input type="checkbox" checked data-array="HD">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">HD</div>                                        
-                                                </div>
-                                            </label>         
-                                            <label class="q7-checkbox q7-checkbox--1440p">
-                                                <input type="checkbox" checked data-array="1440P">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">1440P</div>                                        
-                                                </div>
-                                            </label>     
-                                            <label class="q7-checkbox q7-checkbox--4k">
-                                                <input type="checkbox" checked data-array="4K">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">4K</div>                                        
-                                                </div>
-                                            </label>     
-                                            <label class="q7-checkbox q7-checkbox--8k">
-                                                <input type="checkbox" checked data-array="8K">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">8K</div>                                        
-                                                </div>
-                                            </label>        
-                                            <label class="q7-checkbox q7-checkbox--total">
-                                                <input type="checkbox" checked data-array="Total">
-                                                <div class="q7-checkbox-fullsize-container">
-                                                    <div class="q7-checkbox-message">Total</div>                                        
-                                                </div>
-                                            </label>                                                                                                                                                                            
-                                        </div> -->
-
                                         <div class="q6-billing-chart">
                                             <canvas id="usage_chart"></canvas>
                                         </div>
 
                                         <script>                                            
+
+                                            // see https://stackoverflow.com/a/62640342/6261255
+                                            const colorShade = (col, amt) => {
+                                                col = col.replace(/^#/, '')
+                                                if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+
+                                                let [r, g, b] = col.match(/.{2}/g);
+                                                ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+
+                                                r = Math.max(Math.min(255, r), 0).toString(16)
+                                                g = Math.max(Math.min(255, g), 0).toString(16)
+                                                b = Math.max(Math.min(255, b), 0).toString(16)
+
+                                                const rr = (r.length < 2 ? '0' : '') + r
+                                                const gg = (g.length < 2 ? '0' : '') + g
+                                                const bb = (b.length < 2 ? '0' : '') + b
+
+                                                return `#${rr}${gg}${bb}`
+                                            }
+
+
                                             // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
 
                                             var ctx = document.getElementById('usage_chart').getContext("2d");
@@ -2161,10 +2141,13 @@
                                                     borderColor: value.color,
                                                     data: value.data,
                                                     borderWidth: 3,
-                                                    pointBorderColor: "white",
+                                                    pointBackgroundColor: colorShade(value.color, +20),
+                                                    pointBorderColor: colorShade(value.color, -10),
                                                     pointRadius: 3,
-                                                    pointBorderWidth: 2,
-                                                    pointHoverBorderColor: "white",
+                                                    pointBorderWidth: 1,
+                                                    pointHoverBorderColor: colorShade(value.color, -10),
+                                                    pointHoverRadius: 5,                                                    
+                                                    pointHoverBackgroundColor: colorShade(value.color, +40),
                                                     label: key,
                                                     fill: true
                                                 });
@@ -2180,7 +2163,7 @@
                                                 spanGaps: false,
                                                 elements: {
                                                     line: {
-                                                        tension: 0.3
+                                                        tension: 0.2
                                                     },
                                                     point: {
                                                         radius: 3
@@ -2217,19 +2200,26 @@
                                                     duration: 0
                                                 },
 
+                                                hover: {
+                                                    mode: 'single'
+                                                },                                                
+
                                                 onHover: function (evt) {
+                                                
                                                     var item = chart.getElementAtEvent(evt);
+
                                                     if (item.length) {
+ 
                                                         var currentDatasetIndex = item[0]._datasetIndex;
 
 
                                                         // set point hover radius to default 4
-                                                        chart.data.datasets.forEach(dataset => {
-                                                            dataset.pointHoverRadius = 4;
-                                                        });
+                                                        // chart.data.datasets.forEach(dataset => {
+                                                        //     dataset.pointHoverRadius = 4;
+                                                        // });
 
                                                         // set point radius of selected dataset
-                                                        chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+                                                        //chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
 
                                                         // set color of tooltip title same as point color
                                                         chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].borderColor;
@@ -2237,6 +2227,7 @@
                                                         chart.update();
                                                     }
                                                 },
+
 
 
                                                 tooltips: {
@@ -2324,11 +2315,14 @@
                                                             backgroundColor: value.background,
                                                             borderColor: value.color,
                                                             data: value.data,
-                                                            borderWidth: 2,
-                                                            pointBorderColor: "white",
-                                                            pointRadius: 4,
-                                                            pointBorderWidth: 2,
-                                                            pointHoverBorderColor: "white",
+                                                            borderWidth: 3,
+                                                            pointBackgroundColor: colorShade(value.color, +20),
+                                                            pointBorderColor: colorShade(value.color, -10),
+                                                            pointRadius: 3,
+                                                            pointBorderWidth: 1,
+                                                            pointHoverBorderColor: colorShade(value.color, -10),
+                                                            pointHoverRadius: 5,
+                                                            pointHoverBackgroundColor: colorShade(value.color, +40),
                                                             label: key,
                                                             fill: true
                                                         });
