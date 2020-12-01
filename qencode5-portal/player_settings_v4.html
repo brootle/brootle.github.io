@@ -46,6 +46,8 @@
 
     <script src="js/menu.js"></script>
 
+    <script src='https://player-static.qencode.com/qa/qencode-bootstrapper.min.js'></script>
+
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
 <body class="q7-page">
@@ -500,11 +502,11 @@
 
                         <div class="q7-block-title">Player Customization</div>
 
-                        <script>
+                        <!-- <script>
                             window.qencode_player_path_prefix = 'https://player-static.qencode.com/release/';
-                        </script>  
+                        </script>   -->
 
-                        <script src='https://player-static.qencode.com/release/qencode-bootstrapper.min.js'></script>              
+                        <!-- <script src='https://player-static.qencode.com/qa/qencode-bootstrapper.min.js'></script>               -->
                         
                         <div class="q7-settings-player-container">
                             <div id='my_player'></div>
@@ -1009,7 +1011,7 @@
                             console.log("params: ",params);
 
                             // load user parameters if they are present
-                            if(sessionStorage.getItem('QencodePlayerParams')){                            
+                            if(sessionStorage.getItem('QencodePlayerParams')){                                            
                                 var savedParamsJSON = sessionStorage.getItem('QencodePlayerParams');                                
                                 params = JSON.parse(savedParamsJSON);                                
                             }
@@ -1238,7 +1240,10 @@
 
                                     }                     
                                 };
-                                                                                                                                                   
+
+                                if(params.env){
+                                    ui_params.env = params.env;
+                                }                                                                                                                                   
 
                                 if($("#playerLayoutSize").val() == "aspect_ratio"){
                                     ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' +  $("#playerLayoutSizeHeight").val();
