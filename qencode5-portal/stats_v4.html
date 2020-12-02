@@ -2213,8 +2213,10 @@
                                                 });
                                             });
 
+                                            var dataLabels = ['01.04.2020', '02.04.2020', '03.04.2020', '04.04.2020', '05.04.2020', '06.04.2020', '07.04.2020'];
+
                                             var data = {
-                                                labels: ['01.04', '02.04', '03.04', '04.04', '05.04', '06.04', '07.04'],
+                                                labels: dataLabels,
                                                 datasets: datasets                                            
                                             };
 
@@ -2264,60 +2266,134 @@
                                                     mode: 'single'
                                                 },                                                
 
-                                                onHover: function (evt) {
+                                                // onHover: function (evt) {
                                                 
-                                                    var item = chart.getElementAtEvent(evt);
+                                                //     var item = chart.getElementAtEvent(evt);
 
-                                                    if (item.length) {
+                                                //     if (item.length) {
  
-                                                        var currentDatasetIndex = item[0]._datasetIndex;
+                                                //         var currentDatasetIndex = item[0]._datasetIndex;
 
 
-                                                        // set point hover radius to default 4
-                                                        // chart.data.datasets.forEach(dataset => {
-                                                        //     dataset.pointHoverRadius = 4;
-                                                        // });
+                                                //         // set point hover radius to default 4
+                                                //         // chart.data.datasets.forEach(dataset => {
+                                                //         //     dataset.pointHoverRadius = 4;
+                                                //         // });
 
-                                                        // set point radius of selected dataset
-                                                        //chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
+                                                //         // set point radius of selected dataset
+                                                //         //chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
 
-                                                        // set color of tooltip title same as point color
-                                                        chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].borderColor;
+                                                //         // set color of tooltip title same as point color
+                                                //         chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].borderColor;
 
-                                                        chart.update();
-                                                    }
-                                                },
-
-
+                                                //         chart.update();
+                                                //     }
+                                                // },
 
                                                 tooltips: {
-                                                    intersect: false,
-                                                    titleFontColor: 'black',
-                                                    backgroundColor: 'white',
-                                                    bodyFontColor: '#021519',
-                                                    borderColor: '#eeeeee',
-                                                    borderWidth: 1,
-                                                    bodyFontStyle: 'bold',
-                                                    displayColors: false,
-                                                    xPadding: 15,
-                                                    yPadding: 10,
+                                                    // Disable the on-canvas tooltip
+                                                    enabled: false,
+                                           
+                                                    custom: function (tooltipModel) {
+                                                        //console.log("tooltipModel: ", tooltipModel);
 
-                                                    cornerRadius: 1,
+                                                        // Tooltip Element
+                                                        var tooltipEl = document.getElementById('chartjs-tooltip_new');
 
-                                                    callbacks: {
-                                                        title: function (tooltipItem, data) {
-                                                            //console.log(Chart.defaults.global.tooltips.titleFontColor);
-                                                            // console.log(tooltipItem[0]);
-                                                            //console.log(data.datasets[tooltipItem[0].datasetIndex]);
-                                                            return data.datasets[tooltipItem[0].datasetIndex].label;
-                                                        },
-                                                        label: function (tooltipItem, data) {
-                                                            // console.log(tooltipItem.yLabel);
-                                                            return `$${tooltipItem.yLabel}`;
+                                                        // Create element on first render
+                                                        if (!tooltipEl) {
+                                                            tooltipEl = document.createElement('div');
+                                                            tooltipEl.id = 'chartjs-tooltip_new';
+                                                            tooltipEl.innerHTML = '<div class="chartjs-tooltip-container"><table></table></div>';
+                                                            document.body.appendChild(tooltipEl);
                                                         }
-                                                    }
 
+                                                        // Hide if no tooltip
+                                                        if (tooltipModel.opacity === 0) {
+                                                            tooltipEl.style.opacity = 0;
+                                                            return;
+                                                        }
+
+                                                        function getBody(bodyItem) {
+                                                            return bodyItem.lines;
+                                                        }
+
+                                                        // Set Text
+                                                        console.log("tooltipModel: ", tooltipModel)
+                                                        if (tooltipModel.body) {                 
+
+                                                            var titleLines = tooltipModel.title || [];
+                                                            var bodyLines = tooltipModel.body.map(getBody);
+
+                                                
+
+                                                            var datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                            var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+
+                                                            var yValue = tooltipModel.dataPoints[0].yLabel;
+                                                            var labelName = chart.data.datasets[datasetIndex].label;                                                    
+
+                                                            var innerHtml = `<thead style="background-color: ${backgroundColor};">`;
+
+                                                            titleLines.forEach(function (title) {
+                                                                innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+                                                            });
+                                                            innerHtml += '</thead><tbody>';
+                                                            innerHtml += `<tr><td style="color:${backgroundColor};">${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                            innerHtml += '</tbody>';
+
+                                                            // add footer
+                                                            innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
+
+                                                            var tableRoot = tooltipEl.querySelector('table');
+                                                            tableRoot.innerHTML = innerHtml;
+                                                        }
+
+                                                        // `this` will be the overall tooltip
+                                                        var position = this._chart.canvas.getBoundingClientRect();
+
+                                                        // Display, position, and set styles for font
+                                                        tooltipEl.style.opacity = 1;
+                                                        tooltipEl.style.position = 'absolute';
+                                                        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+                                                        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+                                                        tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+                                                        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+                                                        //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+                                                        tooltipEl.style.pointerEvents = 'none';
+                                                    }
                                                 }
+
+
+                                                // tooltips: {
+                                                //     intersect: false,
+                                                //     titleFontColor: 'black',
+                                                //     backgroundColor: 'white',
+                                                //     bodyFontColor: '#021519',
+                                                //     borderColor: '#eeeeee',
+                                                //     borderWidth: 1,
+                                                //     bodyFontStyle: 'bold',
+                                                //     displayColors: false,
+                                                //     xPadding: 15,
+                                                //     yPadding: 10,
+
+                                                //     cornerRadius: 1,
+
+                                                //     callbacks: {
+                                                //         title: function (tooltipItem, data) {
+                                                //             //console.log(Chart.defaults.global.tooltips.titleFontColor);
+                                                //             // console.log(tooltipItem[0]);
+                                                //             //console.log(data.datasets[tooltipItem[0].datasetIndex]);
+                                                //             return data.datasets[tooltipItem[0].datasetIndex].label;
+                                                //         },
+                                                //         label: function (tooltipItem, data) {
+                                                //             // console.log(tooltipItem.yLabel);
+                                                //             return `$${tooltipItem.yLabel}`;
+                                                //         }
+                                                //     }
+
+                                                // }
 
                                             };
 
