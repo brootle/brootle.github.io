@@ -5508,17 +5508,17 @@ a.q7-link{
     text-align: right;
 }
 .q7-usage--sd .q7-usage__symbol{
-    color: #fb9f48;
+    color: #eed89a;
 }
 .q7-usage--sd .q6-usage__jobs-line{
-    background: #fb9f48;
+    background: #fedc73;
 }
 
 .q7-usage--hd .q7-usage__symbol{
-    color: #fedc73;
+    color: #bad045;
 }
 .q7-usage--hd .q6-usage__jobs-line{
-    background: #fedc73;
+    background: #e7f793;
 }
 
 .q7-usage--1440p .q7-usage__symbol{
@@ -5543,11 +5543,27 @@ a.q7-link{
 }
 
 .q7-usage--repack .q7-usage__symbol{
-    color: #169eb6;
+    color: #fb9f48;
 }
 .q7-usage--repack .q6-usage__jobs-line{
-    background: #169eb6;
+    background: #fb9f48;
 }
+
+
+.q7-usage--gif .q7-usage__symbol{
+    color: #ca1c1c;
+}
+.q7-usage--gif .q6-usage__jobs-line{
+    background: #ca1c1c;
+}
+
+.q7-usage--audio .q7-usage__symbol{
+    color: #f56d43;
+}
+.q7-usage--audio .q6-usage__jobs-line{
+    background: #f56d43;
+}
+
 
 .q7-usage--mp3 .q7-usage__symbol{
     color: #073d77;
@@ -8671,29 +8687,70 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     color: #9ea2ae;
 }
 
-.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider:before {
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--gif input:checked + .q7-switch__slider:before {
+    background-color: #ca1c1c;
+}
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--gif input:checked + .q7-switch__slider {
+    background-color: #ffcccc;
+}
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--gif input:checked + .q7-switch__slider + .q7-switch__title {
+    color: #ca1c1c;
+}
+
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--audio input:checked + .q7-switch__slider:before {
+    background-color: #f56d43;
+}
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--audio input:checked + .q7-switch__slider {
+    background-color: #ffc7ae;
+}
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--audio input:checked + .q7-switch__slider + .q7-switch__title {
+    color: #f56d43;
+}
+
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--repack input:checked + .q7-switch__slider:before {
     background-color: #fb9f48;
 }
 
-.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider {
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--repack input:checked + .q7-switch__slider {
     background-color: #ffecda;
 }
 
-.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider + .q7-switch__title {
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--repack input:checked + .q7-switch__slider + .q7-switch__title {
     color: #fb9f48;
 }
 
 
-.q7-chart-checkboxes .q7-switch-container.q7-switch-container--hd input:checked + .q7-switch__slider:before {
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider:before {
     background-color: #fedc73;
 }
 
-.q7-chart-checkboxes .q7-switch-container.q7-switch-container--hd input:checked + .q7-switch__slider {
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider {
     background-color: #fff2cb;
 }
 
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--sd input:checked + .q7-switch__slider + .q7-switch__title {
+    color: #eed89a;
+}
+
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--hd input:checked + .q7-switch__slider:before {
+    background-color: #e7f793;
+}
+
+.q7-chart-checkboxes .q7-switch-container.q7-switch-container--hd input:checked + .q7-switch__slider {
+    background-color: #f2ffaf;
+}
+
 .q7-chart-checkboxes .q7-switch-container.q7-switch-container--hd input:checked + .q7-switch__slider + .q7-switch__title {
-    color: #fedc73;
+    color: #bad045;
 }
 
 
@@ -9288,16 +9345,17 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     -webkit-transform: translate(17px, -28px);
     transform: translate(17px, -28px);
     box-shadow: 0px 1px 4px 2px rgba(79, 79, 79, 0.08);
+    white-space: nowrap;
 }
 
 #chartjs-tooltip_new table{
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;    
     position: relative;
 }
 
 #chartjs-tooltip_new table thead{
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #chartjs-tooltip_new table thead th{

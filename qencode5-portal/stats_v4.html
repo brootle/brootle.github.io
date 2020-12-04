@@ -2044,6 +2044,30 @@
                                     <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
 
                                         <div class="q7-chart-checkboxes">
+                                            <div class="q7-switch-container q7-switch-container--gif">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="Gif">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">Gif</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--audio">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="Audio">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">Audio</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--repack">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="Repack">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">Repack</div>
+                                                </label>
+                                            </div>
+
                                             <div class="q7-switch-container q7-switch-container--sd">                                                
                                                 <label class="q7-switch">
                                                     <input class="q7-input__field" type="checkbox" checked data-array="SD">
@@ -2155,40 +2179,49 @@
                                             gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
 
                                             var dataArray = {
-                                                "SD": {
+                                                "Gif": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#ca1c1c",
+                                                    background: "#ca1c1c"
+                                                },   
+                                                "Audio": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#f56d43",
+                                                    background: "#f56d43"
+                                                },    
+                                                "Repack": {
                                                     data: [60, 90, 20, 120, 90, 170, 43],
                                                     color: "#fb9f48",
-                                                    //background: "rgba(255, 5, 123, 0.9)"
                                                     background: "#fb9f48"
+                                                },                                                                                                                                                   
+                                                "SD": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#fedc73",
+                                                    background: "#fedc73"
                                                 },                
                                                 "HD": {
                                                     data: [150, 210, 110, 70, 55, 258, 77],
-                                                    color: "#fedc73",
-                                                    //background: "rgba(255, 113, 18, 0.8)"
-                                                    background: "#fedc73"
+                                                    color: "#e7f793",
+                                                    background: "#e7f793"
                                                 },                           
                                                 "1440P": {
                                                     data: [520, 410, 380, 340, 390, 420, 470],
                                                     color: "#9bd991",
-                                                    //background: "rgba(49, 205, 130, 0.7)"
                                                     background: "#9bd991"
                                                 },                                                                                                     
                                                 "4K": {
                                                     data: [350, 190, 470, 200, 300, 250, 410],
                                                     color: "#54b994",
-                                                    //background: "rgba(255, 199, 5, 0.6)"
                                                     background: "#54b994"
                                                 },
                                                 "8K": {
                                                     data: [160, 45, 230, 80, 146, 196, 110],
                                                     color: "#2572b1",
-                                                    //background: "rgba(170, 49, 205, 0.5)"
                                                     background: "#2572b1"
                                                 },
                                                 "Total": {
                                                     data: [560, 490, 540, 390, 445, 478, 540],
                                                     color: "#2550b1",
-                                                    //background: "rgba(20, 146, 255, 0.4)"
                                                     background: "#2550b1"
                                                 }                                                
                                             }
@@ -2213,16 +2246,23 @@
                                                 });
                                             });
 
-                                            var dataLabels = ['01.04.2020', '02.04.2020', '03.04.2020', '04.04.2020', '05.04.2020', '06.04.2020', '07.04.2020'];
+                                            var dataLabels = ['01/04/2020', '02/04/2020', '03/04/2020', '04/04/2020', '05/04/2020', '06/04/2020', '07/04/2020'];
+
+                                            var dataLabelsMonthAndDay = dataLabels.map(date => {
+                                                var dateValue = new Date(date);
+                                                return `${(dateValue.toLocaleString("en", { month: "short" }))} ${dateValue.getDay()}`;
+                                            })
+
+                                            //console.log("dataLabelsMonthAndDay: ", dataLabelsMonthAndDay);
 
                                             var data = {
-                                                labels: dataLabels,
+                                                labels: dataLabelsMonthAndDay,
                                                 datasets: datasets                                            
                                             };
 
                                             var options = {
                                                 maintainAspectRatio: false,
-                                                spanGaps: false,
+                                                spanGaps: false,                                            
                                                 elements: {
                                                     line: {
                                                         tension: 0.2
@@ -2319,25 +2359,29 @@
                                                         }
 
                                                         // Set Text
-                                                        console.log("tooltipModel: ", tooltipModel)
+                                                        //console.log("tooltipModel: ", tooltipModel)
+
                                                         if (tooltipModel.body) {                 
 
                                                             var titleLines = tooltipModel.title || [];
-                                                            var bodyLines = tooltipModel.body.map(getBody);
-
-                                                
+                                                                                                         
 
                                                             var datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
                                                             var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+
+                                                            var labelIndex = tooltipModel.dataPoints[0].index;
+
+                                                            var labelDate = new Date (dataLabels[labelIndex]);
+                                                            var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
+                                                              
 
                                                             var yValue = tooltipModel.dataPoints[0].yLabel;
                                                             var labelName = chart.data.datasets[datasetIndex].label;                                                    
 
                                                             var innerHtml = `<thead style="background-color: ${backgroundColor};">`;
 
-                                                            titleLines.forEach(function (title) {
-                                                                innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
-                                                            });
+                                                            innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+
                                                             innerHtml += '</thead><tbody>';
                                                             innerHtml += `<tr><td style="color:${backgroundColor};">${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
                                                             innerHtml += '</tbody>';
@@ -2650,14 +2694,29 @@
                                                 <tr class="q7-table__expanded-content">
                                                     <td></td>
                                                     <td>
-                                                        <div class="q7-usage q7-usage--mp3" data-jobs="12">
-                                                            <div class="q7-usage__symbol">MP3</div>
+                                                        <div class="q7-usage q7-usage--audio" data-jobs="12">
+                                                            <div class="q7-usage__symbol">Audio</div>
                                                             <div class="q6-usage__jobs-line-container">
                                                                 <div class="q6-usage__jobs-line"></div>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>12</td>
+                                                    <td>100000 h 51 m</td>
+                                                    <td>100000 h 51 m</td>
+                                                    <td>$12,235.05</td>
+                                                </tr>
+                                                <tr class="q7-table__expanded-content">
+                                                    <td></td>
+                                                    <td>
+                                                        <div class="q7-usage q7-usage--gif" data-jobs="43">
+                                                            <div class="q7-usage__symbol">Gif</div>
+                                                            <div class="q6-usage__jobs-line-container">
+                                                                <div class="q6-usage__jobs-line"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>43</td>
                                                     <td>100000 h 51 m</td>
                                                     <td>100000 h 51 m</td>
                                                     <td>$12,235.05</td>
