@@ -2344,7 +2344,7 @@
                                                         if (!tooltipEl) {
                                                             tooltipEl = document.createElement('div');
                                                             tooltipEl.id = 'chartjs-tooltip_new';
-                                                            tooltipEl.innerHTML = '<div class="chartjs-tooltip-container"><table></table></div>';
+                                                            tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
                                                             document.body.appendChild(tooltipEl);
                                                         }
 
@@ -2366,8 +2366,8 @@
                                                             var titleLines = tooltipModel.title || [];
                                                                                                          
 
-                                                            var datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
-                                                            var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+                                                            datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                            //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
 
                                                             var labelIndex = tooltipModel.dataPoints[0].index;
 
@@ -2378,12 +2378,12 @@
                                                             var yValue = tooltipModel.dataPoints[0].yLabel;
                                                             var labelName = chart.data.datasets[datasetIndex].label;                                                    
 
-                                                            var innerHtml = `<thead style="background-color: ${backgroundColor};">`;
+                                                            var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
 
                                                             innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
 
                                                             innerHtml += '</thead><tbody>';
-                                                            innerHtml += `<tr><td style="color:${backgroundColor};">${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                            innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
                                                             innerHtml += '</tbody>';
 
                                                             // add footer
