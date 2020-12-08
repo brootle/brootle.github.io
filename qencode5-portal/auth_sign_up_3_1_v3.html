@@ -245,16 +245,25 @@
                         <h3 class="q6-authorize-window__subtitle" id="card-form-subtitle">Fund your account and get free credits</h3>
 
                         <div class="q6-auth-steps">
-                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
-                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
-                            <div class="q6-auth-steps__step q6-auth-steps__step--passed"></div>
+                            <div class="q6-auth-steps__step q6-auth-steps__step--passed">
+                                <div class="q6-auth-steps__step-number"><span>1</span></div>
+                                <div class="q6-auth-steps__step-text">Account</div>
+                            </div>
+                            <div class="q6-auth-steps__step q6-auth-steps__step--passed">
+                                <div class="q6-auth-steps__step-number"><span>2</span></div>
+                                <div class="q6-auth-steps__step-text">Details</div>
+                            </div>
+                            <div class="q6-auth-steps__step q6-auth-steps__step--current">
+                                <div class="q6-auth-steps__step-number"><span>3</span></div>
+                                <div class="q6-auth-steps__step-text">Settings</div>
+                            </div>
                         </div>
 
                         <div class="q6-payment-switch">
-                            <div data-form="paypal-form" data-title="Add funds to wallet"
+                            <div data-form="add-funds-form" data-title="Add funds to wallet"
                                 data-subtitle="Fund your account and get free credits"
                                 class="q6-payment-switch__button q6-payment-switch__button--active">
-                                <div class="q6-payment-switch__icon q6-payment-switch__icon--paypal"></div>
+                                <div class="q6-payment-switch__icon q6-payment-switch__icon--add-funds"></div>
                                 <p>Add Funds</p>
                             </div>
                             <div data-form="credit-card-form" data-title="Save billing details"
@@ -271,7 +280,7 @@
                         </div>
 
 
-                        <div id="paypal-form"
+                        <div id="add-funds-form"
                             class="q6-authorize-form q6-authorize-form--get-started q6-switch-content q6-switch-content--active">
 
                             <p class="q6-form-message">
@@ -288,7 +297,7 @@
                                 <div class="q6-custom-select">
                                     <select class="q6-select" id="amount">
                                         <option value="custom_amount">Custom amount</option>
-                                        <option value="5" selected="selected">$5.00 <span style="color: red;">+5% bonus</span></option>
+                                        <option value="5" selected="selected">$5.00</option>
                                         <option value="10">$10.00</option>
                                         <option value="20">$20.00</option>
                                         <option value="50">$50.00</option>
