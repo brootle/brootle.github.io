@@ -237,6 +237,23 @@ textarea:disabled,
     background-image: url(../img/gear.svg);
 }
 
+.q6-button.q6-button--complete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.q6-button.q6-button--complete:before {
+    content: "";
+    margin-right: 7px;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+    background-image: url(../img/check_white.svg);
+}
+
+
 .q6-button.q6-button--remove{
     line-height: 24px;
     font-weight: 400;
@@ -843,6 +860,74 @@ input:checked + .q6-image-text-checkbox--ott:before{
     border-left: 5px solid transparent;
 }
 
+.q6-custom-select .q6-custom-select__view{
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    margin: 0!important;
+    display: inline-block;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #bcbcbc;
+    padding: 12px 14px;
+    padding-right: 20px;
+    line-height: initial;
+    color: #171717;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 26px;
+    border-radius: 6px;
+    border-color: #e1e5ee;
+}
+
+.q6-custom-select .q6-custom-select__view.q6-custom-select__view--opened{
+    border-color: #316fea;
+}
+
+.q6-custom-select .q6-custom-select__view.q6-custom-select__view--focus{
+    border-color: #316fea;
+}
+
+.q6-custom-select .q6-custom-select__view > span{
+    color: #366fe0;
+    pointer-events: none;
+}
+
+.q6-custom-select  .q6-custom-select__list{
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid #e1e5ee;
+    box-shadow: 0px 12px 25px 1px rgba(105, 109, 112, 0.2);
+}
+
+.q6-custom-select  .q6-custom-select__list > div{
+    line-height: initial;
+    color: #171717;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;    
+    padding: 5px 20px;
+}
+
+.q6-custom-select  .q6-custom-select__list > div span{
+    color: #366fe0;
+    pointer-events: none;
+}
+
+.q6-custom-select  .q6-custom-select__list > div:hover{
+    background-color: #eeeeee9e;
+}
+
+.q6-custom-select  .q6-custom-select__list.q6-custom-select__list--opened{
+    display: block;
+}
 /********************* FEATURES  ***********************/
 .q6-feature-item{
     display: flex;
@@ -852,6 +937,7 @@ input:checked + .q6-image-text-checkbox--ott:before{
 
 .q6-feature-item p{
     margin: 0;
+    color: #9da3af;
 }
 
 .q6-feature-item__icon{
@@ -908,6 +994,12 @@ input:checked + .q6-image-text-checkbox--ott:before{
 .q6-feature-item__icon--price{
     background-image: url(../img/pricing/money_gs.svg); 
     background-size: 15px 24px;
+    background-position: center top;  
+}
+
+.q6-feature-item__icon--wallet{
+    background-image: url(../img/wallet_left.svg); 
+    background-size: 23px 19px;
     background-position: center top;  
 }
 /********************* FEATURES  ***********************/
@@ -988,6 +1080,10 @@ input:checked + .q6-image-text-checkbox--ott:before{
     background-image: url(../img/lock_icon.png);
     background-size: 12px 14px;
     background-repeat: no-repeat;
+}
+
+.StripeElement.StripeElement--focus{
+    border-color: #316fea;
 }
 /********************* STRIPE    ***********************/
 
