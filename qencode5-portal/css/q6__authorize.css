@@ -307,8 +307,8 @@
     background-image: url(../img/checked_blue.svg);
     background-size: 18px 18px;
     background-repeat: no-repeat;
-    right: -9px;
-    top: -9px;
+    bottom: -10px;
+    right: calc(50% + -9px);
 }
 
 
@@ -541,17 +541,102 @@
 }
 
 .q6-auth-steps .q6-auth-steps__step{
-    flex: 1;
-    max-width: 42px;
-    height: 7px;
-    background-color: #e6ecf3;
-    margin: 5px 5px;
-    border-radius: 5px;
+    max-width: 28px;
+
+    margin: 0 30px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    flex-direction: column;
+
+    font-size: 15px;
+    font-weight: 500;    
+    position: relative;
+
+    color: #b1b3d3;
 }
 
-.q6-auth-steps .q6-auth-steps__step--passed{
-    background-color: #316fea;
+.q6-auth-steps .q6-auth-steps__step .q6-auth-steps__step-number{
+    border: 2px solid #dbdcea;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    flex-direction: column;    
+
+    box-sizing: border-box;
 }
+
+.q6-auth-steps .q6-auth-steps__step .q6-auth-steps__step-text{
+    margin-top: 5px;
+}
+
+.q6-auth-steps .q6-auth-steps__step .q6-auth-steps__step-number:before{
+    content: "";
+    position: absolute;
+    left: -32px;
+    width: 32px;
+    height: 2px;
+    background-color: #dbdcea;
+}
+
+.q6-auth-steps .q6-auth-steps__step .q6-auth-steps__step-number:after{
+    content: "";
+    position: absolute;
+    right: -32px;
+    width: 32px;
+    height: 2px;
+    background-color: #dbdcea;
+}
+
+.q6-auth-steps .q6-auth-steps__step:first-of-type .q6-auth-steps__step-number:before{
+    content: none;
+}
+
+.q6-auth-steps .q6-auth-steps__step:last-of-type .q6-auth-steps__step-number:after{
+    content: none;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--passed .q6-auth-steps__step-number{
+    border: none;
+    background-image: url(../img/checked_blue.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--passed .q6-auth-steps__step-number span{
+    display: none;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--passed .q6-auth-steps__step-text{
+    color: #366fe0;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--current .q6-auth-steps__step-number{
+    color: white;
+    background-color: #366fe0;
+    border: none;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--passed .q6-auth-steps__step-number:after,
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--passed .q6-auth-steps__step-number:before{
+    background-color: #366fe0;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--current .q6-auth-steps__step-number:before{
+    background-color: #366fe0;
+}
+
+.q6-auth-steps .q6-auth-steps__step.q6-auth-steps__step--current .q6-auth-steps__step-text{
+    color: #366fe0;
+    font-weight: 700;
+}
+
 
 .q6-authorize-form__title {
     color: #7c7c7c;
