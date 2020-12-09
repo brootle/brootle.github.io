@@ -192,7 +192,7 @@
                 <div class="q6-authorize-container">
                     <div class="q6-get-started-features">
 
-                        <div class="q6-feature-item">
+                        <div class="q6-feature-item" id="feature_free-credit">
                             <div class="q6-feature-item__icon q6-feature-item__icon--gift"></div>
                             <p>
                                 <span class="q6-blue-text">Free $5 Credit</span> <br>
@@ -200,23 +200,63 @@
                             </p>
                         </div>
 
-                        <div class="q6-feature-item">
+
+                        <div class="q6-feature-item" id="feature_trial" style="display: none;">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--trial"></div>
+                            <p>
+                                <span class="q6-blue-text">Free Trial Account</span> <br>
+                                Get an account to test all the features of our platform
+                                with some limitations.
+                            </p>
+                        </div>
+
+                        <div class="q6-feature-item" id="feature_upgrade" style="display: none;">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--upgrade"></div>
+                            <p>
+                                <span class="q6-blue-text">Upgrade any time</span> <br>
+                                Switch to regulat account at any time when you are ready to use 
+                                all the features.
+                            </p>
+                        </div>
+
+
+                        <div class="q6-feature-item" id="feature_pay-for-used" style="display: none;">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--pay-for-used"></div>
+                            <p>
+                                <span class="q6-blue-text">Pay only for the minutes you use</span> <br>
+                                Get additional bonus credits for funding your account
+                            </p>
+                        </div>
+
+                        <div class="q6-feature-item" id="feature_pay-monthly-bill" style="display: none;">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--monthly-bill"></div>
+                            <p>
+                                <span class="q6-blue-text">Get billed at the end of month</span> <br>
+                                Pay for the minutes you used at the end of the month.
+                            </p>
+                        </div>
+
+                        <div class="q6-feature-item" id="feature_bonus">
                             <div class="q6-feature-item__icon q6-feature-item__icon--price"></div>
                             <p>
-                                <span class="q6-blue-text">Bonus Credits fro Funding Wallet</span> <br>
+                                <span class="q6-blue-text">Bonus Credits for Funding Wallet</span> <br>
                                 Get additional bonus for funding your account
                             </p>
                         </div>
 
-                        <div class="q6-feature-item">
+                        <div class="q6-feature-item" id="feature_funds-forever">
                             <div class="q6-feature-item__icon q6-feature-item__icon--wallet"></div>
                             <p>
                                 <span class="q6-blue-text">Funds never expire</span>
                                 <br>
                                 The funds will be in your account will stay in your account until 
                                 you use them
-                                <br>
-                                <br>
+                            </p>
+                        </div>
+
+                        <div class="q6-feature-item">
+                            <div class="q6-feature-item__icon q6-feature-item__icon--no-icon"></div>
+                            <p>
                                 Our prices start from:
                                 <br>
                                 <span class="q6-blue-text">$0.005 per minute of SD output.</span>
@@ -602,6 +642,44 @@
                                     // update form subtitle
                                     var formSubTitle = clickedLink.getAttribute("data-subtitle");
                                     $("#card-form-subtitle").html(formSubTitle);
+
+                                    // update features
+                                    if(tabID === "credit-card-form"){
+                                        $("#feature_bonus").hide()
+                                        $("#feature_funds-forever").hide()
+
+                                        $("#feature_trial").hide()
+                                        $("#feature_upgrade").hide()                                             
+
+                                        $("#feature_free-credit").show()
+                                        $("#feature_pay-for-used").show()
+                                        $("#feature_pay-monthly-bill").show()
+                                    }
+
+                                    if (tabID === "add-funds-form") {
+                                        $("#feature_free-credit").show()
+                                        $("#feature_bonus").show()
+                                        $("#feature_funds-forever").show()
+
+                                        $("#feature_pay-for-used").hide()
+                                        $("#feature_pay-monthly-bill").hide()        
+                                        
+                                        $("#feature_trial").hide()
+                                        $("#feature_upgrade").hide()                                          
+                                    }   
+                                    
+                                    if (tabID === "free-trial-form") {
+                                        $("#feature_free-credit").hide()
+
+                                        $("#feature_bonus").hide()
+                                        $("#feature_funds-forever").hide()
+
+                                        $("#feature_pay-for-used").hide()
+                                        $("#feature_pay-monthly-bill").hide()
+
+                                        $("#feature_trial").show()
+                                        $("#feature_upgrade").show()                                        
+                                    }                                       
                                 }
                             });                 
                         </script>
