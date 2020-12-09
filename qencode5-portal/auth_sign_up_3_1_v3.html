@@ -417,17 +417,84 @@
                                 </div>
 
                                 <div class="q6-custom-select">
-                                    <select class="q6-select">
+                                    <select id="payment-selector" class="q6-select">
                                         <option value="paypal">Paypal</option>
                                         <option value="card">Credit Card</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <p class="q6-form-message">                                
+                            <p class="q6-form-message" id="payment-method_paypal-message">                                
                                 Add PayPal credit to your account. This is a one-time payment
                                 and may take up to five minutes to process.
                             </p>
+
+                            <div class="q6-input" id="payment-method_card-name" style="display: none;">
+                                <div class="q6-input__label">
+                                    <label>Name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">
+                            </div>
+
+                            <div class="q6-input" id="payment-method_card-input" style="display: none;">
+                                <div class="q6-input__label">
+                                    <label for="user_card">Card number</label>
+                                </div>
+
+                                <div id="card-element_add-funds"></div>
+                                <script src="https://js.stripe.com/v3/"></script>
+                                <script>
+                                    var stripe = Stripe('123');
+                                    var elements = stripe.elements();
+                                    var style = {
+                                        base: {
+                                            color: '#171717',
+                                            lineHeight: '22px',
+                                            height: '22px',
+                                            fontFamily: 'proxima-nova, sans-serif',
+                                            fontSmoothing: 'antialiased',
+                                            fontSize: '18px',
+                                            fontWeight: '600',
+                                            '::placeholder': {
+                                                color: '#aab7c4'
+                                            }
+                                        },
+                                        invalid: {
+                                            color: '#fa755a',
+                                            iconColor: '#fa755a'
+                                        }
+                                    };
+                                    var card = elements.create('card', { style: style });
+                                    card.mount('#card-element_add-funds');
+                                </script>
+                            </div>
+
+                            <div class="q6-powered-by-stripe" id="payment-method_card-message" style="display: none;">
+                                <div class="q6-lock-icon--left">
+                                    Billing information secured and protected.
+                                </div>
+                                <img src="img/stripe_logo.png" alt="Powered by Sripe">
+                            </div>                            
+
+                            <script>
+                                $(function () {
+                                    $("#payment-selector").change(function(){
+                                        if($(this).val() === "card"){
+                                            $("#payment-method_paypal-message").hide()
+
+                                            $("#payment-method_card-name").show()
+                                            $("#payment-method_card-input").show()
+                                            $("#payment-method_card-message").show()
+                                        } else{
+                                            $("#payment-method_paypal-message").show()
+
+                                            $("#payment-method_card-name").hide()
+                                            $("#payment-method_card-input").hide()
+                                            $("#payment-method_card-message").hide()                                            
+                                        }
+                                    })
+                                });
+                            </script>                            
 
                         </div>
 
