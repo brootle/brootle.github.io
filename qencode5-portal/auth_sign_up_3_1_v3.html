@@ -295,7 +295,7 @@
                                 data-subtitle="Fund your account and get free credits"
                                 class="q6-payment-switch__button q6-payment-switch__button--active">
                                 <div class="q6-payment-switch__icon q6-payment-switch__icon--add-funds"></div>
-                                <p>FUND WALLET</p>
+                                <p>ADD FUNDS</p>
                             </div>
                             <div data-form="credit-card-form" data-title="Pay-As-You-Go"
                                 data-subtitle="Get billed at the end of the month for usage"
@@ -321,14 +321,14 @@
                                 </div>
                             
                                 <div class="q6-custom-select">
-                                    <div class="q6-custom-select__view">$5.00 <span>+ 5% bonus</span></div>       
+                                    <div class="q6-custom-select__view">$100.00 <span>+ 5% bonus</span></div>       
                                     <div class="q6-custom-select__list">
                                         <div class="q6-custom-select__option" data-option='custom'>Custom</div>
-                                        <div class="q6-custom-select__option">$5.00 <span>+ 5% bonus</span></div>
-                                        <div class="q6-custom-select__option">$25.00 <span>+ 7% bonus</span></div>
-                                        <div class="q6-custom-select__option">$50.00 <span>+ 10% bonus</span></div>
-                                        <div class="q6-custom-select__option">$75.00 <span>+ 15% bonus</span></div>
-                                        <div class="q6-custom-select__option">$100.00 <span>+ 20% bonus</span></div>
+                                        <div class="q6-custom-select__option">$20.00</div>
+                                        <div class="q6-custom-select__option">$100.00 <span>+ 5% bonus</span></div>
+                                        <div class="q6-custom-select__option">$500.00 <span>+ 7% bonus</span></div>
+                                        <div class="q6-custom-select__option">$2000.00 <span>+ 10% bonus</span></div>
+                                        <div class="q6-custom-select__option">$5000.00 <span>+ 12% bonus</span></div>
                                     </div>
                                 </div>
 
@@ -392,7 +392,7 @@
                                     <label>Enter USD Amount</label>
                                 </div>
                                 <div class="q6-input-with-bonus">
-                                    <input class="q6-input__field" type="text" id="custom-funds">
+                                    <input class="q6-input__field" type="text" id="custom-funds" value="$ 100.00">
                                     <div class="q6-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
                                 </div>                                
                             </div>
@@ -425,18 +425,18 @@
                                         if(valueInNumber){
      
                                             // set bonus based on value
-                                            let bonus = 5;
+                                            let bonus = 0;
 
-                                            if (valueInNumber <= 5) {
+                                            if (valueInNumber <= 100) {
+                                                bonus = 0;
+                                            } else if (valueInNumber <= 500) {
                                                 bonus = 5;
-                                            } else if (valueInNumber <= 25) {
+                                            } else if (valueInNumber <= 2000) {
                                                 bonus = 7;
-                                            } else if (valueInNumber <= 50) {
+                                            } else if (valueInNumber <= 5000) {
                                                 bonus = 10;
-                                            } else if (valueInNumber <= 75) {
-                                                bonus = 15;
                                             } else{
-                                                bonus = 20;
+                                                bonus = 12;
                                             }
                                             
                                             // update bonus
@@ -511,7 +511,7 @@
 
                             <div class="q6-powered-by-stripe" id="payment-method_card-message" style="display: none;">
                                 <div class="q6-lock-icon--left">
-                                    Billing information secured and protected.
+                                    Billing information secured and encrypted.
                                 </div>
                                 <img src="img/stripe_logo.png" alt="Powered by Sripe">
                             </div>                            
@@ -583,7 +583,7 @@
 
                             <div class="q6-powered-by-stripe">
                                 <div class="q6-lock-icon--left">
-                                    Billing information secured and protected.
+                                    Billing information secured and encrypted.
                                 </div>
                                 <img src="img/stripe_logo.png" alt="Powered by Sripe">
                             </div>
