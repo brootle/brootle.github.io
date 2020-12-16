@@ -531,10 +531,37 @@
                                                     <button disabled id="reload_player" class="q7-button">Reload parameters</button>
                                                 </div> 
                                             </div>
+
+                                            <div class="q7-advanced-settings__row">
+
+                                                <div class="q7-input-and-buttons--inline">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label q7-input__label--with-switch q7-input__label--row-title">
+                                                            <label>Enable thumbnails</label>
+
+                                                            <div class="q7-switch-container">
+                                                                <label class="q7-switch">
+                                                                    <input id="dynamicFieldsEnableThumbnails" class="q7-input__field" type="checkbox">
+                                                                    <span class="q7-switch__slider"></span>
+                                                                    <span class="q7-switch__text">
+                                                                        <span class="q7-switch__text--on">On</span>
+                                                                        <span class="q7-switch__text--off">Off</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                        <input id="dynamicFieldsThumbnails" class="q7-input__field" type="text" style="display: none;">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="q7-player-settings__row">
                                 <div>
@@ -1190,10 +1217,27 @@
                                     $("#dynamicFieldsShareUrlLink").show();
                                 }else{
                                     $("#dynamicFieldsShareUrlLink").hide();
-                                }                                                                            
+                                }    
+
+                                if (params.thumbnails) {
+                                    $('#dynamicFieldsEnableThumbnails').prop('checked', true);
+                                    $("#dynamicFieldsThumbnails").val(params.thumbnails.src);
+                                    $("#dynamicFieldsThumbnails").show();
+                                } else {
+                                    $("#dynamicFieldsThumbnails").hide();
+                                }                                                                                                            
                             }                         
 
                             loadDynamicFields();   
+
+                            $("#dynamicFieldsEnableThumbnails").change(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#dynamicFieldsThumbnails").show();
+                                } else {
+                                    $("#dynamicFieldsThumbnails").hide();
+                                }
+                            });                           
+
 
                             $("#dynamicFieldsShowTitle").change(function(){
                                 if($(this).is(":checked")){
@@ -1283,7 +1327,12 @@
                                     ui_params.social.shareUrl = $("#dynamicFieldsShareUrlLink").val();
                                     ui_params.social.twitter = 'https://twitter.com/intent/tweet?text='+$("#dynamicFieldsShareUrlLink").val();
                                     ui_params.social.facebook = 'https://www.facebook.com/sharer/sharer.php?u='+$("#dynamicFieldsShareUrlLink").val();
-                                }                        
+                                }             
+
+                                if ($('#dynamicFieldsEnableThumbnails').prop("checked")) {
+                                    ui_params.thumbnails = {};
+                                    ui_params.thumbnails.src = $("#dynamicFieldsThumbnails").val();
+                                }                                             
 
                                 // MUST LOAD NEW SRC FROM UI
                                 ui_params.videoSources = {};
