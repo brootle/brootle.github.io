@@ -45,6 +45,7 @@
     <link href="css/q7__template.css" rel="stylesheet" />
 
     <script src="js/menu.js"></script>
+    <script src="js/uglifyjs.js"></script>
 
     <script src='https://player-static.qencode.com/qa/qencode-bootstrapper.min.js'></script>
 
@@ -963,6 +964,9 @@
                                         <button class="q7-button q7-button--round q7-button--copy">
                                             Copy
                                         </button>
+                                        <button class="q7-button q7-button--round q7-button--minify">
+                                            Minify
+                                        </button>
                                         <pre><code id="playerCodeJS" class="hljs"></code></pre>                    
                                     </div>
                                 </div>              
@@ -1455,6 +1459,58 @@ qPlayer('my_player', params, function() {
                         </script>            
 
                         <script>
+                            $(function () {
+
+                                // // check if code must be minified
+                                // // see http://lisperator.net/uglifyjs/
+                                // var resultMin = UglifyJS.minify(outputCode);
+                                // //var resultMin = UglifyJS.parse("function sum(x, y){ return x + y }");
+                                // console.log("................resultMin.code:", resultMin.code);
+
+                                // $("#playerCodeJS").text(outputCode);
+
+                                // hljs.initHighlighting.called = false;
+                                // hljs.initHighlighting();
+
+                                // minify code
+                                $(".q7-codeblock-container .q7-button--minify").click(function () {
+
+                                    try {
+                                        var cellTextNode = $(this).closest('.q7-codeblock__code').find('code')[0];
+
+                                        var code = $(cellTextNode).text();
+                                        var minifiedCode = UglifyJS.minify(code);
+                                        $("#playerCodeJS").text(minifiedCode.code);
+
+                                        hljs.initHighlighting.called = false;
+                                        hljs.initHighlighting();                                        
+
+                                        // if there is some text
+                                        var successful = $(cellTextNode).text();
+
+                                        var flashMessage = $(this).closest('.q7-codeblock-container').find('.q7-codeblock__flash-message')[0];
+
+                                        var message = $(flashMessage).find('span')[0]
+                                        $(message).text("Minified");
+
+                                        if (successful) {
+                                            $(flashMessage)
+                                                .slideDown(100)
+                                                .delay(800)
+                                                .fadeOut(200)
+                                        }
+                                        else {
+                                            // show some error message
+                                        }
+                                    } catch (err) {
+                                        console.log(err);
+                                    }
+
+                                });
+                            });
+                        </script>                        
+
+                        <script>
                             $(function () {                
                                 // copy code
                                 $(".q7-codeblock-container .q7-button--copy").click(function (){
@@ -1471,7 +1527,10 @@ qPlayer('my_player', params, function() {
 
                                         var successful = document.execCommand('copy');         
 
-                                        var flashMessage = $(this).closest('.q7-codeblock-container').find('.q7-codeblock__flash-message')[0];                                                                         
+                                        var flashMessage = $(this).closest('.q7-codeblock-container').find('.q7-codeblock__flash-message')[0];     
+                                        
+                                        var message = $(flashMessage).find('span')[0]
+                                        $(message).text("Copied");                                                                                                            
 
                                         if(successful) {                       
                                             $(flashMessage)
