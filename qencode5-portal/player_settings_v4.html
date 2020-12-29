@@ -1479,6 +1479,7 @@ qPlayer('my_player', params, function() {
                                         var cellTextNode = $(this).closest('.q7-codeblock__code').find('code')[0];
 
                                         var code = $(cellTextNode).text();
+
                                         var minifiedCode = UglifyJS.minify(code);
                                         $("#playerCodeJS").text(minifiedCode.code);
 
