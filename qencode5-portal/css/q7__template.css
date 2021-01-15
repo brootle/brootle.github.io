@@ -5415,7 +5415,9 @@ a.q7-link{
 
 /* USAGE STATS */
 .q7-table.q7-table--standard.q7-table--usage-stats td:nth-of-type(2){
-    max-width: 300px;
+    max-width: 250px;
+    min-width: 300px;
+    width: 250px;
     overflow: hidden;
     word-wrap: break-word;
     white-space: nowrap;
@@ -9571,8 +9573,60 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 }
 
 
+.q7-loading-cell{
+    display: block;
+    background-color: #e2e6ee;
+    border-radius: 15px;
+    width: 100%;
+    height: 14px;    
+    position: relative;
+    overflow: hidden;    
+}
 
+.q7-loading-cell:after {
+    content: "";
+    animation: data-loading 1.3s infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    z-index: 1;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
 
+@keyframes data-loading {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats.q7-table--loading td:nth-of-type(1) {
+    max-width: 290px;
+    min-width: 330px;
+    width: 290px;
+}
+
+.q7-table.q7-table--standard.q7-table--usage-stats.q7-table--loading td:nth-of-type(2){
+    max-width: initial;
+    min-width: initial;
+    width: initial;
+}
+
+.q7-table.q7-table--standard.q7-table--loading tbody tr{
+    box-shadow: none;
+}
+
+.q7-table.q7-table--standard.q7-table--loading tbody tr:hover {
+    background: initial;
+    box-shadow: none;
+    cursor: initial;
+}
 
 @media screen and (min-width: 1650px){
     .q7-container{
