@@ -22,6 +22,10 @@
   <script src='https://player-static.qencode.com/release/qencode-bootstrapper.min.js'></script>    -->
 
   
+  <section style="width: 80%; min-width: 320px; margin: 30px auto;">
+
+    <h1>Show currently rendered video quality in Auto</h1>
+
     <div id='mycontainer'></div>
     <script>
 
@@ -32,6 +36,7 @@
             //env: "dev",
              env: "qa",
             //env: "stage",
+         
 
             // thumbnails:{
             //   src: 'https://qencode-ohio.s3.amazonaws.com/thumb/vtt_sprite_long_5x5/thumbnails.vtt',
@@ -104,11 +109,102 @@
             console.log('qPlayer is up and running');
         });
 
-    // qencodePlayer('mycontainer', params, function() { 
-    //   console.log('Qencode Player is up and running'); 
-    // });
+
     </script>
 
+  </section>
+
+  <section style="width: 80%; min-width: 320px; margin: 30px auto;">
+    <h1>Show downloading video quality in Auto</h1>
+    <div id='mycontainer2'></div>
+    <script>
+
+
+
+        var params = {
+
+            //env: "dev",
+             env: "qa",
+            //env: "stage",
+
+            playback: {
+                autoLoadingVideoQuality: true
+            },            
+
+            // thumbnails:{
+            //   src: 'https://qencode-ohio.s3.amazonaws.com/thumb/vtt_sprite_long_5x5/thumbnails.vtt',
+            //   //src:'https://nyc3.digitaloceanspaces.com/qencode3/regression_tests/thumb/vtt/thumbnails.vtt',
+            //   //src:'https://nyc3.digitaloceanspaces.com/qencode3/regression_tests/thumb/vtt_sprite_long_10x10/thumbnails.vtt',
+            //   // src: 'https://nyc3.digitaloceanspaces.com/qencode3/regression_tests/thumb/vtt_sprite_long_5x5/thumbnails.vtt',
+            //   //src: 'https://nyc3.digitaloceanspaces.com/qencode3/regression_tests/thumb/vtt_sprite/thumbnails.vtt',
+            //   //src: 'https://nyc3.digitaloceanspaces.com/qencode3/regression_tests/thumb/vtt_sprite_long/thumbnails.vtt',
+            //   // width: 120,
+            //   // height: 68
+            // },
+
+
+            licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
+
+            // analytics: 'off',
+
+            // analytics: {
+            //   enabled: true,
+            //   developerKey: '342ikf329828429',
+            //   analyticsEndpoint: 'https://reqres.in/api/users',
+            // },
+
+            videoSources: {
+                //src: "https://bitmovin-a.akamaihd.net/content/sintel/sintel.mpd", // see https://bitmovin.com/demos/4k
+                //src: "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" // test CC
+                //src: "https://5b44cf20b0388.streamlock.net:8443/live/ngrp:live_all/playlist.m3u8", // LIVE
+                //src: "https://qencode.nyc3.digitaloceanspaces.com/Valerian.mp4"
+                //src:'https://player.ead.ee/surf_720.mp4'
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/bbb_30s.mp4'
+                src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8', // TEST VIDEO QUALITY CHANGE
+                //src: 'https://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8',
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/GoReact/V2-tests/WIN_20200201_20_50_52_Pro.mp4',
+                //src:  'https://nyc3.digitaloceanspaces.com/qencode/ML%20Tests/Movies%20full%20length/Basic.Instinct.1992.1080p.mp4',
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/ML%20Tests/Movies%20full%20length/Django.Unchained.2012.1080p.BluRay.x264.YIFY.mp4',
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/ML%20Tests/User%20Videos/Kaspersky-Dutch.mp4',
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/ML%20Tests/Movies%20full%20length/2001.A.Space.Odyssey.1968.1080p.BluRay.x264.anoXmous_.mp4',
+                //src: 'https://nyc3.digitaloceanspaces.com/qencode/ML%20Tests/Movies%20full%20length/Django.Unchained.2012.1080p.BluRay.x264.YIFY.mp4'
+            },
+            titleBar: {
+                text: 'Hello Qencode Player'
+            },
+            social: {
+                shareUrl: 'https://www.youtube.com/watch?v=DjTlVloHXCg',
+                twitter: 'https://twitter.com',
+                facebook: 'https://facebook.com',
+            },
+
+            pauseWhenNotVisible: true,
+
+
+            bypassOptions: {
+                // loop: true,
+                // muted: true,
+                // autoplay: true,
+                // controls: false,
+                // see for layout https://docs.videojs.com/tutorial-layout.html
+                // fluid: false,
+                // aspectRatio: '16:9',
+                // fill: true,
+                // responsive: true
+                // width: 360,
+                // height: 180,        
+                // liveui: true,
+                //inactivityTimeout: 1000
+            }
+        };
+
+        qPlayer('mycontainer2', params, function () {
+            console.log('qPlayer is up and running');
+        });
+
+
+    </script>    
+  </section>
 
 
 </body>
