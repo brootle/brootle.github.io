@@ -727,59 +727,52 @@
                             <div id='my_player'></div>
                         </div>
 
-
-                        <div class="q7-player-settings">
-
-                            <div class="q7-player-settings__row">
-                                <div>
-                                    <div class="q7-player-settings__block">
-                                        <div class="q7-player-settings__block-title">Video Source</div>
-                                        <div class="q7-player-settings__block-content">
-                                            <div class="q7-advanced-settings__row">
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div class="q7-input__label">
-                                                            <label>Field to enter the URL</label>
-                                                        </div>
-                                                        <input id="playerVideoUrl" class="q7-input__field" type="text">
-                                                    </div>
-                                                    <button disabled id="reload_player" class="q7-button">Reload
-                                                        parameters</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="q7-advanced-settings__row">
-
-                                                <div class="q7-input-and-buttons--inline">
-                                                    <div class="q7-input">
-                                                        <div
-                                                            class="q7-input__label q7-input__label--with-switch q7-input__label--row-title">
-                                                            <label>Enable thumbnails</label>
-
-                                                            <div class="q7-switch-container">
-                                                                <label class="q7-switch">
-                                                                    <input id="dynamicFieldsEnableThumbnails"
-                                                                        class="q7-input__field" type="checkbox">
-                                                                    <span class="q7-switch__slider"></span>
-                                                                    <span class="q7-switch__text">
-                                                                        <span class="q7-switch__text--on">On</span>
-                                                                        <span class="q7-switch__text--off">Off</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-
-                                                        </div>
-                                                        <input id="dynamicFieldsThumbnails" class="q7-input__field"
-                                                            type="text" style="display: none;">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                        <div class="q7-player-settings__sources">
+                            <div class="q7-input-and-buttons--inline">
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Enter the source video URL:</label>
+                                    </div>
+                                    <input id="playerVideoUrl" class="q7-input__field" type="text">
+                                </div>
+                                <button disabled id="reload_player" class="q7-button">Reload video</button>
+                            </div>
+                            
+                            <div class="q7-player-settings__vtt-resources">
+                                <div class="q7-inline-checkboxes">
+                                    <div class="q7-checkbox-with-tooltip">
+                                        <label class="q7-checkbox">
+                                            Load subtitles
+                                            <input type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                        <div class="q7-question-icon"></div>
+                                    </div>
+                                    <div class="q7-checkbox-with-tooltip">
+                                        <label class="q7-checkbox">
+                                            Load VTT thumbnails
+                                            <input id="dynamicFieldsEnableThumbnails" type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                        <div class="q7-question-icon"></div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="dynamicFieldsThumbnailsInput" class="q7-input-and-buttons--inline">
+                                <div class="q7-input">
+                                    <div class="q7-input__label">
+                                        <label>Enter the VTT thumbnails URL:</label>
+                                    </div>
+                                    <input id="dynamicFieldsThumbnails" class="q7-input__field" type="text">
+                                </div>                                
+                            </div>                            
+                            
+                        </div>
+
+                        <div class="q7-player-settings">
+
+
 
 
                             <div class="q7-player-settings__row">
@@ -1468,9 +1461,9 @@
                                 if (params.thumbnails) {
                                     $('#dynamicFieldsEnableThumbnails').prop('checked', true);
                                     $("#dynamicFieldsThumbnails").val(params.thumbnails.src);
-                                    $("#dynamicFieldsThumbnails").show();
+                                    $("#dynamicFieldsThumbnailsInput").show();
                                 } else {
-                                    $("#dynamicFieldsThumbnails").hide();
+                                    $("#dynamicFieldsThumbnailsInput").hide();
                                 }
                             }
 
@@ -1478,9 +1471,9 @@
 
                             $("#dynamicFieldsEnableThumbnails").change(function () {
                                 if ($(this).is(":checked")) {
-                                    $("#dynamicFieldsThumbnails").show();
+                                    $("#dynamicFieldsThumbnailsInput").show();
                                 } else {
-                                    $("#dynamicFieldsThumbnails").hide();
+                                    $("#dynamicFieldsThumbnailsInput").hide();
                                 }
                             });
 
@@ -1504,6 +1497,8 @@
                             function loadParamsFromUI() {
 
                                 // Load all values from fields
+
+                                console.log("Load params from UI");
 
                                 var ui_params = {
 
@@ -1659,7 +1654,7 @@ qPlayer('my_player', params, function() {
                             // update code block with new params - playerCodeJS
                             updateCodeblockWithNewParams();
 
-                            $(".q7-player-settings input, .q7-player-settings select").on('change keyup', function () {
+                            $(".q7-player-settings__sources input, .q7-player-settings input, .q7-player-settings select").on('change keyup', function () {
                                 updateCodeblockWithNewParams();
                             });
 
