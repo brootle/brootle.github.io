@@ -133,6 +133,37 @@
   <p>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque laboriosam ad velit ullam aperiam molestias cumque ipsa rerum, facilis eligendi ut officia quis nihil voluptatem voluptates blanditiis accusamus! A, assumenda?
   </p>
+
+<div id='mycontainer3'></div>
+<script>
+
+  var params3 = {
+
+    licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
+
+    videoSources: {
+      src: 'https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd'
+    },
+
+    pauseWhenNotVisible: true,
+    
+    textTracks: [{
+      src: 'example.vtt',
+      label: 'English',
+      language: 'en'
+    }, {
+      src: 'esperanto.vtt',
+      label: 'Esperanto',
+      language: 'eo'
+    }]    
+
+  };
+
+  qencodePlayer('mycontainer3', params3, function () {
+    console.log('Qencode Player 3 is up and running');
+  });    
+</script>
+
   
   <p>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque laboriosam ad velit ullam aperiam molestias cumque ipsa rerum, facilis eligendi ut officia quis nihil voluptatem voluptates blanditiis accusamus! A, assumenda?
