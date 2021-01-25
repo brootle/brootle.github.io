@@ -5978,6 +5978,8 @@ input[type=text].q7-input__field:disabled{
 
 .q7-player-settings__row > div{
     flex: 1;
+    display: flex;
+    flex-direction: column;    
 }
 
 .q7-player-settings__row > div + div{
@@ -6092,10 +6094,6 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     display: none;
 }
 
-
-.q7-player-settings__block{
-    margin-bottom: 25px;
-}
  
 .q7-player-settings__block .q7-input__label.q7-input__label--with-switch + input[type=text].q7-input__field {
     margin-top: 15px;
@@ -6145,6 +6143,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     display: flex;
     align-items: center;
     justify-content: space-between;    
+    position: relative;
 }
 
 .q7-transcoding-api__block-title{
@@ -6392,7 +6391,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 }
 
 .q7-player-settings__block-content{
-    border-top: 1px solid #e6e8eb;
+    margin-bottom: 25px;
 }
 
 .q7-player-settings__block-content .q7-advanced-settings__row:first-of-type {
@@ -6476,6 +6475,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     border: 1px solid #e0e0e0;
     overflow: hidden;
     position: relative;
+    flex: 1;
 }
 
 .q7-player-code > .q7-input-and-buttons--inline {
@@ -9680,6 +9680,8 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     position: absolute;
     top: -2px;
     right: 0;
+    display: flex;
+    align-items: center;
 }
 
 .q7-input__action-buttons .q7-button.q7-button--round {
@@ -9749,6 +9751,83 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     margin-bottom: 45px;
     padding: 15px 25px;
 }
+
+.q7-player-settings__row pre,
+.q7-player-settings__row code.hljs{
+    background-color: #f7f7f7;  
+}
+
+.q7-player-settings__row  .q7-codeblock-container{
+    border: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;    
+}
+
+.q7-player-settings__row .q7-codeblock__example{
+    flex: 1;
+    display: flex;
+    flex-direction: column;    
+}
+
+.q7-player-settings__row .q7-codeblock__example .q7-codeblock__code{
+    display: flex;
+    flex-direction: column;
+}
+
+.q7-player-settings__row pre{
+    max-height: none;
+    flex: 1;    
+}
+
+.q7-input__action-buttons .q7-checkbox{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable{
+    border-top: 1px solid #e6e8eb;
+    cursor: pointer;
+    position: relative;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable:last-of-type{
+    border-bottom: 1px solid #e6e8eb;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable .q7-player-settings__block-title{
+    position: relative;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable .q7-player-settings__block-title:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    right: 4px;
+    top: calc(50% - 5px);
+    height: 9px;
+    width: 9px;
+    border-bottom: 2px solid var(--blue);
+    border-right: 2px solid var(--blue);
+    transform: rotate(-45deg);
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable .q7-player-settings__block-title{
+    margin: 0;
+    padding: 8px 0;
+    padding-right: 30px;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable .q7-player-settings__block-content{
+    display: none;
+}
+
+.q7-player-settings__block.q7-player-settings__block--expandable .q7-player-settings__block-content.q7-player-settings__block-content--active{
+    display: initial;
+}
+
+
 
 @media screen and (min-width: 1650px){
     .q7-container{
