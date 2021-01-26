@@ -24,6 +24,8 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+
     <script src="plugins/spectrum/spectrum.js"></script>
     <link href="plugins/spectrum/spectrum.css" rel="stylesheet">
 
@@ -711,7 +713,8 @@
                             </div>
                         </div>
 
-                        <!-- Modal ends -->                                 
+                        <!-- Modal ends -->            
+                        
 
 
 
@@ -818,8 +821,9 @@
                                     </div>  
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div class="q7-player-settings__block-title ">Color Customization <a
-                                                id="resetColors">Reset to Defaults</a> </div>
+                                        <div class="q7-player-settings__block-title ">Color Customization 
+                                            <a id="resetColors" data-toggle="modal" data-target="reset_colors">Reset to Defaults</a> 
+                                        </div>
                                         <div class="q7-player-settings__block-content">
 
                                             <div class="q7-advanced-settings__row q7-advanced-settings__row--color">
@@ -1347,6 +1351,7 @@
                             loadColorParameters();
 
                             function resetColorParameters() {
+
                                 // defaultColors
                                 $("#controlBarText").val(defaultColors.controlBarText);
                                 $("#controlBarText").trigger("change");
@@ -1385,7 +1390,14 @@
 
                             }
 
-                            $("#resetColors").click(resetColorParameters);
+                            // reset_colors_button
+
+                            $("#resetColors").click(function(){
+                                // show modal 
+                                $('#reset_colors').modal('show');
+
+                                $("#reset_colors_button").click(resetColorParameters);
+                            });
 
 
                             // Player Layout   
@@ -1544,6 +1556,14 @@
 
                                     }
                                 };
+
+                                if(_.isEqual(ui_params.colors, defaultColors)){
+                                    // hide reset colors button
+                                    $("#resetColors").hide();
+                                }else{
+                                    // show reset colors button
+                                    $("#resetColors").show();
+                                }
 
                                 if (params.env) {
                                     ui_params.env = params.env;
@@ -1753,6 +1773,7 @@ qPlayer('my_player', params, function() {
                         <script>
                             $('.q7-input.q7-input--color .q7-input__field').spectrum({
                                 type: "component",
+                                preferredFormat: "hex",
                                 hideAfterPaletteSelect: "true"
                             });
 
@@ -1886,6 +1907,36 @@ qPlayer('my_player', params, function() {
                                 });
                             });
                         </script>
+
+                        <!-- Modal -->
+                        <div class="modal fade q7-modal" id="reset_colors" role="dialog">
+                            <div class="modal-dialog">
+                        
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                        
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Restore default colors</h5>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                    </div>
+                                    <div class="modal-body modal-body--player-settings">
+                        
+                                        Do you want to reset colors to default?
+                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="q7-modal-footer-buttons q7-modal-footer-buttons--right-aligned">
+                                            <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>
+                                            <button id="reset_colors_button" data-dismiss="modal" class="q7-button">Reset colors</button>
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                        
+                            </div>
+                        </div>
+                        
+                        <!-- Modal ends -->                        
 
                     </div>
 
