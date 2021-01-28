@@ -790,25 +790,26 @@
                                                         </div>
                                                         <div class="q7-custom-select">
                                                             <select id="playerLayoutSize" class="q7-select">
+                                                                <option value="aspect_ratio" selected>Aspect Ratio</option>
                                                                 <option value="fluid">Fluid</option>
-                                                                <option value="aspect_ratio">Aspect Ratio</option>
+                                                                <option value="fill">Fill</option>                                                                
                                                             </select>
                                                         </div>
                                                     </div>                                                    
 
-                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline" style="display: none;">
+                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline">
                                                         <div class="q7-input q7-input--width"> 
                                                             <div class="q7-input__label">
                                                                 <label>Width</label>
                                                             </div>                                                        
-                                                            <input id="playerLayoutSizeWidth" class="q7-input__field" value="640" type="number" step="1" min="1">                                                                                  
+                                                            <input id="playerLayoutSizeWidth" class="q7-input__field" value="16" type="number" step="1" min="1">                                                                                  
                                                         </div>  
                                                         
                                                         <div class="q7-input q7-input--height"> 
                                                             <div class="q7-input__label">
                                                                 <label>Height</label>
                                                             </div>                                                        
-                                                            <input id="playerLayoutSizeHeight" class="q7-input__field" value="360" type="number" step="1" min="1">                                                                                  
+                                                            <input id="playerLayoutSizeHeight" class="q7-input__field" value="9" type="number" step="1" min="1">                                                                                  
                                                         </div>
                                                     </div>                                                      
                                                     
@@ -1429,28 +1430,57 @@
                             $("#playerLayoutSize").change(function(){
                                 if($(this).val() === "aspect_ratio"){
                                     showWidthHeight();
+                                } else{
+                                    hideWidthHeight();
                                 }
 
-                                if($(this).val() === "fluid"){
-                                    hideWidthHeight();
-                                }                                
+                                // if($(this).val() === "fluid"){
+                                //     hideWidthHeight();
+                                // }                                
                             });             
 
                             function loadLayoutParameters(){
                                 // aspectRatio ratio parameter 
-                                if(params.bypassOptions.aspectRatio){
-                                    $("#playerLayoutSize").val("aspect_ratio");
-                                    $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
-                                    $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);  
-                                    showWidthHeight();                                  
-                                } 
+                                // if(params.bypassOptions.aspectRatio){
+                                //     $("#playerLayoutSize").val("aspect_ratio");
+                                //     $("#playerLayoutSizeWidth").val(params.bypassOptions.aspectRatio.split(':')[0]);
+                                //     $("#playerLayoutSizeHeight").val(params.bypassOptions.aspectRatio.split(':')[1]);  
+                                //     showWidthHeight();                                  
+                                // } 
 
-                                // fluid - takes all available space
-                                if(params.bypassOptions.fluid){
+                                // // fluid - takes all available space
+                                // if(params.bypassOptions.fluid){
+                                //     $("#playerLayoutSize").val("fluid");
+                                //     // if fluid - hide widht and height options and set margin-right to 0
+                                //     hideWidthHeight();
+                                // }            
+                                
+                                
+                                if (params.size.aspectRatio) {
+                                    $("#playerLayoutSize").val("aspect_ratio");
+                                    $("#playerLayoutSizeWidth").val(params.size.aspectRatio.split(':')[0]);
+                                    $("#playerLayoutSizeHeight").val(params.size.aspectRatio.split(':')[1]);
+                                    showWidthHeight();
+                                }
+
+                                // fluid - set size to match video size
+                                if (params.size.fluid) {
                                     $("#playerLayoutSize").val("fluid");
                                     // if fluid - hide widht and height options and set margin-right to 0
                                     hideWidthHeight();
-                                }                                                    
+                                }             
+                                
+                                // fill - fit player container
+                                if (params.size.fill) {
+                                    // in case fill is selected set the size for player container as in fill mode it will take available space
+                                    // if size is not set for container, the will be no height
+                                    var containerWidth = $("#my_player").width();
+                                    var containerHeight = containerWidth/100*60;
+                                    $("#my_player").height(containerHeight);
+                                    $("#playerLayoutSize").val("fill");
+                                    // if fluid - hide widht and height options and set margin-right to 0
+                                    hideWidthHeight();
+                                }                                    
                             } 
 
                             loadLayoutParameters();
@@ -1569,6 +1599,14 @@
                                         menuOptionSelectedMarker: $("#menuOptionSelectedMarker").val()
                                     },
 
+                                    size: {
+
+                                    },
+
+                                    playback: {
+
+                                    },
+
                                     bypassOptions: {
 
                                     }
@@ -1589,12 +1627,19 @@
                                 }
 
                                 if ($("#playerLayoutSize").val() == "aspect_ratio") {
-                                    ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();
+                                    // ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();
+                                    ui_params.size.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();
                                 }
 
                                 if ($("#playerLayoutSize").val() == "fluid") {
-                                    ui_params.bypassOptions.fluid = true;
+                                    // ui_params.bypassOptions.fluid = true;
+                                    ui_params.size.fluid = true;
                                 }
+
+                                if ($("#playerLayoutSize").val() == "fill") {
+                                    // ui_params.bypassOptions.fluid = true;
+                                    ui_params.size.fill = true;
+                                }                                
 
                                 if ($('#playbackPauseNotVisible').prop("checked")) {
                                     ui_params.pauseWhenNotVisible = true;
