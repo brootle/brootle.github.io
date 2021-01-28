@@ -1279,6 +1279,23 @@
 
                                 colors: defaultColors,
 
+                                playback: {
+                                    //loop: true,
+                                    //muted: true,
+                                    //autoplay: true, // autoplay will work only if muted is true
+                                    //controls: false,        
+                                    //pauseWhenNotVisible: true,
+                                    //autoLoadingVideoQuality: true
+                                },
+
+                                size: {
+                                    //width: 360,
+                                    //height: 180,  
+                                    //aspectRatio: '16:5',
+                                    //fluid: true, // if fluid set to true it will override aspectRation
+                                    //fill: true,          
+                                },                                
+
                                 //pauseWhenNotVisible: true,
 
                                 bypassOptions: {
@@ -1556,14 +1573,16 @@
 
                                     }
                                 };
+                           
 
+                                // toggle reset colors button
                                 if(_.isEqual(ui_params.colors, defaultColors)){
                                     // hide reset colors button
                                     $("#resetColors").hide();
                                 }else{
                                     // show reset colors button
                                     $("#resetColors").show();
-                                }
+                                }                                
 
                                 if (params.env) {
                                     ui_params.env = params.env;
@@ -1626,10 +1645,27 @@
 
                             // this function is used to update code block
                             function updateCodeblockWithNewParams() {
-                                //console.log("Update Code");
+                                //console.log("Update Code");                                             
 
                                 var code_params = loadParamsFromUI();
                                 //console.log(code_params);
+
+                                // add colors only if they are not equal to defaul
+                                if (_.isEqual(code_params.colors, defaultColors)) {
+                                    // don't add colors to ui_params
+                                    console.log("Remove colors from code");
+                                    delete code_params.colors;
+                                } else {
+                                    console.log("Filter colors, only leave those colors that do not match default");
+                                    // add only those colors that are not same as in default
+                                    // itterate over object and remove keys that match
+                                    for (var key in code_params.colors) {
+                                        if(code_params.colors[key] === defaultColors[key]){
+                                            delete code_params.colors[key];
+                                        }
+                                    }
+                                }                      
+                                
 
                                 var keys = Object.keys(code_params);
 
