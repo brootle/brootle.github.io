@@ -1491,29 +1491,51 @@
                             // Player Playback                                
                             function loadPlaybackParameters() {
                                 // pause when not visible
-                                if (params.pauseWhenNotVisible) {
+                                // if (params.pauseWhenNotVisible) {
+                                //     $('#playbackPauseNotVisible').prop('checked', true);
+                                // }
+
+                                // pause when not visible
+                                if (params.playback.pauseWhenNotVisible) {
                                     $('#playbackPauseNotVisible').prop('checked', true);
-                                }
+                                }                                   
 
                                 // loop
-                                if (params.bypassOptions.loop) {
+                                // if (params.bypassOptions.loop) {
+                                //     $('#playbackLoopContent').prop('checked', true);
+                                // }
+
+                                // loop
+                                if (params.playback.loop) {
                                     $('#playbackLoopContent').prop('checked', true);
-                                }
+                                }                                
 
                                 // muted
-                                if (params.bypassOptions.muted) {
+                                // if (params.bypassOptions.muted) {
+                                //     $('#playbackMuteOnStart').prop('checked', true);
+                                // }
+
+                                if (params.playback.muted) {
                                     $('#playbackMuteOnStart').prop('checked', true);
-                                }
+                                }                                
 
                                 // autoplay
-                                if (params.bypassOptions.autoplay) {
+                                // if (params.bypassOptions.autoplay) {
+                                //     $('#playbackAutostart').prop('checked', true);
+                                // }
+
+                                if (params.playback.autoplay) {
                                     $('#playbackAutostart').prop('checked', true);
-                                }
+                                }                                
 
                                 // controls
-                                if (params.bypassOptions.controls === false) {
+                                // if (params.bypassOptions.controls === false) {
+                                //     $('#playbackShowControls').prop('checked', false);
+                                // }
+
+                                if (params.playback.controls === false) {
                                     $('#playbackShowControls').prop('checked', false);
-                                }
+                                }                                
                             }
 
                             loadPlaybackParameters();
@@ -1642,23 +1664,28 @@
                                 }                                
 
                                 if ($('#playbackPauseNotVisible').prop("checked")) {
-                                    ui_params.pauseWhenNotVisible = true;
+                                    //ui_params.pauseWhenNotVisible = true;
+                                    ui_params.playback.pauseWhenNotVisible = true;
                                 }
 
                                 if ($('#playbackLoopContent').prop("checked")) {
-                                    ui_params.bypassOptions.loop = true;
+                                    // ui_params.bypassOptions.loop = true;
+                                    ui_params.playback.loop = true;
                                 }
 
                                 if ($('#playbackMuteOnStart').prop("checked")) {
-                                    ui_params.bypassOptions.muted = true;
+                                    // ui_params.bypassOptions.muted = true;
+                                    ui_params.playback.muted = true;
                                 }
 
                                 if ($('#playbackAutostart').prop("checked")) {
-                                    ui_params.bypassOptions.autoplay = true;
+                                    // ui_params.bypassOptions.autoplay = true;
+                                    ui_params.playback.autoplay = true;
                                 }
 
                                 if (!$('#playbackShowControls').prop("checked")) {
-                                    ui_params.bypassOptions.controls = false;
+                                    // ui_params.bypassOptions.controls = false;
+                                    ui_params.playback.controls = false;
                                 }
 
                                 if ($('#dynamicFieldsShowTitle').prop("checked")) {
