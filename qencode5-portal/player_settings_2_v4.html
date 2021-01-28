@@ -1698,10 +1698,8 @@
                                 // add colors only if they are not equal to defaul
                                 if (_.isEqual(code_params.colors, defaultColors)) {
                                     // don't add colors to ui_params
-                                    console.log("Remove colors from code");
                                     delete code_params.colors;
-                                } else {
-                                    console.log("Filter colors, only leave those colors that do not match default");
+                                } else {                                    
                                     // add only those colors that are not same as in default
                                     // itterate over object and remove keys that match
                                     for (var key in code_params.colors) {
@@ -1709,8 +1707,35 @@
                                             delete code_params.colors[key];
                                         }
                                     }
-                                }                      
+                                }                    
                                 
+                                // if aspectRation is equal to default '16:9', don't add it to code block
+                                //.size.aspectRatio
+                                if(code_params.size.aspectRatio  === '16:9'){
+                                    delete code_params.size.aspectRatio;
+                                }
+                                
+                                // remove size from code if it's empty
+                                if(code_params.size && _.isEmpty(code_params.size)){
+                                    delete code_params.size;
+                                }
+ 
+                                // remove playback from code if it's empty
+                                if (code_params.playback && _.isEmpty(code_params.playback)) {
+                                    delete code_params.playback;
+                                }
+                                     
+                                // remove bypassOptions from code if it's empty
+                                if (code_params.bypassOptions && _.isEmpty(code_params.bypassOptions)) {
+                                    delete code_params.bypassOptions;
+                                }
+
+                                // remove env from code if it exists amd if it's equal to qa
+                                if (code_params.env && code_params.env === 'qa') {
+                                    delete code_params.env;
+                                }                                
+                                                                
+
 
                                 var keys = Object.keys(code_params);
 
