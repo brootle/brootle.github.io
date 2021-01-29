@@ -716,10 +716,6 @@
                         <!-- Modal ends -->            
                         
 
-
-
-                        <div class="q7-block-title">Player Customization</div>
-
                         <!-- <script>
                             window.qencode_player_path_prefix = 'https://player-static.qencode.com/release/';
                         </script>   -->
@@ -729,6 +725,8 @@
                         <div class="q7-settings-player-container">
                             <div id='my_player'></div>
                         </div>
+
+                        <div class="q7-block-title">Player Customization</div>
 
                         <div class="q7-player-settings__sources">
                             <div class="q7-input-and-buttons--inline">
@@ -778,7 +776,7 @@
                             <div class="q7-player-settings__row">
                                 <div>
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div class="q7-player-settings__block-title">Player Size</div>
+                                        <div id="playerSizeParameters" class="q7-player-settings__block-title">Player Size</div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -797,20 +795,32 @@
                                                         </div>
                                                     </div>                                                    
 
-                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline">
+                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline q7-input-and-buttons--has-delimeter">
                                                         <div class="q7-input q7-input--width"> 
                                                             <div class="q7-input__label">
                                                                 <label>Width</label>
                                                             </div>                                                        
-                                                            <input id="playerLayoutSizeWidth" class="q7-input__field" value="16" type="number" step="1" min="1">                                                                                  
+                                                            <input id="playerLayoutSizeWidth" class="q7-input__field" type="text" value="16">                                                                                  
                                                         </div>  
+
+                                                        <div class="q7-input-delimeter">:</div>
                                                         
                                                         <div class="q7-input q7-input--height"> 
                                                             <div class="q7-input__label">
                                                                 <label>Height</label>
                                                             </div>                                                        
-                                                            <input id="playerLayoutSizeHeight" class="q7-input__field" value="9" type="number" step="1" min="1">                                                                                  
+                                                            <input id="playerLayoutSizeHeight" class="q7-input__field" type="text" value="9">                                                                                  
                                                         </div>
+
+                                                        <script>
+                                                            $(function () {
+                                                                // allow only positive integer numbers
+                                                                $('#playerLayoutSizeHeight, #playerLayoutSizeWidth').on('input', function (e) {
+                                                                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                                                });                                                                
+                                                            });
+                                                        </script>                                                        
+
                                                     </div>                                                      
                                                     
                                                 </div>                                  
@@ -822,7 +832,7 @@
                                     </div>  
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div class="q7-player-settings__block-title ">Color Customization 
+                                        <div id="colorCustomizationParameters" class="q7-player-settings__block-title ">Color Customization 
                                             <a id="resetColors" data-toggle="modal" data-target="reset_colors">Reset to Defaults</a> 
                                         </div>
                                         <div class="q7-player-settings__block-content">
@@ -992,7 +1002,7 @@
                                     </div>
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div class="q7-player-settings__block-title">Playback</div>
+                                        <div id="playbackParameters" class="q7-player-settings__block-title">Playback</div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -1124,7 +1134,7 @@
                                     </div>
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div class="q7-player-settings__block-title">Dynamic Fields</div>
+                                        <div id="dynamicParameters" class="q7-player-settings__block-title">Dynamic Fields</div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -1594,7 +1604,11 @@
                                 }
                             });
 
+                            var paramsLoadedTimes = 0;
+
                             function loadParamsFromUI() {
+
+                                paramsLoadedTimes++;
 
                                 // Load all values from fields
 
@@ -1635,62 +1649,103 @@
                                 };
                            
 
+
                                 // toggle reset colors button
                                 if(_.isEqual(ui_params.colors, defaultColors)){
                                     // hide reset colors button
                                     $("#resetColors").hide();
                                 }else{
                                     // show reset colors button
-                                    $("#resetColors").show();
+                                    $("#resetColors").show();                          
+                                    
+                                    // expand on page load
+                                    if(paramsLoadedTimes === 1){
+                                        $("#colorCustomizationParameters").addClass("q7-player-settings__block-title--active");
+                                        $("#colorCustomizationParameters").next().addClass("q7-player-settings__block-content--active");
+                                    }
                                 }                                
 
                                 if (params.env) {
                                     ui_params.env = params.env;
                                 }
 
-                                if ($("#playerLayoutSize").val() == "aspect_ratio") {
-                                    // ui_params.bypassOptions.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();
-                                    ui_params.size.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();
-                                }
+                                // size start
+                                if ($("#playerLayoutSize").val() === "aspect_ratio") {
+                                    ui_params.size.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();                                  
+                                }                                
 
                                 if ($("#playerLayoutSize").val() == "fluid") {
-                                    // ui_params.bypassOptions.fluid = true;
                                     ui_params.size.fluid = true;
                                 }
 
                                 if ($("#playerLayoutSize").val() == "fill") {
-                                    // ui_params.bypassOptions.fluid = true;
                                     ui_params.size.fill = true;
-                                }                                
+                                }                 
+
+
+                                // expand on page load is Aspect Ratio 16:9 is not selected
+                                if (paramsLoadedTimes === 1 && !ui_params.size.aspectRatio || ui_params.size.aspectRatio !== '16:9') {
+                                    console.log("open!!!");
+                                    $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
+                                    $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
+                                }   
+                                // size end              
+
+                                // playback start
+                                var playbackDefault = '00001';
+                                var playbackSelected = '';
 
                                 if ($('#playbackPauseNotVisible').prop("checked")) {
-                                    //ui_params.pauseWhenNotVisible = true;
                                     ui_params.playback.pauseWhenNotVisible = true;
+                                    playbackSelected +='1';
+                                } else{
+                                    playbackSelected +='0'
                                 }
 
                                 if ($('#playbackLoopContent').prop("checked")) {
-                                    // ui_params.bypassOptions.loop = true;
                                     ui_params.playback.loop = true;
+                                    playbackSelected += '1';
+                                } else {
+                                    playbackSelected += '0'
                                 }
 
                                 if ($('#playbackMuteOnStart').prop("checked")) {
-                                    // ui_params.bypassOptions.muted = true;
                                     ui_params.playback.muted = true;
+                                    playbackSelected += '1';
+                                } else {
+                                    playbackSelected += '0'
                                 }
 
                                 if ($('#playbackAutostart').prop("checked")) {
-                                    // ui_params.bypassOptions.autoplay = true;
                                     ui_params.playback.autoplay = true;
+                                    playbackSelected += '1';
+                                } else {
+                                    playbackSelected += '0'
                                 }
 
                                 if (!$('#playbackShowControls').prop("checked")) {
-                                    // ui_params.bypassOptions.controls = false;
                                     ui_params.playback.controls = false;
+                                    playbackSelected += '0';
+                                } else {
+                                    playbackSelected += '1'
                                 }
+
+                                if (paramsLoadedTimes === 1 && playbackSelected !== playbackDefault) {
+                                    $("#playbackParameters").addClass("q7-player-settings__block-title--active");
+                                    $("#playbackParameters").next().addClass("q7-player-settings__block-content--active");
+                                }                                   
+                                // playback end
+
+                                // dynamic fields start
+                                var dynamicDefault = '00';
+                                var dynamicSelected = '';
 
                                 if ($('#dynamicFieldsShowTitle').prop("checked")) {
                                     ui_params.titleBar = {};
                                     ui_params.titleBar.text = $("#dynamicFieldsTitle").val();
+                                    dynamicSelected += '1';
+                                } else {
+                                    dynamicSelected += '0'
                                 }
 
                                 if ($('#dynamicFieldsShareUrl').prop("checked")) {
@@ -1698,7 +1753,15 @@
                                     ui_params.social.shareUrl = $("#dynamicFieldsShareUrlLink").val();
                                     ui_params.social.twitter = 'https://twitter.com/intent/tweet?text=' + $("#dynamicFieldsShareUrlLink").val();
                                     ui_params.social.facebook = 'https://www.facebook.com/sharer/sharer.php?u=' + $("#dynamicFieldsShareUrlLink").val();
+                                    dynamicSelected += '1';
+                                } else {
+                                    dynamicSelected += '0'
                                 }
+                                if (paramsLoadedTimes === 1 && dynamicSelected !== dynamicDefault) {
+                                    $("#dynamicParameters").addClass("q7-player-settings__block-title--active");
+                                    $("#dynamicParameters").next().addClass("q7-player-settings__block-content--active");
+                                }    
+                                // dynamic fields end                                
 
                                 if ($('#dynamicFieldsEnableThumbnails').prop("checked")) {
                                     ui_params.thumbnails = {};
