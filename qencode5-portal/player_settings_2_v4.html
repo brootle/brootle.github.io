@@ -726,8 +726,6 @@
                             <div id='my_player'></div>
                         </div>
 
-                        <div class="q7-block-title">Player Customization</div>
-
                         <div class="q7-player-settings__sources">
                             <div class="q7-input-and-buttons--inline">
                                 <div class="q7-input">
@@ -771,6 +769,8 @@
                             
                         </div>
 
+                        <div class="q7-block-title">Player Customization</div>
+
                         <div class="q7-player-settings">
 
                             <div class="q7-player-settings__row">
@@ -782,20 +782,20 @@
 
                                                 <div class="q7-input-and-buttons--inline">
 
-                                                    <div class="q7-input">
+                                                    <div class="q7-input" style="margin-right: 0;">
                                                         <div class="q7-input__label">
                                                             <label>Size</label>
                                                         </div>
                                                         <div class="q7-custom-select">
                                                             <select id="playerLayoutSize" class="q7-select">
-                                                                <option value="aspect_ratio" selected>Aspect Ratio</option>
-                                                                <option value="fluid">Fluid</option>
+                                                                <option value="fluid" selected>Fluid</option>
+                                                                <option value="aspect_ratio">Aspect Ratio</option>                                                                
                                                                 <option value="fill">Fill</option>                                                                
                                                             </select>
                                                         </div>
                                                     </div>                                                    
 
-                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline q7-input-and-buttons--has-delimeter">
+                                                    <div id="widthAndHeight" class="q7-input-and-buttons--inline q7-input-and-buttons--has-delimeter" style="display: none;">
                                                         <div class="q7-input q7-input--width"> 
                                                             <div class="q7-input__label">
                                                                 <label>Width</label>
@@ -1684,11 +1684,16 @@
 
 
                                 // expand on page load is Aspect Ratio 16:9 is not selected
-                                if (paramsLoadedTimes === 1 && !ui_params.size.aspectRatio || ui_params.size.aspectRatio !== '16:9') {
-                                    console.log("open!!!");
+                                // if (paramsLoadedTimes === 1 && !ui_params.size.aspectRatio || ui_params.size.aspectRatio !== '16:9') {
+                                //     $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
+                                //     $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
+                                // }   
+
+                                // expand if fluid is not selected
+                                if (paramsLoadedTimes === 1 && !ui_params.size.fluid) {
                                     $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
                                     $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
-                                }   
+                                }                                   
                                 // size end              
 
                                 // playback start
@@ -1801,8 +1806,13 @@
                                 
                                 // if aspectRation is equal to default '16:9', don't add it to code block
                                 //.size.aspectRatio
-                                if(code_params.size.aspectRatio  === '16:9'){
-                                    delete code_params.size.aspectRatio;
+                                // if(code_params.size.aspectRatio  === '16:9'){
+                                //     delete code_params.size.aspectRatio;
+                                // }
+                                
+                                // if fliud is selected don't add it to code
+                                if(code_params.size.fluid){
+                                    delete code_params.size.fluid;
                                 }
                                 
                                 // remove size from code if it's empty
