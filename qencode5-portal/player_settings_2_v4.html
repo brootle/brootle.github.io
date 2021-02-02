@@ -1617,6 +1617,21 @@
 
                             loadDynamicFields();
 
+                            function resetDynamicParameters() {
+                                $("#dynamicFieldsShowTitle").prop("checked", false);
+                                $("#dynamicFieldsShowTitle").trigger("change");
+
+                                $("#dynamicFieldsTitle").val('');
+
+                                $("#dynamicFieldsShareUrl").prop("checked", false);
+                                $("#dynamicFieldsShareUrl").trigger("change");
+
+                                $("#dynamicFieldsShareUrlLink").val('');
+                            }
+
+                            $("#resetDynamicFields").click(resetDynamicParameters);       
+
+
                             $("#dynamicFieldsEnableThumbnails").change(function () {
                                 if ($(this).is(":checked")) {
                                     $("#dynamicFieldsThumbnailsInput").show();
