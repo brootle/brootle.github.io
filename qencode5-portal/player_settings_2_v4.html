@@ -776,7 +776,9 @@
                             <div class="q7-player-settings__row">
                                 <div>
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div id="playerSizeParameters" class="q7-player-settings__block-title">Player Size</div>
+                                        <div id="playerSizeParameters" class="q7-player-settings__block-title">Player Size
+                                            <a id="resetSize">Reset to Defaults</a>
+                                        </div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -1002,7 +1004,9 @@
                                     </div>
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div id="playbackParameters" class="q7-player-settings__block-title">Playback</div>
+                                        <div id="playbackParameters" class="q7-player-settings__block-title">Playback
+                                            <a id="resetPlayback">Reset to Defaults</a>
+                                        </div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -1134,7 +1138,9 @@
                                     </div>
 
                                     <div class="q7-player-settings__block q7-player-settings__block--expandable">
-                                        <div id="dynamicParameters" class="q7-player-settings__block-title">Dynamic Fields</div>
+                                        <div id="dynamicParameters" class="q7-player-settings__block-title">Dynamic Fields
+                                            <a id="resetDynamicFields">Reset to Defaults</a>
+                                        </div>
                                         <div class="q7-player-settings__block-content">
                                             <div class="q7-advanced-settings__row">
 
@@ -1428,6 +1434,7 @@
                             });
 
 
+
                             // Player Layout   
                             function hideWidthHeight(){
                                 $("#widthAndHeight").hide();
@@ -1496,6 +1503,14 @@
                             loadLayoutParameters();
 
 
+                            function resetLayoutParameters(){
+                                $("#playerLayoutSize").val("fluid").change();
+
+                                $("#playerLayoutSizeWidth").val("16");
+                                $("#playerLayoutSizeHeight").val("9");
+                            }
+
+                            $("#resetSize").click(resetLayoutParameters);                            
 
 
                             // Player Playback                                
@@ -1549,6 +1564,29 @@
                             }
 
                             loadPlaybackParameters();
+
+                            function resetPlaybackParameters() {
+                                $("#playbackLoopContent").prop("checked", false);
+                                $("#playbackLoopContent").trigger("change");
+
+                                //playbackMuteOnStart
+                                $("#playbackMuteOnStart").prop("checked", false);
+                                $("#playbackMuteOnStart").trigger("change");     
+
+                                //playbackPauseNotVisible
+                                $("#playbackPauseNotVisible").prop("checked", false);
+                                $("#playbackPauseNotVisible").trigger("change");   
+
+                                //playbackAutostart
+                                $("#playbackAutostart").prop("checked", false);
+                                $("#playbackAutostart").trigger("change");      
+
+                                //playbackShowControls
+                                $("#playbackShowControls").prop("checked", true);
+                                $("#playbackShowControls").trigger("change");                                   
+                            }
+
+                            $("#resetPlayback").click(resetPlaybackParameters);                              
 
                             // Dynamic Fields                            
                             function loadDynamicFields() {
@@ -1649,7 +1687,6 @@
                                 };
                            
 
-
                                 // toggle reset colors button
                                 if(_.isEqual(ui_params.colors, defaultColors)){
                                     // hide reset colors button
@@ -1674,15 +1711,30 @@
                                     ui_params.size.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();                                  
                                 }                                
 
-                                if ($("#playerLayoutSize").val() == "fluid") {
-                                    ui_params.size.fluid = true;
-                                }
+                                // fluid is enabled by default
+                                // if ($("#playerLayoutSize").val() == "fluid") {
+                                //     ui_params.size.fluid = true;
+                                // }
 
                                 if ($("#playerLayoutSize").val() == "fill") {
                                     ui_params.size.fill = true;
                                 }                 
 
+                                // toggle reset player size resetSize
+                                if (_.isEmpty(ui_params.size)) {
+                                    // hide reset colors button
+                                    $("#resetSize").hide();
+                                } else {     
+                                    $("#resetSize").show();
 
+                                    // expand on page load
+                                    if (paramsLoadedTimes === 1) {
+                                        $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
+                                        $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
+                                    }                                    
+                                }                                                            
+
+                        
                                 // expand on page load is Aspect Ratio 16:9 is not selected
                                 // if (paramsLoadedTimes === 1 && !ui_params.size.aspectRatio || ui_params.size.aspectRatio !== '16:9') {
                                 //     $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
@@ -1690,10 +1742,10 @@
                                 // }   
 
                                 // expand if fluid is not selected
-                                if (paramsLoadedTimes === 1 && !ui_params.size.fluid) {
-                                    $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
-                                    $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
-                                }                                   
+                                // if (paramsLoadedTimes === 1 && !ui_params.size.fluid) {
+                                //     $("#playerSizeParameters").addClass("q7-player-settings__block-title--active");
+                                //     $("#playerSizeParameters").next().addClass("q7-player-settings__block-content--active");
+                                // }                                   
                                 // size end              
 
                                 // playback start
@@ -1733,12 +1785,21 @@
                                     playbackSelected += '0';
                                 } else {
                                     playbackSelected += '1'
-                                }
+                                }                    
+                                
+                                // toggle reset playback resetPlayback
+                                if (_.isEmpty(ui_params.playback)) {
+                                    // hide reset colors button
+                                    $("#resetPlayback").hide();
+                                } else {
+                                    $("#resetPlayback").show();
 
-                                if (paramsLoadedTimes === 1 && playbackSelected !== playbackDefault) {
-                                    $("#playbackParameters").addClass("q7-player-settings__block-title--active");
-                                    $("#playbackParameters").next().addClass("q7-player-settings__block-content--active");
-                                }                                   
+                                    // expand on page load
+                                    if (paramsLoadedTimes === 1) {
+                                        $("#playbackParameters").addClass("q7-player-settings__block-title--active");
+                                        $("#playbackParameters").next().addClass("q7-player-settings__block-content--active");
+                                    }
+                                }                                    
                                 // playback end
 
                                 // dynamic fields start
@@ -1762,10 +1823,26 @@
                                 } else {
                                     dynamicSelected += '0'
                                 }
-                                if (paramsLoadedTimes === 1 && dynamicSelected !== dynamicDefault) {
-                                    $("#dynamicParameters").addClass("q7-player-settings__block-title--active");
-                                    $("#dynamicParameters").next().addClass("q7-player-settings__block-content--active");
+
+                                // if (paramsLoadedTimes === 1 && dynamicSelected !== dynamicDefault) {
+                                //     $("#dynamicParameters").addClass("q7-player-settings__block-title--active");
+                                //     $("#dynamicParameters").next().addClass("q7-player-settings__block-content--active");
+                                // }    
+
+                                // toggle reset dynamic fields resetDynamicFields  
+                                if (!ui_params.titleBar && !ui_params.social) {
+                                    // hide reset colors button
+                                    $("#resetDynamicFields").hide();
+                                } else {
+                                    $("#resetDynamicFields").show();
+
+                                    // expand on page load
+                                    if (paramsLoadedTimes === 1 && dynamicSelected !== dynamicDefault) {
+                                        $("#dynamicParameters").addClass("q7-player-settings__block-title--active");
+                                        $("#dynamicParameters").next().addClass("q7-player-settings__block-content--active");
+                                    }    
                                 }    
+
                                 // dynamic fields end                                
 
                                 if ($('#dynamicFieldsEnableThumbnails').prop("checked")) {
@@ -2003,7 +2080,7 @@ qPlayer('my_player', params, function() {
                                 button.addEventListener('click', function(e){
 
                                     // if we clicked reset button with id resetColors do nothtihg
-                                    if(e.target.id !== "resetColors"){
+                                    if(e.target.id !== "resetColors" && e.target.id !== "resetSize" && e.target.id !== "resetPlayback" && e.target.id !== "resetDynamicFields"){
                                         var currentRow = this;
                                         var nextRow = currentRow.nextElementSibling;
 
