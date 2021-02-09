@@ -1,0 +1,133 @@
+<head>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.4/video-js.min.css" rel="stylesheet" />
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
+</head>
+
+<body>
+    <div style="margin: 50px auto; max-width: 70%;">
+        <video id="my-video" class="video-js">
+            <source
+                src="https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd"
+                type="application/dash+xml">
+        </video>
+        <button id="setMinLevel" disabled>Set min quality level</button>
+        <button id="setMaxLevel" disabled>Set max quality level</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.4/video.min.js"></script>
+
+    <script src="lib/videojs-contrib-quality-levels.js"></script>
+
+    <script>
+        var player = videojs('my-video', {
+            controls: true,
+            fluid: true,        
+            html5: { 
+                vhs: {
+                    overrideNative: true,
+                    //enableLowInitialPlaylist: true // see https://github.com/videojs/http-streaming
+                    //bandwidth: 10285391,
+                    limitRenditionByPlayerDimensions: false,
+                    smoothQualityChange: false,
+                    //experimentalBufferBasedABR: true,
+                    //handlePartialData: true
+                },        
+                nativeCaptions: false ,
+                nativeAudioTracks: false,
+                nativeVideoTracks: false
+            }
+               
+        });
+
+        let qualityLevels = player.qualityLevels();
+        // Listen to change events for when the player selects a new quality level
+        qualityLevels.on('change', function () {
+            console.log('Quality Level changed!');
+            console.log('New level:', qualityLevels[qualityLevels.selectedIndex]);
+        });      
+
+        // show what levels are enabled
+        let showEnabledLevels = () => {
+            for (var i = 0; i < qualityLevels.length; i++) {
+                let qualityLevel = qualityLevels[i];
+                console.log(qualityLevel.enabled, qualityLevel.height);
+            }            
+        }
+
+        // enable quality level by index
+        let enableQualityLevel = level => {
+
+            for (var i = 0; i < qualityLevels.length; i++) {
+                let qualityLevel = qualityLevels[i];
+                qualityLevel.enabled = i === level ? true : false;
+            }
+
+            qualityLevels.selectedIndex_ = level;
+            qualityLevels.trigger({ type: 'change', selectedIndex: level });    
+        }
+
+        // set min quality level
+        document.getElementById("setMinLevel").addEventListener('click', () => {
+            console.log("Set Min quality level")
+            enableQualityLevel(0);          
+
+            console.log("qualityLevels.selectedIndex: ", qualityLevels.selectedIndex);
+            
+            showEnabledLevels();
+        })
+
+        // set max quality level 
+        document.getElementById("setMaxLevel").addEventListener('click', () => {
+            console.log("Set Max quality level")
+            enableQualityLevel(qualityLevels.length-1); 
+
+            console.log("qualityLevels.selectedIndex: ", qualityLevels.selectedIndex);
+
+            showEnabledLevels();
+        })        
+
+        player.on('timeupdate', function (){
+            console.log("Playing now: ", player.videoHeight());
+        })
+
+        player.on('loadedmetadata', function () {
+
+            // enable buttons
+            document.getElementById("setMinLevel").disabled = false;
+            document.getElementById("setMaxLevel").disabled = false;
+
+            // track currently rendered segments change
+            let tracks = player.textTracks();
+            let segmentMetadataTrack;
+
+            for (let i = 0; i < tracks.length; i++) {
+                if (tracks[i].label === 'segment-metadata') {
+                    segmentMetadataTrack = tracks[i];
+                }
+            }
+
+            let previousPlaylist;
+
+            if (segmentMetadataTrack) {
+                segmentMetadataTrack.on('cuechange', function () {
+                    let activeCue = segmentMetadataTrack.activeCues[0];
+
+                    if (activeCue) {
+                        if (previousPlaylist !== activeCue.value.playlist) {
+                            console.log('Switched from rendition ' + previousPlaylist +
+                                ' to rendition ' + activeCue.value.playlist, activeCue.value.resolution.height);
+                        }
+                        previousPlaylist = activeCue.value.playlist;
+                    }
+                });
+            }
+
+        });
+
+
+    </script>
+
+</body>
