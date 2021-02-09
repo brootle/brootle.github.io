@@ -57,7 +57,7 @@
             }            
         }
 
-        // enable quality level by index
+        // enable quality level by index, set other levels to false
         let enableQualityLevel = level => {
 
             for (var i = 0; i < qualityLevels.length; i++) {
@@ -68,6 +68,7 @@
             qualityLevels.selectedIndex_ = level;
             qualityLevels.trigger({ type: 'change', selectedIndex: level });    
         }
+
 
         // set min quality level
         document.getElementById("setMinLevel").addEventListener('click', () => {
