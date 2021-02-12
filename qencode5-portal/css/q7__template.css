@@ -9950,13 +9950,7 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     min-width: 224px;
 }
 
-.q7-loading-cell.q7-loading-cell--big-chart{
-    flex: 1;
-    border-radius: 0;
-    clip-path: polygon(83% 44%, 90% 100%, 10% 100%, 15% 67%, 19% 92%, 22% 80%, 24% 86%, 32% 46%, 41% 94%, 47% 75%, 53% 94%, 61% 55%, 68% 88%, 73% 71%, 76% 79%);
-    width: 98%;
-    margin-bottom: 7px;
-}
+
 
 .q7-billing-chart-container--usage-stats .q6-billing-chart,
 .q7-player-stats__chart-container,
@@ -9964,6 +9958,7 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 .q7-transfer-stats__chart-container {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .q7-nodata-cell{
@@ -10018,6 +10013,20 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     clip-path: url(#playerLoading);
 } 
 
+.q7-loading-cell.q7-loading-cell--big-chart{
+    flex: 1;
+    border-radius: 0;
+    /* clip-path: polygon(83% 44%, 90% 100%, 10% 100%, 15% 67%, 19% 92%, 22% 80%, 24% 86%, 32% 46%, 41% 94%, 47% 75%, 53% 94%, 61% 55%, 68% 88%, 73% 71%, 76% 79%); */
+    clip-path: polygon( 10% 100%, 19.2% 76%, 25.3% 90.9%, 30.6% 78.7%, 33% 84.6%, 39.5% 68.6%, 50.5% 94.4%, 57.9% 71.8%, 64.7% 89.9%, 69.4% 78.5%, 74.5% 90.64%, 80.8% 75.8%, 90% 100%);
+    width: 98%;
+    margin-bottom: 7px;
+
+
+    /* background-image: url(../img/skeleton_pic_2.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 80%;      */
+}
 
 
 @media screen and (min-width: 1650px){
