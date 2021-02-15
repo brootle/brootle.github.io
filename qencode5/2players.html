@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>two players</title>
+    <style>
+        .players-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            width: 576px;
+            height: 324px;
+            background-color: green;    
+            overflow: hidden;        
+        }
+
+        .players-controls{
+            
+        }
+
+        .players-controls.hidden{
+            display: none;
+        }
+
+        .slider-handler{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: greenyellow;
+            z-index: 10;
+        }
+      
+        .players-container .player{
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;     
+            overflow: hidden;       
+        }
+
+        .players-container .player:last-of-type{
+            z-index: 0;
+        }
+
+        .players-container .player:first-of-type{
+            border-right: 2px solid red;            
+        }
+
+        .players-container .player video{
+            width: 576px;
+            height: 324px;            
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        see https://beamr.com/
+
+        <div class="players-container">
+            <div class="player">
+                <video class="player" id="player1">
+                    <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="slider-handler" class="slider-handler"></div>
+            <div class="player">
+                <video id="player2" muted>
+                    <source src="http://media2.beamrvideo.com/videos/TheMummy_480p_mini.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div id="players-controls" class="players-controls hidden">
+            <button id="play-btn">Play</button>
+        </div>
+        <script>
+
+            let player1Container = document.querySelector('.players-container .player:first-of-type');
+            player1Container.style.width = "300px";
+
+            let player1 = document.getElementById("player1");
+            let player2 = document.getElementById("player2");
+
+            let playersControls = document.getElementById("players-controls");
+
+            let playBtn = document.getElementById("play-btn");
+
+            let player1CanPlay = false;
+            let player2CanPlay = false;
+
+            let showControls = () => {
+                console.log("Show controls");
+                playersControls.classList.remove('hidden');
+            };
+
+            let hideControls = () => {
+                console.log("Hide controls");
+                playersControls.classList.add('hidden');
+            };            
+
+            let toggleControls = () => {
+                console.log("Toggle controls ", player1CanPlay, player2CanPlay);
+                return player1CanPlay && player2CanPlay === true ? showControls() : hideControls();
+            }            
+
+            let startPlayers = () => {
+                player1.play();
+            }
+
+            let pausePlayers = () => {
+                player1.pause();
+            }            
+
+            player1.addEventListener('canplay', () => {
+                player1CanPlay = true;
+                console.log("Player 1 can play");
+
+                toggleControls();
+            });
+
+            player2.addEventListener('canplay', () => {
+                player2CanPlay = true;
+                console.log("Player 2 can play");
+
+                toggleControls();
+            });          
+            
+
+            player1.addEventListener('play', () => {
+                hideControls();
+                player2.play();
+            });    
+            
+            player1.addEventListener('ended', () => {
+                showControls();
+            });                
+                
+            playBtn.addEventListener('click', startPlayers);
+
+        </script>
+
+
+        <script>
+        // Make the DIV element draggable:
+        dragElement(document.getElementById("slider-handler"));
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                // if present, the header is where you move the DIV from:
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+                let player1 = document.querySelector('.players-container .player:first-of-type');
+                player1.style.width = elmnt.style.left;                
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    
+
+        </script>
+
+
+
+
+<!-- https://levelup.gitconnected.com/how-to-create-a-before-after-image-slider-with-css-and-js-a609d9ba77bf -->
+
+
+        <!-- <div class="img-comp-container">
+            <div class="img-comp-img">
+                <div style="background-color: red;"></div>
+            </div>
+            <div class="img-comp-slider"></div>
+            <div class="img-comp-img img-comp-overlay">
+                <div style="background-color: greenyellow;"></div>
+            </div>
+        </div>
+
+        
+
+        <script>
+                // see https://www.w3schools.com/howto/howto_js_image_comparison.asp
+
+                /* Find all elements with an "overlay" class: */
+                var x = document.getElementsByClassName("img-comp-overlay");
+                for (var i = 0; i < x.length; i++) {
+                    /* Once for each "overlay" element:
+                    pass the "overlay" element as a parameter when executing the compareImages function: */
+                    compareImages(x[i]);
+                }
+                function compareImages(img) {
+                    var img, clicked = 0, w, h;
+                    /* Get the width and height of the img element */
+                    w = img.offsetWidth;
+                    h = img.offsetHeight;
+                    /* Set the width of the img element to 50%: */
+                    img.style.width = (w / 2) + "px";
+
+                    var slider = document.getElementsByClassName("img-comp-slider")[0];
+                    console.log("slider: ", slider);
+
+                    /* Position the slider in the middle: */
+                    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+                    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+                    /* Execute a function when the mouse button is pressed: */
+                    slider.addEventListener("mousedown", slideReady);
+                    /* And another function when the mouse button is released: */
+                    window.addEventListener("mouseup", slideFinish);
+                    /* Or touched (for touch screens: */
+                    slider.addEventListener("touchstart", slideReady);
+                    /* And released (for touch screens: */
+                    window.addEventListener("touchend", slideFinish);
+
+                    function slideReady(e) {
+                        /* Prevent any other actions that may occur when moving over the image: */
+                        e.preventDefault();
+                        /* The slider is now clicked and ready to move: */
+                        clicked = 1;
+                        /* Execute a function when the slider is moved: */
+                        window.addEventListener("mousemove", slideMove);
+                        window.addEventListener("touchmove", slideMove);
+                    }
+                    function slideFinish() {
+                        /* The slider is no longer clicked: */
+                        clicked = 0;
+                    }
+
+                    function slideMove(e) {
+                        var pos;
+                        /* If the slider is no longer clicked, exit this function: */
+                        if (clicked == 0) return false;
+                        /* Get the cursor's x position: */
+                        pos = getCursorPos(e)
+                        /* Prevent the slider from being positioned outside the image: */
+                        if (pos < 0) pos = 0;
+                        if (pos > w) pos = w;
+                        /* Execute a function that will resize the overlay image according to the cursor: */
+                        slide(pos);
+                    }
+
+                    function getCursorPos(e) {
+                        var a, x = 0;
+                        e = e || window.event;
+                        /* Get the x positions of the image: */
+                        a = img.getBoundingClientRect();
+                        /* Calculate the cursor's x coordinate, relative to the image: */
+                        x = e.pageX - a.left;
+                        /* Consider any page scrolling: */
+                        x = x - window.pageXOffset;
+                        return x;
+                    }
+
+                    function slide(x) {
+                        /* Resize the image: */
+                        img.style.width = x + "px";
+                        /* Position the slider: */
+                        slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+                    }
+                }
+
+
+
+        </script> -->
+
+
+    </div>
+</body>
+</html>
