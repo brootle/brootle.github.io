@@ -12,9 +12,13 @@
             justify-content: center;
 
             position: relative;
-            width: 576px;
-            height: 324px;
-            background-color: green;    
+            /* width: 576px;
+            height: 324px; */
+
+            width: 1120px;
+            height: 460px;            
+
+            background-color: black;    
             overflow: hidden;        
         }
 
@@ -26,13 +30,50 @@
             display: none;
         }
 
-        .slider-handler{
+        .slider{
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: greenyellow;
+            width: 40px;
+            height: 40px;
+            background-color: #316fea;
             z-index: 10;
+            border-radius: 50%;
+
+
+            -webkit-border-radius: 1000px;
+            -moz-border-radius: 1000px;
+            border-radius: 1000px;
+            -webkit-box-shadow: 0 0 12px rgb(51 51 51 / 50%);
+            -moz-box-shadow: 0 0 12px rgba(51,51,51,0.5);
+            box-shadow: 0 0 12px rgb(51 51 51 / 50%);
+            z-index: 50;
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;         
         }
+
+        .slider:after {
+            top: 100%;
+        }        
+
+        .slider:before, .slider:after {
+            bottom: 42%;
+            left: 42%;
+            margin-bottom: 22px;
+            -webkit-box-shadow: 0 3px 0 #fff, 0px 0 12px rgb(51 51 51 / 50%);
+            -moz-box-shadow: 0 3px 0 #fff,0px 0 12px rgba(51,51,51,0.5);
+            box-shadow: 0 3px 0 #fff, 0px 0 12px rgb(51 51 51 / 50%);
+            content: " ";
+            display: block;
+            background: #316fea;
+            position: absolute;
+            z-index: 30;
+            -webkit-box-shadow: 0 0 12px rgb(51 51 51 / 50%);
+            -moz-box-shadow: 0 0 12px rgba(51,51,51,0.5);
+            box-shadow: 0 0 12px rgb(51 51 51 / 50%);
+            width: 3px;
+            height: 800px;
+        }        
+
       
         .players-container .player{
             position: absolute;
@@ -49,12 +90,17 @@
         }
 
         .players-container .player:first-of-type{
-            border-right: 2px solid red;            
+            /* border-right: 2px solid red;             */
         }
 
         .players-container .player video{
-            width: 576px;
-            height: 324px;            
+            /* width: 576px;
+            height: 324px;             */
+            /* width: 100%;
+            height: 100%; */
+
+            width: 1120px;
+            height: 460px;               
         }
 
     </style>
@@ -65,11 +111,11 @@
 
         <div class="players-container">
             <div class="player">
-                <video class="player" id="player1">
+                <video id="player1" muted>
                     <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4">
                 </video>
             </div>
-            <div id="slider-handler" class="slider-handler"></div>
+            <div id="slider-handler" class="slider"></div>
             <div class="player">
                 <video id="player2" muted>
                     <source src="http://media2.beamrvideo.com/videos/TheMummy_480p_mini.mp4" type="video/mp4">
@@ -80,9 +126,6 @@
             <button id="play-btn">Play</button>
         </div>
         <script>
-
-            let player1Container = document.querySelector('.players-container .player:first-of-type');
-            player1Container.style.width = "300px";
 
             let player1 = document.getElementById("player1");
             let player2 = document.getElementById("player2");
@@ -147,53 +190,52 @@
 
 
         <script>
-        // Make the DIV element draggable:
-        dragElement(document.getElementById("slider-handler"));
+            // Make the element draggable
 
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                // if present, the header is where you move the DIV from:
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-                // otherwise, move the DIV from anywhere inside the DIV:
+            let player1Container = document.querySelector('.players-container .player:first-of-type');
+            player1Container.style.width = "50%";   
+
+            let sliderHandler = document.getElementById("slider-handler");
+
+            dragElement(sliderHandler);
+
+            function dragElement(elmnt) {
+                var pos1 = 0, pos3 = 0;
+
+                // move the DIV from anywhere inside the DIV:
                 elmnt.onmousedown = dragMouseDown;
-            }
 
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
 
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos3 = e.clientX;
+                    // set the element's new position:
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";             
 
-                let player1 = document.querySelector('.players-container .player:first-of-type');
-                player1.style.width = elmnt.style.left;                
-            }
+                    player1Container = document.querySelector('.players-container .player:first-of-type');
+                    player1Container.style.width = (elmnt.offsetLeft - pos1 + 20) + "px";                
+                }
 
-            function closeDragElement() {
-                // stop moving when mouse button is released:
-                document.onmouseup = null;
-                document.onmousemove = null;
+                function closeDragElement() {
+                    // stop moving when mouse button is released:
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
             }
-        }
     
+
 
         </script>
 
