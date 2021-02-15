@@ -12,12 +12,9 @@
             justify-content: center;
 
             position: relative;
-            /* width: 576px;
-            height: 324px; */
-
-            width: 1120px;
-            height: 460px;            
-
+            width: 576px;
+            /* width: 70%; */
+            height: 324px;
             background-color: black;    
             overflow: hidden;        
         }
@@ -37,18 +34,9 @@
             background-color: #316fea;
             z-index: 10;
             border-radius: 50%;
-
-
-            -webkit-border-radius: 1000px;
-            -moz-border-radius: 1000px;
-            border-radius: 1000px;
-            -webkit-box-shadow: 0 0 12px rgb(51 51 51 / 50%);
-            -moz-box-shadow: 0 0 12px rgba(51,51,51,0.5);
             box-shadow: 0 0 12px rgb(51 51 51 / 50%);
             z-index: 50;
-            cursor: grab;
-            cursor: -moz-grab;
-            cursor: -webkit-grab;         
+            cursor: grab;    
         }
 
         .slider:after {
@@ -56,19 +44,15 @@
         }        
 
         .slider:before, .slider:after {
-            bottom: 42%;
+            bottom: 48%;
             left: 42%;
-            margin-bottom: 22px;
-            -webkit-box-shadow: 0 3px 0 #fff, 0px 0 12px rgb(51 51 51 / 50%);
-            -moz-box-shadow: 0 3px 0 #fff,0px 0 12px rgba(51,51,51,0.5);
+            margin-bottom: 20px;
             box-shadow: 0 3px 0 #fff, 0px 0 12px rgb(51 51 51 / 50%);
             content: " ";
             display: block;
             background: #316fea;
             position: absolute;
             z-index: 30;
-            -webkit-box-shadow: 0 0 12px rgb(51 51 51 / 50%);
-            -moz-box-shadow: 0 0 12px rgba(51,51,51,0.5);
             box-shadow: 0 0 12px rgb(51 51 51 / 50%);
             width: 3px;
             height: 800px;
@@ -96,11 +80,6 @@
         .players-container .player video{
             /* width: 576px;
             height: 324px;             */
-            /* width: 100%;
-            height: 100%; */
-
-            width: 1120px;
-            height: 460px;               
         }
 
     </style>
@@ -109,7 +88,7 @@
     <div>
         see https://beamr.com/
 
-        <div class="players-container">
+        <div id="video-container" class="players-container">
             <div class="player">
                 <video id="player1" muted>
                     <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4">
@@ -127,8 +106,22 @@
         </div>
         <script>
 
+            // set size of video to match size of container          
+            // video-container
+            let videoContainer = document.getElementById("video-container");
+            let width = videoContainer.offsetWidth;
+            let height = videoContainer.offsetHeight;     
+            
+            console.log(width, height);
+
             let player1 = document.getElementById("player1");
             let player2 = document.getElementById("player2");
+
+            player1.style.width = `${width}px`;
+            player1.style.height = `${height}px`;
+
+            player2.style.width = `${width}px`;
+            player2.style.height = `${height}px`;            
 
             let playersControls = document.getElementById("players-controls");
 
@@ -185,6 +178,20 @@
             });                
                 
             playBtn.addEventListener('click', startPlayers);
+
+            let updateVideoSize = () => {
+                console.log("Update video size");
+                width = videoContainer.offsetWidth;
+                height = videoContainer.offsetHeight;         
+                
+                player1.style.width = `${width}px`;
+                player1.style.height = `${height}px`;
+
+                player2.style.width = `${width}px`;
+                player2.style.height = `${height}px`;                    
+            }
+
+            window.onresize = updateVideoSize
 
         </script>
 
