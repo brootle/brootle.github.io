@@ -50,6 +50,7 @@
 
 <body class="q7-page">
 
+
     <div class="q7-menu">
 
         <div class="q7-menu__header">
@@ -2458,6 +2459,7 @@
                                         <div class="q7-block-title q7-block-title--usage">Usage <span class="q7-block-title__optional">(Minutes)</span></div>
                                     </div>                   
 
+
                                     <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
 
                                         <div class="q7-chart-checkboxes">
@@ -2845,15 +2847,42 @@
                                                         // see for tooltip position https://stackoverflow.com/a/64887282/6261255
                                                         ///////////////////////////////////////////////////////////////////////
 
+                                                        tooltipEl.className = "";
 
                                                         // `this` will be the overall tooltip
                                                         var position = this._chart.canvas.getBoundingClientRect();
 
+
+                                                        var chartBoundaries = this._chart.canvas.getBoundingClientRect();
+                                                        //console.log("chartBoundaries: ", chartBoundaries);
+
+                                                        tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
+                                                        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                        
+                                                        var tooltipBoundaries = tooltipEl.getBoundingClientRect();
+                                                        //console.log("tooltipBoundaries: ", tooltipBoundaries);      
+
+                                                        console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                        console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                        
+
+                                                        
+
+                                                        if(tooltipBoundaries.right > chartBoundaries.right){
+                                                            tooltipEl.classList.add("tooltip--move-left");
+                                                        } 
+
+                                                        // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
+                                                        //     tooltipEl.classList.add("tooltip--move-up");
+                                                        // }                                                         
+
                                                         // Display, position, and set styles for font
                                                         tooltipEl.style.opacity = 1;
                                                         tooltipEl.style.position = 'absolute';
-                                                        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-                                                        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+                                                        
+                                                        //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                        //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+
                                                         tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
                                                         tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
                                                         tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
