@@ -365,6 +365,9 @@
     box-sizing: border-box;
     border-radius: 15px;
     box-shadow: 0px 3px 15px -5px rgb(105 109 112 / 21%);    
+
+    display: flex;
+    flex-direction: column;    
 }
 
 .q6-per-title-encoding-results__card.q6-per-title-encoding-results__card--register{
@@ -372,6 +375,12 @@
 }
 
 .q6-per-title-encoding-card__header{
+    width: 100%;
+    min-height: 160px;
+}
+
+.q6-per-title-encoding-card__header-preview{
+    width: 100%;
     height: 106px;
     background-color: #f5f7ff;
     background-image: url(../img/per-title/per_title_play.svg);
@@ -379,7 +388,6 @@
     background-repeat: no-repeat;
     background-position: center;    
     border-radius: 15px;
-    width: 100%;
 }
 
 .q6-per-title-encoding-card__footer{
@@ -393,6 +401,30 @@
 .q6-per-title-encoding-card__body{
     min-height: 225px;
     width: 100%;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.q6-per-title-encoding-card__header-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+
+.q6-per-title-encoding-card__header-info > div:first-of-type{
+    color: #366fea;
+    font-size: 24px;
+    font-weight: 600;    
+}
+
+.q6-per-title-encoding-card__header-info > div:first-of-type span{
+    font-size: 16px;
+}
+
+.q6-per-title-encoding-card__header-info > div:last-of-type{
+    color: #ff0202;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 1024px){
