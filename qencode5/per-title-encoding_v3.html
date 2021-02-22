@@ -25,6 +25,7 @@
     <link href="css/q6__dbo.css" rel="stylesheet" />
     <link href="css/q6__tutorial.css" rel="stylesheet" />
     <link href="css/q6__per-title.css" rel="stylesheet" />
+    <link href="css/q6__players.css" rel="stylesheet" />
     
     <link href="css/q6__fonts.css" rel="stylesheet" />
 
@@ -244,6 +245,172 @@
         <div class="q6-per-title-compare">
             <div class="q6-container">
                 <h2>Recommended Static Encoding Settings vs Qencode Per-Title Encoding</h2>
+
+
+                <div class="q6-per-title-compare-videos__container">
+
+                    <div id="video-container" class="players-container">
+                        <div class="player">
+                            <video id="player1" muted>
+                                <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div id="slider-handler" class="slider"></div>
+                        <div class="player">
+                            <video id="player2" muted>
+                                <source src="http://media2.beamrvideo.com/videos/TheMummy_480p_mini.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div id="players-controls" class="players-controls hidden">
+                        <button id="play-btn">Play</button>
+                    </div>
+                    <script>
+            
+                        // set size of video to match size of container          
+                        // video-container
+                        let videoContainer = document.getElementById("video-container");
+                        let width = videoContainer.offsetWidth;
+                        let height = videoContainer.offsetHeight;     
+                        
+                        console.log(width, height);
+            
+                        let player1 = document.getElementById("player1");
+                        let player2 = document.getElementById("player2");
+            
+                        player1.style.width = `${width}px`;
+                        player1.style.height = `${height}px`;
+            
+                        player2.style.width = `${width}px`;
+                        player2.style.height = `${height}px`;            
+            
+                        let playersControls = document.getElementById("players-controls");
+            
+                        let playBtn = document.getElementById("play-btn");
+            
+                        let player1CanPlay = false;
+                        let player2CanPlay = false;
+            
+                        let showControls = () => {
+                            console.log("Show controls");
+                            playersControls.classList.remove('hidden');
+                        };
+            
+                        let hideControls = () => {
+                            console.log("Hide controls");
+                            playersControls.classList.add('hidden');
+                        };            
+            
+                        let toggleControls = () => {
+                            console.log("Toggle controls ", player1CanPlay, player2CanPlay);
+                            return player1CanPlay && player2CanPlay === true ? showControls() : hideControls();
+                        }            
+            
+                        let startPlayers = () => {
+                            player1.play();
+                        }
+            
+                        let pausePlayers = () => {
+                            player1.pause();
+                        }            
+            
+                        player1.addEventListener('canplay', () => {
+                            player1CanPlay = true;
+                            console.log("Player 1 can play");
+            
+                            toggleControls();
+                        });
+            
+                        player2.addEventListener('canplay', () => {
+                            player2CanPlay = true;
+                            console.log("Player 2 can play");
+            
+                            toggleControls();
+                        });          
+                        
+            
+                        player1.addEventListener('play', () => {
+                            hideControls();
+                            player2.play();
+                        });    
+                        
+                        player1.addEventListener('ended', () => {
+                            showControls();
+                        });                
+                            
+                        playBtn.addEventListener('click', startPlayers);
+            
+                        let updateVideoSize = () => {
+                            console.log("Update video size");
+                            width = videoContainer.offsetWidth;
+                            height = videoContainer.offsetHeight;         
+                            
+                            player1.style.width = `${width}px`;
+                            player1.style.height = `${height}px`;
+            
+                            player2.style.width = `${width}px`;
+                            player2.style.height = `${height}px`;                    
+                        }
+            
+                        window.onresize = updateVideoSize
+            
+                    </script>
+            
+            
+                    <script>
+                        // Make the element draggable
+            
+                        let player1Container = document.querySelector('.players-container .player:first-of-type');
+                        player1Container.style.width = "50%";   
+            
+                        let sliderHandler = document.getElementById("slider-handler");
+            
+                        dragElement(sliderHandler);
+            
+                        function dragElement(elmnt) {
+                            var pos1 = 0, pos3 = 0;
+            
+                            // move the DIV from anywhere inside the DIV:
+                            elmnt.onmousedown = dragMouseDown;
+            
+                            function dragMouseDown(e) {
+                                e = e || window.event;
+                                e.preventDefault();
+                                // get the mouse cursor position at startup:
+                                pos3 = e.clientX;
+                                document.onmouseup = closeDragElement;
+                                // call a function whenever the cursor moves:
+                                document.onmousemove = elementDrag;
+                            }
+            
+                            function elementDrag(e) {
+                                e = e || window.event;
+                                e.preventDefault();
+                                // calculate the new cursor position:
+                                pos1 = pos3 - e.clientX;
+                                pos3 = e.clientX;
+                                // set the element's new position:
+                                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";             
+            
+                                player1Container = document.querySelector('.players-container .player:first-of-type');
+                                player1Container.style.width = (elmnt.offsetLeft - pos1 + 20) + "px";                
+                            }
+            
+                            function closeDragElement() {
+                                // stop moving when mouse button is released:
+                                document.onmouseup = null;
+                                document.onmousemove = null;
+                            }
+                        }
+                
+            
+            
+                    </script>
+
+                </div>
+
+
+
             </div>
         </div>
 
