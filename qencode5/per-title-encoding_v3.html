@@ -341,6 +341,17 @@
                         playBtn.addEventListener('click', startPlayers);
             
                         let updateVideoSize = () => {
+
+                            // updating container 1st
+                            let aspectRatio = 16 / 9;
+                            let container = document.getElementById("video-container");
+                            let width = container.offsetWidth;
+                            let height = width / aspectRatio;
+                            container.style.height = `${height}px`;
+                            // end of container update
+
+
+
                             console.log("Update video size");
                             width = videoContainer.offsetWidth;
                             height = videoContainer.offsetHeight;         
@@ -355,7 +366,6 @@
                         window.onresize = updateVideoSize
             
                     </script>
-            
             
                     <script>
                         // Make the element draggable
@@ -405,6 +415,27 @@
                 
             
             
+                    </script>
+
+                    <script>
+                        // aspect ratio 16:9 
+                        // let aspectRatio = 16 / 9;
+
+                        // // keep proportions of the video on window resize
+                        // let updateVideosContainer = () => {
+                        //     let container = document.getElementById("video-container");
+                        //     let width = container.offsetWidth;
+
+                        //     let height = width / aspectRatio;
+
+                        //     container.style.height = `${height}px`;
+                        // }
+
+                        
+                        //window.onload = updateVideosContainer;
+                        //window.onresize = updateVideosContainer;
+
+
                     </script>
 
                 </div>
