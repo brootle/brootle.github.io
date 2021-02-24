@@ -249,8 +249,8 @@
 
                 <div class="q6-per-title-compare-videos__container">
 
-                    <div id="video-container" class="players-container">
-                        <div class="player">
+                    <div id="video-container" class="players-container">                    
+                        <div id="masterPlayerContainer" class="player">
                             <video id="player1" muted>
                                 <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4">
                             </video>
@@ -261,6 +261,7 @@
                                 <source src="http://media2.beamrvideo.com/videos/TheMummy_480p_mini.mp4" type="video/mp4">
                             </video>
                         </div>
+                        <div id="playerPoster" class="player-poster"></div>
                     </div>
                     <div id="players-controls" class="players-controls hidden">
                         <button id="play-btn">Play video</button>
@@ -273,10 +274,12 @@
                         let width = videoContainer.offsetWidth;
                         let height = videoContainer.offsetHeight;     
                         
-                        console.log(width, height);
+                        //console.log(width, height);
             
                         let player1 = document.getElementById("player1");
                         let player2 = document.getElementById("player2");
+
+                        let poster = document.getElementById('playerPoster');
             
                         player1.style.width = `${width}px`;
                         player1.style.height = `${height}px`;
@@ -292,22 +295,25 @@
                         let player2CanPlay = false;
             
                         let showControls = () => {
-                            console.log("Show controls");
+                            //console.log("Show controls");
                             playersControls.classList.remove('hidden');
                         };
             
                         let hideControls = () => {
-                            console.log("Hide controls");
+                            //console.log("Hide controls");
                             playersControls.classList.add('hidden');
                         };            
             
                         let toggleControls = () => {
-                            console.log("Toggle controls ", player1CanPlay, player2CanPlay);
+                            //console.log("Toggle controls ", player1CanPlay, player2CanPlay);
                             return player1CanPlay && player2CanPlay === true ? showControls() : hideControls();
                         }            
             
                         let startPlayers = () => {
                             player1.play();
+
+                            // hide poster playerPoster
+                            poster.style.display = 'none';
                         }
             
                         let pausePlayers = () => {
@@ -335,7 +341,22 @@
                         });    
                         
                         player1.addEventListener('ended', () => {
-                            showControls();
+                            // reset everything
+                            player1CanPlay = false;
+                            player2CanPlay = false;      
+                            player2.pause(); 
+                            player1.currentTime = 0;   
+                            player2.currentTime = 0;    
+                            
+                            // show poster
+                            poster.style.removeProperty('display');
+
+                            // position delimeter to the center
+                            let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            masterPlayerContainer.style.width = "50%";   
+            
+                            let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');                         
                         });                
                             
                         playBtn.addEventListener('click', startPlayers);
@@ -372,10 +393,10 @@
                     <script>
                         // Make the element draggable
             
-                        let player1Container = document.querySelector('.players-container .player:first-of-type');
-                        player1Container.style.width = "50%";   
-            
-                        let sliderHandler = document.getElementById("slider-handler");
+                        let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                        masterPlayerContainer.style.width = "50%";   
+        
+                        let sliderHandler = document.getElementById("slider-handler");    
             
                         dragElement(sliderHandler);
             
@@ -419,26 +440,6 @@
             
                     </script>
 
-                    <script>
-                        // aspect ratio 16:9 
-                        // let aspectRatio = 16 / 9;
-
-                        // // keep proportions of the video on window resize
-                        // let updateVideosContainer = () => {
-                        //     let container = document.getElementById("video-container");
-                        //     let width = container.offsetWidth;
-
-                        //     let height = width / aspectRatio;
-
-                        //     container.style.height = `${height}px`;
-                        // }
-
-                        
-                        //window.onload = updateVideosContainer;
-                        //window.onresize = updateVideosContainer;
-
-
-                    </script>
 
                 </div>
 
