@@ -31,24 +31,70 @@
 
 .players-controls{
     position: absolute;
-    top: calc(50% - 12px);
+    top: calc(50% - 21px);
     z-index: 999;
 }
+
+.players-controls #play-btn{
+    width: 150px;
+    height: 42px;
+    background-color: #d4d4d4;
+    padding: 0 17px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #366fe0;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    font-size: 17px;
+    border: none;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.players-controls #play-btn:after{
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    
+    border-left: 10px solid #366fe0;    
+    margin-left: 10px;
+}
+
 
 .players-controls.hidden{
     display: none;
 }
 
-.slider{
+/* .slider{
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #316fea;
+    width: 15px;
+    height: 52px;
+    background-color: #d4d4d4;
     z-index: 10;
     border-radius: 50%;
     box-shadow: 0 0 12px rgb(51 51 51 / 50%);
     z-index: 50;
     cursor: grab;    
+} */
+
+.slider{
+    position: absolute;
+    width: 33px;
+    height: 42px;
+    z-index: 50;
+    cursor: grab;
+    background-image: url(../img/players/slider.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .slider:after {
@@ -57,16 +103,16 @@
 
 .slider:before, .slider:after {
     bottom: 48%;
-    left: 42%;
+    left: 45%;
     margin-bottom: 20px;
     box-shadow: 0 3px 0 #fff, 0px 0 12px rgb(51 51 51 / 50%);
     content: " ";
     display: block;
-    background: #316fea;
+    background: #d4d4d4;
     position: absolute;
     z-index: 30;
     box-shadow: 0 0 12px rgb(51 51 51 / 50%);
-    width: 3px;
+    width: 2px;
     height: 800px;
 }        
 
