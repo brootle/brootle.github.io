@@ -1,0 +1,99 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters */
+
+
+.q6-security__header a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #3270e9;
+}
+
+.q6-security__header ul{
+    padding-left: 22px;
+    margin: 0;
+}
+
+.q6-security__header ul li{
+    margin: 15px 0;
+}
+
+.q6-security__toc{
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.q6-security__toc ul{
+    margin-right: 25px;
+}
+
+.q6-security__body a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #3270e9;
+}
+
+.q6-security__body .q6-security__top-level-list{
+    padding-left: 5px;
+    max-width: 780px;
+    padding-left: 50px;
+}
+
+.q6-security__body .q6-security__top-level-list > li{
+    margin: 60px 0;
+    color: #383838;
+    font-family: "proxima-nova";
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: bold;    
+}
+
+.q6-security__body .q6-security__top-level-list > li > p{
+    color: #4b4b4b;
+    font-size: 17px;
+    line-height: 25px;
+    margin: 15px 0;
+    font-weight: normal;  
+}
+
+.q6-security__body .q6-security__top-level-list > li > ol{
+    padding-left: 82px;
+    padding-left: 47px;
+}
+
+.q6-security__body .q6-security__top-level-list > li::before{
+    margin-left: -45px;
+    width: 45px;
+    display: inline-block;
+}
+
+.q6-security__body li{
+    color: #4b4b4b;
+    font-size: 17px;
+    line-height: 25px;
+    margin: 25px 0;
+    font-weight: normal;
+}
+
+
+.q6-security__body ol {
+    counter-reset: section;
+    list-style-type: none;
+}
+
+.q6-security__body li:before {
+    counter-increment: section;
+    content: counters(section, ".")". ";
+}
+
+.q6-security__body li > ol > li:before {
+    content: counters(section, ".")" ";
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: -45px;
+    width: 40px;
+    display: inline-block;   
+}
+
+.q6-security__body ul li:before {
+    content: none;
+}
