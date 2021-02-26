@@ -288,6 +288,10 @@
                         let videoContainer = document.getElementById("video-container");
                         let width = videoContainer.offsetWidth;
                         let height = videoContainer.offsetHeight;     
+
+                        let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                        masterPlayerContainer.style.width = "50%";
+                        let sliderHandler = document.getElementById("slider-handler");  
                         
             
                         let player1 = document.getElementById("player1");
@@ -307,6 +311,60 @@
             
                         let player1CanPlay = false;
                         let player2CanPlay = false;
+
+
+                        ////////////////////////////////////////////
+                        // Make the element draggable
+            
+                        //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                        //masterPlayerContainer.style.width = "50%";   
+        
+                        //let sliderHandler = document.getElementById("slider-handler");    
+            
+                        //dragElement(sliderHandler);
+            
+                        function dragElement(elmnt) {
+                            var pos1 = 0, pos3 = 0;
+            
+                            // move the DIV from anywhere inside the DIV:
+                            elmnt.onmousedown = dragMouseDown;
+            
+                            function dragMouseDown(e) {
+                                e = e || window.event;
+                                e.preventDefault();
+                                // get the mouse cursor position at startup:
+                                pos3 = e.clientX;
+                                document.onmouseup = closeDragElement;
+                                // call a function whenever the cursor moves:
+                                document.onmousemove = elementDrag;
+                            }
+            
+                            function elementDrag(e) {
+                                e = e || window.event;
+                                e.preventDefault();
+                                // calculate the new cursor position:
+                                pos1 = pos3 - e.clientX;
+                                pos3 = e.clientX;
+                                // set the element's new position:
+                                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";             
+            
+                                masterPlayerContainer.style.width = (elmnt.offsetLeft - pos1 + 16) + "px";                
+                            }
+            
+                            function closeDragElement() {
+                                // stop moving when mouse button is released:
+                                document.onmouseup = null;
+                                document.onmousemove = null;
+                            }
+                        }
+
+                        function disableDrag(element){
+                            element.onmousedown = null;
+                            document.onmousemove = null;
+                        }
+                        ////////////////////////////////////////////
+
+
             
                         let showControls = () => {
                             //console.log("Show controls");
@@ -328,6 +386,8 @@
 
                             // hide poster playerPoster
                             poster.style.display = 'none';
+
+                            dragElement(sliderHandler);
                         }
             
                         // let pausePlayers = () => {
@@ -366,11 +426,13 @@
                             poster.style.removeProperty('display');
 
                             // position delimeter to the center
-                            let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
                             masterPlayerContainer.style.width = "50%";   
             
-                            let sliderHandler = document.getElementById("slider-handler");   
-                            sliderHandler.style.removeProperty('left');                         
+                            //let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');    
+
+                            disableDrag(sliderHandler);                           
                         });                
                             
                         playBtn.addEventListener('click', startPlayers);
@@ -388,11 +450,14 @@
                             toggleControls();
 
                             // position delimeter to the center
-                            let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
                             masterPlayerContainer.style.width = "50%";   
             
-                            let sliderHandler = document.getElementById("slider-handler");   
-                            sliderHandler.style.removeProperty('left');                             
+                            //let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');        
+                            
+                            // disable drag
+                            disableDrag(sliderHandler);
                         }
 
                         player1.addEventListener('pause', () => {
@@ -429,53 +494,11 @@
                         window.onload = updateVideoSize
 
                         window.onresize = updateVideoSize
+
             
-                    </script>
-            
-                    <script>
-                        // Make the element draggable
-            
-                        let masterPlayerContainer = document.getElementById('masterPlayerContainer');
-                        masterPlayerContainer.style.width = "50%";   
-        
-                        let sliderHandler = document.getElementById("slider-handler");    
-            
-                        dragElement(sliderHandler);
-            
-                        function dragElement(elmnt) {
-                            var pos1 = 0, pos3 = 0;
-            
-                            // move the DIV from anywhere inside the DIV:
-                            elmnt.onmousedown = dragMouseDown;
-            
-                            function dragMouseDown(e) {
-                                e = e || window.event;
-                                e.preventDefault();
-                                // get the mouse cursor position at startup:
-                                pos3 = e.clientX;
-                                document.onmouseup = closeDragElement;
-                                // call a function whenever the cursor moves:
-                                document.onmousemove = elementDrag;
-                            }
-            
-                            function elementDrag(e) {
-                                e = e || window.event;
-                                e.preventDefault();
-                                // calculate the new cursor position:
-                                pos1 = pos3 - e.clientX;
-                                pos3 = e.clientX;
-                                // set the element's new position:
-                                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";             
-            
-                                masterPlayerContainer.style.width = (elmnt.offsetLeft - pos1 + 16) + "px";                
-                            }
-            
-                            function closeDragElement() {
-                                // stop moving when mouse button is released:
-                                document.onmouseup = null;
-                                document.onmousemove = null;
-                            }
-                        }
+
+
+
                 
             
             
