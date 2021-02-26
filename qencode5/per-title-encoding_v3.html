@@ -289,7 +289,6 @@
                         let width = videoContainer.offsetWidth;
                         let height = videoContainer.offsetHeight;     
                         
-                        //console.log(width, height);
             
                         let player1 = document.getElementById("player1");
                         let player2 = document.getElementById("player2");
@@ -331,9 +330,9 @@
                             poster.style.display = 'none';
                         }
             
-                        let pausePlayers = () => {
-                            player1.pause();
-                        }            
+                        // let pausePlayers = () => {
+                        //     player1.pause();
+                        // }            
             
                         player1.addEventListener('canplay', () => {
                             player1CanPlay = true;
@@ -375,6 +374,36 @@
                         });                
                             
                         playBtn.addEventListener('click', startPlayers);
+
+                        let pausePlayers = () => {
+
+                            // we get here is user enabled controls
+
+                            player1.removeAttribute("controls");  
+                            player2.removeAttribute("controls");  
+
+                            player1.pause();
+                            player2.pause();
+
+                            toggleControls();
+
+                            // position delimeter to the center
+                            let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            masterPlayerContainer.style.width = "50%";   
+            
+                            let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');                             
+                        }
+
+                        player1.addEventListener('pause', () => {
+                            console.log("Player 1 paused");
+                            pausePlayers();
+                        });  
+                        
+                        player2.addEventListener('pause', () => {
+                            console.log("Player 2 paused");
+                            pausePlayers();
+                        });                          
             
                         let updateVideoSize = () => {
 
@@ -386,9 +415,7 @@
                             container.style.height = `${height}px`;
                             // end of container update
 
-
-
-                            console.log("Update video size");
+                            //console.log("Update video size");
                             width = videoContainer.offsetWidth;
                             height = videoContainer.offsetHeight;         
                             
