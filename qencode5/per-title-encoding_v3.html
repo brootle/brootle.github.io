@@ -220,26 +220,28 @@
 
     <main class="q6-main q6-page-content">
 
-        <div class="q6-container">
-            <h1 class="q6-blue-text">Per-Title Encoding: Video Optimization using Machine Learning</h1>
+        <div class="q6-per-title-header">
+            <div class="q6-container">
+                <h1 class="q6-blue-text">Per-Title Encoding: Video Optimization using Machine Learning</h1>
 
-            <div class="q6-card q6-card--per-title">
-                <div>
-                    <h2>Reduce complexity, increase performance.</h2>
-                    <p>
-                        The easiest way to get the best out of your encoding setup is through
-                        our machine-learning powered Per-Title Encoding, which automatically 
-                        chooses the best codec settings for your videos to minimize bitrates 
-                        while maximizing perceptual viewing quality.
-                    </p>
+                <div class="q6-card q6-card--per-title">
+                    <div>
+                        <h2>Reduce complexity, increase performance.</h2>
+                        <p>
+                            The easiest way to get the best out of your encoding setup is through
+                            our machine-learning powered Per-Title Encoding, which automatically 
+                            chooses the best codec settings for your videos to minimize bitrates 
+                            while maximizing perceptual viewing quality.
+                        </p>
 
-                    <button class="q6-button q6-button--round q6-button--with-arrow q6-white-text q6-blue-border q6-blue-background">Test your videos for free</button>
+                        <button class="q6-button q6-button--round q6-button--with-arrow q6-white-text q6-blue-border q6-blue-background">Test your videos for free</button>
+                    </div>
+                    <div>
+                        <img src="img/per-title/tv.png" alt="Reduce complexity, increase performance">
+                    </div>
                 </div>
-                <div>
-                    <img src="img/per-title/tv.png" alt="Reduce complexity, increase performance">
-                </div>
+
             </div>
-
         </div>
 
         <div class="q6-per-title-compare">
@@ -314,53 +316,45 @@
 
 
                         ////////////////////////////////////////////
-                        // Make the element draggable
+                        // drag slider
+                        let enableDrag = (slider) => {
+
+                            let initialPosition = 0;
+                            let targetPosition = 0;
             
-                        //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
-                        //masterPlayerContainer.style.width = "50%";   
-        
-                        //let sliderHandler = document.getElementById("slider-handler");    
-            
-                        //dragElement(sliderHandler);
-            
-                        function dragElement(elmnt) {
-                            var pos1 = 0, pos3 = 0;
-            
-                            // move the DIV from anywhere inside the DIV:
-                            elmnt.onmousedown = dragMouseDown;
-            
-                            function dragMouseDown(e) {
+                            let drag = (e) => {
                                 e = e || window.event;
                                 e.preventDefault();
+                                
                                 // get the mouse cursor position at startup:
-                                pos3 = e.clientX;
-                                document.onmouseup = closeDragElement;
-                                // call a function whenever the cursor moves:
-                                document.onmousemove = elementDrag;
+                                initialPosition = e.clientX;
+
+                                // don't move when mouse is up
+                                document.onmouseup = () => {
+                                    document.onmouseup = null;
+                                    document.onmousemove = null;
+                                };
+
+                                // move slider
+                                document.onmousemove = (e) => {
+                                    e = e || window.event;
+                                    e.preventDefault();
+                                    // calculate the new cursor position:
+                                    targetPosition = initialPosition - e.clientX;
+                                    initialPosition = e.clientX;
+                                    // set the element's new position:
+                                    slider.style.left = (slider.offsetLeft - targetPosition) + "px";             
+                
+                                    masterPlayerContainer.style.width = (slider.offsetLeft - targetPosition + 16) + "px";                
+                                };
                             }
-            
-                            function elementDrag(e) {
-                                e = e || window.event;
-                                e.preventDefault();
-                                // calculate the new cursor position:
-                                pos1 = pos3 - e.clientX;
-                                pos3 = e.clientX;
-                                // set the element's new position:
-                                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";             
-            
-                                masterPlayerContainer.style.width = (elmnt.offsetLeft - pos1 + 16) + "px";                
-                            }
-            
-                            function closeDragElement() {
-                                // stop moving when mouse button is released:
-                                document.onmouseup = null;
-                                document.onmousemove = null;
-                            }
+
+                            slider.onmousedown = drag;
                         }
 
-                        function disableDrag(element){
-                            element.onmousedown = null;
-                            document.onmousemove = null;
+                        let disableDrag = (silder) => {
+                            silder.onmousedown = null;
+                            silder.onmousemove = null;
                         }
                         ////////////////////////////////////////////
 
@@ -387,7 +381,7 @@
                             // hide poster playerPoster
                             poster.style.display = 'none';
 
-                            dragElement(sliderHandler);
+                            enableDrag(sliderHandler);
                         }
             
                         // let pausePlayers = () => {
@@ -677,7 +671,7 @@
                             </div>
                         </div>      
                         <div class="q6-per-title-encoding-card__footer">
-                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background q6-button--view-results">View results</button>
+                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background">View results</button>
                         </div>                                                
                     </div>
                     <div class="q6-per-title-encoding-results__full-video" style="display: none;">
@@ -740,7 +734,7 @@
                             </div>                            
                         </div>      
                         <div class="q6-per-title-encoding-card__footer">
-                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background q6-button--view-results">View results</button>
+                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background">View results</button>
                         </div>                                                
                     </div>
                     <div class="q6-per-title-encoding-results__full-video" style="display: none;">
@@ -803,7 +797,7 @@
                             </div>                            
                         </div>      
                         <div class="q6-per-title-encoding-card__footer">
-                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background q6-button--view-results">View results</button>
+                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background">View results</button>
                         </div>                                                
                     </div>
                     <div class="q6-per-title-encoding-results__full-video" style="display: none;">
@@ -866,7 +860,7 @@
                             </div>                            
                         </div>      
                         <div class="q6-per-title-encoding-card__footer">
-                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background q6-button--view-results">View results</button>
+                            <button class="q6-button q6-button--round q6-white-text q6-blue-border q6-blue-background">View results</button>
                         </div>                                                
                     </div>
                     <div class="q6-per-title-encoding-results__full-video" style="display: none;">
@@ -930,7 +924,6 @@
                     document.addEventListener('DOMContentLoaded', function () {
                         // console.log('Accordion loaded with JavaScript');
 
-                        let viewResultsButtons = document.querySelectorAll(".q6-button--view-results");
 
                         let summaryCards = document.querySelectorAll(".q6-per-title-encoding-results__card");
 
@@ -958,14 +951,14 @@
                             });
                         }
 
-                        viewResultsButtons.forEach((button, index) => {
-                            button.addEventListener('click', () => {
+                        summaryCards.forEach((card, index) => {
+                            card.addEventListener('click', () => {
                                 // hide all cards
                                 hideAllCards();
                                 // show one big card
                                 fullVideoCards[index].style.removeProperty("display");
                             });
-                        });
+                        });                        
 
                         showAllResultsButtons.forEach((button, index) => {
                             button.addEventListener('click', () => {
