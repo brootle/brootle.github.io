@@ -5,6 +5,10 @@
     margin-left: 35px;    
 }
 
+.q6-main.q6-page-content.q6-page-content--status{
+    background: #f7f8fa;
+}
+
 .q6-footer.q6-footer--server-status .q6-footer-menu > div > .q6-footer-menu__block {
     margin-right: 20px;
 }
@@ -13,26 +17,13 @@
     margin-right: 0;
 }
 
-.q6-server-status-container {
-    background: #f7f8fa;
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;  
-}
 
-.q6-server-status-container > .q6-container{
-    flex: 1;
-}
+
 
 .q6-server-status{
-    margin: 35px 0;
     border-radius: 15px;
     background-color: white;
+    margin: 35px 0;
 }
 
 .q6-server-status__header,
@@ -52,6 +43,7 @@
 
 .q6-server-status__line{
     display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -66,6 +58,13 @@
     transition: all .05s ease-in-out; 
 }
 
+.q6-server-status__bar.q6-server-status__bar--degraded{
+    background-color: #f0a100;
+}
+
+.q6-server-status__bar.q6-server-status__bar--down{
+    background-color: #f6556f;
+}
 
 .q6-server-status__block:hover .q6-server-status__bar{
     transform: scaleY(1.9);
@@ -74,17 +73,18 @@
 
 .q6-server-status__block{
     position: relative;
+    margin: 10px 0;
+    margin-bottom: 0;
 }
 
 .q6-server-status__block:hover .q6-server-status__tooltip{
-    opacity: 1;
-    transition: opacity 0.1s ease-in-out;
+    display: block;
 }
 
 .q6-server-status__tooltip{
-    opacity: 0;
+    display: none;
     position: absolute;
-    padding: 10px 20px;
+    padding: 10px 10px;
     text-align: center;
     font-size: 14px;
     line-height: 22px;
@@ -92,9 +92,10 @@
     color: white;
     border-radius: 7px;
     white-space: nowrap;
-    width: 120px;
+    width: 170px;
     top: -85px;
-    left: -79px;
+    left: -84px;
+    box-sizing: border-box;
 }
 
 .q6-server-status__tooltip:after {
@@ -109,8 +110,19 @@
     border-top: 6px solid #496488;
 }
 
-.q6-server-status__line .tippy-content > div:last-of-type{
+.q6-server-status__tooltip > div:last-of-type{
     font-weight: 700;
+}
+
+.q6-server-status__info{
+    color: #5b697a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.q6-server-status__container{
+    display: table;
 }
 
 @media screen and (max-width: 1024px){
