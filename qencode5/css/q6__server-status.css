@@ -54,9 +54,6 @@
     display: flex;
 }
 
-.q6-server-status__line > div{
-    /* position: relative; */
-}
 
 .q6-server-status__bar{
     width: 4px;
@@ -69,24 +66,47 @@
     transition: all .05s ease-in-out; 
 }
 
-.q6-server-status__bar:hover{
+
+.q6-server-status__block:hover .q6-server-status__bar{
     transform: scaleY(1.9);
 }
 
 
-.q6-server-status__line .tippy-box {
-    background-color: #496488;
+.q6-server-status__block{
+    position: relative;
 }
 
-.q6-server-status__line .tippy-arrow {
-    color: #496488;
+.q6-server-status__block:hover .q6-server-status__tooltip{
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
 }
 
-.q6-server-status__line .tippy-content {
+.q6-server-status__tooltip{
+    opacity: 0;
+    position: absolute;
     padding: 10px 20px;
     text-align: center;
     font-size: 14px;
     line-height: 22px;
+    background-color: #496488;
+    color: white;
+    border-radius: 7px;
+    white-space: nowrap;
+    width: 120px;
+    top: -85px;
+    left: -79px;
+}
+
+.q6-server-status__tooltip:after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: calc(50% - 3px);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #496488;
 }
 
 .q6-server-status__line .tippy-content > div:last-of-type{
