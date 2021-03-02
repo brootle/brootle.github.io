@@ -18,18 +18,27 @@
 }
 
 
-
+.q6-server-status-container h2{
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
 
 .q6-server-status{
     border-radius: 15px;
     background-color: white;
     margin: 35px 0;
+    width: fit-content;
 }
 
-.q6-server-status__header,
-.q6-server-status__footer{
+.q6-server-status__header{
     padding: 20px 60px;
 }
+
+.q6-server-status__footer{
+    padding: 10px 60px;
+}
+
 
 .q6-server-status__header{
     border-bottom: 1px solid #e7ebf4;
@@ -37,7 +46,7 @@
 
 .q6-server-status__body > div{
     border-bottom: 1px solid #e7ebf4;
-    padding: 38px 60px;
+    padding: 25px 60px;
     position: relative;
 }
 
@@ -127,6 +136,56 @@
 
 .q6-server-status__container{
     display: table;
+}
+
+.q6-server-footer-status--uptime,
+.q6-server-footer-status--degraded,
+.q6-server-footer-status--downtime{
+    margin: 10px 0;
+    margin-right: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.q6-server-footer-status--uptime{
+    color: #2cb960;
+}
+
+.q6-server-footer-status--degraded{
+    color: #f0a100;
+}
+
+.q6-server-footer-status--downtime{
+    color: #f6556f;
+}
+
+.q6-server-status__footer{
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.q6-server-status__footer > .q6-server-footer-status--uptime:before,
+.q6-server-status__footer > .q6-server-footer-status--degraded:before,
+.q6-server-status__footer > .q6-server-footer-status--downtime:before   {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.q6-server-status__footer > .q6-server-footer-status--uptime:before{
+    background-color: #2cb960;
+}
+
+.q6-server-status__footer > .q6-server-footer-status--degraded:before{
+    background-color: #f0a100;
+}
+
+.q6-server-status__footer > .q6-server-footer-status--downtime:before{
+    background-color: #f6556f;
 }
 
 @media screen and (max-width: 1024px){
