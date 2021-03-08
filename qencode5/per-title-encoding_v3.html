@@ -314,6 +314,12 @@
                         let player1CanPlay = false;
                         let player2CanPlay = false;
 
+                        const FPS = 30;
+                        let diff = 0;
+                        let videoTimeStamp = 0;
+                        let playerSynced = false;
+                        let syncedTimes = 0;
+
 
                         ////////////////////////////////////////////
                         // drag slider
@@ -371,6 +377,7 @@
                         };            
             
                         let toggleControls = () => {
+                            //console.log("Toggle Controles");
                             //console.log("Toggle controls ", player1CanPlay, player2CanPlay);
                             return player1CanPlay && player2CanPlay === true ? showControls() : hideControls();
                         }            
@@ -386,20 +393,43 @@
             
                         // let pausePlayers = () => {
                         //     player1.pause();
-                        // }            
+                        // }                 
             
                         player1.addEventListener('canplay', () => {
                             player1CanPlay = true;
                             console.log("Player 1 can play");
+
+                            //console.log("player1.paused: ", player1.paused);
             
-                            toggleControls();
+                            player1.removeAttribute("controls");  
+                            player2.removeAttribute("controls");   
+                                           
+                            if(playerSynced && !player1.paused){                              
+                                hideControls();
+                            }else{
+                                toggleControls();   
+                            }       
+
+                            //toggleControls();
                         });
             
                         player2.addEventListener('canplay', () => {
                             player2CanPlay = true;
                             console.log("Player 2 can play");
+
+                            //console.log("player2.paused: ", player2.paused);
+
+                            player1.removeAttribute("controls");  
+                            player2.removeAttribute("controls");                               
             
-                            toggleControls();
+                            if(playerSynced && !player2.paused){                                
+                                hideControls();
+                            }else{
+                                toggleControls();   
+                            }                             
+
+
+                            //toggleControls();
                         });          
                         
             
@@ -415,6 +445,7 @@
                             player2.pause(); 
                             player1.currentTime = 0;   
                             player2.currentTime = 0;    
+                            playerSynced = false;
                             
                             // show poster
                             poster.style.removeProperty('display');
@@ -427,19 +458,44 @@
                             sliderHandler.style.removeProperty('left');    
 
                             disableDrag(sliderHandler);                           
-                        });                
+                        }); 
+                        
+                        player2.addEventListener('ended', () => {
+                            // reset everything
+                            player1CanPlay = false;
+                            player2CanPlay = false;      
+                            player1.pause(); 
+                            player1.currentTime = 0;   
+                            player2.currentTime = 0;    
+                            playerSynced = false;
+                            
+                            // show poster
+                            poster.style.removeProperty('display');
+
+                            // position delimeter to the center
+                            //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            masterPlayerContainer.style.width = "50%";   
+            
+                            //let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');    
+
+                            disableDrag(sliderHandler);                           
+                        });                         
                             
                         playBtn.addEventListener('click', startPlayers);
 
                         let pausePlayers = () => {
+                            playerSynced = false;
+
+                            console.log("pausePlayers");
 
                             // we get here is user enabled controls
 
                             player1.removeAttribute("controls");  
-                            player2.removeAttribute("controls");  
+                            player2.removeAttribute("controls");                     
 
                             player1.pause();
-                            player2.pause();
+                            player2.pause();                            
 
                             toggleControls();
 
@@ -489,9 +545,27 @@
 
                         window.onresize = updateVideoSize
 
-            
+                        // watch playback and re-sync in case 2nd player time difference is too big
+                        // player1.addEventListener('timeupdate', () => {
+                            
+                        //     let masterPlayerTime = player1.currentTime;
+                        //     let secondaryPlayerTime = player2.currentTime;
+                        //     diff = Math.abs(player2.currentTime - player1.currentTime);
+                        //     videoTimeStamp = masterPlayerTime;
 
-
+                        //     // 30 frames per second, frame change every 1/30 secods... 0.033333
+                        //     // if difference > 0.033333, sync secondary video                        
+                        //     if(diff > 1/FPS){
+                        //         syncedTimes++;
+                        //         console.log("Players synced: ", syncedTimes);
+                        //         playerSynced = true;
+                        //         videoTimeStamp = masterPlayerTime;
+                        //         player1.currentTime = videoTimeStamp;
+                        //         player2.currentTime = videoTimeStamp;
+                        //         diff = 0;                                                                
+                        //     } 
+                        // });     
+                        
 
                 
             
