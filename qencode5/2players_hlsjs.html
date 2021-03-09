@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test HLS.js</title>
+    <style>
+        .container{
+            display: flex;
+        }
+        .container video{
+            width: 480px;
+            height: 360px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- Or if you want a more recent alpha version -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@alpha"></script> -->
+    <div class="container">
+        <video id="video01"></video>
+        <video id="video02"></video>
+    </div>
+
+    <div>
+        <button id="playBtn">Play</button>
+    </div>
+    
+    <script>
+      var video01 = document.getElementById('video01');
+      var videoSrc01 = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
+
+      var video02 = document.getElementById('video02');
+      var videoSrc02 = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';      
+
+      if (Hls.isSupported()) {
+        var hls01 = new Hls();
+        hls01.loadSource(videoSrc01);
+        hls01.attachMedia(video01);
+      }
+      else if (video01.canPlayType('application/vnd.apple.mpegurl')) {
+        video01.src = videoSrc01;
+      }
+
+      if (Hls.isSupported()) {
+        var hls02 = new Hls();
+        hls02.loadSource(videoSrc02);
+        hls02.attachMedia(video02);
+      }
+      else if (video02.canPlayType('application/vnd.apple.mpegurl')) {
+        video02.src = videoSrc02;
+      }      
+     
+
+        let startPlayers = () => {
+            video01.play();
+            video02.play();
+        }      
+
+        let playBtn = document.getElementById("playBtn");
+
+        playBtn.addEventListener('click', startPlayers);
+
+        //watch playback and re-sync in case 2nd player time difference is too big
+        const FPS = 30;
+        let videoTimeStamp = 0;
+        let syncedTimes = 0;
+        let playerSynced = false;
+        let diff = 0;
+
+        let syncVideos = () => {
+            let masterPlayerTime = video01.currentTime;
+            let secondaryPlayerTime = video02.currentTime;
+
+            diff = Math.abs(secondaryPlayerTime - masterPlayerTime);
+            videoTimeStamp = masterPlayerTime;
+
+            // 30 frames per second, frame change every 1/30 secods... 0.033333
+            // if difference > 0.033333, sync secondary video      
+            console.log(diff);                  
+            if(diff > 1/FPS){
+                syncedTimes++;
+                console.log("Players synced: ", syncedTimes);
+                playerSynced = true;
+                videoTimeStamp = masterPlayerTime;
+                //video01.currentTime = videoTimeStamp;
+                //video02.currentTime = videoTimeStamp; 
+                video02.currentTime = videoTimeStamp + 0.310 - 0.02116 - 0.0105 - 0.015;
+                diff = 0;                                                                
+            }             
+        }
+
+        setInterval(syncVideos, 500);
+ 
+
+        //video01.addEventListener('timeupdate', syncVideos);            
+
+    </script>    
+</body>
+</html>

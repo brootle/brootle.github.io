@@ -545,30 +545,39 @@
 
                         window.onresize = updateVideoSize
 
-                        // watch playback and re-sync in case 2nd player time difference is too big
-                        // player1.addEventListener('timeupdate', () => {
+
+                        let adjusdtDiff = 0;
+
+                        let syncVideos = () => {
+                            let masterPlayerTime = player1.currentTime;
+                            let secondaryPlayerTime = player2.currentTime;
+                            diff = Math.abs(player2.currentTime - player1.currentTime);
+                            videoTimeStamp = masterPlayerTime;
+
+                            //console.log("diff: ", diff, syncedTimes); // diff:  0.169979 1
                             
-                        //     let masterPlayerTime = player1.currentTime;
-                        //     let secondaryPlayerTime = player2.currentTime;
-                        //     diff = Math.abs(player2.currentTime - player1.currentTime);
-                        //     videoTimeStamp = masterPlayerTime;
+                            if(syncedTimes === 1){
+                                adjusdtDiff = diff;
+                            }
 
-                        //     // 30 frames per second, frame change every 1/30 secods... 0.033333
-                        //     // if difference > 0.033333, sync secondary video                        
-                        //     if(diff > 1/FPS){
-                        //         syncedTimes++;
-                        //         console.log("Players synced: ", syncedTimes);
-                        //         playerSynced = true;
-                        //         videoTimeStamp = masterPlayerTime;
-                        //         player1.currentTime = videoTimeStamp;
-                        //         player2.currentTime = videoTimeStamp;
-                        //         diff = 0;                                                                
-                        //     } 
-                        // });     
+                            // 30 frames per second, frame change every 1/30 secods... 0.033333
+                            // if difference > 0.033333, sync secondary video                        
+                            if(diff > 1/FPS){
+                                syncedTimes++;
+                                console.log("Players synced: ", syncedTimes, adjusdtDiff);
+                                playerSynced = true;
+                                videoTimeStamp = masterPlayerTime;
+                                //player1.currentTime = videoTimeStamp;
+                                player2.currentTime = videoTimeStamp + adjusdtDiff;
+                                                                
+                                diff = 0;                                                                
+                            }         
+                        }         
                         
+                        //setInterval(syncVideos, 500);
 
-                
-            
+                        player1.addEventListener('timeupdate', syncVideos);
+                                       
             
                     </script>
 
