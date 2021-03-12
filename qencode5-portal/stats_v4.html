@@ -657,12 +657,24 @@
                                         <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text" />
                         
                                         <script>
-                                            $("#date_start").datepicker({
+
+
+                                            var today = new Date();
+
+                                            var utcDay = today.getUTCDate();
+                                            var utcMonth = today.getUTCMonth();
+                                            var utcYear = today.getUTCFullYear();
+
+                                            $("#date_start").datepicker({                                                  
+                                                defaultDate: new Date(utcYear,utcMonth,utcDay),
                                                 dateFormat: "m/d/yy",
                                                 monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                                                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                                            });
+                                            })                                   
+                                        
+
                                             $("#date_end").datepicker({
+                                                defaultDate: new Date(utcYear,utcMonth,utcDay),
                                                 dateFormat: "m/d/yy",
                                                 monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                                                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
