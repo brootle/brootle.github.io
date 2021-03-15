@@ -632,58 +632,64 @@
 
                             <div class="q7-block-title">Statistics</div>
 
+                            <div>
+
                         
-                            <div class="q7-input q7-input--combined">
+                                <div class="q7-input q7-input--combined">
 
-                                <div class="q7-input__label">
-                                    <label>Choose period:</label>
-                                </div>
-
-                                <div class="q7-input-blocks">
-
-                                    <div class="q7-custom-select">
-                                        <select class="q7-select">
-                                            <option value="0">Last week</option>
-                                            <option value="1">Last month</option>
-                                            <option value="2">Last year</option>
-                                        </select>
+                                    <div class="q7-input__label">
+                                        <label>Choose period:</label>
                                     </div>
 
-                                    <div class="q7-date-picker">
-                                        <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text" />
-                        
-                                        <span class="q7-date-delimeter">‒</span>
-                        
-                                        <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text" />
-                        
-                                        <script>
+                                    <div class="q7-input-blocks">
 
+                                        <div class="q7-custom-select">
+                                            <select class="q7-select">
+                                                <option value="0">Last week</option>
+                                                <option value="1">Last month</option>
+                                                <option value="2">Last year</option>
+                                            </select>
+                                        </div>
 
-                                            var today = new Date();
+                                        <div class="q7-date-picker">
+                                            <input id="date_start" autocomplete="off" name="date_start" placeholder="Choose date" type="text" />
+                            
+                                            <span class="q7-date-delimeter">‒</span>
+                            
+                                            <input id="date_end" autocomplete="off" name="date_end" placeholder="Choose date" type="text" />
+                            
+                                            <script>
+                                                var today = new Date();
 
-                                            var utcDay = today.getUTCDate();
-                                            var utcMonth = today.getUTCMonth();
-                                            var utcYear = today.getUTCFullYear();
+                                                var utcDay = today.getUTCDate();
+                                                var utcMonth = today.getUTCMonth();
+                                                var utcYear = today.getUTCFullYear();
 
-                                            $("#date_start").datepicker({                                                  
-                                                defaultDate: new Date(utcYear,utcMonth,utcDay),
-                                                dateFormat: "m/d/yy",
-                                                monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                                            })                                   
-                                        
+                                                $("#date_start").datepicker({                                                  
+                                                    defaultDate: new Date(utcYear,utcMonth,utcDay),
+                                                    dateFormat: "m/d/yy",
+                                                    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                                })                                   
+                                            
 
-                                            $("#date_end").datepicker({
-                                                defaultDate: new Date(utcYear,utcMonth,utcDay),
-                                                dateFormat: "m/d/yy",
-                                                monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                                            });                                
-                                        </script>
+                                                $("#date_end").datepicker({
+                                                    defaultDate: new Date(utcYear,utcMonth,utcDay),
+                                                    dateFormat: "m/d/yy",
+                                                    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                                });                                
+                                            </script>
+                                        </div>
+
                                     </div>
+
 
                                 </div>
 
+                                <div class="q7-utc-message">
+                                    All data on this page is displayed based on Coordinated Universal Time (UTC)
+                                </div>
 
                             </div>
                         
