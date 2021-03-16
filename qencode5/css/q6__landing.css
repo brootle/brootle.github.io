@@ -1229,6 +1229,31 @@ a.q6-button{
     padding: 0 1px;
 }
 
+.q6-transcoding-status{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.q6-transcoding-status--error {
+    color: #e4322c;
+}
+
+.q6-transcoding-status:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    top: calc(50% - 13px);
+    margin-left: 5px;
+}
+
+.q6-transcoding-status--error:after {
+    background-image: url(../img/error_transcoding.svg);
+    background-repeat: no-repeat;
+}
+
 .q6-transcoding-demo-block__json .q6-button.q6-button--copy{
     position: absolute;
     top: -7px;
