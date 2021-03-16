@@ -275,6 +275,10 @@ p.q6-calc-block__message{
     box-sizing: border-box;
 }
 
+.q6-input__multiple-checkboxes .q6-checkbox.q6-checkbox--disabled{
+    background-color: #f6f6f6;
+}
+
 .q6-input__multiple-checkboxes .q6-checkbox:first-of-type{
     border-top: 1px solid #e1e5ee;
     border-top-left-radius: 6px;
@@ -285,6 +289,53 @@ p.q6-calc-block__message{
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
+
+.q6-checkbox.q6-checkbox--more{
+    padding-right: 20px;
+    justify-content: center;
+    position: relative;
+    color: #3270eb;
+}
+
+.q6-checkbox.q6-checkbox--disabled.q6-checkbox--more{
+    color: #171717;
+}
+             
+.q6-checkbox.q6-checkbox--disabled.q6-checkbox--more > .q6-checkbox-text:after{
+    border-color: #171717;
+}
+
+.q6-checkbox.q6-checkbox--disabled.q6-checkbox--more:hover > .q6-checkbox-text{
+    text-decoration: none;
+}
+
+.q6-checkbox.q6-checkbox--disabled.q6-checkbox--more:hover > .q6-checkbox-text:after{
+    margin-left: 4px;
+}
+
+.q6-checkbox.q6-checkbox--more > .q6-checkbox-text:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    margin-left: 4px;
+    top: calc(50% - 3.5px);
+    height: 7px;
+    width: 7px;
+    border-bottom: 1px solid #3270eb;
+    border-right: 1px solid #3270eb;
+    transform: rotate(-45deg);
+    transition: all 0.2s ease;
+}
+
+.q6-checkbox.q6-checkbox--more:hover > .q6-checkbox-text{
+    text-decoration: underline;
+}
+
+.q6-checkbox.q6-checkbox--more:hover > .q6-checkbox-text:after{
+    margin-left: 8px;
+}
+
 
 .q6-input__multiple-checkboxes .q6-checkmark{
     position: relative;
