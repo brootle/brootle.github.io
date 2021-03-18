@@ -255,15 +255,41 @@
 
                 <div class="q6-per-title-compare-videos__container">
 
-                    <div id="playerPoster" class="player-poster">
-                        <div id="player1__progress"></div>
-                        <div id="player2__progress"></div>
-                    </div>
+                    <!-- <div id="playerPoster" class="player-poster">                       
+
+                        <div class="video-load-progress" id="player1__progress"></div>
+                        <div class="video-load-progress" id="player2__progress"></div>
+                    </div> -->
 
                     <!-- <source src="http://media2.beamrvideo.com/videos/TheMummy_480p.mp4" type="video/mp4"> -->
                     <!-- <source src="http://media2.beamrvideo.com/videos/TheMummy_480p_mini.mp4" type="video/mp4"> -->
 
-                    <div id="video-container" class="players-container">                    
+                    <div id="video-container" class="players-container">     
+                        
+                        <div id="playerPoster" class="player-poster">      
+                            
+                            <div class="player-poster__header">
+                                <div class='player-video-quality'>
+                                    <div></div>
+                                    <div>
+                                        <div>720p H.264</div>
+                                        <div>8.1 BG</div>
+                                    </div>
+                                </div>          
+                                
+                                <div class='player-video-quality'>
+                                    <div class="player-logo"></div>
+                                    <div>
+                                        <div>720p H.264</div>
+                                        <div>4.2 BG</div>
+                                    </div>
+                                </div>  
+                            </div>                            
+
+                            <div class="video-load-progress" id="player1__progress"></div>
+                            <div class="video-load-progress" id="player2__progress"></div>
+                        </div>                        
+
                         <div id="masterPlayerContainer" class="player">
                             <!-- <video id="player1" muted preload>
                                 <source src="https://nyc3.digitaloceanspaces.com/qencode-video-db/per-title-encoding-demo/tearsofsteel-slider-demo-original.mp4" type="video/mp4"> 
@@ -418,8 +444,8 @@
                             xhr.send(); 
                         }
 
-                        preloadVideo("player1", "./videos/tearsofsteel-slider-demo-original.mp4");
                         preloadVideo("player2", "./videos/tearsofsteel-slider-demo-optimized.mp4");
+                        preloadVideo("player1", "./videos/tearsofsteel-slider-demo-original.mp4");
 
             
                         // set size of video to match size of container          
