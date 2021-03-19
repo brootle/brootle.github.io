@@ -630,9 +630,6 @@
                             player1.src = src1;
                             player2.src = src2;                            
                             
-                            // console.log(player1.src);
-                            // console.log(player2.src);
-
                             playerSynced = false;
                             
                             // show poster
@@ -656,27 +653,37 @@
                             // }                               
                         }); 
                         
-                        // player2.addEventListener('ended', () => {
-                        //     // reset everything
-                        //     player1CanPlay = false;
-                        //     player2CanPlay = false;      
-                        //     player1.pause(); 
-                        //     player1.currentTime = 0;   
-                        //     player2.currentTime = 0;    
-                        //     playerSynced = false;
+                        player2.addEventListener('ended', () => {
+                            // reset everything
+                            player1CanPlay = false;
+                            player2CanPlay = false;      
+                            // player1.pause(); 
+                            // player1.currentTime = 0;   
+                            // player2.currentTime = 0;    
+
+                            let src1 = player1.src;
+                            let src2 = player2.src;
+
+                            player1.src = null;
+                            player2.src = null;
+
+                            player1.src = src1;
+                            player2.src = src2;  
+
+                            playerSynced = false;
                             
-                        //     // show poster
-                        //     poster.style.removeProperty('display');
+                            // show poster
+                            poster.style.removeProperty('display');
 
-                        //     // position delimeter to the center
-                        //     //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
-                        //     masterPlayerContainer.style.width = "50%";   
+                            // position delimeter to the center
+                            //let masterPlayerContainer = document.getElementById('masterPlayerContainer');
+                            masterPlayerContainer.style.width = "50%";   
             
-                        //     //let sliderHandler = document.getElementById("slider-handler");   
-                        //     sliderHandler.style.removeProperty('left');    
+                            //let sliderHandler = document.getElementById("slider-handler");   
+                            sliderHandler.style.removeProperty('left');    
 
-                        //     disableDrag(sliderHandler);                           
-                        // });                         
+                            disableDrag(sliderHandler);                           
+                        });                         
                             
                         playBtn.addEventListener('click', startPlayers);
 
