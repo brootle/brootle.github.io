@@ -840,7 +840,7 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
                         <div class="modal-content">
                             <div class="q6-video-preview-container">
                                 <div class="q6-video-preview__player">
-                                    <video class="video_player" id="video_player" controls="controls" autoplay="autoplay" muted src="https://nyc3.digitaloceanspaces.com/qencode-video-db/per-title-encoding-demo/tearsofsteel-slider-demo-optimized.mp4"></video>
+                                    <video class="video_player" id="video_player" controls="controls" autoplay="autoplay" src="https://nyc3.digitaloceanspaces.com/qencode-video-db/per-title-encoding-demo/tearsofsteel-slider-demo-optimized.mp4"></video>
                                 </div>
                             </div>
                         </div>
@@ -851,20 +851,26 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         // q6-button--play-video
+                        // q6-actions__icon--play-file
+                        // video_player
 
                         var playerModalWindow = document.querySelector("#videoModal"); 
-                        var playVideoButtons = document.querySelectorAll(".q6-button--play-video");
+                        var playVideoButtons = document.querySelectorAll(".q6-button--play-video, .q6-actions__icon--play-file");
+                        var player = document.querySelector("#video_player");
 
                         playVideoButtons.forEach(button => {
                             button.addEventListener('click', function(){
                                 playerModalWindow.style.display = 'block';
+                                // update player src and start playing
+                                player.play();
                             });
                         });
 
                         // close modal if clicked anywhere outside video_player or if that is not play video button
                         window.addEventListener('click', function (e) {
-                            if(event.target.id !== "video_player" && !event.target.classList.contains('q6-button--play-video')){
+                            if(event.target.id !== "video_player" && !event.target.classList.contains('q6-button--play-video') && !event.target.classList.contains('q6-actions__icon--play-file')){
                                playerModalWindow.style.display = 'none';
+                               player.pause();
                             }
                         });                       
 
