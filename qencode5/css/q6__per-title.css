@@ -692,6 +692,35 @@
 .q6-per-title-efficient__block{
     display: flex;
     align-items: flex-start;    
+    position: relative;
+}
+
+.q6-per-title-efficient__block:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: -37px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;    
+
+    background-color: white;
+
+    background-image: url(../img/per-title/graydot.png);
+}
+
+.q6-per-title-efficient__block:after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% - 167px);
+    height: 3px;
+    background-color: #dfe6ff;
+    top: -27px;
+    left: 21px;
 }
 
 .q6-per-title-efficient__list{
@@ -719,6 +748,33 @@
     flex-direction: column;
     border: 3px solid #dfe6ff;
     border-radius: 20px;    
+    position: relative;
+    box-sizing: border-box;
+}
+
+.q6-per-title-efficient__card:after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 34px;
+    width: 79px;
+    top: -35px;
+    left: 76px;
+    border-top-left-radius: 20px;
+    border: 3px solid #dfe6ff;
+    box-sizing: border-box;
+    border-bottom: none;
+    border-right: none;
+}
+
+.q6-per-title-efficient__card:last-of-type:after{
+    top: -35px;
+    right: 76px;
+    border-right: 3px solid #dfe6ff;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 0;
+    border-left: none;
+    left: initial;
 }
 
 .q6-per-title-efficient__card  > div:first-of-type {
@@ -770,6 +826,7 @@
 }
 
 
+
 @media screen and (max-width: 1345px){
     .q6-per-title-efficient__block {
         display: flex;
@@ -781,8 +838,24 @@
     .q6-per-title-efficient__list {
         margin-left: 0;
         flex-wrap: wrap;
-        margin-top: 30px;
     }    
+
+    .q6-per-title-efficient-container {
+        margin-top: 40px;
+    }
+
+    .q6-per-title-efficient__block:after {
+        display: none;
+    }    
+
+    .q6-per-title-efficient__block:before {
+        display: none;
+    }    
+
+    .q6-per-title-efficient__card:after {
+        display: none;
+    }
+
 }
 
 
