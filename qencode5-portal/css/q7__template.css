@@ -10514,10 +10514,28 @@ td.q7-bordered-cell{
     }    
 }
 
+.q7-tabs-container--more-link [data-tabcontent="generic_s3"],
+.q7-tabs-container--more-link [data-tabcontent="aws"],
+.q7-tabs-container--more-link [data-tabcontent="google_cloud"],
+.q7-tabs-container--more-link [data-tabcontent="backblaze_b2"],
+.q7-tabs-container--more-link [data-tabcontent="azure"],
+.q7-tabs-container--more-link [data-tabcontent="digital_ocean"],
+.q7-tabs-container--more-link [data-tabcontent="ftp"]{
+    display: none;
+}
+
+
 @media screen and (max-width: 1330px){
     .q7-tabs-container--more-link{
         display: block;
     }
+
+    .q7-tabs-container--more-link [data-tabcontent="ftp"],
+    .q7-tabs-container--more-link [data-tabcontent="digital_ocean"],
+    .q7-tabs-container--more-link [data-tabcontent="azure"]{
+        display: block;
+    }
+    
 
     .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="ftp"],
     .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="digital_ocean"],
@@ -10525,6 +10543,47 @@ td.q7-bordered-cell{
         display: none;
     }
 }
+
+@media screen and (max-width: 1090px){
+    .q7-tabs-container--more-link [data-tabcontent="backblaze_b2"]{
+        display: block;
+    }
+
+    .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="backblaze_b2"] {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1040px){
+    .q7-tabs-container--more-link [data-tabcontent="google_cloud"]{
+        display: block;
+    }
+
+    .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="google_cloud"] {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .q7-tabs-container--more-link [data-tabcontent="aws"]{
+        display: block;
+    }
+
+    .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="aws"] {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 740px){
+    .q7-tabs-container--more-link [data-tabcontent="generic_s3"]{
+        display: block;
+    }
+
+    .q7-transcoding-api__choose-bucket .q6-tabs-container [data-tabcontent="generic_s3"] {
+        display: none;
+    }
+}
+
 
 
 @media screen and (min-width: 1280px){
