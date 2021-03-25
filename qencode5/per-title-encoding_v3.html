@@ -515,13 +515,34 @@
                                 document.onmousemove = (e) => {
                                     e = e || window.event;
                                     e.preventDefault();
-                                    // calculate the new cursor position:
-                                    targetPosition = initialPosition - e.clientX;
-                                    initialPosition = e.clientX;
-                                    // set the element's new position:
-                                    slider.style.left = (slider.offsetLeft - targetPosition) + "px";             
-                
-                                    masterPlayerContainer.style.width = (slider.offsetLeft - targetPosition + 16) + "px";                
+
+                                    // make sure slider-handler doesn't go outside video-container
+                                    let videoContainerEl = document.getElementById("video-container");
+                                    let leftBorder = videoContainerEl.getBoundingClientRect().left;
+                                    let rightBorder = videoContainerEl.getBoundingClientRect().right;
+
+                                    let sliderEl = document.getElementById("slider-handler");
+                                    let sliderLeftEdge = sliderEl.getBoundingClientRect().left;   
+                                    let sliderRightEdge = sliderEl.getBoundingClientRect().right;         
+                                    
+                                    if(e.clientX > leftBorder && e.clientX < rightBorder){
+
+                                        targetPosition = initialPosition - e.clientX;                            
+                                        initialPosition = e.clientX;
+
+                                        let diff = 0;
+                                        if(sliderLeftEdge <= leftBorder){
+                                            diff = 1;
+                                        }
+                                        if(sliderRightEdge >= rightBorder){
+                                            diff = -1;
+                                        }
+
+                                        slider.style.left = (slider.offsetLeft - targetPosition) + diff + "px";                                 
+                                        masterPlayerContainer.style.width = (slider.offsetLeft - targetPosition + 16) + diff + "px";                                          
+                                    }                                    
+                                    
+                                    
                                 };
                             }
 
@@ -722,6 +743,30 @@
                             console.log("Player 2 paused");
                             pausePlayers();
                         });                          
+
+                        let adjustSliderPosition = () => {
+                            // masterPlayerContainer.style.width = "50%";   
+                            // sliderHandler.style.removeProperty('left');          
+                            
+                            // get width of container
+                            let videoContainerEl = document.getElementById("video-container");
+                            let width = videoContainerEl.offsetWidth;
+                            let leftBorder = videoContainerEl.getBoundingClientRect().left;
+                            let rightBorder = videoContainerEl.getBoundingClientRect().right;
+                            
+                            let sliderEl = document.getElementById("slider-handler");
+                            let sliderLeftEdge = sliderEl.getBoundingClientRect().left;   
+                            let sliderRightEdge = sliderEl.getBoundingClientRect().right;                            
+
+                            if(masterPlayerContainer.style.width !== "50%"){
+
+                                if(sliderRightEdge >= rightBorder){
+                                    sliderEl.style.left = width - 33 + "px";                                 
+                                    masterPlayerContainer.style.width = width - 33 + 16 + "px"; 
+                                }
+                                  
+                            }
+                        }
             
                         let updateVideoSize = () => {
 
@@ -741,7 +786,10 @@
                             player1.style.height = `${height}px`;
             
                             player2.style.width = `${width}px`;
-                            player2.style.height = `${height}px`;                    
+                            player2.style.height = `${height}px`;        
+                            
+                            // adjust slider position
+                            adjustSliderPosition();                          
                         }
 
                         updateVideoSize(); 
