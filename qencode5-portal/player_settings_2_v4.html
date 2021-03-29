@@ -837,14 +837,40 @@
                             
                             <div class="q7-player-settings__vtt-resources">
                                 <div class="q7-inline-checkboxes">
-                                    <!-- <div class="q7-checkbox-with-tooltip">
+
+                                    <div class="q7-checkbox-with-tooltip">
                                         <label class="q7-checkbox">
-                                            Load subtitles
-                                            <input type="checkbox">
+                                            DRM
+                                            <input id="dynamicFieldsEnableDRM" type="checkbox">
                                             <span class="q7-checkmark"></span>
                                         </label>
-                                        <div class="q7-question-icon"></div>
-                                    </div> -->
+                                        <div data-tippy-content="
+                                            <div class='q7-tooltip__close-btn'></div>
+                                            <div class='q7-tooltip__header'>
+                                                <div>
+                                                    <div class='q7-tooltip__name'>output_format</div>
+                                                    <div class='q7-tooltip__type'>json</div>
+                                                </div>
+                                                <div>
+                                                    <div class='q7-tooltip__required'>required</div>
+                                                    <div class='q7-tooltip__method'>api</div>
+                                                </div>
+                                            </div>
+                                            <h1 class='q7-tooltip__title'>Output Formats</h1>
+                                            <div class='q7-tooltip__content'>
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas                                           
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                            </div>
+                                            <div class='q7-tooltip__footer'>
+                                                <a href=''>Show API ></a>
+                                            </div>" 
+                                            class="q7-question-icon">
+                                        </div>  
+                                    </div>
+
                                     <div class="q7-checkbox-with-tooltip">
                                         <label class="q7-checkbox">
                                             Load VTT thumbnails
@@ -876,9 +902,85 @@
                                             </div>" 
                                             class="q7-question-icon">
                                         </div>                                           
-                                        <!-- <div class="q7-question-icon"></div> -->
                                     </div>
                                 </div>
+                            </div>
+
+                            <div id="dynamicFieldsDRMInput" style="display: none;">
+
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-drm">
+                                    <div class="q7-input">
+                                        <label class="q7-radio-btn">
+                                            Widevine
+                                            <input type="radio" name="drm" data-drm-nickname='widevine' value="com.widevine.alpha">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>                                    
+                                    </div> 
+                                    <div class="q7-input">
+                                        <label class="q7-radio-btn">
+                                            Playready
+                                            <input type="radio" name="drm" data-drm-nickname='playready' value="com.microsoft.playready">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>                                        
+                                    </div>              
+                                    <div class="q7-input">
+                                        <label class="q7-radio-btn">
+                                            Fairplay
+                                            <input type="radio" name="drm" data-drm-nickname='fairplay' value="com.apple.fps.1_0">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>                                       
+                                    </div>
+                                    <div class="q7-input">
+                                        <label class="q7-radio-btn">
+                                            Clearkey
+                                            <input type="radio" name="drm" data-drm-nickname='clearkey' value="org.w3.clearkey">   
+                                            <span class="q7-radio-checkmark"></span>   
+                                        </label>                                       
+                                    </div>                                                                                   
+                                </div>
+                                
+                                <div class="q7-drm-input" data-input="widevine">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Widevine Url:</label>
+                                        </div>
+                                        <input id="widevine_url" class="q7-input__field" type="text">
+                                    </div>                                   
+                                </div>
+
+                                <div class="q7-drm-input" data-input="playready" style="display: none;">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Playready Url:</label>
+                                        </div>
+                                        <input id="playready_url" class="q7-input__field" type="text">
+                                    </div>    
+                                </div>        
+                                
+                                <div class="q7-drm-input" data-input="fairplay" style="display: none;">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Certificate URL:</label>
+                                        </div>
+                                        <input id="fairplay_certificateuri" class="q7-input__field" type="text">
+                                    </div>  
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>License URL:</label>
+                                        </div>
+                                        <input id="fairplay_licenseuri" class="q7-input__field" type="text">
+                                    </div>                                       
+                                </div>  
+                                
+                                <div class="q7-drm-input" data-input="clearkey" style="display: none;">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Clearkey Url:</label>
+                                        </div>
+                                        <input id="clearkey_url" class="q7-input__field" type="text">
+                                    </div>   
+                                </div>                                  
+                            
                             </div>
 
                             <div id="dynamicFieldsThumbnailsInput" class="q7-input-and-buttons--inline">
@@ -1938,6 +2040,7 @@
                                 params = JSON.parse(savedParamsJSON);
                             }
 
+                            // load params from storage
 
                             // set all inputs based on parameters
                             // Video Source
@@ -2212,6 +2315,48 @@
                                 } else {
                                     $("#dynamicFieldsThumbnailsInput").hide();
                                 }
+
+                                console.log("params.videoSources.keySystems: ", params.videoSources.keySystems);
+                                if (params.videoSources.keySystems) {
+                                    
+                                    $('#dynamicFieldsEnableDRM').prop('checked', true);
+
+                                    $('.q7-drm-input').hide();
+
+                                    if(params.videoSources.keySystems['com.widevine.alpha']){
+                                        $('[data-drm-nickname="widevine"]').prop("checked", true);
+                                        $('[data-input="widevine"]').show();
+                                        $("#widevine_url").val(params.videoSources.keySystems['com.widevine.alpha']);
+                                    }
+                                    
+                                
+                                    if(params.videoSources.keySystems['com.apple.fps.1_0']){
+                                        $('[data-drm-nickname="fairplay"]').prop("checked", true);
+                                        $('[data-input="fairplay"]').show();
+
+                                        $("#fairplay_certificateuri").val(params.videoSources.keySystems['com.apple.fps.1_0'].certificateUri);
+                                        $("#fairplay_licenseuri").val(params.videoSources.keySystems['com.apple.fps.1_0'].licenseUri);
+                                    }
+
+
+                                    if(params.videoSources.keySystems['com.microsoft.playready']){
+                                        $('[data-drm-nickname="playready"]').prop("checked", true);
+                                        $('[data-input="playready"]').show();
+                                        $("#playready_url").val(params.videoSources.keySystems['com.microsoft.playready']);
+                                    }
+                                    
+                                    if(params.videoSources.keySystems['org.w3.clearkey']){
+                                        $('[data-drm-nickname="clearkey"]').prop("checked", true);
+                                        $('[data-input="clearkey"]').show();
+                                        $("#clearkey_url").val(params.videoSources.keySystems['org.w3.clearkey']);
+                                    }                                    
+
+                           
+
+                                    $("#dynamicFieldsDRMInput").show();
+                                } else {
+                                    $("#dynamicFieldsDRMInput").hide();
+                                }                                
                             }
 
                             loadDynamicFields();
@@ -2239,6 +2384,21 @@
                                 }
                             });
 
+                            $("#dynamicFieldsEnableDRM").change(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#dynamicFieldsDRMInput").show();
+                                } else {
+                                    $("#dynamicFieldsDRMInput").hide();
+                                }
+                            });
+
+                            // hide and show fields based on which radio button for DRM is selected
+                            $('[name="drm"]').change(function(){
+                                let selectedTech = $(this).attr('data-drm-nickname');
+                                // show input for specific tech and hide other inputs
+                                $('.q7-drm-input').hide();
+                                $(`[data-input="${selectedTech}"]`).show();
+                            });
 
                             $("#dynamicFieldsShowTitle").change(function () {
                                 if ($(this).is(":checked")) {
@@ -2457,16 +2617,67 @@
                                     }    
                                 }    
 
-                                // dynamic fields end                                
+                                // dynamic fields end              
+                                
 
                                 if ($('#dynamicFieldsEnableThumbnails').prop("checked")) {
+                                    console.log("add thumbnails");
                                     ui_params.thumbnails = {};
                                     ui_params.thumbnails.src = $("#dynamicFieldsThumbnails").val();
                                 }
+                              
 
                                 // MUST LOAD NEW SRC FROM UI
                                 ui_params.videoSources = {};
                                 ui_params.videoSources.src = $("#playerVideoUrl").val();
+                            
+
+                                // add DRM to ui_params.videoSources if selected
+                                if ($('#dynamicFieldsEnableDRM').prop("checked")) {
+
+                                    // get selected radio, widevine for default
+                                    let selectedDrmEl = $("input[name='drm']:checked");
+                                    let selectedDRM = $(selectedDrmEl).val();
+
+                                    let drmTech = $(selectedDrmEl).attr('data-drm-nickname');
+
+                                    ui_params.videoSources.keySystems = {};
+
+                                    let licenseUrl = '';
+
+                                    switch (drmTech) {
+                                        case 'widevine':
+                                            licenseUrl = $('#widevine_url').val();
+                                            ui_params.videoSources.keySystems[`${selectedDRM}`] = licenseUrl;
+                                            break;
+                                        case 'fairplay':
+                                            let certificateUri = $('#fairplay_certificateuri').val();
+                                            let licenseUri = $('#fairplay_licenseuri').val();
+                                            ui_params.videoSources.keySystems[`${selectedDRM}`] = {
+                                                certificateUri: certificateUri,
+                                                licenseUri: licenseUri
+                                            }
+                                            break;
+                                        case 'playready':
+                                            licenseUrl = $('#playready_url').val();
+                                            ui_params.videoSources.keySystems[`${selectedDRM}`] = licenseUrl;
+                                            break;
+                                        case 'clearkey':
+                                            licenseUrl = $('#clearkey_url').val();
+                                            ui_params.videoSources.keySystems[`${selectedDRM}`] = licenseUrl;
+                                            break;                                                                                        
+                                        default:
+                                            console.log("keySystem not found");
+                                    }                                    
+
+                                    
+
+                                    // ui_params.videoSources.keySystems = {
+                                    //     'com.widevine.alpha' :'https://widevine-dash.ezdrm.com/widevine-php/widevine-foreignkey.php?pX=FBDE07'
+                                    // }                    
+                                }
+
+                                console.log("ui_params: ", ui_params);
 
                                 return ui_params;
                             }
@@ -2479,7 +2690,6 @@
                                 //console.log("Update Code");                                             
 
                                 var code_params = loadParamsFromUI();
-                                //console.log(code_params);
 
                                 // add colors only if they are not equal to defaul
                                 if (_.isEqual(code_params.colors, defaultColors)) {
@@ -2526,6 +2736,8 @@
                                     delete code_params.env;
                                 }                                
                                                                 
+                                
+
 
 
                                 var keys = Object.keys(code_params);
@@ -2533,6 +2745,7 @@
                                 var outputCode = `var params = {`;
 
                                 for (var key in code_params) {
+
                                     // skip loop if the property is from prototype
                                     if (!code_params.hasOwnProperty(key)) continue;
 
@@ -2550,16 +2763,66 @@
                                             var paramValue = obj[prop];
                                             if (typeof paramValue === 'string') {
                                                 paramValue = `"${paramValue}"`;
+                                                outputCode += `
+        ${prop}: ${paramValue},`;
+                                            } else {
+                                                if(typeof paramValue === 'object'){
+                                                    
+                                                    outputCode += `
+        ${prop}: {`;                                     
+
+                                                    for(var p in paramValue){
+                                                        if (!paramValue.hasOwnProperty(p)) continue;
+
+                                                        var pValue = paramValue[p];
+                                                        if (typeof paramValue[p] === 'string') {
+                                                            outputCode += `
+            '${p}': "${pValue}",`;       
+                                                        }else {
+                                                            //console.log("pValue: ", pValue);
+
+                                                            if(typeof pValue === 'object'){
+                                                                
+                                                                outputCode += `
+            '${p}': {`;                                     
+
+                                                                //console.log("pValue: ", pValue);
+                                                                for(var newParameter in pValue){
+                                                                    if (!pValue.hasOwnProperty(newParameter)) continue;
+
+                                                                    var newParameterValue = pValue[newParameter];
+
+                                                                    outputCode += `
+                ${newParameter}: "${newParameterValue}",`;           
+                                                                 
+                                                                }
+
+                                                                outputCode += `
+            },`;                        
+                                                            }                                                            
+
+
+            //                                                 outputCode += `
+            // ${p}: ${pValue},`;       
+                                                        }
+                                                 
+                                                    }
+
+                                                    outputCode += `
+        },`;                        
+                                                }
                                             }
 
-                                            outputCode += `
-        ${prop}:  ${paramValue},`;
+
+        //                                     outputCode += `
+        // ${prop}:  ${paramValue},`;
                                         }
 
                                         outputCode += `
     },`
                                     } else {
                                         // check if string
+
                                         if (typeof code_params[key] === 'string') {
                                             outputCode += `
     ${key}: "${code_params[key]}",`
