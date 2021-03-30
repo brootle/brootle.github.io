@@ -1902,7 +1902,7 @@
 
                                     <div class="q7-player-settings__buttons-block">
                                         <div class="q7-input-and-buttons--inline">
-                                            <button class="q7-button">Save All</button>
+                                            <button id="save_all" class="q7-button">Save All</button>
                                         </div>
                                     </div>
 
@@ -2882,6 +2882,16 @@ qPlayer('my_player', params, function() {
                                     // reload page
                                     window.location.reload();
                                 });
+
+                                document.getElementById("save_all").addEventListener('click', function () {
+                                    // load params from UI and save to session storage
+                                    var new_params = loadParamsFromUI();
+                                    sessionStorage.setItem('QencodePlayerParams', JSON.stringify(new_params));
+
+                                    // reload page
+                                    window.location.reload();
+                                });                                
+
                             });
 
 
