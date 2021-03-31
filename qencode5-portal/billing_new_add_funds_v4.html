@@ -619,9 +619,196 @@
                                         <div class="q6-input__field--view">Current balance: $3550.05</div>
                                                                        
                                     </div>                                                                                       
-                                </div>          
+                                </div>      
                                 
-                                <div class="q7-input-and-buttons--inline">
+                            
+                                <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-payment-method">
+                                    
+                                    <div class="q7-input q7-input--with-bonus">
+
+                                        <div class="q7-input__label">
+                                            <label>Amount</label>
+                                        </div>
+
+                                        <div class="q6-custom-select">
+                                            <div class="q6-custom-select__view">$100.00 <span>+ 5% bonus</span></div>       
+                                            <div class="q6-custom-select__list">
+                                                <div class="q6-custom-select__option" data-option='custom'>Custom</div>
+                                                <div class="q6-custom-select__option">$20.00</div>
+                                                <div class="q6-custom-select__option">$100.00 <span>+ 5% bonus</span></div>
+                                                <div class="q6-custom-select__option">$500.00 <span>+ 7% bonus</span></div>
+                                                <div class="q6-custom-select__option">$2000.00 <span>+ 10% bonus</span></div>
+                                                <div class="q6-custom-select__option">$5000.00 <span>+ 12% bonus</span></div>
+                                            </div>
+                                        </div>
+
+                                        <script>
+                                            $(function () {
+
+                                                // toggle show and hide menu on dots menu button click  
+                                                $(".q6-custom-select__view").click(function (e) {
+                                                    // check if current is opened
+                                                    if ($(this).hasClass('q6-custom-select__view--opened')) {
+                                                        $(this).removeClass('q6-custom-select__view--opened');
+                                                        $(this).next().removeClass('q6-custom-select__list--opened');
+                                                    } else {
+                                                        // close all opened menus
+                                                        $('.q6-custom-select__view--opened').removeClass('q6-custom-select__view--opened');
+                                                        $('.q6-custom-select__list--opened').removeClass('q6-custom-select__list--opened');
+
+                                                        // open current 
+                                                        $(this).addClass('q6-custom-select__view--opened');
+                                                        $(this).next().addClass('q6-custom-select__list--opened');
+                                                    }
+                                                });
+
+                                                // updated selected value
+                                                $(".q6-custom-select__option").click(function (e) {
+                                                    $(this).parent().prev().addClass('q6-custom-select__view--focus');
+                                                    $(this).parent().prev().html($(this).html());
+                                                    // if data-option='custom'
+                                                    if ($(this).attr("data-option") === "custom") {
+                                                        $("#custom-amount-input-inline").show(100);
+                                                    } else {
+                                                        $("#custom-amount-input-inline").hide(100);
+                                                    }                                            
+                                                });                                        
+
+                                                // close if clicked outside
+                                                $(window).click(function (e) {
+                                                    if (!event.target.matches('.q6-custom-select__view')) {
+                                                        $('.q6-custom-select__view--opened').removeClass('q6-custom-select__view--opened')                                                
+                                                        $('.q6-custom-select__list--opened').removeClass('q6-custom-select__list--opened')
+                                                    }
+                                                });
+
+                                                $(window).click(function (e) {
+                                                    if (!event.target.matches('.q6-custom-select__option')) {
+                                                        $('.q6-custom-select__view--focus').removeClass('q6-custom-select__view--focus')
+                                                    }
+                                                });                                        
+
+                                            })
+                                        </script>                                          
+
+                                    </div>            
+                                    
+                                    <div id="custom-amount-input-inline" class="q7-input" style="display: none">
+                                        <div class="q7-input__label">
+                                            <label>Enter USD Amount</label>
+                                        </div>
+                                        <div class="q7-input-with-bonus">
+                                            <input class="q7-input__field" type="text" id="custom-funds-inline" value="$ 100.00">
+                                            <div class="q7-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
+                                        </div>                                
+                                    </div>
+        
+        
+                                    <script>
+                                        $(function () {
+        
+                                            // when user inputs value
+                                            document.getElementById('custom-funds-inline').addEventListener('input', function (e) {                                    
+        
+                                                if (e.target.value.includes(".")) {
+                                                    // if number is decimal
+                                                    e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
+        
+                                                    // allow only two digits after dots
+                                                    var afterDotDigits = e.target.value.split('.')[1];
+                                                    if (afterDotDigits.length > 2) {
+                                                        e.target.value = e.target.value.replace(/.$/, '');
+                                                    }
+        
+                                                } else {
+                                                    // if the number is not decimal add spaces after thousands
+                                                    e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                }
+        
+                                                // remove all ',' and '$ ' to get value in Float
+                                                let valueInNumber = parseFloat(e.target.value.replace(/\,/g, '').replace(/\$ /g, ''));
+                                                
+                                                if(valueInNumber){
+             
+                                                    // set bonus based on value
+                                                    let bonus = 0;
+        
+                                                    if (valueInNumber <= 100) {
+                                                        bonus = 0;
+                                                    } else if (valueInNumber <= 500) {
+                                                        bonus = 5;
+                                                    } else if (valueInNumber <= 2000) {
+                                                        bonus = 7;
+                                                    } else if (valueInNumber <= 5000) {
+                                                        bonus = 10;
+                                                    } else{
+                                                        bonus = 12;
+                                                    }
+                                                    
+                                                    // update bonus
+                                                    $("#custom-bonus").text(bonus);
+        
+                                                }
+                                                
+        
+                                            });
+                                        });
+                                    </script>                              
+
+                                    <div class="q7-input q7-input--payment-method">
+                                        <div class="q7-input__label">
+                                            <label>Payment Method</label>
+                                            <a href="">+ Add</a>
+                                        </div>                        
+                                        <div class="q7-custom-select">
+                                            <select id="payment-method-selector" class="q7-select">
+                                                    <option value="1" data-imagesrc="img/paypal_s.svg" data-description="&nbsp">john.smith@example.com</option>
+                                                    <option value="2" data-imagesrc="img/mastercard.svg" data-description="&nbsp">4242</option>
+                                                    <option value="3" data-imagesrc="img/visa.svg" data-description="&nbsp">4242</option>
+                                                    <option value="4" data-imagesrc="img/amex.svg" data-description="&nbsp">4242</option>
+                                                    <option value="5" data-imagesrc="img/discover.svg" data-description="&nbsp">4242</option>                                                    
+                                            </select>                                            
+                                        </div>
+                                        <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+                                        <script>
+                                            $(function () {
+                                                $('#payment-method-selector').ddslick({
+                                                    defaultSelectedIndex:0,
+                                                    width: "100%",
+                                                    background: "white",
+                                                    onSelected: function(selectedData){
+                                                        //callback function: do something with selectedData;
+                                                    }
+                                                });
+                                            });
+                                        </script>                                        
+                                    </div>                                    
+                                    
+                                    <div class="q7-add-payment-buttons">
+                                        <button class="q7-button">Confirm</button>     
+                                        <button class="q7-button q7-button--cancel">Cancel</button>  
+                                    </div>
+
+                                    
+                                    <p id="custom_amount_message" class="q7-input-amount-message">*Enter amount between $5.00 and $10,000.00</p>   
+                                    
+                                    <script>
+                                        $(function () {
+                                            $("#payment_amount").change(function() {
+                                                if($(this).val() == "custom_amount"){
+                                                    $("#payment_custom_amount").show(0);
+                                                    $("#custom_amount_message").show(0);
+                                                } else{
+                                                    $("#payment_custom_amount").hide(0);
+                                                    $("#custom_amount_message").hide(0);
+                                                }
+                                            });
+                                        });
+                                    </script>                                    
+                                </div>                                   
+
+                                
+                                <!-- <div class="q7-input-and-buttons--inline">
                                     
                                     <div class="q7-input">
 
@@ -721,7 +908,7 @@
                                             });
                                         });
                                     </script>                                    
-                                </div>           
+                                </div>            -->
                                 
 
                             </div>                             
