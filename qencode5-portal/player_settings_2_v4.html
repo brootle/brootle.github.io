@@ -1942,6 +1942,92 @@
                         </div>
 
 
+                        <script>
+                            // disable specified checkbox
+                            let disableKeySystem = (system) => {
+
+                                let inputEl = document.querySelector(`[data-drm-nickname="${system}"]`);
+                                inputEl.disabled = true;
+                            
+                                let containerEl = inputEl.closest('.q7-input');
+                                containerEl.classList.add("q7-input--disabled");
+                            }                    
+
+                            // see https://www.radiantmediaplayer.com/blog/detecting-eme-cdm-browser.html
+                            var config = [{
+                                "initDataTypes": ["cenc"],
+                                "audioCapabilities": [{
+                                    "contentType": "audio/mp4;codecs=\"mp4a.40.2\""
+                                }],
+                                "videoCapabilities": [{
+                                    "contentType": "video/mp4;codecs=\"avc1.42E01E\""
+                                }]
+                            }];
+
+                            try {
+                                navigator.
+                                requestMediaKeySystemAccess("com.apple.fps.1_0", config).
+                                then(function(mediaKeySystemAccess) {
+                                    console.log('fairplay support ok');
+                                }).catch(function(e) {
+                                    disableKeySystem("fairplay");
+                                    console.log('no fairplay support');
+                                    console.log(e);
+                                });
+                            } catch (e) {
+                                disableKeySystem("fairplay");
+                                console.log('no fairplay support');
+                                console.log(e);
+                            }                            
+
+                            try {
+                                navigator.
+                                requestMediaKeySystemAccess("com.widevine.alpha", config).
+                                then(function(mediaKeySystemAccess) {
+                                    console.log('widevine support ok');
+                                }).catch(function(e) {
+                                    disableKeySystem("widevine");
+                                    console.log('no widevine support');
+                                    console.log(e);
+                                });
+                            } catch (e) {
+                                disableKeySystem("widevine");
+                                console.log('no widevine support');
+                                console.log(e);
+                            }
+
+                            try {
+                                navigator.
+                                requestMediaKeySystemAccess("com.microsoft.playready", config).
+                                then(function(mediaKeySystemAccess) {
+                                    console.log('playready support ok');
+                                }).catch(function(e) {
+                                    disableKeySystem("playready");
+                                    console.log('no playready support');
+                                    console.log(e);
+                                });
+                            } catch (e) {
+                                disableKeySystem("playready");
+                                console.log('no playready support');
+                                console.log(e);
+                            }
+
+                            try {
+                                navigator.
+                                requestMediaKeySystemAccess("org.w3.clearkey",config).
+                                then(function(mediaKeySystemAccess) {
+                                    console.log('clearkey support ok');
+                                }).catch(function(e) {
+                                    disableKeySystem("clearkey");
+                                    console.log('no clearkey support');
+                                    console.log(e);
+                            });
+                            } catch (e) {
+                                disableKeySystem("clearkey");
+                                console.log('no clearkey support');
+                                console.log(e);
+                            }                            
+                        </script>
 
                         <script>
 
