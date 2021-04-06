@@ -1796,15 +1796,20 @@
                                 function switchTab(e){
                 
                                     // find active elements and remove -> tablinks--active tabcontent--active
+
                 
                                     $('.q6-tablinks--active').removeClass("q6-tablinks--active");
                                     $('.q6-tabcontent--active').removeClass("q6-tabcontent--active");
                 
                                     // find what tab link was clicked and show tab content with that ID
                                     var clickedLink = e.currentTarget;
-                                    $(clickedLink).addClass('q6-tablinks--active');
+                                    //$(clickedLink).addClass('q6-tablinks--active');
+                                    // find data-tabcontent="azure" and make it active
                 
                                     var tabID = clickedLink.getAttribute("data-tabcontent");
+
+                                    $(`[data-tabcontent='${tabID}']`).addClass('q6-tablinks--active');
+
                 
                                     $(`#${tabID}`).addClass('q6-tabcontent--active');
                                     var tabContent = document.querySelector(`#${tabID}`);
@@ -3797,9 +3802,14 @@
                     // close if clicked outside
                     $(window).click(function(e){
                         if (!event.target.matches('.q7-dd-menu__button')) {
-                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened')
+                            $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
                         }
-                    });                                                                                                                                                  
+                    });          
+                    
+                    // close drop down menu on resize
+                    $(window).resize(function(e){
+                        $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+                    });                      
 
                 })
             </script>                                           
