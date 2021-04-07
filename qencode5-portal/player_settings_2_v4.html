@@ -2540,6 +2540,17 @@
                                     $("#dynamicFieldsDRMInput").show();
                                 } else {
                                     $("#dynamicFieldsDRMInput").hide();
+                                    // also need to clear all data
+                                    // uncheck all data-drm-nickname
+                                    $('[data-drm-nickname]').prop("checked", false);
+                                    // hide all data-input
+                                    $('[data-input]').hide();
+                                    // clear all q7-input__field
+                                    $('[data-input] .q7-input__field').val('');
+                                    // disable all checkboxes type="checkbox"
+                                    $('[data-input] .q7-checkbox input').prop("checked", false);
+
+                                    $('.q7-drm-input__extra').hide();
                                 }
                             });
 
@@ -2548,11 +2559,19 @@
                                     $("#dynamicFieldsEnableDRMHeadersInput").show();
                                 } else {
                                     $("#dynamicFieldsEnableDRMHeadersInput").hide();
+                                    // clear all input fields
+                                    $("#dynamicFieldsEnableDRMHeadersInput .q7-input__field").val('');
                                 }
                             });                            
 
                             // hide and show fields based on which radio button for DRM is selected
                             $('[name="drm"]').change(function(){
+                                // clear all fields and checkboxes
+                                $('[data-input] .q7-input__field').val('');
+                                // disable all checkboxes type="checkbox"
+                                $('[data-input] .q7-checkbox input').prop("checked", false);
+                                $('.q7-drm-input__extra').hide();
+
                                 let selectedTech = $(this).attr('data-drm-nickname');
                                 // show input for specific tech and hide other inputs
                                 $('.q7-drm-input').hide();
