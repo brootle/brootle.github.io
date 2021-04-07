@@ -939,13 +939,62 @@
                                     </div>                                                                                   
                                 </div>
                                 
-                                <div class="q7-drm-input" data-input="widevine">
+                                <div class="q7-drm-input" data-input="widevine" style="display: none;">
                                     <div class="q7-input">
                                         <div class="q7-input__label">
                                             <label>Widevine Url:</label>
                                         </div>
                                         <input id="widevine_url" class="q7-input__field" type="text">
-                                    </div>                                   
+                                    </div>              
+                                    
+                                    <div class="q7-checkbox-with-tooltip">
+                                        <label class="q7-checkbox">
+                                            Add headers? (optional)
+                                            <input id="dynamicFieldsEnableDRMHeaders" type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                        <div data-tippy-content="
+                                            <div class='q7-tooltip__close-btn'></div>
+                                            <div class='q7-tooltip__header'>
+                                                <div>
+                                                    <div class='q7-tooltip__name'>output_format</div>
+                                                    <div class='q7-tooltip__type'>json</div>
+                                                </div>
+                                                <div>
+                                                    <div class='q7-tooltip__required'>required</div>
+                                                    <div class='q7-tooltip__method'>api</div>
+                                                </div>
+                                            </div>
+                                            <h1 class='q7-tooltip__title'>Output Formats</h1>
+                                            <div class='q7-tooltip__content'>
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas                                           
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                            </div>
+                                            <div class='q7-tooltip__footer'>
+                                                <a href=''>Show API ></a>
+                                            </div>" 
+                                            class="q7-question-icon">
+                                        </div>  
+                                    </div>              
+                                    
+                                    <div class="q7-drm-input__extra" id="dynamicFieldsEnableDRMHeadersInput" style="display: none;">
+                                        <div class="q7-input">
+                                            <div class="q7-input__label">
+                                                <label>Name:</label>
+                                            </div>
+                                            <input id="widevine_header_name" class="q7-input__field" type="text">
+                                        </div>
+                                        <div class="q7-input">
+                                            <div class="q7-input__label">
+                                                <label>Value:</label>
+                                            </div>
+                                            <input id="widevine_header_value" class="q7-input__field" type="text">
+                                        </div>                                        
+                                    </div>
+                                    
                                 </div>
 
                                 <div class="q7-drm-input" data-input="playready" style="display: none;">
@@ -2402,7 +2451,23 @@
                                     $("#dynamicFieldsThumbnailsInput").hide();
                                 }
 
-                                console.log("params.videoSources.keySystems: ", params.videoSources.keySystems);
+                                // add headers
+                                //console.log("params.videoSources.emeHeaders: ", params.videoSources.emeHeaders);
+                                if (params.videoSources.emeHeaders) {
+                                    $('#dynamicFieldsEnableDRMHeaders').prop('checked', true);
+
+                                    $("#dynamicFieldsEnableDRMHeadersInput").show();
+
+                                    let headerName = Object.keys(params.videoSources.emeHeaders)[0];
+                                    let headerValue = params.videoSources.emeHeaders[headerName];
+
+                                    $("#widevine_header_name").val(headerName);
+                                    $("#widevine_header_value").val(headerValue);
+                                }else{
+                                    $("#dynamicFieldsEnableDRMHeadersInput").hide();
+                                }
+
+                                //console.log("params.videoSources.keySystems: ", params.videoSources.keySystems);
                                 if (params.videoSources.keySystems) {
                                     
                                     $('#dynamicFieldsEnableDRM').prop('checked', true);
@@ -2477,6 +2542,14 @@
                                     $("#dynamicFieldsDRMInput").hide();
                                 }
                             });
+
+                            $("#dynamicFieldsEnableDRMHeaders").change(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#dynamicFieldsEnableDRMHeadersInput").show();
+                                } else {
+                                    $("#dynamicFieldsEnableDRMHeadersInput").hide();
+                                }
+                            });                            
 
                             // hide and show fields based on which radio button for DRM is selected
                             $('[name="drm"]').change(function(){
@@ -2717,6 +2790,13 @@
                                 ui_params.videoSources = {};
                                 ui_params.videoSources.src = $("#playerVideoUrl").val();
                             
+                                // add headers to ui params
+                                if ($('#dynamicFieldsEnableDRMHeaders').prop("checked")) {
+                                    ui_params.videoSources.emeHeaders = {};
+                                    let headerName = $('#widevine_header_name').val();
+                                    let headerValue = $('#widevine_header_value').val();
+                                    ui_params.videoSources.emeHeaders[`${headerName}`] = headerValue;
+                                }
 
                                 // add DRM to ui_params.videoSources if selected
                                 if ($('#dynamicFieldsEnableDRM').prop("checked")) {
