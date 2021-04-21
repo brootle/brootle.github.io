@@ -2427,14 +2427,7 @@
                                     showWidthHeight();
                                 }
 
-                                if (params.thumbnails.aspectRatio) {
-                                    $("#dynamicFieldsEnableThumbnailsAspectRatio").prop( "checked", true );
-
-                                    $("#thumbnailAspectRatioHeight").val(params.thumbnails.aspectRatio.split(':')[0]);
-                                    $("#thumbnailAspectRatioWidth").val(params.thumbnails.aspectRatio.split(':')[1]);
-                                    
-                                    $("#thumbailAspectRatio").show();
-                                }                                
+                             
 
                                 // fluid - set size to match video size
                                 if (params.size.fluid) {
@@ -2566,6 +2559,15 @@
                                     $('#dynamicFieldsEnableThumbnails').prop('checked', true);
                                     $("#dynamicFieldsThumbnails").val(params.thumbnails.src);
                                     $("#dynamicFieldsThumbnailsInput").show();
+
+                                    if (params.thumbnails.aspectRatio) {
+                                        $("#dynamicFieldsEnableThumbnailsAspectRatio").prop( "checked", true );
+
+                                        $("#thumbnailAspectRatioHeight").val(params.thumbnails.aspectRatio.split(':')[0]);
+                                        $("#thumbnailAspectRatioWidth").val(params.thumbnails.aspectRatio.split(':')[1]);
+                                        
+                                        $("#thumbailAspectRatio").show();
+                                    }                                       
                                 } else {
                                     $("#dynamicFieldsThumbnailsInput").hide();
                                 }
