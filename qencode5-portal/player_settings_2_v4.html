@@ -1081,13 +1081,73 @@
                             
                             </div>
 
-                            <div id="dynamicFieldsThumbnailsInput" class="q7-input-and-buttons--inline">
-                                <div class="q7-input">
-                                    <div class="q7-input__label">
-                                        <label>Enter the VTT thumbnails URL:</label>
-                                    </div>
-                                    <input id="dynamicFieldsThumbnails" class="q7-input__field" type="text">
-                                </div>                                
+                            <div id="dynamicFieldsThumbnailsInput" class="q7-thumbnails-input">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Enter the VTT thumbnails URL:</label>
+                                        </div>
+                                        <input id="dynamicFieldsThumbnails" class="q7-input__field" type="text">
+                                    </div>                               
+                                </div>        
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-checkbox-with-tooltip">
+                                        <label class="q7-checkbox">
+                                            Aspect Ratio
+                                            <input id="dynamicFieldsEnableThumbnailsAspectRatio" type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                        <div data-tippy-content="
+                                            <div class='q7-tooltip__close-btn'></div>
+                                            <div class='q7-tooltip__header'>
+                                                <div>
+                                                    <div class='q7-tooltip__name'>output_format</div>
+                                                    <div class='q7-tooltip__type'>json</div>
+                                                </div>
+                                                <div>
+                                                    <div class='q7-tooltip__required'>required</div>
+                                                    <div class='q7-tooltip__method'>api</div>
+                                                </div>
+                                            </div>
+                                            <h1 class='q7-tooltip__title'>Output Formats</h1>
+                                            <div class='q7-tooltip__content'>
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas                                           
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                            </div>
+                                            <div class='q7-tooltip__footer'>
+                                                <a href=''>Show API ></a>
+                                            </div>" 
+                                            class="q7-question-icon">
+                                        </div>                                           
+                                    </div>                               
+                                </div> 
+                                <div id="thumbailAspectRatio" class="q7-thumbnail-aspect-ratio-input" style="display: none;">
+                                    <div class="q7-input-and-buttons--inline">
+                                        <div class="q7-input q7-input--width">
+                                            <div class="q7-input__label">
+                                                <label>Width:</label>
+                                            </div>
+                                            <input id="thumbnailAspectRatioHeight" class="q7-input__field" type="text" value="16">
+                                        </div> 
+                                        <div class="q7-input q7-input--height">
+                                            <div class="q7-input__label">
+                                                <label>Height:</label>
+                                            </div>
+                                            <input id="thumbnailAspectRatioWidth" class="q7-input__field" type="text" value="9">
+                                        </div>   
+                                        <script>
+                                            $(function () {
+                                                // allow only positive integer numbers
+                                                $('#thumbnailAspectRatioHeight, #thumbnailAspectRatioWidth').on('input', function (e) {
+                                                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                                });                                                                
+                                            });
+                                        </script>                                                                                                              
+                                    </div>   
+                                </div>                                          
                             </div>                            
                             
                         </div>
@@ -2340,7 +2400,8 @@
                                 // if($(this).val() === "fluid"){
                                 //     hideWidthHeight();
                                 // }                                
-                            });             
+                            });            
+                           
 
                             function loadLayoutParameters(){
                                 // aspectRatio ratio parameter 
@@ -2365,6 +2426,17 @@
                                     $("#playerLayoutSizeHeight").val(params.size.aspectRatio.split(':')[1]);
                                     showWidthHeight();
                                 }
+
+                                if (params.thumbnails.aspectRatio) {
+
+                                    console.log("ENABLE CHECKBOCK");
+                                    $("#dynamicFieldsEnableThumbnailsAspectRatio").prop( "checked", true );
+
+                                    $("#thumbnailAspectRatioHeight").val(params.thumbnails.aspectRatio.split(':')[0]);
+                                    $("#thumbnailAspectRatioWidth").val(params.thumbnails.aspectRatio.split(':')[1]);
+                                    
+                                    $("#thumbailAspectRatio").show();
+                                }                                
 
                                 // fluid - set size to match video size
                                 if (params.size.fluid) {
@@ -2599,6 +2671,14 @@
                                 }
                             });
 
+                            $("#dynamicFieldsEnableThumbnailsAspectRatio").change(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#thumbailAspectRatio").show();
+                                } else {
+                                    $("#thumbailAspectRatio").hide();
+                                }
+                            });                            
+
                             $("#dynamicFieldsEnableDRM").change(function () {
                                 if ($(this).is(":checked")) {
                                     $("#dynamicFieldsDRMInput").show();
@@ -2735,7 +2815,8 @@
                                 // size start
                                 if ($("#playerLayoutSize").val() === "aspect_ratio") {
                                     ui_params.size.aspectRatio = $("#playerLayoutSizeWidth").val() + ':' + $("#playerLayoutSizeHeight").val();                                  
-                                }                                
+                                }                           
+                                
 
                                 // fluid is enabled by default
                                 // if ($("#playerLayoutSize").val() == "fluid") {
@@ -2876,7 +2957,12 @@
                                     console.log("add thumbnails");
                                     ui_params.thumbnails = {};
                                     ui_params.thumbnails.src = $("#dynamicFieldsThumbnails").val();
+
+                                    if ($('#dynamicFieldsEnableThumbnailsAspectRatio').prop("checked")) {
+                                    ui_params.thumbnails.aspectRatio = $("#thumbnailAspectRatioHeight").val() + ':' + $("#thumbnailAspectRatioWidth").val();   
+                                }                                      
                                 }
+                              
                               
 
                                 // MUST LOAD NEW SRC FROM UI
