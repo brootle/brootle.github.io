@@ -3114,8 +3114,17 @@
                                             if (!obj.hasOwnProperty(prop)) continue;
 
                                             var paramValue = obj[prop];
+
+
+                                            if(typeof paramValue ==='boolean'){
+                                                outputCode += `
+        ${prop}: ${paramValue},`;
+                                            }
+
                                             if (typeof paramValue === 'string') {
                                                 paramValue = `"${paramValue}"`;
+
+
                                                 outputCode += `
         ${prop}: ${paramValue},`;
                                             } else {
