@@ -233,7 +233,7 @@
 
 
                         <div class="q6-filter-box__buttons q6-filter-box__buttons--extra">
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Create New Player</button>                         
+                            <button data-toggle="modal" data-target="#createNewPlayer"  class="q6-button q6-white-text q6-blue-background q6-blue-border">Create New Player</button>                         
                         </div>                          
             
                     </div>
@@ -281,7 +281,7 @@
                                             </div>
                                             <div class="q7-dd-menu__delimeter"></div>
                                             <div class="q7-dd-menu__critical-items">
-                                                <div class="q7-dd-menu-element">Delete Player</div>
+                                                <div data-toggle="modal" data-target="#deletePlayer" class="q7-dd-menu-element">Delete Player</div>
                                             </div>                                    
                                         </div>                                                                                                          
                                     </div>
@@ -315,7 +315,7 @@
                                             </div>
                                             <div class="q7-dd-menu__delimeter"></div>
                                             <div class="q7-dd-menu__critical-items">
-                                                <div class="q7-dd-menu-element">Delete Player</div>
+                                                <div data-toggle="modal" data-target="#deletePlayer" class="q7-dd-menu-element">Delete Player</div>
                                             </div>                                    
                                         </div>                                                                                                          
                                     </div>
@@ -384,7 +384,7 @@
 
 
                         <div class="q6-filter-box__buttons q6-filter-box__buttons--extra">
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Create New Player</button>                         
+                            <button data-toggle="modal" data-target="#createNewPlayer" class="q6-button q6-white-text q6-blue-background q6-blue-border">Create New Player</button>                         
                         </div>                          
             
                     </div>
@@ -417,6 +417,82 @@
                                 
 
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="deletePlayer" role="dialog">
+                <div class="modal-dialog q7-modal-dialog--centered">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        
+                        <div class="modal-body q7-modal-body--update">
+
+                            <div class="q7-modal-body__response">
+                                <img src="img/video_player_delete.svg">     
+                                <div class="q7-modal-body__extra-info">Qencode_test</div>
+                                <h2>Delete this Video Player?</h2>                                               
+                                <p>
+                                    Are you sure you want to delete this Video Player? <br>
+                                    This will erase all statistics used in this video player.
+                                </p>
+                            </div>
+                                                                                                                                                                    
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button q7-button--delete">Delete</button>                                                                             
+                            </div>
+                        </div>                            
+
+                    </div>
+                
+                </div>
+            </div>
+            <!-- Modal ends -->        
+            
+            <!-- Modal -->
+            <div class="modal fade q7-modal" id="createNewPlayer" role="dialog">
+                <div class="modal-dialog q7-modal-dialog--centered">                
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">                  
+                        
+                        <div class="modal-body q7-modal-body--update">
+
+                            <div class="q7-modal-body__response">
+                                <img src="img/video_player_blue.svg">     
+
+                                <h2>Add new player</h2>                                               
+                                <p>
+                                    This will add new player to your list
+                                </p>                                
+  
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input q7-input--template-name">
+                                        <div class="q7-input__label">
+                                            <label>Player name</label>                                                          
+                                        </div>                
+                                        <input class="q7-input__field" type="text">                                
+                                    </div>                                                                                                                                                                                                                                                                   
+                                </div>                                
+                            </div>
+                                                                                                                                                                    
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="q7-modal-footer-buttons">
+                                <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                <button data-dismiss="modal" class="q7-button">Add player</button>                                                                             
+                            </div>
+                        </div>                            
+
+                    </div>
+                
+                </div>
+            </div>
+            <!-- Modal ends -->               
 
 
             <script>
