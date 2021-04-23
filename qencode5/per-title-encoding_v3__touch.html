@@ -524,6 +524,7 @@
                                 };
 
                                 // move slider
+                                //$(document).mousemove(function( e ) {
                                 document.onmousemove = (e) => {
                                     e = e || window.event;
                                     e.preventDefault();
@@ -558,7 +559,10 @@
                                 };
                             }
 
-                            slider.onmousedown = drag;
+                            console.log("Enable drag.....");
+                            $(slider).on('touchstart mousedown', drag);
+                            //$(slider).mousedown(drag);
+                            //slider.onmousedown = drag;
                         }
 
                         let disableDrag = (silder) => {
