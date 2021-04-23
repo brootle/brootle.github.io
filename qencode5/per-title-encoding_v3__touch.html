@@ -253,7 +253,7 @@
                 </video> -->
 
 
-                <div class="q6-per-title-compare-videos__container">
+                <div id="players_container" class="q6-per-title-compare-videos__container">
 
                     <!-- <div id="playerPoster" class="player-poster">                       
 
@@ -342,92 +342,6 @@
                     </div>
 
                     <script>
-                        // https://stackoverflow.com/a/28839954/6261255
-
-
-
-                        // var video = document.getElementById("test-preload")
-
-                        // video.addEventListener('canplay', () => {
-                        //     console.log("Now video can be played!");
-                        // });
-
-                        // // there must be in Response header:
-                        // // Access-Control-Allow-Origin: *
-
-                        // var url = "http://127.0.0.1:8887/videos/tearsofsteel-slider-demo-original.mp4";
-
-                        // var xhr = new XMLHttpRequest();                   
-
-                        // xhr.open("GET", url, true);
-
-                        // xhr.responseType = "arraybuffer";
-
-                        // xhr.onload = function(oEvent) {
-
-                        //     var blob = new Blob([oEvent.target.response], {type: "video/mp4"});
-
-                        //     video.src = URL.createObjectURL(blob);
-
-                        //     //video.play()  if you want it to play on load
-                        // };
-
-                        // xhr.onprogress = function(oEvent) {
-
-                        //     if (oEvent.lengthComputable) {
-                        //         var percentComplete = oEvent.loaded/oEvent.total * 100;
-                        //         // show progress
-                        //         console.log("percentComplete: ", percentComplete);
-                        //     }
-                        // }
-
-                        // xhr.send();
-
-
-
-
-                        ///////////////////////////////////////////////////////////
-
-                        // let preloadVideo = (playerId, videoSrcUrl) => {
-
-                        //     var videoEl = document.getElementById(playerId)
-                        //     var url = videoSrcUrl;
-
-                        //     var xhr = new XMLHttpRequest();                   
-
-                        //     xhr.open("GET", url, true);
-
-                        //     xhr.responseType = "arraybuffer";
-
-                        //     xhr.onload = function(oEvent) {
-
-                        //         var blob = new Blob([oEvent.target.response], {type: "video/mp4"});
-
-                        //         videoEl.src = URL.createObjectURL(blob);
-
-                        //     };
-
-                        //     xhr.onprogress = function(oEvent) {
-
-                        //         if (oEvent.lengthComputable) {
-                        //             var percentComplete = oEvent.loaded/oEvent.total * 100;
-                        //             // show progress
-                        //             //console.log("percentComplete: ", Math.round(percentComplete));
-                        //         }
-                        //     }
-
-                        //     xhr.send();
-                        // }
-
-                        // preloadVideo("test-preload", "http://127.0.0.1:8887/videos/tearsofsteel-slider-demo-original.mp4");
-
-                        //////////////////////////////////////////////////////////                        
-
-
-                    </script>
-
-
-                    <script>
 
                         let preloadVideo = (playerId, videoSrcUrl) => {
 
@@ -505,70 +419,128 @@
 
                         ////////////////////////////////////////////
                         // drag slider
-                        let enableDrag = (slider) => {
+                        var allowDrag = false;
 
-                            let initialPosition = 0;
-                            let targetPosition = 0;
-            
-                            let drag = (e) => {
-                                e = e || window.event;
-                                e.preventDefault();
-                                
-                                // get the mouse cursor position at startup:
-                                initialPosition = e.clientX;
+                        var dragItem = document.querySelector("#slider-handler");
+                        var container = document.querySelector("#players_container");
 
-                                // don't move when mouse is up
-                                document.onmouseup = () => {
-                                    document.onmouseup = null;
-                                    document.onmousemove = null;
-                                };
+                        var active = false;
+                        var currentX;
+                        var currentY;
+                        var initialX;
+                        var initialY;
+                        var xOffset = 0;
+                        var yOffset = 0;
 
-                                // move slider
-                                //$(document).mousemove(function( e ) {
-                                document.onmousemove = (e) => {
-                                    e = e || window.event;
-                                    e.preventDefault();
+                        container.addEventListener("touchstart", dragStart, false);
+                        container.addEventListener("touchend", dragEnd, false);
+                        container.addEventListener("touchmove", drag, false);
 
-                                    // make sure slider-handler doesn't go outside video-container
-                                    let videoContainerEl = document.getElementById("video-container");
-                                    let leftBorder = videoContainerEl.getBoundingClientRect().left;
-                                    let rightBorder = videoContainerEl.getBoundingClientRect().right;
+                        container.addEventListener("mousedown", dragStart, false);
+                        container.addEventListener("mouseup", dragEnd, false);
+                        container.addEventListener("mousemove", drag, false);
 
-                                    let sliderEl = document.getElementById("slider-handler");
-                                    let sliderLeftEdge = sliderEl.getBoundingClientRect().left;   
-                                    let sliderRightEdge = sliderEl.getBoundingClientRect().right;         
-                                    
-                                    if(e.clientX > leftBorder && e.clientX < rightBorder){
-
-                                        targetPosition = initialPosition - e.clientX;                            
-                                        initialPosition = e.clientX;
-
-                                        let diff = 0;
-                                        if(sliderLeftEdge <= leftBorder){
-                                            diff = 1;
-                                        }
-                                        if(sliderRightEdge >= rightBorder){
-                                            diff = -1;
-                                        }
-
-                                        slider.style.left = (slider.offsetLeft - targetPosition) + diff + "px";                                 
-                                        masterPlayerContainer.style.width = (slider.offsetLeft - targetPosition + 16) + diff + "px";                                          
-                                    }                                    
-                                    
-                                    
-                                };
+                        function dragStart(e) {
+                        if (e.type === "touchstart") {
+                                initialX = e.touches[0].clientX - xOffset;
+                                initialY = e.touches[0].clientY - yOffset;
+                            } else {
+                                initialX = e.clientX - xOffset;
+                                initialY = e.clientY - yOffset;
                             }
 
-                            console.log("Enable drag.....");
-                            $(slider).on('touchstart mousedown', drag);
-                            //$(slider).mousedown(drag);
-                            //slider.onmousedown = drag;
+                            if (e.target === dragItem) {
+                                active = true;
+                            }
                         }
 
-                        let disableDrag = (silder) => {
-                            silder.onmousedown = null;
-                            silder.onmousemove = null;
+                        function dragEnd(e) {
+                            initialX = currentX;
+                            initialY = currentY;
+
+                            active = false;
                         }
+
+                        function drag(e) {
+                            if (active && allowDrag) {                               
+                            
+                                e.preventDefault();
+
+                                // make sure slider-handler doesn't go outside video-container
+                                let leftBorder = container.getBoundingClientRect().left;
+                                let rightBorder = container.getBoundingClientRect().right;
+
+                                let cursorPosition;
+
+                            
+                                if (e.type === "touchmove") {
+                                    currentX = e.touches[0].clientX - initialX;
+                                    currentY = e.touches[0].clientY - initialY;
+                                    cursorPosition = e.touches[0].clientX;
+                                } else {
+                                    currentX = e.clientX - initialX;
+                                    currentY = e.clientY - initialY;
+                                    cursorPosition = e.clientX;
+                                }
+
+                                if(cursorPosition > leftBorder && cursorPosition < rightBorder){
+                                    xOffset = currentX;
+                                    yOffset = currentY;
+
+                                    setTranslate(currentX, currentY, dragItem);
+                                }
+
+                                // xOffset = currentX;
+                                // yOffset = currentY;
+
+                                // setTranslate(currentX, currentY, dragItem);
+                            }
+                        }
+
+                        function setTranslate(xPos, yPos, el) {
+                            //el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+                            el.style.transform = "translateX(" + xPos + "px)";
+
+
+                         
+                            // masterPlayerContainer.style.width = (el.offsetLeft + xPos + 16) + diff + "px";     
+                               
+                            let sliderEl = document.getElementById("slider-handler");
+                            let sliderLeftEdge = sliderEl.getBoundingClientRect().left;   
+                            let sliderRightEdge = sliderEl.getBoundingClientRect().right;   
+                                        
+                            let leftBorder = container.getBoundingClientRect().left;
+                            let rightBorder = container.getBoundingClientRect().right;                            
+                            
+                            let diff = 0;
+                            if(sliderLeftEdge <= leftBorder){
+                                diff = 1;
+                            }
+                            if(sliderRightEdge >= rightBorder){
+                                diff = -1;
+                            }                            
+
+                            masterPlayerContainer.style.width = (el.offsetLeft + xPos + 16) + diff + "px"; 
+
+                            // if(e.clientX > leftBorder && e.clientX < rightBorder){
+
+                            //     targetPosition = initialPosition - e.clientX;                            
+                            //     initialPosition = e.clientX;
+
+                            //     let diff = 0;
+                            //     if(sliderLeftEdge <= leftBorder){
+                            //         diff = 1;
+                            //     }
+                            //     if(sliderRightEdge >= rightBorder){
+                            //         diff = -1;
+                            //     }
+
+                            //     slider.style.left = (slider.offsetLeft - targetPosition) + diff + "px";                                 
+                            //     masterPlayerContainer.style.width = (slider.offsetLeft - targetPosition + 16) + diff + "px";                                          
+                            // }                             
+                        }
+
+                     
                         ////////////////////////////////////////////
 
 
@@ -599,7 +571,9 @@
                             // hide poster playerPoster
                             poster.style.display = 'none';
 
-                            enableDrag(sliderHandler);
+                            // enable drag
+                            //enableDrag(sliderHandler);        
+                            allowDrag = true;                    
                         }
             
                         // let pausePlayers = () => {
@@ -677,17 +651,16 @@
                             masterPlayerContainer.style.width = "50%";   
             
                             //let sliderHandler = document.getElementById("slider-handler");   
-                            sliderHandler.style.removeProperty('left');    
+                            //sliderHandler.style.removeProperty('left');   
+                            //sliderHandler.style.removeProperty('transform');    
+                            //sliderHandler.style.transform = ""; 
+                            sliderHandler.style.transform = "translateX(0px)";
 
-                            disableDrag(sliderHandler);                         
-                            
-                            //showControls();
-                            
-                            // if(playerSynced && !player2.paused){                                
-                            //     hideControls();
-                            // }else{
-                            //     toggleControls();   
-                            // }                               
+                            // disable drag
+                            //disableDrag(sliderHandler);   
+                            allowDrag = false;
+                            xOffset = 0;                         
+                                                      
                         }); 
                         
                         player2.addEventListener('ended', () => {
@@ -719,7 +692,10 @@
                             //let sliderHandler = document.getElementById("slider-handler");   
                             sliderHandler.style.removeProperty('left');    
 
-                            disableDrag(sliderHandler);                           
+                            // disable drag
+                            //disableDrag(sliderHandler); 
+                            allowDrag = false;
+                            xOffset = 0                            
                         });                         
                             
                         playBtn.addEventListener('click', startPlayers);
@@ -747,7 +723,9 @@
                             sliderHandler.style.removeProperty('left');        
                             
                             // disable drag
-                            disableDrag(sliderHandler);
+                            //disableDrag(sliderHandler);
+                            allowDrag = false;
+                            
                         }
 
                         player1.addEventListener('pause', () => {
