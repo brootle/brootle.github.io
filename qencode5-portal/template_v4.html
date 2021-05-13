@@ -409,6 +409,99 @@
                             <!-- Modal ends -->                                                  
                             
                         </div>
+                        <div class="q7-notifications-container q7-dd-menu__button">
+                            <div class="q7-notifications-icon">
+                                
+                            </div>
+
+                            <div class="q7-dd-menu">
+                                <div class="q7-dd-menu__header">
+                                    <div class="q7-dd-menu__header-status">4 new notifications</div>
+                                    <div class="q7-dd-menu__header-content">
+                                        <div>
+                                            <a href="">Notifications</a>
+                                        </div>
+                                        <div>
+                                            <a href="">Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="q7-dd-menu__body">
+                                    <div class="q7-dd-menu__items">
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>                                                                                                              
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>          
+                                        <div class="q7-dd-menu-element">
+                                            <div class="q7-notifications__item">
+                                                <div  class="q7-notifications__item-icon q7-notifications__item-icon--letter"></div>
+                                                <div class="q7-notifications__item-content">
+                                                    <div class="q7-notifications__item-title">Qencode Billing</div>
+                                                    <div class="q7-notifications__item-text">You got bonus +12%</div>
+                                                    <div class="q7-notifications__item-time">1 hour ago</div>
+                                                </div>
+                                            </div>
+                                        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                    </div> 
+                                </div>
+                                <div class="q7-dd-menu__footer">
+                                    <div class="q7-dd-menu__footer-content">
+                                        <div>
+                                            <a href="">See all notifications</a>
+                                        </div>
+                                        <div>
+                                            <a href="">Mark all as read</a>
+                                        </div>                                        
+                                    </div>
+                                </div>                                
+                            </div>                            
+                        </div>
                     </div>
                 </div>                
             </div>  
@@ -692,6 +785,39 @@
                                  
 
         </div>
+
+        <script>
+            $(function () {                               
+
+                // toggle show and hide menu on menu button click  
+                $(".q7-dd-menu__button").click(function(e){
+                    // check if current is opened
+                    if($(this).hasClass('q7-dd-menu__button--opened')){
+                        $(this).removeClass('q7-dd-menu__button--opened');
+                    } else{
+                        // close all opened menus
+                        $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+
+                        // open current 
+                        $(this).addClass('q7-dd-menu__button--opened');
+                    }
+                });      
+
+                            
+                // close if clicked outside
+                $(window).click(function(e){
+                    if (!event.target.matches('.q7-dd-menu__button')) {
+                        $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+                    }
+                });          
+                
+                // close drop down menu on resize
+                $(window).resize(function(e){
+                    $('.q7-dd-menu__button--opened').removeClass('q7-dd-menu__button--opened');
+                });                      
+
+            })
+        </script>              
                 
     </main>
 

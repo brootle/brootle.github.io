@@ -29,7 +29,7 @@
 
 .q6-authorize-container .q6-feature-item {
     align-items: flex-start;   
-    margin: 15px 0; 
+    margin: 10px 0;
 }
 
 .q6-authorize-container .q6-feature-item__icon {
@@ -53,7 +53,7 @@
     font-family: "proxima-nova";
     font-size: 25px;
     line-height: 25px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0;
     text-align: center;
 }
@@ -76,6 +76,24 @@
 .q6-authorize-form{
     margin-top: 30px;    
 }
+
+.q6-authorize-form__reg-details{
+    display: flex;
+}
+
+.q6-authorize-form__reg-details > div + div{
+    margin-left: 25px;
+}
+
+.q6-authorize-form__reg-details > div{
+    flex: 1;
+}
+
+
+.q6-authorize-window.q6-authorize-window--reg-details{
+    max-width: 730px;
+}
+
 
 .q6-authorize-form .q6-input{
     margin-bottom: 25px;
@@ -413,6 +431,16 @@
     background-repeat: no-repeat;    
 }
 
+.q6-activate-email-image{
+    width: 226px;
+    height: 178px;
+    margin: 20px auto;
+    background-image: url(../img/activation.png);
+    background-position: center;    
+    background-size: contain;
+    background-repeat: no-repeat;    
+}
+
 .q6-paypal-confirmation-container{
     background: #f7f8fa;
 }
@@ -433,6 +461,60 @@
     max-width: 400px;
     margin: 70px auto;  
 }
+
+.q6-email-activation-window-content{
+    max-width: 400px;
+    margin: 35px auto;  
+}
+
+.q6-authorize__steps-container{
+    display: flex;
+    justify-content: center;
+    color: #949494;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;    
+}
+
+
+.q6-authorize__step.q6-authorize__step--complete{
+    text-decoration: line-through;
+}
+
+.q6-authorize__step{
+    display: flex;
+    align-items: center;    
+}
+
+.q6-authorize__step > div:nth-of-type(2){
+    margin: 0 15px;
+}
+
+.q6-authorize__step.q6-authorize__step--complete {
+    color: #3caf99;
+}
+
+.q6-authorize__step.q6-authorize__step--complete > div:nth-of-type(2){
+    color: #3caf99;
+    text-decoration: line-through;
+}
+
+.q6-authorize__step > div:nth-of-type(1) {
+    background-image: url(../img/activation_step_pending.png);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+}
+
+.q6-authorize__step.q6-authorize__step--complete > div:nth-of-type(1) {
+    background-image: url(../img/activation_step_done.png)
+}
+
+.q6-authorize__steps-title{
+    margin: 7px 0;
+}
+
 
 .q6-paypal-confirmation-info{
     margin: 0 30px;
@@ -729,6 +811,10 @@
     margin: 10px 0;    
 }
 
+.q6-authorize-window.q6-authorize-window--confirm-email{
+    max-width: 570px;
+}
+
 .q6-authorize-window .intl-tel-input {
     width: 100%;
     margin: 0;
@@ -803,6 +889,15 @@
 }
 
 @media screen and (max-width: 610px){
+
+    .q6-authorize-form__reg-details {
+        flex-direction: column;
+    }
+
+    .q6-authorize-form__reg-details > div + div {
+        margin-left: 0;
+    }    
+
     .q6-paypal-waiting-image {
         width: 100%;
     } 
