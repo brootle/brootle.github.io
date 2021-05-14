@@ -10716,17 +10716,37 @@ th.q7-th--loading .q7-loading-cell{
     align-items: center;
     justify-content: center;
     position: relative;
+    cursor: pointer;
+}
+
+.q7-notifications-container.q7-dd-menu__button:after{
+    display: none;
 }
 
 .q7-notifications-icon{
     pointer-events: none;
+
+    width: 20px;
+    min-width: 20px;
+    height: 26px;  
+
+    background-image: url(../img/nf_notification.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
-.q7-notifications-container:hover,
+.q7-notifications-icon.q7-notifications-icon--new{
+    background-image: url(../img/nf_notification_new.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* .q7-notifications-container:hover,
 .q7-notifications-container.q7-dd-menu__button.q7-dd-menu__button--opened{
     background-color: #154fc2;
     cursor: pointer;
-}
+} */
 
 .q7-notifications-container.q7-dd-menu__button.q7-dd-menu__button--opened .q7-dd-menu {
     display: initial;
@@ -10747,7 +10767,7 @@ th.q7-th--loading .q7-loading-cell{
 }
 
 .q7-notifications-container.q7-dd-menu__button .q7-dd-menu__body{
-    max-height: 200px;
+    max-height: 580px;
     overflow-y: scroll;
     border: 1px solid #e4eeff;
     border-top: none;
@@ -10762,6 +10782,8 @@ th.q7-th--loading .q7-loading-cell{
 
     border-top: none;
     border: 1px solid #e4eeff;
+
+    cursor: initial;
 }
 
 .q7-dd-menu__header-status{
@@ -10786,6 +10808,8 @@ th.q7-th--loading .q7-loading-cell{
     border: 1px solid #e4eeff;
 
     color: var(--blue);
+
+    cursor: initial;
 }
 
 .q7-dd-menu__footer-content{
@@ -10807,9 +10831,30 @@ th.q7-th--loading .q7-loading-cell{
     color: var(--blue);
 }
 
+.q7-dd-menu__header-content > div:last-of-type{
+    display: flex;
+    align-items: center;
+}
+
 .q7-notifications__item{
     display: flex;
     align-items: center;  
+}
+
+.q7-notifications__item.q7-notifications__item--yellow{
+    background-color: #fff8ec;
+}
+
+.q7-notifications__item.q7-notifications__item--red{
+    background-color: #ffeceb;
+}
+
+.q7-notifications__item.q7-notifications__item--green{
+    background-color: #effff2;
+}
+
+.q7-notifications__item.q7-notifications__item--opened{
+    background-color: transparent;
 }
 
 .q7-notifications__item-icon{
@@ -10818,17 +10863,67 @@ th.q7-th--loading .q7-loading-cell{
     height: 40px;
 
     background-repeat: no-repeat;
-    border-radius: 50%;
-    /* background-size: 70%;
-    background-position: 45% 48%;     */
 
-    margin-right: 10px;
-    background-color: red;
+
+    margin-right: 15px;
 }
 
-.q7-notifications__item-icon.q7-notifications__item-icon--letter{
-    
+.q7-notifications__item-icon.q7-notifications__item-icon--server{
+    background-image: url(../img/nf_server.svg);
+    background-position: center;
+    background-repeat: no-repeat;    
 }
+
+.q7-notifications__item-icon.q7-notifications__item-icon--red-card{
+    background-image: url(../img/nf_card_red.svg);
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.q7-notifications__item-icon.q7-notifications__item-icon--csv{
+    background-image: url(../img/nf_csv.svg);
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.q7-notifications__item-icon.q7-notifications__item-icon--qencode{
+    background-image: url(../img/nf_q_system.svg);
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.q7-notifications__item-icon.q7-notifications__item-icon--new{
+    background-image: url(../img/nf_new.svg);
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.q7-notifications__item-icon.q7-notifications__item-icon--receipt{
+    background-image: url(../img/nf_receipt.svg);
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.q7-notifications__item-icon.q7-notifications__item-icon--wallet{
+    background-image: url(../img/nf_wallet.svg);
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.q7-dd-menu__header-content__settings-icon{
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+
+    background-image: url(../img/nf_settings.svg);
+    background-position: center;
+    background-repeat: no-repeat;  
+
+
+    margin: 0 8px;    
+}
+
+
 
 .q7-notifications__item-title{
     font-weight: 600;
@@ -10848,7 +10943,7 @@ th.q7-th--loading .q7-loading-cell{
 }
 
 .q7-notifications__item{
-    padding: 9px 17px;
+    padding: 15px 17px;
     border-bottom: 1px solid #e4eeff;
     color: #242527;
     line-height: 18px;
