@@ -194,7 +194,7 @@
                     <div class="q6-authorize-window q6-authorize-window--reg-details">
                         <h2>Tell us about yourself</h2>
 
-                        <h3 class="q6-authorize-window__subtitle">Help us customize your experience with Qencode.</h3>                      
+                        <h3 class="q6-authorize-window__subtitle">Help us maximize your Qencode experience.</h3>                      
 
                         <div class="q6-authorize-form">
 
@@ -218,14 +218,14 @@
                             <div class="q6-input-and-buttons--inline">
                                 <div class="q6-input">
                                     <div class="q6-input__label">
-                                        <label>Company name</label>
+                                        <label>Company Name</label>
                                     </div>
                                     <input class="q6-input__field" type="text">
                                 </div>                
                                 
                                 <div class="q6-input">
                                     <div class="q6-input__label">
-                                        <label>Company website</label>
+                                        <label>Company Website</label>
                                     </div>
                                     <input class="q6-input__field" type="text">
                                 </div>                                 
@@ -234,14 +234,22 @@
                             <div class="q6-input-and-buttons--inline">
                                 <div class="q6-input">
                                     <div class="q6-input__label">
-                                        <label>Role</label>
+                                        <label>Phone</label>
                                     </div>
-                                    <div class="q6-custom-select">
-                                        <select class="q6-select">
-                                            <option value="0">Engineer</option>
-                                        </select>
-                                    </div>
-                                </div>       
+                                    <input id="phone" class="q6-input__field" type="text" value="+380930759717" type="tel">
+    
+                                    <script src="build/js/intlTelInput.js"></script>
+                                    <script src="build/js/utils.js"></script>
+                                    <script>
+                                        // https://github.com/jackocnr/intl-tel-input
+                                        // http://www.jqueryscript.net/form/jQuery-International-Telephone-Input-With-Flags-Dial-Codes.html
+                                        $("#phone").intlTelInput({
+                                            nationalMode: false,
+                                            autoPlaceholder: "polite"
+                                        })
+                                    </script>
+    
+                                </div>    
                                 
                                 <div class="q6-input q6-input--password">
                                     <div class="q6-input__label">
@@ -269,7 +277,7 @@
                             <hr>
                     
                         
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Complete Setup</button>
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Finish Setup</button>
 
 
                         </div>
