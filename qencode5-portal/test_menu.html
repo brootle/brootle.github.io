@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        .menu{
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: red;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            z-index: 9999;      
+            
+            /* overflow-y : auto;                   */
+        }
+
+        .container{
+            overflow-x: hidden;
+            /* overflow-y: auto; */
+            overflow-y: scroll;
+            height: 100%;            
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+
+        .element{
+            /* position: relative; */
+
+            text-align: center;
+            padding: 12px 10px;
+            padding-left: 22px;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+       
+            color: black;
+            font-size: 14px;      
+            
+            position: static;
+        }
+
+        .submenu{
+            /* position: absolute; */
+            width: 200px;
+            height: 40px;
+            background-color: forestgreen;
+            left: 200px;
+            top: 0;
+            display: none;
+
+            position: fixed;
+        }
+
+        .element:hover .submenu{
+            display: block;
+        }
+
+        .element:hover{
+            background-color: chocolate;
+        }
+
+        .body{
+            margin-bottom: 208px;
+        }
+
+        .footer{
+            position: fixed;
+            background: yellow;
+            bottom: 0;
+            width: 200px;            
+        }
+
+        .logo{
+            height: 30px;
+            background-color: cadetblue;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="menu">
+
+        <div class="logo">
+            LOGO
+        </div>
+
+        <div class="container">
+
+            <div class="body">
+
+
+                <div class="element">
+                    <div>ELEMENT 1</div>
+                    <div class="submenu">SUBMENU 1</div>
+                </div>
+        
+                <div class="element">
+                    <div>ELEMENT 2</div>
+                    <div class="submenu">SUBMENU 2</div>
+                </div>
+                
+                <div class="element">
+                    <div>ELEMENT 3</div>
+                    <div class="submenu">SUBMENU 3</div>
+                </div>   
+
+                <div class="element">
+                    <div>ELEMENT 4</div>
+                    <div class="submenu">SUBMENU 4</div>
+                </div>
+        
+                <div class="element">
+                    <div>ELEMENT 5</div>
+                    <div class="submenu">SUBMENU 5</div>
+                </div>
+                
+                <div class="element">
+                    <div>ELEMENT 6</div>
+                    <div class="submenu">SUBMENU 6</div>
+                </div>   
+                
+                <div class="element">
+                    <div>ELEMENT 7</div>
+                    <div class="submenu">SUBMENU 7</div>
+                </div>
+        
+                <div class="element">
+                    <div>ELEMENT 8</div>
+                    <div class="submenu">SUBMENU 8</div>
+                </div>
+                
+                <div class="element">
+                    <div>ELEMENT 9</div>
+                    <div class="submenu">SUBMENU 9</div>
+                </div>   
+                
+                <div class="element">
+                    <div>ELEMENT 10</div>
+                    <div class="submenu">SUBMENU 10</div>
+                </div>
+        
+                <div class="element">
+                    <div>ELEMENT 11</div>
+                    <div class="submenu">SUBMENU 11</div>
+                </div>
+                
+                <div class="element">
+                    <div>ELEMENT 12</div>
+                    <div class="submenu">SUBMENU 12</div>
+                </div>   
+
+            </div>
+
+            <div class="footer">
+                <div class="element">
+                    <div>ELEMENT 13</div>
+                    <div class="submenu">SUBMENU 13</div>
+                </div>
+        
+                <div class="element">
+                    <div>ELEMENT 14</div>
+                    <div class="submenu">SUBMENU 14</div>
+                </div>
+    
+                <div class="element">
+                    <div>ELEMENT 15</div>
+                    <div class="submenu">SUBMENU 15</div>
+                </div> 
+            </div>
+                       
+            
+        </div>  
+        
+        
+    </div>
+
+    <script>
+        // see https://jsfiddle.net/TheBigDMo1/k2ahruyb/5/
+
+        // $('.element').on('mousemove', function(e){
+
+        //     var viewportOffset = e.target.getBoundingClientRect();
+        //     // these are relative to the viewport, i.e. the window
+        //     var top = viewportOffset.top;
+
+        //     $('.submenu').css({'left': 200, 'top': viewportOffset.top}); 
+
+        //     // $('.submenu').css({'left': 200, 'top': this.offsetTop}); 
+        // });
+
+        $('.element').hover(function(e){
+
+            var viewportOffset = e.target.getBoundingClientRect();
+            // these are relative to the viewport, i.e. the window
+            var top = viewportOffset.top;
+
+            $('.submenu').css({'left': 200, 'top': viewportOffset.top}); 
+
+            // $('.submenu').css({'left': 200, 'top': this.offsetTop}); 
+        });
+
+    </script>
+
+</body>
+</html>
