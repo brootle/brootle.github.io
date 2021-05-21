@@ -9422,12 +9422,19 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 .q7-table.q7-table--standard.q7-table--transcoding-templates .q7-table-card > .q7-table-dropdown-content > table,
 .q7-table.q7-table--standard.q7-table--video-player-templates .q7-table-card > .q7-table-dropdown-content > table{
     width: 100%;
+    /* table-layout: fixed; */
 }
 
 .q7-table.q7-table--standard.q7-table--transcoding-templates .q7-table-card > .q7-table-dropdown-content > table tr td:last-of-type,
 .q7-table.q7-table--standard.q7-table--video-player-templates .q7-table-card > .q7-table-dropdown-content > table tr td:last-of-type{
     width: 100%;
     padding-right: 0;
+
+    max-width: 100px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
 }
 
 .q7-table.q7-table--standard.q7-table--transcoding-templates .q7-table-card > .q7-table-dropdown-content > table tr td:first-of-type{
@@ -9509,7 +9516,7 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
     padding-top: 0;
     padding-bottom: 0;    
     justify-content: space-between;
-    overflow: visible;
+    /* overflow: visible; */
 }
 
 .q7-cell--with-btns__content{
