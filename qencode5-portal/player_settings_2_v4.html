@@ -903,10 +903,44 @@
                                             class="q7-question-icon">
                                         </div>                                           
                                     </div>
+
+                                    <div class="q7-checkbox-with-tooltip">
+                                        <label class="q7-checkbox">
+                                            Load Poster Image
+                                            <input id="dynamicFieldsEnablePoster" type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                        <div data-tippy-content="
+                                            <div class='q7-tooltip__close-btn'></div>
+                                            <div class='q7-tooltip__header'>
+                                                <div>
+                                                    <div class='q7-tooltip__name'>output_format</div>
+                                                    <div class='q7-tooltip__type'>json</div>
+                                                </div>
+                                                <div>
+                                                    <div class='q7-tooltip__required'>required</div>
+                                                    <div class='q7-tooltip__method'>api</div>
+                                                </div>
+                                            </div>
+                                            <h1 class='q7-tooltip__title'>Output Formats</h1>
+                                            <div class='q7-tooltip__content'>
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas                                           
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                                Lorem ipsum, dolor sit amet consectetur dfas
+                                            </div>
+                                            <div class='q7-tooltip__footer'>
+                                                <a href=''>Show API ></a>
+                                            </div>" 
+                                            class="q7-question-icon">
+                                        </div>                                           
+                                    </div>                                    
+
                                 </div>
                             </div>
 
-                            <div id="dynamicFieldsDRMInput" style="display: none;">
+                            <div id="dynamicFieldsDRMInput">
 
                                 <div class="q7-input-and-buttons--inline q7-input-and-buttons--inline-drm">
                                     <div class="q7-input">
@@ -1148,7 +1182,18 @@
                                         </script>                                                                                                              
                                     </div>   
                                 </div>                                          
-                            </div>                            
+                            </div>      
+                            
+                            <div id="dynamicFieldsPosterInput" class="q7-poster-input">
+                                <div class="q7-input-and-buttons--inline">
+                                    <div class="q7-input">
+                                        <div class="q7-input__label">
+                                            <label>Enter Poster Image URL:</label>
+                                        </div>
+                                        <input id="dynamicFieldsPoster" class="q7-input__field" type="text">
+                                    </div>                               
+                                </div>                                                
+                            </div>                              
                             
                         </div>
 
@@ -2572,6 +2617,14 @@
                                     $("#dynamicFieldsThumbnailsInput").hide();
                                 }
 
+                                if (params.poster) {
+                                    $('#dynamicFieldsEnablePoster').prop('checked', true);
+                                    $("#dynamicFieldsPoster").val(params.poster);
+                                    $("#dynamicFieldsPosterInput").show();                                    
+                                } else {
+                                    $("#dynamicFieldsPosterInput").hide();
+                                }                                
+
                                 // add headers
                                 //console.log("params.videoSources.emeHeaders: ", params.videoSources.emeHeaders);
                                 if (params.videoSources.emeHeaders) {
@@ -2670,6 +2723,14 @@
                                     $("#dynamicFieldsThumbnailsInput").hide();
                                 }
                             });
+
+                            $("#dynamicFieldsEnablePoster").change(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#dynamicFieldsPosterInput").show();
+                                } else {
+                                    $("#dynamicFieldsPosterInput").hide();
+                                }
+                            });                            
 
                             $("#dynamicFieldsEnableThumbnailsAspectRatio").change(function () {
                                 if ($(this).is(":checked")) {
@@ -2954,14 +3015,19 @@
                                 
 
                                 if ($('#dynamicFieldsEnableThumbnails').prop("checked")) {
-                                    console.log("add thumbnails");
                                     ui_params.thumbnails = {};
                                     ui_params.thumbnails.src = $("#dynamicFieldsThumbnails").val();
 
                                     if ($('#dynamicFieldsEnableThumbnailsAspectRatio').prop("checked")) {
-                                    ui_params.thumbnails.aspectRatio = $("#thumbnailAspectRatioHeight").val() + ':' + $("#thumbnailAspectRatioWidth").val();   
-                                }                                      
+                                        ui_params.thumbnails.aspectRatio = $("#thumbnailAspectRatioHeight").val() + ':' + $("#thumbnailAspectRatioWidth").val();   
+                                    }                                      
                                 }
+
+
+                                if ($('#dynamicFieldsEnablePoster').prop("checked")) {
+                                    ui_params.poster = {};
+                                    ui_params.poster = $("#dynamicFieldsPoster").val();                                  
+                                }                                
                               
                               
 
@@ -3225,6 +3291,8 @@ qPlayer('my_player', params, function() {
                             $(".q7-player-settings__sources input, .q7-player-settings input, .q7-player-settings select").on('change keyup', function () {
                                 updateCodeblockWithNewParams();
                             });
+
+                            //params.poster = "https://bitmovin.com/wp-content/uploads/2016/06/sintel-poster.jpg";
 
                             console.log("Params just before Player initialization: ", params);
 
