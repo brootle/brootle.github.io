@@ -576,6 +576,644 @@
                       
 
             <div class="q7-container">
+                <div class="q7-section">
+                    <div class="q7-content-block">
+
+                        <div class="q7-stats-tabs">
+
+                            <div id="transcoding" class="q7-tabcontent q7-tabcontent--active">
+
+
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-block-title-and-button">
+                                        <div class="q7-block-title q7-block-title--usage">Usage <span class="q7-block-title__optional">(Minutes)</span></div>
+                                    </div>                   
+
+
+                                    <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
+
+                                        <div class="q7-chart-checkboxes">
+
+
+                                            <div class="q7-switch-container q7-switch-container--audio">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="Audio">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">Audio</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--repack">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="Repack">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">Repack</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--sd">                                                
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="SD">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">SD</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--hd">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="HD">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">HD</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--1440p">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="1440P">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">1440P</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--4k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="4K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">4K</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--5k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="5K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">5K</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--6k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="6K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">6K</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--7k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="7K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">7K</div>
+                                                </label>
+                                            </div>
+
+                                            <div class="q7-switch-container q7-switch-container--8k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked data-array="8K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">8K</div>
+                                                </label>
+                                            </div>
+
+                                        </div>                                        
+
+                                        <div class="q6-billing-chart">
+                                            <canvas id="usage_chart"></canvas>
+                                        </div>
+
+                                        <script>                                            
+
+                                            // see https://stackoverflow.com/a/62640342/6261255
+                                            const colorShade = (col, amt) => {
+                                                col = col.replace(/^#/, '')
+                                                if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+
+                                                let [r, g, b] = col.match(/.{2}/g);
+                                                ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+
+                                                r = Math.max(Math.min(255, r), 0).toString(16)
+                                                g = Math.max(Math.min(255, g), 0).toString(16)
+                                                b = Math.max(Math.min(255, b), 0).toString(16)
+
+                                                const rr = (r.length < 2 ? '0' : '') + r
+                                                const gg = (g.length < 2 ? '0' : '') + g
+                                                const bb = (b.length < 2 ? '0' : '') + b
+
+                                                return `#${rr}${gg}${bb}`
+                                            }
+
+
+                                            // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+
+                                            var ctx = document.getElementById('usage_chart').getContext("2d");
+                                            
+                                            var gradientStrokeTotal = ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeTotal.addColorStop(0, '#1292ff');
+                                            gradientStrokeTotal.addColorStop(0.7, 'rgba(82, 177, 255, 0.7)');     
+                                            gradientStrokeTotal.addColorStop(1, 'rgba(82, 177, 255, 0.2)');   
+
+                                            var gradientStroke8K= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke8K.addColorStop(0, 'rgba(170, 49, 205, 1)');
+                                            gradientStroke8K.addColorStop(0.7, 'rgba(170, 49, 205, 0.7)');     
+                                            gradientStroke8K.addColorStop(1, 'rgba(170, 49, 205, 0.2)');  
+
+                                            var gradientStroke4K= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke4K.addColorStop(0, 'rgba(255, 199, 25, 1)');
+                                            gradientStroke4K.addColorStop(0.7, 'rgba(255, 199, 25, 0.7)');     
+                                            gradientStroke4K.addColorStop(1, 'rgba(255, 199, 25, 0.2)'); 
+
+                                            var gradientStroke1440P= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStroke1440P.addColorStop(0, 'rgba(49, 205, 130, 1)');
+                                            gradientStroke1440P.addColorStop(0.7, 'rgba(49, 205, 130, 0.7)');     
+                                            gradientStroke1440P.addColorStop(1, 'rgba(49, 205, 130, 0.2)');           
+
+                                            var gradientStrokeHD= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeHD.addColorStop(0, 'rgba(255, 113, 18, 1)');
+                                            gradientStrokeHD.addColorStop(0.7, 'rgba(255, 113, 18, 0.7)');     
+                                            gradientStrokeHD.addColorStop(1, 'rgba(255, 113, 18, 0.2)');        
+
+                                            var gradientStrokeSD= ctx.createLinearGradient(0, 0, 0, 440);
+                                            gradientStrokeSD.addColorStop(0, 'rgba(255, 5, 123, 1)');
+                                            gradientStrokeSD.addColorStop(0.7, 'rgba(255, 5, 123, 0.7)');     
+                                            gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
+
+                                            var dataArray = { 
+                                                "Audio": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#c43249",
+                                                    background: "#c43249",
+                                                    rate: 0.9
+                                                },    
+                                                "Repack": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#6b00a3",
+                                                    background: "#6b00a3",
+                                                    rate: 0.8
+                                                },                                                                                                                                                   
+                                                "SD": {
+                                                    data: [60, 90, 20, 120, 90, 170, 43],
+                                                    color: "#082876",
+                                                    background: "#082876",
+                                                    rate: 0.77
+                                                },                
+                                                "HD": {
+                                                    data: [150, 210, 110, 70, 55, 258, 77],
+                                                    color: "#0f3896",
+                                                    background: "#0f3896",
+                                                    rate: 0.72
+                                                },                           
+                                                "1440P": {
+                                                    data: [520, 410, 380, 340, 390, 420, 470],
+                                                    color: "#134fb2",
+                                                    background: "#134fb2",
+                                                    rate: 0.65
+                                                },                                                                                                     
+                                                "4K": {
+                                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                                    color: "#175fc7",
+                                                    background: "#175fc7",
+                                                    rate: 0.61
+                                                },
+                                                "5K": {
+                                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                                    color: "#1b72de",
+                                                    background: "#1b72de",
+                                                    rate: 0.54
+                                                },   
+                                                "6K": {
+                                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                                    color: "#1e80f0",
+                                                    background: "#1e80f0",
+                                                    rate: 0.48
+                                                },        
+                                                "7K": {
+                                                    data: [350, 190, 470, 200, 300, 250, 410],
+                                                    color: "#54a4f3",
+                                                    background: "#54a4f3",
+                                                    rate: 0.42
+                                                },                                                                                                                                     
+                                                "8K": {
+                                                    data: [160, 45, 230, 80, 146, 196, 110],
+                                                    color: "#aed6fa",
+                                                    background: "#aed6fa",
+                                                    rate: 0.36
+                                                }                                              
+                                            }
+
+                                            var datasets = [];
+
+                                            $.each(dataArray, function (key, value) {
+                                                datasets.push({
+                                                    backgroundColor: value.background,
+                                                    borderColor: value.color,
+                                                    data: value.data,
+                                                    borderWidth: 3,
+                                                    //pointBackgroundColor: colorShade(value.color, +20),
+                                                    pointBackgroundColor: value.color,
+                                                    // pointBorderColor: colorShade(value.color, +10),
+                                                    pointBorderColor: colorShade(value.color, +90),
+                                                    //pointBorderColor: "white",
+                                                    pointRadius: 3,
+                                                    pointBorderWidth: 1,
+                                                    //pointHoverBorderColor: colorShade(value.color, -10),
+                                                    pointHoverRadius: 5,                                                    
+                                                    //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                    label: key,
+                                                    fill: true,
+                                                    rate: value.rate
+                                                });
+                                            });
+
+                                            var dataLabels = ['01/04/2020', '02/04/2020', '03/04/2020', '04/04/2020', '05/04/2020', '06/04/2020', '07/04/2020'];
+
+                                            var dataLabelsMonthAndDay = dataLabels.map(date => {
+                                                var dateValue = new Date(date);
+                                                return `${(dateValue.toLocaleString("en", { month: "short" }))} ${dateValue.getDay()}`;
+                                            })
+
+                                            //console.log("dataLabelsMonthAndDay: ", dataLabelsMonthAndDay);
+
+                                            var data = {
+                                                labels: dataLabelsMonthAndDay,
+                                                datasets: datasets                                            
+                                            };
+
+                                            var options = {
+                                                maintainAspectRatio: false,
+                                                spanGaps: false,                                            
+                                                elements: {
+                                                    line: {
+                                                        tension: 0.2
+                                                    },
+                                                    point: {
+                                                        radius: 3
+                                                    }
+                                                },
+                                                legend: {
+                                                    display: false
+                                                },
+                                                scales: {
+                                                    xAxes: [{
+                                                        gridLines: {
+                                                            display: false
+                                                        },
+                                                        ticks: {
+                                                            padding: 15,
+                                                            fontColor: '#9a989e'
+                                                        }                                                            
+                                                    }],
+                                                    yAxes: [{
+                                                        gridLines: {
+                                                            borderDash: [3],
+                                                            drawTicks: false
+                                                        },
+                                                        ticks: {
+                                                            padding: 20,
+                                                            fontColor: '#9a989e',
+                                                            beginAtZero: true
+                                                        },
+                                                        stacked: true,                                                        
+                                                    }]                                                    
+                                                },
+
+                                                animation: {
+                                                    duration: 0
+                                                },
+
+                                                // hover: {
+                                                //     mode: 'single'
+                                                // },                  
+                                                
+                                                // https://codepen.io/jordanwillis/pen/ZeaLGj
+                                                // hover: {
+                                                //     mode: 'nearest',
+                                                //     intersect: true
+                                                // },                                                
+
+
+                                                tooltips: {
+                                                    // Disable the on-canvas tooltip
+                                                    enabled: false,
+                                           
+                                                    custom: function (tooltipModel) {
+                                                        //console.log("tooltipModel: ", tooltipModel);
+
+                                                        // Tooltip Element
+                                                        var tooltipEl = document.getElementById('chartjs-tooltip_new');
+
+                                                        // Create element on first render
+                                                        if (!tooltipEl) {
+                                                            tooltipEl = document.createElement('div');
+                                                            tooltipEl.id = 'chartjs-tooltip_new';
+                                                            tooltipEl.innerHTML = `
+                                                                <div class="q7-tooltip-line"></div>
+                                                                <div class="chartjs-tooltip-container chartjs-tooltip-container--aggregated">
+                                                                    <table></table>
+                                                                </div>
+                                                            `;
+                                                            document.body.appendChild(tooltipEl);
+                                                        }
+
+                                                        // Hide if no tooltip
+                                                        if (tooltipModel.opacity === 0) {
+                                                            tooltipEl.style.opacity = 0;
+                                                            return;
+                                                        }
+
+                                                        function getBody(bodyItem) {
+                                                            return bodyItem.lines;
+                                                        }
+
+                                                        // Set Text
+                                                        //console.log("tooltipModel: ", tooltipModel)
+
+                                                        if (tooltipModel.body) {                 
+
+                                                            var titleLines = tooltipModel.title || [];
+                                                                                                         
+
+                                                            datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                            //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+
+                                                            var labelIndex = tooltipModel.dataPoints[0].index;
+
+                                                            var labelDate = new Date (dataLabels[labelIndex]);
+                                                            var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
+                                                              
+
+                                                            var yValue = tooltipModel.dataPoints[0].yLabel;
+                                                            var labelName = chart.data.datasets[datasetIndex].label;                                                    
+
+                                                            var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+
+                                                            innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+
+                                                            innerHtml += '</thead><tbody>';
+
+                                                            console.log("data: ", data);
+                                                            console.log("labelIndex: ", labelIndex);
+                                                            // filter data by index
+                                                            var aggregatedData = data.datasets;
+                                                            console.log("aggregatedData: ", aggregatedData);
+
+                                                            //aggregatedData.reverse();
+                                                            var newDataSet = [];
+                                                            var totalValue = 0;
+                                                            var totalTime = 0;
+
+                                                            // build table rows
+                                                            aggregatedData.forEach((element, index) => {
+                                                                console.log("element.data[labelIndex]: ", element.data[labelIndex]);
+
+                                                                
+                                                                var currentLabelName = aggregatedData[index].label;  
+                                                                var currentRate = aggregatedData[index].rate;  
+
+                                                                var minutes = element.data[labelIndex] 
+
+                                                                var currentValue = minutes * currentRate;
+
+                                                                console.log("currentRate: ", currentRate);
+
+                                                                //console.log("sum: ", currentValue*currentRate)
+                                                                
+                                                                totalValue+=currentValue;
+
+                                                                totalTime+=minutes;
+
+                                                                newDataSet.push({
+                                                                    label: currentLabelName,
+                                                                    time: minutes,
+                                                                    cost: currentValue
+                                                                })
+
+                                                                // innerHtml += `
+                                                                //     <tr>
+                                                                //         <td class='tooltip-name--${currentLabelName}'>${currentLabelName}</td>
+                                                                //         <td>${currentValue}</td>
+                                                                //         <td>$${(currentValue*0.42).toFixed(2)}</td>
+                                                                //     </tr>
+                                                                // `;
+                                                            });
+
+                                                            newDataSet.reverse();
+
+                                                            newDataSet.forEach(({label, time, cost}) => {
+                                                                innerHtml += `
+                                                                    <tr>
+                                                                        <td class='tooltip-name--${label}'>${label}</td>
+                                                                        <td>${time}</td>
+                                                                        <td>$${(cost).toFixed(2)}</td>
+                                                                    </tr>
+                                                                `;
+                                                            })
+
+                                                            //console.log("tooltipModel.dataPoints.length: ", tooltipModel.dataPoints.length)
+
+                                                            //innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                            
+                                                            innerHtml += '</tbody>';
+
+                                                            // add footer
+                                                            innerHtml += `
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <td>Total</td>
+                                                                        <td>${totalTime}</td>
+                                                                        <td>$${(totalValue).toFixed(2)}</td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            `
+
+                                                            var tableRoot = tooltipEl.querySelector('table');
+                                                            tableRoot.innerHTML = innerHtml;
+                                                        }
+
+                                                        ///////////////////////////////////////////////////////////////////////
+                                                        // see for tooltip position https://stackoverflow.com/a/64887282/6261255
+                                                        ///////////////////////////////////////////////////////////////////////
+
+                                                        tooltipEl.className = "";
+
+                                                        // `this` will be the overall tooltip
+                                                        var position = this._chart.canvas.getBoundingClientRect();
+
+
+                                                        var chartBoundaries = this._chart.canvas.getBoundingClientRect();
+                                                        //console.log("chartBoundaries: ", chartBoundaries);
+
+                                                        tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
+                                                       // tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';   
+                                                       var tooltipHeight = $(tooltipEl).height(); 
+                                                       console.log("tooltipHeight: ", tooltipHeight);
+                                                       var chartHeight = $('#usage_chart').height();
+                                                       console.log("chartHeight: ", chartHeight);
+                                                       
+                                                       var tooltipShift = (chartHeight - tooltipHeight) / 2;
+
+                                                       tooltipEl.style.top = position.top + window.pageYOffset + tooltipShift  + 'px';  
+                                                       //tooltipEl.style.top = position.top + window.pageYOffset  + 'px'; 
+
+                                                       
+                                                       var tooltipLine= tooltipEl.querySelector('.q7-tooltip-line');
+                                                       tooltipLine.style.top = `-${tooltipShift - 13 - 22}px`;
+                                                       tooltipLine.style.bottom = `-${tooltipShift - 13}px`;
+
+                                                    //    var insideEl = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+
+                                                    //    insideEl.style.paddingTop = tooltipShift + "px";
+                                                    //    insideEl.style.paddingBottom = tooltipShift + "px";
+                                                        
+                                                        var tooltipBoundaries = tooltipEl.getBoundingClientRect();
+                                                        //console.log("tooltipBoundaries: ", tooltipBoundaries);      
+
+                                                        console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                        console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                        
+
+                                                        
+
+                                                        if(tooltipBoundaries.right > chartBoundaries.right){
+                                                            tooltipEl.classList.add("tooltip--move-left");
+                                                        } 
+
+                                                        // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
+                                                        //     tooltipEl.classList.add("tooltip--move-up");
+                                                        // }                                                         
+
+                                                        // Display, position, and set styles for font
+                                                        tooltipEl.style.opacity = 1;
+                                                        tooltipEl.style.position = 'absolute';
+                                                        
+                                                        //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                        //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+
+                                        
+
+                                                        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+                                                        tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+                                                        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+                                                        //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+                                                        tooltipEl.style.pointerEvents = 'none';
+
+                                                        
+
+                                                    }
+                                                }
+
+
+
+                                                
+
+                                                // tooltips: {
+                                                //     intersect: false,
+                                                //     titleFontColor: 'black',
+                                                //     backgroundColor: 'white',
+                                                //     bodyFontColor: '#021519',
+                                                //     borderColor: '#eeeeee',
+                                                //     borderWidth: 1,
+                                                //     bodyFontStyle: 'bold',
+                                                //     displayColors: false,
+                                                //     xPadding: 15,
+                                                //     yPadding: 10,
+
+                                                //     cornerRadius: 1,
+
+                                                //     callbacks: {
+                                                //         title: function (tooltipItem, data) {
+                                                //             //console.log(Chart.defaults.global.tooltips.titleFontColor);
+                                                //             // console.log(tooltipItem[0]);
+                                                //             //console.log(data.datasets[tooltipItem[0].datasetIndex]);
+                                                //             return data.datasets[tooltipItem[0].datasetIndex].label;
+                                                //         },
+                                                //         label: function (tooltipItem, data) {
+                                                //             // console.log(tooltipItem.yLabel);
+                                                //             return `$${tooltipItem.yLabel}`;
+                                                //         }
+                                                //     }
+
+                                                // }
+
+                                            };
+                                           
+
+                                            var chart = new Chart('usage_chart', {
+                                                type: 'line',
+                                                data: data,
+                                                options: options
+                                            });
+
+
+                                            // on chart checkbox clicked we update the chart with new dataset
+                                            $(".q7-chart-checkboxes input[type='checkbox']").change(function () {
+                                                // make array of cheched checkboxes
+                                                var checkedValues = [];
+                                                $(".q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
+                                                    checkedValues.push($(this).attr('data-array'));
+                                                });
+
+                                                // generate new datasets including only selected checkboxes
+                                                var newDatasets = [];
+                                                $.each(dataArray, function (key, value) {
+
+                                                    if (jQuery.inArray(key, checkedValues) >= 0) {
+                                                        newDatasets.push({
+                                                            backgroundColor: value.background,
+                                                            borderColor: value.color,
+                                                            data: value.data,
+                                                            borderWidth: 3,
+                                                            //pointBackgroundColor: colorShade(value.color, +20),
+                                                            pointBackgroundColor: value.color,
+                                                            //pointBorderColor: colorShade(value.color, -10),
+                                                            //pointBorderColor: 'white',
+                                                            pointBorderColor: colorShade(value.color, +90),
+                                                            pointRadius: 3,
+                                                            pointBorderWidth: 1,
+                                                            //pointHoverBorderColor: colorShade(value.color, -10),
+                                                            pointHoverRadius: 5,
+                                                            //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                            label: key,
+                                                            fill: true,
+                                                            rate: value.rate
+                                                        });
+                                                    }
+
+                                                });
+
+                                                chart.data.datasets = newDatasets;
+
+                                                // update chart
+                                                chart.update();
+                                            });
+
+                                        </script>
+
+
+                                        <div class="q6-billing-chart">
+                                            <div class="q7-loading-cell q7-loading-cell--big-chart"></div>
+                                        </div>
+
+                                        <div class="q6-billing-chart">
+                                            <div class="q7-nodata-cell">
+                                                <div>No transcoding jobs launched in the last 7 days.</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="q7-container">
 
                 <div class="q7-section">
 
