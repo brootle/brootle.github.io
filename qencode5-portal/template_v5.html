@@ -904,6 +904,7 @@
 
                                                         // Create element on first render
                                                         if (!tooltipEl) {
+
                                                             tooltipEl = document.createElement('div');
                                                             tooltipEl.id = 'chartjs-tooltip_new';
                                                             tooltipEl.innerHTML = `
@@ -945,17 +946,17 @@
                                                             var yValue = tooltipModel.dataPoints[0].yLabel;
                                                             var labelName = chart.data.datasets[datasetIndex].label;                                                    
 
-                                                            var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                            // var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                            var innerHtml = `<thead class='tooltip-title'>`;
 
-                                                            innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+                                                            innerHtml += `<tr><th>Type</th><th>Minutes</th><th>Cost</th></tr>`;
 
                                                             innerHtml += '</thead><tbody>';
 
-                                                            console.log("data: ", data);
-                                                            console.log("labelIndex: ", labelIndex);
+                                                        
                                                             // filter data by index
                                                             var aggregatedData = data.datasets;
-                                                            console.log("aggregatedData: ", aggregatedData);
+                                                           
 
                                                             //aggregatedData.reverse();
                                                             var newDataSet = [];
@@ -964,8 +965,6 @@
 
                                                             // build table rows
                                                             aggregatedData.forEach((element, index) => {
-                                                                console.log("element.data[labelIndex]: ", element.data[labelIndex]);
-
                                                                 
                                                                 var currentLabelName = aggregatedData[index].label;  
                                                                 var currentRate = aggregatedData[index].rate;  
@@ -974,9 +973,6 @@
 
                                                                 var currentValue = minutes * currentRate;
 
-                                                                console.log("currentRate: ", currentRate);
-
-                                                                //console.log("sum: ", currentValue*currentRate)
                                                                 
                                                                 totalValue+=currentValue;
 
@@ -1002,7 +998,7 @@
                                                             newDataSet.forEach(({label, time, cost}) => {
                                                                 innerHtml += `
                                                                     <tr>
-                                                                        <td class='tooltip-name--${label}'>${label}</td>
+                                                                        <td class='tooltip-name--${label}'> <div class='tooltip__marker'></div> ${label}</td>
                                                                         <td>${time}</td>
                                                                         <td>$${(cost).toFixed(2)}</td>
                                                                     </tr>
@@ -1028,6 +1024,21 @@
 
                                                             var tableRoot = tooltipEl.querySelector('table');
                                                             tableRoot.innerHTML = innerHtml;
+
+                                                            var tableContainer = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+                                                         
+
+                                                            if(!tooltipEl.querySelector('.tooltip-container__title')){
+                                                                var titleEl = document.createElement("DIV"); 
+                                                                titleEl.classList.add('tooltip-container__title');
+                                                                titleEl.innerHTML = title;
+
+                                                                tableContainer.insertBefore(titleEl, tableContainer.childNodes[0]); 
+                                                            } else {
+                                                                tooltipEl.querySelector('.tooltip-container__title').innerHTML = title;
+                                                            }
+
+                                                            
                                                         }
 
                                                         ///////////////////////////////////////////////////////////////////////
@@ -1046,9 +1057,9 @@
                                                         tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
                                                        // tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';   
                                                        var tooltipHeight = $(tooltipEl).height(); 
-                                                       console.log("tooltipHeight: ", tooltipHeight);
+                                             
                                                        var chartHeight = $('#usage_chart').height();
-                                                       console.log("chartHeight: ", chartHeight);
+                                                      
                                                        
                                                        var tooltipShift = (chartHeight - tooltipHeight) / 2;
 
@@ -1068,8 +1079,8 @@
                                                         var tooltipBoundaries = tooltipEl.getBoundingClientRect();
                                                         //console.log("tooltipBoundaries: ", tooltipBoundaries);      
 
-                                                        console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
-                                                        console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                        // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                        // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
                                                         
 
                                                         
@@ -1101,39 +1112,6 @@
 
                                                     }
                                                 }
-
-
-
-                                                
-
-                                                // tooltips: {
-                                                //     intersect: false,
-                                                //     titleFontColor: 'black',
-                                                //     backgroundColor: 'white',
-                                                //     bodyFontColor: '#021519',
-                                                //     borderColor: '#eeeeee',
-                                                //     borderWidth: 1,
-                                                //     bodyFontStyle: 'bold',
-                                                //     displayColors: false,
-                                                //     xPadding: 15,
-                                                //     yPadding: 10,
-
-                                                //     cornerRadius: 1,
-
-                                                //     callbacks: {
-                                                //         title: function (tooltipItem, data) {
-                                                //             //console.log(Chart.defaults.global.tooltips.titleFontColor);
-                                                //             // console.log(tooltipItem[0]);
-                                                //             //console.log(data.datasets[tooltipItem[0].datasetIndex]);
-                                                //             return data.datasets[tooltipItem[0].datasetIndex].label;
-                                                //         },
-                                                //         label: function (tooltipItem, data) {
-                                                //             // console.log(tooltipItem.yLabel);
-                                                //             return `$${tooltipItem.yLabel}`;
-                                                //         }
-                                                //     }
-
-                                                // }
 
                                             };
                                            
