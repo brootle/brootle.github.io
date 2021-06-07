@@ -353,6 +353,10 @@
     height: 34px;
 }
 
+.q7-warning-message-container.q7-warning-message-container--expired.q7-warning-message-container--updated .q7-button:hover{
+    background: linear-gradient(88.86deg, #00eaff 2.63%, #d828ff 83.11%);
+}
+
 .q7-button.q7-button--upgrade{
     position: relative;
     padding-left: 37px;
@@ -371,9 +375,6 @@
     background-position: center;    
 }
 
-.q7-warning-message-container.q7-warning-message-container--expired.q7-warning-message-container--updated .q7-button:hover{
-    background: linear-gradient(88.86deg, #30EAFB 2.63%, #D952F7 83.11%);
-}
  
 .q7-warning-message-container.q7-warning-message-container--expired{
     background-color: #fef6e5;
@@ -2399,6 +2400,10 @@ td.q7-table-cell--edit-mode{
     display: flex;
     align-items: center;
     justify-content: space-between;    
+
+    font-size: 28px;
+    line-height: 27px;
+    color: #4F4F4F;    
 }
 
 .q7-project-advanced-settings .q6-input{
@@ -3019,6 +3024,8 @@ a.q7-bucket-url:hover{
     text-transform: uppercase;
     font-size: 12px;
     display: inline-block;
+
+    font-weight: 500;
 }
 
 .q7-dd-menu__button.q7-dd-menu__button--with-title + .q7-dd-menu__button.q7-dd-menu__button--with-title{
@@ -6300,6 +6307,10 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
     align-items: center;
     justify-content: space-between;    
     position: relative;
+
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;    
 }
 
 .q7-transcoding-api__block-title{
@@ -7090,7 +7101,11 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-transcoding-api__source-video-block .q6-tutorial-add-video-block {
     box-shadow: none;
-    border: 1px solid #e1e5ee;
+    /* border: 1px solid #e1e5ee; */
+}
+
+.q7-transcoding-api__source-video-block .q6-tutorial-add-video-block {
+    padding: 0;
 }
 
 .q7-transcoding-api__source-video-block .q6-tutorial-control {
@@ -7112,8 +7127,51 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 }
 
 .q7-transcoding-api__source-video-block .q6-tutorial-inputs-block--has-controls:first-of-type {
-    margin-top: 60px
+    margin-top: 70px;
 }
+
+input[type=text].q7-input__field.q7-input--error, 
+input[type=tel].q7-input__field.q7-input--error, 
+input[type=password].q7-input__field.q7-input--error {
+    border-color: #de3c3a;
+}
+
+input[type=text].q7-input__field:focus, 
+input[type=tel].q7-input__field:focus, 
+input[type=password].q7-input__field:focus, 
+textarea:focus, select.q7-select:focus {
+    border-color: #316fea;
+}
+
+.q7-input__error-message {
+    position: absolute;
+    bottom: -20px;
+    color: #de3c3a;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.q7-transcoding-api__source-video-block .q6-tutorial-dd-selector__selected{
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.q7-transcoding-api__source-video-block .q6-tutorial-controls__content .q6-tutorial-dd-selector {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.q7-transcoding-api__source-video-block .q6-tutorial-dd-selector__selected:after {
+    border-top: 4px solid #363940;
+    margin-top: 2px;
+}
+
+.q7-transcoding-api__source-video-block  .q6-tutorial-dd-selector__list > table tr:first-of-type td:last-of-type:after {
+    margin-bottom: 2px;
+    border-top: 4px solid #363940;
+}
+
 
 .q7-transcoding-api__source-video-block .q6-tutorial-control:last-of-type {
     margin-right: 0;
@@ -11405,6 +11463,54 @@ th.q7-th--loading .q7-loading-cell{
 
 .q7-logo--mobile{
     display: none;
+}
+
+.q7-stitch-video{
+    margin-top: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.q7-stitch-video .q7-button{
+    line-height: 32px;
+    border: none;
+
+    font-size: 16px;
+}
+
+.q7-tab.q7-tab--bucket-selector{
+    border-bottom: none;
+}
+
+.q7-bucket-category{
+    font-size: 16px;
+    line-height: 36px;
+
+    color: #363940;    
+}
+
+.q7-tabs-container--storage{
+    display: flex;
+}
+
+.q7-storage__block{
+    border: 1px solid #DAE0EA;
+    box-sizing: border-box;
+    border-radius: 4px;    
+    cursor: pointer;
+    padding: 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;    
+}
+
+.q7-storage-blocks-container{
+    display: flex;
+}
+
+.q7-small-storage-blocks{
+    display: flex;
 }
 
 @media screen and (max-width: 1080px){
