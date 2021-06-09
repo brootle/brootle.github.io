@@ -41,6 +41,7 @@
     <link href="css/q7__template.css" rel="stylesheet" />
 
     <script src="js/menu.js"></script>
+    <script src="js/uglifyjs.js"></script>
 
 
     <title>Qencode - Better Cloud Transcoding</title>
@@ -3056,12 +3057,19 @@
                                 <div class="q7-transcoding-api__json">
                                     <div class="q7-transcoding-api__json-header">
                                         <div class="q7-transcoding-api__block-title">Your JSON</div>
+
+                                        <label class="q7-checkbox">
+                                            Minify JSON code
+                                            <input id="minify_code" type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+
                                         <button class="q7-button q7-button--copy">
                                             Copy
                                         </button>
                                     </div>
-                                    <div class="q7-transcoding-api__json-body">
-                                        <div class="q7-codeblock__flash-message">
+                                    <div id="code_example" class="q7-transcoding-api__json-body">
+                                        <div id="code_flash_message" class="q7-codeblock__flash-message">
                                             <div><img src="img/check_blue.svg"> <span>Copied</span></div>
                                         </div>                                       
                                         <pre><code id="transcodingApiJson" class="hljs"></code></pre>    
@@ -3104,13 +3112,67 @@
                                         }
 
                                         var queryJSON = JSON.stringify(query, null, 2);
-                                        console.log(queryJSON);
+                                        //console.log(queryJSON);
 
-                                        $('#transcodingApiJson').text(queryJSON);
+
+                                       $('#transcodingApiJson').text(queryJSON);
+                                       //$('#transcodingApiJson').text(transcodingCode);
 
                                         hljs.initHighlighting.called = false;
-                                        hljs.initHighlighting();                      
-        
+                                        hljs.initHighlighting();          
+
+                                        
+                                        // minify code
+                                        $("#minify_code").change(function () {
+
+                                            try {
+                                                var cellTextNode = $('#code_example').find('code')[0];
+
+                                                var code = $(cellTextNode).text();
+
+                                                
+
+                                                var messageText = '';
+
+                                                if ($(this).is(':checked')) {
+
+                                                    var minifiedCode = JSON.stringify(query, null, 0);
+                                                    $("#transcodingApiJson").text(minifiedCode); 
+
+                                                    messageText = "Minified"                                       
+                                                } else {
+                                                    //$('#transcodingApiJson').text(transcodingCode);
+                                                    $('#transcodingApiJson').text(queryJSON);
+                                                    messageText = "Unminified" 
+                                                }                                     
+
+                                                hljs.initHighlighting.called = false;
+                                                hljs.initHighlighting();
+
+                                                // if there is some text
+                                                var successful = $(cellTextNode).text();
+
+                                                var flashMessage = $('#code_flash_message')[0];
+
+                                                var message = $(flashMessage).find('span')[0]
+                                                $(message).text(messageText);
+
+                                                if (successful) {
+                                                    $(flashMessage)
+                                                        .slideDown(100)
+                                                        .delay(800)
+                                                        .fadeOut(200)
+                                                }
+                                                else {
+                                                    // show some error message
+                                                }
+                                            } catch (err) {
+                                                console.log(err);
+                                            }
+
+                                        });
+                                
+                    
                                     </script>
 
                                     <script>
@@ -3136,6 +3198,9 @@
                                                     var successful = document.execCommand('copy');         
 
                                                     var flashMessage = $(this).closest('.q7-transcoding-api__json').find('.q7-codeblock__flash-message')[0];                                                                         
+
+                                                    var message = $(flashMessage).find('span')[0]
+                                                    $(message).text("Copied");
 
                                                     if(successful) {                       
                                                         $(flashMessage)
