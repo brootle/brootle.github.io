@@ -7135,6 +7135,7 @@ input:not(:checked) + .q7-switch__slider + .q7-switch__text .q7-switch__text--of
 
 .q7-transcoding-api__two-blocks > div:first-of-type{
     max-width: 40%;
+    min-width: 370px;
 }
 
 .q7-transcoding-api__two-blocks > div + div{
@@ -7831,7 +7832,7 @@ textarea:focus, select.q7-select:focus {
 .q7-transcoding-api__resolutions-table table td{
     border-bottom: 1px dashed #e6e8eb;
 
-    padding: 9px 9px;
+    padding: 7px 9px;
     white-space: nowrap;
 
     padding-left: 13px;
@@ -7854,7 +7855,7 @@ textarea:focus, select.q7-select:focus {
     border-bottom: none;
 }
 
-.q7-transcoding-api__resolutions-table table tr:first-of-type td {
+.q7-transcoding-api__output-formats.q7-transcoding-api__output-formats--new .q7-transcoding-api__resolutions-table table tbody tr:first-of-type td {
     padding: 3px 9px;
     padding-left: 13px;
     color: #58667C;
@@ -7874,6 +7875,16 @@ textarea:focus, select.q7-select:focus {
     color: #58667C;
     line-height: 18px;
     font-weight: 500;
+}
+
+
+.q7-transcoding-api__resolutions-table table tfoot tr:first-of-type td{
+    padding: 11px 9px;
+    padding-left: 13px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
 
 }
 
@@ -7888,8 +7899,8 @@ textarea:focus, select.q7-select:focus {
 }
 
 .q7-transcoding-api__resolutions-table table tfoot td{
-    border-bottom: 1px solid #e6e8eb;
     border-top: 1px solid #e6e8eb;
+    border-bottom: none;
 }
 
 .q7-th-with-question{
@@ -8269,6 +8280,16 @@ textarea:focus, select.q7-select:focus {
 .q7-output-format__header-icons{
     display: flex;
     margin-right: 12px;
+}
+
+.q7-transcoding-api__output-formats.q7-transcoding-api__output-formats--new 
+    .q7-output-format__header.q7-output-format__header--active .q7-output-format__header-icons{
+        display: none;
+}
+
+.q7-transcoding-api__output-formats.q7-transcoding-api__output-formats--new 
+    .q7-output-format__header > div:first-of-type {
+        min-height: initial;
 }
 
 .q7-output-format__header-icons > div{
@@ -11142,6 +11163,9 @@ td.q7-bordered-cell{
         max-width: 284px;
     }    
 
+}
+
+@media (max-width: 1024px){
     .q7-transcoding-api__two-blocks {
         flex-direction: column;
     }    
@@ -11158,6 +11182,7 @@ td.q7-bordered-cell{
         max-width: 100%;
     }    
 }
+
 
 .q7-tabs-container--more-link [data-tabcontent="generic_s3"],
 .q7-tabs-container--more-link [data-tabcontent="aws"],
