@@ -31,89 +31,131 @@
         <div class="q6-authorize-component">
             <div class="q6-container">
 
-                <div class="q6-authorize-logo-container">
-                    <div class="q6-logo">
-                        <a href=""><img src="img/logo.svg" alt=""></a>
-                    </div>
-                </div>
 
                 <div class="q6-authorize-container">
-                    <div id="sign-in-window" class="q6-authorize-window">
-                        <h2>Sign In</h2>
-                        <div class="q6-authorize-auth">
-                            <div class="q6-authorize-auth__button"><img src="img/google_logo.svg">Google</div>
-                            <div class="q6-authorize-auth__button"><img src="img/github_logo.svg">GitHub</div>
-                            <div class="q6-authorize-auth__button"><img src="img/slack_logo.svg">Slack</div>
-                        </div>
-                        <div class="q6-authorize-form">
-                            <div class="q6-authorize-form__title">Sign in with email:</div>
-                            <div class="q6-input">
-                                <div class="q6-input__label">
-                                    <label>Name</label>
+                    <div id="sign-in-window" class="q6-authorize-window q6-authorize-window--new">
+
+                        <div class="q6-authorize-window__header">
+                            <div class="q6-authorize-logo-container">
+                                <div class="q6-logo">
+                                    <a href=""><img src="img/logo.svg" alt=""></a>
                                 </div>
-                                <input class="q6-input__field" type="text">
-                            </div>         
-                            <div class="q6-input q6-input--password">
-                                <div class="q6-input__label">
-                                    <label>Password</label>
-                                </div>
-                                <input class="q6-input__field" type="password">
-                                <div class="q6-pass-eye-button"></div>
-                            </div> 
-                            
-                            <script>
-                                $(function () {
-                                    $(".q6-pass-eye-button").click(function() {
-                                        var fieldType = $(this).closest(".q6-input--password").find('.q6-input__field').attr('type');
-                                        if(fieldType == "password"){
-                                            $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'text')
-                                        } else{
-                                            $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'password')
-                                        }
+                            </div>    
+                            <div class="q6-back-link-container">
+                                <a href="" class="q6-back-link">Back to main</a>    
+                            </div>
+                                                   
+                        </div>                        
+
+                        <div class="q6-authorize-window__body">
+
+                            <h2>Welcome back</h2>
+                            <div class="q6-authorize-auth">
+                                <div class="q6-authorize-auth__button"><img src="img/google_logo.svg">Google</div>
+                                <div class="q6-authorize-auth__button"><img src="img/github_logo.svg">GitHub</div>
+                                <div class="q6-authorize-auth__button"><img src="img/slack_logo.svg">Slack</div>
+                            </div>
+                            <div class="q6-auth-delimeter">
+                                <div class="q6-auth-delimeter__line"></div>
+                                <div class="q6-auth-delimeter__circle">or</div>
+                                <div class="q6-auth-delimeter__line"></div>
+                            </div>                            
+                            <div class="q6-authorize-form">
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label>Name</label>
+                                    </div>
+                                    <input class="q6-input__field" type="text">
+                                </div>         
+                                <div class="q6-input q6-input--password">
+                                    <div class="q6-input__label">
+                                        <label>Password</label>
+                                        <div id="toggle_pass" class="q6-input__toggle-pass">
+                                            <div>Show</div>
+                                            <div class="q6-pass-eye-button"></div>
+                                        </div>
+                                    </div>
+                                    <input class="q6-input__field" type="password">                                    
+                                </div> 
+                                
+                                <script>
+                                    $(function () {
+                                        $("#toggle_pass").click(function() {
+                                            var fieldType = $(this).closest(".q6-input--password").find('.q6-input__field').attr('type');
+                                            if(fieldType == "password"){
+                                                $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'text')
+                                            } else{
+                                                $(this).closest(".q6-input--password").find('.q6-input__field').attr('type', 'password')
+                                            }
+                                        });
                                     });
-                                });
-                            </script>   
-                            
-                            <p class="q6-sign-in__forgot-pass-message">
-                                <a id="forgot-pass-link" href="">Forgot password?</a>  
-                            </p>                                                       
+                                </script>   
+                                
+                                <div class="q6-sign-in__forgot-pass-message">
+                                    <div class="q6-blue-lock-icon"></div>
+                                    <a id="forgot-pass-link" href="">Forgot password?</a>  
+                                </div>                                                       
 
-                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Sign In</button>
+                                <button class="q6-button q6-white-text q6-blue-background q6-blue-border">Sign In</button>
 
-                            <p class="q6-authorize-form__message">
-                                New to Qencode? <a href="">Create an account.</a>  
-                            </p>  
+                                <p class="q6-authorize-form__message">
+                                    New to Qencode? <a href="">Create an account.</a>  
+                                </p>  
 
-                        </div>                                                                
+                            </div>                   
+                        
+                        </div>
                     </div>  
 
-                    <div id="forgot-pass-window" class="q6-authorize-window" style="display: none">
-                        <h2>Forgot Password?</h2>
-                        <div class="q6-authorize-form">
-                            <div class="q6-input">
-                                <div class="q6-input__label">
-                                    <label>Enter your email</label>
+                    <div id="forgot-pass-window" class="q6-authorize-window q6-authorize-window--new" style="display: none">
+                        <div class="q6-authorize-window__header">
+                            <div class="q6-authorize-logo-container">
+                                <div class="q6-logo">
+                                    <a href=""><img src="img/logo.svg" alt=""></a>
                                 </div>
-                                <input class="q6-input__field" type="text">
-                            </div>                                                                                         
-                            <button id="send-instructions" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Send</button>
-                            <p class="q6-authorize-form__message">
-                                <a id="cancel-forgot-pass" href="">Cancel</a>  
-                            </p>                            
-                        </div>                                                                
+                            </div>                               
+                        </div>  
+
+                        <div class="q6-authorize-window__body">
+
+                            <h2>Forgot Password?</h2>
+                            <div class="q6-authorize-form">
+                                <div class="q6-input">
+                                    <div class="q6-input__label">
+                                        <label>Enter your email</label>
+                                    </div>
+                                    <input class="q6-input__field" type="text">
+                                </div>                                                                                         
+                                <button id="send-instructions" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Send</button>
+                                <p class="q6-authorize-form__message">
+                                    <a id="cancel-forgot-pass" href="">Cancel</a>  
+                                </p>                            
+                            </div>    
+                        </div>                                                            
                     </div>  
 
-                    <div id="message-sent-window" class="q6-authorize-window" style="display: none">   
-                        <button id="close-message-sent_x-button" class="q6-button q6-button--close-window"></button>                     
-                        <img class="q6-sent-image" src="img/index/send.svg" alt="">   
-                        <div class="q6-authorize-form">  
-                            <h3 class="q6-window-status__title">Check your email!</h3>                                   
-                            <p class="q6-window-status__text">
-                                Instructions to reset your password have been sent to the 
-                                email address on your account.
-                            </p>                                                                                                               
-                            <button id="close-message-sent" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Close</button>
-                        </div>                                                                
+                    <div id="message-sent-window" class="q6-authorize-window q6-authorize-window--new" style="display: none">  
+                        <div class="q6-authorize-window__header">
+                            <div class="q6-authorize-logo-container">
+                                <div class="q6-logo">
+                                    <a href=""><img src="img/logo.svg" alt=""></a>
+                                </div>
+                            </div>                               
+                        </div>                          
+
+                        <div class="q6-authorize-window__body">
+                        
+                            <button id="close-message-sent_x-button" class="q6-button q6-button--close-window"></button>                     
+                            <img class="q6-sent-image" src="img/index/send.svg" alt="">   
+                            <div class="q6-authorize-form">  
+                                <h3 class="q6-window-status__title">Check your email!</h3>                                   
+                                <p class="q6-window-status__text">
+                                    Instructions to reset your password have been sent to the 
+                                    email address on your account.
+                                </p>                                                                                                               
+                                <button id="close-message-sent" class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--shadow">Close</button>
+                            </div>     
+                        </div>                                                           
                     </div>                      
 
                     <script>

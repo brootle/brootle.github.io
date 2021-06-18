@@ -47,6 +47,76 @@
     position: relative;
 }
 
+.q6-authorize-window h2{
+    font-size: 28px;
+}
+
+.q6-authorize-window.q6-authorize-window--new{
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.q6-authorize-window.q6-authorize-window--new h3.q6-authorize-window__subtitle {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.q6-authorize-window .q6-authorize-window__header{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.q6-back-link{
+    color: #3270eb;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;    
+    position: relative;
+    padding-left: 20px;
+}
+
+.q6-back-link:before {
+    content: '';
+    position: absolute;
+    border: solid #3270eb;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    left: 7px;
+    top: calc(50% - 4px);
+}
+
+.q6-back-link-container{
+    flex: 1;
+    text-align: right;
+}
+
+.q6-back-link:hover{
+    text-decoration: underline;
+}
+
+.q6-authorize-window.q6-authorize-window--new  .q6-pass-eye-button {
+    right: 40px;
+    top: 2px;
+    background-image: url(../img/blue_eye.svg);
+}
+
+.q6-authorize-window .q6-authorize-window__body{
+    padding: 20px 50px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 12px 25px 1px rgb(105 109 112 / 20%);
+    max-width: 550px;
+    flex: 1;
+    position: relative;
+}
+
 .q6-authorize-window h3,
 .q6-get-started-features h3{
     color: #383838;
@@ -188,6 +258,20 @@
     margin: 0;
     font-size: 15px;
     margin-top: -15px;
+}
+
+.q6-blue-lock-icon{
+    width: 13px;
+    height: 16px;
+    background-image: url(../img/blue_lock.svg);
+    background-repeat: no-repeat;
+    margin-right: 9px;
+}
+
+.q6-authorize-window.q6-authorize-window--new .q6-sign-in__forgot-pass-message{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 .q6-get-started-features .q6-promo-saving-links{
@@ -487,9 +571,11 @@
 .q6-authorize__steps-container{
     display: flex;
     justify-content: center;
-    color: #949494;
-    font-size: 15px;
-    line-height: 24px;
+ 
+
+    color: #a3a3a3;
+    font-size: 16px;
+    line-height: 30px;
     font-weight: 500;    
 }
 
@@ -530,6 +616,10 @@
 
 .q6-authorize__steps-title{
     margin: 7px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
 }
 
 
@@ -783,13 +873,14 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .q6-authorize-auth__button{
     border-radius: 20px;
     background-color: #e9effb;
     line-height: 40px;
-    min-width:125px;
+    min-width: 130px;
     margin: 0 4px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -877,11 +968,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 40px;    
+    padding-top: 40px;
+}
+
+.q6-authorize-window.q6-authorize-window--new .q6-authorize-logo-container{
+    padding-top: 0px;
 }
 
 .q6-authorize-logo-container .q6-logo img {
-    width: 131px;
+    width: 112px;
     border-style: none;
     padding-top: 0;
     vertical-align: initial;
@@ -904,15 +999,20 @@
 }
 
 .q6-main.q6-page-content.q6-page-content--auth .q6-authorize-form {
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 .q6-main.q6-page-content.q6-page-content--auth .q6-button {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .q6-main.q6-page-content.q6-page-content--auth .q6-authorize-form__message {
     margin-top: 2px;
+    font-size: 14px;
+    color: #7C7C7C;
+    line-height: 22px;
+    margin: 0;
+    margin-bottom: 5px;
 }
 
 .q6-main.q6-page-content.q6-page-content--auth .q6-authorize-form .q6-input {
@@ -922,6 +1022,30 @@
 .q6-main.q6-page-content.q6-page-content--auth .q6-button.q6-button--cancel{
     margin: 0;
 }
+
+.q6-auth-delimeter{
+    display: flex;
+    align-items: center;
+}
+
+.q6-auth-delimeter .q6-auth-delimeter__line{
+    background-color: #DADEE9;
+    flex: 1;
+    height: 1px;
+}
+
+.q6-auth-delimeter .q6-auth-delimeter__circle{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #DADEE9;
+    color: #DADEE9;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media screen and (max-width: 1024px){
     .q6-authorize-container {
