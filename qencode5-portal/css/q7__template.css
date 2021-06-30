@@ -874,25 +874,29 @@
 
 .q7-table--latest-transcoding-jobs,
 .q7-table--projects,
-.q7-table--players{
+.q7-table--players,
+.q7-table--streams{
     border-spacing: 0;
     margin-top:18px;
 }
 
 .q7-table--projects,
-.q7-table--players{
+.q7-table--players,
+.q7-table--streams{
     border-collapse: separate;
     border-spacing: 0 7px;    
 }
 .q7-table.q7-table--projects thead tr th,
-.q7-table.q7-table--players thead tr th{
+.q7-table.q7-table--players thead tr th,
+.q7-table.q7-table--streams thead tr th{
     background: #e2e6ee;
     color: #171717;
     white-space: nowrap;
 }
 
 .q7-table--projects td:nth-of-type(1),
-.q7-table--players td:nth-of-type(1) {
+.q7-table--players td:nth-of-type(1),
+.q7-table--streams td:nth-of-type(1) {
     min-width: 80px;
     max-width: 420px;
     overflow: hidden;
@@ -902,51 +906,60 @@
     color: var(--blue); 
 }
 .q7-table--projects td:first-of-type,
-.q7-table--players td:first-of-type{
+.q7-table--players td:first-of-type,
+.q7-table--streams td:first-of-type{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;   
 }
 .q7-table--projects td:last-of-type,
-.q7-table--players td:last-of-type{
+.q7-table--players td:last-of-type,
+.q7-table--streams td:last-of-type{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; 
 }
 .q7-table--projects thead th:first-of-type,
-.q7-table--players thead th:first-of-type{
+.q7-table--players thead th:first-of-type,
+.q7-table--streams thead th:first-of-type{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;   
 }
 .q7-table--projects thead th:last-of-type,
-.q7-table--players thead th:last-of-type{
+.q7-table--players thead th:last-of-type,
+.q7-table--streams thead th:last-of-type{
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px; 
 }
 .q7-table--projects td,
-.q7-table--players td {
+.q7-table--players td,
+.q7-table--streams td {
     padding: 15px 15px;
     vertical-align: top;
     background: white;
 }
 
 .q7-table.q7-table--projects thead,
-.q7-table.q7-table--players thead {
+.q7-table.q7-table--players thead,
+.q7-table.q7-table--streams thead {
     background: transparent;
 } 
 
 .q7-table--projects tr,
-.q7-table--players tr{    
+.q7-table--players tr,
+.q7-table--streams tr{    
     border-radius: 5px;
 }
 
 .q7-table--projects td:last-of-type,
-.q7-table--players td:last-of-type {
+.q7-table--players td:last-of-type,
+.q7-table--streams td:last-of-type {
     padding: 0 5px;
     min-width: 30px;
     position: relative;  
 }
 
 .q7-table--projects tbody tr:hover,
-.q7-table--players tbody tr:hover{
+.q7-table--players tbody tr:hover,
+.q7-table--streams tbody tr:hover{
     /* -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
     -moz-box-shadow: 0px 0px 1px 1px var(--blue);
     box-shadow: 0px 0px 1px 1px var(--blue); */
@@ -958,7 +971,8 @@
 }
 
 .q7-table--projects tbody tr:hover td, 
-.q7-table--players tbody tr:hover td {
+.q7-table--players tbody tr:hover td,
+.q7-table--streams tbody tr:hover td {
     background: #f7faff; 
 }
 
@@ -994,7 +1008,8 @@
 }
 
 .q7-table--projects tbody tr:hover a,
-.q7-table--players tbody tr:hover a{
+.q7-table--players tbody tr:hover a,
+.q7-table--streams tbody tr:hover a{
     color: var(--blue);
 }
 
@@ -1056,16 +1071,21 @@
 } 
 
 .q7-table--projects td:nth-of-type(2),
-.q7-table--players td:nth-of-type(2) {
+.q7-table--players td:nth-of-type(2),
+.q7-table--streams td:nth-of-type(2),
+.q7-table--streams td:nth-of-type(1)  {
     padding-top: 0;
     padding-bottom: 0;
     vertical-align: middle;
 }
 .q7-table--projects td:nth-of-type(2) > div,
-.q7-table--players td:nth-of-type(2) > div{
+.q7-table--players td:nth-of-type(2) > div,
+.q7-table--streams td:nth-of-type(2) > div,
+.q7-table--streams td:nth-of-type(1) > div{
     display: flex;
     align-items: center;    
 }
+
 .q7-copy-api-key{
     cursor: pointer;
     width: 23px;
@@ -1111,6 +1131,21 @@
     white-space: nowrap;
     text-overflow: ellipsis;    
     position: relative;
+}
+
+.q7-table--streams td:first-of-type{
+    /* max-width: 155px; */
+    /* overflow: hidden; */
+    overflow: visible;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
+    position: relative;
+}
+
+.q7-table--streams td:nth-last-of-type(2){
+    padding: 6px 15px;
+    height: 44px;
 }
 
 .q7-table--latest-transcoding-jobs td:first-of-type .q6-tutorial-profile-actions{
@@ -4175,7 +4210,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     line-height: 32px;
 }
 
-.q7-transcoding-status{
+.q7-transcoding-status,
+.q7-stream-status{
     line-height: 32px;
     border-radius: 5px;
     font-weight: 500;
@@ -4183,7 +4219,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     padding-right: 32px;
 }
 
-.q7-transcoding-status:after {
+.q7-transcoding-status:after,
+.q7-stream-status:after {
     content: "";
     position: absolute;
     width: 24px;
@@ -4192,11 +4229,13 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     top: calc(50% - 13px);
 }
 
-.q7-transcoding-status--error{
+.q7-transcoding-status--error,
+.q7-stream-status--error{
     color: #e4322c;    
 }
 
-.q7-transcoding-status--error:after {
+.q7-transcoding-status--error:after,
+.q7-stream-status--error:after {
     background-image: url(../img/error_transcoding.svg);
     background-repeat: no-repeat;
 }
@@ -4226,6 +4265,17 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     background-repeat: no-repeat;
 }
 
+.q7-stream-status--live:after {
+    background-image: url(../img/stream_live.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream-status--idle:after {
+    background-image: url(../img/stream_idle.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .q7-transcoding-status--encoding,
 .q7-transcoding-status--saving,
@@ -4234,8 +4284,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     color: #575757;     
 }
 
-.q7-transcoding-status--completed{
-    color: #289c23;        
+.q7-stream-status--ended{
+    color: #AEAEAE     
+}
+
+
+.q7-transcoding-status--completed,
+.q7-stream-status--live{
+    color: #289c23;       
+}
+
+.q7-stream-status--idle{
+    color: #DEB23F;
 }
 
 .q7-transcoding-resubmitted-message{
@@ -4684,7 +4744,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--transfer-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--payment-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr td:last-of-type .q7-dd-menu__button--dots,
-.q7-table--players tbody tr td:last-of-type .q7-dd-menu__button--dots  {
+.q7-table--players tbody tr td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--streams tbody tr td:last-of-type .q7-dd-menu__button--dots  {
     background-image: url(../img/menu_gray.svg);
     top: 7px;
     z-index: initial;
@@ -4693,7 +4754,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--transfer-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--payment-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
-.q7-table--players tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
+.q7-table--players tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--streams tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
     background-image: url(../img/menu.svg);
 }
 
@@ -4714,7 +4776,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--transfer-methods .q7-copy-text-button,
 .q7-table--projects .q7-copy-text-button,
 .q7-table--projects .q7-edit-text-button,
-.q7-table--players .q7-copy-text-button{
+.q7-table--players .q7-copy-text-button,
+.q7-table--streams .q7-copy-text-button{
     position: relative;
     right: initial;
     margin-left: 5px;
@@ -9494,6 +9557,7 @@ td.q7-cell--with-btns > div input[type=text].q7-input__field{
 }
 
 .q7-table.q7-table--standard.q7-table--players-stats tbody tr td:last-of-type,
+.q7-table.q7-table--standard.q7-table--streams-stats tbody tr td:last-of-type,
 .q7-table.q7-table--standard.q7-table--storage-stats tbody tr td:last-of-type{
     font-weight: 600;
 }
@@ -12107,6 +12171,27 @@ img.q7-welcome-api-builder{
 
 .q7-modal--welcome.q7-modal .modal-body {
     padding: 0 70px;
+}
+
+.q7-input.q7-input--live-stream{
+    min-width: 226px;
+}
+
+.q7-input.q7-input--stream-status{
+    min-width: 162px;
+}
+
+.q7-filter-box.q7-filter-box--live-stream .q7-filter-box__options{
+    flex: none;
+}
+
+.q7-filter-box__buttons .q7-button + .q7-button {
+    margin-left: 4px;
+}
+
+.q7-filter-box__buttons .q7-button.q7-button--secondary{
+    background-color: transparent;
+    border-color: var(--blue);
 }
 
 @media screen and (max-width: 1080px){
