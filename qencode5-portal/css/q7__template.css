@@ -4410,6 +4410,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     font-size: 13px;
     border-radius: 6px;
     padding: 5px 10px;
+    line-height: 14px;
 }
 
 .q6-tutorial-profile-actions__icon:hover > .q7-tooltip{
@@ -12405,6 +12406,28 @@ img.q7-welcome-api-builder{
 
 .q7-stream-container > div{
     flex: 1;
+    max-width: 50%;
+}
+
+.q7-copy-text-button:hover > .q7-tooltip,
+.q7-hide-key-button:hover > .q7-tooltip {
+    display: block;
+}
+
+.q7-hide-key-button > .q7-tooltip{
+    left: calc(50% - 41px);
+}
+
+.q7-copy-text-button .q7-flash-message,
+.q7-hide-key-button .q7-flash-message {
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #616161;
+    color: white;
+    font-size: 13px;
+    line-height: 23px;
 }
 
 @media screen and (max-width: 960px){
@@ -12415,6 +12438,11 @@ img.q7-welcome-api-builder{
     .q7-stream-container > div + div {
         margin-left: 0;
     }
+
+    .q7-stream-container > div {
+        max-width: none;
+    }
+        
 }
 
 @media screen and (max-width: 1080px){

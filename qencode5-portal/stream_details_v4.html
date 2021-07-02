@@ -565,16 +565,32 @@
                         
                         <div class="q7-stream-container">
                             <div class="q7-stream__player">
-                                <div id="before-player-loaded" class="q7-stream__player-body"></div>
+                                <!-- <div id="before-player-loaded" class="q7-stream__player-body"></div> -->
+                                <div id="my_player_loading" class="q7-player-preload-window">
+                                    <div class="q7-player-preload-icon q7-loading-cell">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="131px" height="130px" viewBox="0 0 131 130" version="1.1">
+                                            <clipPath id="playerLoading">                                            
+                                                <path d="M 53.765625 96.570312 L 75.722656 83.570312 L 53.765625 70.570312 Z M 53.765625 96.570312 "></path>
+                                                <path d="M 115.789062 35.457031 L 15.207031 35.457031 C 6.878906 35.457031 0.125 42.257812 0.125 50.644531 L 0.125 114.804688 C 0.125 123.195312 6.878906 129.992188 15.207031 129.992188 L 115.789062 129.992188 C 124.117188 129.992188 130.867188 123.195312 130.867188 114.804688 L 130.867188 50.652344 C 130.871094 42.261719 124.117188 35.457031 115.789062 35.457031 Z M 85.03125 85.003906 C 84.722656 85.625 84.222656 86.128906 83.605469 86.441406 L 51.585938 105.351562 C 51.09375 105.691406 50.507812 105.871094 49.910156 105.859375 L 48.402344 105.351562 C 47.457031 104.722656 46.9375 103.613281 47.0625 102.480469 L 47.0625 64.671875 C 46.9375 63.539062 47.457031 62.429688 48.402344 61.800781 C 49.367188 61.148438 50.625 61.148438 51.585938 61.800781 L 83.605469 80.710938 C 85.171875 81.503906 85.808594 83.421875 85.03125 85.003906 Z M 85.03125 85.003906 "></path>
+                                                <path d="M 17.390625 25.332031 L 113.777344 25.332031 C 115.628906 25.332031 117.128906 23.820312 117.128906 21.953125 C 117.128906 20.089844 115.628906 18.578125 113.777344 18.578125 L 17.390625 18.578125 C 15.539062 18.578125 14.039062 20.089844 14.039062 21.953125 C 14.039062 23.820312 15.539062 25.332031 17.390625 25.332031 Z M 17.390625 25.332031 "></path>
+                                                <path d="M 31.640625 6.753906 L 99.359375 6.753906 C 101.210938 6.753906 102.714844 5.242188 102.714844 3.375 C 102.714844 1.511719 101.210938 0 99.359375 0 L 31.640625 0 C 29.789062 0 28.285156 1.511719 28.285156 3.375 C 28.285156 5.242188 29.789062 6.753906 31.640625 6.753906 Z M 31.640625 6.753906 "></path>
+                                            </clipPath>
+                                        </svg>
+                                    </div>
+                                </div>                                
                                 <div id="player"></div>
                                 <script src='https://player-static.qencode.com/qa/qencode-bootstrapper.min.js'></script>
                                 <script>
                                     qPlayer('player', {
                                         env: "qa",
                                         licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
+                                        playback: {
+                                            muted: true,
+                                            autoplay: true, // autoplay will work only if muted is true
+                                        },                                        
                                         videoSources: { src: "https://moctobpltc-i.akamaihd.net/hls/live/571329/eight/playlist.m3u8" }
                                     }, function(){
-                                       $("#before-player-loaded").hide();
+                                       $("#my_player_loading").hide();
                                     });  
                                 </script>                                  
 
@@ -597,7 +613,10 @@
                                                   
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
-                                                        <div class="q7-flash-message" style="opacity: 0;">Copied</div>
+                                                        <div class="q7-tooltip">
+                                                            Copy URL
+                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                        </div>                                                        
                                                     </div>                                               
                                                 </div>                                                                                            
                                             </div>
@@ -616,8 +635,11 @@
                                                
                                             <div class="q7-inline-action-buttons">
                                                 <div class="q7-copy-text-button">
-                                                    <div class="q7-flash-message" style="opacity: 0;">Copied</div>
-                                                </div>                                               
+                                                    <div class="q7-tooltip">
+                                                        Copy URL
+                                                        <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                    </div>                                                        
+                                                </div>                                                 
                                             </div>                                                                                       
                                         </div>
                                     </div>                                        
@@ -633,9 +655,16 @@
                                             <span id="hidden_key" style="display: none;">∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span>
                                             <div class="q7-inline-action-buttons">
                                                 <div class="q7-copy-text-button">
-                                                    <div class="q7-flash-message" style="opacity: 0;">Copied</div>
+                                                    <div class="q7-tooltip">
+                                                        Copy URL
+                                                        <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                    </div>                                                        
                                                 </div>       
-                                                <div id="toggle_key_view" class="q7-hide-key-button"></div>                                                                                         
+                                                <div id="toggle_key_view" class="q7-hide-key-button">
+                                                    <div class="q7-tooltip">
+                                                        Hide key
+                                                    </div>                                                      
+                                                </div>                                                                                         
                                             </div>                                   
                                         </div>
                                     </div>                                        
@@ -651,8 +680,11 @@
                                                                                        
                                             <div class="q7-inline-action-buttons">
                                                 <div class="q7-copy-text-button">
-                                                    <div class="q7-flash-message" style="opacity: 0;">Copied</div>
-                                                </div>                                               
+                                                    <div class="q7-tooltip">
+                                                        Copy URL
+                                                        <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                    </div>                                                        
+                                                </div>                                                
                                             </div>                                                                                   
                                         </div>
                                         <div class="q7-input__field--view">
@@ -660,8 +692,11 @@
                                                
                                             <div class="q7-inline-action-buttons">
                                                 <div class="q7-copy-text-button">
-                                                    <div class="q7-flash-message" style="opacity: 0;">Copied</div>
-                                                </div>                                               
+                                                    <div class="q7-tooltip">
+                                                        Copy URL
+                                                        <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                    </div>                                                        
+                                                </div>                                                
                                             </div>                                                                                    
                                         </div>                                        
                                     </div>                                        
@@ -880,8 +915,9 @@
 
                     $("#key, #hidden_key").toggle();
 
-                    // var keyIsVisible = $("#license_key").is(':visible');
-                    // keyIsVisible ? $(this).text('Hide') : $(this).text('Show');
+                    var keyIsVisible = $("#key").is(':visible');
+                    var tooltip = $(this).find(".q7-tooltip")[0];
+                    keyIsVisible ? $(tooltip).text('Hide key') : $(tooltip).text('Show key');
                 });                
 
 
@@ -905,7 +941,7 @@
 
                         if(successful) {
                             //console.log("copied");              
-                            $(flashMessage).html('Copied');
+                            $(flashMessage).html('URL copied');
                             $(flashMessage)
                                 .animate({ opacity: 1 }, 200)
                                 .delay(500)     
