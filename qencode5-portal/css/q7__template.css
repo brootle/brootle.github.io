@@ -12128,11 +12128,14 @@ th.q7-th--loading .q7-loading-cell{
 }
 
 img.q7-welcome-api-builder{
-    width: 708px;
+    width: 600px;
     margin: 0;
+    box-shadow: 0px 25.6212px 42.702px rgb(170 178 196 / 20%);
+    margin: 15px 0;
 }
 
-.q7-modal--welcome.q7-modal .modal-content {
+.q7-modal--welcome.q7-modal .modal-content,
+.q7-modal--upgrade.q7-modal .modal-content {
     padding-bottom: 50px;
 }
 
@@ -12141,7 +12144,8 @@ img.q7-welcome-api-builder{
     font-size: 18px;
 }
 
-.q7-modal--welcome.q7-modal .modal-title{
+.q7-modal--welcome.q7-modal .modal-title,
+.q7-modal--upgrade .modal-title{
     font-style: normal;
     font-weight: bold;
     font-size: 28px;
@@ -12157,17 +12161,19 @@ img.q7-welcome-api-builder{
 }
 
 .q7-modal--welcome.q7-modal .modal-content .modal-header p{
-    max-width: 530px;
+    max-width: 490px;
 
-    font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     
-    display: flex;
-    align-items: center;
+
     text-align: center;
     
     color: #171717;    
+}
+
+.q7-modal--welcome.q7-modal .modal-content .modal-header a{
+    color: var(--blue);
 }
 
 .q7-modal--welcome.q7-modal .modal-body {
@@ -12430,6 +12436,267 @@ img.q7-welcome-api-builder{
     line-height: 23px;
 }
 
+.q7-modal-footer-page-indicator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.q7-modal__page-indicator{
+    background-color: #C4C4C4;
+    width: 49px;
+    height: 5px;
+    border-radius: 4px;
+    margin: 0 8px;      
+    cursor: pointer;  
+}
+
+.q7-modal__page-indicator.q7-modal__page-indicator--active{
+    background-color: #316FEA;
+}
+
+
+
+.q7-modal.q7-modal--upgrade .modal-body {
+    padding: 0;
+}
+
+.q7-upgrade-container{
+    display: flex;
+    padding: 0 25px;
+    margin-top: 30px;
+}
+
+.q7-upgrade-container > div{
+    flex: 1;
+    max-width: 408px;
+}
+
+.q7-upgrade-container > div + div{
+    margin-left: 70px;
+}
+
+.q7-upgrade-benefits__item-text{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #858D9F;
+}
+
+.q7-upgrade-benefits-image{
+    margin: 0 auto;
+    display: block;    
+}
+
+.q7-upgrade-benefits__item-text a{
+    color: var(--blue);
+}
+
+.q7-upgrade-benefits__item-icon {
+    background-repeat: no-repeat;
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    background-size: contain;
+}
+
+.q7-upgrade-benefits__item-icon.q7-upgrade-benefits__item-icon--01{
+    background-image: url(../img/benefits_icon1.svg);
+    background-position: center top;
+}
+
+.q7-upgrade-benefits__item-icon.q7-upgrade-benefits__item-icon--02{
+    background-image: url(../img/benefits_icon2.svg);
+    background-position: center top;
+}
+
+.q7-upgrade-benefits__item-icon.q7-upgrade-benefits__item-icon--03{
+    background-image: url(../img/benefits_icon3.svg);
+    background-position: center top;
+}
+
+.q7-upgrade-benefits__item-icon.q7-upgrade-benefits__item-icon--04{
+    background-image: url(../img/benefits_icon4.svg);
+    background-position: center top;
+}
+
+.q7-upgrade-benefits__item{
+    display: flex;
+    margin: 20px 0;
+}
+
+.q7-upgrade__form{
+    display: flex;
+    flex-direction: column;
+}
+
+.q7-upgrade-form__body{
+    flex: 1;
+}
+
+.q7-upgrade-form__footer .q7-button{
+    width: 100%;
+    line-height: 48px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.q7-switch-content {
+    /* display: none; */
+    margin: 20px 0;
+    margin-bottom: 25px;
+}
+
+.q7-switch-content.q7-switch-content--active {
+    display: block;
+}
+
+.q7-payment-switch__button{
+    border: 1px solid #858D9F;
+    box-sizing: border-box;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 12px 30px;   
+}
+
+.q7-payment-switch__button.q7-payment-switch__button--active{
+    border-color: var(--blue);
+    border-width: 2px;
+}
+
+.q7-upgrade-form__header{
+    display: flex;
+}
+
+.q7-upgrade-form__header > div{
+    flex: 1;
+}
+
+.q7-upgrade-form__header > div + div{
+    margin-left: 18px;
+}
+
+.q7-payment-switch__title{
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    text-transform: uppercase; 
+    margin: 6px 0;   
+}
+
+.q7-payment-switch__button.q7-payment-switch__button--active .q7-payment-switch__title{
+    color: var(--blue);
+}
+
+.q7-payment-switch__info{
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;    
+    color: #858D9F;
+}
+
+.q7-payment-switch__icon {
+    background-repeat: no-repeat;
+    width: 33px;
+    height: 33px;
+    min-width: 33px;
+    background-size: contain;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.q7-payment-switch__icon.q7-payment-switch__icon--wallet{
+    background-image: url(../img/upgrade_icon1.svg);
+}
+
+.q7-payment-switch__icon.q7-payment-switch__icon--card{
+    background-image: url(../img/upgrade_icon2.svg);
+}
+
+.q7-upgrade-container .q7-custom-select .q7-custom-select__view{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-weight: bold;
+}
+
+.q7-upgrade-container input[type=password].q7-input__field, 
+.q7-upgrade-container input[type=text].q7-input__field, 
+.q7-upgrade-container input[type=number].q7-input__field, 
+.q7-upgrade-container .q7-select, 
+.q7-upgrade-container textarea.q7-input__field{
+    padding: 14px 14px;   
+    font-weight: bold; 
+}
+
+.q7-upgrade-container .q7-input{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.q7-upgrade-container .q7-input__label label{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #383939;
+}
+
+.q7-upgrade-container .q7-input-with-bonus {
+    width: auto;
+}
+
+.q7-upgrade-container .StripeElement:before{
+    content: none;
+}
+
+.q7-upgrade-container .StripeElement{
+    padding-right: initial;
+}
+
+.q7-powered-by-stripe{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;    
+    color: #858D9F;        
+}
+
+p.q7-form-message{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;    
+    color: #858D9F;    
+    text-align: left;
+}
+
+
+.q7-lock-icon--left{
+    position: relative;
+    padding-left: 15px;
+}
+
+.q7-lock-icon--left:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    left: 0;
+    top: 1px;
+    background-image: url(../img/upgrade_lock.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px){
+    .q7-modal--welcome.q7-modal .modal-content, 
+    .q7-modal--upgrade.q7-modal .modal-content {
+        margin: 0  auto;
+    }
+}
+
 @media screen and (max-width: 960px){
     .q7-stream-container {
         flex-direction: column;
@@ -12446,6 +12713,19 @@ img.q7-welcome-api-builder{
 }
 
 @media screen and (max-width: 1080px){
+    .q7-upgrade-container {
+        flex-direction: column-reverse;
+        padding: 0;
+    }
+
+    .q7-upgrade-container > div + div {
+        margin-left: 0;
+    }
+    
+    .q7-upgrade__benefits{
+        display: none;
+    }
+
     .q7-menu.q7-menu--updated{
         width: var(--vertical-menu-width_mobile);
     }

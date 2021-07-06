@@ -588,7 +588,7 @@
             <div class="q7-container">
                 <div class="q7-section">
                     <div class="q7-content-block">
-                        <button data-toggle="modal" data-target="#welcome" class="q7-button">Trigger Welcom modal window</button>
+                        <button data-toggle="modal" data-target="#welcome" class="q7-button">Trigger Welcome modal window</button>
                     </div>
 
                     <!-- Modal -->
@@ -597,24 +597,122 @@
                         
                             <!-- Modal content-->
                             <div class="modal-content">
+
+                                <div class="q7-rotate-content"> 
                                 
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Welcome to your API Request Builder</h5>
-                                    <p>
-                                        Choose your video, encoding settings, and output destination, and get a JSON you can start using for automation.
-                                    </p>
-                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Transcoding API Request Builder</h5>
+                                        <p>
+                                            Choose your source video, encoding settings, and output destination in the UI. <br>
+                                            Use the JSON to easily start integrating your video application.
+                                        </p>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <img class="q7-welcome-api-builder" src="img/screenshot1.svg">
+                                    </div>
+
                                 </div>
 
-                                <div class="modal-body">
-                                    <img class="q7-welcome-api-builder" src="img/welcome_modal.svg">
-                                </div>
+                                <div class="q7-rotate-content" style="display: none;"> 
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Browse our API Docs and Tutorials</h5>
+                                        <p>
+                                            Check our <a href="" target='_blank'>API documentation</a>  and <a href="" target='_blank'>Tutorials</a> to learn more about our features Qencode.
+                                            Our <a href="" target='_blank'>Getting Started</a>  tutorial is a great place to start.
+                                        </p>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                    </div>
 
-                                <div class="modal-footer">
-                                    <div class="q7-modal-footer-buttons">                            
-                                        <button data-dismiss="modal" class="q7-button">Got it!</button>                                              
+                                    <div class="modal-body">
+                                        <img class="q7-welcome-api-builder" src="img/screenshot2.svg">
                                     </div>
                                 </div>
+
+                                <div class="q7-rotate-content" style="display: none;"> 
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Try our SDKs in your preferred language</h5>
+                                        <p>
+                                            Use Software Development Kits in <a href="" target='_blank'>NodeJS</a>, <a href="" target='_blank'>PHP</a>, <a href="" target='_blank'>Python</a>, <a href="" target='_blank'>Java</a> and <a href="" target='_blank'>.NET</a>  
+                                            to make the process easier than ever.
+                                        </p>
+                                        <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <img class="q7-welcome-api-builder" src="img/screenshot3.svg">
+                                    </div>
+                                </div>                                
+
+                                <div class="modal-footer">
+                                    <div class="q7-modal-footer-page-indicator">
+                                        <div data-index="-1" class="q7-modal__page-indicator q7-modal__page-indicator--active"></div>
+                                        <div data-index="0" class="q7-modal__page-indicator"></div>
+                                        <div data-index="1" class="q7-modal__page-indicator"></div>
+                                    </div>
+                                    <div class="q7-modal-footer-buttons">                            
+                                        <button id="next_view" class="q7-button">Next</button>       
+                                        <button id="get_started" data-dismiss="modal" class="q7-button" style="display: none;">Got it</button>                                            
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function toggleView(index){
+
+                                        // if we didn't get to last one
+                                        if(index < 2){
+                                            // get index of visible
+                                            // hide all
+                                            $(".q7-rotate-content").hide()
+                                            // show next visible 
+                                            let visibleElement = $(".q7-rotate-content")[index+1]
+                                            $(visibleElement).show() 
+
+                                            // take care of indicators
+                                            $(".q7-modal__page-indicator").removeClass("q7-modal__page-indicator--active")
+                                            let activeIndicator = $(".q7-modal__page-indicator")[index+1]
+                                            $(activeIndicator).addClass("q7-modal__page-indicator--active")
+                                        } 
+
+                                        // if we get to last one
+                                        if(index === 1){
+                                            $('#next_view').hide()
+                                            $('#get_started').show()
+                                        } else{
+                                            $('#next_view').show()
+                                            $('#get_started').hide()                                            
+                                        }
+                                    }
+
+
+                                    $(".q7-modal__page-indicator").click(function(){
+                                        // get index of cliked element
+                                        let currentViewIndex
+
+                                        let viewIndex = parseInt($(this).attr('data-index'))
+
+                                        //console.log("viewIndex: ", viewIndex);
+                                        toggleView(viewIndex)
+
+                                    })
+
+                                    $("#next_view").click(function(){
+
+                                        // show next content
+                                        let visibleIndex = 0
+
+
+                                        $(".q7-rotate-content").each(function(index, element){                                      
+                                            if($(element).is(':visible')){
+                                                visibleIndex = index
+                                            }
+                                        })
+
+                                        toggleView(visibleIndex)
+                                       
+                                    })
+                                </script>
 
                             </div>
                         
@@ -624,6 +722,337 @@
                     <!-- Modal ends -->                      
                 </div>
             </div>
+
+            <div class="q7-container">
+                <div class="q7-section">
+                    <div class="q7-content-block">
+                        <button data-toggle="modal" data-target="#upgrade" class="q7-button">Trigger Upgrade modal window</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade q7-modal q7-modal--upgrade" id="upgrade" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Upgrade Your Account</h5>
+
+                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="q7-upgrade-container">
+                                        <div class="q7-upgrade__benefits">
+                                            <img class="q7-upgrade-benefits-image" src="img/upgrade_image.svg" alt="">
+                                            <div class="q7-upgrade-benefits-list">
+                                                <div class="q7-upgrade-benefits__item">
+                                                    <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--01"></div>
+                                                    <div class="q7-upgrade-benefits__item-text">
+                                                        After free credits are spent, <a href="">pay only for what you use</a>  and get charged 
+                                                        at the end of the month.
+                                                    </div>
+                                                </div>
+                                                <div class="q7-upgrade-benefits__item">
+                                                    <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--02"></div>
+                                                    <div class="q7-upgrade-benefits__item-text">
+                                                        Up to <a href="">$30 in free credits</a>  available after account created.
+                                                    </div>
+                                                </div> 
+                                                <div class="q7-upgrade-benefits__item">
+                                                    <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--03"></div>
+                                                    <div class="q7-upgrade-benefits__item-text">
+                                                       <a href="">Full access</a> to our video API for transcoding, optimization and playback.
+                                                    </div>
+                                                </div>     
+                                                <div class="q7-upgrade-benefits__item">
+                                                    <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--04"></div>
+                                                    <div class="q7-upgrade-benefits__item-text">
+                                                       <a href="">No subscriptions</a>  or minimum contracts.
+                                                    </div>
+                                                </div>                                                                                                                                              
+                                            </div>
+                                        </div>
+                                        <div class="q7-upgrade__form">
+                                            <div class="q7-upgrade-form__header">    
+                                                <div data-form="deposit_wallet" class="q7-payment-switch__button q7-payment-switch__button--active">
+                                                    <div class="q7-payment-switch__icon q7-payment-switch__icon--wallet"></div>
+                                                    <div class="q7-payment-switch__title">Deposit to Wallet</div>
+                                                    <div class="q7-payment-switch__info">Make deposit for additional credits</div>
+                                                </div>
+                                                <div data-form="pay_as_you_go" class="q7-payment-switch__button">
+                                                    <div class="q7-payment-switch__icon q7-payment-switch__icon--card"></div>
+                                                    <div class="q7-payment-switch__title">Pay-As-You-Go</div>
+                                                    <div class="q7-payment-switch__info">Get charged at the end of the month</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="q7-upgrade-form__body">    
+                                                <div id="deposit_wallet" class="q7-switch-content q7-switch-content--active">
+
+                                                    <div id="ugrade_amount">
+                                                        <div class="q7-input">
+                                
+                                                            <div class="q7-input__label">
+                                                                <label>Amount</label>
+                                                            </div>
+                                                        
+                                                            <div class="q7-custom-select">
+                                                                <div class="q7-custom-select__view">$100.00 <span>+ 5% bonus</span></div>       
+                                                                <div class="q7-custom-select__list">
+                                                                    <div class="q7-custom-select__option" data-option='custom'>Custom</div>
+                                                                    <div class="q7-custom-select__option">$20.00</div>
+                                                                    <div class="q7-custom-select__option">$100.00 <span>+ 5% bonus</span></div>
+                                                                    <div class="q7-custom-select__option">$500.00 <span>+ 7% bonus</span></div>
+                                                                    <div class="q7-custom-select__option">$2000.00 <span>+ 10% bonus</span></div>
+                                                                    <div class="q7-custom-select__option">$5000.00 <span>+ 12% bonus</span></div>
+                                                                </div>
+                                                            </div>
+                            
+                                                            <script>
+                                                                $(function () {
+                            
+                                                                    $(".q7-custom-select__view").click(function (e) {
+                                                                        // check if current is opened
+                                                                        if ($(this).hasClass('q7-custom-select__view--opened')) {
+                                                                            $(this).removeClass('q7-custom-select__view--opened');
+                                                                            $(this).next().removeClass('q7-custom-select__list--opened');
+                                                                        } else {
+                                                                            // close all opened menus
+                                                                            $('.q7-custom-select__view--opened').removeClass('q7-custom-select__view--opened');
+                                                                            $('.q7-custom-select__list--opened').removeClass('q7-custom-select__list--opened');
+                            
+                                                                            // open current 
+                                                                            $(this).addClass('q7-custom-select__view--opened');
+                                                                            $(this).next().addClass('q7-custom-select__list--opened');
+                                                                        }
+                                                                    });
+                            
+                                                                    // updated selected value
+                                                                    $(".q7-custom-select__option").click(function (e) {
+                                                                        $(this).parent().prev().addClass('q7-custom-select__view--focus');
+                                                                        $(this).parent().prev().html($(this).html());
+                                                                        // if data-option='custom'
+                                                                        if ($(this).attr("data-option") === "custom") {
+                                                                            $("#custom-amount-input_upgrade").show(100);
+                                                                        } else {
+                                                                            $("#custom-amount-input_upgrade").hide(100);
+                                                                        }                                            
+                                                                    });                                        
+                            
+                                                                    // close if clicked outside
+                                                                    $(window).click(function (e) {
+                                                                        if (!event.target.matches('.q7-custom-select__view')) {
+                                                                            $('.q7-custom-select__view--opened').removeClass('q7-custom-select__view--opened')                                                
+                                                                            $('.q7-custom-select__list--opened').removeClass('q7-custom-select__list--opened')
+                                                                        }
+                                                                    });
+                            
+                                                                    $(window).click(function (e) {
+                                                                        if (!event.target.matches('.q7-custom-select__option')) {
+                                                                            $('.q7-custom-select__view--focus').removeClass('q7-custom-select__view--focus')
+                                                                        }
+                                                                    });                                        
+                            
+                                                                })
+                                                            </script>                                
+                                                        </div>
+                    
+                            
+                                                        <div id="custom-amount-input_upgrade" class="q7-input" style="display: none">
+                                                            <div class="q7-input__label">
+                                                                <label>Enter USD Amount</label>
+                                                            </div>
+                                                            <div class="q7-input-with-bonus">
+                                                                <input class="q7-input__field" type="text" id="custom-funds_upgrade" value="$ 100.00">
+                                                                <div class="q7-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
+                                                            </div>                                
+                                                        </div>
+                            
+                            
+                                                        <script>
+                                                            $(function () {
+                            
+                                                                // when user inputs value
+                                                                document.getElementById('custom-funds_upgrade').addEventListener('input', function (e) {                                    
+                            
+                                                                    if (e.target.value.includes(".")) {
+                                                                        // if number is decimal
+                                                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
+                            
+                                                                        // allow only two digits after dots
+                                                                        var afterDotDigits = e.target.value.split('.')[1];
+                                                                        if (afterDotDigits.length > 2) {
+                                                                            e.target.value = e.target.value.replace(/.$/, '');
+                                                                        }
+                            
+                                                                    } else {
+                                                                        // if the number is not decimal add spaces after thousands
+                                                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                                    }
+                            
+                                                                    // remove all ',' and '$ ' to get value in Float
+                                                                    let valueInNumber = parseFloat(e.target.value.replace(/\,/g, '').replace(/\$ /g, ''));
+                                                                    
+                                                                    if(valueInNumber){
+                                
+                                                                        // set bonus based on value
+                                                                        let bonus = 0;
+                            
+                                                                        if (valueInNumber <= 100) {
+                                                                            bonus = 0;
+                                                                        } else if (valueInNumber <= 500) {
+                                                                            bonus = 5;
+                                                                        } else if (valueInNumber <= 2000) {
+                                                                            bonus = 7;
+                                                                        } else if (valueInNumber <= 5000) {
+                                                                            bonus = 10;
+                                                                        } else{
+                                                                            bonus = 12;
+                                                                        }
+                                                                        
+                                                                        // update bonus
+                                                                        $("#custom-bonus").text(bonus);
+                            
+                                                                    }
+                                                                    
+                            
+                                                                });
+                                                            });
+                                                        </script>
+                                                    </div>
+                        
+                        
+                                                    <div class="q7-input">
+                        
+                                                        <div class="q7-input__label">
+                                                            <label>Payment method</label>
+                                                        </div>
+                        
+                                                        <div class="q7-custom-select">
+                                                            <select id="payment-selector" class="q7-select">                                                                
+                                                                <option value="card">Credit Card</option>
+                                                                <option value="paypal">Paypal</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                        
+                                                    <p class="q7-form-message" id="payment-method_paypal-message">                                
+                                                        Add PayPal credit to your account. This is a one-time payment
+                                                        and may take up to five minutes to process.
+                                                    </p>
+                        
+                                                    <div class="q7-input" id="payment-method_card-name" >
+                                                        <div class="q7-input__label">
+                                                            <label>Name</label>
+                                                        </div>
+                                                        <input class="q7-input__field" type="text">
+                                                    </div>
+                        
+                                                    <div class="q7-input" id="payment-method_card-input" >
+                                                        <div class="q7-input__label">
+                                                            <label for="user_card">Card number</label>
+                                                        </div>
+                        
+                                                        <div id="card-element_add-funds"></div>
+                                                        <script src="https://js.stripe.com/v3/"></script>
+                                                        <script>
+                                                            var stripe = Stripe('123');
+                                                            var elements = stripe.elements();
+                                                            var style = {
+                                                                base: {
+                                                                    color: '#171717',
+                                                                    lineHeight: '22px',
+                                                                    height: '22px',
+                                                                    fontFamily: 'proxima-nova, sans-serif',
+                                                                    fontSmoothing: 'antialiased',
+                                                                    fontSize: '16px',
+                                                                    fontWeight: '600',
+                                                                    '::placeholder': {
+                                                                        color: '#aab7c4'
+                                                                    }
+                                                                },
+                                                                invalid: {
+                                                                    color: '#fa755a',
+                                                                    iconColor: '#fa755a'
+                                                                }
+                                                            };
+                                                            var card = elements.create('card', { style: style });
+                                                            card.mount('#card-element_add-funds');
+                                                        </script>
+                                                    </div>
+                        
+                                                    <div class="q7-powered-by-stripe" id="payment-method_card-message">
+                                                        <div class="q7-lock-icon--left">
+                                                            Billing information secured and encrypted.
+                                                        </div>
+                                                        <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
+                                                    </div>                            
+                        
+                                                    <script>
+                                                        $(function () {
+                                                            $("#payment-selector").change(function(){
+                                                                if($(this).val() === "card"){
+                                                                    $("#payment-method_paypal-message").hide()
+                        
+                                                                    $("#payment-method_card-name").show()
+                                                                    $("#payment-method_card-input").show()
+                                                                    $("#payment-method_card-message").show()
+                                                                } else{
+                                                                    $("#payment-method_paypal-message").show()
+                        
+                                                                    $("#payment-method_card-name").hide()
+                                                                    $("#payment-method_card-input").hide()
+                                                                    $("#payment-method_card-message").hide()                                            
+                                                                }
+                                                            })
+                                                        });
+                                                    </script>    
+
+                                                </div>
+
+                                            </div>     
+                                            
+                                            <script>
+                                                $(function () {
+                                                    var tabLinks = document.querySelectorAll('.q7-payment-switch__button');
+
+                                                    tabLinks.forEach(link => link.addEventListener('click', switchTab));
+
+                                                    function switchTab(e){
+                                                        // find active elements and remove
+                                                        $('.q7-payment-switch__button--active').removeClass("q7-payment-switch__button--active");
+                                                        
+
+                                                        // find what button was clicked and show form with that ID
+                                                        var clickedLink = e.currentTarget;
+                                                        $(clickedLink).addClass('q7-payment-switch__button--active');
+
+                                                        var tabID = clickedLink.getAttribute("data-form");
+                                                        
+                                                        if(tabID === "pay_as_you_go"){
+                                                            $("#ugrade_amount").hide()
+                                                        }else{
+                                                            $("#ugrade_amount").show()
+                                                        }
+                                                     
+
+                                                    }                                       
+                                                });                 
+                                            </script>                                            
+
+                                            <div class="q7-upgrade-form__footer">                         
+                                                <button class="q7-button" >Upgrade Account</button>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+
+                </div>
+            </div>            
 
             <div class="q7-container">
                 <div class="q7-section">
