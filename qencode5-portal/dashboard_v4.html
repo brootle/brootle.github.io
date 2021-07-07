@@ -1393,6 +1393,7 @@
                     </div>
 
                     <div class="q7-main-content-snippets">
+
                         <div class="q7-content-block">                            
                             <div class="q7-checklist-snippet-container">
                                 <div class="q7-checklist-snippet__header">
@@ -1478,7 +1479,87 @@
                             </div>
                         </div>
 
+                        <div class="q7-content-block">                            
+                            <div class="q7-checklist-snippet-container">
+                                <div class="q7-checklist-snippet__header">
+                                    <div class="q7-checklist__title">Getting Started Checklist</div>
+                                    <p>
+                                        Complete the checklist to earn free credits
+                                    </p>                    
 
+                                    <div class="q7-progress-ring-container">
+                                        <div class="q7-progress-ring__inner">
+                                            <div>
+                                                <div>$15</div>
+                                                <div>of</div>
+                                                <div>$30</div>                                        
+                                            </div>
+                                        </div>
+                                        <svg
+                                            class="q7-progress-ring"
+                                            width="90"
+                                            height="90">
+                                            <circle
+                                                id="checklist-progress_2"
+                                                class="q7-progress-ring__circle"
+                                                stroke="#366FE0"
+                                                stroke-width="6"
+                                                fill="transparent"
+                                                r="42"
+                                                cx="45"
+                                                cy="45"
+                                                stroke-linecap="round"
+                                            />
+                                        </svg> 
+                                    </div>
+                                   
+                                    
+                                    <script>
+                                        var circle = document.querySelector('#checklist-progress_2');
+                                        var radius = circle.r.baseVal.value;
+                                        var circumference = radius * 2 * Math.PI;
+
+                                        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                                        circle.style.strokeDashoffset = `${circumference}`;
+
+                                        function setProgress(percent) {
+                                            const offset = circumference - percent / 100 * circumference;
+                                            circle.style.strokeDashoffset = offset;
+                                        }        
+                                        
+                                        setProgress(50)
+                                    </script>
+
+                                </div>
+                                <div class="q7-checklist-snippet__body">
+                                    <div class="q7-checklist__list">
+                                        <div class="q7-checklist__item q7-checklist__item--completed">
+                                            <div>Create account</div><div>$5</div>
+                                        </div>
+                                        <div class="q7-checklist__item">
+                                            <div>Launch transcoding job</div><div>$5</div>
+                                        </div>         
+                                        <div class="q7-checklist__item">
+                                            <div>Create video player</div><div>$5</div>
+                                        </div>    
+                                        <div class="q7-checklist__item">
+                                            <div>Update billing settings</div><div>$5</div>
+                                        </div>   
+                                        <div class="q7-checklist__item q7-checklist__item--completed">
+                                            <div>Launch 5 jobs with Per-Title Encoding enabled</div><div>$5</div>
+                                        </div>    
+                                        <div class="q7-checklist__item q7-checklist__item--completed">
+                                            <div>Get 100 plays on your video player</div><div>$5</div>
+                                        </div>                                                                                                                                                                                    
+                                    </div>                                                                                                                                                                                   
+                                </div>
+                                <div class="q7-checklist-snippet__footer">
+                                    <p>
+                                        Unlock <span class="q7-colored">$15 more free credits</span> by completing the remaining steps.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div class="q7-content-block">
                             <div class="q7-content-block__header">
