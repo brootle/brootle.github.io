@@ -345,15 +345,16 @@
     height: 53px;
 }
 
-.q7-warning-message-container.q7-warning-message-container--expired.q7-warning-message-container--updated .q7-button {
+.q7-button.q7-button--round.q7-button--gradient.q7-button--upgrade {
     font-weight: 600;
     background: linear-gradient(88.86deg, #30EAFB 2.63%, #D952F7 83.11%);
     border-radius: 4px;
     border: none;    
     height: 34px;
+    color: white;
 }
 
-.q7-warning-message-container.q7-warning-message-container--expired.q7-warning-message-container--updated .q7-button:hover{
+.q7-button.q7-button--round.q7-button--gradient.q7-button--upgrade:hover{
     background: linear-gradient(88.86deg, #00eaff 2.63%, #d828ff 83.11%);
 }
 
@@ -12688,6 +12689,146 @@ p.q7-form-message{
     background-image: url(../img/upgrade_lock.svg);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.q7-checklist-snippet__footer .q7-button{
+    width: 100%;
+}
+
+.q7-checklist-snippet__footer p{
+    color: #7E848F;
+    font-size: 14px;
+    line-height: 17px;    
+    text-align: center;
+    padding: 0 15px;
+}
+
+.q7-colored{
+    color: var(--blue);
+}
+
+.q7-checklist__title{
+    color: #4F4F4F;
+    font-size: 16px;
+    text-align: center;
+    margin: 6px 0;
+}
+
+.q7-checklist-snippet__header p{
+    color: #7E848F;
+    text-align: center;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0px 15px;    
+}
+
+.q7-checklist__item{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 15px 0px;
+    color: var(--blue);
+}
+
+.q7-checklist__item.q7-checklist__item--completed{
+    color: #BAC0CE;
+    text-decoration-line: line-through;
+}
+
+.q7-checklist__item > div:first-of-type{
+    flex: 1;
+    padding-right: 15px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.q7-checklist__item > div:first-of-type:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 1px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../img/checklist_pending.svg);
+}
+
+.q7-checklist__item.q7-checklist__item--completed > div:first-of-type:before{
+    background-image: url(../img/checklist_checked.svg);
+}
+
+.q7-checklist-snippet__footer .q7-button.q7-button--upgrade:before{
+    content: none;
+}
+
+.q7-checklist-snippet__footer .q7-button.q7-button--upgrade > span{
+    position: relative;
+    padding-left: 33px;
+}
+
+.q7-checklist-snippet__footer .q7-button.q7-button--upgrade > span:before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 0;
+    top: calc(50% - 11px);
+    background-image: url(../img/upgrade_svg.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.q7-progress-ring-container{
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.q7-progress-ring__inner{
+    width: 90px;
+    height: 90px;
+    border: 7px solid #ecf1ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;  
+    color: var(--blue);  
+}
+
+.q7-progress-ring__inner > div{
+    display: flex;
+    align-items: baseline;
+}
+
+.q7-progress-ring__inner > div > div:nth-of-type(2){
+    font-size: 14px;
+    margin: 0 3px;
+}
+
+.q7-progress-ring__inner > div > div:nth-of-type(3){
+    font-weight: 600;
+}
+
+.q7-progress-ring{
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 0;    
+}
+
+.q7-progress-ring__circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.q7-checklist__list{
+    margin-bottom: 20px;
+    margin-top: 25px;
 }
 
 @media screen and (max-width: 768px){
