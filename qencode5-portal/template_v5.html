@@ -66,7 +66,7 @@
                         </div>
                     </a>       
 
-                    <div class="q7-menu-block__element q7-menu-block__element--selected q7-menu-block__element--has-submenu">
+                    <div id="transcoding_submenu" class="q7-menu-block__element q7-menu-block__element--selected q7-menu-block__element--has-submenu">
                         <div class="q7-menu-block__element-content">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.63 401.99"><path d="M493.36,347.18H18.27A17.59,17.59,0,0,0,5.42,352.6,17.59,17.59,0,0,0,0,365.45v73.09a17.61,17.61,0,0,0,5.42,12.85,17.62,17.62,0,0,0,12.85,5.42H493.36a18.51,18.51,0,0,0,18.27-18.27V365.46a18.51,18.51,0,0,0-18.27-18.28Zm-18.28,73.09H292.37V383.72H475.09v36.55Z" transform="translate(0 -54.82)"></path><path d="M493.36,201H18.27a17.56,17.56,0,0,0-12.85,5.43A17.55,17.55,0,0,0,0,219.27v73.09a17.59,17.59,0,0,0,5.42,12.85,17.62,17.62,0,0,0,12.85,5.42H493.36a18.51,18.51,0,0,0,18.27-18.27V219.27A18.53,18.53,0,0,0,493.36,201Zm-18.28,73.09H182.73V237.55H475.08Z" transform="translate(0 -54.82)"></path><path d="M506.21,60.24a17.61,17.61,0,0,0-12.85-5.42H18.27A17.59,17.59,0,0,0,5.42,60.24,17.59,17.59,0,0,0,0,73.09v73.09A17.59,17.59,0,0,0,5.42,159a17.58,17.58,0,0,0,12.85,5.42H493.36a18.51,18.51,0,0,0,18.27-18.27V73.09A17.59,17.59,0,0,0,506.21,60.24Zm-31.13,67.67H365.45V91.36H475.08Z" transform="translate(0 -54.82)"></path></svg>
                             <div class="q7-menu-block__element-title">Transcoding</div>
@@ -79,6 +79,23 @@
 
                         </div>
                     </div>    
+
+                    <script>
+                        var touchscreen = false;
+
+                        // redirect on click if not on touchscreens
+                        $("#transcoding_submenu").on('mouseup', function(){
+                            if(!touchscreen){
+                               window.location.href = "http://www.google.com";
+                            }
+                        })
+
+                        // don't redirect if click was made on touchscreen
+                        $("#transcoding_submenu").on('touchend', function(event){
+                            touchscreen = true
+                        })
+                    </script>
+                        
 
                     <a href="" class="q7-menu-block__element">
                         <div class="q7-menu-block__element-content">
