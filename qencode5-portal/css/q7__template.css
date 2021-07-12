@@ -1689,7 +1689,7 @@
 }
 
 .q7-section{
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 40px;
     width: 100%;
 }
@@ -8093,6 +8093,30 @@ textarea:focus, select.q7-select:focus {
     margin-left: -10px;
 }
 
+.q7-filters-action-btns{
+    height: 32px;
+    width: 34px;
+    min-width: 34px;
+    margin-left: -10px;
+}
+
+.q7-filters__delete-btn {
+    height: 34px;
+    margin: 0 auto;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 12px;
+    background-image: url(../img/delete_format_icon.svg);
+    background-size: 100%;
+    width: 12px;  
+}
+
+.q7-filters__delete-btn:hover {
+    background-image: url(../img/delete_format_icon__red.svg);
+}
+
+
 .q7-subtitles__delete-btn{
     width: 34px;
     height: 34px;
@@ -12830,6 +12854,241 @@ p.q7-form-message{
     margin-bottom: 20px;
     margin-top: 25px;
 }
+
+.q7-advanced-filter input[type=password].q7-input__field, 
+.q7-advanced-filter input[type=text].q7-input__field, 
+.q7-advanced-filter input[type=number].q7-input__field, 
+.q7-advanced-filter .q7-select, 
+.q7-advanced-filter textarea.q7-input__field{
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 14px;
+    line-height: 30px;
+
+    border-radius: 4px;
+    height: 32px;
+}
+
+.q7-advanced-filter .q7-select{
+    padding-right: 24px;
+}
+
+.q7-advanced-filter .q7-button{
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 4px;
+    height: 32px;
+}
+
+.q7-advanced-filter .q7-input__label label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.q7-advanced-filter .q7-input-and-buttons--inline .q7-input {
+    margin-right: 9px;
+}
+
+.q7-advanced-filter .q7-input-and-buttons--inline{
+    flex: 1;
+}
+
+.q7-advanced-filter .q7-input.q7-input--job-id{
+    max-width: 357px;
+    min-width: 250px;
+    flex: 1;
+}
+
+.q7-advanced-filter .q7-input{
+    position: relative;
+    margin-top: 7px;
+}
+
+input[type=text].q7-input__field.q7-input__field--clear{
+    padding-right: 30px;
+}
+
+.q7-clear-input-btn{
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../img/clear_input.svg);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    display: inline-block;
+    right: 8px;
+    bottom: 8px;  
+}
+
+
+.q7-filter-box.q7-filter-box--jobs .q7-input-and-buttons--inline .q7-input + .q7-button {
+    margin-left: 0;
+}
+
+.q7-input.q7-input--projects-dropdown{
+    max-width: 203px;
+    min-width: 203px;
+    flex: 1;    
+}
+
+.q7-input.q7-input--projects-dropdown .q7-custom-select{
+    position: relative;
+}
+
+.q7-input.q7-input--projects-dropdown .q7-custom-select:before{
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 9px;
+    top: 7px;
+    background-image: url(../img/input_search_icon.svg);
+    background-repeat: no-repeat;
+}
+
+.q7-filter-box.q7-filter-box--jobs .q7-input.q7-input--projects-dropdown .q7-select{
+    padding-left: 30px;
+}
+
+.q7-button.q7-button--adv-filters > span{
+    position: relative;
+    padding-left: 20px;
+}
+
+.q7-button.q7-button--adv-filters > span:before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    left: 0;
+    top: calc(50% - 5px);
+    background-image: url(../img/filter_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.q7-filter-box.q7-filter-box--jobs .q7-button.q7-button--clear-filters{
+    width: 34px;
+    min-width: 0;
+    position: relative;
+}
+
+.q7-filter-box.q7-filter-box--jobs .q7-button.q7-button--clear-filters > span:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 14px;
+    top: calc(50% - 8px);
+    background-image: url(../img/cancel_white_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.q7-filter-content__footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    border-top: 1px solid #E2E6EE;
+    padding-top: 18px;
+    margin-top: 30px;
+}
+
+.q7-filter-content__footer .q7-button + .q7-button{
+    margin-left: 8px;
+}
+
+.q7-filter-content{
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 20px 25px;
+    margin: 15px 0;  
+}
+
+.q7-input.q7-input--max-width{
+    flex: 1;
+}
+
+.q7-filter__payload .q7-input-and-buttons--inline .q7-input {
+    margin-top: 7px;
+}
+
+.q7-add-payload-btn{
+    cursor: pointer;
+    color: var(--blue);
+    margin-top: 7px;    
+    font-weight: 500;
+    font-size: 12px;    
+    line-height: 16px;
+}
+
+.q7-add-payload-btn:hover{
+    text-decoration: underline;
+}
+
+.q7-filter__details{
+    display: flex;
+    margin-top: 30px;
+}
+
+
+.q7-filter__details > div + div{
+    margin-left: 50px;
+}
+
+.q7-filter__details--title{
+    text-transform: uppercase;
+    color: #AAAAAA;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;    
+}
+
+.q7-filter__details .q7-input{
+    max-width: 120px;
+    width: 120px;
+}
+
+.q7-input.q7-input--duration{
+    max-width: none;
+    width: initial;
+}
+
+.q7-input.q7-input--duration > .q7-input-and-buttons--inline{
+    background: #E9EEF7;
+    border-radius: 4px;
+    padding: 7px 10px;    
+}
+
+.q7-input.q7-input--duration > .q7-input-and-buttons--inline .q7-input {
+    margin: 0;
+    max-width: 87px;
+}
+
+.q7-input.q7-input--duration > .q7-input-and-buttons--inline .q7-input-delimeter {
+    margin-bottom: 4px;
+}
+
+.q7-filter-box.q7-filter-box--jobs .q7-input-and-buttons--inline .q7-input + .q7-button {
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1340px){
+    .q7-advanced-filter .q7-filter-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .q7-filter-box__buttons{
+        margin-top: 10px;
+    }
+}
+
 
 @media screen and (max-width: 768px){
     .q7-modal--welcome.q7-modal .modal-content, 
