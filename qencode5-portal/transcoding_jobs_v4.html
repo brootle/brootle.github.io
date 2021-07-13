@@ -323,49 +323,7 @@
                         </div>      
                         
                         <div class="q7-filter-content">
-                            <div class="q7-filter-content__body">
-
-                                <div class="q7-filter__payload">                            
-                                    <div class="q7-input-and-buttons--inline">
-                                        <div class="q7-input">
-                                            <div class="q7-input__label">
-                                                <label>Add payload filter</label>                                                             
-                                            </div>                
-                                            <div class="q7-custom-select">
-                                                <select class="q7-select">
-                                                    <option value="1">Сontains</option>
-                                                    <option value="2">Does not contain</option>
-                                                </select>
-                                            </div>                               
-                                        </div>   
-                                        <div class="q7-input q7-input--max-width">             
-                                            <input class="q7-input__field" type="text">                                
-                                        </div>    
-                                        <div class="q7-filters-action-btns">
-                                            
-                                        </div>                                                                                                              
-                                    </div>
-
-                                    <div class="q7-input-and-buttons--inline">
-                                        <div class="q7-input">             
-                                            <div class="q7-custom-select">
-                                                <select class="q7-select">
-                                                    <option value="1">Сontains</option>
-                                                    <option value="2">Does not contain</option>
-                                                </select>
-                                            </div>                             
-                                        </div>   
-                                        <div class="q7-input q7-input--max-width">               
-                                            <input class="q7-input__field" type="text">                                
-                                        </div>    
-                                        <div class="q7-filters-action-btns">
-                                            <div class="q7-filters__delete-btn"></div>
-                                        </div>                                                                                                             
-                                    </div>         
-                                    
-                                    <div class="q7-add-payload-btn">+ Add payload filter</div>
-
-                                </div>   
+                            <div class="q7-filter-content__body"> 
                                 
                                 <div class="q7-filter__details">
                                     <div>   
@@ -423,14 +381,14 @@
                                                         <div class="q7-input__label">
                                                             <label>Min</label>
                                                         </div>
-                                                        <input class="q7-input__field" type="text" placeholder="hh:mm:ss">
+                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
                                                     </div>  
                                                     <div class="q7-input-delimeter">-</div>
                                                     <div class="q7-input">                                        
                                                         <div class="q7-input__label">
                                                             <label>Max</label>
                                                         </div>
-                                                        <input class="q7-input__field" type="text" placeholder="hh:mm:ss">
+                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
                                                     </div> 
                                                 </div>
                                             </div>                   
@@ -491,20 +449,62 @@
                                                         <div class="q7-input__label">
                                                             <label>Min</label>
                                                         </div>
-                                                        <input class="q7-input__field" type="text" placeholder="hh:mm:ss">
+                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
                                                     </div>  
                                                     <div class="q7-input-delimeter">-</div>
                                                     <div class="q7-input">                                        
                                                         <div class="q7-input__label">
                                                             <label>Max</label>
                                                         </div>
-                                                        <input class="q7-input__field" type="text" placeholder="hh:mm:ss">
+                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
                                                     </div> 
                                                 </div>
                                             </div>                   
                                         </div>                                          
                                     </div>
                                 </div>
+
+                                <div class="q7-filter__payload">                            
+                                    <div class="q7-input-and-buttons--inline">
+                                        <div class="q7-input">
+                                            <div class="q7-input__label">
+                                                <label>Add payload filter</label>                                                             
+                                            </div>                
+                                            <div class="q7-custom-select">
+                                                <select class="q7-select">
+                                                    <option value="1">Сontains</option>
+                                                    <option value="2">Does not contain</option>
+                                                </select>
+                                            </div>                               
+                                        </div>   
+                                        <div class="q7-input q7-input--max-width">             
+                                            <input class="q7-input__field" type="text">                                
+                                        </div>    
+                                        <div class="q7-filters-action-btns">
+                                            
+                                        </div>                                                                                                              
+                                    </div>
+
+                                    <div class="q7-input-and-buttons--inline">
+                                        <div class="q7-input">             
+                                            <div class="q7-custom-select">
+                                                <select class="q7-select">
+                                                    <option value="1">Сontains</option>
+                                                    <option value="2">Does not contain</option>
+                                                </select>
+                                            </div>                             
+                                        </div>   
+                                        <div class="q7-input q7-input--max-width">               
+                                            <input class="q7-input__field" type="text">                                
+                                        </div>    
+                                        <div class="q7-filters-action-btns">
+                                            <div class="q7-filters__delete-btn"></div>
+                                        </div>                                                                                                             
+                                    </div>         
+                                    
+                                    <div class="q7-add-payload-btn">+ Add payload filter</div>
+
+                                </div>                                  
 
                             </div>
                             <div class="q7-filter-content__footer">
@@ -513,19 +513,68 @@
                             </div>
 
                             <script>
+                                // format input for q7-input__field--time
+                                $(function () {
 
-                                $(".q7-input__field--clear").on('change keyup', function () {
-                                    if($(this).val() !== ''){
-                                        $(this).next('.q7-clear-input-btn').show()
-                                    } else {
-                                        $(this).next('.q7-clear-input-btn').hide()
-                                    }
-                                })   
-                                
-                                $(".q7-clear-input-btn").click(function(){
-                                    $(this).prev('.q7-input__field--clear').val('')
-                                    $(this).hide()
-                                })
+                                    // when user inputs value
+                                    $('.q7-input__field--time').on('input', function (e) {
+
+                                        // limit input by numbers and :
+                                        e.target.value = e.target.value.replace(/[^0-9:]/g, '').replace(/:+/g,":")
+
+                                        // handle :
+                                        if(e.target.value === ":"){
+                                            e.target.value = ''
+                                        }
+
+                                        // handle 4:
+                                        if(e.target.value[1] === ":"){
+                                            e.target.value = e.target.value.replace(/./g, (c, i) => i == 1 ? '': c)
+                                        }        
+                                        
+                                        // handle 44:4:
+                                        if(e.target.value[4] === ":"){
+                                            e.target.value = e.target.value.replace(/./g, (c, i) => i == 4 ? '': c)
+                                        }  
+                                        
+                                        // handle 44:44:4:
+                                        if(e.target.value[7] === ":"){
+                                            e.target.value = e.target.value.replace(/./g, (c, i) => i == 7 ? '': c)
+                                        }                                          
+
+                                        let formatedInput = ''
+
+                                        // 234 => 23:4
+                                        if(e.target.value.length > 2 && e.target.value[2]!==":" && e.target.value.length < 4){
+                                            formatedInput = e.target.value.slice(0, -1) + ':' + e.target.value[e.target.value.length - 1]
+                                            e.target.value = formatedInput
+                                        }
+
+                                        // 55:455 => 55:45:5
+                                        if(e.target.value.length > 5 && e.target.value[5]!==":" && e.target.value.length < 7){
+                                            formatedInput = e.target.value.slice(0, -1) + ':' + e.target.value[e.target.value.length - 1]
+                                            e.target.value = formatedInput                                            
+                                        }                                        
+
+                                    });
+                                });                                
+                            </script>
+
+                            <script>
+                                $(function () {
+                                    $(".q7-input__field--clear").on('change keyup', function () {
+                                        if($(this).val() !== ''){
+                                            $(this).next('.q7-clear-input-btn').show()
+                                        } else {
+                                            $(this).next('.q7-clear-input-btn').hide()
+                                        }
+                                    })   
+                                    
+                                    $(".q7-clear-input-btn").click(function(){
+                                        $(this).prev('.q7-input__field--clear').val('')
+                                        $(this).hide()
+                                    })
+                                });  
                             </script>
 
                         </div>
