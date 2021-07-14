@@ -381,18 +381,30 @@
                                                         <div class="q7-input__label">
                                                             <label>Min</label>
                                                         </div>
-                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
+                                                        <div class="q7-time-input-container">
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="hh">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="mm">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="ss">
+                                                        </div>
                                                     </div>  
                                                     <div class="q7-input-delimeter">-</div>
                                                     <div class="q7-input">                                        
                                                         <div class="q7-input__label">
                                                             <label>Max</label>
                                                         </div>
-                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
+                                                        <div class="q7-time-input-container">
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="hh">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="mm">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="ss">
+                                                        </div>
                                                     </div> 
                                                 </div>
                                             </div>                   
-                                        </div>                                                           
+                                        </div>                                                          
                                     </div>
                                     <div>
                                         <div class="q7-filter__details--title">Output</div>
@@ -449,14 +461,26 @@
                                                         <div class="q7-input__label">
                                                             <label>Min</label>
                                                         </div>
-                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
+                                                        <div class="q7-time-input-container">
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="hh">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="mm">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="ss">
+                                                        </div>
                                                     </div>  
                                                     <div class="q7-input-delimeter">-</div>
                                                     <div class="q7-input">                                        
                                                         <div class="q7-input__label">
                                                             <label>Max</label>
                                                         </div>
-                                                        <input class="q7-input__field q7-input__field--time" type="text" maxlength="8" placeholder="hh:mm:ss">
+                                                        <div class="q7-time-input-container">
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="hh">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="mm">
+                                                            <div class="q7-time-input__delimeter">:</div>
+                                                            <input class="q7-input__field q7-input__field--time" type="text" maxlength="2" placeholder="ss">
+                                                        </div>
                                                     </div> 
                                                 </div>
                                             </div>                   
@@ -513,6 +537,15 @@
                             </div>
 
                             <script>
+                                $(function () {
+                                    $('.q7-input__field--time').on('input', function (e) {
+                                        // limit input by numbers
+                                        e.target.value = e.target.value.replace(/[^0-9]/g, '').replace(/:+/g,":")
+                                    })
+                                }); 
+                            </script>
+
+                            <!-- <script>
                                 // format input for q7-input__field--time
                                 $(function () {
 
@@ -558,7 +591,7 @@
 
                                     });
                                 });                                
-                            </script>
+                            </script> -->
 
                             <script>
                                 $(function () {
