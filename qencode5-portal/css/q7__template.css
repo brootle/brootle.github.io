@@ -876,20 +876,23 @@
 .q7-table--latest-transcoding-jobs,
 .q7-table--projects,
 .q7-table--players,
-.q7-table--streams{
+.q7-table--streams,
+.q7-table--team{
     border-spacing: 0;
     margin-top:18px;
 }
 
 .q7-table--projects,
 .q7-table--players,
-.q7-table--streams{
+.q7-table--streams,
+.q7-table--team{
     border-collapse: separate;
     border-spacing: 0 7px;    
 }
 .q7-table.q7-table--projects thead tr th,
 .q7-table.q7-table--players thead tr th,
-.q7-table.q7-table--streams thead tr th{
+.q7-table.q7-table--streams thead tr th,
+.q7-table.q7-table--team thead tr th{
     background: #e2e6ee;
     color: #171717;
     white-space: nowrap;
@@ -897,7 +900,8 @@
 
 .q7-table--projects td:nth-of-type(1),
 .q7-table--players td:nth-of-type(1),
-.q7-table--streams td:nth-of-type(1) {
+.q7-table--streams td:nth-of-type(1),
+.q7-table--team td:nth-of-type(1) {
     min-width: 80px;
     max-width: 420px;
     overflow: hidden;
@@ -908,31 +912,36 @@
 }
 .q7-table--projects td:first-of-type,
 .q7-table--players td:first-of-type,
-.q7-table--streams td:first-of-type{
+.q7-table--streams td:first-of-type,
+.q7-table--team td:first-of-type{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;   
 }
 .q7-table--projects td:last-of-type,
 .q7-table--players td:last-of-type,
-.q7-table--streams td:last-of-type{
+.q7-table--streams td:last-of-type,
+.q7-table--team td:last-of-type{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; 
 }
 .q7-table--projects thead th:first-of-type,
 .q7-table--players thead th:first-of-type,
-.q7-table--streams thead th:first-of-type{
+.q7-table--streams thead th:first-of-type,
+.q7-table--team thead th:first-of-type{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;   
 }
 .q7-table--projects thead th:last-of-type,
 .q7-table--players thead th:last-of-type,
-.q7-table--streams thead th:last-of-type{
+.q7-table--streams thead th:last-of-type,
+.q7-table--team thead th:last-of-type{
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px; 
 }
 .q7-table--projects td,
 .q7-table--players td,
-.q7-table--streams td {
+.q7-table--streams td,
+.q7-table--team td  {
     padding: 15px 15px;
     vertical-align: top;
     background: white;
@@ -940,19 +949,22 @@
 
 .q7-table.q7-table--projects thead,
 .q7-table.q7-table--players thead,
-.q7-table.q7-table--streams thead {
+.q7-table.q7-table--streams thead,
+.q7-table.q7-table--team thead  {
     background: transparent;
 } 
 
 .q7-table--projects tr,
 .q7-table--players tr,
-.q7-table--streams tr{    
+.q7-table--streams tr,
+.q7-table--team tr{    
     border-radius: 5px;
 }
 
 .q7-table--projects td:last-of-type,
 .q7-table--players td:last-of-type,
-.q7-table--streams td:last-of-type {
+.q7-table--streams td:last-of-type,
+.q7-table--team td:last-of-type {
     padding: 0 5px;
     min-width: 30px;
     position: relative;  
@@ -960,7 +972,8 @@
 
 .q7-table--projects tbody tr:hover,
 .q7-table--players tbody tr:hover,
-.q7-table--streams tbody tr:hover{
+.q7-table--streams tbody tr:hover,
+.q7-table--team tbody tr:hover{
     /* -webkit-box-shadow: 0px 0px 1px 1px var(--blue);
     -moz-box-shadow: 0px 0px 1px 1px var(--blue);
     box-shadow: 0px 0px 1px 1px var(--blue); */
@@ -973,7 +986,8 @@
 
 .q7-table--projects tbody tr:hover td, 
 .q7-table--players tbody tr:hover td,
-.q7-table--streams tbody tr:hover td {
+.q7-table--streams tbody tr:hover td,
+.q7-table--team tbody tr:hover td {
     background: #f7faff; 
 }
 
@@ -1010,7 +1024,8 @@
 
 .q7-table--projects tbody tr:hover a,
 .q7-table--players tbody tr:hover a,
-.q7-table--streams tbody tr:hover a{
+.q7-table--streams tbody tr:hover a,
+.q7-table--team tbody tr:hover a{
     color: var(--blue);
 }
 
@@ -1074,7 +1089,9 @@
 .q7-table--projects td:nth-of-type(2),
 .q7-table--players td:nth-of-type(2),
 .q7-table--streams td:nth-of-type(2),
-.q7-table--streams td:nth-of-type(1)  {
+.q7-table--streams td:nth-of-type(1),
+.q7-table--team td:nth-of-type(2),
+.q7-table--team td:nth-of-type(1)   {
     padding-top: 0;
     padding-bottom: 0;
     vertical-align: middle;
@@ -1082,9 +1099,17 @@
 .q7-table--projects td:nth-of-type(2) > div,
 .q7-table--players td:nth-of-type(2) > div,
 .q7-table--streams td:nth-of-type(2) > div,
-.q7-table--streams td:nth-of-type(1) > div{
+.q7-table--streams td:nth-of-type(1) > div,
+.q7-table--team td:nth-of-type(2) > div,
+.q7-table--team td:nth-of-type(1) > div{
     display: flex;
     align-items: center;    
+}
+
+.q7-table--team tbody tr{
+    -webkit-box-shadow: 0px 0px 1px 1px #E2E6EE;
+    -moz-box-shadow: 0px 0px 1px 1px #E2E6EE;
+    box-shadow: 0px 0px 1px 1px #E2E6EE;
 }
 
 .q7-copy-api-key{
@@ -1134,7 +1159,8 @@
     position: relative;
 }
 
-.q7-table--streams td:first-of-type{
+.q7-table--streams td:first-of-type,
+.q7-table--team td:first-of-type{
     /* max-width: 155px; */
     /* overflow: hidden; */
     overflow: visible;
@@ -1144,7 +1170,8 @@
     position: relative;
 }
 
-.q7-table--streams td:nth-last-of-type(2){
+.q7-table--streams td:nth-last-of-type(2),
+.q7-table--team td:nth-last-of-type(2){
     padding: 6px 15px;
     height: 44px;
 }
@@ -4748,7 +4775,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--payment-methods tbody tr td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--players tbody tr td:last-of-type .q7-dd-menu__button--dots,
-.q7-table--streams tbody tr td:last-of-type .q7-dd-menu__button--dots  {
+.q7-table--streams tbody tr td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--team tbody tr td:last-of-type .q7-dd-menu__button--dots  {
     background-image: url(../img/menu_gray.svg);
     top: 7px;
     z-index: initial;
@@ -4758,7 +4786,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--payment-methods tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--projects tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
 .q7-table--players tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
-.q7-table--streams tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
+.q7-table--streams tbody tr:hover td:last-of-type .q7-dd-menu__button--dots,
+.q7-table--team tbody tr:hover td:last-of-type .q7-dd-menu__button--dots{
     background-image: url(../img/menu.svg);
 }
 
@@ -4780,7 +4809,8 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--projects .q7-copy-text-button,
 .q7-table--projects .q7-edit-text-button,
 .q7-table--players .q7-copy-text-button,
-.q7-table--streams .q7-copy-text-button{
+.q7-table--streams .q7-copy-text-button,
+.q7-table--team .q7-copy-text-button{
     position: relative;
     right: initial;
     margin-left: 5px;
@@ -13202,6 +13232,139 @@ input[type=text].q7-input__field.q7-input__field--clear{
     border-bottom: 1px solid var(--blue);
     border-right: 1px solid var(--blue);
     transform: rotate(-45deg);
+}
+
+
+.q7-user-invite-container{
+    margin-bottom: 40px;
+}
+
+.q7-user-invite-container .q7-input-and-buttons--inline .q7-input{
+    flex: 1;
+}
+
+.q7-user-invite-container .q7-input-and-buttons--inline .q7-input:nth-of-type(2){
+    max-width: 211px;
+}
+
+.q7-user-invite-container .q7-input-and-buttons--inline .q7-button{
+    flex: 1;
+    max-width: 190px;
+}
+
+.q7-user-invite__title{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #858997;    
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 16px;
+    border: 0;
+    border-top: 1px solid #E6E8EB;
+}
+
+.q7-button.q7-button--sent > span{
+    position: relative;
+    padding-left: 32px;
+}
+
+.q7-button.q7-button--sent > span:before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    left: 0;
+    top: calc(50% - 11px);
+    background-image: url(../img/blue_check.svg);
+    background-repeat: no-repeat;
+    background-size: 11px 9px;
+    background-position: center;
+}
+
+
+
+.q7-user-status--accepted {
+    color: #289c23;
+}
+
+.q7-user-status{
+    line-height: 32px;
+    border-radius: 5px;
+    font-weight: 500;
+    position: relative;
+    padding-right: 32px;
+}
+
+.q7-user-status:after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 0;
+    top: calc(50% - 13px);
+}
+
+.q7-user-status--accepted:after {
+    background-image: url(../img/stream_live.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-user-status--pending{
+    color: #AEAEAE;
+}
+
+.q7-user-status--pending:after {
+    background-image: url(../img/status__pending.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-table.q7-table--team thead tr th:nth-last-of-type(2) {
+    width: 130px;
+}
+
+.q7-table.q7-table--team thead tr th:nth-last-of-type(1) {
+    width: 45px;
+    min-width: 0;
+}
+
+.q7-team-notes{
+    margin: 10px 0;
+}
+
+.q7-team-notes p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0;
+    color: #616875;
+}
+
+.q7-team-notes strong{
+    font-weight: 600;
+}
+
+#removeUser p{
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+#removeUser .q7-button,
+#editUser .q7-button{
+    min-width: 165px;
+}
+
+#editUser .q7-input {
+    flex: 1;
 }
 
 @media screen and (max-width: 1340px){
