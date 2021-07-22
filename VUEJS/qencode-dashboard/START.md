@@ -11,3 +11,5 @@ https://www.smashingmagazine.com/2020/01/data-components-vue-js/
 
 
 https://vue-loader.vuejs.org/guide/#vue-cli
+
+https://masonry.desandro.com/options.html
