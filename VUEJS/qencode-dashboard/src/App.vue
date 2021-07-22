@@ -7,10 +7,11 @@
     <Select :label="selectStatus.label" :options="selectStatus.options" />
     <Input :label="usernameInput.label" :options="usernameInput.value" />
     <Input :label="sessionInput.label" :options="sessionInput.value" />
+    <button>Download report</button>
   </div>
   <div class="cards">
     <div>
-      <Card :title="cardSpeed.title" :lists="cardSpeed.lists" />
+      <Card :title="cardSpeed.title" :items="cardSpeed.items" />
     </div>
   </div>
  </div>
@@ -65,8 +66,8 @@ const data = {
   },
 
   cardSpeed:{
-    title:"Speed",
-    lists:[
+    title:"Speed",   
+    items:[
       {
         id: 1,
         header: {
@@ -79,7 +80,22 @@ const data = {
             }
           }
         },
-        body:[          
+       
+      },
+
+      {
+        id: 2,
+        header: {
+          title: "Transcode time per Job",
+          data: {
+            value:"00:15:01",
+            delta: {
+              value: "-33.33%",
+              positive: true
+            }
+          }
+        },
+        list:[          
           {
             id: 1,
             text: "HLS",
@@ -112,13 +128,12 @@ const data = {
                 positive: false
               }
             }
-          },                        
-          
-        ]        
+          },                                  
+        ]      
       },
 
       {
-        id: 2,
+        id: 3,
         header: {
           title: "Jobs longer than 3x Realtime",
           data: {
@@ -129,7 +144,7 @@ const data = {
             }
           }
         },
-        body:[          
+        list:[          
           {
             id: 1,
             text: "HLS",
