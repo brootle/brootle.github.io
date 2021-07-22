@@ -7,7 +7,7 @@
     <Select :label="selectStatus.label" :options="selectStatus.options" />
     <Input :label="usernameInput.label" :options="usernameInput.value" />
     <Input :label="sessionInput.label" :options="sessionInput.value" />
-    <button>Download report</button>
+    <button class="button--download"><span>Download report</span></button>
   </div>
   <div class="grid">    
     <Card class="grid-item" :title="cardSpeed.title" :items="cardSpeed.items" /> 
@@ -1130,7 +1130,7 @@ export default {
   new Masonry( grid, {
     itemSelector: '.grid-item',
     columnWidth: 358,
-    gutter: 10
+    gutter: 22
   });
  }  
 }
@@ -1139,9 +1139,151 @@ export default {
 <style>
   body{
     background-color: #f3f4f7;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   .grid-item{
-    margin-bottom: 10px;
+    margin-bottom: 17px;
   }
+
+  .container{
+    padding: 20px 40px;
+  }
+
+  .filter{
+    margin: 20px -6px;
+    display: flex;
+    align-items: flex-end;    
+    flex-wrap: wrap;
+  }
+
+  button{
+    background: transparent;
+    outline: none;
+    display: inline-block;
+    padding: 0 22px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+    border-radius: 4px;
+    min-width: 110px;
+    line-height: 32px;
+    height: 32px;
+    background: #316FEA;
+    color: white;
+    border: 1px solid transparent;    
+  }
+
+  button:hover {
+    background-color: #265cc5;
+  }
+
+  .filter button.button--download{
+    margin: 6px 6px;
+  }
+
+  button.button--download > span {
+      position: relative;
+      padding-left: 23px;
+  }  
+
+  button.button--download > span:before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 18px;
+      left: 0;
+      top: calc(50% - 9px);
+      background-image: url(assets/img/download_icon.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+  }  
+
+  input[type=password].input__field, 
+  input[type=time].input__field, 
+  input[type=text].input__field, 
+  input[type=number].input__field, 
+  .select, 
+  textarea.input__field {
+      width: 100%;      
+      padding: 0px 14px;
+      margin: 0;
+      display: inline-block;
+      box-sizing: border-box;
+      outline: none;
+      border: 1px solid #e1e5ee;
+      line-height: initial;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      border-radius: 4px;
+      color: #171717;
+      line-height: 32px;
+      height: 32px;
+  }
+
+  .input__label label {
+      font-weight: normal;
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 18px;
+  }
+
+  .filter input[type=password].input__field, 
+  .filter input[type=time].input__field, 
+  .filter input[type=text].input__field, 
+  .filter input[type=number].input__field, 
+  .filter .select, 
+  .filter textarea.input__field  {
+    margin: 3px 0;
+  }  
+
+  input[type=text].input__field:focus, 
+  input[type=tel].input__field:focus, 
+  input[type=password].input__field:focus, 
+  textarea:focus, 
+  select.select:focus {
+      border-color: #316fea;
+  }  
+
+  .filter .input{
+    margin: 3px 6px;
+    flex: 1;
+    min-width: 150px;
+    max-width: 150px;    
+  }
+
+  .custom-select {
+    position: relative;
+  }
+
+  .custom-select:after {
+      position: absolute;
+      right: 10px;
+      top: calc(50% - 2px);
+      display: inline-block;
+      width: 0;
+      height: 0;
+      content: "";
+      border-top: 5px solid #343131;
+      border-right: 5px solid transparent;
+      border-bottom: 0;
+      border-left: 5px solid transparent;
+  }
+
+  .select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 25px;
+  }  
+
 </style>
