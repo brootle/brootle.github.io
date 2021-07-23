@@ -12365,6 +12365,43 @@ img.q7-welcome-api-builder{
     margin-bottom: 2px;
 }
 
+.q7-stream__player-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+}
+
+.q7-stream__details .q7-input__label{
+    justify-content: flex-start;
+}
+
+.q7-stream__details .q7-input__label > a {
+    margin-left: 8px;
+    font-size: 12px;
+    font-weight: 500;    
+}
+
+.q7-stream__player-footer .q7-input-and-buttons--inline{
+    justify-content: space-between;
+}
+
+.q7-stream__player-footer .q7-input-and-buttons--inline .q7-input{
+    display: flex;
+    align-items: center;
+}
+
+.q7-stream__player-footer .q7-input-and-buttons--inline .q7-input .q7-input__label{
+    margin-right: 5px;
+}
+
+.q7-stream__player-header .q7-button.q7-button--back{
+    background: transparent;
+    color: var(--blue);
+    font-weight: 600;
+    min-width: 0;
+    padding-right: 0;
+}
+
 .q7-stream-container .q7-input{
     position: relative;
 }
@@ -12391,16 +12428,49 @@ img.q7-welcome-api-builder{
     margin: 25px 0;
 }
 
-.q7-stream-container .q7-button.q7-button--delete.q7-button--round{
+.q7-stream__player-footer .q7-button.q7-button--delete.q7-button--round{
     color: #E03636;
-    background: #FCE9E9;
-    line-height: 24px;
+    background: transparent;
     font-size: 14px;
-    padding: 0 17px;
+    padding: 0;
+    min-width: 0;
+    text-decoration: underline;
+    line-height: 28px;
+    border: none;
+    height: 28px;
 }
 
-.q7-stream-container .q7-button.q7-button--delete.q7-button--round:hover{
-    background: #ffdfdf;
+.q7-stream__player-footer .q7-button.q7-button--delete.q7-button--round:hover{
+    background: transparent;
+    box-shadow: none;
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round{
+    line-height: 28px;
+    border: none;
+    height: 28px;
+    background-color: var(--blue);
+    color: white;    
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round > span{
+    position: relative;
+    padding-left: 18px;
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round > span:before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    left: 0;
+    top: calc(50% - 4px);
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round:hover {
+    background-color: #265cc5;
 }
 
 .q7-stream-container > div + div{
@@ -12561,7 +12631,7 @@ img.q7-welcome-api-builder{
     top: 0px;
     left: 0;
     right: 0;
-    /* width: 100%; */
+    min-width: 100%;
     background: #616161;
     color: white;
     font-size: 13px;
