@@ -917,6 +917,29 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;   
 }
+
+.q7-table--streams td:first-of-type{
+    min-width: 270px;
+}
+
+.q7-table--streams td:nth-of-type(2) a{
+    max-width: 220px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;  
+}
+
+.q7-table--streams td:nth-of-type(3) span{
+    max-width: 220px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;  
+}
+
 .q7-table--projects td:last-of-type,
 .q7-table--players td:last-of-type,
 .q7-table--streams td:last-of-type,
@@ -1089,6 +1112,7 @@
 .q7-table--projects td:nth-of-type(2),
 .q7-table--players td:nth-of-type(2),
 .q7-table--streams td:nth-of-type(2),
+.q7-table--streams td:nth-of-type(3),
 .q7-table--streams td:nth-of-type(1),
 .q7-table--team td:nth-of-type(2),
 .q7-table--team td:nth-of-type(1)   {
@@ -1099,6 +1123,7 @@
 .q7-table--projects td:nth-of-type(2) > div,
 .q7-table--players td:nth-of-type(2) > div,
 .q7-table--streams td:nth-of-type(2) > div,
+.q7-table--streams td:nth-of-type(3) > div,
 .q7-table--streams td:nth-of-type(1) > div,
 .q7-table--team td:nth-of-type(2) > div,
 .q7-table--team td:nth-of-type(1) > div{
@@ -4239,8 +4264,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     line-height: 32px;
 }
 
-.q7-transcoding-status,
-.q7-stream-status{
+.q7-transcoding-status{
     line-height: 32px;
     border-radius: 5px;
     font-weight: 500;
@@ -4248,8 +4272,19 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     padding-right: 32px;
 }
 
-.q7-transcoding-status:after,
-.q7-stream-status:after {
+.q7-stream-status{
+    line-height: 32px;
+    border-radius: 5px;
+    font-weight: 500;
+    position: relative;
+    padding-left: 32px;
+}
+
+.q7-stream-status{
+    color: #7795CA;
+}
+
+.q7-transcoding-status:after{
     content: "";
     position: absolute;
     width: 24px;
@@ -4258,8 +4293,18 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     top: calc(50% - 13px);
 }
 
+.q7-stream-status:after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 0;
+    top: calc(50% - 13px);
+}
+
 .q7-transcoding-status--error,
-.q7-stream-status--error{
+.q7-stream-status--error,
+.q7-stream-status--stopping{
     color: #e4322c;    
 }
 
@@ -4267,6 +4312,36 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-stream-status--error:after {
     background-image: url(../img/error_transcoding.svg);
     background-repeat: no-repeat;
+}
+
+.q7-stream-status--stopping:after {
+    background-image: url(../img/stream_stopping.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream-status--starting:after {
+    background-image: url(../img/stream_starting.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream-status--finished:after {
+    background-image: url(../img/stream_finished.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream-status--waiting:after {
+    background-image: url(../img/stream_waiting.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream-status--created:after {
+    background-image: url(../img/stream_created.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .q7-transcoding-status--encoding:after {
@@ -4810,6 +4885,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q7-table--projects .q7-edit-text-button,
 .q7-table--players .q7-copy-text-button,
 .q7-table--streams .q7-copy-text-button,
+.q7-table--streams .q7-edit-text-button,
 .q7-table--team .q7-copy-text-button{
     position: relative;
     right: initial;
@@ -12485,7 +12561,7 @@ img.q7-welcome-api-builder{
     top: 0px;
     left: 0;
     right: 0;
-    width: 100%;
+    /* width: 100%; */
     background: #616161;
     color: white;
     font-size: 13px;
