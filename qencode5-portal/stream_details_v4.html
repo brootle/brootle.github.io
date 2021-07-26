@@ -727,6 +727,10 @@
                                         videoSources: { src: "https://moctobpltc-i.akamaihd.net/hls/live/571329/eight/playlist.m3u8" }
                                     }, function(){
                                        $("#my_player_loading").hide();
+                                       let player = this._player;
+                                       $("#stop_stream").click(function(){
+                                           player.pause()
+                                       })
                                     });  
                                 </script>                                  
 
@@ -761,184 +765,468 @@
                             </div>
                         </div>
 
-                        <div class="q7-block-title">Latest Events</div>
+                        <div class="q7-tab q7-stream-log">
+                            <div class="q7-stream-log__controls">
+                                <div class="q7-tablinks q7-tablinks--active" data-tabcontent="1">
+                                    Latest events
+                                </div>
+                                <div class="q7-tablinks" data-tabcontent="2">
+                                    API Log
+                                </div>                                  
+                            </div>
+                            <div class="q7-stream-log__body">
+                                <div id="1" class="q7-tabcontent q7-tabcontent--active">
+                                    <table class="q7-table q7-table--streams">
+                                        <thead>
+                                            <tr>
+                                                <th class="q7-table__sortable-column">Date created</th>
+                                                <th class="q7-table__sortable-column">Status</th>
+                                                <th class="q7-table__sortable-column">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>   
+                                            <tr>                
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--live">Live</div>                                    
+                                                </td>
+                                                <td>
+                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
+                                                </td>
+                                            </tr>   
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--idle">Idle</div>                                    
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr>        
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--stopping">Stopping</div>                                     
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr> 
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--starting">Starting</div>                   
+                                                </td>
+                                                <td>
+                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
+                                                </td>
+                                            </tr>  
+                                            
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--finished">Finished</div>                   
+                                                </td>
+                                                <td>
+                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
+                                                </td>
+                                            </tr> 
+                                            
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--waiting">Waiting</div>                   
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr> 
+                                            
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--created">Created</div>                   
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr> 
+                                            
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                                      
+                                                </td>
+                                                <td>
+                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
+                                                </td>
+                                            </tr>      
+                                            <tr>                
+                                                <td>Nov 21, 2021 20:11:01</td>
+                
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--live">Live</div>                                    
+                                                </td>
+                                                <td>
+                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
+                                                </td>
+                                            </tr>   
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--idle">Idle</div>                                    
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr>        
+                                            <tr>
+                                                <td>Nov 21, 2021 20:11:01</td>
+                                                <td>
+                                                    <div class="q7-stream-status q7-stream-status--stopping">Stopping</div>                                     
+                                                </td>
+                                                <td>
+                                                    <span>-</span>                                                    
+                                                </td>
+                                            </tr>                                                                    
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="2" class="q7-tabcontent">
+                                    <table class="q7-table q7-table--streams q7-table--streams-log">
+                                        <thead>
+                                            <tr>                                                
+                                                <th class="q7-table__sortable-column">Status</th>
+                                                <th class="q7-table__sortable-column">Description</th>
+                                                <th class="q7-table__sortable-column">Date created</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>   
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>  
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr> 
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr> 
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr> 
+                                            <tr>                
+                                                <td>204 No content</td>
+                
+                                                <td>
+                                                   <a href="">DELETE s3://s3.us-east-1.amazonaws.com/yourbucket/output.mp4</a>                                    
+                                                </td>
+                                                <td>
+                                                    Nov 21, 2021 20:11:01                                       
+                                                </td>
+                                                <td>
+                                                    <div class="q7-dd-menu__button q7-dd-menu__button--dots">    
+                                                        <div class="q7-dd-menu">
+                                                            <div class="q7-dd-menu__items">
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                                <div class="q7-dd-menu-element">Do something</div>
+                                                            </div>
+                                                            <div class="q7-dd-menu__delimeter"></div>
+                                                            <div class="q7-dd-menu__critical-items">
+                                                                <div class="q7-dd-menu-element">Delete</div>
+                                                            </div>                                    
+                                                        </div>                                                                                                          
+                                                    </div>
+                                                </td>                                                  
+                                            </tr>                                                                                                                                      
 
-                        <div class="q7-events-container">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Dec 19, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Ended 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Live 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>  
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>  
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>  
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>  
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <td>
-                                            Nov 9, 2021  20:11:01   
-                                        </td>
-                                        <td>
-                                            | <span class="q7-stream-event-status">Status:</span> Idle 
-                                        </td>
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        </td>
-                                    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>                                
+                            </div>                          
                         </div>
 
-                        <div class="q7-stream-footer">
-                            <button class="q7-button q7-button--round q7-button--forward">Show API logs</button>
-                            <button class="q7-button q7-button--round q7-button--forward">Read Live Streaming Tutorial</button>
-                        </div>
+                        <script>
+                            var tabLinks = document.querySelectorAll('.q7-tablinks');
+                
+                            tabLinks.forEach(link => link.addEventListener('click', switchTab));
+                
+                            function switchTab(e){
+                
+                                // find active elements and remove -> tablinks--active tabcontent--active
+                
+                                $('.q7-tablinks--active').removeClass("q7-tablinks--active");
+                                $('.q7-tabcontent--active').removeClass("q7-tabcontent--active");
+                
+                                // find what tab link was clicked and show tab content with that ID
+                                var clickedLink = e.currentTarget;
+                                $(clickedLink).addClass('q7-tablinks--active');
+                
+                                var tabID = clickedLink.getAttribute("data-tabcontent");
+                
+                                $(`#${tabID}`).addClass('q7-tabcontent--active');
+                
+                            }
+                        </script>                      
+
                         
                     </div>
  
