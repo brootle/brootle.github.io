@@ -24,6 +24,13 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/>
+    <script src="js/jquery.datetimepicker.full.min.js"></script>
+
+
     <link href="css/q5.css" rel="stylesheet" />
     <link href="css/q5-menu.css" rel="stylesheet" />
 
@@ -730,7 +737,14 @@
                                        let player = this._player;
                                        $("#stop_stream").click(function(){
                                            player.pause()
+                                           $("#stop_stream").hide()
+                                           $("#start_stream").show()
                                        })
+                                       $("#start_stream").click(function(){
+                                           player.play()
+                                           $("#stop_stream").show()
+                                           $("#start_stream").hide()
+                                       })                                       
                                     });  
                                 </script>                                  
 
@@ -756,7 +770,16 @@
                                     <div class="q7-input-and-buttons--inline">
                                         <button id="stop_stream" class="q7-button q7-button--stop-stream q7-button--round">
                                             <span>Stop stream</span>
-                                        </button>                                        
+                                        </button> 
+                                        <button id="start_stream" class="q7-button q7-button--start-stream q7-button--round" style="display: none;">
+                                            <span>Start stream</span>
+                                        </button>     
+                                        <button id="stopping_stream" class="q7-button q7-button--stopping-stream q7-button--round">
+                                            <svg class="q7-loading-spinner" viewBox="0 0 50 50">
+                                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                                            </svg>
+                                            <span>Stopping stream</span>
+                                        </button>                                                                                                                        
                                         <button class="q7-button q7-button--delete q7-button--round">
                                             Delete stream
                                         </button>
@@ -777,12 +800,52 @@
                             </div>
                             <div class="q7-stream-log__body">
                                 <div id="1" class="q7-tabcontent q7-tabcontent--active">
+
+                                    <div class="q7-filter-box q7-filter-box--stream-logs">
+                                        <div class="q7-filter-box__options">
+
+                                            <div class="q7-input">
+                                                <div class="q7-input__label">
+                                                    <label>Choose period:</label>                                                          
+                                                </div>                                            
+                                                <div class="q7-time-period-picker">                            
+                                                    <input id="time_start" autocomplete="off"  type="text" placeholder="2021/07/05 15:32" />                
+                                                    <span class="q6-date-delimeter">‒</span>                
+                                                    <input id="time_end" autocomplete="off"  type="text" placeholder="2021/07/31 22:00"/>   
+                                                    <script>
+                                                        // https://www.jqueryscript.net/time-clock/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker.html
+                                                        $('#time_start').datetimepicker();
+                                                        $('#time_end').datetimepicker();
+                                                    </script>                                                    
+                                                    
+                                                </div>          
+                                            </div>                                  
+
+                                            <div class="q7-input q7-input--stream-status">
+                                                <div class="q7-input__label">
+                                                    <label>Status</label>                                                          
+                                                </div>
+                                                <div class="q7-custom-select">
+                                                    <select class="q7-select">
+                                                        <option value="live">Live</option>
+                                                        <option value="idle">Idle</option>                                                                
+                                                        <option value="ended">Ended</option>                                                                
+                                                    </select>
+                                                </div>
+                                            </div>      
+                                            
+                                            <button class="q7-button">Filter</button>
+                                            <button class="q7-button q7-button--transparent">Clear</button>                                              
+
+                                        </div>
+ 
+                                    </div>
+
                                     <table class="q7-table q7-table--streams">
                                         <thead>
                                             <tr>
-                                                <th class="q7-table__sortable-column">Date created</th>
+                                                <th class="q7-table__sortable-column">Date</th>
                                                 <th class="q7-table__sortable-column">Status</th>
-                                                <th class="q7-table__sortable-column">Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>   
@@ -792,17 +855,11 @@
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--live">Live</div>                                    
                                                 </td>
-                                                <td>
-                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
-                                                </td>
                                             </tr>   
                                             <tr>
                                                 <td>Nov 21, 2021 20:11:01</td>
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--idle">Idle</div>                                    
-                                                </td>
-                                                <td>
-                                                    <span>-</span>                                                    
                                                 </td>
                                             </tr>        
                                             <tr>
@@ -810,18 +867,12 @@
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--stopping">Stopping</div>                                     
                                                 </td>
-                                                <td>
-                                                    <span>-</span>                                                    
-                                                </td>
                                             </tr> 
                                             <tr>
                                                 <td>Nov 21, 2021 20:11:01</td>
                 
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--starting">Starting</div>                   
-                                                </td>
-                                                <td>
-                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
                                                 </td>
                                             </tr>  
                                             
@@ -831,9 +882,6 @@
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--finished">Finished</div>                   
                                                 </td>
-                                                <td>
-                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
-                                                </td>
                                             </tr> 
                                             
                                             <tr>
@@ -841,9 +889,6 @@
                 
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--waiting">Waiting</div>                   
-                                                </td>
-                                                <td>
-                                                    <span>-</span>                                                    
                                                 </td>
                                             </tr> 
                                             
@@ -853,9 +898,6 @@
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--created">Created</div>                   
                                                 </td>
-                                                <td>
-                                                    <span>-</span>                                                    
-                                                </td>
                                             </tr> 
                                             
                                             <tr>
@@ -864,9 +906,6 @@
                                                 <td>
                                                                       
                                                 </td>
-                                                <td>
-                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
-                                                </td>
                                             </tr>      
                                             <tr>                
                                                 <td>Nov 21, 2021 20:11:01</td>
@@ -874,30 +913,76 @@
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--live">Live</div>                                    
                                                 </td>
-                                                <td>
-                                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ad qui officia blanditiis, eaque consequatur consequuntur dolor. Cum at necessitatibus ullam. Veritatis distinctio illo laboriosam obcaecati asperiores debitis, cum in?</span>                                                    
-                                                </td>
                                             </tr>   
                                             <tr>
                                                 <td>Nov 21, 2021 20:11:01</td>
                                                 <td>
                                                     <div class="q7-stream-status q7-stream-status--idle">Idle</div>                                    
                                                 </td>
-                                                <td>
-                                                    <span>-</span>                                                    
-                                                </td>
-                                            </tr>        
-                                            <tr>
-                                                <td>Nov 21, 2021 20:11:01</td>
-                                                <td>
-                                                    <div class="q7-stream-status q7-stream-status--stopping">Stopping</div>                                     
-                                                </td>
-                                                <td>
-                                                    <span>-</span>                                                    
-                                                </td>
                                             </tr>                                                                    
                                         </tbody>
                                     </table>
+                                    <div class="q7-table-pagination q7-table-pagination--on-white">
+
+
+                                        <div class="q7-table-pagination__controls">    
+                                            <div class="q7-table-pagination__filter">
+                                                <span>Results per page:</span>                                   
+                                                <div class="q7-input">              
+                                                    <div class="q7-custom-select">
+                                                        <select class="q7-select">
+                                                            <option value="1">10</option>
+                                                            <option value="2">25</option>
+                                                            <option value="3">50</option>
+                                                            <option value="4">100</option>
+                                                        </select>
+                                                    </div>                               
+                                                </div>                                                                        
+                                            </div> 
+                                            <div class="q7-table-pagination__button q7-table-pagination__button--prev q7-table-pagination__button--disabled">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.96 256.73">
+                                                    <g>
+                                                        <path d="M468.33,234.86H93.58l70.2-70.21c20.17-20.17-10.08-50.41-30.25-30.25l-63.94,64L26.91,241.19a21.35,21.35,0,0,0,0,30.09L133.53,378A21.32,21.32,0,0,0,149,384.48c19.21,0,28.63-23.39,14.79-36.7L93.41,277.57h376c29.58-1.47,27.37-44.18-1.1-42.71Z" transform="translate(-20.7 -127.75)"></path>
+                                                    </g>
+                                                </svg>
+                                                Previous
+                                            </div>  
+                                            <div class="q7-table-pagination__button q7-table-pagination__button--first q7-table-pagination__button--disabled"> 
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285.73 256.73">
+                                                    <g>
+                                                        <path d="M183.58,234.86l70.2-70.21c20.17-20.17-10.08-50.41-30.25-30.25l-63.94,64-42.68,42.75a21.35,21.35,0,0,0,0,30.09L223.53,378A21.32,21.32,0,0,0,239,384.48c19.21,0,28.63-23.39,14.79-36.7l-70.37-70.21-21.92-21.45Z" transform="translate(-110.7 -127.75)"></path>
+                                                    </g>
+                                                    <g>
+                                                        <path d="M319.58,234.86l70.2-70.21c20.17-20.17-10.08-50.41-30.25-30.25l-63.94,64-42.68,42.75a21.35,21.35,0,0,0,0,30.09L359.53,378A21.32,21.32,0,0,0,375,384.48c19.21,0,28.63-23.39,14.79-36.7l-70.37-70.21-21.92-21.45Z" transform="translate(-110.7 -127.75)"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>                                              
+                                            <div class="q7-table-pagination__page q7-table-pagination__page--selected">1</div>
+                                            <div class="q7-table-pagination__page">2</div>
+                                            <div class="q7-table-pagination__page">3</div>
+                                            <div class="q7-table-pagination__delimeter">...</div>
+                                            <div class="q7-table-pagination__page">10</div>
+                                            <div class="q7-table-pagination__button q7-table-pagination__button--last">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285.73 256.73">
+                                                    <g>
+                                                        <path d="M323.56,277.37l-70.2,70.21c-20.17,20.17,10.08,50.42,30.25,30.25l63.94-64L390.23,271a21.34,21.34,0,0,0,0-30.08L283.61,134.21a21.34,21.34,0,0,0-15.46-6.46c-19.21,0-28.63,23.39-14.79,36.71l70.37,70.21,21.92,21.45Z" transform="translate(-110.7 -127.75)"></path>
+                                                    </g>
+                                                    <g>
+                                                        <path d="M187.56,277.37l-70.2,70.21c-20.17,20.17,10.08,50.42,30.25,30.25l63.94-64L254.23,271a21.34,21.34,0,0,0,0-30.08L147.61,134.21a21.34,21.34,0,0,0-15.46-6.46c-19.21,0-28.63,23.39-14.79,36.71l70.37,70.21,21.92,21.45Z" transform="translate(-110.7 -127.75)"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>   
+                                            <div class="q7-table-pagination__button q7-table-pagination__button--next">
+                                                Next 
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.96 256.73">
+                                                    <g>
+                                                        <path d="M43,277.37H417.79l-70.21,70.21c-20.16,20.17,10.09,50.42,30.25,30.25l63.95-64L484.46,271a21.34,21.34,0,0,0,0-30.08L377.83,134.21a21.3,21.3,0,0,0-15.45-6.46c-19.21,0-28.63,23.39-14.8,36.71L418,234.67h-376c-29.58,1.46-27.37,44.18,1.1,42.71Z" transform="translate(-20.7 -127.75)"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </div>
+            
+                                    </div>                                    
                                 </div>
                                 <div id="2" class="q7-tabcontent">
                                     <table class="q7-table q7-table--streams q7-table--streams-log">

@@ -4304,7 +4304,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 
 .q7-transcoding-status--error,
 .q7-stream-status--error,
-.q7-stream-status--stopping{
+.q7-stream-status--stopped{
     color: #e4322c;    
 }
 
@@ -4314,13 +4314,14 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
     background-repeat: no-repeat;
 }
 
-.q7-stream-status--stopping:after {
+.q7-stream-status--stopped:after {
     background-image: url(../img/stream_stopping.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.q7-stream-status--starting:after {
+.q7-stream-status--starting:after,
+.q7-stream-status--stopping:after {
     background-image: url(../img/stream_starting.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -12453,7 +12454,9 @@ img.q7-welcome-api-builder{
     box-shadow: none;
 }
 
-.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round{
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round,
+.q7-stream__player-footer .q7-button.q7-button--stopping-stream.q7-button--round,
+.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round{
     line-height: 28px;
     border: none;
     height: 28px;
@@ -12461,7 +12464,8 @@ img.q7-welcome-api-builder{
     color: white;    
 }
 
-.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round > span{
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round > span,
+.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round > span{
     position: relative;
     padding-left: 18px;
 }
@@ -12477,7 +12481,40 @@ img.q7-welcome-api-builder{
     top: calc(50% - 4px);
 }
 
-.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round:hover {
+.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round > span:before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 10px;
+    left: 0;
+    top: calc(50% - 5px);  
+    background-image: url(../img/white_triangle.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stopping-stream.q7-button--round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stopping-stream.q7-button--round .q7-loading-spinner .path {
+    stroke: white;
+}
+
+.q7-stream__player-footer .q7-button.q7-button--stopping-stream.q7-button--round .q7-loading-spinner{
+    margin: 0;
+    margin-right: 7px;
+
+    height: 16px;
+    width: 16px;    
+}
+
+
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round:hover,
+.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round:hover {
     background-color: #265cc5;
 }
 
@@ -13562,7 +13599,8 @@ hr {
 
 .q7-tab.q7-stream-log{
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;  
+    border: none;  
 }
 
 .q7-stream-log__controls > div{
@@ -13584,16 +13622,7 @@ hr {
 }
 
 .q7-stream-log__body .q7-tabcontent {
-    padding: 14px 0;
-    max-height: 530px;
-    overflow-y: auto;
-
-    padding: 0 1px;
-    margin: 0 -1px;
-
-    
-    padding-bottom: 50px;
-
+    padding: 10px 0;
 }
 
 .q7-stream-log__body .q7-tabcontent .q7-table--streams{
@@ -13616,12 +13645,7 @@ hr {
     color: initial;
 }
 
-.q7-stream-log__body .q7-table--streams td:nth-of-type(2),
-.q7-stream-log__body .q7-table--streams th:nth-of-type(2){
-    max-width: 125px;
-    min-width: 125px;
-    width: 125px;
-}
+
 
 
 .q7-stream-log__body .q7-table--streams td:last-of-type span{
@@ -13633,9 +13657,6 @@ hr {
     display: inline-block;    
 }
 
-.q7-stream-log__body .q7-table--streams td:last-of-type{
-    padding: 15px 15px;
-}
 
 .q7-stream-log__body .q7-table.q7-table--streams.q7-table--streams-log td:last-of-type,
 .q7-stream-log__body .q7-table.q7-table--streams.q7-table--streams-log th:last-of-type{
@@ -13725,6 +13746,93 @@ hr {
 
 .q7-stream-details-code-block + .q7-stream-details-code-block{
     margin-top: 30px;
+}
+
+.q7-table--streams tbody tr {
+    -webkit-box-shadow: 0px 0px 1px 1px #ebebeb;
+    -moz-box-shadow: 0px 0px 1px 1px #ebebeb;
+    box-shadow: 0px 0px 1px 1px #ebebeb;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs{
+    margin-top: 0;
+}
+
+.q7-stream__player-footer .q7-input-and-buttons--inline .q7-button + .q7-button {
+    margin-left: 0px;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs input[type=password].q7-input__field, 
+.q7-filter-box.q7-filter-box--stream-logs input[type=time].q7-input__field, 
+.q7-filter-box.q7-filter-box--stream-logs input[type=text].q7-input__field, 
+.q7-filter-box.q7-filter-box--stream-logs input[type=number].q7-input__field, 
+.q7-filter-box.q7-filter-box--stream-logs .q7-select, 
+.q7-filter-box.q7-filter-box--stream-logs textarea.q7-input__field {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 12px;
+    line-height: 30px;
+    border-radius: 4px;
+    height: 32px;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-button {
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 4px;
+    height: 32px;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-time-period-picker {
+    padding-right: 36px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 270px;
+    position: relative;
+    border: 1px solid #e1e5ee;
+    border-radius: 6px;
+    background: white;
+
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 12px;
+    line-height: 30px;
+    border-radius: 4px;
+    height: 32px;    
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-time-period-picker input {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 108px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+
+    font-weight: 500;
+    font-size: 14px;    
+    color: #171717;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-time-period-picker:before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 4px;
+    top: 7px;
+    background-image: url(../img/calendar.svg);
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-input{
+    max-width: fit-content;
+}
+
+.q7-filter-box.q7-filter-box--stream-logs .q7-button + .q7-button{
+    margin-left: 9px;
 }
 
 @media screen and (max-width: 1340px){
