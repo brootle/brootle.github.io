@@ -780,13 +780,47 @@
                                             </svg>
                                             <span>Stopping stream</span>
                                         </button>                                                                                                                        
-                                        <button class="q7-button q7-button--delete q7-button--round">
+                                        <button data-toggle="modal" data-target="#deleteStream" class="q7-button q7-button--delete q7-button--round">
                                             Delete stream
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade q7-modal" id="deleteStream" role="dialog">
+                            <div class="modal-dialog q7-modal-dialog--centered">
+                            
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    
+                                    <div class="modal-body q7-modal-body--update">
+
+                                        <div class="q7-modal-body__response">                                             
+                                            <p>
+                                                Are you sure you want to delete the streamed named:
+                                                <br>
+                                                <span class="q7-colored">stream name</span> 
+                                                <br>
+                                                This action is permanent.
+                                            </p>
+                                        </div>
+                                                                                                                                                                                
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <div class="q7-modal-footer-buttons">
+                                            <button data-dismiss="modal" class="q7-button q7-button--cancel">Cancel</button>   
+                                            <button data-dismiss="modal" class="q7-button q7-button--delete">Delete</button>                                                                             
+                                        </div>
+                                    </div>                            
+
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <!-- Modal ends -->                          
 
                         <div class="q7-tab q7-stream-log">
                             <div class="q7-stream-log__controls">
