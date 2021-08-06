@@ -628,13 +628,11 @@
 
                     <div class="q7-content-block">
 
-                        <div class="q7-tittle-and-inputs">
 
-                            <div class="q7-block-title">Statistics</div>
-
-                            <div>
-
-                        
+                        <div class="q7-filter-box q7-filter-box--stats">
+    
+                            <div class="q7-filter-box__options">   
+        
                                 <div class="q7-input q7-input--combined">
 
                                     <div class="q7-input__label">
@@ -685,16 +683,36 @@
                                     </div>
 
 
-                                </div>
-
-                                <div class="q7-utc-message">
-                                    All data on this page is displayed based on Coordinated Universal Time (UTC)
-                                </div>
-
+                                </div>                    
+        
+                      
                             </div>
-                        
-                        
-                        </div>
+
+                            <div class="q7-filter-box__download">
+                                <div>
+                                    <div class="q7-checkbox-and-text">
+                                        <span class="q7-checkbox__text">Include source video data</span>
+                                        <label class="q7-checkbox">
+                                            <input type="checkbox">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="q7-checkbox-and-text">
+                                        <span class="q7-checkbox__text">Send me email update with link to CSV</span>
+                                        <label class="q7-checkbox">
+                                            <input type="checkbox" checked="">
+                                            <span class="q7-checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div><button class="q7-button q7-button--secondary">Download CSV</button></div>
+                            </div>                            
+      
+                            
+                
+                        </div>                        
+
+
 
                         <div class="q7-stats-tabs">
 
@@ -702,27 +720,9 @@
                                 <div class="q7-tab__controls">
                                     <div class="q7-tablink q7-tablink--active" data-tabcontent="all">All</div>
                                     <div class="q7-tablink" data-tabcontent="transcoding">Transcoding</div>
+                                    <div class="q7-tablink" data-tabcontent="streaming">Streaming</div>
                                     <div class="q7-tablink" data-tabcontent="video_player">Video Player</div>
                                     <div class="q7-tablink" data-tabcontent="Storage">Storage</div>
-                                </div>
-                                <div class="q7-tab__extra-controls">
-                                    <div>
-                                        <div class="q7-checkbox-and-text">
-                                            <span class="q7-checkbox__text">Include source video data</span>
-                                            <label class="q7-checkbox">
-                                                <input type="checkbox">
-                                                <span class="q7-checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div class="q7-checkbox-and-text">
-                                            <span class="q7-checkbox__text">Include output video data</span>
-                                            <label class="q7-checkbox">
-                                                <input type="checkbox" checked>
-                                                <span class="q7-checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div><button class="q7-button q7-button--secondary">Download CSV</button></div>
                                 </div>
                             </div>
 
@@ -3481,6 +3481,211 @@
                                 </div>
 
                             </div>
+
+                            <div id="streaming" class="q7-tabcontent">
+                                
+                                <div class="q7-tab-content__section">
+
+                                    <div class="q7-stats-summary__cards">
+                                        <div class="q7-summary-card q7-summary-card--auto-height">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Minutes</th>
+                                                        <th>last 7 days</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>SD</td>
+                                                        <td>
+                                                            <div class="q7-stats__progress-bar">
+                                                                <div>78%</div>
+                                                                <div style="width: 78%;"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>HD</td>
+                                                        <td>
+                                                            <div class="q7-stats__progress-bar">
+                                                                <div>11%</div>
+                                                                <div style="width: 11%;"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2">
+
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>                                                
+                                            </table>
+                                        </div>
+                                        <div class="q7-summary-card q7-summary-card--auto-height q7-summary-card--cdn">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>CDN</th>
+                                                        <th>last 7 days</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2">                                                          
+                                                            <table class="q7-stats-internal-table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Region</th>
+                                                                        <th>Bandwidth</th>
+                                                                        <th>Requests</th>
+                                                                        <th>Cost</th>
+                                                                    </tr>
+                                                                </thead>                                                                    
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Europe</td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>5 Mb</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>234.1 K</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>$1004.04</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Asia and Pacific</td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>5 Mb</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>234.1 K</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>$1004.04</td>
+                                                                    </tr>            
+                                                                    <tr>
+                                                                        <td>North America</td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>5 Mb</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>234.1 K</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>$1004.04</td>
+                                                                    </tr>   
+                                                                    <tr>
+                                                                        <td>South America</td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>5 Mb</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="q7-stats-cell-with-data">
+                                                                                <div>234.1 K</div>
+                                                                                <div>+5.9%</div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>$1004.04</td>
+                                                                    </tr>                                                                                                                                                                                                  
+                                                                </tbody>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <td colspan="3">Total:</td>    
+                                                                        <td>$8350.05</td>                                                                    
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>                                                            
+                                                        </td>
+                                                    </tr>
+                                                </tbody>                                             
+                                            </table>
+                                        </div>
+                                        <div class="q7-summary-card q7-summary-card--auto-height q7-summary-card--streaming-total">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Total Minutes</th>
+                                                        <th>last 7 days</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="q7-stats-cell-with-data">
+                                                                <div>18,4 M</div>
+                                                                <div>+5.9%</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>$15350.05</td>
+                                                    </tr>
+                                                </tbody>                                              
+                                            </table>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Total Bandwidth</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="q7-stats-cell-with-data">
+                                                                <div>34,5 TB</div>
+                                                                <div>+5.9%</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>$15350.05</td>
+                                                    </tr>
+                                                </tbody>
+                                              
+                                            </table> 
+
+                                            <div class="q7-streamin-total-summary-info">
+                                                <div>
+                                                    <a href="">Go to Billing</a>  
+                                                </div>                                               
+    
+                                                <div class="q7-streamin-total-summary-info__value">
+                                                    <div>
+                                                        Total:
+                                                    </div>                                                     
+                                                    <div>
+                                                        <div>$23700.10</div>
+                                                        <div>+3.49%</div>
+                                                    </div>                                                
+                                                </div>
+                                            </div>
+                                        
+
+
+
+                                        </div>                                                                                                                        
+                                    </div>
+                                </div>
+                            </div>                            
 
                             <div id="video_player" class="q7-tabcontent">
                                 
