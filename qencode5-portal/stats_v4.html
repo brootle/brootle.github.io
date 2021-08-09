@@ -2563,7 +2563,7 @@
                                                 </label>
                                             </div>
 
-                                            <div class="q7-switch-container q7-switch-container--total">
+                                            <div id="usage_checkboxes" class="q7-switch-container q7-switch-container--total">
                                                 <label class="q7-switch">
                                                     <input class="q7-input__field" type="checkbox" checked data-array="Total">
                                                     <span class="q7-switch__slider"></span>
@@ -2577,7 +2577,8 @@
                                             <canvas id="usage_chart"></canvas>
                                         </div>
 
-                                        <script>                                            
+                                        <script>      
+                                        $(function () {                                     
 
                                             // see https://stackoverflow.com/a/62640342/6261255
                                             const colorShade = (col, amt) => {
@@ -2880,8 +2881,8 @@
                                                         var tooltipBoundaries = tooltipEl.getBoundingClientRect();
                                                         //console.log("tooltipBoundaries: ", tooltipBoundaries);      
 
-                                                        console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
-                                                        console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                        // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                        // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
                                                         
 
                                                         
@@ -2982,12 +2983,16 @@
 
 
                                             // on chart checkbox clicked we update the chart with new dataset
-                                            $(".q7-chart-checkboxes input[type='checkbox']").change(function () {
+                                            // for transcoding tab
+                                            // #transcoding
+                                            $("#transcoding .q7-chart-checkboxes input[type='checkbox']").change(function () {
                                                 // make array of cheched checkboxes
                                                 var checkedValues = [];
-                                                $(".q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
+                                                $("#transcoding .q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
                                                     checkedValues.push($(this).attr('data-array'));
                                                 });
+
+                                                //console.log("checkedValues: ", checkedValues)
 
                                                 // generate new datasets including only selected checkboxes
                                                 var newDatasets = [];
@@ -3022,6 +3027,7 @@
                                                 chart.update();
                                             });
 
+                                        })  
                                         </script>
 
 
@@ -3690,6 +3696,47 @@
 
                                     <div class="q7-stats-tabs">
 
+                                        <div id="stream_stat_checkboxes" class="q7-chart-checkboxes">
+
+
+                                            <div class="q7-switch-container q7-switch-container--sd">                                                
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="SD">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">SD</div>
+                                                </label>
+                                            </div>
+    
+                                            <div class="q7-switch-container q7-switch-container--hd">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="HD">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">HD</div>
+                                                </label>
+                                            </div>
+    
+    
+                                            <div class="q7-switch-container q7-switch-container--4k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="4K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">4K</div>
+                                                </label>
+                                            </div>
+    
+    
+                                            <div class="q7-switch-container q7-switch-container--8k">
+                                                <label class="q7-switch">
+                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="8K">
+                                                    <span class="q7-switch__slider"></span>
+                                                    <div class="q7-switch__title">8K</div>
+                                                </label>
+                                            </div>
+    
+    
+                                        </div>                                    
+    
+
                                         <div class="q7-tab">
                                             <div class="q7-tab__controls">
                                                 <div class="q7-tablink q7-tablink--active" data-tabcontent="usage">Usage</div>
@@ -3698,11 +3745,800 @@
                                         </div>
             
                                         <div id="usage" class="q7-tabcontent q7-tabcontent--active">
-                                            Usage
+
+                                            <div class="q7-tab-content__section">
+                          
+                                                <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
+
+                                                    <div class="q6-billing-chart">
+                                                        <canvas id="usage_chart__stream"></canvas>
+                                                    </div>
+            
+                                                    <script>      
+                                                    $(function () {                                     
+            
+                                                        // see https://stackoverflow.com/a/62640342/6261255
+                                                        const colorShade = (col, amt) => {
+                                                            col = col.replace(/^#/, '')
+                                                            if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+            
+                                                            let [r, g, b] = col.match(/.{2}/g);
+                                                            ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+            
+                                                            r = Math.max(Math.min(255, r), 0).toString(16)
+                                                            g = Math.max(Math.min(255, g), 0).toString(16)
+                                                            b = Math.max(Math.min(255, b), 0).toString(16)
+            
+                                                            const rr = (r.length < 2 ? '0' : '') + r
+                                                            const gg = (g.length < 2 ? '0' : '') + g
+                                                            const bb = (b.length < 2 ? '0' : '') + b
+            
+                                                            return `#${rr}${gg}${bb}`
+                                                        }
+            
+            
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+            
+                                                        var ctx = document.getElementById('usage_chart__stream').getContext("2d");
+                                                        
+                                                        var gradientStrokeTotal = ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeTotal.addColorStop(0, '#1292ff');
+                                                        gradientStrokeTotal.addColorStop(0.7, 'rgba(82, 177, 255, 0.7)');     
+                                                        gradientStrokeTotal.addColorStop(1, 'rgba(82, 177, 255, 0.2)');   
+            
+                                                        var gradientStroke8K= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke8K.addColorStop(0, 'rgba(170, 49, 205, 1)');
+                                                        gradientStroke8K.addColorStop(0.7, 'rgba(170, 49, 205, 0.7)');     
+                                                        gradientStroke8K.addColorStop(1, 'rgba(170, 49, 205, 0.2)');  
+            
+                                                        var gradientStroke4K= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke4K.addColorStop(0, 'rgba(255, 199, 25, 1)');
+                                                        gradientStroke4K.addColorStop(0.7, 'rgba(255, 199, 25, 0.7)');     
+                                                        gradientStroke4K.addColorStop(1, 'rgba(255, 199, 25, 0.2)'); 
+            
+                                                        var gradientStroke1440P= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke1440P.addColorStop(0, 'rgba(49, 205, 130, 1)');
+                                                        gradientStroke1440P.addColorStop(0.7, 'rgba(49, 205, 130, 0.7)');     
+                                                        gradientStroke1440P.addColorStop(1, 'rgba(49, 205, 130, 0.2)');           
+            
+                                                        var gradientStrokeHD= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeHD.addColorStop(0, 'rgba(255, 113, 18, 1)');
+                                                        gradientStrokeHD.addColorStop(0.7, 'rgba(255, 113, 18, 0.7)');     
+                                                        gradientStrokeHD.addColorStop(1, 'rgba(255, 113, 18, 0.2)');        
+            
+                                                        var gradientStrokeSD= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeSD.addColorStop(0, 'rgba(255, 5, 123, 1)');
+                                                        gradientStrokeSD.addColorStop(0.7, 'rgba(255, 5, 123, 0.7)');     
+                                                        gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
+            
+                                                        var dataArray = { 
+                                                                                                                                                  
+                                                            "SD": {
+                                                                data: [60, 90, 20, 120, 90, 170, 43],
+                                                                color: "#082876",
+                                                                background: "#082876"
+                                                            },                
+                                                            "HD": {
+                                                                data: [150, 210, 110, 70, 55, 258, 77],
+                                                                color: "#0f3896",
+                                                                background: "#0f3896"
+                                                            },                           
+                                                            "1440P": {
+                                                                data: [520, 410, 380, 340, 390, 420, 470],
+                                                                color: "#134fb2",
+                                                                background: "#134fb2"
+                                                            },                                                                                                     
+                                                            "4K": {
+                                                                data: [350, 190, 470, 200, 300, 250, 410],
+                                                                color: "#175fc7",
+                                                                background: "#175fc7"
+                                                            },                                                                                                                                      
+                                                            "8K": {
+                                                                data: [160, 45, 230, 80, 146, 196, 110],
+                                                                color: "#aed6fa",
+                                                                background: "#aed6fa"
+                                                            }                                               
+                                                        }
+            
+                                                        var datasets = [];
+            
+                                                        $.each(dataArray, function (key, value) {
+                                                            datasets.push({
+                                                                backgroundColor: value.background,
+                                                                borderColor: value.color,
+                                                                data: value.data,
+                                                                borderWidth: 3,
+                                                                //pointBackgroundColor: colorShade(value.color, +20),
+                                                                pointBackgroundColor: value.color,
+                                                                // pointBorderColor: colorShade(value.color, +10),
+                                                                pointBorderColor: colorShade(value.color, +90),
+                                                                //pointBorderColor: "white",
+                                                                pointRadius: 3,
+                                                                pointBorderWidth: 1,
+                                                                //pointHoverBorderColor: colorShade(value.color, -10),
+                                                                pointHoverRadius: 5,                                                    
+                                                                //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                                label: key,
+                                                                fill: true
+                                                            });
+                                                        });
+            
+                                                        var dataLabels = ['01/04/2020', '02/04/2020', '03/04/2020', '04/04/2020', '05/04/2020', '06/04/2020', '07/04/2020'];
+            
+                                                        var dataLabelsMonthAndDay = dataLabels.map(date => {
+                                                            var dateValue = new Date(date);
+                                                            return `${(dateValue.toLocaleString("en", { month: "short" }))} ${dateValue.getDay()}`;
+                                                        })
+            
+                                                        //console.log("dataLabelsMonthAndDay: ", dataLabelsMonthAndDay);
+            
+                                                        var data = {
+                                                            labels: dataLabelsMonthAndDay,
+                                                            datasets: datasets                                            
+                                                        };
+            
+                                                        var options = {
+                                                            maintainAspectRatio: false,
+                                                            spanGaps: false,                                            
+                                                            elements: {
+                                                                line: {
+                                                                    tension: 0.2
+                                                                },
+                                                                point: {
+                                                                    radius: 3
+                                                                }
+                                                            },
+                                                            legend: {
+                                                                display: false
+                                                            },
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    gridLines: {
+                                                                        display: false
+                                                                    },
+                                                                    ticks: {
+                                                                        padding: 15,
+                                                                        fontColor: '#9a989e'
+                                                                    }                                                            
+                                                                }],
+                                                                yAxes: [{
+                                                                    gridLines: {
+                                                                        borderDash: [3],
+                                                                        drawTicks: false
+                                                                    },
+                                                                    ticks: {
+                                                                        padding: 20,
+                                                                        fontColor: '#9a989e',
+                                                                        beginAtZero: true
+                                                                    },
+                                                                    stacked: true,                                                        
+                                                                }]                                                    
+                                                            },
+            
+                                                            animation: {
+                                                                duration: 0
+                                                            },
+            
+                                                            hover: {
+                                                                mode: 'single'
+                                                            },                                                
+            
+            
+                                                            tooltips: {
+                                                                // Disable the on-canvas tooltip
+                                                                enabled: false,
+                                                       
+                                                                custom: function (tooltipModel) {
+                                                                    //console.log("tooltipModel: ", tooltipModel);
+            
+                                                                    // Tooltip Element
+                                                                    var tooltipEl = document.getElementById('chartjs-tooltip_new');
+            
+                                                                    // Create element on first render
+                                                                    if (!tooltipEl) {
+                                                                        tooltipEl = document.createElement('div');
+                                                                        tooltipEl.id = 'chartjs-tooltip_new';
+                                                                        tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                                        document.body.appendChild(tooltipEl);
+                                                                    }
+            
+                                                                    // Hide if no tooltip
+                                                                    if (tooltipModel.opacity === 0) {
+                                                                        tooltipEl.style.opacity = 0;
+                                                                        return;
+                                                                    }
+            
+                                                                    function getBody(bodyItem) {
+                                                                        return bodyItem.lines;
+                                                                    }
+            
+                                                                    // Set Text
+                                                                    //console.log("tooltipModel: ", tooltipModel)
+            
+                                                                    if (tooltipModel.body) {                 
+            
+                                                                        var titleLines = tooltipModel.title || [];
+                                                                                                                     
+            
+                                                                        datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                                        //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+            
+                                                                        var labelIndex = tooltipModel.dataPoints[0].index;
+            
+                                                                        var labelDate = new Date (dataLabels[labelIndex]);
+                                                                        var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
+                                                                          
+            
+                                                                        var yValue = tooltipModel.dataPoints[0].yLabel;
+                                                                        var labelName = chart.data.datasets[datasetIndex].label;                                                    
+            
+                                                                        var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+            
+                                                                        innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+            
+                                                                        innerHtml += '</thead><tbody>';
+                                                                        innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                                        innerHtml += '</tbody>';
+            
+                                                                        // add footer
+                                                                        innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
+            
+                                                                        var tableRoot = tooltipEl.querySelector('table');
+                                                                        tableRoot.innerHTML = innerHtml;
+                                                                    }
+            
+                                                                    ///////////////////////////////////////////////////////////////////////
+                                                                    // see for tooltip position https://stackoverflow.com/a/64887282/6261255
+                                                                    ///////////////////////////////////////////////////////////////////////
+            
+                                                                    tooltipEl.className = "";
+            
+                                                                    // `this` will be the overall tooltip
+                                                                    var position = this._chart.canvas.getBoundingClientRect();
+            
+            
+                                                                    var chartBoundaries = this._chart.canvas.getBoundingClientRect();
+                                                                    //console.log("chartBoundaries: ", chartBoundaries);
+            
+                                                                    tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
+                                                                    tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                                    
+                                                                    var tooltipBoundaries = tooltipEl.getBoundingClientRect();
+                                                                    //console.log("tooltipBoundaries: ", tooltipBoundaries);      
+            
+                                                                    // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                                    // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                                    
+            
+                                                                    
+            
+                                                                    if(tooltipBoundaries.right > chartBoundaries.right){
+                                                                        tooltipEl.classList.add("tooltip--move-left");
+                                                                    } 
+            
+                                                                    // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
+                                                                    //     tooltipEl.classList.add("tooltip--move-up");
+                                                                    // }                                                         
+            
+                                                                    // Display, position, and set styles for font
+                                                                    tooltipEl.style.opacity = 1;
+                                                                    tooltipEl.style.position = 'absolute';
+                                                                    
+                                                                    //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                                    //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+            
+                                                                    tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+                                                                    tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+                                                                    tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+                                                                    //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+                                                                    tooltipEl.style.pointerEvents = 'none';
+            
+                                                                    
+            
+                                                                }
+                                                            }
+            
+            
+                                                        };
+            
+                                                        // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
+                                                        Chart.defaults.LineWithLine = Chart.defaults.line;
+                                                        Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+                                                            draw: function (ease) {
+                                                                Chart.controllers.line.prototype.draw.call(this, ease);
+            
+                                                                if (this.chart.tooltip._active && this.chart.tooltip._active.length) {                                
+                                                                    var activePoint = this.chart.tooltip._active[0],
+                                                                        ctx = this.chart.ctx,
+                                                                        x = activePoint.tooltipPosition().x,
+                                                                        topY = this.chart.legend.bottom,
+                                                                        bottomY = this.chart.chartArea.bottom;
+            
+                                                                    //console.log("activePoint: ", activePoint)
+            
+                                                                    // draw line
+                                                                    ctx.save();
+                                                                    ctx.beginPath();
+                                                                    ctx.setLineDash([3, 4]);
+                                                                    ctx.moveTo(x, topY);
+                                                                    ctx.lineTo(x, bottomY);
+                                                                    ctx.lineWidth = 1;
+                                                                    ctx.strokeStyle = activePoint._model.backgroundColor;
+                                                                    ctx.stroke();
+                                                                    ctx.restore();
+                                                                }
+                                                            }
+                                                        });                                            
+            
+                                                        var chart = new Chart('usage_chart__stream', {
+                                                            //type: 'LineWithLine',
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+            
+            
+                                                        // on chart checkbox clicked we update the chart with new dataset
+                                                        // for streaming tab
+                                                        $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']").change(function () {
+                                                            // make array of cheched checkboxes
+                                                            var checkedValues = [];
+                                                            $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
+                                                                checkedValues.push($(this).attr('data-array'));
+                                                            });
+
+                                                            //console.log("checkedValues: ", checkedValues);
+            
+                                                            // generate new datasets including only selected checkboxes
+                                                            var newDatasets = [];
+                                                            $.each(dataArray, function (key, value) {
+            
+                                                                if (jQuery.inArray(key, checkedValues) >= 0) {
+                                                                    newDatasets.push({
+                                                                        backgroundColor: value.background,
+                                                                        borderColor: value.color,
+                                                                        data: value.data,
+                                                                        borderWidth: 3,
+                                                                        //pointBackgroundColor: colorShade(value.color, +20),
+                                                                        pointBackgroundColor: value.color,
+                                                                        //pointBorderColor: colorShade(value.color, -10),
+                                                                        //pointBorderColor: 'white',
+                                                                        pointBorderColor: colorShade(value.color, +90),
+                                                                        pointRadius: 3,
+                                                                        pointBorderWidth: 1,
+                                                                        //pointHoverBorderColor: colorShade(value.color, -10),
+                                                                        pointHoverRadius: 5,
+                                                                        //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                                        label: key,
+                                                                        fill: true
+                                                                    });
+                                                                }
+            
+                                                            });
+            
+                                                            chart.data.datasets = newDatasets;
+            
+                                                            // update chart
+                                                            chart.update();
+                                                        });
+            
+                                                    })  
+                                                    </script>
+            
+            
+                                                    <div class="q6-billing-chart">
+                                                        <div class="q7-loading-cell q7-loading-cell--big-chart"></div>
+                                                    </div>
+            
+                                                    <div class="q6-billing-chart">
+                                                        <div class="q7-nodata-cell">
+                                                            <div>No streams launched in the last 7 days.</div>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            
+                                            </div>                                            
+
+
                                         </div>
 
                                         <div id="bandwidth" class="q7-tabcontent">
-                                            Bandwidth
+
+                                            <div class="q7-tab-content__section">
+                          
+                                                <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
+
+                                                    <div class="q6-billing-chart">
+                                                        <canvas id="usage_chart__bandwidth"></canvas>
+                                                    </div>
+            
+                                                    <script>      
+                                                    $(function () {                                     
+            
+                                                        // see https://stackoverflow.com/a/62640342/6261255
+                                                        const colorShade = (col, amt) => {
+                                                            col = col.replace(/^#/, '')
+                                                            if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+            
+                                                            let [r, g, b] = col.match(/.{2}/g);
+                                                            ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+            
+                                                            r = Math.max(Math.min(255, r), 0).toString(16)
+                                                            g = Math.max(Math.min(255, g), 0).toString(16)
+                                                            b = Math.max(Math.min(255, b), 0).toString(16)
+            
+                                                            const rr = (r.length < 2 ? '0' : '') + r
+                                                            const gg = (g.length < 2 ? '0' : '') + g
+                                                            const bb = (b.length < 2 ? '0' : '') + b
+            
+                                                            return `#${rr}${gg}${bb}`
+                                                        }
+            
+            
+                                                        // see http://www.chartjs.org/samples/latest/charts/area/line-datasets.html
+            
+                                                        var ctx = document.getElementById('usage_chart__bandwidth').getContext("2d");
+                                                        
+                                                        var gradientStrokeTotal = ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeTotal.addColorStop(0, '#1292ff');
+                                                        gradientStrokeTotal.addColorStop(0.7, 'rgba(82, 177, 255, 0.7)');     
+                                                        gradientStrokeTotal.addColorStop(1, 'rgba(82, 177, 255, 0.2)');   
+            
+                                                        var gradientStroke8K= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke8K.addColorStop(0, 'rgba(170, 49, 205, 1)');
+                                                        gradientStroke8K.addColorStop(0.7, 'rgba(170, 49, 205, 0.7)');     
+                                                        gradientStroke8K.addColorStop(1, 'rgba(170, 49, 205, 0.2)');  
+            
+                                                        var gradientStroke4K= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke4K.addColorStop(0, 'rgba(255, 199, 25, 1)');
+                                                        gradientStroke4K.addColorStop(0.7, 'rgba(255, 199, 25, 0.7)');     
+                                                        gradientStroke4K.addColorStop(1, 'rgba(255, 199, 25, 0.2)'); 
+            
+                                                        var gradientStroke1440P= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStroke1440P.addColorStop(0, 'rgba(49, 205, 130, 1)');
+                                                        gradientStroke1440P.addColorStop(0.7, 'rgba(49, 205, 130, 0.7)');     
+                                                        gradientStroke1440P.addColorStop(1, 'rgba(49, 205, 130, 0.2)');           
+            
+                                                        var gradientStrokeHD= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeHD.addColorStop(0, 'rgba(255, 113, 18, 1)');
+                                                        gradientStrokeHD.addColorStop(0.7, 'rgba(255, 113, 18, 0.7)');     
+                                                        gradientStrokeHD.addColorStop(1, 'rgba(255, 113, 18, 0.2)');        
+            
+                                                        var gradientStrokeSD= ctx.createLinearGradient(0, 0, 0, 440);
+                                                        gradientStrokeSD.addColorStop(0, 'rgba(255, 5, 123, 1)');
+                                                        gradientStrokeSD.addColorStop(0.7, 'rgba(255, 5, 123, 0.7)');     
+                                                        gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
+            
+                                                        var dataArray = { 
+                                                                                                                                                  
+                                                            "SD": {
+                                                                data: [20, 140, 40, 30, 21, 189, 34],
+                                                                color: "#082876",
+                                                                background: "#082876"
+                                                            },                
+                                                            "HD": {
+                                                                data: [89, 120, 160, 40, 22, 120, 260],
+                                                                color: "#0f3896",
+                                                                background: "#0f3896"
+                                                            },                           
+                                                            "1440P": {
+                                                                data: [52, 410, 38, 340, 39, 420, 70],
+                                                                color: "#134fb2",
+                                                                background: "#134fb2"
+                                                            },                                                                                                     
+                                                            "4K": {
+                                                                data: [50, 90, 70, 20, 30, 50, 10],
+                                                                color: "#175fc7",
+                                                                background: "#175fc7"
+                                                            },                                                                                                                                      
+                                                            "8K": {
+                                                                data: [60, 145, 30, 180, 46, 96, 10],
+                                                                color: "#aed6fa",
+                                                                background: "#aed6fa"
+                                                            }                                               
+                                                        }
+            
+                                                        var datasets = [];
+            
+                                                        $.each(dataArray, function (key, value) {
+                                                            datasets.push({
+                                                                backgroundColor: value.background,
+                                                                borderColor: value.color,
+                                                                data: value.data,
+                                                                borderWidth: 3,
+                                                                //pointBackgroundColor: colorShade(value.color, +20),
+                                                                pointBackgroundColor: value.color,
+                                                                // pointBorderColor: colorShade(value.color, +10),
+                                                                pointBorderColor: colorShade(value.color, +90),
+                                                                //pointBorderColor: "white",
+                                                                pointRadius: 3,
+                                                                pointBorderWidth: 1,
+                                                                //pointHoverBorderColor: colorShade(value.color, -10),
+                                                                pointHoverRadius: 5,                                                    
+                                                                //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                                label: key,
+                                                                fill: true
+                                                            });
+                                                        });
+            
+                                                        var dataLabels = ['01/04/2020', '02/04/2020', '03/04/2020', '04/04/2020', '05/04/2020', '06/04/2020', '07/04/2020'];
+            
+                                                        var dataLabelsMonthAndDay = dataLabels.map(date => {
+                                                            var dateValue = new Date(date);
+                                                            return `${(dateValue.toLocaleString("en", { month: "short" }))} ${dateValue.getDay()}`;
+                                                        })
+            
+                                                        //console.log("dataLabelsMonthAndDay: ", dataLabelsMonthAndDay);
+            
+                                                        var data = {
+                                                            labels: dataLabelsMonthAndDay,
+                                                            datasets: datasets                                            
+                                                        };
+            
+                                                        var options = {
+                                                            maintainAspectRatio: false,
+                                                            spanGaps: false,                                            
+                                                            elements: {
+                                                                line: {
+                                                                    tension: 0.2
+                                                                },
+                                                                point: {
+                                                                    radius: 3
+                                                                }
+                                                            },
+                                                            legend: {
+                                                                display: false
+                                                            },
+                                                            scales: {
+                                                                xAxes: [{
+                                                                    gridLines: {
+                                                                        display: false
+                                                                    },
+                                                                    ticks: {
+                                                                        padding: 15,
+                                                                        fontColor: '#9a989e'
+                                                                    }                                                            
+                                                                }],
+                                                                yAxes: [{
+                                                                    gridLines: {
+                                                                        borderDash: [3],
+                                                                        drawTicks: false
+                                                                    },
+                                                                    ticks: {
+                                                                        padding: 20,
+                                                                        fontColor: '#9a989e',
+                                                                        beginAtZero: true
+                                                                    },
+                                                                    stacked: true,                                                        
+                                                                }]                                                    
+                                                            },
+            
+                                                            animation: {
+                                                                duration: 0
+                                                            },
+            
+                                                            hover: {
+                                                                mode: 'single'
+                                                            },                                                
+            
+            
+                                                            tooltips: {
+                                                                // Disable the on-canvas tooltip
+                                                                enabled: false,
+                                                       
+                                                                custom: function (tooltipModel) {
+                                                                    //console.log("tooltipModel: ", tooltipModel);
+            
+                                                                    // Tooltip Element
+                                                                    var tooltipEl = document.getElementById('chartjs-tooltip_new');
+            
+                                                                    // Create element on first render
+                                                                    if (!tooltipEl) {
+                                                                        tooltipEl = document.createElement('div');
+                                                                        tooltipEl.id = 'chartjs-tooltip_new';
+                                                                        tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                                        document.body.appendChild(tooltipEl);
+                                                                    }
+            
+                                                                    // Hide if no tooltip
+                                                                    if (tooltipModel.opacity === 0) {
+                                                                        tooltipEl.style.opacity = 0;
+                                                                        return;
+                                                                    }
+            
+                                                                    function getBody(bodyItem) {
+                                                                        return bodyItem.lines;
+                                                                    }
+            
+                                                                    // Set Text
+                                                                    //console.log("tooltipModel: ", tooltipModel)
+            
+                                                                    if (tooltipModel.body) {                 
+            
+                                                                        var titleLines = tooltipModel.title || [];
+                                                                                                                     
+            
+                                                                        datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                                        //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+            
+                                                                        var labelIndex = tooltipModel.dataPoints[0].index;
+            
+                                                                        var labelDate = new Date (dataLabels[labelIndex]);
+                                                                        var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
+                                                                          
+            
+                                                                        var yValue = tooltipModel.dataPoints[0].yLabel;
+                                                                        var labelName = chart.data.datasets[datasetIndex].label;                                                    
+            
+                                                                        var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+            
+                                                                        innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+            
+                                                                        innerHtml += '</thead><tbody>';
+                                                                        innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                                        innerHtml += '</tbody>';
+            
+                                                                        // add footer
+                                                                        innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
+            
+                                                                        var tableRoot = tooltipEl.querySelector('table');
+                                                                        tableRoot.innerHTML = innerHtml;
+                                                                    }
+            
+                                                                    ///////////////////////////////////////////////////////////////////////
+                                                                    // see for tooltip position https://stackoverflow.com/a/64887282/6261255
+                                                                    ///////////////////////////////////////////////////////////////////////
+            
+                                                                    tooltipEl.className = "";
+            
+                                                                    // `this` will be the overall tooltip
+                                                                    var position = this._chart.canvas.getBoundingClientRect();
+            
+            
+                                                                    var chartBoundaries = this._chart.canvas.getBoundingClientRect();
+                                                                    //console.log("chartBoundaries: ", chartBoundaries);
+            
+                                                                    tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
+                                                                    tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                                    
+                                                                    var tooltipBoundaries = tooltipEl.getBoundingClientRect();
+                                                                    //console.log("tooltipBoundaries: ", tooltipBoundaries);      
+            
+                                                                    // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                                    // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                                    
+            
+                                                                    
+            
+                                                                    if(tooltipBoundaries.right > chartBoundaries.right){
+                                                                        tooltipEl.classList.add("tooltip--move-left");
+                                                                    } 
+            
+                                                                    // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
+                                                                    //     tooltipEl.classList.add("tooltip--move-up");
+                                                                    // }                                                         
+            
+                                                                    // Display, position, and set styles for font
+                                                                    tooltipEl.style.opacity = 1;
+                                                                    tooltipEl.style.position = 'absolute';
+                                                                    
+                                                                    //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                                    //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+            
+                                                                    tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+                                                                    tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+                                                                    tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+                                                                    //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+                                                                    tooltipEl.style.pointerEvents = 'none';
+            
+                                                                    
+            
+                                                                }
+                                                            }
+            
+            
+                                                        };
+            
+                                                        // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
+                                                        Chart.defaults.LineWithLine = Chart.defaults.line;
+                                                        Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+                                                            draw: function (ease) {
+                                                                Chart.controllers.line.prototype.draw.call(this, ease);
+            
+                                                                if (this.chart.tooltip._active && this.chart.tooltip._active.length) {                                
+                                                                    var activePoint = this.chart.tooltip._active[0],
+                                                                        ctx = this.chart.ctx,
+                                                                        x = activePoint.tooltipPosition().x,
+                                                                        topY = this.chart.legend.bottom,
+                                                                        bottomY = this.chart.chartArea.bottom;
+            
+                                                                    //console.log("activePoint: ", activePoint)
+            
+                                                                    // draw line
+                                                                    ctx.save();
+                                                                    ctx.beginPath();
+                                                                    ctx.setLineDash([3, 4]);
+                                                                    ctx.moveTo(x, topY);
+                                                                    ctx.lineTo(x, bottomY);
+                                                                    ctx.lineWidth = 1;
+                                                                    ctx.strokeStyle = activePoint._model.backgroundColor;
+                                                                    ctx.stroke();
+                                                                    ctx.restore();
+                                                                }
+                                                            }
+                                                        });                                            
+            
+                                                        var chart = new Chart('usage_chart__bandwidth', {
+                                                            //type: 'LineWithLine',
+                                                            type: 'line',
+                                                            data: data,
+                                                            options: options
+                                                        });
+            
+            
+                                                        // on chart checkbox clicked we update the chart with new dataset
+                                                        // for streaming tab
+                                                        $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']").change(function () {
+                                                            // make array of cheched checkboxes
+                                                            var checkedValues = [];
+                                                            $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
+                                                                checkedValues.push($(this).attr('data-array'));
+                                                            });
+
+                                                           // console.log("checkedValues: ", checkedValues);
+            
+                                                            // generate new datasets including only selected checkboxes
+                                                            var newDatasets = [];
+                                                            $.each(dataArray, function (key, value) {
+            
+                                                                if (jQuery.inArray(key, checkedValues) >= 0) {
+                                                                    newDatasets.push({
+                                                                        backgroundColor: value.background,
+                                                                        borderColor: value.color,
+                                                                        data: value.data,
+                                                                        borderWidth: 3,
+                                                                        //pointBackgroundColor: colorShade(value.color, +20),
+                                                                        pointBackgroundColor: value.color,
+                                                                        //pointBorderColor: colorShade(value.color, -10),
+                                                                        //pointBorderColor: 'white',
+                                                                        pointBorderColor: colorShade(value.color, +90),
+                                                                        pointRadius: 3,
+                                                                        pointBorderWidth: 1,
+                                                                        //pointHoverBorderColor: colorShade(value.color, -10),
+                                                                        pointHoverRadius: 5,
+                                                                        //pointHoverBackgroundColor: colorShade(value.color, +40),
+                                                                        label: key,
+                                                                        fill: true
+                                                                    });
+                                                                }
+            
+                                                            });
+            
+                                                            chart.data.datasets = newDatasets;
+            
+                                                            // update chart
+                                                            chart.update();
+                                                        });
+            
+                                                    })  
+                                                    </script>
+            
+            
+                                                    <div class="q6-billing-chart">
+                                                        <div class="q7-loading-cell q7-loading-cell--big-chart"></div>
+                                                    </div>
+            
+                                                    <div class="q6-billing-chart">
+                                                        <div class="q7-nodata-cell">
+                                                            <div>No streams launched in the last 7 days.</div>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            
+                                            </div>  
+
                                         </div>                                        
                                     </div>
                                 </div>
@@ -5574,14 +6410,6 @@
                                     var clickedLink = e.currentTarget;                       
                                     var tabID = clickedLink.getAttribute("data-tabcontent");       
                                 
-
-
-                                    // $('.q7-tablink--active').removeClass("q7-tablink--active");
-                                    // $('.q7-tabcontent--active').removeClass("q7-tabcontent--active");
-                
-                                    // $(clickedLink).addClass('q7-tablink--active');                                    
-                                    // $(`#${tabID}`).addClass('q7-tabcontent--active');                                    
-
 
                                     if(tabID!="bandwidth" && tabID!="usage"){
 
