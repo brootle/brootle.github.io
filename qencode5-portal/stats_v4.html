@@ -2456,13 +2456,6 @@
                                                 </label>
                                             </div>
 
-                                            <div id="usage_checkboxes" class="q7-switch-container q7-switch-container--total">
-                                                <label class="q7-switch">
-                                                    <input class="q7-input__field" type="checkbox" checked data-array="Total">
-                                                    <span class="q7-switch__slider"></span>
-                                                    <div class="q7-switch__title">Total</div>
-                                                </label>
-                                            </div>
 
                                         </div>                                        
 
@@ -2531,58 +2524,63 @@
                                                 "Audio": {
                                                     data: [60, 90, 20, 120, 90, 170, 43],
                                                     color: "#c43249",
-                                                    background: "#c43249"
+                                                    background: "#c43249",
+                                                    rate: 0.9
                                                 },    
                                                 "Repack": {
                                                     data: [60, 90, 20, 120, 90, 170, 43],
                                                     color: "#6b00a3",
-                                                    background: "#6b00a3"
+                                                    background: "#6b00a3",
+                                                    rate: 0.8
                                                 },                                                                                                                                                   
                                                 "SD": {
                                                     data: [60, 90, 20, 120, 90, 170, 43],
                                                     color: "#082876",
-                                                    background: "#082876"
+                                                    background: "#082876",
+                                                    rate: 0.77
                                                 },                
                                                 "HD": {
                                                     data: [150, 210, 110, 70, 55, 258, 77],
                                                     color: "#0f3896",
-                                                    background: "#0f3896"
+                                                    background: "#0f3896",
+                                                    rate: 0.72
                                                 },                           
                                                 "1440P": {
                                                     data: [520, 410, 380, 340, 390, 420, 470],
                                                     color: "#134fb2",
-                                                    background: "#134fb2"
+                                                    background: "#134fb2",
+                                                    rate: 0.65
                                                 },                                                                                                     
                                                 "4K": {
                                                     data: [350, 190, 470, 200, 300, 250, 410],
                                                     color: "#175fc7",
-                                                    background: "#175fc7"
+                                                    background: "#175fc7",
+                                                    rate: 0.61
                                                 },
                                                 "5K": {
                                                     data: [350, 190, 470, 200, 300, 250, 410],
                                                     color: "#1b72de",
-                                                    background: "#1b72de"
+                                                    background: "#1b72de",
+                                                    rate: 0.54
                                                 },   
                                                 "6K": {
                                                     data: [350, 190, 470, 200, 300, 250, 410],
                                                     color: "#1e80f0",
-                                                    background: "#1e80f0"
+                                                    background: "#1e80f0",
+                                                    rate: 0.48
                                                 },        
                                                 "7K": {
                                                     data: [350, 190, 470, 200, 300, 250, 410],
                                                     color: "#54a4f3",
-                                                    background: "#54a4f3"
+                                                    background: "#54a4f3",
+                                                    rate: 0.42
                                                 },                                                                                                                                     
                                                 "8K": {
                                                     data: [160, 45, 230, 80, 146, 196, 110],
                                                     color: "#aed6fa",
-                                                    background: "#aed6fa"
-                                                },
-                                                "Total": {
-                                                    data: [560, 490, 540, 390, 445, 478, 540],
-                                                    color: "#366fe0",
-                                                    background: "#366fe0"
-                                                }                                                
+                                                    background: "#aed6fa",
+                                                    rate: 0.36
+                                                }                                              
                                             }
 
                                             var datasets = [];
@@ -2604,7 +2602,8 @@
                                                     pointHoverRadius: 5,                                                    
                                                     //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                     label: key,
-                                                    fill: true
+                                                    fill: true,
+                                                    rate: value.rate
                                                 });
                                             });
 
@@ -2666,35 +2665,13 @@
 
                                                 hover: {
                                                     mode: 'single'
-                                                },                                                
-
-                                                // onHover: function (evt) {
+                                                },      
                                                 
-                                                //     var item = chart.getElementAtEvent(evt);
-
-                                                //     if (item.length) {
- 
-                                                //         var currentDatasetIndex = item[0]._datasetIndex;
-
-
-                                                //         // set point hover radius to default 4
-                                                //         // chart.data.datasets.forEach(dataset => {
-                                                //         //     dataset.pointHoverRadius = 4;
-                                                //         // });
-
-                                                //         // set point radius of selected dataset
-                                                //         //chart.data.datasets[currentDatasetIndex].pointHoverRadius = 6;
-
-                                                //         // set color of tooltip title same as point color
-                                                //         chart.options.tooltips.titleFontColor = chart.data.datasets[currentDatasetIndex].borderColor;
-
-                                                //         chart.update();
-                                                //     }
-                                                // },
-
                                                 tooltips: {
                                                     // Disable the on-canvas tooltip
                                                     enabled: false,
+                                                    mode: 'index',
+                                                    intersect: false,
                                            
                                                     custom: function (tooltipModel) {
                                                         //console.log("tooltipModel: ", tooltipModel);
@@ -2704,9 +2681,15 @@
 
                                                         // Create element on first render
                                                         if (!tooltipEl) {
+
                                                             tooltipEl = document.createElement('div');
                                                             tooltipEl.id = 'chartjs-tooltip_new';
-                                                            tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                            tooltipEl.innerHTML = `
+                                                                <div class="q7-tooltip-line"></div>
+                                                                <div class="chartjs-tooltip-container chartjs-tooltip-container--aggregated">
+                                                                    <table></table>
+                                                                </div>
+                                                            `;
                                                             document.body.appendChild(tooltipEl);
                                                         }
 
@@ -2740,19 +2723,99 @@
                                                             var yValue = tooltipModel.dataPoints[0].yLabel;
                                                             var labelName = chart.data.datasets[datasetIndex].label;                                                    
 
-                                                            var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                            // var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                            var innerHtml = `<thead class='tooltip-title'>`;
 
-                                                            innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+                                                            innerHtml += `<tr><th>Type</th><th>Minutes</th><th>Cost</th></tr>`;
 
                                                             innerHtml += '</thead><tbody>';
-                                                            innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+
+                                                        
+                                                            // filter data by index
+                                                            var aggregatedData = data.datasets;
+                                                           
+
+                                                            //aggregatedData.reverse();
+                                                            var newDataSet = [];
+                                                            var totalValue = 0;
+                                                            var totalTime = 0;
+
+                                                            // build table rows
+                                                            aggregatedData.forEach((element, index) => {
+                                                                
+                                                                var currentLabelName = aggregatedData[index].label;  
+                                                                var currentRate = aggregatedData[index].rate;  
+
+                                                                var minutes = element.data[labelIndex] 
+
+                                                                var currentValue = minutes * currentRate;
+
+                                                                
+                                                                totalValue+=currentValue;
+
+                                                                totalTime+=minutes;
+
+                                                                newDataSet.push({
+                                                                    label: currentLabelName,
+                                                                    time: minutes,
+                                                                    cost: currentValue
+                                                                })
+
+                                                                // innerHtml += `
+                                                                //     <tr>
+                                                                //         <td class='tooltip-name--${currentLabelName}'>${currentLabelName}</td>
+                                                                //         <td>${currentValue}</td>
+                                                                //         <td>$${(currentValue*0.42).toFixed(2)}</td>
+                                                                //     </tr>
+                                                                // `;
+                                                            });
+
+                                                            newDataSet.reverse();
+
+                                                            newDataSet.forEach(({label, time, cost}) => {
+                                                                innerHtml += `
+                                                                    <tr>
+                                                                        <td class='tooltip-name--${label}'> <div class='tooltip__marker'></div> ${label}</td>
+                                                                        <td>${time}</td>
+                                                                        <td>$${(cost).toFixed(2)}</td>
+                                                                    </tr>
+                                                                `;
+                                                            })
+
+                                                            //console.log("tooltipModel.dataPoints.length: ", tooltipModel.dataPoints.length)
+
+                                                            //innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                            
                                                             innerHtml += '</tbody>';
 
                                                             // add footer
-                                                            innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
+                                                            innerHtml += `
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <td>Total</td>
+                                                                        <td>${totalTime}</td>
+                                                                        <td>$${(totalValue).toFixed(2)}</td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            `
 
                                                             var tableRoot = tooltipEl.querySelector('table');
                                                             tableRoot.innerHTML = innerHtml;
+
+                                                            var tableContainer = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+                                                         
+
+                                                            if(!tooltipEl.querySelector('.tooltip-container__title')){
+                                                                var titleEl = document.createElement("DIV"); 
+                                                                titleEl.classList.add('tooltip-container__title');
+                                                                titleEl.innerHTML = title;
+
+                                                                tableContainer.insertBefore(titleEl, tableContainer.childNodes[0]); 
+                                                            } else {
+                                                                tooltipEl.querySelector('.tooltip-container__title').innerHTML = title;
+                                                            }
+
+                                                            
                                                         }
 
                                                         ///////////////////////////////////////////////////////////////////////
@@ -2769,7 +2832,26 @@
                                                         //console.log("chartBoundaries: ", chartBoundaries);
 
                                                         tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
-                                                        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                       // tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';   
+                                                       var tooltipHeight = $(tooltipEl).height(); 
+                                             
+                                                       var chartHeight = $('#usage_chart').height();
+                                                      
+                                                       
+                                                       var tooltipShift = (chartHeight - tooltipHeight) / 2;
+
+                                                       tooltipEl.style.top = position.top + window.pageYOffset + tooltipShift  + 'px';  
+                                                       //tooltipEl.style.top = position.top + window.pageYOffset  + 'px'; 
+
+                                                       
+                                                       var tooltipLine= tooltipEl.querySelector('.q7-tooltip-line');
+                                                       tooltipLine.style.top = `-${tooltipShift - 13 - 22}px`;
+                                                       tooltipLine.style.bottom = `-${tooltipShift - 13}px`;
+
+                                                    //    var insideEl = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+
+                                                    //    insideEl.style.paddingTop = tooltipShift + "px";
+                                                    //    insideEl.style.paddingBottom = tooltipShift + "px";
                                                         
                                                         var tooltipBoundaries = tooltipEl.getBoundingClientRect();
                                                         //console.log("tooltipBoundaries: ", tooltipBoundaries);      
@@ -2795,6 +2877,8 @@
                                                         //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
                                                         //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
 
+                                        
+
                                                         tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
                                                         tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
                                                         tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
@@ -2805,36 +2889,126 @@
 
                                                     }
                                                 }
+                                                
+
 
 
                                                 // tooltips: {
-                                                //     intersect: false,
-                                                //     titleFontColor: 'black',
-                                                //     backgroundColor: 'white',
-                                                //     bodyFontColor: '#021519',
-                                                //     borderColor: '#eeeeee',
-                                                //     borderWidth: 1,
-                                                //     bodyFontStyle: 'bold',
-                                                //     displayColors: false,
-                                                //     xPadding: 15,
-                                                //     yPadding: 10,
+                                                //     // Disable the on-canvas tooltip
+                                                //     enabled: false,
+                                           
+                                                //     custom: function (tooltipModel) {
+                                                //         //console.log("tooltipModel: ", tooltipModel);
 
-                                                //     cornerRadius: 1,
+                                                //         // Tooltip Element
+                                                //         var tooltipEl = document.getElementById('chartjs-tooltip_new');
 
-                                                //     callbacks: {
-                                                //         title: function (tooltipItem, data) {
-                                                //             //console.log(Chart.defaults.global.tooltips.titleFontColor);
-                                                //             // console.log(tooltipItem[0]);
-                                                //             //console.log(data.datasets[tooltipItem[0].datasetIndex]);
-                                                //             return data.datasets[tooltipItem[0].datasetIndex].label;
-                                                //         },
-                                                //         label: function (tooltipItem, data) {
-                                                //             // console.log(tooltipItem.yLabel);
-                                                //             return `$${tooltipItem.yLabel}`;
+                                                //         // Create element on first render
+                                                //         if (!tooltipEl) {
+                                                //             tooltipEl = document.createElement('div');
+                                                //             tooltipEl.id = 'chartjs-tooltip_new';
+                                                //             tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                //             document.body.appendChild(tooltipEl);
                                                 //         }
-                                                //     }
 
+                                                //         // Hide if no tooltip
+                                                //         if (tooltipModel.opacity === 0) {
+                                                //             tooltipEl.style.opacity = 0;
+                                                //             return;
+                                                //         }
+
+                                                //         function getBody(bodyItem) {
+                                                //             return bodyItem.lines;
+                                                //         }
+
+                                                //         // Set Text
+                                                //         //console.log("tooltipModel: ", tooltipModel)
+
+                                                //         if (tooltipModel.body) {                 
+
+                                                //             var titleLines = tooltipModel.title || [];
+                                                                                                         
+
+                                                //             datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
+                                                //             //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
+
+                                                //             var labelIndex = tooltipModel.dataPoints[0].index;
+
+                                                //             var labelDate = new Date (dataLabels[labelIndex]);
+                                                //             var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
+                                                              
+
+                                                //             var yValue = tooltipModel.dataPoints[0].yLabel;
+                                                //             var labelName = chart.data.datasets[datasetIndex].label;                                                    
+
+                                                //             var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+
+                                                //             innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
+
+                                                //             innerHtml += '</thead><tbody>';
+                                                //             innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                //             innerHtml += '</tbody>';
+
+                                                //             // add footer
+                                                //             innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
+
+                                                //             var tableRoot = tooltipEl.querySelector('table');
+                                                //             tableRoot.innerHTML = innerHtml;
+                                                //         }
+
+                                                //         ///////////////////////////////////////////////////////////////////////
+                                                //         // see for tooltip position https://stackoverflow.com/a/64887282/6261255
+                                                //         ///////////////////////////////////////////////////////////////////////
+
+                                                //         tooltipEl.className = "";
+
+                                                //         // `this` will be the overall tooltip
+                                                //         var position = this._chart.canvas.getBoundingClientRect();
+
+
+                                                //         var chartBoundaries = this._chart.canvas.getBoundingClientRect();
+                                                //         //console.log("chartBoundaries: ", chartBoundaries);
+
+                                                //         tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
+                                                //         tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                        
+                                                //         var tooltipBoundaries = tooltipEl.getBoundingClientRect();
+                                                //         //console.log("tooltipBoundaries: ", tooltipBoundaries);      
+
+                                                //         // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
+                                                //         // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
+                                                        
+
+                                                        
+
+                                                //         if(tooltipBoundaries.right > chartBoundaries.right){
+                                                //             tooltipEl.classList.add("tooltip--move-left");
+                                                //         } 
+
+                                                //         // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
+                                                //         //     tooltipEl.classList.add("tooltip--move-up");
+                                                //         // }                                                         
+
+                                                //         // Display, position, and set styles for font
+                                                //         tooltipEl.style.opacity = 1;
+                                                //         tooltipEl.style.position = 'absolute';
+                                                        
+                                                //         //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                                                //         //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+
+                                                //         tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+                                                //         tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+                                                //         tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+                                                //         //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+                                                //         tooltipEl.style.pointerEvents = 'none';
+
+                                                        
+
+                                                //     }
                                                 // }
+
+
+
 
                                             };
 
@@ -2908,7 +3082,8 @@
                                                             pointHoverRadius: 5,
                                                             //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                             label: key,
-                                                            fill: true
+                                                            fill: true,
+                                                            rate: value.rate,
                                                         });
                                                     }
 
@@ -3587,52 +3762,12 @@
 
                                 <div class="q7-tab-content__section">
 
-                                    <div class="q7-stats-tabs">
-
-                                        <div id="stream_stat_checkboxes" class="q7-chart-checkboxes">
-
-
-                                            <div class="q7-switch-container q7-switch-container--sd">                                                
-                                                <label class="q7-switch">
-                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="SD">
-                                                    <span class="q7-switch__slider"></span>
-                                                    <div class="q7-switch__title">SD</div>
-                                                </label>
-                                            </div>
-    
-                                            <div class="q7-switch-container q7-switch-container--hd">
-                                                <label class="q7-switch">
-                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="HD">
-                                                    <span class="q7-switch__slider"></span>
-                                                    <div class="q7-switch__title">HD</div>
-                                                </label>
-                                            </div>
-    
-    
-                                            <div class="q7-switch-container q7-switch-container--4k">
-                                                <label class="q7-switch">
-                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="4K">
-                                                    <span class="q7-switch__slider"></span>
-                                                    <div class="q7-switch__title">4K</div>
-                                                </label>
-                                            </div>
-    
-    
-                                            <div class="q7-switch-container q7-switch-container--8k">
-                                                <label class="q7-switch">
-                                                    <input class="q7-input__field" type="checkbox" checked="" data-array="8K">
-                                                    <span class="q7-switch__slider"></span>
-                                                    <div class="q7-switch__title">8K</div>
-                                                </label>
-                                            </div>
-    
-    
-                                        </div>                                    
+                                    <div class="q7-stats-tabs">                                
     
 
                                         <div class="q7-tab">
                                             <div class="q7-tab__controls">
-                                                <div class="q7-tablink q7-tablink--active" data-tabcontent="usage">Usage</div>
+                                                <div class="q7-tablink q7-tablink--active" data-tabcontent="usage">Minutes</div>
                                                 <div class="q7-tablink" data-tabcontent="bandwidth">Bandwidth</div>
                                             </div>
                                         </div>
@@ -3640,6 +3775,46 @@
                                         <div id="usage" class="q7-tabcontent q7-tabcontent--active">
 
                                             <div class="q7-tab-content__section">
+
+                                                <div id="stream_stat_checkboxes" class="q7-chart-checkboxes">
+
+
+                                                    <div class="q7-switch-container q7-switch-container--sd">                                                
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="SD">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">SD</div>
+                                                        </label>
+                                                    </div>
+            
+                                                    <div class="q7-switch-container q7-switch-container--hd">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="HD">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">HD</div>
+                                                        </label>
+                                                    </div>
+            
+            
+                                                    <div class="q7-switch-container q7-switch-container--4k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="4K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">4K</div>
+                                                        </label>
+                                                    </div>
+            
+            
+                                                    <div class="q7-switch-container q7-switch-container--8k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="8K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">8K</div>
+                                                        </label>
+                                                    </div>
+            
+            
+                                                </div>                                                    
                           
                                                 <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
 
@@ -3709,27 +3884,32 @@
                                                             "SD": {
                                                                 data: [60, 90, 20, 120, 90, 170, 43],
                                                                 color: "#082876",
-                                                                background: "#082876"
+                                                                background: "#082876",
+                                                                rate: 0.77
                                                             },                
                                                             "HD": {
                                                                 data: [150, 210, 110, 70, 55, 258, 77],
                                                                 color: "#0f3896",
-                                                                background: "#0f3896"
+                                                                background: "#0f3896",
+                                                                rate: 0.72
                                                             },                           
                                                             "1440P": {
                                                                 data: [520, 410, 380, 340, 390, 420, 470],
                                                                 color: "#134fb2",
-                                                                background: "#134fb2"
+                                                                background: "#134fb2",
+                                                                rate: 0.65
                                                             },                                                                                                     
                                                             "4K": {
                                                                 data: [350, 190, 470, 200, 300, 250, 410],
                                                                 color: "#175fc7",
-                                                                background: "#175fc7"
+                                                                background: "#175fc7",
+                                                                rate: 0.61
                                                             },                                                                                                                                      
                                                             "8K": {
                                                                 data: [160, 45, 230, 80, 146, 196, 110],
                                                                 color: "#aed6fa",
-                                                                background: "#aed6fa"
+                                                                background: "#aed6fa",
+                                                                rate: 0.36
                                                             }                                               
                                                         }
             
@@ -3752,7 +3932,8 @@
                                                                 pointHoverRadius: 5,                                                    
                                                                 //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                                 label: key,
-                                                                fill: true
+                                                                fill: true,
+                                                                rate: value.rate
                                                             });
                                                         });
             
@@ -3816,122 +3997,231 @@
                                                                 mode: 'single'
                                                             },                                                
             
-            
                                                             tooltips: {
                                                                 // Disable the on-canvas tooltip
                                                                 enabled: false,
-                                                       
+                                                                mode: 'index',
+                                                                intersect: false,
+                                                    
                                                                 custom: function (tooltipModel) {
                                                                     //console.log("tooltipModel: ", tooltipModel);
-            
+
                                                                     // Tooltip Element
                                                                     var tooltipEl = document.getElementById('chartjs-tooltip_new');
-            
+
                                                                     // Create element on first render
                                                                     if (!tooltipEl) {
+
                                                                         tooltipEl = document.createElement('div');
                                                                         tooltipEl.id = 'chartjs-tooltip_new';
-                                                                        tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                                        tooltipEl.innerHTML = `
+                                                                            <div class="q7-tooltip-line"></div>
+                                                                            <div class="chartjs-tooltip-container chartjs-tooltip-container--aggregated">
+                                                                                <table></table>
+                                                                            </div>
+                                                                        `;
                                                                         document.body.appendChild(tooltipEl);
                                                                     }
-            
+
                                                                     // Hide if no tooltip
                                                                     if (tooltipModel.opacity === 0) {
                                                                         tooltipEl.style.opacity = 0;
                                                                         return;
                                                                     }
-            
+
                                                                     function getBody(bodyItem) {
                                                                         return bodyItem.lines;
                                                                     }
-            
+
                                                                     // Set Text
                                                                     //console.log("tooltipModel: ", tooltipModel)
-            
+
                                                                     if (tooltipModel.body) {                 
-            
+
                                                                         var titleLines = tooltipModel.title || [];
-                                                                                                                     
-            
+                                                                                                                    
+
                                                                         datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
                                                                         //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
-            
+
                                                                         var labelIndex = tooltipModel.dataPoints[0].index;
-            
+
                                                                         var labelDate = new Date (dataLabels[labelIndex]);
                                                                         var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
-                                                                          
-            
+                                                                        
+
                                                                         var yValue = tooltipModel.dataPoints[0].yLabel;
                                                                         var labelName = chart.data.datasets[datasetIndex].label;                                                    
-            
-                                                                        var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
-            
-                                                                        innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
-            
+
+                                                                        // var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                                        var innerHtml = `<thead class='tooltip-title'>`;
+
+                                                                        innerHtml += `<tr><th>Type</th><th>Minutes</th><th>Cost</th></tr>`;
+
                                                                         innerHtml += '</thead><tbody>';
-                                                                        innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+
+                                                                    
+                                                                        // filter data by index
+                                                                        var aggregatedData = data.datasets;
+                                                                    
+
+                                                                        //aggregatedData.reverse();
+                                                                        var newDataSet = [];
+                                                                        var totalValue = 0;
+                                                                        var totalTime = 0;
+
+                                                                        // build table rows
+                                                                        aggregatedData.forEach((element, index) => {
+                                                                            
+                                                                            var currentLabelName = aggregatedData[index].label;  
+                                                                            var currentRate = aggregatedData[index].rate;  
+
+                                                                            var minutes = element.data[labelIndex] 
+
+                                                                            var currentValue = minutes * currentRate;
+
+                                                                            
+                                                                            totalValue+=currentValue;
+
+                                                                            totalTime+=minutes;
+
+                                                                            newDataSet.push({
+                                                                                label: currentLabelName,
+                                                                                time: minutes,
+                                                                                cost: currentValue
+                                                                            })
+
+                                                                            // innerHtml += `
+                                                                            //     <tr>
+                                                                            //         <td class='tooltip-name--${currentLabelName}'>${currentLabelName}</td>
+                                                                            //         <td>${currentValue}</td>
+                                                                            //         <td>$${(currentValue*0.42).toFixed(2)}</td>
+                                                                            //     </tr>
+                                                                            // `;
+                                                                        });
+
+                                                                        newDataSet.reverse();
+
+                                                                        newDataSet.forEach(({label, time, cost}) => {
+                                                                            innerHtml += `
+                                                                                <tr>
+                                                                                    <td class='tooltip-name--${label}'> <div class='tooltip__marker'></div> ${label}</td>
+                                                                                    <td>${time}</td>
+                                                                                    <td>$${(cost).toFixed(2)}</td>
+                                                                                </tr>
+                                                                            `;
+                                                                        })
+
+                                                                        //console.log("tooltipModel.dataPoints.length: ", tooltipModel.dataPoints.length)
+
+                                                                        //innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                                        
                                                                         innerHtml += '</tbody>';
-            
+
                                                                         // add footer
-                                                                        innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
-            
+                                                                        innerHtml += `
+                                                                            <tfoot>
+                                                                                <tr>
+                                                                                    <td>Total</td>
+                                                                                    <td>${totalTime}</td>
+                                                                                    <td>$${(totalValue).toFixed(2)}</td>
+                                                                                </tr>
+                                                                            </tfoot>
+                                                                        `
+
                                                                         var tableRoot = tooltipEl.querySelector('table');
                                                                         tableRoot.innerHTML = innerHtml;
+
+                                                                        var tableContainer = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+                                                                    
+
+                                                                        if(!tooltipEl.querySelector('.tooltip-container__title')){
+                                                                            var titleEl = document.createElement("DIV"); 
+                                                                            titleEl.classList.add('tooltip-container__title');
+                                                                            titleEl.innerHTML = title;
+
+                                                                            tableContainer.insertBefore(titleEl, tableContainer.childNodes[0]); 
+                                                                        } else {
+                                                                            tooltipEl.querySelector('.tooltip-container__title').innerHTML = title;
+                                                                        }
+
+                                                                        
                                                                     }
-            
+
                                                                     ///////////////////////////////////////////////////////////////////////
                                                                     // see for tooltip position https://stackoverflow.com/a/64887282/6261255
                                                                     ///////////////////////////////////////////////////////////////////////
-            
+
                                                                     tooltipEl.className = "";
-            
+
                                                                     // `this` will be the overall tooltip
                                                                     var position = this._chart.canvas.getBoundingClientRect();
-            
-            
+
+
                                                                     var chartBoundaries = this._chart.canvas.getBoundingClientRect();
                                                                     //console.log("chartBoundaries: ", chartBoundaries);
-            
+
                                                                     tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
-                                                                    tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                                // tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';   
+                                                                var tooltipHeight = $(tooltipEl).height(); 
+                                                        
+                                                                var chartHeight = $('#usage_chart').height();
+                                                                
+                                                                
+                                                                var tooltipShift = (chartHeight - tooltipHeight) / 2;
+
+                                                                tooltipEl.style.top = position.top + window.pageYOffset + tooltipShift  + 'px';  
+                                                                //tooltipEl.style.top = position.top + window.pageYOffset  + 'px'; 
+
+                                                                
+                                                                var tooltipLine= tooltipEl.querySelector('.q7-tooltip-line');
+                                                                tooltipLine.style.top = `-${tooltipShift - 13 - 22}px`;
+                                                                tooltipLine.style.bottom = `-${tooltipShift - 13}px`;
+
+                                                                //    var insideEl = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+
+                                                                //    insideEl.style.paddingTop = tooltipShift + "px";
+                                                                //    insideEl.style.paddingBottom = tooltipShift + "px";
                                                                     
                                                                     var tooltipBoundaries = tooltipEl.getBoundingClientRect();
                                                                     //console.log("tooltipBoundaries: ", tooltipBoundaries);      
-            
+
                                                                     // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
                                                                     // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
                                                                     
-            
+
                                                                     
-            
+
                                                                     if(tooltipBoundaries.right > chartBoundaries.right){
                                                                         tooltipEl.classList.add("tooltip--move-left");
                                                                     } 
-            
+
                                                                     // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
                                                                     //     tooltipEl.classList.add("tooltip--move-up");
                                                                     // }                                                         
-            
+
                                                                     // Display, position, and set styles for font
                                                                     tooltipEl.style.opacity = 1;
                                                                     tooltipEl.style.position = 'absolute';
                                                                     
                                                                     //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
                                                                     //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
-            
+
+                                                    
+
                                                                     tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
                                                                     tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
                                                                     tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
                                                                     //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
                                                                     tooltipEl.style.pointerEvents = 'none';
-            
+
                                                                     
-            
+
                                                                 }
                                                             }
-            
-            
+                                                                        
+                                    
+
                                                         };
             
                                                         // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
@@ -4003,7 +4293,8 @@
                                                                         pointHoverRadius: 5,
                                                                         //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                                         label: key,
-                                                                        fill: true
+                                                                        fill: true,
+                                                                        rate: value.rate,
                                                                     });
                                                                 }
             
@@ -4039,6 +4330,60 @@
                                         <div id="bandwidth" class="q7-tabcontent">
 
                                             <div class="q7-tab-content__section">
+
+
+                                                <div id="stream_stat_checkboxes__bandwidth" class="q7-chart-checkboxes">
+
+
+                                                    <div class="q7-switch-container q7-switch-container--1440p">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="1440P">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">EUR</div>
+                                                        </label>
+                                                    </div>
+        
+                                                    <div class="q7-switch-container q7-switch-container--4k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="4K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">AP</div>
+                                                        </label>
+                                                    </div>
+        
+                                                    <div class="q7-switch-container q7-switch-container--5k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="5K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">NA</div>
+                                                        </label>
+                                                    </div>
+        
+                                                    <div class="q7-switch-container q7-switch-container--6k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="6K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">SA</div>
+                                                        </label>
+                                                    </div>
+        
+                                                    <div class="q7-switch-container q7-switch-container--7k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="7K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">ANZ</div>
+                                                        </label>
+                                                    </div>
+        
+                                                    <div class="q7-switch-container q7-switch-container--8k">
+                                                        <label class="q7-switch">
+                                                            <input class="q7-input__field" type="checkbox" checked="" data-array="8K">
+                                                            <span class="q7-switch__slider"></span>
+                                                            <div class="q7-switch__title">JAP</div>
+                                                        </label>
+                                                    </div>
+            
+                                                </div>                                                
                           
                                                 <div class="q6-billing-chart-container q7-billing-chart-container--usage-stats">
 
@@ -4101,34 +4446,53 @@
                                                         var gradientStrokeSD= ctx.createLinearGradient(0, 0, 0, 440);
                                                         gradientStrokeSD.addColorStop(0, 'rgba(255, 5, 123, 1)');
                                                         gradientStrokeSD.addColorStop(0.7, 'rgba(255, 5, 123, 0.7)');     
-                                                        gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');                                                                                                                                                                                                                                                            
-            
+                                                        gradientStrokeSD.addColorStop(1, 'rgba(255, 5, 123, 0.2)');       
+
+                                                        // 1440P 4K 5K 6K 7K  8K 
+                                                        // EUR   AP NA SA ANZ JAP
                                                         var dataArray = { 
                                                                                                                                                   
-                                                            "SD": {
+                                                            "1440P": {
                                                                 data: [20, 140, 40, 30, 21, 189, 34],
                                                                 color: "#082876",
-                                                                background: "#082876"
+                                                                background: "#082876",
+                                                                rate: 0.77,
+                                                                name: "EUR"
                                                             },                
-                                                            "HD": {
+                                                            "4K": {
                                                                 data: [89, 120, 160, 40, 22, 120, 260],
                                                                 color: "#0f3896",
-                                                                background: "#0f3896"
+                                                                background: "#0f3896",
+                                                                rate: 0.72,
+                                                                name: "AP"
                                                             },                           
-                                                            "1440P": {
+                                                            "5K": {
                                                                 data: [52, 410, 38, 340, 39, 420, 70],
                                                                 color: "#134fb2",
-                                                                background: "#134fb2"
+                                                                background: "#134fb2",
+                                                                rate: 0.65,
+                                                                name: "NA"
                                                             },                                                                                                     
-                                                            "4K": {
+                                                            "6K": {
                                                                 data: [50, 90, 70, 20, 30, 50, 10],
                                                                 color: "#175fc7",
-                                                                background: "#175fc7"
-                                                            },                                                                                                                                      
+                                                                background: "#175fc7",
+                                                                rate: 0.61,
+                                                                name: "SA"
+                                                            },         
+                                                            "7K": {
+                                                                data: [350, 190, 470, 200, 300, 250, 410],
+                                                                color: "#54a4f3",
+                                                                background: "#54a4f3",
+                                                                rate: 0.42,
+                                                                name: "ANZ"
+                                                            },                                                                                                                                                                                           
                                                             "8K": {
                                                                 data: [60, 145, 30, 180, 46, 96, 10],
                                                                 color: "#aed6fa",
-                                                                background: "#aed6fa"
+                                                                background: "#aed6fa",
+                                                                rate: 0.36,
+                                                                name: "JAP"
                                                             }                                               
                                                         }
             
@@ -4151,7 +4515,9 @@
                                                                 pointHoverRadius: 5,                                                    
                                                                 //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                                 label: key,
-                                                                fill: true
+                                                                fill: true,
+                                                                rate: value.rate,
+                                                                name: value.name
                                                             });
                                                         });
             
@@ -4216,121 +4582,231 @@
                                                             },                                                
             
             
+            
                                                             tooltips: {
                                                                 // Disable the on-canvas tooltip
                                                                 enabled: false,
-                                                       
+                                                                mode: 'index',
+                                                                intersect: false,
+                                                    
                                                                 custom: function (tooltipModel) {
                                                                     //console.log("tooltipModel: ", tooltipModel);
-            
+
                                                                     // Tooltip Element
                                                                     var tooltipEl = document.getElementById('chartjs-tooltip_new');
-            
+
                                                                     // Create element on first render
                                                                     if (!tooltipEl) {
+
                                                                         tooltipEl = document.createElement('div');
                                                                         tooltipEl.id = 'chartjs-tooltip_new';
-                                                                        tooltipEl.innerHTML = `<div class="chartjs-tooltip-container"><table></table></div>`;
+                                                                        tooltipEl.innerHTML = `
+                                                                            <div class="q7-tooltip-line"></div>
+                                                                            <div class="chartjs-tooltip-container chartjs-tooltip-container--aggregated">
+                                                                                <table></table>
+                                                                            </div>
+                                                                        `;
                                                                         document.body.appendChild(tooltipEl);
                                                                     }
-            
+
                                                                     // Hide if no tooltip
                                                                     if (tooltipModel.opacity === 0) {
                                                                         tooltipEl.style.opacity = 0;
                                                                         return;
                                                                     }
-            
+
                                                                     function getBody(bodyItem) {
                                                                         return bodyItem.lines;
                                                                     }
-            
+
                                                                     // Set Text
                                                                     //console.log("tooltipModel: ", tooltipModel)
-            
+
                                                                     if (tooltipModel.body) {                 
-            
+
                                                                         var titleLines = tooltipModel.title || [];
-                                                                                                                     
-            
+                                                                                                                    
+
                                                                         datasetIndex = tooltipModel.dataPoints[0].datasetIndex;
                                                                         //var backgroundColor = chart.data.datasets[datasetIndex].borderColor;
-            
+
                                                                         var labelIndex = tooltipModel.dataPoints[0].index;
-            
+
                                                                         var labelDate = new Date (dataLabels[labelIndex]);
                                                                         var title = `${(labelDate.toLocaleString("en", { month: "long" }))} ${labelDate.getDay()}, ${labelDate.getFullYear()}`;
-                                                                          
-            
+                                                                        
+
                                                                         var yValue = tooltipModel.dataPoints[0].yLabel;
                                                                         var labelName = chart.data.datasets[datasetIndex].label;                                                    
-            
-                                                                        var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
-            
-                                                                        innerHtml += `<tr><th>${title}</th><th>Minutes</th><th>Cost</th></tr>`;
-            
+
+                                                                        // var innerHtml = `<thead class='tooltip-title--${labelName}'>`;
+                                                                        var innerHtml = `<thead class='tooltip-title'>`;
+
+                                                                        innerHtml += `<tr><th>Region</th><th>Minutes</th><th>Cost</th></tr>`;
+
                                                                         innerHtml += '</thead><tbody>';
-                                                                        innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+
+                                                                    
+                                                                        // filter data by index
+                                                                        var aggregatedData = data.datasets;
+                                                                    
+
+                                                                        //aggregatedData.reverse();
+                                                                        var newDataSet = [];
+                                                                        var totalValue = 0;
+                                                                        var totalTime = 0;
+
+                                                                        // build table rows
+                                                                        aggregatedData.forEach((element, index) => {
+                                                                            
+                                                                            var currentLabelName = aggregatedData[index].label;  
+                                                                            var currentRate = aggregatedData[index].rate;
+                                                                            
+                                                                            var name = aggregatedData[index].name;
+
+                                                                            var minutes = element.data[labelIndex] 
+
+                                                                            var currentValue = minutes * currentRate;
+
+                                                                            
+                                                                            totalValue+=currentValue;
+
+                                                                            totalTime+=minutes;
+
+                                                                            newDataSet.push({
+                                                                                label: currentLabelName,
+                                                                                time: minutes,
+                                                                                cost: currentValue,
+                                                                                name: name
+                                                                            })
+
+                                                                        });
+
+                                                                        newDataSet.reverse();
+
+                                                                        //console.log("newDataSet: ", newDataSet)
+                                                                        // 1440P 4K 5K 6K 7K  8K 
+                                                                        // EUR   AP NA SA ANZ JAP
+
+                                                                        newDataSet.forEach(({label, time, cost, name}) => {
+                                                                            innerHtml += `
+                                                                                <tr>
+                                                                                    <td class='tooltip-name--${label}'> <div class='tooltip__marker'></div> ${name}</td>
+                                                                                    <td>${time}</td>
+                                                                                    <td>$${(cost).toFixed(2)}</td>
+                                                                                </tr>
+                                                                            `;
+                                                                        })
+
+                                                                        //console.log("tooltipModel.dataPoints.length: ", tooltipModel.dataPoints.length)
+
+                                                                        //innerHtml += `<tr><td class='tooltip-name--${labelName}'>${labelName}</td><td>${yValue}</td><td>$${(yValue*0.42).toFixed(2)}</td></tr>`;
+                                                                        
                                                                         innerHtml += '</tbody>';
-            
+
                                                                         // add footer
-                                                                        innerHtml += `<tfoot><tr><td>Total</td><td>${yValue}</td><td>$${(yValue * 0.42).toFixed(2)}</td></tr></tfoot>`
-            
+                                                                        innerHtml += `
+                                                                            <tfoot>
+                                                                                <tr>
+                                                                                    <td>Total</td>
+                                                                                    <td>${totalTime}</td>
+                                                                                    <td>$${(totalValue).toFixed(2)}</td>
+                                                                                </tr>
+                                                                            </tfoot>
+                                                                        `
+
                                                                         var tableRoot = tooltipEl.querySelector('table');
                                                                         tableRoot.innerHTML = innerHtml;
+
+                                                                        var tableContainer = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+                                                                    
+
+                                                                        if(!tooltipEl.querySelector('.tooltip-container__title')){
+                                                                            var titleEl = document.createElement("DIV"); 
+                                                                            titleEl.classList.add('tooltip-container__title');
+                                                                            titleEl.innerHTML = title;
+
+                                                                            tableContainer.insertBefore(titleEl, tableContainer.childNodes[0]); 
+                                                                        } else {
+                                                                            tooltipEl.querySelector('.tooltip-container__title').innerHTML = title;
+                                                                        }
+
+                                                                        
                                                                     }
-            
+
                                                                     ///////////////////////////////////////////////////////////////////////
                                                                     // see for tooltip position https://stackoverflow.com/a/64887282/6261255
                                                                     ///////////////////////////////////////////////////////////////////////
-            
+
                                                                     tooltipEl.className = "";
-            
+
                                                                     // `this` will be the overall tooltip
                                                                     var position = this._chart.canvas.getBoundingClientRect();
-            
-            
+
+
                                                                     var chartBoundaries = this._chart.canvas.getBoundingClientRect();
                                                                     //console.log("chartBoundaries: ", chartBoundaries);
-            
+
                                                                     tooltipEl.style.left = position.left +  window.pageXOffset + tooltipModel.caretX  + 'px';
-                                                                    tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';          
+                                                                // tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY  + 'px';   
+                                                                var tooltipHeight = $(tooltipEl).height(); 
+                                                        
+                                                                var chartHeight = $('#usage_chart').height();
+                                                                
+                                                                
+                                                                var tooltipShift = (chartHeight - tooltipHeight) / 2;
+
+                                                                tooltipEl.style.top = position.top + window.pageYOffset + tooltipShift  + 'px';  
+                                                                //tooltipEl.style.top = position.top + window.pageYOffset  + 'px'; 
+
+                                                                
+                                                                var tooltipLine= tooltipEl.querySelector('.q7-tooltip-line');
+                                                                tooltipLine.style.top = `-${tooltipShift - 13 - 22}px`;
+                                                                tooltipLine.style.bottom = `-${tooltipShift - 13}px`;
+
+                                                                //    var insideEl = tooltipEl.querySelector('.chartjs-tooltip-container.chartjs-tooltip-container--aggregated');
+
+                                                                //    insideEl.style.paddingTop = tooltipShift + "px";
+                                                                //    insideEl.style.paddingBottom = tooltipShift + "px";
                                                                     
                                                                     var tooltipBoundaries = tooltipEl.getBoundingClientRect();
                                                                     //console.log("tooltipBoundaries: ", tooltipBoundaries);      
-            
+
                                                                     // console.log("right: ", tooltipBoundaries.right, chartBoundaries.right);
                                                                     // console.log("bottom: ", tooltipBoundaries.bottom, chartBoundaries.bottom);
                                                                     
-            
+
                                                                     
-            
+
                                                                     if(tooltipBoundaries.right > chartBoundaries.right){
                                                                         tooltipEl.classList.add("tooltip--move-left");
                                                                     } 
-            
+
                                                                     // if(tooltipBoundaries.bottom + 50 > chartBoundaries.bottom){
                                                                     //     tooltipEl.classList.add("tooltip--move-up");
                                                                     // }                                                         
-            
+
                                                                     // Display, position, and set styles for font
                                                                     tooltipEl.style.opacity = 1;
                                                                     tooltipEl.style.position = 'absolute';
                                                                     
                                                                     //tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
                                                                     //tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
-            
+
+                                                    
+
                                                                     tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
                                                                     tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
                                                                     tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
                                                                     //tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
                                                                     tooltipEl.style.pointerEvents = 'none';
-            
+
                                                                     
-            
+
                                                                 }
                                                             }
-            
-            
+                                                                        
+                                    
                                                         };
             
                                                         // add line https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
@@ -4372,14 +4848,14 @@
             
                                                         // on chart checkbox clicked we update the chart with new dataset
                                                         // for streaming tab
-                                                        $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']").change(function () {
+                                                        $("#stream_stat_checkboxes__bandwidth.q7-chart-checkboxes input[type='checkbox']").change(function () {
                                                             // make array of cheched checkboxes
                                                             var checkedValues = [];
-                                                            $("#stream_stat_checkboxes.q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
+                                                            $("#stream_stat_checkboxes__bandwidth.q7-chart-checkboxes input[type='checkbox']:checked").each(function () {
                                                                 checkedValues.push($(this).attr('data-array'));
                                                             });
 
-                                                           // console.log("checkedValues: ", checkedValues);
+                                                           
             
                                                             // generate new datasets including only selected checkboxes
                                                             var newDatasets = [];
@@ -4402,7 +4878,9 @@
                                                                         pointHoverRadius: 5,
                                                                         //pointHoverBackgroundColor: colorShade(value.color, +40),
                                                                         label: key,
-                                                                        fill: true
+                                                                        fill: true,
+                                                                        rate: value.rate,
+                                                                        name: value.name
                                                                     });
                                                                 }
             
