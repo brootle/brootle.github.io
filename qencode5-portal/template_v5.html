@@ -1069,7 +1069,174 @@
                     </div>                    
 
                 </div>
-            </div>            
+            </div>           
+            
+            <div class="q7-container">
+                <div class="q7-section">
+                    <div class="q7-content-block">
+                        <button data-toggle="modal" data-target="#upgrade_account" class="q7-button">Trigger Upgrade Your Account window</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade q7-modal q7-modal--upgrade q7-modal--upgrade-account" id="upgrade_account" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Upgrade Your Account</h5>
+
+                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="q7-upgrade-benefits-list">
+                                        <div class="q7-upgrade-benefits__item">
+                                            <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--03"></div>
+                                            <div>
+                                                <div class="q7-upgrade-benefits__item-title">Full access to all features </div>
+                                                <div class="q7-upgrade-benefits__item-text">
+                                                    No watermarks for transcoding, live streaming, and playback.
+                                                 </div>                                                
+                                            </div>
+                                        </div>                                         
+                                        <div class="q7-upgrade-benefits__item">
+                                            <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--02"></div>
+                                            <div>
+                                                <div class="q7-upgrade-benefits__item-title">$30 in free credits</div>
+                                                <div class="q7-upgrade-benefits__item-text">
+                                                    That's up to 6,000 minutes of SD video output.
+                                                </div>                                                
+                                            </div>
+
+                                        </div>   
+                                        <div class="q7-upgrade-benefits__item">
+                                            <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--01"></div>
+                                            <div>
+                                                <div class="q7-upgrade-benefits__item-title">Pay-as-you-Go after </div>
+                                                <div class="q7-upgrade-benefits__item-text">
+                                                    Get charged at the end of the month for what you use.
+                                                </div>                                                
+                                            </div>
+                                        </div>                                          
+                                        <div class="q7-upgrade-benefits__item">
+                                            <div class="q7-upgrade-benefits__item-icon q7-upgrade-benefits__item-icon--05"></div>
+                                            <div>
+                                                <div class="q7-upgrade-benefits__item-title">Enterprise solutions  </div>
+                                                <div class="q7-upgrade-benefits__item-text">
+                                                    <a href="">Contact sales team</a>
+                                                     for custom features and discounts.
+                                                </div>
+                                            </div>
+                                        </div>                                                                                                                                              
+                                    </div>
+
+                                    <div class="q7-tab q7-tab--upgrade-account">
+                                        <div class="q7-upgrade-tab__controls">
+                                            <div class="q7-tablinks q7-tablinks--active" data-tabcontent="1">
+                                                Credit Card
+                                            </div>
+                                            <div class="q7-tablinks" data-tabcontent="2">
+                                                Pay Pal
+                                            </div>                                                               
+                                        </div>     
+                                        <div class="q7-upgrade-tab__body">
+                                            <div id="1" class="q7-tabcontent q7-tabcontent--active">
+                                                
+                                                <div class="q7-input" id="payment-method_card-name">
+                                                    <div class="q7-input__label">
+                                                        <label>Name</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">
+                                                </div>
+
+                                                <div class="q7-input">
+                                                    <div class="q7-input__label">
+                                                        <label for="user_card">Card number</label>
+                                                    </div>
+                    
+                                                    <div id="card-element_upgrade-card"></div>
+                                                    <script src="https://js.stripe.com/v3/"></script>
+                                                    <script>
+                                                        var stripe = Stripe('123');
+                                                        var elements = stripe.elements();
+                                                        var style = {
+                                                            base: {
+                                                                color: '#171717',
+                                                                lineHeight: '22px',
+                                                                height: '22px',
+                                                                fontFamily: 'proxima-nova, sans-serif',
+                                                                fontSmoothing: 'antialiased',
+                                                                fontSize: '16px',
+                                                                fontWeight: '600',
+                                                                '::placeholder': {
+                                                                    color: '#aab7c4'
+                                                                }
+                                                            },
+                                                            invalid: {
+                                                                color: '#fa755a',
+                                                                iconColor: '#fa755a'
+                                                            }
+                                                        };
+                                                        var card = elements.create('card', { style: style });
+                                                        card.mount('#card-element_upgrade-card');
+                                                    </script>
+                                                </div>
+                    
+                                                <div class="q7-powered-by-stripe" id="payment-method_card-message">
+                                                    <div class="q7-lock-icon--left">
+                                                        Billing information secured and encrypted.
+                                                    </div>
+                                                    <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
+                                                </div>     
+                                                
+                                                <button class="q7-button">Upgrade Account</button>                                                
+                                                
+                                            </div>
+                                            <div id="2" class="q7-tabcontent">
+
+                                                <div class="q7-input" id="payment-method_card-name">
+                                                    <div class="q7-input__label">
+                                                        <label>Email address</label>
+                                                    </div>
+                                                    <input class="q7-input__field" type="text">
+                                                </div>
+
+                                                <button class="q7-button q7-button--paypal"><span>Proceed to</span></button>                                                   
+                                            </div>  
+                                        </div>                   
+                                    </div>
+            
+                                    <script>
+                                        var tabLinks = document.querySelectorAll('.q7-tablinks');
+                            
+                                        tabLinks.forEach(link => link.addEventListener('click', switchTab));
+                            
+                                        function switchTab(e){
+                            
+                                            // find active elements and remove -> tablinks--active tabcontent--active
+                            
+                                            $('.q7-tablinks--active').removeClass("q7-tablinks--active");
+                                            $('.q7-tabcontent--active').removeClass("q7-tabcontent--active");
+                            
+                                            // find what tab link was clicked and show tab content with that ID
+                                            var clickedLink = e.currentTarget;
+                                            $(clickedLink).addClass('q7-tablinks--active');
+                            
+                                            var tabID = clickedLink.getAttribute("data-tabcontent");
+                            
+                                            $(`#${tabID}`).addClass('q7-tabcontent--active');
+                            
+                                        }
+                                    </script>     
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+
+                </div>
+            </div>             
 
             <div class="q7-container">
                 <div class="q7-section">
