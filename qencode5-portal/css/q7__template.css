@@ -4293,7 +4293,7 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 }
 
 .q7-stream-status{
-    line-height: 32px;
+
     border-radius: 5px;
     font-weight: 500;
     position: relative;
@@ -12410,11 +12410,31 @@ img.q7-welcome-api-builder{
 .q7-stream__player-footer .q7-input-and-buttons--inline .q7-input{
     display: flex;
     align-items: center;
+    margin: 0;
+}
+
+.q7-stream-container .q7-input__field--view span {
+    font-weight: 400;
+}
+
+.q7-stream-container .q7-stream__player-footer .q7-input__label label {
+    color: #6F6F6F;
+    font-weight: 400;
 }
 
 .q7-stream__player-footer .q7-input-and-buttons--inline .q7-input .q7-input__label{
     margin-right: 5px;
 }
+
+.q7-stream-container .q7-stream__player-footer .q7-input-and-buttons--inline:first-of-type {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.q7-stream-container .q7-stream__player-footer .q7-input-and-buttons--inline{
+    margin-bottom: 2px;
+}
+
 
 .q7-stream__player-header .q7-button.q7-button--back,
 .q7-stream-details .q7-button.q7-button--back{
@@ -12432,6 +12452,21 @@ img.q7-welcome-api-builder{
 
 .q7-stream-container .q7-input__label label{
     color: #363940;
+    font-weight: 500;
+}
+
+.q7-stream-container .q7-tooltip {
+    background: #707070;
+    width: 52px;
+    text-align: center;
+    position: absolute;
+    left: calc(50% - 26px);
+    top: -25px;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 0px 0px;
+    line-height: 18px;
+    font-weight: 400;
 }
 
 .q7-stream-container .q7-input__field--view{
@@ -12459,7 +12494,7 @@ img.q7-welcome-api-builder{
 }
 
 .q7-stream__player-footer .q7-button.q7-button--delete.q7-button--round{
-    color: #E03636;
+    color: #6F6F6F;
     background: transparent;
     font-size: 14px;
     padding: 0;
@@ -12470,20 +12505,27 @@ img.q7-welcome-api-builder{
     height: 28px;
 }
 
+.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round,
+.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round{
+    background: transparent;
+    font-size: 14px;
+    padding: 0;
+    min-width: 0;
+    text-decoration: underline;
+    line-height: 28px;
+    border: none;
+    height: 28px;
+    color: var(--blue);
+}
+
+
+
 .q7-stream__player-footer .q7-button.q7-button--delete.q7-button--round:hover{
     background: transparent;
     box-shadow: none;
 }
 
-.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round,
-.q7-stream__player-footer .q7-button.q7-button--stopping-stream.q7-button--round,
-.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round{
-    line-height: 28px;
-    border: none;
-    height: 28px;
-    background-color: var(--blue);
-    color: white;    
-}
+
 
 .q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round > span,
 .q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round > span{
@@ -12533,11 +12575,6 @@ img.q7-welcome-api-builder{
     width: 16px;    
 }
 
-
-.q7-stream__player-footer .q7-button.q7-button--stop-stream.q7-button--round:hover,
-.q7-stream__player-footer .q7-button.q7-button--start-stream.q7-button--round:hover {
-    background-color: #265cc5;
-}
 
 .q7-stream-container > div + div{
     margin-left: 40px;
@@ -12700,7 +12737,7 @@ img.q7-welcome-api-builder{
 }
 
 .q7-hide-key-button > .q7-tooltip{
-    left: calc(50% - 41px);
+    left: calc(50% - 9px);
 }
 
 .q7-copy-text-button .q7-flash-message,
@@ -12711,8 +12748,12 @@ img.q7-welcome-api-builder{
     min-width: 100%;
     background: #616161;
     color: white;
-    font-size: 13px;
-    line-height: 23px;
+
+    border-radius: 3px;
+    padding: 0px 0px;
+    line-height: 18px;
+    font-weight: 400;    
+    font-size: 12px;
 }
 
 .q7-modal-footer-page-indicator{
@@ -13621,6 +13662,10 @@ hr {
     padding-left: 0;    
 }
 
+.q7-stream-log__controls .q7-button.q7-button--next{
+    text-decoration: underline;
+}
+
 .q7-button.q7-button--next:after {
     content: '';
     display: inline-block;
@@ -13801,9 +13846,7 @@ hr {
     margin-top: 0;
 }
 
-.q7-stream__player-footer .q7-input-and-buttons--inline .q7-button + .q7-button {
-    margin-left: 0px;
-}
+
 
 .q7-filter-box.q7-filter-box--stream-logs input[type=password].q7-input__field, 
 .q7-filter-box.q7-filter-box--stream-logs input[type=time].q7-input__field, 

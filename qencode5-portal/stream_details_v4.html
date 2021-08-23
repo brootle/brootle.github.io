@@ -618,46 +618,20 @@
                                             <div class="q7-input__label">
                                                 <label>Status:</label>
                                             </div>
-                                            <div class="q7-input__field--view">
-                                                Idle
-                                            </div>
+                                            <div class="q7-stream-status q7-stream-status--idle">Idle</div>
                                         </div>  
-                                        <div class="q7-input">                                   
-                                            <div class="q7-input__label">
-                                                <label>Created:</label>
-                                            </div>
-                                            <div class="q7-input__field--view">
-                                                Nov 21, 2021 20:11:01
-                                            </div>
+                                        <div>      
+                                            <button id="stop_stream" class="q7-button q7-button--stop-stream q7-button--round">
+                                                Stop stream
+                                            </button>        
+                                            <button id="start_stream" class="q7-button q7-button--start-stream q7-button--round" style="display: none;">
+                                                Start stream
+                                            </button>                                                                                                             
+                                            <button data-toggle="modal" data-target="#deleteStream" class="q7-button q7-button--delete q7-button--round">
+                                                Delete stream
+                                            </button>
                                         </div>                                                                               
                                     </div>
-                                    <div class="q7-input-and-buttons--inline">
-                                        <button id="stop_stream" class="q7-button q7-button--stop-stream q7-button--round">
-                                            <span>Stop stream</span>
-                                        </button> 
-                                        <button id="start_stream" class="q7-button q7-button--start-stream q7-button--round" style="display: none;">
-                                            <span>Start stream</span>
-                                        </button>     
-                                        <button id="stopping_stream" class="q7-button q7-button--stopping-stream q7-button--round">
-                                            <svg class="q7-loading-spinner" viewBox="0 0 50 50">
-                                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-                                            </svg>
-                                            <span>Stopping stream</span>
-                                        </button>                                                                                                                        
-                                        <button data-toggle="modal" data-target="#deleteStream" class="q7-button q7-button--delete q7-button--round">
-                                            Delete stream
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="q7-stream__details">
-
-                                <div class="q7-stream__details-header">
-                                    <span>Live Streaming:</span> <a href="">API Reference</a> | <a href="">Tutorial</a>
-                                </div>                                
-
-                                <div class="q7-stream__details-body">
-
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
                                             <div class="q7-input__label">
@@ -669,15 +643,14 @@
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
                                                         <div class="q7-tooltip">
-                                                            Copy URL
-                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                            Copy
+                                                            <div class="q7-flash-message" style="opacity: 0;">Copied</div>
                                                         </div>                                                        
                                                     </div>                                                 
                                                 </div>                                                                                       
                                             </div>
                                         </div>                                        
                                     </div>
-
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
                                             <div class="q7-input__label">
@@ -687,33 +660,27 @@
                                                 <span>Netflix_Demo_Stream_2021</span>                                                                                                                                     
                                             </div>
                                         </div>                                        
-                                    </div>                                
-
+                                    </div>      
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
                                             <div class="q7-input__label">
-                                                <label>Stream Key:</label>      
-                                                <a>Recreate stream key</a>                                  
+                                                <label>Created:</label>                                        
                                             </div>
-                                            <div class="q7-input__field--view q7-input__field--view-two-buttons">
-                                                <span id="key">81ad55e-87e0-4278-af91-7262da3b52bb</span>
-                                                <span id="hidden_key" style="display: none;">∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span>
-                                                <div class="q7-inline-action-buttons">
-                                                    <div class="q7-copy-text-button">
-                                                        <div class="q7-tooltip">
-                                                            Copy URL
-                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
-                                                        </div>                                                        
-                                                    </div>       
-                                                    <div id="toggle_key_view" class="q7-hide-key-button">
-                                                        <div class="q7-tooltip">
-                                                            Hide key
-                                                        </div>                                                      
-                                                    </div>                                                                                         
-                                                </div>                                   
+                                            <div class="q7-input__field--view">
+                                                <span>Nov 21, 2021 20:11:01</span>                                                                                                                                     
                                             </div>
                                         </div>                                        
-                                    </div>         
+                                    </div>                                                                        
+                                </div>
+                            </div>
+                            <div class="q7-stream__details">
+
+                                <div class="q7-stream__details-header">
+                                    <span>Live Streaming:</span> <a href="">API Reference</a> | <a href="">Tutorial</a>
+                                </div>                                
+
+                                <div class="q7-stream__details-body">
+                                  
                                     
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
@@ -726,8 +693,8 @@
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
                                                         <div class="q7-tooltip">
-                                                            Copy URL
-                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                            Copy
+                                                            <div class="q7-flash-message" style="opacity: 0;">Copied</div>
                                                         </div>                                                        
                                                     </div>                                                
                                                 </div>                                                                                   
@@ -738,34 +705,40 @@
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
                                                         <div class="q7-tooltip">
-                                                            Copy URL
-                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                            Copy
+                                                            <div class="q7-flash-message" style="opacity: 0;">Copied</div>
                                                         </div>                                                        
                                                     </div>                                                
                                                 </div>                                                                                    
                                             </div>                                        
                                         </div>                                        
                                     </div>   
-
+      
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
                                             <div class="q7-input__label">
-                                                <label>Playback URL:</label>                                        
+                                                <label>Stream Key:</label>      
+                                                <a>Recreate stream key</a>                                  
                                             </div>
-                                            <div class="q7-input__field--view">
-                                                <span>https://example.com/hls/master.m3u8</span>
-                                                                                        
+                                            <div class="q7-input__field--view q7-input__field--view-two-buttons">
+                                                <span id="key">81ad55e-87e0-4278-af91-7262da3b52bb</span>
+                                                <span id="hidden_key" style="display: none;">∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span>
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
                                                         <div class="q7-tooltip">
-                                                            Copy URL
-                                                            <div class="q7-flash-message" style="opacity: 0;">URL copied</div>
+                                                            Copy
+                                                            <div class="q7-flash-message" style="opacity: 0;">Copied</div>
                                                         </div>                                                        
-                                                    </div>                                                
-                                                </div>                                                                                   
-                                            </div>                                       
+                                                    </div>       
+                                                    <div id="toggle_key_view" class="q7-hide-key-button">
+                                                        <div class="q7-tooltip">
+                                                            Hide
+                                                        </div>                                                      
+                                                    </div>                                                                                         
+                                                </div>                                   
+                                            </div>
                                         </div>                                        
-                                    </div>       
+                                    </div>                                        
                                     
                                     <div class="q7-input-and-buttons--inline">
                                         <div class="q7-input">
@@ -779,7 +752,7 @@
                                                 <div class="q7-inline-action-buttons">
                                                     <div class="q7-copy-text-button">
                                                         <div class="q7-tooltip">
-                                                            Copy URL
+                                                            Copy
                                                             <div class="q7-flash-message" style="opacity: 0;">ID copied</div>
                                                         </div>                                                        
                                                     </div>                                                 
@@ -1580,7 +1553,7 @@
 
                     var keyIsVisible = $("#key").is(':visible');
                     var tooltip = $(this).find(".q7-tooltip")[0];
-                    keyIsVisible ? $(tooltip).text('Hide key') : $(tooltip).text('Show key');
+                    keyIsVisible ? $(tooltip).text('Hide') : $(tooltip).text('Show');
                 });                
 
 
@@ -1604,7 +1577,7 @@
 
                         if(successful) {
                             //console.log("copied");              
-                            $(flashMessage).html('URL copied');
+                            $(flashMessage).html('Copied');
                             $(flashMessage)
                                 .animate({ opacity: 1 }, 200)
                                 .delay(500)     
