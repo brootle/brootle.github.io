@@ -604,12 +604,17 @@
 
             <div class="q7-container">
                 <div class="q7-section">
+
                     <div class="q7-content-block">
                         <button data-toggle="modal" data-target="#welcome" class="q7-button">Trigger Welcome modal window</button>
                     </div>
 
+                    <div class="q7-content-block">
+                        <button data-toggle="modal" data-target="#welcome_start_stream" class="q7-button">Trigger Start Stream window</button>
+                    </div>
+
                     <!-- Modal -->
-                    <div class="modal fade q7-modal q7-modal--welcome" id="welcome" role="dialog">
+                    <div class="modal fade q7-modal q7-modal--welcome q7-modal--welcome-stream" id="welcome" role="dialog">
                         <div class="modal-dialog">
                         
                             <!-- Modal content-->
@@ -627,7 +632,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <img class="q7-welcome-api-builder" src="img/stream_1.svg">
+                                        <img class="q7-welcome-streaming" src="img/stream_1.png">
                                     </div>
 
                                 </div>
@@ -636,14 +641,14 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Live Streaming Projects</h5>
                                         <p>
-                                            Projects provide API keys needed to automate live streaming processes, as well as separate billing
+                                           <strong>Projects</strong> provide <strong>API keys</strong> needed to automate live streaming processes, as well as separate billing
                                             for cost tracking purposes. Please create a Project to get started.
                                         </p>
                                         <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                     </div>
 
                                     <div class="modal-body">
-                                        <img class="q7-welcome-api-builder" src="img/stream_2.png">
+                                        <img class="q7-welcome-streaming" src="img/stream_2.png">
                                     </div>
                                 </div>
 
@@ -658,7 +663,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <img class="q7-welcome-api-builder" src="img/stream_3.png">
+                                        <img class="q7-welcome-streaming" src="img/stream_3.png">
                                     </div>
                                 </div>                                
 
@@ -666,7 +671,6 @@
                                     <div class="q7-modal-footer-page-indicator">
                                         <div data-index="-1" class="q7-modal__page-indicator q7-modal__page-indicator--active"></div>
                                         <div data-index="0" class="q7-modal__page-indicator"></div>
-                                        <div data-index="1" class="q7-modal__page-indicator"></div>
                                     </div>
                                     <div class="q7-modal-footer-buttons">                            
                                         <button id="next_view" class="q7-button">Continue</button>       
@@ -748,7 +752,44 @@
                         </div>
                     </div>
 
+                    <!-- Modal ends -->         
+                    
+                    <!-- Modal -->
+                    <div class="modal fade q7-modal q7-modal--welcome q7-modal--welcome-stream" id="welcome_start_stream" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+
+                          
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Time to start streaming</h5>
+                                    <p>
+                                        Use the <strong>RTMP Server URL</strong>  and <strong>Stream Key</strong> to start streaming your content 
+                                        in high-quality adaptive bitrate using the Playback URL.
+                                    </p>
+                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <img class="q7-welcome-streaming" src="img/stream_3.png">
+                                </div>
+                                                    
+
+                                <div class="modal-footer">
+                                    <div class="q7-modal-footer-buttons">                            
+                                        <button id="start_stream" data-dismiss="modal" class="q7-button">Start Stream</button>                                            
+                                    </div>
+                                </div>
+
+                            </div>
+                        
+                        </div>
+                    </div>
+
                     <!-- Modal ends -->                      
+
                 </div>
             </div>
 
