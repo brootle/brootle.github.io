@@ -91,7 +91,7 @@
     display: flex;
 }
 
-.q6-streaming-calc > div{
+.q6-streaming-calc > div:last-of-type{
     flex: 1;
 }
 
@@ -130,7 +130,8 @@ input[type=text].q6-input__field{
 }
 
 .q6-streaming-calc__row > div:first-of-type{
-    flex: 1;
+    /* flex: 1; */
+    width: 320px;
     margin-right: 15px;
 }
 
@@ -193,4 +194,93 @@ input[type=text].q6-input__field{
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(../img/round_slider.svg);
+}
+
+.q6-rangeslider__fill {
+    background: #316FEA;
+    height: 2px;
+}
+
+.q6-rangeslider--horizontal{
+    height: 2px;
+    margin: 15px 0;
+}
+
+.q6-rangeslider{
+    background-color: #E6E9EF;
+    position: relative;
+}
+
+.q6-rangeslider__handle{
+    background: #316FEA;
+    cursor: pointer;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    border-radius: 50%;    
+    top: -11px;
+
+    background-image: url(../img/round_slider.svg);
+    background-repeat: no-repeat;    
+}
+
+.q6-streaming-calc__extra-row{
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    margin: 15px 0;    
+}
+
+.q6-streaming-calc__extra-row > .q6-input + .q6-input{
+    margin-left: 15px;
+}
+
+.q6-streaming-calc__extra-row > .q6-input{
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.q6-streaming-calc__extra-row > .q6-input .q6-input__label{
+    margin-right: 6px;  
+}
+
+.q6-streaming-calc__extra-row > .q6-input .q6-input__label label{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #192B4D;  
+}
+
+.q6-streaming-calc__extra-row > .q6-input .q6-select{
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 36px;
+    height: 36px;
+    color: #363232;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.q6-streaming-calc__footer .q6-demo-links-buttons > a{
+    min-width: 0;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+
+.q6-streaming-calc__footer .q6-demo-links-buttons > a:after{
+    right: 15px;
+    top: calc(50% - 4px);
+    height: 7px;
+    width: 7px;
+}
+
+.q6-streaming-calc__footer .q6-demo-links-buttons > a:hover:after {
+    right: 13px;
+}
+
+.q6-streaming-calc__footer{
+    padding: 12px 30px;
+    border-top: 1px solid #DADADA;   
 }

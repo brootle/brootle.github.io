@@ -36,6 +36,9 @@
     <script src="js/menu.js"></script>
     <script src="js/softscroll.js"></script>
 
+    <link href="plugins/rangeslider.js-2.3.0/rangeslider.css" rel="stylesheet" />
+    <script src="plugins/rangeslider.js-2.3.0/rangeslider.min.js"></script>
+
     <title>Qencode - Better Cloud Transcoding</title>
 </head>
 <body class="q6-page q6-body">
@@ -275,24 +278,51 @@
                                             <div class="q6-streaming-calc__slider-body">
 
                                                 <div class="q6-progress-slider-container">
-                                                    <div class="q6-progress-slider-with-progress">
-                                                        <input class="q6-progress-slider" type="range" min="1" max="100" value="40">
-                                                        <div class="q6-progress-slider-progress" style="width: calc(40% - 0px)"></div>
-                                                    </div>  
+
+                                                    <input
+                                                        id="slider_01"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="10000"                   
+                                                        value="900000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_01").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.1
+
+                                                                let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                
+                                                                $('#slider_01_value').val(`${formatedValue}`);    
+                                                            },
+                                                        });
+                                                    </script>
+
                                                 </div> 
 
                                             </div>
                                             <div class="q6-streaming-calc__slider-footer">
                                                 <div>0</div>
-                                                <div>1,000,000 </div>
+                                                <div>1,000,000</div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input class="q6-input__field q6-black-text" type="text" value="400,000" disabled>
+                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='90,000' disabled>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>  
 
                                     <div class="q6-streaming-calc__row">
                                         <div class="q6-streaming-calc__slider">
@@ -302,10 +332,37 @@
                                             <div class="q6-streaming-calc__slider-body">
 
                                                 <div class="q6-progress-slider-container">
-                                                    <div class="q6-progress-slider-with-progress">
-                                                        <input class="q6-progress-slider" type="range" min="1" max="100" value="40">
-                                                        <div class="q6-progress-slider-progress" style="width: calc(40% - 0px)"></div>
-                                                    </div>  
+
+                                                    <input
+                                                        id="slider_02"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="10000"                   
+                                                        value="700000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_02").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.05
+
+                                                                let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                
+                                                                $('#slider_02_value').val(`${formatedValue}`);    
+                                                            },
+                                                        });
+                                                    </script>
+
                                                 </div> 
 
                                             </div>
@@ -316,10 +373,10 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input class="q6-input__field q6-black-text" type="text" value="400,000" disabled>
+                                                <input id="slider_02_value" class="q6-input__field q6-black-text" type="text" value='35,000' disabled>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>          
 
                                     <div class="q6-streaming-calc__row">
                                         <div class="q6-streaming-calc__slider">
@@ -329,10 +386,38 @@
                                             <div class="q6-streaming-calc__slider-body">
 
                                                 <div class="q6-progress-slider-container">
-                                                    <div class="q6-progress-slider-with-progress">
-                                                        <input class="q6-progress-slider" type="range" min="1" max="100" value="40">
-                                                        <div class="q6-progress-slider-progress" style="width: calc(40% - 0px)"></div>
-                                                    </div>  
+
+                                                    <input
+                                                        id="slider_03"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="10000"                   
+                                                        value="300000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_03").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.03
+
+                                                                let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                
+                                                                $('#slider_03_value').val(`${formatedValue}`);    
+                                                                console.log("formatedValue: ", formatedValue)
+                                                            },
+                                                        });
+                                                    </script>
+
                                                 </div> 
 
                                             </div>
@@ -343,23 +428,51 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input class="q6-input__field q6-black-text" type="text" value="400,000" disabled>
+                                                <input id="slider_03_value" class="q6-input__field q6-black-text" type="text" value='9,000' disabled>
                                             </div>
                                         </div>
-                                    </div>     
+                                    </div>                                        
                                     
                                     <div class="q6-streaming-calc__row">
                                         <div class="q6-streaming-calc__slider">
                                             <div class="q6-streaming-calc__slider-title">
-                                                GB Delivered (Latin America & India)):
+                                                GB Delivered (Latin America & India):
                                             </div>
                                             <div class="q6-streaming-calc__slider-body">
 
                                                 <div class="q6-progress-slider-container">
-                                                    <div class="q6-progress-slider-with-progress">
-                                                        <input class="q6-progress-slider" type="range" min="0" max="100" value="40">
-                                                        <div class="q6-progress-slider-progress" style="width: calc(40% - 0px)"></div>
-                                                    </div>  
+
+                                                    <input
+                                                        id="slider_04"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="10000"                   
+                                                        value="400000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_04").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.04
+
+                                                                let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                
+                                                                $('#slider_04_value').val(`${formatedValue}`);    
+                                                                console.log("formatedValue: ", formatedValue)
+                                                            },
+                                                        });
+                                                    </script>
+
                                                 </div> 
 
                                             </div>
@@ -370,34 +483,44 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input class="q6-input__field q6-black-text" type="text" value="400,000" disabled>
+                                                <input id="slider_04_value" class="q6-input__field q6-black-text" type="text" value='16,000' disabled>
                                             </div>
                                         </div>
-                                    </div>                                    
-
-                                    <script>
-                                        $(function () {
-                                            $('.q6-progress-slider').on('input', function(){
-                                                let progress = $(this).val();
-                                                $(this).next().width(`calc(${progress}% - 0px)`);
-
-                                                let formatedData = (progress*10000).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-                                                $(this).closest('.q6-streaming-calc__row ').find('.q6-input__field').val(`${formatedData}`);                                                
-                                            });                                    
-                                        });
-     
-                                        
-                                        // document.querySelectorAll('.q6-streaming-calc__row .q6-input__field').forEach(element => {
-                                        //     element.addEventListener('input', function (e) {
-                                        //         e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
-                                        //     });  
-                                        // })
-                                    </script>                                     
-
+                                    </div>                     
+                                    
+                                    <div class="q6-streaming-calc__extra-row">
+                                        <div class="q6-input">
+                                            <div class="q6-input__label">
+                                                <label>Output Resolution:</label>
+                                            </div>
+                                            <div class="q6-custom-select">
+                                                <select class="q6-select">
+                                                    <option value="1">1080</option>
+                                                </select>
+                                            </div>     
+                                        </div>    
+                                        <div class="q6-input">
+                                            <div class="q6-input__label">
+                                                <label>FPS:</label>
+                                            </div>
+                                            <div class="q6-custom-select">
+                                                <select class="q6-select">
+                                                    <option value="1">30</option>
+                                                </select>
+                                            </div>     
+                                        </div>                                                                             
+                                    </div>
+                                    
                                 </div>
                                 <div class="q6-streaming-calc__footer">
+                                    <div>
+                                        <div class="q6-demo-links-buttons">
+                                            <a href="">Create Stream</a>
+                                        </div>
+                                    </div>
+                                    <div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
