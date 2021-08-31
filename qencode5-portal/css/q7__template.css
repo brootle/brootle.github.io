@@ -705,7 +705,7 @@
 }
 
 .q7-content-block{
-    padding: 30px 45px;
+    padding: 38px 45px;
     margin: 30px 0;
     background: white;
     border-radius: 5px;
@@ -12475,8 +12475,10 @@ img.q7-welcome-streaming{
 }
 
 .q7-stream-container .q7-stream__player-footer .q7-input__label label {
-    color: #6F6F6F;
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #363940;
 }
 
 .q7-stream-container .q7-stream__details-block .q7-input-and-buttons--inline .q7-input .q7-input__label{
@@ -12525,7 +12527,7 @@ img.q7-welcome-streaming{
 
 .q7-stream-container .q7-input__label label{
     color: #363940;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
 }
 
@@ -12559,7 +12561,9 @@ img.q7-welcome-streaming{
     font-size: 14px;    
 }
 
-.q7-stream-container .q7-copy-text-button{
+.q7-stream-container .q7-copy-text-button,
+.q7-stream-container .q7-edit-text-button,
+.q7-stream-container .q7-delete-text-button{
     position: relative;
 }
 
@@ -12570,7 +12574,7 @@ img.q7-welcome-streaming{
 }
 
 .q7-stream__details-block{
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 .q7-stream__player-footer .q7-button.q7-button--delete.q7-button--round{
@@ -12701,6 +12705,60 @@ img.q7-welcome-streaming{
 .q7-stream-container .q7-copy-text-button:hover{
     background-color: transparent;
     background-image: url(../img/icon_copy_field__blue.svg);
+}
+
+
+
+.q7-stream-container .q7-edit-text-button {
+    filter: none;
+    opacity: 1;
+    background-image: url(../img/profiles_edit_icon.svg);
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 1px solid #EBEBF6;
+    right: initial;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.q7-stream-container .q7-edit-text-button:hover{
+    background-color: transparent;
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.q7-stream-container .q7-delete-text-button {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../img/delete_format_icon__red.svg);
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 1px solid #EBEBF6;
+    filter: grayscale(1);
+    opacity: 0.5;  
+    background-size: 45%;  
+}
+
+.q7-stream-container .q7-delete-text-button:hover{
+    background-color: transparent;
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.q7-delete-text-button:hover .q7-tooltip {
+    display: initial;
+}
+
+.q7-stream-container .q7-input__field--view.q7-input__field--update-input input[type=text].q7-input__field {
+    background-color: #f3f7fa;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 5px 14px;
 }
 
 .q7-stream-container .q7-input__field--view.q7-input__field--view-two-buttons span{
@@ -14416,9 +14474,58 @@ hr {
     text-align: right;   
     color: #6A707E; 
     font-size: 16px;
+    padding: 7px 27px;
+    border-bottom: 1px solid #E5E5ED;;    
 }
 
+.q7-stream__details-header > .q7-input-and-buttons--inline .q7-input {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 16px;
+}
 
+.q7-stream__details-header  > .q7-input-and-buttons--inline {
+    justify-content: space-between;
+    margin: 0;
+}
+
+.q7-stream__details-header .q7-button.q7-button--stop-stream.q7-button--round, 
+.q7-stream__details-header .q7-button.q7-button--start-stream.q7-button--round {
+    background: transparent;
+    font-size: 14px;
+    padding: 0;
+    min-width: 0;
+    text-decoration: underline;
+    line-height: 28px;
+    border: none;
+    height: 28px;
+    color: var(--blue);
+    font-size: 16px;
+}
+
+.q7-stream__details-header  .q7-button.q7-button--delete.q7-button--round {
+    color: #6F6F6F;
+    background: transparent;
+    font-size: 14px;
+    padding: 0;
+    min-width: 0;
+    text-decoration: underline;
+    line-height: 28px;
+    border: none;
+    height: 28px;
+    font-size: 16px;
+}
+
+.q7-stream__details-header .q7-button.q7-button--delete.q7-button--round:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.q7-stream__details-header .q7-button.q7-button--round:hover {
+    background: transparent;
+    box-shadow: none;
+}
 
 .q7-stream__details-header a{
     color: var(--blue);
@@ -14426,11 +14533,185 @@ hr {
     text-decoration: underline;
 }
 
-.q7-stream__details-body{
+.q7-stream__details{
     background: #F8F8FA;
-    border-radius: 8px;
-    padding: 15px 22px;   
-    margin-top: 37px; 
+    border: 1px solid #E5E5ED;
+    border-radius: 7px;   
+    height: fit-content;
+}
+
+.q7-stream__details-body{
+    padding: 7px 27px;
+}
+
+.q7-stream__status-and-controls{
+    display: flex;
+    align-items: center;
+}
+
+
+.q7-input-and-buttons--inline .q7-stream__status-and-controls .q7-input + .q7-button {
+    margin-left: 15px;
+}
+
+.q7-input-and-buttons--inline .q7-stream__status-and-controls .q7-button + .q7-button {
+    margin-left: 15px;
+}
+
+.q7-button.q7-button--stop-stream  > span,
+.q7-button.q7-button--start-stream  > span{
+    position: relative;
+    padding-left: 15px;
+}
+
+.q7-button.q7-button--stop-stream  > span:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 0;
+    top: calc(50% - 4px);
+    background-image: url(../img/stop_blue.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.q7-button.q7-button--start-stream  > span:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 0;
+    top: calc(50% - 5px);
+    background-image: url(../img/play_icon__blue.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.q7-stream__status-and-controls .q7-stream-status {
+    padding-left: 25px;
+    margin-left: 3px;
+}
+
+.q7-stream__details-body .q7-input__field--view {
+    line-height: 28px;
+}
+
+.q7-stream__details-body .q7-input-and-buttons--inline {
+    margin-bottom: 10px;
+}
+
+.q7-stream__details-footer .q7-button.q7-button--back {
+    background: transparent;
+    color: var(--blue);
+    font-weight: 600;
+    min-width: 0;
+    padding-right: 0;
+    padding-left: 15px;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.q7-stream__details-footer .q7-button.q7-button--back:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 5px;
+    top: calc(50% - 3px);
+    height: 6px;
+    width: 6px;
+    border-bottom: 1px solid #3270eb;
+    border-right: 1px solid #3270eb;
+    transform: rotate(135deg);
+    transition: all 0.2s ease;
+}
+
+.q7-stream__details-footer .q7-button.q7-button--back:hover:after{
+    left: 2px;
+}
+
+.q7-stream__details-footer > div:last-of-type {
+    line-height: 38px;
+    text-align: right;
+
+    font-size: 16px;
+    white-space: nowrap;
+    margin-left: 10px;
+
+    color: #363940;
+    font-weight: 600;    
+}
+
+.q7-stream__details-footer  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 27px;
+}
+
+.q7-stream__details-footer > div a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.q7-stream__details-body .q7-button.q7-button--add-callback {
+    background: transparent;
+    color: var(--blue);
+    font-weight: 600;
+    min-width: 0;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 16px;
+    text-decoration: underline;
+    line-height: 28px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.q7-stream__details-body .q7-input-and-buttons--inline .q7-button.q7-button--add-callback{
+    line-height: 30px;
+    height: 30px;
+}
+
+.q7-stream__details-body .q7-button.q7-button--add-callback:after {
+    content: '+';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0px;
+}
+
+.q7-stream__details-body input[type=text].q7-input__field{
+    padding: 0px 14px;
+    line-height: 36px;
+    height: 36px;
+    font-size: 16px;
+}
+
+.q7-stream__details-body .q7-input-and-buttons--inline .q7-button{
+    line-height: 36px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0px 12px;
+    min-width: 70px;    
+}
+
+.q7-stream__details-body .q7-input-and-buttons--inline .q7-input + .q7-button {
+    margin-left: 7px;
+}
+
+.q7-input.q7-input--callback-url{
+    flex: 1;
+}
+
+.q7-stream__details-body .q7-button.q7-button--cancel {
+    background-color: transparent;
+    color: #6F6F6F;
+    border-color: #6F6F6F;
 }
 
 @media screen and (max-width: 1340px){
