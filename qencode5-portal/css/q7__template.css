@@ -1,5 +1,6 @@
 :root {
-    --vertical-menu-width: 200px; 
+    /* --vertical-menu-width: 200px;  */
+    --vertical-menu-width: 217px; 
     --header-hights: 70px; 
     --blue: #366fe0;
     --vertical-menu-width_mobile: 60px; 
@@ -984,7 +985,7 @@
 .q7-table--streams td,
 .q7-table--team td  {
     padding: 15px 15px;
-    vertical-align: top;
+    /* vertical-align: top; */
     background: white;
 }
 
@@ -12000,6 +12001,7 @@ th.q7-th--loading .q7-loading-cell{
     margin-left: 7px;
     width: 32px;
     height: 16px;
+    margin-right: 15px;
 }
 
 .q7-menu.q7-menu--updated .q7-menu-block__element.q7-menu-block__element--has-submenu .q7-menu-block__element-content{
@@ -13832,6 +13834,10 @@ hr {
     border: none;  
 }
 
+.q7-tab.q7-stream-log .q7-filter-box__options{
+    flex-wrap: wrap;
+}
+
 .q7-stream-log__controls > div{
     font-weight: 600;
     font-size: 16px;
@@ -14008,6 +14014,9 @@ hr {
     line-height: 30px;
     border-radius: 4px;
     height: 32px;
+    margin: 0px 0px;
+    margin-top: 10px;
+    margin-right: 7px;    
 }
 
 .q7-filter-box.q7-filter-box--stream-logs .q7-time-period-picker {
@@ -14058,9 +14067,9 @@ hr {
     max-width: fit-content;
 }
 
-.q7-filter-box.q7-filter-box--stream-logs .q7-button + .q7-button{
+/* .q7-filter-box.q7-filter-box--stream-logs .q7-button + .q7-button{
     margin-left: 9px;
-}
+} */
 
 .q7-table.q7-table--standard.q7-table--api-log{
     
@@ -14491,7 +14500,8 @@ hr {
 }
 
 .q7-stream__details-header .q7-button.q7-button--stop-stream.q7-button--round, 
-.q7-stream__details-header .q7-button.q7-button--start-stream.q7-button--round {
+.q7-stream__details-header .q7-button.q7-button--start-stream.q7-button--round,
+.q7-stream__details-header .q7-button.q7-button--stopping-stream.q7-button--round {
     background: transparent;
     font-size: 14px;
     padding: 0;
@@ -14502,6 +14512,17 @@ hr {
     height: 28px;
     color: var(--blue);
     font-size: 16px;
+    position: relative;
+}
+
+.q7-stream__details-header .q7-button.q7-button--stopping-stream.q7-button--round > span{
+    padding-left: 33px;
+}
+
+.q7-stream__details-header .q7-button.q7-button--stopping-stream.q7-button--round .q7-loading-spinner{
+    position: absolute;
+    margin-right: 0;
+    left: -10px;
 }
 
 .q7-stream__details-header  .q7-button.q7-button--delete.q7-button--round {
@@ -14650,6 +14671,7 @@ hr {
     align-items: center;
     justify-content: space-between;
     padding: 7px 27px;
+    flex-wrap: wrap;
 }
 
 .q7-stream__details-footer > div a {
@@ -14727,7 +14749,7 @@ hr {
     }
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1240px){
     .q7-stream-container {
         flex-direction: column;
     }
