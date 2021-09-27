@@ -40,6 +40,8 @@
 
     <link href="css/q7__template.css" rel="stylesheet" />
 
+
+
     <script src="js/menu.js"></script>
 
     <title>Qencode - Better Cloud Transcoding</title>
@@ -878,38 +880,7 @@
                     });
                 </script>           
                         
-
-                <script>
-                    $(function () {                
-                        // copy job ID
-                        $(".q6-tutorial-profile-details__copy").click(function (){
-
-                            try { 
-                                var cellTextNode = $(this).closest('td').find('a')[0];
-                            
-                                var selection = window.getSelection();        
-                                var range = document.createRange();
-
-                                range.selectNodeContents(cellTextNode);
-                                selection.removeAllRanges();
-                                selection.addRange(range);
-
-                                var successful = document.execCommand('copy');                              
-
-                                if(successful) {
-                                    //console.log("copied");                                                                                                        
-                                }
-                                else
-                                { 
-                                    //console.log("can not copy");
-                                } 
-                            } catch (err) {
-                                console.log(err);
-                            }
-
-                        });                           
-                    });
-                </script>                
+             
 
 
             </div>                
