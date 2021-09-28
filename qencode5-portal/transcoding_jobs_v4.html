@@ -953,8 +953,21 @@
                                         <div>
                                             <div>Job ID:</div>
                                             <div>
-                                                <span>$erj4l35j344lktj34t949343fgd435434uo345923424oo</span>
-                                                <div class="q7-copy-text-button"></div>
+                                                <!-- <span>$erj4l35j344lktj34t949343fgd435434uo345923424oo</span>
+                                                <div class="q7-copy-text-button"></div> -->
+                                                <div class="q7-input__field--view q7-input__field--view-with-buttons">
+                                            
+                                                    <input class="q7-input__field--view-value" type="text" value="4a82a71b5775250be486bcecaac2bd37"  readonly>
+                                                                                            
+                                                    <div class="q7-inline-action-buttons">
+                                                        <div class="q7-copy-text-button">
+                                                            <div class="q7-tooltip">
+                                                                Copy
+                                                                <div class="q7-flash-message" style="opacity: 0;">Copied</div>
+                                                            </div>                                                        
+                                                        </div>                                                
+                                                    </div>                                                                                   
+                                                </div>                                                
                                             </div>
                                         </div>                                    
                                     </div>        
@@ -1724,6 +1737,45 @@
                     </div>
                     <!-- Modal ends -->  
 
+                    <script>
+                        $(function () {         
+            
+                            // copy previous text
+                            $(".q7-inline-action-buttons .q7-copy-text-button").click(function (){
+            
+                                try { 
+    
+                                    var copyText = $(this).closest(".q7-input__field--view").find('.q7-input__field--view-value')[0];
+                                    
+    
+                                    /* Select the text field */
+                                    copyText.select();
+                                    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+                                    /* Copy the text inside the text field */
+                                    navigator.clipboard.writeText(copyText.value)                                
+            
+                                    var successful = document.execCommand('copy');
+            
+                                    var flashMessage = $(this).find('.q7-flash-message')[0];  
+            
+                                    if(successful) {
+                                        //console.log("copied");              
+                                        $(flashMessage).html('Copied');
+                                        $(flashMessage)
+                                            .animate({ opacity: 1 }, 200)
+                                            .delay(500)     
+                                            .animate({ opacity: 0 }, 200)                                                                                                                                          
+                                    } else{ 
+                                        //console.log("can not copy");
+                                    } 
+                                } catch (err) {
+                                    console.log(err);
+                                }
+            
+                            });                           
+                        });
+                    </script>                         
 
                     <script>
                         $(function () {                               
