@@ -269,25 +269,25 @@
                             <h3>Live Streaming Calculator</h3>
                             <div class="q6-streaming-calc__box">
                                 <div class="q6-streaming-calc__body">
-
+    
                                     <div class="q6-streaming-calc__row">
                                         <div class="q6-streaming-calc__slider">
                                             <div class="q6-streaming-calc__slider-title">
                                                 Minutes Streamed:
                                             </div>
                                             <div class="q6-streaming-calc__slider-body">
-
+    
                                                 <div class="q6-progress-slider-container">
-
+    
                                                     <input
                                                         id="slider_01"
                                                         type="range"
                                                         min="0"                    
                                                         max="1000000"                 
                                                         step="10000"                   
-                                                        value="900000"             
+                                                        value="500000"             
                                                     >
-
+    
                                                     <script>
                                                         // https://rangeslider.js.org/
                                                         $("#slider_01").rangeslider({
@@ -296,25 +296,44 @@
                                                             horizontalClass: 'q6-rangeslider--horizontal',
                                                             rangeClass: 'q6-rangeslider',
                                                             handleClass: 'q6-rangeslider__handle',
-
+    
                                                             // update input value
                                                             onSlide: function(position, value) {      
                                                                 
                                                                 let price = 0.015
-
+    
                                                                 // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                                                                 let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-
+    
                                                                 $('#slider_01_value').val(`${formatedValue}`);  
-
+    
                                                                 let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
-                                                                $('#slider_01_cost').html(`$${formatedCost}/mo.`);                                                                 
+                                                                $('#slider_01_cost').html(`$${formatedCost}/mo.`);    
+    
+                                                                $('#001').show()
+                                                                $('#002').hide()
+                                                                $('#003').hide()                                                                 
+                                                                
+                                                                if(value > 700000 && value <= 900000){
+                                                                    $('#slider_01_cost').html("<span>Volume discount</span>");   
+                                                                    $('#001').hide()
+                                                                    $('#002').show()
+                                                                    $('#003').hide()                                                                
+                                                                }
+    
+                                                                if(value > 900000){
+                                                                    $('#slider_01_cost').html("<span>Enterprise discount</span>");  
+                                                                    $('#001').hide()
+                                                                    $('#002').hide()
+                                                                    $('#003').show()                                                                 
+                                                                }                                                            
                                                             },
                                                         });
                                                     </script>
-
+    
+    
                                                 </div> 
-
+    
                                             </div>
                                             <div class="q6-streaming-calc__slider-footer">
                                                 <div>0</div>
@@ -323,44 +342,57 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='900 000' disabled>
+                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000' disabled>
                                             </div>
                                             <div class="q6-streaming-calc__cost" id="slider_01_cost">
-                                                $13,500/mo.
+                                                $7,500/mo.
                                             </div>
                                         </div>
                                     </div>  
-
+    
                                     <div class="q6-streaming-calc__row">
                                         <div class="q6-streaming-calc__slider">
                                             <div class="q6-streaming-calc__slider-title">
                                                 GB Delivered 
-
+    
                                                 <div class="q6-tutorial-dd-selector">
                                                     <div class="q6-tutorial-dd-selector__selected">
-                                                        North America & Europe
+                                                        Europe 
                                                     </div>
                                                     <div class="q6-tutorial-dd-selector__list">
                                                         <table class="q6-tutorial-demo-videos">
-                                                            <tr class="q6-tutorial-dd-selector-item" 
-                                                                data-video-url="http://example1.com/video/myvideo.mp4"
-                                                                data-item-name="North America & Europe">
-                                                                <td>North America & Europe</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" 
-                                                                data-video-url="http://example1.com/video/myvideo.mp4"
-                                                                data-item-name="Asia & Australia">
-                                                                <td>Asia & Australia</td>
-                                                            </tr>      
-                                                            <tr class="q6-tutorial-dd-selector-item" 
-                                                                data-video-url="http://example1.com/video/myvideo.mp4"
-                                                                data-item-name="Latin America & India">
-                                                                <td>Latin America & India</td>
-                                                            </tr>                                                                                                                        
-                                                        </table>  
+                                                            <tbody>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Europe">
+                                                                    <td>Europe</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Southern Africa">
+                                                                    <td>Southern Africa</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="South America">
+                                                                    <td>South America</td>
+                                                                </tr>
+                    
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Australia &amp; New Zealand">
+                                                                    <td>Australia &amp; New Zealand </td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="United States">
+                                                                    <td>United States</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Latin America">
+                                                                    <td>Latin America</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia &amp; India">
+                                                                    <td>Asia &amp; India</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia">
+                                                                    <td>Asia</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                                    
+     
                                                     </div>
                                                 </div>
-
+    
                                                 <script>
                                                     $(function () {
                                     
@@ -413,12 +445,12 @@
                                                         })
                                                     })
                                                 </script>                                                        
-
+    
                                             </div>
                                             <div class="q6-streaming-calc__slider-body">
-
+    
                                                 <div class="q6-progress-slider-container">
-
+    
                                                     <input
                                                         id="slider_02"
                                                         type="range"
@@ -427,7 +459,7 @@
                                                         step="10000"                   
                                                         value="700000"             
                                                     >
-
+    
                                                     <script>
                                                         // https://rangeslider.js.org/
                                                         $("#slider_02").rangeslider({
@@ -436,25 +468,25 @@
                                                             horizontalClass: 'q6-rangeslider--horizontal',
                                                             rangeClass: 'q6-rangeslider',
                                                             handleClass: 'q6-rangeslider__handle',
-
+    
                                                             // update input value
                                                             onSlide: function(position, value) {      
                                                                 
                                                                 let price = 0.12
-
+    
                                                                 // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                                                                 let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
                                                                 
                                                                 $('#slider_02_value').val(`${formatedValue}`);    
-
+    
                                                                 let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
                                                                 $('#slider_02_cost').html(`$${formatedCost}/mo.`);                                                                   
                                                             },
                                                         });
                                                     </script>
-
+    
                                                 </div> 
-
+    
                                             </div>
                                             <div class="q6-streaming-calc__slider-footer">
                                                 <div>0</div>
@@ -470,7 +502,7 @@
                                             </div>                                            
                                         </div>
                                     </div>          
-
+    
                                     <div class="q6-streaming-calc__extra-row">
                                         <div class="q6-input">
                                             <div class="q6-input__label">
@@ -496,8 +528,30 @@
                                     
                                 </div>
                                 <div class="q6-streaming-calc__footer">
-                                    <div class="q6-streaming-calc__footer-title">Total Cost:</div>
-                                    <div class="q6-streaming-calc__footer-cost">$133,574/mo.</div>
+                                    <div id="001" class="q6-streaming-calc__footer-cost-block">
+                                        <div class="q6-streaming-calc__footer-title">Total Cost:</div>
+                                        <div class="q6-streaming-calc__footer-cost">$133,574/mo.</div>
+                                    </div>
+    
+            
+                                    <div id="002" class="q6-streaming-contact" style="display: none;">
+                                        <div class="q6-streaming-contact__title">Volume Discounts are available</div>
+                                        <div class="q6-streaming-contact__buttons">
+                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
+                                        </div>                                
+                                    </div>
+                        
+    
+                                    <div id="003" class="q6-streaming-contact" style="display: none;">
+                                        <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
+                                        <div class="q6-streaming-contact__buttons">
+                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
+                                            <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                        </div>                                
+                                    </div>       
+                                    
+    
+                                    
                                 </div>
                             </div>
                         </div>

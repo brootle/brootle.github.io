@@ -303,6 +303,7 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Minutes of source video</label>
+                                            <a href="">Browse formats</a>
                                         </div>
                                         <input onclick="this.select();" class="q6-input__field" type="text" id="element_03245232" value="10000">
                                         <script>
@@ -486,14 +487,14 @@
                                             </tr>                                                                                                                                                                                                                                                                                          
                                         </tbody></table>
 
-                                        <div class="q6-calculated-results__buttons">
+                                        <!-- <div class="q6-calculated-results__buttons">
                                             <div class="q6-demo-links-buttons">
                                                 <a href="">Browse formats</a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
-                                <div>
+                                <div class="q6-calc-block__output-total">
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Total cost:</label>
@@ -537,13 +538,468 @@
                                 </div>
                             </div>                            
                         </div>                        
+
+                        <div class="q6-calc-block q6-calc-block--pricing">
+                            <div class="q6-calc-block__input">
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Minutes of source video</label>
+                                            <a href="">Browse formats</a>
+                                        </div>
+                                        <input onclick="this.select();" class="q6-input__field" type="text" id="element_032452322" value="10000">
+                                        <script>
+                                            $(function () {
+                                                // format input value on page load id there is preset value
+                                                document.getElementById('element_032452322').value = document.getElementById('element_032452322').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+    
+                                                // when user inputs value
+                                                document.getElementById('element_032452322').addEventListener('input', function (e) {
+                                                    e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                });
+                                            });
+                                        </script>                                        
+                                    </div>
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Format</label>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select">
+                                                <option value="mp4">MP4</option>
+                                            </select>
+                                        </div>     
+                                    </div>    
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Codec</label>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select">
+                                                <option value="h264">H.264</option>
+                                            </select>
+                                        </div>     
+                                    </div>       
+                                    
+                                    <div class="q6-input q6-input__label--with-switch">
+                                        <div class="q6-input__label">
+                                            <label>Per-Title Encoding</label>
+                                        </div>
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox" checked="">
+                                            <span class="q6-switch__slider"></span>
+                                            <span class="q6-switch__text">
+                                                    <span class="q6-switch__text--on">On</span>
+                                                    <span class="q6-switch__text--off">Off</span>
+                                            </span>                                            
+                                        </label>  
+                                    </div> 
+
+                                    <div class="q6-per-title-notice">
+                                        Per-Title Encoding only available for H.264
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Resolutions</label>
+                                        </div>
+
+                                        <div class="q6-input__multiple-checkboxes-container">
+                                            <div class="q6-input__multiple-checkboxes">
+                                                <label class="q6-checkbox">                                                    
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">1080</span>
+                                                </label>
+    
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">720</span>
+                                                </label>                                                   
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">480</span>
+                                                </label>    
+                                                
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">360</span>
+                                                </label>        
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">240</span>
+                                                </label>         
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">144</span>
+                                                </label>                                                                                             
+                                                                                                                                                                                                                                                      
+                                            </div>
+                                            <div class="q6-input__multiple-checkboxes">
+                                                <label class="q6-checkbox">                                                    
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">8K</span>
+                                                </label>
+    
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">7K</span>
+                                                </label>                                                   
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">6K</span>
+                                                </label>    
+                                                
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">5K</span>
+                                                </label>        
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">4K</span>
+                                                </label>                                                                                                                                                                                          
+                                            </div>                                            
+                                        </div>
+
+
+                                    </div>  
+                                </div>
+
+                            </div>
+                            <div class="q6-calc-block__output">
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Details:</label>
+                                        </div>
+
+                                        <table class="q6-calculated-results">
+                                            <tbody><tr>
+                                                <td>SD:</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HD:</td>
+                                                <td>-</td>
+                                            </tr>         
+                                            <tr>
+                                                <td>144p:</td>
+                                                <td>$ 1,500.00</td>
+                                            </tr>       
+                                            <tr>
+                                                <td>4K:</td>
+                                                <td>$ 9,156,310.00</td>
+                                            </tr>        
+                                            <tr>
+                                                <td>5K:</td>
+                                                <td>-</td>
+                                            </tr>  
+                                            <tr>
+                                                <td>6K:</td>
+                                                <td>-</td>
+                                            </tr>    
+                                            <tr>
+                                                <td>7K:</td>
+                                                <td>-</td>
+                                            </tr>    
+                                            <tr>
+                                                <td>8K:</td>
+                                                <td>-</td>
+                                            </tr>                                                                                                                                                                                                                                                                                          
+                                        </tbody></table>
+
+                                        <!-- <div class="q6-calculated-results__buttons">
+                                            <div class="q6-demo-links-buttons">
+                                                <a href="">Browse formats</a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="q6-calc-block__output-total">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Total cost:</label>
+                                        </div>
+
+                                        <div id="calculated_cost" class="q6-calc-total-cost" value="9342419.00">$ 9,342,419.00</div>
+
+                                        <script>
+                                            $(function () {
+                                                // on load
+
+                                                var inputValue = document.getElementById('calculated_cost').getAttribute("value");
+                                                if(inputValue.includes(".")){
+                                                    // if number is decimal
+                                                    // format part before dot
+                                                    var integerValue = parseInt(inputValue).toString();
+                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim() + '.' + inputValue.split('.')[1];
+
+                                                } else{
+                                                    // if the number is not decimal add spaces after thousands
+                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + document.getElementById('calculated_cost').getAttribute("value").replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                }
+                                            });
+                                        </script>                                        
+
+                                    </div>
+
+
+                                    <div class="q6-streaming-contact">
+                                        <div class="q6-streaming-contact__title">Volume Discounts are available</div>
+                                        <div class="q6-streaming-contact__buttons">
+                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
+                                        </div>                                
+                                    </div>                                    
+                                </div>
+                            </div>                            
+                        </div>   
+                        
+                        <div class="q6-calc-block q6-calc-block--pricing">
+                            <div class="q6-calc-block__input">
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Minutes of source video</label>
+                                            <a href="">Browse formats</a>
+                                        </div>
+                                        <input onclick="this.select();" class="q6-input__field" type="text" id="element_032452323" value="10000">
+                                        <script>
+                                            $(function () {
+                                                // format input value on page load id there is preset value
+                                                document.getElementById('element_032452323').value = document.getElementById('element_032452323').value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+    
+                                                // when user inputs value
+                                                document.getElementById('element_032452323').addEventListener('input', function (e) {
+                                                    e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                });
+                                            });
+                                        </script>                                        
+                                    </div>
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Format</label>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select">
+                                                <option value="mp4">MP4</option>
+                                            </select>
+                                        </div>     
+                                    </div>    
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Codec</label>
+                                        </div>
+                                        <div class="q6-custom-select">
+                                            <select class="q6-select">
+                                                <option value="h264">H.264</option>
+                                            </select>
+                                        </div>     
+                                    </div>       
+                                    
+                                    <div class="q6-input q6-input__label--with-switch">
+                                        <div class="q6-input__label">
+                                            <label>Per-Title Encoding</label>
+                                        </div>
+                                        <label class="q6-switch">
+                                            <input class="q6-input__field" type="checkbox" checked="">
+                                            <span class="q6-switch__slider"></span>
+                                            <span class="q6-switch__text">
+                                                    <span class="q6-switch__text--on">On</span>
+                                                    <span class="q6-switch__text--off">Off</span>
+                                            </span>                                            
+                                        </label>  
+                                    </div> 
+
+                                    <div class="q6-per-title-notice">
+                                        Per-Title Encoding only available for H.264
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Resolutions</label>
+                                        </div>
+
+                                        <div class="q6-input__multiple-checkboxes-container">
+                                            <div class="q6-input__multiple-checkboxes">
+                                                <label class="q6-checkbox">                                                    
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">1080</span>
+                                                </label>
+    
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">720</span>
+                                                </label>                                                   
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">480</span>
+                                                </label>    
+                                                
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">360</span>
+                                                </label>        
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">240</span>
+                                                </label>         
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">144</span>
+                                                </label>                                                                                             
+                                                                                                                                                                                                                                                      
+                                            </div>
+                                            <div class="q6-input__multiple-checkboxes">
+                                                <label class="q6-checkbox">                                                    
+                                                    <input type="checkbox">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">8K</span>
+                                                </label>
+    
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">7K</span>
+                                                </label>                                                   
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">6K</span>
+                                                </label>    
+                                                
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">5K</span>
+                                                </label>        
+                                            
+                                                <label class="q6-checkbox">
+                                                    <input type="checkbox" checked="">
+                                                    <span class="q6-checkmark"></span>
+                                                    <span class="q6-checkbox-text">4K</span>
+                                                </label>                                                                                                                                                                                          
+                                            </div>                                            
+                                        </div>
+
+
+                                    </div>  
+                                </div>
+
+                            </div>
+                            <div class="q6-calc-block__output">
+                                <div>
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Details:</label>
+                                        </div>
+
+                                        <table class="q6-calculated-results">
+                                            <tbody><tr>
+                                                <td>SD:</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HD:</td>
+                                                <td>-</td>
+                                            </tr>         
+                                            <tr>
+                                                <td>144p:</td>
+                                                <td>$ 1,500.00</td>
+                                            </tr>       
+                                            <tr>
+                                                <td>4K:</td>
+                                                <td>$ 9,156,310.00</td>
+                                            </tr>        
+                                            <tr>
+                                                <td>5K:</td>
+                                                <td>-</td>
+                                            </tr>  
+                                            <tr>
+                                                <td>6K:</td>
+                                                <td>-</td>
+                                            </tr>    
+                                            <tr>
+                                                <td>7K:</td>
+                                                <td>-</td>
+                                            </tr>    
+                                            <tr>
+                                                <td>8K:</td>
+                                                <td>-</td>
+                                            </tr>                                                                                                                                                                                                                                                                                          
+                                        </tbody></table>
+
+                                        <!-- <div class="q6-calculated-results__buttons">
+                                            <div class="q6-demo-links-buttons">
+                                                <a href="">Browse formats</a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="q6-calc-block__output-total">
+
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Total cost:</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="q6-streaming-contact">
+                                        <img class="q6-calc-block__discount-icon" src="./img/discount_icon.png" alt="Enterprise Discount">
+                                        <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
+                                        <p>
+                                            Reach out about custom pricing
+                                        </p>
+                                        <div class="q6-streaming-contact__buttons">
+                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
+                                            <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                        </div>                                
+                                    </div>                                    
+                                </div>
+                            </div>                            
+                        </div>                           
                     </div>
                 </div>
             </div>
 
             <div class="q6-pricing__block">
                 <div id="cost-calculator" class="q6-anchor-link"></div>
-                <h3>Calculate your cost</h3>
                 <div class="q6-pricing__block-content">
                     <div>
                         <h3>Live Streaming</h3>
@@ -565,7 +1021,7 @@
                                                     min="0"                    
                                                     max="1000000"                 
                                                     step="10000"                   
-                                                    value="900000"             
+                                                    value="500000"             
                                                 >
 
                                                 <script>
@@ -588,10 +1044,29 @@
                                                             $('#slider_01_value').val(`${formatedValue}`);  
 
                                                             let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
-                                                            $('#slider_01_cost').html(`$${formatedCost}/mo.`);                                                                 
+                                                            $('#slider_01_cost').html(`$${formatedCost}/mo.`);    
+
+                                                            $('#001').show()
+                                                            $('#002').hide()
+                                                            $('#003').hide()                                                                 
+                                                            
+                                                            if(value > 700000 && value <= 900000){
+                                                                $('#slider_01_cost').html("<span>Volume discount</span>");   
+                                                                $('#001').hide()
+                                                                $('#002').show()
+                                                                $('#003').hide()                                                                
+                                                            }
+
+                                                            if(value > 900000){
+                                                                $('#slider_01_cost').html("<span>Enterprise discount</span>");  
+                                                                $('#001').hide()
+                                                                $('#002').hide()
+                                                                $('#003').show()                                                                 
+                                                            }                                                            
                                                         },
                                                     });
                                                 </script>
+
 
                                             </div> 
 
@@ -603,10 +1078,10 @@
                                     </div>
                                     <div>
                                         <div class="q6-input">
-                                            <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='900 000' disabled>
+                                            <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000' disabled>
                                         </div>
                                         <div class="q6-streaming-calc__cost" id="slider_01_cost">
-                                            $13,500/mo.
+                                            $7,500/mo.
                                         </div>
                                     </div>
                                 </div>  
@@ -789,8 +1264,30 @@
                                 
                             </div>
                             <div class="q6-streaming-calc__footer">
-                                <div class="q6-streaming-calc__footer-title">Total Cost:</div>
-                                <div class="q6-streaming-calc__footer-cost">$133,574/mo.</div>
+                                <div id="001" class="q6-streaming-calc__footer-cost-block">
+                                    <div class="q6-streaming-calc__footer-title">Total Cost:</div>
+                                    <div class="q6-streaming-calc__footer-cost">$133,574/mo.</div>
+                                </div>
+
+        
+                                <div id="002" class="q6-streaming-contact" style="display: none;">
+                                    <div class="q6-streaming-contact__title">Volume Discounts are available</div>
+                                    <div class="q6-streaming-contact__buttons">
+                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
+                                    </div>                                
+                                </div>
+                    
+
+                                <div id="003" class="q6-streaming-contact" style="display: none;">
+                                    <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
+                                    <div class="q6-streaming-contact__buttons">
+                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
+                                        <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                    </div>                                
+                                </div>       
+                                
+
+                                
                             </div>
                         </div>
                     </div>
@@ -896,7 +1393,7 @@
                                                 <td class="q6-streaming-costs-table-cell__with-extra-data">
                                                     $0.04
                                                     <div class="q6-streaming-costs-table__extra-data q6-streaming-costs-table__extra-data--not-fixed">
-                                                        over 30 FPS multiply costs by 2x
+                                                        over 30 FPS multiply costs by <strong>2x</strong>
                                                     </div>
                                                 </td>
                                                 <td>$0.08</td>
@@ -1023,7 +1520,7 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Transcoding (minutes streamed)</th>
+                                                <th>Transcoding <span>(minutes streamed)</span> </th>
                                                 <th>Cost</th>
                                             </tr>
                                         </thead>
@@ -1067,7 +1564,7 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Delivery (CDN)</th>
+                                                <th>Delivery <span>(CDN)</span> </th>
                                                 <th>Cost</th>
                                             </tr>
                                         </thead>
