@@ -988,8 +988,9 @@
                                         </p>
                                         <div class="q6-streaming-contact__buttons">
                                             <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
-                                            <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
-                                        </div>                                
+                                            <button id="showChatModal" class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                        </div>           
+                                                                                                                                
                                     </div>                                    
                                 </div>
                             </div>                            
@@ -997,6 +998,95 @@
                     </div>
                 </div>
             </div>
+
+            <div id="chatModal" class="q6-modal q6-modal--chat" style="display: none;">
+                <div class="q6-modal-dialog">   
+                    <button id="close" class="q6-button q6-button--close-window"></button>      
+                    <div id="modalContent" class="q6-modal-content">
+                        <h5 class="q6-modal-title">Let's get started</h5>
+                        <div>
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Email</label>
+                                </div>
+                                <input class="q6-input__field" type="text" value="vadym.leonenko@gmail.com">                                       
+                            </div>
+
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>First name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">                                       
+                            </div>
+                            
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Last name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">                                       
+                            </div>
+                            
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Company name</label>
+                                </div>
+                                <input class="q6-input__field" type="text">                                       
+                            </div>     
+                            
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label>Minutes per month</label>
+                                </div>
+                                <input class="q6-input__field" type="text">                                       
+                            </div>    
+                            
+                            <div class="q6-input">
+                                <div class="q6-input__label">
+                                    <label for="message">Message</label>
+                                </div>
+                                <textarea id="message"></textarea>
+                            </div>                            
+
+                        </div>
+                        <div class="q6-modal-buttons">
+                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border"><span>Send</span></button>
+                            <button class="q6-button q6-blue-text q6-blue-border"><span>Open chat window</span></button>                        
+                        </div>
+                        <div class="q6-modal-response">
+                            <img class="q6-timer-icon" src="./img/timer.png" alt="">
+                            <span>Avg. response time: 3 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>                                     
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+
+                    var chatModalWindow = document.querySelector("#chatModal"); 
+
+                    var showChatModalBtn = document.querySelector("#showChatModal"); 
+
+                    showChatModalBtn.addEventListener('click', function(){
+                        chatModalWindow.style.display = 'block';
+                    });
+
+                    var closeModalBtn = document.querySelector("#close");
+
+                    closeModalBtn.addEventListener('click', function(){
+                        chatModalWindow.style.display = 'none';
+                    });
+
+
+                    // close modal if clicked anywhere outside video_player or if that is not play video button
+                    window.addEventListener('click', function (e) {
+                        if(event.target.classList.contains('q6-modal--chat')){
+                            chatModalWindow.style.display = 'none';
+                        }
+                    });                       
+                    
+                });                    
+            </script>                
 
             <div class="q6-pricing__block">
                 <div id="cost-calculator" class="q6-anchor-link"></div>
@@ -1285,7 +1375,6 @@
                                         <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
                                     </div>                                
                                 </div>       
-                                
 
                                 
                             </div>

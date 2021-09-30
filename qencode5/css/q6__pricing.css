@@ -797,6 +797,179 @@ p.q6-calc-block__message{
     margin-bottom: 15px;
 }
 
+
+
+
+.q6-modal {
+    display: none;
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgba(0,0,0,0.4);
+
+    z-index: 99999;
+}
+
+.q6-modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+    box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+
+    padding: 20px 64px;
+}
+
+                                  
+.q6-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: transparent;
+}
+
+.q6-close:hover,
+.q6-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}                             
+                                                                       
+.q6-modal-dialog {
+    position: relative;
+    margin: 60px auto;
+    width: max-content;
+    height: max-content;        
+}           
+        
+.q6-button--close-window{
+    z-index: 9999;
+}
+
+.q6-modal.q6-modal--chat .q6-modal-dialog{
+    min-width: 540px;
+    max-width: 540px;
+}
+
+.q6-modal-title{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    color: #383838;
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;   
+    margin: 0; 
+}
+
+.q6-modal.q6-modal--chat .q6-button.q6-button--close-window {
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    padding: 0;
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    min-width: 0;
+    border: none;
+    background-color: #CBD0DB;
+    background-image: url(../img/no.svg);
+    background-size: 7px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+    transform: rotate(0);
+}
+
+.q6-modal.q6-modal--chat .q6-button.q6-button--close-window:hover {
+    background-color: #265cc5;
+}
+
+.q6-modal.q6-modal--chat .q6-input{
+    margin-top: 15px;
+}
+
+.q6-modal.q6-modal--chat .q6-input textarea{
+    resize: none;
+    height: 148px;
+}
+
+.q6-modal.q6-modal--chat .q6-modal-buttons{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.q6-modal-buttons .q6-button{
+    min-width: 136px;
+    flex: 1;
+}
+
+.q6-modal-buttons .q6-button:first-of-type{
+    max-width: 136px;
+}
+
+.q6-modal-buttons .q6-button + .q6-button{
+    margin-left: 14px;
+}
+
+.q6-timer-icon{
+    width: 34px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.q6-modal-response{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 5px;   
+    
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #171717;    
+}
+
+@media screen and (max-width: 1024px){
+    .q6-modal-buttons .q6-button + .q6-button{
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .q6-modal.q6-modal--chat .q6-modal-buttons {
+        flex-direction: column;
+    }    
+
+    .q6-modal-buttons .q6-button:first-of-type{
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .q6-modal.q6-modal--chat .q6-modal-dialog{
+        min-width: 400px;
+    }
+
+    .q6-modal-content {
+        padding: 20px 40px;
+    }    
+}
+
+
 @media screen and (max-width: 1211px){
     .q6-player-and-analytics__buttons {
         flex-direction: column;
