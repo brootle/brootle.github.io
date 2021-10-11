@@ -14612,6 +14612,19 @@ hr {
 .q7-stream__details-header  > .q7-input-and-buttons--inline {
     justify-content: space-between;
     margin: 0;
+    height: 38px;
+    align-items: center;    
+}
+
+.q7-stream-details-input-block{
+    border-bottom: 1px solid #E5E5ED;
+    padding: 7px 27px;
+}
+
+.q7-stream-container .q7-input__label label.q7-input__label-copy{
+    text-decoration: underline;
+    color: var(--blue);
+    cursor: pointer;
 }
 
 .q7-stream__details-header .q7-button.q7-button--stop-stream.q7-button--round, 
@@ -14677,7 +14690,7 @@ hr {
 }
 
 .q7-stream__details-body{
-    padding: 7px 27px;
+    /* padding: 7px 27px; */
 }
 
 .q7-stream__status-and-controls{
@@ -14795,7 +14808,7 @@ hr {
     font-weight: 600;
 }
 
-.q7-stream__details-body .q7-button.q7-button--add-callback {
+.q7-button.q7-button--add-callback {
     background: transparent;
     color: var(--blue);
     font-weight: 600;
@@ -14808,22 +14821,25 @@ hr {
     position: relative;
 }
 
-.q7-stream__details-body .q7-input-and-buttons--inline .q7-button.q7-button--add-callback{
+.q7-input-and-buttons--inline .q7-button.q7-button--add-callback{
     line-height: 30px;
     height: 30px;
     padding: 0;
+    margin-left: 10px;
 }
 
+.q7-input.q7-input--callback-url .q7-input__label {
+    margin-right: 10px;
+}
 
-
-.q7-stream__details-body input[type=text].q7-input__field{
+.q7-stream__details-header input[type=text].q7-input__field{
     padding: 0px 14px;
     line-height: 36px;
-    height: 36px;
     font-size: 16px;
+    margin-left: 10px;
 }
 
-.q7-stream__details-body .q7-input-and-buttons--inline .q7-button{
+.q7-stream__details-header .q7-input-and-buttons--inline .q7-button{
     line-height: 36px;
     height: 36px;
     font-size: 16px;
@@ -14831,7 +14847,14 @@ hr {
     min-width: 70px;    
 }
 
-.q7-stream__details-body .q7-input-and-buttons--inline .q7-input + .q7-button {
+.q7-stream__details-header .q7-input-and-buttons--inline .q7-button.q7-button--add-callback {
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 4px;
+}
+
+.q7-stream__details-header .q7-input-and-buttons--inline .q7-input + .q7-button {
     margin-left: 7px;
 }
 
@@ -14839,7 +14862,7 @@ hr {
     flex: 1;
 }
 
-.q7-stream__details-body .q7-button.q7-button--cancel {
+.q7-stream__details-header .q7-button.q7-button--cancel {
     background-color: transparent;
     color: #6F6F6F;
     border-color: #6F6F6F;
@@ -15210,7 +15233,7 @@ td.q7-visible-overflow{
     }
 }
 
-@media screen and (max-width: 1240px){
+@media screen and (max-width: 1315px){
     .q7-stream-container {
         flex-direction: column;
     }
