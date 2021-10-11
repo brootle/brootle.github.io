@@ -1110,7 +1110,7 @@
                                                     type="range"
                                                     min="0"                    
                                                     max="1000000"                 
-                                                    step="5000"                   
+                                                    step="1"                   
                                                     value="500000"             
                                                 >
 
@@ -1133,7 +1133,7 @@
 
                                                             $('#slider_01_value').val(`${formatedValue}`);  
 
-                                                            let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                            let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
                                                             $('#slider_01_cost').html(`$${formatedCost}/mo.`);    
 
                                                             $('#001').show()
@@ -1318,7 +1318,7 @@
                                                     type="range"
                                                     min="0"                    
                                                     max="1000000"                 
-                                                    step="5000"                   
+                                                    step="1"                   
                                                     value="700000"             
                                                 >
 
@@ -1341,7 +1341,10 @@
                                                             
                                                             $('#slider_02_value').val(`${formatedValue}`);    
 
-                                                            let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                            //console.log("value: ", value)
+
+                                                            let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                            
                                                             $('#slider_02_cost').html(`$${formatedCost}/mo.`);                                                                   
                                                         },
                                                     });
