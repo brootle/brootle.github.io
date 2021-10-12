@@ -572,7 +572,7 @@
                                 <div class="q7-stream__message">
                                     <div class="q7-stream__message-icon"></div>
                                     <div class="q7-stream__message-text">
-                                        To start your streaming, use the <a href="">RTMP Server URLs</a> and <a href="">Stream Key</a> credentials in your streaming client. Use the <a href="">Playback URL</a> to watch your stream.
+                                        To start your streaming, use the <span class="q7-find-and-copy" data-copy='server_url'>RTMP Server URLs</span> and <span class="q7-find-and-copy" data-copy='stream_key'>Stream Key</span> credentials in your streaming client. Use the <span class="q7-find-and-copy" data-copy='playback_url'>Playback URL</span> to watch your stream.
                                     </div>
                                 </div>                                                
                                 <div class="q7-stream__player">
@@ -813,7 +813,7 @@
                                                     </div> -->
                                                     <div class="q7-input__field--view q7-input__field--view-with-buttons">
                                                             
-                                                        <input class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="rtmps://live-streklfajsdlkfjalskdfjlksdjflaskdjflasdkam.qencode.com:443/app"  readonly>
+                                                        <input id='server_url' class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="rtmps://live-streklfajsdlkfjalskdfjlksdjflaskdjflasdkam.qencode.com:443/app"  readonly>
                                                                                                 
                                                         <div class="q7-inline-action-buttons">
                                                             <div class="q7-copy-text-button">
@@ -861,7 +861,7 @@
 
                                                     <div class="q7-input__field--view q7-input__field--view-two-buttons q7-input__field--view-key">
                                                             
-                                                        <input id="key" class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="81ad55e-87e0-4278-af91-7262da3b52bb"  readonly>
+                                                        <input id="stream_key" class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="81ad55e-87e0-4278-af91-7262da3b52bb"  readonly>
                                                         
                                                         <span id="hidden_key" style="display: none;">∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span>
                                                         
@@ -913,7 +913,7 @@
                                                     </div>
                                                     <div class="q7-input__field--view q7-input__field--view-with-buttons">
                                                             
-                                                        <input class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="https://play-0c082c48-882f-4879-b667-320b6a1e3373.qencode.com/qhls/qlive/playlist.m3u8"  readonly>
+                                                        <input id="playback_url" class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="https://play-0c082c48-882f-4879-b667-320b6a1e3373.qencode.com/qhls/qlive/playlist.m3u8"  readonly>
                                                                                                 
                                                         <div class="q7-inline-action-buttons">
                                                             <div class="q7-copy-text-button">
@@ -1772,6 +1772,43 @@
         <script>
             $(function () {         
 
+                // copy based on id
+                $(".q7-find-and-copy").click(function (){
+
+                    try { 
+
+                        let id = $(this).attr("data-copy")                  
+
+                        var copyText = $(`#${id}`)[0];
+                        
+
+                        /* Select the text field */
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                        /* Copy the text inside the text field */
+                        navigator.clipboard.writeText(copyText.value)                                
+
+                        var successful = document.execCommand('copy');
+
+                        var flashMessage = $(this).find('.q7-flash-message')[0];  
+
+                        if(successful) {
+                            //console.log("copied");              
+                            $(flashMessage).html('Copied');
+                            $(flashMessage)
+                                .animate({ opacity: 1 }, 200)
+                                .delay(500)     
+                                .animate({ opacity: 0 }, 200)                                                                                                                                          
+                        } else{ 
+                            //console.log("can not copy");
+                        } 
+                    } catch (err) {
+                        console.log(err);
+                    }
+
+                });                  
+
                 // copy previous text
                 $(".q7-inline-action-buttons .q7-copy-text-button").click(function (){
 
@@ -1848,9 +1885,9 @@
                 // toggle key hide and show
                 $("#toggle_key_view").click(function(){
 
-                    $("#key, #hidden_key").toggle();
+                    $("#stream_key, #hidden_key").toggle();
 
-                    var keyIsVisible = $("#key").is(':visible');
+                    var keyIsVisible = $("#stream_key").is(':visible');
                     var tooltip = $(this).find(".q7-tooltip")[0];
                     keyIsVisible ? $(tooltip).text('Hide') : $(tooltip).text('Show');
                 });                
