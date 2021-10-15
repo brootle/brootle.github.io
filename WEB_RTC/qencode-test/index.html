@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js" integrity="sha512-ZuOjyqq409+q6uc49UiBF3fTeyRyP8Qs0Jf/7FxH5LfhqBMzrR5cwbpDA4BgzSo884w6q/+oNdIeHenOqhISGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        video {
+            max-width: 100%;
+            width: 320px;
+        }
+    </style>
+
+    <title>WebRTC stream</title>
+</head>
+<body>
+
+    <h1>Realtime communication with WebRTC</h1>
+
+    <section class="select">
+      <label for="audioSource">Audio source: </label>
+      <select id="audioSource"></select>
+    </section>
+
+    <section class="select">
+      <label for="videoSource">Video source: </label>
+      <select id="videoSource"></select>
+    </section>
+
+    <video playsinline autoplay muted></video>
+
+
+    
+    
+    
+    <div>
+      <!-- <button id="startButton">Start</button>
+      <button id="callButton">Call</button>
+      <button id="hangupButton">Hang Up</button> -->
+      <button id="callButton">Check</button>
+    </div>
+  
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>    
+
+
+    <script>
+
+        // see https://stackoverflow.com/questions/51145222/webrtc-ontrack-is-not-called
+        
+
+        // Get camera and microphone
+        const videoElement = document.querySelector("video");
+        const audioSelect = document.querySelector("select#audioSource");
+        const videoSelect = document.querySelector("select#videoSource");
+
+   
+
+        audioSelect.onchange = getStream;
+        videoSelect.onchange = getStream;
+
+        getStream()
+            .then(getDevices)
+            .then(gotDevices);
+
+        function getDevices() {
+            return navigator.mediaDevices.enumerateDevices();
+        }
+
+        function gotDevices(deviceInfos) {
+            window.deviceInfos = deviceInfos;
+            for (const deviceInfo of deviceInfos) {
+                    const option = document.createElement("option");
+                    option.value = deviceInfo.deviceId;
+                if (deviceInfo.kind === "audioinput") {
+                    option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
+                    audioSelect.appendChild(option);
+                } else if (deviceInfo.kind === "videoinput") {
+                    option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+                    videoSelect.appendChild(option);
+                }
+            }
+        }
+
+        function getStream() {
+            if (window.stream) {
+                window.stream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            }
+            const audioSource = audioSelect.value;
+            const videoSource = videoSelect.value;
+            const constraints = {
+                audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
+                video: { deviceId: videoSource ? { exact: videoSource } : undefined }
+            };
+            return navigator.mediaDevices
+                .getUserMedia(constraints)
+                .then(gotStream)
+                .catch(handleError);
+        }
+
+        function gotStream(stream) {
+            window.stream = stream;
+            audioSelect.selectedIndex = [...audioSelect.options].findIndex(
+                option => option.text === stream.getAudioTracks()[0].label
+            );
+            videoSelect.selectedIndex = [...videoSelect.options].findIndex(
+                option => option.text === stream.getVideoTracks()[0].label
+            );
+            videoElement.srcObject = stream;
+
+            console.log("STREAM WAS RECEIVED: ", stream)
+        }
+
+        function handleError(error) {
+            console.error("Error: ", error);
+        }            
+
+
+        
+        const video = document.querySelector("video");
+        
+        // let peerConnections = {};
+        // let config = {
+        //     iceServers: [
+        //         { 
+        //             "urls": "stun:stun.l.google.com:19302",
+        //         },
+        //         // { 
+        //         //   "urls": "turn:TURN_IP?transport=tcp",
+        //         //   "username": "TURN_USERNAME",
+        //         //   "credential": "TURN_CREDENTIALS"
+        //         // }
+        //     ]
+        // };        
+
+
+
+        const analUserAgent = function(){
+            let unknown = '-';
+
+            // screen
+            let screenSize = '';
+            if (screen.width) {
+                let width = (screen.width) ? screen.width : '';
+                let height = (screen.height) ? screen.height : '';
+                screenSize += '' + width + " x " + height;
+            }
+
+            // browser
+            let nVer = navigator.appVersion;
+            let nAgt = navigator.userAgent;
+            let browser = navigator.appName;
+            let version = '' + parseFloat(navigator.appVersion);
+            let majorVersion = parseInt(navigator.appVersion, 10);
+            let isWebview = false;
+            let nameOffset, verOffset, ix;
+
+            // Opera
+            if ((verOffset = nAgt.indexOf('Opera')) != -1) {
+                browser = 'Opera';
+                version = nAgt.substring(verOffset + 6);
+                if ((verOffset = nAgt.indexOf('Version')) != -1) {
+                    version = nAgt.substring(verOffset + 8);
+                }
+            }
+            // Opera Next
+            if ((verOffset = nAgt.indexOf('OPR')) != -1) {
+                browser = 'Opera';
+                version = nAgt.substring(verOffset + 4);
+            }
+            //삼성 브라우저
+            else if ((verOffset = nAgt.indexOf('SamsungBrowser')) != -1) {
+                browser = 'SamsungBrowser';
+                version = nAgt.substring(verOffset + 15);
+            }
+            // Edge
+            else if ((verOffset = nAgt.indexOf('Edge')) != -1) {
+                browser = 'Microsoft Edge';
+                version = nAgt.substring(verOffset + 5);
+            }
+            // MSIE
+            else if ((verOffset = nAgt.indexOf('MSIE')) != -1) {
+                browser = 'Microsoft Internet Explorer';
+                version = nAgt.substring(verOffset + 5);
+
+
+                //win7 IE11 userAgent is ugly....
+                if( (nAgt.indexOf('Trident/') !== -1) && (nAgt.indexOf('rv:') !== -1)  ){
+                    version = nAgt.substring(nAgt.indexOf('rv:') + 3);
+                }
+            }
+            // Chrome
+            else if ((verOffset = nAgt.indexOf('Chrome')) != -1) {
+                browser = 'Chrome';
+                version = nAgt.substring(verOffset + 7);
+            }
+            else if ((verOffset = nAgt.indexOf('CriOS')) != -1) {   //iphone - chrome
+                browser = 'Chrome';
+                version = nAgt.substring(verOffset + 6);
+            }
+            // Firefox
+            else if ((verOffset = nAgt.indexOf('Firefox')) != -1) {
+                browser = 'Firefox';
+                version = nAgt.substring(verOffset + 8);
+            }
+            else if ((verOffset = nAgt.indexOf('FxiOS')) != -1) {
+                browser = 'Firefox';
+                version = nAgt.substring(verOffset + 6);
+            }
+            // Safari
+            else if ((verOffset = nAgt.indexOf('Safari')) != -1) {
+                browser = 'Safari';
+                version = nAgt.substring(verOffset + 7);
+                if ((verOffset = nAgt.indexOf('Version')) != -1) {
+                    version = nAgt.substring(verOffset + 8);
+                }
+            }
+
+
+            // MSIE 11+
+            else if (nAgt.indexOf('Trident/') !== -1) {
+                browser = 'Microsoft Internet Explorer';
+                version = nAgt.substring(nAgt.indexOf('rv:') + 3);
+            }
+            // Other browsers
+            else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
+                browser = nAgt.substring(nameOffset, verOffset);
+                version = nAgt.substring(verOffset + 1);
+                if (browser.toLowerCase() == browser.toUpperCase()) {
+                    browser = navigator.appName;
+                }
+            }
+            if(nAgt.indexOf(' wv') > 0){
+                isWebview = true;
+            }
+            // trim the version string
+            if ((ix = version.indexOf(';')) != -1) version = version.substring(0, ix);
+            if ((ix = version.indexOf(' ')) != -1) version = version.substring(0, ix);
+            if ((ix = version.indexOf(')')) != -1) version = version.substring(0, ix);
+
+            majorVersion = parseInt('' + version, 10);
+            if (isNaN(majorVersion)) {
+                version = '' + parseFloat(navigator.appVersion);
+                majorVersion = parseInt(navigator.appVersion, 10);
+            }
+
+            // mobile version
+            var mobile = /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(nVer);
+
+            // cookie
+            var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+
+            if (typeof navigator.cookieEnabled == 'undefined' && !cookieEnabled) {
+                document.cookie = 'testcookie';
+                cookieEnabled = (document.cookie.indexOf('testcookie') != -1) ? true : false;
+            }
+
+            // system
+            var os = unknown;
+            var clientStrings = [
+                {s:'Windows 10', r:/(Windows 10.0|Windows NT 10.0)/},
+                {s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/},
+                {s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/},
+                {s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/},
+                {s:'Windows Vista', r:/Windows NT 6.0/},
+                {s:'Windows Server 2003', r:/Windows NT 5.2/},
+                {s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/},
+                {s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/},
+                {s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/},
+                {s:'Windows 98', r:/(Windows 98|Win98)/},
+                {s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/},
+                {s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/},
+                {s:'Windows CE', r:/Windows CE/},
+                {s:'Windows 3.11', r:/Win16/},
+                {s:'Android', r:/Android/},
+                {s:'Open BSD', r:/OpenBSD/},
+                {s:'Sun OS', r:/SunOS/},
+                {s:'Linux', r:/(Linux|X11)/},
+                {s:'iOS', r:/(iPhone|iPad|iPod)/},
+                {s:'Mac OS XI', r:/Mac OS X 11/},
+                {s:'Mac OS X', r:/Mac OS X 10/},
+                {s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/},
+                {s:'QNX', r:/QNX/},
+                {s:'UNIX', r:/UNIX/},
+                {s:'BeOS', r:/BeOS/},
+                {s:'OS/2', r:/OS\/2/},
+                {s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
+            ];
+            for (var id in clientStrings) {
+                var cs = clientStrings[id];
+                if (cs.r.test(nAgt)) {
+                    os = cs.s;
+                    break;
+                }
+            }
+
+            var osVersion = unknown;
+
+            if (/Windows/.test(os)) {
+                osVersion = /Windows (.*)/.exec(os)[1];
+                os = 'Windows';
+            }
+
+            switch (os) {
+                case 'Mac OS XI':
+                    osVersion = /Mac OS X (11[\.\_\d]+)/.exec(nAgt)[1];
+                    break;
+
+                case 'Mac OS X':
+                    osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
+                    break;
+
+                case 'Android':
+                    osVersion = /Android ([\.\_\d]+)/.exec(nAgt)[1];
+                    break;
+
+                case 'iOS':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
+            }
+
+            return {
+                screen: screenSize,
+                browser: browser,
+                browserVersion: version,
+                browserMajorVersion: majorVersion,
+                mobile: mobile,
+                ua : nAgt,
+                os: os,
+                osVersion: osVersion,
+                cookies: cookieEnabled
+            };
+        };
+
+
+        let peerConnection = null;
+
+        // used for getting media stream from OME or host peer
+        let mainPeerConnectionInfo = null;
+        let ws = null;      
+        let wsPing = null;
+        let generatePublicCandidate = true;  
+        let webSocketUrl = "wss://webrtc2.qencode.com:3334/qlive/obs?direction=send&transport=tcp"
+        let mainStream = null;
+        let statisticsTimer = null;
+        let recorverPacketLoss = false;
+
+        //closed websocket by ome or client.
+        let wsClosedByPlayer = false;        
+
+        // used for send media stream to client peer.
+        let clientPeerConnections = {};        
+
+        let currentBrowser = analUserAgent();
+
+
+        function closePeer(error) {
+
+            //OvenPlayerConsole.log('WebRTC Loader closePeer()');
+            console.log('WebRTC Loader closePeer()');
+
+            if (!error) {
+                wsClosedByPlayer = true;
+            }
+
+            if (mainPeerConnectionInfo) {
+
+                if (mainPeerConnectionInfo.statisticsTimer) {
+                    clearTimeout(mainPeerConnectionInfo.statisticsTimer);
+                }
+
+                mainStream = null;
+
+                //OvenPlayerConsole.log('Closing main peer connection...');
+                console.log('Closing main peer connection...');
+                if (statisticsTimer) {
+                    clearTimeout(statisticsTimer);
+                }
+
+                if (mainPeerConnectionInfo.peerConnection) {
+
+                    mainPeerConnectionInfo.peerConnection.close();
+                }
+
+                mainPeerConnectionInfo.peerConnection = null;
+                mainPeerConnectionInfo = null;
+            }
+
+            if (Object.keys(clientPeerConnections).length > 0) {
+
+                for (let clientId in clientPeerConnections) {
+
+                    let clientPeerConnection = clientPeerConnections[clientId].peerConnection;
+
+                    if (clientPeerConnection) {
+                        //OvenPlayerConsole.log('Closing client peer connection...');
+                        console.log('Closing client peer connection...');
+                        clientPeerConnection.close();
+                        clientPeerConnection = null;
+                    }
+                }
+
+                clientPeerConnections = {};
+            }
+
+            clearInterval(wsPing);
+            wsPing = null;
+
+            if (ws) {
+                // OvenPlayerConsole.log('Closing websocket connection...');
+                // OvenPlayerConsole.log("Send Signaling : Stop.");
+                console.log('Closing websocket connection...');
+                console.log("Send Signaling : Stop.");
+                /*
+                0 (CONNECTING)
+                1 (OPEN)
+                2 (CLOSING)
+                3 (CLOSED)
+                */
+                if (ws.readyState === 0 || ws.readyState === 1) {
+
+                    wsClosedByPlayer = true;
+
+                    if (mainPeerConnectionInfo) {
+                        sendMessage(ws, {
+                            command: 'stop',
+                            id: mainPeerConnectionInfo.id
+                        });
+                    }
+
+                    ws.close();
+                }
+
+            } else {
+                wsClosedByPlayer = false;
+            }
+
+            ws = null;
+
+            if (error) {
+                errorTrigger(error, provider);
+            }
+        }
+
+        // used for getting media stream from OME or host peer 
+        function sendMessage(ws, message) {
+
+            if (ws) {
+                ws.send(JSON.stringify(message));
+            }
+
+        }        
+
+
+        function generateDomainFromUrl(url) {
+            let result = '';
+            let match;
+            if (match = url.match(/^(?:wss?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im)) {
+                result = match[1];
+            }
+
+            return result;
+        }      
+        
+        function findIp(string) {
+
+            let result = '';
+            let match;
+
+            if (match = string.match(new RegExp("\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b", 'gi'))) {
+                result = match[0];
+            }
+
+            return result;
+        }        
+
+
+        function extractLossPacketsOnNetworkStatus(peerConnectionInfo) {
+
+            if (peerConnectionInfo.statisticsTimer) {
+                clearTimeout(peerConnectionInfo.statisticsTimer);
+            }
+
+            if (!peerConnectionInfo.status) {
+                peerConnectionInfo.status = {};
+                peerConnectionInfo.status.lostPacketsArr = [];
+                peerConnectionInfo.status.slotLength = 8; //8 statistics. every 2 seconds
+                peerConnectionInfo.status.prevPacketsLost = 0;
+                peerConnectionInfo.status.avg8Losses = 0;
+                peerConnectionInfo.status.avgMoreThanThresholdCount = 0;  //If avg8Loss more than threshold.
+                peerConnectionInfo.status.threshold = 40;
+            }
+
+            let lostPacketsArr = peerConnectionInfo.status.lostPacketsArr,
+                slotLength = peerConnectionInfo.status.slotLength, //8 statistics. every 2 seconds
+                prevPacketsLost = peerConnectionInfo.status.prevPacketsLost,
+                avg8Losses = peerConnectionInfo.status.avg8Losses,
+                // avgMoreThanThresholdCount = peerConnectionInfo.status.avgMoreThanThresholdCount,  //If avg8Loss more than threshold.
+                threshold = peerConnectionInfo.status.threshold;
+
+            peerConnectionInfo.statisticsTimer = setTimeout(function () {
+                if (!peerConnectionInfo.peerConnection) {
+                    return false;
+                }
+
+                peerConnectionInfo.peerConnection.getStats().then(function (stats) {
+
+                    if (!stats) {
+                        return;
+                    }
+
+                    if (playerConfig.getConfig().autoFallback && stats) {
+
+                        stats.forEach(function (state) {
+
+                            if (state.type === "inbound-rtp" && state.kind === 'video' && !state.isRemote) {
+
+                                //(state.packetsLost - prevPacketsLost) is real current lost.
+
+                                let actualPacketLost = parseInt(state.packetsLost) - parseInt(prevPacketsLost);
+
+                                lostPacketsArr.push(parseInt(state.packetsLost) - parseInt(prevPacketsLost));
+
+                                if (lostPacketsArr.length > slotLength) {
+
+                                    lostPacketsArr.shift();
+                                }
+
+                                if (lostPacketsArr.length === slotLength) {
+
+                                    avg8Losses = _.reduce(lostPacketsArr, function (memo, num) {
+                                        return memo + num;
+                                    }, 0) / slotLength;
+                                    //OvenPlayerConsole.log("Last8 LOST PACKET AVG  : " + (avg8Losses), "Current Packet LOST: " + actualPacketLost, "Total Packet Lost: " + state.packetsLost, lostPacketsArr);
+                                    console.log("Last8 LOST PACKET AVG  : " + (avg8Losses), "Current Packet LOST: " + actualPacketLost, "Total Packet Lost: " + state.packetsLost, lostPacketsArr);
+
+                                    if (avg8Losses > threshold) {
+                                        peerConnectionInfo.status.avgMoreThanThresholdCount = peerConnectionInfo.status.avgMoreThanThresholdCount + 1;
+                                        if (peerConnectionInfo.status.avgMoreThanThresholdCount >= 60) {
+                                            // OvenPlayerConsole.log("NETWORK UNSTABLED!!! ");                                            
+                                            // let tempError = ERRORS.codes[PLAYER_WEBRTC_NETWORK_SLOW];
+                                            // closePeer(tempError);
+                                            console.log("NETWORK UNSTABLED!!! ");
+                                        }
+                                    } else {
+                                        peerConnectionInfo.status.avgMoreThanThresholdCount = 0;
+                                    }
+                                }
+                                peerConnectionInfo.status.prevPacketsLost = state.packetsLost;
+                            }
+                        });
+
+                        extractLossPacketsOnNetworkStatus(peerConnectionInfo);
+                    }
+                });
+
+            }, 2000);
+
+        }
+
+
+        // return -1 if no opus;
+        // return opus format number
+        function getOpusFormatNumber(sdp) {
+
+            const lines = sdp.split('\n');
+            let opusFormatNumber = -1;
+
+            for (let i = 0; i < lines.length - 1; i++) {
+
+                lines[i] = lines[i].toLowerCase();
+
+                if (lines[i].indexOf('a=rtpmap') > -1 && lines[i].indexOf('opus') > -1) {
+                    // parsing "a=rtpmap:102 OPUS/48000/2" line
+                    opusFormatNumber = lines[i].split(' ')[0].split(':')[1];
+                    break;
+                }
+            }
+
+            return opusFormatNumber;
+        }        
+
+        function checkOpusIsStereo(sdp, opusFormatNumber) {
+
+            const lines = sdp.split('\n');
+
+            let stereo = false;
+
+            for (let i = 0; i < lines.length - 1; i++) {
+
+                lines[i] = lines[i].toLowerCase();
+
+                // check stereo=1 from "a=fmtp:102 sprop-stereo=1;stereo=1;minptime=10;useinbandfec=1"
+                if (lines[i].indexOf('a=fmtp:' + opusFormatNumber) > -1) {
+
+                    if (lines[i].indexOf('stereo=1') > -1) {
+                        stereo = true;
+                    }
+                    break;
+                }
+            }
+
+            return stereo;
+        }
+
+        function mungeSdpForceStereoOpus(sdp, opusFormatNumber) {
+
+            const lines = sdp.split('\n');
+
+            // find this line and modify. "a=fmtp:102 minptime=10;useinbandfec=1"
+            for (let i = 0; i < lines.length - 1; i++) {
+
+                // check stereo=1 from "a=fmtp:102 sprop-stereo=1;stereo=1;minptime=10;useinbandfec=1"
+                if (lines[i].indexOf('a=fmtp:' + opusFormatNumber) > -1) {
+
+                    if (lines[i].indexOf('stereo=1') === -1) {
+
+                        lines[i] = lines[i] + ';stereo=1';
+                    }
+                    break;
+                }
+            }
+
+            return lines.join('\n');
+        }
+
+        function copyCandidate(basicCandidate) {
+
+            let cloneCandidate = _.clone(basicCandidate);
+
+            let newDomain = generateDomainFromUrl(webSocketUrl);
+            let ip = findIp(cloneCandidate.candidate);
+
+            if (ip === '' || ip === newDomain) {
+
+                return null;
+            }
+
+            return new Promise(function (resolve, reject) {
+
+                // firefox browser throws a candidate parsing exception when a domain name is set at the address property. So we resolve the dns using google dns resolve api.
+                if (currentBrowser.browser === 'Firefox' && !findIp(newDomain)) {
+
+                    fetch('https://dns.google.com/resolve?name=' + newDomain)
+                        .then(resp => resp.json())
+                        .then(data => {
+
+                            if (data && data.Answer && data.Answer.length > 0) {
+
+                                if (data.Answer[0].data) {
+
+                                    let relsolvedIp = data.Answer[0].data;
+
+                                    cloneCandidate.candidate = cloneCandidate.candidate.replace(ip, relsolvedIp);
+                                    resolve(cloneCandidate);
+                                } else {
+
+                                    resolve(null);
+                                }
+                            } else {
+
+                                resolve(null);
+                            }
+                        });
+
+                } else {
+
+                    cloneCandidate.candidate = cloneCandidate.candidate.replace(ip, newDomain);
+                    resolve(cloneCandidate);
+                }
+
+            });
+        }
+
+        function addIceCandidate(peerConnection, candidates) {
+
+            for (let i = 0; i < candidates.length; i++) {
+                if (candidates[i] && candidates[i].candidate) {
+
+                    let basicCandidate = candidates[i];
+
+                    peerConnection.addIceCandidate(new RTCIceCandidate(basicCandidate)).then(function () {
+                        // OvenPlayerConsole.log("addIceCandidate : success");
+                        console.log("addIceCandidate : success");
+                    }).catch(function (error) {
+                        // let tempError = ERRORS.codes[PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR];
+                        // tempError.error = error;
+                        //closePeer(tempError);
+                        console.log("ERROR: ", error)
+                    });
+
+                    if (generatePublicCandidate) {
+
+                        let cloneCandidatePromise = copyCandidate(basicCandidate);
+
+                        if (cloneCandidatePromise) {
+                            cloneCandidatePromise.then(function (cloneCandidate) {
+
+                                if (cloneCandidate) {
+
+                                    peerConnection.addIceCandidate(new RTCIceCandidate(cloneCandidate)).then(function () {
+                                        //OvenPlayerConsole.log("cloned addIceCandidate : success");
+                                        console.log("cloned addIceCandidate : success");
+                                    }).catch(function (error) {
+
+                                        // let tempError = ERRORS.codes[PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR];
+                                        // tempError.error = error;
+                                        // closePeer(tempError);
+                                        console.log("ERROR:", error)
+                                    });
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        
+
+        function createMainPeerConnection(id, peerId, sdp, candidates, iceServers, resolve) {
+
+            
+
+            let peerConnectionConfig = {
+                iceServers: [
+                    { 
+                        "urls": "stun:stun.l.google.com:19302",
+                    }
+                ]
+            };
+            
+            // check how it's done in OvenPlayer
+            peerConnectionConfig.iceServers.push(iceServers[0])
+
+            console.log("peerConnectionConfig: ", peerConnectionConfig)
+
+            peerConnectionConfig.iceTransportPolicy = 'relay';
+
+            //const localStream = await getUserMedia({vide: true, audio: true});
+
+            peerConnection = new RTCPeerConnection(peerConnectionConfig);
+
+
+            // localStream.getTracks().forEach(track => {
+            //     peerConnection.addTrack(track, localStream);
+            // });            
+
+            console.log("---peerConnection---- ", peerConnection)
+
+            let stream = videoElement.srcObject;
+            console.log("stream: ", stream)
+            stream.getTracks().forEach(track => {
+                console.log("ADD TRACK...")
+                peerConnection.addTrack(track, stream)
+            });               
+
+
+            mainPeerConnectionInfo = {
+                id: id,
+                peerId: peerId,
+                peerConnection: peerConnection
+            };
+
+            //Set remote description when I received sdp from server.
+            peerConnection.setRemoteDescription(new RTCSessionDescription(sdp))
+                .then(function () {
+
+                    peerConnection.createAnswer()
+                        .then(function (desc) {
+
+                            const opusFormatNumber = getOpusFormatNumber(sdp.sdp);
+
+                            console.log("opusFormatNumber: ", opusFormatNumber)
+
+                            if (opusFormatNumber > -1) {
+
+                                if (checkOpusIsStereo(sdp.sdp, opusFormatNumber)) {
+
+                                    //If offer has opus and if it is stereo, munge local sdp to force stereo=1
+                                    //Thanks to community https://github.com/AirenSoft/OvenMediaEngine/issues/203
+                                    desc.sdp = mungeSdpForceStereoOpus(desc.sdp, opusFormatNumber);
+                                }
+                            }
+
+                            //OvenPlayerConsole.log("create Host Answer : success");
+
+                            peerConnection.setLocalDescription(desc).then(function () {
+                                // my SDP created.
+                                let localSDP = peerConnection.localDescription;
+                                // OvenPlayerConsole.log('Local SDP', localSDP);
+
+                                console.log("localSDP: ", localSDP)
+
+                                sendMessage(ws, {
+                                    id: id,
+                                    peer_id: peerId,
+                                    command: 'answer',
+                                    sdp: localSDP
+                                });
+
+                            }).catch(function (error) {
+
+                                console.log("error: ", error)
+                                // let tempError = ERRORS.codes[PLAYER_WEBRTC_SET_LOCAL_DESC_ERROR];
+                                // tempError.error = error;
+                                // closePeer(tempError);
+                            });
+                        })
+                        .catch(function (error) {
+                            console.log("error: ", error)
+                            //let tempError = ERRORS.codes[PLAYER_WEBRTC_CREATE_ANSWER_ERROR];
+                            //tempError.error = error;
+                            //closePeer(tempError);
+                        });
+                })
+                .catch(function (error) {
+                    console.log("error: ", error)
+                    //let tempError = ERRORS.codes[PLAYER_WEBRTC_SET_REMOTE_DESC_ERROR];
+                    //tempError.error = error;
+                    //closePeer(tempError);
+                });
+
+            console.log("candidates: ", candidates)
+            if (candidates) {
+
+                addIceCandidate(peerConnection, candidates);
+            }
+
+            peerConnection.onicecandidate = function (e) {
+                if (e.candidate) {
+
+                    //OvenPlayerConsole.log("WebRTCLoader send candidate to server : " , e.candidate);
+                    console.log("WebRTCLoader send candidate to server : " , e.candidate);
+
+                    // console.log('Main Peer Connection candidate', e.candidate);
+
+                    sendMessage(ws, {
+                        id: id,
+                        peer_id: peerId,
+                        command: "candidate",
+                        candidates: [e.candidate]
+                    });
+                }
+            };
+            peerConnection.onconnectionstatechange = function (e) {
+                //iceConnectionState
+                //OvenPlayerConsole.log("[on connection state change]", peerConnection.connectionState, e);
+                console.log("[on connection state change]", peerConnection.connectionState, e);
+
+            };
+            peerConnection.oniceconnectionstatechange = function (e) {
+                //OvenPlayerConsole.log("[on ice connection state change]", peerConnection.iceConnectionState, e);
+                console.log("[on ice connection state change]", peerConnection.iceConnectionState, e);
+
+                /*
+                * https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/iceConnectionState
+                * Checks to ensure that components are still connected failed for at least one component of the RTCPeerConnection. This is a less stringent test than "failed" and may trigger intermittently and resolve just as spontaneously on less reliable networks, or during temporary disconnections. When the problem resolves, the connection may return to the "connected" state.
+                * */
+                //This process is my imagination. I do not know how to reproduce.
+                //Situation : OME is dead but ome can't send 'stop' message.
+                if (peerConnection.iceConnectionState === 'disconnected' || peerConnection.iceConnectionState === 'closed') {
+                    if (!wsClosedByPlayer) {
+                        if (mainPeerConnectionInfo) {
+                            // let tempError = ERRORS.codes[PLAYER_WEBRTC_UNEXPECTED_DISCONNECT];
+                            // closePeer(tempError);
+                            console.log("ERROR: PLAYER_WEBRTC_UNEXPECTED_DISCONNECT")
+                        }
+                    }
+                }
+            };
+
+            // it is triggered when client gets media from server!
+            peerConnection.ontrack = function (e) {
+
+                console.log("............ON TRACK...........")
+
+                // OvenPlayerConsole.log("stream received.");
+
+                // OvenPlayerConsole.log('Recovery On Packet Loss :', recorverPacketLoss);
+
+                console.log("stream received.");
+                console.log('Recovery On Packet Loss :', recorverPacketLoss);
+
+                if (recorverPacketLoss) {
+                    extractLossPacketsOnNetworkStatus(mainPeerConnectionInfo);
+                }
+
+                mainStream = e.streams[0];
+                //loadCallback(e.streams[0]);
+
+                console.log("...mainStream...: ", mainStream)
+
+                //video.srcObject = e.streams[0];
+
+                // if (playerConfig.getConfig().webrtcConfig && playerConfig.getConfig().webrtcConfig.playoutDelayHint) {
+
+                //     let hint = playerConfig.getConfig().webrtcConfig.playoutDelayHint;
+
+                //     const receivers = mainPeerConnectionInfo.peerConnection.getReceivers();
+
+                //     for (let i = 0; i < receivers.length; i++) {
+
+                //         let receiver = receivers[i];
+
+                //         receiver.playoutDelayHint = hint;
+                //         OvenPlayerConsole.log("WebRTC playoutDelayHint", receiver, hint);
+                //     }
+
+                // }
+            };
+
+
+         
+
+
+        }
+
+
+
+
+
+
+
+        document.getElementById("callButton").addEventListener('click', ()=>{
+
+            console.log("peerConnection: ", peerConnection)
+
+            //var mediaStream = peerConnection.getStream(id);
+
+            // console.log("Make a call")
+            // //makeCall()
+
+            
+            // console.log("peerConnection: ", peerConnection);
+
+            // let stream = videoElement.srcObject;
+            // console.log("stream: ", stream)
+            // stream.getTracks().forEach(track => {
+            //     console.log("ADD TRACK...")
+            //     peerConnection.addTrack(track, stream)
+            // });            
+        })
+
+
+        // Create WebSocket connection.
+        ws = new WebSocket("wss://webrtc2.qencode.com:3334/qlive/obs?direction=send&transport=tcp");
+
+        ws.onopen = function(e) {
+            console.log("[open] Connection established");
+            // socket.send("request_offer");
+            sendMessage(ws, {
+                command: "request_offer"
+            });            
+        }        
+
+        ws.onmessage = function(e) {
+            console.log(`[message] Data received from server: ${e.data}`)
+
+            // let response = JSON.parse(event.data)
+
+            // console.log(response)
+
+            // let { id, iceServers } = response
+
+            // config.iceServers.push(iceServers[0])
+
+            // console.log("config: ", config)
+
+            const message = JSON.parse(e.data);
+
+            if (message.command === 'offer') {
+
+                let iceServers =  message.iceServers || message.ice_servers;
+
+                console.log("createMainPeerConnection...")
+
+                console.log("message.id: ", message.id)
+                console.log("message.peer_id: ", message.peer_id)
+                console.log("message.sdp: ", message.sdp)
+                console.log("message.candidates: ", message.candidates)
+                console.log("iceServers: ", iceServers)
+
+                createMainPeerConnection(message.id, message.peer_id, message.sdp, message.candidates, iceServers);
+            }
+
+            
+        }
+
+        ws.onclose = function(event) {
+            if (event.wasClean) {
+                console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`)
+            } else {
+                // e.g. server process killed or network down
+                // event.code is usually 1006 in this case
+                console.log('[close] Connection died')
+            }
+        }
+
+        ws.onerror = function(error) {
+            console.log(`[error] ${error.message}`)
+        }        
+
+
+
+    
+        
+    </script>
+</body>
+</html>
