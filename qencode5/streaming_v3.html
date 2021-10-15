@@ -127,6 +127,9 @@
                             </div>
                         </div>
                         <div class="q6-menu-item">
+                            <a class="q6-menu-item-link" href="">Live Streaming</a>
+                        </div>                           
+                        <div class="q6-menu-item">
                             <a class="q6-menu-item-link" href="">Pricing</a>
                         </div>                 
                         <div class="q6-menu-item q6-menu-item--has-submenu q6-menu-item--submenu-closed">
@@ -260,6 +263,14 @@
                     <img src="img/streaming_big3.svg" alt="Simulcast streams to multiple social video channels or destinations">
                 </div>
             </div>        
+
+            <div class="q6-card q6-card--streaming q6-card--streaming-how q6-card--one-column">
+                <div>
+                    <h2>How it works</h2>
+                    <img class="q6-how-it-works-image" src="img/live_streaming.svg" alt="How it works">
+                    <img class="q6-how-it-works-image--small" src="img/live_streaming_smaller.svg" alt="How it works">
+                </div>
+            </div>
             
             <div class="q6-card q6-card--streaming q6-card--one-column">
                 <div>
@@ -284,7 +295,7 @@
                                                         type="range"
                                                         min="0"                    
                                                         max="1000000"                 
-                                                        step="10000"                   
+                                                        step="1"                   
                                                         value="500000"             
                                                     >
     
@@ -307,7 +318,7 @@
     
                                                                 $('#slider_01_value').val(`${formatedValue}`);  
     
-                                                                let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                                let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
                                                                 $('#slider_01_cost').html(`$${formatedCost}/mo.`);    
     
                                                                 $('#001').show()
@@ -342,11 +353,47 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000' disabled>
+                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000'>
                                             </div>
                                             <div class="q6-streaming-calc__cost" id="slider_01_cost">
                                                 $7,500/mo.
                                             </div>
+                                            <script>
+                                                $(function () {
+                                                    // when user inputs value
+                                                    document.getElementById('slider_01_value').addEventListener('input', function (e) {
+                                                        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                                    });
+                                                });                 
+    
+                                                $(function () {
+                                                
+                                                    //setup before functions
+                                                    var typingTimer;                //timer identifier
+                                                    var doneTypingInterval = 500;  //time in ms (0.5 seconds)
+    
+                                                    //on keyup, start the countdown
+                                                    $('#slider_01_value').keyup(function(){
+                                                        clearTimeout(typingTimer);
+                                                        if ($('#slider_01_value').val()) {
+                                                            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                                                        }
+                                                    });
+    
+                                                    //user is "finished typing," do something
+                                                    function doneTyping () {
+                                                        //do something
+    
+                                                        let userInput = parseInt($('#slider_01_value').val().replace(/\s/g, "")) 
+                                                        //console.log("userInput: ", userInput)                                           
+    
+                                                        // update slider
+                                                        $("#slider_01").val(userInput)
+                                                        $("#slider_01").trigger('change');                                                
+                                                    }                 
+                                                })                           
+    
+                                            </script>                                        
                                         </div>
                                     </div>  
     
@@ -456,7 +503,7 @@
                                                         type="range"
                                                         min="0"                    
                                                         max="1000000"                 
-                                                        step="10000"                   
+                                                        step="1"                   
                                                         value="700000"             
                                                     >
     
@@ -479,7 +526,10 @@
                                                                 
                                                                 $('#slider_02_value').val(`${formatedValue}`);    
     
-                                                                let formatedCost = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                                //console.log("value: ", value)
+    
+                                                                let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                                
                                                                 $('#slider_02_cost').html(`$${formatedCost}/mo.`);                                                                   
                                                             },
                                                         });
@@ -495,11 +545,48 @@
                                         </div>
                                         <div>
                                             <div class="q6-input">
-                                                <input id="slider_02_value" class="q6-input__field q6-black-text" type="text" value='700 000' disabled>
+                                                <input id="slider_02_value" class="q6-input__field q6-black-text" type="text" value='700 000'>
                                             </div>
                                             <div class="q6-streaming-calc__cost" id="slider_02_cost">
                                                 $84,000/mo.
-                                            </div>                                            
+                                            </div>   
+                                            <script>
+                                                $(function () {
+                                                    // when user inputs value
+                                                    document.getElementById('slider_02_value').addEventListener('input', function (e) {
+                                                        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                                    });
+                                                });
+    
+    
+                                                $(function () {
+                                                
+                                                //setup before functions
+                                                var typingTimer;                //timer identifier
+                                                var doneTypingInterval = 500;  //time in ms (0.5 seconds)
+    
+                                                //on keyup, start the countdown
+                                                $('#slider_02_value').keyup(function(){
+                                                    clearTimeout(typingTimer);
+                                                    if ($('#slider_02_value').val()) {
+                                                        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                                                    }
+                                                });
+    
+                                                //user is "finished typing," do something
+                                                function doneTyping () {
+                                                    //do something
+    
+                                                    let userInput = parseInt($('#slider_02_value').val().replace(/\s/g, "")) 
+                                                    //console.log("userInput: ", userInput)                                           
+    
+                                                    // update slider
+                                                    $("#slider_02").val(userInput)
+                                                    $("#slider_02").trigger('change');                                                
+                                                }                 
+                                            })                           
+    
+                                            </script>                                                                                 
                                         </div>
                                     </div>          
     
@@ -549,7 +636,6 @@
                                             <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
                                         </div>                                
                                     </div>       
-                                    
     
                                     
                                 </div>
