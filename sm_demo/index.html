@@ -34,7 +34,6 @@
 
         .menu-item{
             display: block;
-            padding: 10px;
         }
 
         .menu.submenu{
@@ -55,16 +54,19 @@
             box-sizing: border-box;
             position: absolute;
             right: 12px;
-            top: calc(50% - 4px);
+            top: 14px;
             height: 7px;
             width: 7px;
             border-bottom: 1px solid red;
             border-right: 1px solid red;
             transform: rotate( -45deg);
+            transition: 200ms all ease-out;
         }        
 
-        .menu-item > a{
+        .menu-item > a,
+        .menu-item > span{
             display: block;
+            padding: 10px;
         }
 
         .menu-item:hover{
@@ -77,12 +79,24 @@
             left: 220px;
             top: 0;
             width: 220px;
+            box-shadow: 0px 4px 12px 4px #b5b5b5;
+            z-index: 500;            
         }
 
         .has-submenu:hover > .submenu{
             display: block;
         }
 
+        @media screen and (max-width: 750px){
+            .submenu {
+                position: initial;
+            }            
+
+            .menu-item.has-submenu:hover:after {
+                transform: rotate(45deg);
+                top: 14px;
+            }            
+        }     
 
     </style>
 
@@ -98,28 +112,28 @@
                 <li class="menu-item"><a href="#">Animals/Pets</a></li>
                 <li class="menu-item"><a href="#">Woman's Fashion</a></li>
                 <li class="menu-item has-submenu">
-                    Submenu
+                    <span>Submenu</span>
                     <ul class="menu submenu">
-                        <li class="menu-item"><a href=""></a>dkfjal</li>
-                        <li class="menu-item"><a href=""></a>dkfjas</li>
+                        <li class="menu-item"><a href="">1.1. dkfjal</a></li>
+                        <li class="menu-item"><a href="">1.2. dkfjas</a></li>
                         <li class="menu-item has-submenu">
-                            Submenu
+                            <span>Submenu</span>
                             <ul class="menu submenu">
-                                <li class="menu-item"><a href=""></a>dkfjal</li>
-                                <li class="menu-item"><a href=""></a>dkfjas</li>
+                                <li class="menu-item"><a href="">2.1. dkfjal</a></li>
+                                <li class="menu-item"><a href="">2.2. dkfjas</a></li>
                                 <li class="menu-item has-submenu">
-                                    Submenu
+                                    <span>Submenu</span>
                                     <ul class="menu submenu">
-                                        <li class="menu-item"><a href=""></a>dkfjal</li>
-                                        <li class="menu-item"><a href=""></a>dkfjas</li>
-                                        <li class="menu-item"><a href=""></a>dkfjas</li>
-                                        <li class="menu-item"><a href=""></a>kdjf aslkd</li>
+                                        <li class="menu-item"><a href="">3.1. dkfjal</a></li>
+                                        <li class="menu-item"><a href="">3.1. dkfjas</a></li>
+                                        <li class="menu-item"><a href="">3.1. dkfjas</a></li>
+                                        <li class="menu-item"><a href="">3.1. kdjf aslkd</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item"><a href=""></a>kdjf aslkd</li>
+                                <li class="menu-item"><a href="">kdjf aslkd</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item"><a href=""></a>kdjf aslkd</li>
+                        <li class="menu-item"><a href="">kdjf aslkd</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="#">Religion (Faith)</a></li>
