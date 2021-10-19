@@ -574,15 +574,45 @@
                                     <div class="q7-stream__message-text">
                                         To start streaming, enter the <span class="q7-find-and-copy" data-copy='server_url'>RTMP Server URL</span> and <span class="q7-find-and-copy" data-copy='stream_key'>Stream Key</span> in the settings of your streaming client.
                                     </div>
-                                </div>                                                
+                                </div>      
                                 <div class="q7-stream__player">
 
-                                    <div id="my_player_loading" class="q7-player-preload-window q7-player-preload-window--updating-status">
-                                        <div class="q7-player__stream-status--ready">
-                                            <img src="img/stream_ready.svg" alt="You're ready to stream!">
-                                            <div class="q7-streaming-status-message">You're ready to stream!</div>
+                                    <div id="my_player_loading" class="q7-streaming-player-container">
+                                        <div id="preloading-animation" class="q7-preloading-animaton-container">                                            
+                                            <div class="q7-player__stream-status--ready">
+                                                <img src="img/stream_ready.svg" alt="You're ready to stream!">
+                                                <div class="q7-streaming-status-message">You're ready to stream!</div>
+                                            </div>
                                         </div>
-                                    </div>                                
+
+                                        <div class="q7-streaming-player" id="player"></div>
+                                        <script src='https://player-static.qencode.com/qa/qencode-bootstrapper.min.js'></script>
+                                        <script>
+                                            qPlayer('player', {
+                                                env: "qa",
+                                                licenseKey: 'f223fb50-8d26-6b9e-637c-eb62a5e79edb',
+                                                playback: {
+                                                    muted: true,
+                                                    autoplay: true, // autoplay will work only if muted is true
+                                                },                                        
+                                                videoSources: { src: "https://moctobpltc-i.akamaihd.net/hls/live/571329/eight/playlist.m3u8" }
+                                            }, function(){
+                                                $("#preloading-animation").hide();
+                                                let player = this._player;
+                                                $("#stop_stream").click(function(){
+                                                    player.pause()
+                                                    $("#stop_stream").hide()
+                                                    $("#start_stream").show()
+                                                })
+                                                $("#start_stream").click(function(){
+                                                    player.play()
+                                                    $("#stop_stream").show()
+                                                    $("#start_stream").hide()
+                                                })                                       
+                                            });  
+                                        </script>                                         
+                                    </div>        
+                       
                                
 
                                     <div class="q7-stream__player-footer">         
@@ -623,18 +653,6 @@
                                                     <div class="q7-input__label">
                                                         <label>Live Stream ID:</label>                                        
                                                     </div>
-                                                    <!-- <div class="q7-input__field--view">
-                                                        <span>233242300045346346432</span>
-                                                        
-                                                        <div class="q7-inline-action-buttons">
-                                                            <div class="q7-copy-text-button">
-                                                                <div class="q7-tooltip">
-                                                                    Copy
-                                                                    <div class="q7-flash-message" style="opacity: 0;">Copied</div>
-                                                                </div>                                                        
-                                                            </div>                                                 
-                                                        </div>                                                                                       
-                                                    </div> -->
                                                     <div class="q7-input__field--view q7-input__field--view-with-buttons">
                                                         
                                                         <input class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="1cdea5d6-1e33-42fb-b95f-8867b1416522"  readonly>
@@ -663,7 +681,7 @@
                                         </div>                                    
 
                                     </div>
-                                </div>
+                                </div>  
                             </div>
                             <div>
                                 <div class="q7-stream__details">

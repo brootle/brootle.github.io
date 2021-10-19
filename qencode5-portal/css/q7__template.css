@@ -12584,21 +12584,27 @@ img.q7-welcome-streaming{
 }
 
 .q7-player__stream-status--ready{
-    position: absolute;
-    width: 290px;
-    height: 218px;
-    top: calc(50% - 129px);
-    left: calc(50% - 145px);
+    width: 100%;
+    height: 100%;
     border-radius: 0;    
+    background: #F8F8FA;
+    border-color: #F8F8FA;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;     
 }
 
 .q7-player__stream-status--receiving{
-    position: absolute;
-    width: 246px;
-    height: 187px;
-    top: calc(50% - 123px);
-    left: calc(50% - 123px);
+    width: 100%;
+    height: 100%;
     border-radius: 0;    
+    background: #F8F8FA;
+    border-color: #F8F8FA;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
 }
 
 .q7-player-preload-window.q7-player-preload-window--updating-status{
@@ -15249,6 +15255,35 @@ td.q7-visible-overflow{
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     border-right: 1px solid #e1e5ee;
+}
+
+.q7-streaming-player-container{
+    padding-top: 56.25%;
+    width: 100%;
+    max-width: 100%;
+    height: 0;
+    position: relative;
+}
+
+.q7-streaming-player{
+    margin-top: -56.25%;
+}
+
+.q7-preloading-animaton-container{
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;        
+}
+
+.q7-loading-cell-container{
+    border: 2px solid #eef0f3;
+    width: 100%;
+    height: 100%;    
 }
 
 @media screen and (max-width: 700px){
