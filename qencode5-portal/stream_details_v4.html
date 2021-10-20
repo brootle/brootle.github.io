@@ -602,10 +602,11 @@
                                                 playback: {
                                                     muted: true,
                                                     autoplay: true, // autoplay will work only if muted is true
-                                                },                                        
+                                                },                                                                                        
                                                 videoSources: { src: "https://moctobpltc-i.akamaihd.net/hls/live/571329/eight/playlist.m3u8" }
                                             }, function(){
                                                 $("#preloading-animation").hide();
+                                                $("#my_player_loading").addClass("q7-streaming-player-container--playing")
                                                 let player = this._player;
                                                 $("#stop_stream").click(function(){
                                                     player.pause()
