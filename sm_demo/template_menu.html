@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Smiling Faces</title>
+      <style>
+         * {margin:0; padding:0; border:0; box-sizing: border-box; font-family: tahoma, sans-serif;}
+         @media only screen and (min-width: 100px)
+         {/*All of the css styles should be put on a separate css when ready. rules are in order that it appears in the html*/
+         h1{font-size: medium;}
+         h3{font-size: small;}
+         a:link{text-decoration: none; color: navy;}
+         a:hover img{ display: block; }
+         header {height: 22vw;}
+         #logo p{position: absolute; top: 2vw; left: 2vw; width: 200px; font-size: small;}
+         #profile{position: absolute; right:4vw;}
+         #profile p{position: relative; text-align:right;}
+         #smile {text-align:center;}
+         .smile-logo{width:65vw; padding-top:2vw; padding-bottom: 2vw;}
+         #extra{padding: 1vw 0 1vw 0; background-color:navajowhite; text-align: center;}
+         nav{position: relative;text-align: center; left: 20vw; width: 65vw;}
+         #top-container{position: relative;width: 100%;  height: 0; text-align: center;}
+         /*#menu-wrapper-dd {position: absolute; top:34px; left:5vw; text-align: center;}*/
+         #menu-wrapper-top { visibility:hidden; /*position: relative; text-align: center; margin: 0 auto;*/}
+         .dropbtn-btn {background-color:transparent; padding: 0.4em 1em; cursor: pointer; font-size:12px; }
+         /* Style The Dropdown Button */
+         .dropbtn {background-color:transparent; padding: 7px 11px;  font-style:normal; cursor: pointer;margin: 0 0.2vw;}
+         .dropdown {/*position: relative;  */display: inline;}
+         /* Dropdown Content (Hidden by Default) */
+         .dropdown-content {display: none; background-color: rgba(240,240,240,0.8); position: absolute; /*transform: translate(-5%, -6%); */width: 99vw; left:2vw;top:23vw; z-index: 9;}
+         /* Links inside the dropdown */
+         .dropdown-content a {font-size:11px; padding: 10px 12px;  text-decoration: none;  display: block; text-align: left; color: navy;}
+         /* Change color of dropdown links on hover */
+         .dropdown-content a:hover {color:#0a014f;}
+         /* Show the dropdown menu on hover */
+         .dropdown:hover .dropdown-content { display: block;}
+         /* Change the background color of the dropdown button when the dropdown content is shown */
+         .dropdown:hover.dropbtn {/*background-color: #f3f4f5;*/ color:red;}
+         .dropbtn {color: navy;  padding: 2px;  font-size:smaller;  border-right: thin solid black;}
+         .item-list{float: left;margin:1vw;}
+         #main {min-height:900px; display: flex; flex-flow:row wrap; margin-top: 7vw;}
+         #left:nth-child(1){flex: 0 0 30vw; border-right: thin solid whitesmoke;}
+         #left-menu{text-align: left; width: 10vw;}
+         .left-menu{position: relative;display: inline-grid; padding: 3px;}
+         .left-menu p{margin-left: 4vw;}
+         .under-menu{position: absolute; padding-top:7vw;  /*top: 90vw;*/left: 2vw; font-size: 11px;}
+         #middle:nth-child(2){flex: 1 0 64vw; }
+         .column-top{margin-top:4vw;}
+         .title{text-align: center; font-size: medium; padding-top: 3vw; padding-bottom: 5vw;}
+         .column-mid{z-index: 1; position: relative; top:4vw;}
+         .add{margin-bottom: 2vw;}
+         #tool-menu{text-align: center;}
+         #tool-menu p{font-size: 10px;}
+         #tool-menu a{color: grey;margin: 6px; font-size: 10px;}
+         .tool{background-color:transparent;}
+         .happy-story{text-align:center; min-height:14vw; padding-bottom:1vw; padding-top:1vw;}
+         .story-box{text-align: center;font-size:12px; padding: 4vw; position: relative; border-bottom:grey thin solid; border-top:grey thin solid; height:32vw;}
+         .column-bottom{position: relative; top: 4vw;}
+         .plus{position: relative; top:12vw; padding-left:3vw; padding-top:3vw; text-align: left; /*border-top: solid thin;*/}
+         #right:nth-child(3){flex: 0 0 96vw; border-top:groove medium gray; border-left : thin solid whitesmoke;}
+         #right h3{text-align:center; padding-top:3vw;}
+         footer{text-align: center; background-color:navajowhite; min-height:14vh; padding-top: 3vh; z-index: 22;}
+         footer h4{position: relative; top: 1em;}
+         }
+         @media only screen and (min-width: 700px)
+         {header {height: 21vw;}
+         #smile{text-align: center;}
+         .smile-logo{width: 50vw;}
+         nav{width: 65vw; left: 18vw;}
+         #menu-wrapper-top { visibility:visible; width:auto; top:28vw; left:20vw; right:20vw;}
+         .dropbtn-btn {padding:1em 1em 0.4em 1em; }
+         .dropdown-content {left:2vw; right:1vw;top:8vw;width:58vw;}
+         .over-image { width:2em;}
+         .overlay {height: 32em;}
+         .submenu{left:9em; height: 44em;} 
+         #main{margin-top: 0.1vw}
+         #left:nth-child(1){flex: 0 0 20vw; margin-top:4vw;}  
+         .under-menu{top: 60vw;}
+         #middle:nth-child(2){flex: 1 0 auto; margin-top:9vw; /*border-right:solid medium gray;*/}
+         .title{padding-top: 2vw; padding-bottom: 3vw;}
+         .column-top{margin-top: 0;}
+         .plus{top: 2vw;}
+         #right:nth-child(3){flex: 0 0 20vw; border-top: none;}
+         #right h3{padding-top:6vw;}
+         }
+         @media only screen and (min-width: 1200px)
+         {
+         header{height: 17.6vw;}
+         .smile-logo{width: 40vw;}
+         nav{width: 65vw; left: 16vw;}
+         #menu-wrapper-top {width:68vw;}
+         .dropbtn-btn{font-size: 12px;}
+         .dropdown-content {top:4vw; width: 66.9vw; left:0vw}
+         #left:nth-child(1){flex: 0 0 16vw;}
+         #middle:nth-child(2){flex: 1 0 auto; margin-top: 9vw;}
+         .column-top{margin-top: -4vw;}
+         .plus{top: 1px; padding-top: 2px;}
+         .story-box{height: 20vw;}
+         #right:nth-child(3){flex: 0 0 16vw;}}
+      </style>
+   </head>
+   <body>
+      <header>
+         <div id="logo">
+            <p>SM logo</p>
+            <div id="profile">
+               <p>Profile</p>
+            </div>
+         </div>
+         <div id="smile"><img src="http://www.smilingfaces.com/dev/anam-dev/images/sflogo.png" class="smile-logo" alt=""></div>
+         <div id="extra">
+            <div>Soon, words will be here</div>
+         </div>
+         <nav>
+            <div id="menu-wrapper-top">
+               <div class="dropdown">
+                  <button class="dropbtn-btn">SmilingFaces Stories</button>
+                  <div id="women" class="dropdown-content">
+                     <div class="item-list">
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class=""><img src="http://www.smilingfaces.com/dev/anam-dev/images/sflogo.png" style="display: none;">  Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                     </div>
+                     <div class="item-list">
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                     </div>
+                     <div class="item-list">
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">Women's Fashion Lane</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">Education Lane</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">Men's Fashion Lane</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">Health/Fitness/Nutrition</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Contact</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">FAQs</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Location</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Phone</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">FAQs</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Location</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">SmilingFaces Expose'</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Baseball</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Hockey</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Basketball</a>
+                     </div>
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <button class="dropbtn-btn">SmilingFaces Date</button>
+                  <div class="dropdown-content">
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                     <div class="item-list"><a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Clothes</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Fashion</a>
+                        <a href="http://www.smilingfaces.com/dev/anam-dev/" title="" class="">Accessories</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </nav>
+      </header>
+      <div id="main">
+         <div id="left">
+            <button class="dropbtn-btn">Home</button><br>
+            <button class="dropbtn-btn">SmilingFaces Stories</button><br>
+            <button class="dropbtn-btn">Women's Fashion Lane</button><br>
+            <button class="dropbtn-btn">Education Lane</button><br>
+            <button class="dropbtn-btn">Men's Fashion Lane</button><br>
+            <button class="dropbtn-btn">Health/Fitness/Nutrition</button><br>
+            <button class="dropbtn-btn">SmilingFaces Expose'</button><br>
+            <button class="dropbtn-btn">SmilingFaces Date</button>
+            <br>
+            <button class="dropbtn-btn">More...</button>
+            <p class="under-menu">Advertisements</p>
+         </div>
+         <div id="middle">
+            <div class="column-top">
+               <h1 class="title">Smiling Faces - Happy Stories</h1>
+            </div>
+            <div class="column-mid">
+               <div class="add">
+                  <div id="tool-menu" class="btn-group">
+                     <p>Tool Bar</p>
+                     <button class="tool"><a href="http://www.smilingfaces.com/dev/anam-dev/" class="">Add Story</a></button>
+                     <button class="tool"><a href="http://www.smilingfaces.com/dev/anam-dev/" class="">Add Photo</a></button>
+                     <button class="tool"><a href="http://www.smilingfaces.com/dev/anam-dev/" class="">Add Video</a></button>
+                     <button class="tool"><a href="http://www.smilingfaces.com/dev/anam-dev/" class="">Add Emoji</a></button>
+                     <button class="tool"><a href="http://www.smilingfaces.com/dev/anam-dev/" class="">Add Gift</a></button>
+                  </div>
+                  <div class="happy-story">
+                     <h3>Happy Story</h3>
+                  </div>
+                  <div class="story-box">This box expands down indefinitely to hold entire story</div>
+               </div>
+            </div>
+            <div class="column-bottom">
+               <div class="plus">
+                  <p>+</p>
+                  <h3>Possible space for ads or functions</h3>
+               </div>
+            </div>
+         </div>
+         <div id="right">
+            <h3>Comments</h3>
+         </div>
+      </div>
+      <footer>footer</footer>
+   </body>
+</html>
