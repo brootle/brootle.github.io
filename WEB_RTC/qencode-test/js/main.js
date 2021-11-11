@@ -2,7 +2,7 @@ import {QencodeWebRTC} from './qencodeWebRTC.js'
 
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
-  audio: false,
+  audio: true,
   video: true
 };
 
@@ -56,7 +56,12 @@ function enableStreaming(stream){
     let connectBtn = document.querySelector('#connect')
     let disconnectBtn = document.querySelector('#disconect')
 
-    let qencodeWebRTC = new QencodeWebRTC(webSocketUrl)
+    let options = {
+        stream,
+        webSocketUrl
+    }
+
+    let qencodeWebRTC = new QencodeWebRTC(options)
 
     connectBtn.addEventListener('click', () => {
         qencodeWebRTC.connect()
