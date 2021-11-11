@@ -11,7 +11,7 @@ import {
     OME_P2P_MODE
 } from "./constants.js";
 
-export function QencodeWebRTC(options) {
+export const QencodeWebRTC =  function (options) {
 
     let {stream, webSocketUrl} = options;
 
