@@ -127,7 +127,8 @@ export function QencodeWebRTC(options) {
                                         // OvenPlayerConsole.log("NETWORK UNSTABLED!!! ");                                            
                                         // let tempError = ERRORS.codes[PLAYER_WEBRTC_NETWORK_SLOW];
                                         // closePeer(tempError);
-                                        console.log("NETWORK UNSTABLED!!! ");
+                                        //console.log("NETWORK UNSTABLED!!! ");
+                                        closePeer('PLAYER_WEBRTC_NETWORK_SLOW');
                                     }
                                 } else {
                                     peerConnectionInfo.status.avgMoreThanThresholdCount = 0;
@@ -272,7 +273,8 @@ export function QencodeWebRTC(options) {
                     // let tempError = ERRORS.codes[PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR];
                     // tempError.error = error;
                     //closePeer(tempError);
-                    console.log("ERROR: ", error)
+                    //console.log("ERROR: ", error)
+                    closePeer('PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR');
                 });
 
                 if (generatePublicCandidate) {
@@ -292,7 +294,8 @@ export function QencodeWebRTC(options) {
                                     // let tempError = ERRORS.codes[PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR];
                                     // tempError.error = error;
                                     // closePeer(tempError);
-                                    console.log("ERROR:", error)
+                                    //console.log("ERROR:", error)
+                                    closePeer('PLAYER_WEBRTC_ADD_ICECANDIDATE_ERROR');
                                 });
                             }
                         });
@@ -383,24 +386,27 @@ export function QencodeWebRTC(options) {
 
                         }).catch(function (error) {
 
-                            console.log("error: ", error)
+                            //console.log("error: ", error)
                             // let tempError = ERRORS.codes[PLAYER_WEBRTC_SET_LOCAL_DESC_ERROR];
                             // tempError.error = error;
                             // closePeer(tempError);
+                            closePeer('PLAYER_WEBRTC_SET_LOCAL_DESC_ERROR');
                         });
                     })
                     .catch(function (error) {
-                        console.log("error: ", error)
+                        //console.log("error: ", error)
                         //let tempError = ERRORS.codes[PLAYER_WEBRTC_CREATE_ANSWER_ERROR];
                         //tempError.error = error;
                         //closePeer(tempError);
+                        closePeer('PLAYER_WEBRTC_CREATE_ANSWER_ERROR');
                     });
             })
             .catch(function (error) {
-                console.log("error: ", error)
+                //console.log("error: ", error)
                 //let tempError = ERRORS.codes[PLAYER_WEBRTC_SET_REMOTE_DESC_ERROR];
                 //tempError.error = error;
                 //closePeer(tempError);
+                closePeer(error);
             });
 
         console.log("candidates: ", candidates)
@@ -446,7 +452,8 @@ export function QencodeWebRTC(options) {
                     if (mainPeerConnectionInfo) {
                         // let tempError = ERRORS.codes[PLAYER_WEBRTC_UNEXPECTED_DISCONNECT];
                         // closePeer(tempError);
-                        console.log("ERROR: PLAYER_WEBRTC_UNEXPECTED_DISCONNECT")
+                        closePeer('PLAYER_WEBRTC_UNEXPECTED_DISCONNECT');
+                        //console.log("ERROR: PLAYER_WEBRTC_UNEXPECTED_DISCONNECT")
                     }
                 }
             }
@@ -523,7 +530,50 @@ export function QencodeWebRTC(options) {
 
         if (!error) {
             wsClosedByPlayer = true;
-        }        
+        }   
+        
+        
+        if (mainPeerConnectionInfo) {
+
+            if (mainPeerConnectionInfo.statisticsTimer) {
+                clearTimeout(mainPeerConnectionInfo.statisticsTimer);
+            }
+
+            mainStream = null;
+
+            console.log('Closing main peer connection...');
+            if (statisticsTimer) {
+                clearTimeout(statisticsTimer);
+            }
+
+            if (mainPeerConnectionInfo.peerConnection) {
+
+                mainPeerConnectionInfo.peerConnection.close();
+            }
+
+            mainPeerConnectionInfo.peerConnection = null;
+            mainPeerConnectionInfo = null;
+        }
+
+        if (Object.keys(clientPeerConnections).length > 0) {
+
+            for (let clientId in clientPeerConnections) {
+
+                let clientPeerConnection = clientPeerConnections[clientId].peerConnection;
+
+                if (clientPeerConnection) {
+                    console.log('Closing client peer connection...');
+                    clientPeerConnection.close();
+                    clientPeerConnection = null;
+                }
+            }
+
+            clientPeerConnections = {};
+        }
+
+        clearInterval(wsPing);
+        wsPing = null;
+
 
         if (ws) {
             console.log('Closing websocket connection...');
@@ -591,9 +641,10 @@ export function QencodeWebRTC(options) {
                 const message = JSON.parse(e.data);
 
                 if (message.error) {
-                    let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
-                    tempError.error = message.error;
-                    closePeer(tempError);
+                    // let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
+                    // tempError.error = message.error;
+                    // closePeer(tempError);
+                    closePeer(message.error);
                     return;
                 }          
                 
@@ -638,10 +689,12 @@ export function QencodeWebRTC(options) {
 
                 if (!wsClosedByPlayer) {
 
-                    let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
+                    //let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
+                    let tempError = 'PLAYER_WEBRTC_WS_ERROR';
 
                     if (mainPeerConnectionInfo) {
-                        tempError = ERRORS.codes[PLAYER_WEBRTC_UNEXPECTED_DISCONNECT];
+                        //tempError = ERRORS.codes[PLAYER_WEBRTC_UNEXPECTED_DISCONNECT];
+                        tempError = 'PLAYER_WEBRTC_UNEXPECTED_DISCONNECT';
                     }
 
                     closePeer(tempError);
@@ -653,9 +706,10 @@ export function QencodeWebRTC(options) {
 
                 //Why Edge Browser calls onerror() when ws.close()?
                 if (!wsClosedByPlayer) {
-                    let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
-                    tempError.error = error;
-                    closePeer(tempError);
+                    // let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
+                    // tempError.error = error;
+                    // closePeer(tempError);
+                    closePeer('PLAYER_WEBRTC_WS_ERROR');
                 }                
             }  
 
