@@ -627,6 +627,460 @@
                     </div>
                 </div>                
             </div>  
+
+            <!-- Modal -->
+            <div class="modal fade q7-modal q7-modal--upgrade  q7-modal--add-funds" id="upgrade_account" role="dialog">
+                <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="modal-title" class="modal-title">Add funds</h5>
+
+                            <p>Current wallet balance: <span>$113.00</span></p>
+
+                            <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
+                        </div>
+
+                        <div class="modal-body">
+                                
+
+                            <div class="q7-tab q7-tab--upgrade-account">
+
+                                <div class="q7-upgrade-tab__controls">
+                                    <div class="q7-tablinks q7-tablinks--active" data-tabcontent="1" data-title='Add funds'>
+                                        Make Deposit
+                                    </div>
+                                    <div class="q7-tablinks" data-tabcontent="2" data-title='Add payment method'>
+                                        Payment Methods
+                                    </div>                                                               
+                                </div>     
+
+                                <div class="q7-upgrade-tab__body">
+
+                                    <div id="1" class="q7-tabcontent q7-tabcontent--active">
+                                        
+                                        
+
+                                            
+                                        <div class="q7-input">
+            
+                                            <div class="q7-input__label">
+                                                <label>Amount</label>
+                                            </div>
+            
+                                            <div id="payment-amount-container" class="q7-input-with-bonus q7-input-with-bonus--hidden-bonus">
+                                                <div class="q7-custom-select">
+                                                    <select id="payment-amount" class="q7-select">                                                                
+                                                        <option value="0">Custom</option>
+                                                        <option value="1">$20.00</option>
+                                                        <option value="2" data-bonus='5'>$100.00</option>
+                                                        <option value="3" data-bonus='7'>$500.00</option>
+                                                        <option value="4" data-bonus='10'>$2000.00</option>
+                                                        <option value="5" data-bonus='12'>$5000.00</option>                                                                                                                                                                                              
+                                                    </select>
+                                                </div>
+                                                <div class="q7-input__bonus">+ <span id="payment-bonus">5</span>% bonus</div>                                                            
+                                            </div>
+                                        </div>                                                        
+    
+            
+                                        <div id="custom-amount-input_upgrade" class="q7-input">
+                                            <div class="q7-input__label">
+                                                <label>Enter USD Amount</label>
+                                            </div>
+                                            <div class="q7-input-with-bonus">
+                                                <input class="q7-input__field" type="text" id="custom-funds_upgrade" value="$ 230">
+                                                <div class="q7-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
+                                            </div>                                
+                                        </div>
+
+                                        <script>
+                                            $(function () {
+                                                $('#payment-amount').change(function(){
+                                                    let selectedIndex = $(this).val()
+                                                    console.log("selectedIndex: ", selectedIndex)
+
+                                                    if(selectedIndex === '0'){
+                                                        // show input for custom value
+                                                        $("#custom-amount-input_upgrade").show()
+                                                    }else{
+                                                        $("#custom-amount-input_upgrade").hide()
+                                                    }
+
+                                                    let bonus = $('option:selected', this).attr('data-bonus');
+                                                    console.log("bonus: ", bonus)
+
+                                                    $("#payment-bonus").text(bonus)
+
+                                                    if(bonus){
+                                                        // show with bonus
+                                                        $('#payment-amount-container').removeClass("q7-input-with-bonus--hidden-bonus")
+                                                    }else{
+                                                        $('#payment-amount-container').addClass("q7-input-with-bonus--hidden-bonus")
+                                                    }
+                                                })
+                                            })
+                                        </script>
+            
+                                        <script>
+                                            $(function () {
+            
+                                                // when user inputs value
+                                                document.getElementById('custom-funds_upgrade').addEventListener('input', function (e) {                                    
+            
+                                                    if (e.target.value.includes(".")) {
+                                                        // if number is decimal
+                                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
+            
+                                                        // allow only two digits after dots
+                                                        var afterDotDigits = e.target.value.split('.')[1];
+                                                        if (afterDotDigits.length > 2) {
+                                                            e.target.value = e.target.value.replace(/.$/, '');
+                                                        }
+            
+                                                    } else {
+                                                        // if the number is not decimal add spaces after thousands
+                                                        e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
+                                                    }
+            
+                                                    // remove all ',' and '$ ' to get value in Float
+                                                    let valueInNumber = parseFloat(e.target.value.replace(/\,/g, '').replace(/\$ /g, ''));
+                                                    
+                                                    if(valueInNumber){
+                
+                                                        // set bonus based on value
+                                                        let bonus = 0;
+            
+                                                        if (valueInNumber <= 100) {
+                                                            bonus = 0;
+                                                        } else if (valueInNumber <= 500) {
+                                                            bonus = 5;
+                                                        } else if (valueInNumber <= 2000) {
+                                                            bonus = 7;
+                                                        } else if (valueInNumber <= 5000) {
+                                                            bonus = 10;
+                                                        } else{
+                                                            bonus = 12;
+                                                        }
+                                                        
+                                                        // update bonus
+                                                        $("#custom-bonus").text(bonus);
+            
+                                                    }
+                                                    
+            
+                                                });
+                                            });
+                                        </script>
+                                
+    
+
+                                        <div class="q7-input q7-input--payment-method">
+
+                                            <div class="q7-input__label">
+                                                <label>Payment method</label>
+                                            </div>
+    
+                                            <select id="payment-method-selector">
+                                                <option value="1" data-imagesrc="img/mastercard.svg" data-description="">**** **** **** 0342</option>
+                                                <option value="2" data-imagesrc="img/visa.svg" data-description="">**** **** **** 0342</option>
+                                                <option value="3" data-imagesrc="img/amex.svg" data-description="">**** **** **** 0342</option>
+                                                <option value="4" data-imagesrc="img/discover.svg" data-description="">**** **** **** 0342</option>
+                                                <option value="5" data-imagesrc="img/paypal.svg" data-description="">john.smith@example.com</option>
+                                                <option value="6" data-description="">Add payment method</option>
+                                            </select>
+    
+                                            <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+                                            <script>
+                                                $(function () {
+                                                    $('#payment-method-selector').ddslick({
+                                                        defaultSelectedIndex:0,
+                                                        width: "100%",
+                                                        background: "white",
+                                                        onSelected: function(selectedData){
+                                                            //callback function: do something with selectedData;
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+    
+                                        </div>                                                
+            
+            
+                                        <div class="q7-powered-by-stripe" id="payment-method_card-message">
+                                            <div class="q7-lock-icon--left">
+                                                Billing information secured and protected.
+                                            </div>
+                                            <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
+                                        </div>                            
+                    
+                                        
+                                        <div>
+                                            <button class="q7-button">Confirm</button>
+                                            <button class="q7-button q7-button--cancel">Cancel</button>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div id="2" class="q7-tabcontent">
+
+                                        <div id="add_payment_method">
+                                            <div class="q7-payment-method-selector__header"> 
+                                                <div class="q7-payment-method-selector__header-title">Add payment method:</div>
+                                                <div class="q7-payment-method-selector__tabs"> 
+                                                    <div id="select-card" class="q7-payment-method-selection-tab q7-payment-method-selection-tab--active">
+                                                        <div class="q7-payment-selector__button"></div>                                                                
+                                                        <div class="q7-payment-selector__items">
+                                                            <div class="q7-payment-method-icon q7-payment-method-icon--visa"></div>
+                                                            <div class="q7-payment-method-icon q7-payment-method-icon--mastercard"></div>
+                                                            <div class="q7-payment-method-icon q7-payment-method-icon--american_express"></div>
+                                                            <div class="q7-payment-method-icon q7-payment-method-icon--discover"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="select-paypal" class="q7-payment-method-selection-tab">
+                                                        <div class="q7-payment-selector__button"></div>
+                                                        <div class="q7-payment-selector__items">
+                                                            <div class="q7-payment-method-icon q7-payment-method-icon--paypal"></div>
+                                                        </div>
+                                                    </div>                                                            
+                                                </div>
+                                            </div>
+                                            <div class="q7-payment-method-selector__body"> 
+                                                <div id="card-payment-method">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Name</label>
+                                                        </div>
+                                                        <input class="q7-input__field" type="text">
+                                                    </div>
+                                                    <div class="q7-input" >
+                                                        <div class="q7-input__label">
+                                                            <label for="user_card">Card number</label>
+                                                        </div>
+                        
+                                                        <div id="card-element_add-funds"></div>
+                                                        <script src="https://js.stripe.com/v3/"></script>
+                                                        <script>
+                                                            var stripe = Stripe('123');
+                                                            var elements = stripe.elements();
+                                                            var style = {
+                                                                base: {
+                                                                    color: '#171717',
+                                                                    lineHeight: '22px',
+                                                                    height: '22px',
+                                                                    fontFamily: 'proxima-nova, sans-serif',
+                                                                    fontSmoothing: 'antialiased',
+                                                                    fontSize: '16px',
+                                                                    fontWeight: '600',
+                                                                    '::placeholder': {
+                                                                        color: '#aab7c4'
+                                                                    }
+                                                                },
+                                                                invalid: {
+                                                                    color: '#fa755a',
+                                                                    iconColor: '#fa755a'
+                                                                }
+                                                            };
+                                                            var card = elements.create('card', { style: style });
+                                                            card.mount('#card-element_add-funds');
+                                                        </script>
+                                                    </div>  
+                                                </div>
+                                                <div id="paypal-payment-method" style="display: none;">
+                                                    <div class="q7-input">
+                                                        <div class="q7-input__label">
+                                                            <label>Email address</label>
+                                                        </div>
+                                                        <input class="q7-input__field" type="text">
+                                                    </div>
+                                                </div>                                                        
+                                            </div>                
+                                            <div class="q7-payment-method-selector__footer"> 
+                                                <div class="q7-powered-by-stripe" id="payment-method_card-message">
+                                                    <div class="q7-lock-icon--left">
+                                                        Billing information secured and protected.
+                                                    </div>
+                                                    <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
+                                                </div>
+                                                <div>
+                                                    <button id="save_payment_method_btn" class="q7-button">Save</button>
+                                                    <button class="q7-button q7-button--cancel">Cancel</button>
+                                                </div>                                                        
+                                            </div>    
+                                            <script>
+                                                $("#select-card").click(function(){
+                                                    $(this).addClass('q7-payment-method-selection-tab--active')
+                                                    $("#select-paypal").removeClass('q7-payment-method-selection-tab--active')
+                                                    $("#card-payment-method").show()
+                                                    $("#paypal-payment-method").hide()
+                                                })
+
+                                                $("#select-paypal").click(function(){
+                                                    $(this).addClass('q7-payment-method-selection-tab--active')
+                                                    $("#select-card").removeClass('q7-payment-method-selection-tab--active')
+                                                    $("#card-payment-method").hide()
+                                                    $("#paypal-payment-method").show()
+                                                })                                                        
+                                            </script>                                                                                    
+                                        </div>
+
+                                        <div id="payment_method_list" style="display: none;">
+                                            <div class="q7-payment-method-selector__header"> 
+                                                <div class="q7-payment-method-selector__header-title">Preferred payment method:</div>
+                                            </div>
+                                            <div class="q7-payment-method-selector__body"> 
+                                                <div class="q7-payment-methods__list">
+                                                    <div class="q7-payment-methods__item q7-payment-methods__item--selected">
+                                                        <div class="q7-payment-methods__select-icon"></div>
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/mastercard.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>**** **** **** 0342</div>
+                                                                <div>06/21</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                        <div class="q7-payment-methods__delete-icon"></div>
+                                                    </div>
+
+                                                    <div class="q7-payment-methods__item">
+                                                        <div class="q7-payment-methods__select-icon"></div>
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/visa.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>**** **** **** 0342</div>
+                                                                <div>06/21</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                        <div class="q7-payment-methods__delete-icon"></div>
+                                                    </div>     
+                                                    
+
+                                                    <div class="q7-payment-methods__item">
+                                                        <div class="q7-payment-methods__select-icon"></div>
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/amex.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>**** **** **** 0342</div>
+                                                                <div>06/21</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                        <div class="q7-payment-methods__delete-icon"></div>
+                                                    </div>                    
+                                                    
+
+                                                    <div class="q7-payment-methods__item">
+                                                        <div class="q7-payment-methods__select-icon"></div>
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/discover.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>**** **** **** 0342</div>
+                                                                <div>06/21</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                        <div class="q7-payment-methods__delete-icon"></div>
+                                                    </div>                                                              
+                                                    
+                                                    <div class="q7-payment-methods__item">
+                                                        <div class="q7-payment-methods__select-icon"></div>
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/paypal_p_logo.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>john.smith@example.com</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                        <div class="q7-payment-methods__delete-icon"></div>
+                                                    </div>             
+                                                    
+                                                    <script>
+                                                        $(".q7-payment-methods__select-icon").click(function(){
+                                                            console.log("SELECT")
+                                                            $('.q7-payment-methods__item.q7-payment-methods__item--selected').removeClass('q7-payment-methods__item--selected')
+                                                            $(this).closest('.q7-payment-methods__item').addClass('q7-payment-methods__item--selected')
+                                                        })
+                                                    </script>
+                                                    
+                                                </div>
+                                            </div>                
+                                            <div class="q7-payment-method-selector__footer"> 
+                                                <div>
+                                                    <button class="q7-button q7-button--transparent">+ Add payment method</button>
+                                                    <button class="q7-button">Save changes</button>
+                                                </div>                                                        
+                                            </div>  
+                                        </div>
+                            
+                                        <div id="payment_method_list_one_item" style="display: none;">
+                                            <div class="q7-payment-method-selector__header"> 
+                                                <div class="q7-payment-method-selector__header-title">Preferred payment method:</div>
+                                            </div>
+                                            <div class="q7-payment-method-selector__body"> 
+                                                <div class="q7-payment-methods__list">
+                                                    <div class="q7-payment-methods__item q7-payment-methods__item--selected">
+                                                        <div class="q7-payment-methods__method-container">
+                                                            <img src="img/mastercard.svg">
+                                                            <div class="q7-payment-methods__method-details">
+                                                                <div>**** **** **** 0342</div>
+                                                                <div>06/21</div>
+                                                            </div>                                                                    
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>                
+                                            <div class="q7-payment-method-selector__footer"> 
+                                                <div>
+                                                    <button id="add_another_payment_method_btn" class="q7-button q7-button--transparent">+ Add payment method</button>
+                                                </div>                                                        
+                                            </div>  
+                                        </div>                     
+                                        
+                                        <script>
+                                            $("#save_payment_method_btn").click(function(){
+                                                $("#add_payment_method").hide()
+                                                $("#payment_method_list_one_item").show()
+                                            })
+
+                                            $("#add_another_payment_method_btn").click(function(){
+                                                $("#payment_method_list_one_item").hide()
+                                                $("#payment_method_list").show()
+                                            })                                                    
+                                        </script>
+                                                                                        
+                                    </div>  
+                                </div>                   
+                            </div>
+    
+                            <script>
+                                var tabLinks = document.querySelectorAll('.q7-tablinks');
+                    
+                                tabLinks.forEach(link => link.addEventListener('click', switchTab));
+                    
+                                function switchTab(e){
+                    
+                                    // find active elements and remove -> tablinks--active tabcontent--active
+                    
+                                    $('.q7-tablinks--active').removeClass("q7-tablinks--active");
+                                    $('.q7-tabcontent--active').removeClass("q7-tabcontent--active");
+                    
+                                    // find what tab link was clicked and show tab content with that ID
+                                    var clickedLink = e.currentTarget;
+                                    $(clickedLink).addClass('q7-tablinks--active');
+                    
+                                    var tabID = clickedLink.getAttribute("data-tabcontent");
+                    
+                                    $(`#${tabID}`).addClass('q7-tabcontent--active');
+
+                                    var title = clickedLink.getAttribute("data-title");
+                                    $("#modal-title").text(title)
+                    
+                                }
+                            </script>     
+
+                        </div>
+                    </div>
+                </div>
+            </div>    
         </div>
 
         <div class="q7-page-content__body">
@@ -667,459 +1121,7 @@
                         <button data-toggle="modal" data-target="#upgrade_account" class="q7-button">Trigger Upgrade Your Account window</button>
                     </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade q7-modal q7-modal--upgrade  q7-modal--add-funds" id="upgrade_account" role="dialog">
-                        <div class="modal-dialog">
-                        
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 id="modal-title" class="modal-title">Add funds</h5>
-
-                                    <p>Current wallet balance: <span>$113.00</span></p>
-
-                                    <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                      
-
-                                    <div class="q7-tab q7-tab--upgrade-account">
-
-                                        <div class="q7-upgrade-tab__controls">
-                                            <div class="q7-tablinks q7-tablinks--active" data-tabcontent="1" data-title='Add funds'>
-                                                Make Deposit
-                                            </div>
-                                            <div class="q7-tablinks" data-tabcontent="2" data-title='Add payment method'>
-                                                Payment Methods
-                                            </div>                                                               
-                                        </div>     
-
-                                        <div class="q7-upgrade-tab__body">
-
-                                            <div id="1" class="q7-tabcontent q7-tabcontent--active">
-                                                
-                                                
-
-                                                    
-                                                <div class="q7-input">
-                    
-                                                    <div class="q7-input__label">
-                                                        <label>Amount</label>
-                                                    </div>
-                    
-                                                    <div id="payment-amount-container" class="q7-input-with-bonus q7-input-with-bonus--hidden-bonus">
-                                                        <div class="q7-custom-select">
-                                                            <select id="payment-amount" class="q7-select">                                                                
-                                                                <option value="0">Custom</option>
-                                                                <option value="1">$20.00</option>
-                                                                <option value="2" data-bonus='5'>$100.00</option>
-                                                                <option value="3" data-bonus='7'>$500.00</option>
-                                                                <option value="4" data-bonus='10'>$2000.00</option>
-                                                                <option value="5" data-bonus='12'>$5000.00</option>                                                                                                                                                                                              
-                                                            </select>
-                                                        </div>
-                                                        <div class="q7-input__bonus">+ <span id="payment-bonus">5</span>% bonus</div>                                                            
-                                                    </div>
-                                                </div>                                                        
-            
-                    
-                                                <div id="custom-amount-input_upgrade" class="q7-input">
-                                                    <div class="q7-input__label">
-                                                        <label>Enter USD Amount</label>
-                                                    </div>
-                                                    <div class="q7-input-with-bonus">
-                                                        <input class="q7-input__field" type="text" id="custom-funds_upgrade" value="$ 230">
-                                                        <div class="q7-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
-                                                    </div>                                
-                                                </div>
-
-                                                <script>
-                                                    $(function () {
-                                                        $('#payment-amount').change(function(){
-                                                            let selectedIndex = $(this).val()
-                                                            console.log("selectedIndex: ", selectedIndex)
-
-                                                            if(selectedIndex === '0'){
-                                                                // show input for custom value
-                                                                $("#custom-amount-input_upgrade").show()
-                                                            }else{
-                                                                $("#custom-amount-input_upgrade").hide()
-                                                            }
-
-                                                            let bonus = $('option:selected', this).attr('data-bonus');
-                                                            console.log("bonus: ", bonus)
-
-                                                            $("#payment-bonus").text(bonus)
-
-                                                            if(bonus){
-                                                                // show with bonus
-                                                                $('#payment-amount-container').removeClass("q7-input-with-bonus--hidden-bonus")
-                                                            }else{
-                                                                $('#payment-amount-container').addClass("q7-input-with-bonus--hidden-bonus")
-                                                            }
-                                                        })
-                                                    })
-                                                </script>
-                    
-                                                <script>
-                                                    $(function () {
-                    
-                                                        // when user inputs value
-                                                        document.getElementById('custom-funds_upgrade').addEventListener('input', function (e) {                                    
-                    
-                                                            if (e.target.value.includes(".")) {
-                                                                // if number is decimal
-                                                                e.target.value = '$ ' + e.target.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').trim();
-                    
-                                                                // allow only two digits after dots
-                                                                var afterDotDigits = e.target.value.split('.')[1];
-                                                                if (afterDotDigits.length > 2) {
-                                                                    e.target.value = e.target.value.replace(/.$/, '');
-                                                                }
-                    
-                                                            } else {
-                                                                // if the number is not decimal add spaces after thousands
-                                                                e.target.value = '$ ' + e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
-                                                            }
-                    
-                                                            // remove all ',' and '$ ' to get value in Float
-                                                            let valueInNumber = parseFloat(e.target.value.replace(/\,/g, '').replace(/\$ /g, ''));
-                                                            
-                                                            if(valueInNumber){
-                        
-                                                                // set bonus based on value
-                                                                let bonus = 0;
-                    
-                                                                if (valueInNumber <= 100) {
-                                                                    bonus = 0;
-                                                                } else if (valueInNumber <= 500) {
-                                                                    bonus = 5;
-                                                                } else if (valueInNumber <= 2000) {
-                                                                    bonus = 7;
-                                                                } else if (valueInNumber <= 5000) {
-                                                                    bonus = 10;
-                                                                } else{
-                                                                    bonus = 12;
-                                                                }
-                                                                
-                                                                // update bonus
-                                                                $("#custom-bonus").text(bonus);
-                    
-                                                            }
-                                                            
-                    
-                                                        });
-                                                    });
-                                                </script>
-                                        
-            
-
-                                                <div class="q7-input q7-input--payment-method">
-
-                                                    <div class="q7-input__label">
-                                                        <label>Payment method</label>
-                                                    </div>
-            
-                                                    <select id="payment-method-selector">
-                                                        <option value="1" data-imagesrc="img/mastercard.svg" data-description="">**** **** **** 0342</option>
-                                                        <option value="2" data-imagesrc="img/visa.svg" data-description="">**** **** **** 0342</option>
-                                                        <option value="3" data-imagesrc="img/amex.svg" data-description="">**** **** **** 0342</option>
-                                                        <option value="4" data-imagesrc="img/discover.svg" data-description="">**** **** **** 0342</option>
-                                                        <option value="5" data-imagesrc="img/paypal.svg" data-description="">john.smith@example.com</option>
-                                                        <option value="6" data-description="">Add payment method</option>
-                                                    </select>
-            
-                                                    <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
-                                                    <script>
-                                                        $(function () {
-                                                            $('#payment-method-selector').ddslick({
-                                                                defaultSelectedIndex:0,
-                                                                width: "100%",
-                                                                background: "white",
-                                                                onSelected: function(selectedData){
-                                                                    //callback function: do something with selectedData;
-                                                                }
-                                                            });
-                                                        });
-                                                    </script>
-            
-                                                </div>                                                
-                    
-                    
-                                                <div class="q7-powered-by-stripe" id="payment-method_card-message">
-                                                    <div class="q7-lock-icon--left">
-                                                        Billing information secured and protected.
-                                                    </div>
-                                                    <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
-                                                </div>                            
-                            
-                                                
-                                                <div>
-                                                    <button class="q7-button">Confirm</button>
-                                                    <button class="q7-button q7-button--cancel">Cancel</button>
-                                                </div>
-                                                
-                                            </div>
-
-                                            <div id="2" class="q7-tabcontent">
-
-                                                <div id="add_payment_method">
-                                                    <div class="q7-payment-method-selector__header"> 
-                                                        <div class="q7-payment-method-selector__header-title">Add payment method:</div>
-                                                        <div class="q7-payment-method-selector__tabs"> 
-                                                            <div id="select-card" class="q7-payment-method-selection-tab q7-payment-method-selection-tab--active">
-                                                                <div class="q7-payment-selector__button"></div>                                                                
-                                                                <div class="q7-payment-selector__items">
-                                                                    <div class="q7-payment-method-icon q7-payment-method-icon--visa"></div>
-                                                                    <div class="q7-payment-method-icon q7-payment-method-icon--mastercard"></div>
-                                                                    <div class="q7-payment-method-icon q7-payment-method-icon--american_express"></div>
-                                                                    <div class="q7-payment-method-icon q7-payment-method-icon--discover"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="select-paypal" class="q7-payment-method-selection-tab">
-                                                                <div class="q7-payment-selector__button"></div>
-                                                                <div class="q7-payment-selector__items">
-                                                                    <div class="q7-payment-method-icon q7-payment-method-icon--paypal"></div>
-                                                                </div>
-                                                            </div>                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="q7-payment-method-selector__body"> 
-                                                        <div id="card-payment-method">
-                                                            <div class="q7-input">
-                                                                <div class="q7-input__label">
-                                                                    <label>Name</label>
-                                                                </div>
-                                                                <input class="q7-input__field" type="text">
-                                                            </div>
-                                                            <div class="q7-input" >
-                                                                <div class="q7-input__label">
-                                                                    <label for="user_card">Card number</label>
-                                                                </div>
-                                
-                                                                <div id="card-element_add-funds"></div>
-                                                                <script src="https://js.stripe.com/v3/"></script>
-                                                                <script>
-                                                                    var stripe = Stripe('123');
-                                                                    var elements = stripe.elements();
-                                                                    var style = {
-                                                                        base: {
-                                                                            color: '#171717',
-                                                                            lineHeight: '22px',
-                                                                            height: '22px',
-                                                                            fontFamily: 'proxima-nova, sans-serif',
-                                                                            fontSmoothing: 'antialiased',
-                                                                            fontSize: '16px',
-                                                                            fontWeight: '600',
-                                                                            '::placeholder': {
-                                                                                color: '#aab7c4'
-                                                                            }
-                                                                        },
-                                                                        invalid: {
-                                                                            color: '#fa755a',
-                                                                            iconColor: '#fa755a'
-                                                                        }
-                                                                    };
-                                                                    var card = elements.create('card', { style: style });
-                                                                    card.mount('#card-element_add-funds');
-                                                                </script>
-                                                            </div>  
-                                                        </div>
-                                                        <div id="paypal-payment-method" style="display: none;">
-                                                            <div class="q7-input">
-                                                                <div class="q7-input__label">
-                                                                    <label>Email address</label>
-                                                                </div>
-                                                                <input class="q7-input__field" type="text">
-                                                            </div>
-                                                        </div>                                                        
-                                                    </div>                
-                                                    <div class="q7-payment-method-selector__footer"> 
-                                                        <div class="q7-powered-by-stripe" id="payment-method_card-message">
-                                                            <div class="q7-lock-icon--left">
-                                                                Billing information secured and protected.
-                                                            </div>
-                                                            <img src="img/stripe_logo_upgrade.svg" alt="Powered by Sripe">
-                                                        </div>
-                                                        <div>
-                                                            <button id="save_payment_method_btn" class="q7-button">Save</button>
-                                                            <button class="q7-button q7-button--cancel">Cancel</button>
-                                                        </div>                                                        
-                                                    </div>    
-                                                    <script>
-                                                        $("#select-card").click(function(){
-                                                            $(this).addClass('q7-payment-method-selection-tab--active')
-                                                            $("#select-paypal").removeClass('q7-payment-method-selection-tab--active')
-                                                            $("#card-payment-method").show()
-                                                            $("#paypal-payment-method").hide()
-                                                        })
-
-                                                        $("#select-paypal").click(function(){
-                                                            $(this).addClass('q7-payment-method-selection-tab--active')
-                                                            $("#select-card").removeClass('q7-payment-method-selection-tab--active')
-                                                            $("#card-payment-method").hide()
-                                                            $("#paypal-payment-method").show()
-                                                        })                                                        
-                                                    </script>                                                                                    
-                                                </div>
-
-                                                <div id="payment_method_list" style="display: none;">
-                                                    <div class="q7-payment-method-selector__header"> 
-                                                        <div class="q7-payment-method-selector__header-title">Preferred payment method:</div>
-                                                    </div>
-                                                    <div class="q7-payment-method-selector__body"> 
-                                                        <div class="q7-payment-methods__list">
-                                                            <div class="q7-payment-methods__item q7-payment-methods__item--selected">
-                                                                <div class="q7-payment-methods__select-icon"></div>
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/mastercard.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>**** **** **** 0342</div>
-                                                                        <div>06/21</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                                <div class="q7-payment-methods__delete-icon"></div>
-                                                            </div>
-
-                                                            <div class="q7-payment-methods__item">
-                                                                <div class="q7-payment-methods__select-icon"></div>
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/visa.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>**** **** **** 0342</div>
-                                                                        <div>06/21</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                                <div class="q7-payment-methods__delete-icon"></div>
-                                                            </div>     
-                                                            
-
-                                                            <div class="q7-payment-methods__item">
-                                                                <div class="q7-payment-methods__select-icon"></div>
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/amex.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>**** **** **** 0342</div>
-                                                                        <div>06/21</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                                <div class="q7-payment-methods__delete-icon"></div>
-                                                            </div>                    
-                                                            
-
-                                                            <div class="q7-payment-methods__item">
-                                                                <div class="q7-payment-methods__select-icon"></div>
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/discover.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>**** **** **** 0342</div>
-                                                                        <div>06/21</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                                <div class="q7-payment-methods__delete-icon"></div>
-                                                            </div>                                                              
-                                                            
-                                                            <div class="q7-payment-methods__item">
-                                                                <div class="q7-payment-methods__select-icon"></div>
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/paypal_p_logo.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>john.smith@example.com</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                                <div class="q7-payment-methods__delete-icon"></div>
-                                                            </div>             
-                                                            
-                                                            <script>
-                                                                $(".q7-payment-methods__select-icon").click(function(){
-                                                                    console.log("SELECT")
-                                                                    $('.q7-payment-methods__item.q7-payment-methods__item--selected').removeClass('q7-payment-methods__item--selected')
-                                                                    $(this).closest('.q7-payment-methods__item').addClass('q7-payment-methods__item--selected')
-                                                                })
-                                                            </script>
-                                                            
-                                                        </div>
-                                                    </div>                
-                                                    <div class="q7-payment-method-selector__footer"> 
-                                                        <div>
-                                                            <button class="q7-button q7-button--transparent">+ Add payment method</button>
-                                                            <button class="q7-button">Save changes</button>
-                                                        </div>                                                        
-                                                    </div>  
-                                                </div>
-                                  
-                                                <div id="payment_method_list_one_item" style="display: none;">
-                                                    <div class="q7-payment-method-selector__header"> 
-                                                        <div class="q7-payment-method-selector__header-title">Preferred payment method:</div>
-                                                    </div>
-                                                    <div class="q7-payment-method-selector__body"> 
-                                                        <div class="q7-payment-methods__list">
-                                                            <div class="q7-payment-methods__item q7-payment-methods__item--selected">
-                                                                <div class="q7-payment-methods__method-container">
-                                                                    <img src="img/mastercard.svg">
-                                                                    <div class="q7-payment-methods__method-details">
-                                                                        <div>**** **** **** 0342</div>
-                                                                        <div>06/21</div>
-                                                                    </div>                                                                    
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>                
-                                                    <div class="q7-payment-method-selector__footer"> 
-                                                        <div>
-                                                            <button id="add_another_payment_method_btn" class="q7-button q7-button--transparent">+ Add payment method</button>
-                                                        </div>                                                        
-                                                    </div>  
-                                                </div>                     
-                                                
-                                                <script>
-                                                    $("#save_payment_method_btn").click(function(){
-                                                        $("#add_payment_method").hide()
-                                                        $("#payment_method_list_one_item").show()
-                                                    })
-
-                                                    $("#add_another_payment_method_btn").click(function(){
-                                                        $("#payment_method_list_one_item").hide()
-                                                        $("#payment_method_list").show()
-                                                    })                                                    
-                                                </script>
-                                                                                                
-                                            </div>  
-                                        </div>                   
-                                    </div>
-            
-                                    <script>
-                                        var tabLinks = document.querySelectorAll('.q7-tablinks');
-                            
-                                        tabLinks.forEach(link => link.addEventListener('click', switchTab));
-                            
-                                        function switchTab(e){
-                            
-                                            // find active elements and remove -> tablinks--active tabcontent--active
-                            
-                                            $('.q7-tablinks--active').removeClass("q7-tablinks--active");
-                                            $('.q7-tabcontent--active').removeClass("q7-tabcontent--active");
-                            
-                                            // find what tab link was clicked and show tab content with that ID
-                                            var clickedLink = e.currentTarget;
-                                            $(clickedLink).addClass('q7-tablinks--active');
-                            
-                                            var tabID = clickedLink.getAttribute("data-tabcontent");
-                            
-                                            $(`#${tabID}`).addClass('q7-tabcontent--active');
-
-                                            var title = clickedLink.getAttribute("data-title");
-                                            $("#modal-title").text(title)
-                            
-                                        }
-                                    </script>     
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
+                
 
                 </div>
             </div>       
