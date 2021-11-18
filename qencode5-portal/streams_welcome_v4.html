@@ -892,7 +892,15 @@
                                                 <label>Project Name</label>     
                                                 <div class="q7-question-icon"></div>                                                           
                                             </div>                
-                                            <input class="q7-input__field" type="text">                                
+                                            <input id="project_name" class="q7-input__field" type="text">   
+                                            <script>
+                                                // focus input when modal is shown
+                                                $(function () {
+                                                    $('#welcome_create_stream').on('shown.bs.modal', function (e) {
+                                                        document.getElementById("project_name").focus();
+                                                    })                                                                                                                                
+                                                })
+                                            </script>                             
                                         </div>                                                                                                               
                                     </div>
 
@@ -904,8 +912,8 @@
                                             </div>                
                                             
                                             <div class="q7-switch__radio-buttons">
-                                                <input id="rtpm" type="radio" name="format" value="rtpm" checked>
-                                                <label for="rtpm">RTPM</label>
+                                                <input id="rtmp" type="radio" name="format" value="rtmp" checked>
+                                                <label for="rtmp">RTMP</label>
                                                 <input id="webrtc" type="radio" name="format" value="webrtc">
                                                 <label for="webrtc">WebRTC</label>
                                                 <input id="srt" type="radio" name="format" value="srt">    
