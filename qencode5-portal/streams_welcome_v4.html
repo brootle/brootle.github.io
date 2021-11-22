@@ -818,14 +818,14 @@
                           
                                 <div class="modal-header">
                                     <h5 class="modal-title">Let's get started</h5>
-                                    <p>What do you want to do first?</p>
+                                    <p>What would you like to do first?</p>
                                     <button data-dismiss="modal" class="q7-button q7-button--close-window"></button>
                                 </div>
 
                                 <div class="modal-body">
                                     <div class="q7-stream-start__blocks-container">
 
-                                        <div class="q7-stream-start__block">
+                                        <div class="q7-stream-start__block q7-stream-start__block--selected">
                                             <div class="q7-stream-start__block-title">Transcode a video</div>
                                             <div class="q7-stream-start__image">
                                                <img src="img/stream_start_1.svg"> 
@@ -848,12 +848,28 @@
                                         <div class="q7-stream-start__block">
                                             <div class="q7-stream-start__block-title">Customize video player</div>
                                             <div class="q7-stream-start__image">
-                                               <img src="img/stream_start_3.png"> 
+                                               <img src="img/stream_start_3.svg"> 
                                             </div>            
                                             <div class="q7-stream-start__buttons">
                                                <button data-dismiss="modal" class="q7-button">Customize Player</button>   
                                             </div>                                                                            
-                                        </div>                                        
+                                        </div>      
+                                        
+                                        <script>
+                                            $(function () {                                                
+                                                $('.q7-stream-start__block').hover(function(){
+                                                    $('.q7-stream-start__block.q7-stream-start__block--selected').removeClass('q7-stream-start__block--selected')
+                                                })
+                                            });      
+                                            
+                                            $(function () {
+                                                $('#welcome_get_started').on('shown.bs.modal', function (e) {
+                                                    let firstBlock = $('.q7-stream-start__block')[0]
+                                                    $(firstBlock).addClass('q7-stream-start__block--selected')
+                                                })                                                                                                                                
+                                            })                                                                                                
+                                        </script>                                    
+                                        
                                     </div>
                                 </div>
                                                     
