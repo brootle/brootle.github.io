@@ -14,47 +14,39 @@
             width: 200px;
             padding: 0;
 
-            background: #c5ffe8;
-            box-shadow: 4px 3px 12px 1px rgb(73 187 119 / 32%);
+            background: #e0e0e0;
+            box-shadow: 4px 3px 12px 1px rgb(168 168 168 / 32%);
         }
 
         .vertival-menu a,
         .vertival-menu span {
             text-decoration: none;
-            display: block;
-            padding: 0 10px;
-            line-height: 29px;
+            display: inline-block;
+            margin: 0 10px;
+            line-height: 20px;
             font-size: 12px;
             color: black;
             font-weight: 600;
             font-family: system-ui;     
             cursor: pointer;       
             user-select: none;
+            border-bottom: 1px solid #e0e0e0;
+            box-sizing: border-box;
         }        
-
-        .vertival-menu li.dropdown.selected {
-            background-color: #53c99a;
-        }      
-        
-        .vertival-menu li.dropdown.selected > span {
-            color: white;
-        }        
-
-        .vertival-menu li.dropdown.selected:after {
-            border-color: white;
-        }        
+    
 
         .vertival-menu li{
-            display: block;
-        }
-
-        .vertival-menu li:hover{
-            background-color:#53c99a;
+            cursor: pointer;
+            height: 29px;
+            display: flex;
+            align-items: center;            
         }
 
         .vertival-menu li:hover > a,
-        .vertival-menu li:hover > span {
-            color: white;
+        .vertival-menu li:hover > span,
+        .vertival-menu li.selected > a,
+        .vertival-menu li.selected > span{
+            border-bottom: 1px solid black;
         }
 
         .vertival-menu ul {
@@ -80,17 +72,8 @@
             top: 0;
             left: 200px;
             width: 150px;
-            background: #88c6ff;
-            box-shadow: 4px 1px 12px 1px rgb(2 33 255 / 16%);
-        }
-
-        .vertival-menu .sub-menu li:hover{
-            background-color: #5ea5e7;
-        }        
-
-        .vertival-menu .sub-menu li:hover > a,
-        .vertival-menu .sub-menu li:hover > span{
-            color: white;
+            background: #e0e0e0;
+            box-shadow: 4px 3px 12px 1px rgb(168 168 168 / 32%);
         }
 
         .vertival-menu .sub-menu .sub-menu{
@@ -111,9 +94,6 @@
             top: calc(50% - 3.5px);
         }        
 
-        .vertival-menu .dropdown:hover:after{
-            border-color: white;
-        }
 
         .vertival-menu li.extra-menu-item{
             display: none;
