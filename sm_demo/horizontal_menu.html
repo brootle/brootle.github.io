@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <title>Horizontal Menu</title>
     <style>
         body{
@@ -40,9 +43,10 @@
             height: 40px;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
-        .hr-menu-item > a{
+        .hr-menu-item > span{
             text-decoration: none;
             font-family: system-ui;
             margin: 0px 10px;
@@ -54,11 +58,8 @@
             color: black;
         }
 
-        .hr-menu-item:hover .hr-submenu{
-            display: block;
-        }
-
-        .hr-menu-item:hover > a {
+        .hr-menu-item:hover > span,
+        .hr-menu-item.selected > span {
             border-bottom: 2px solid black;
         }
 
@@ -67,48 +68,91 @@
 <body>
     <div class="hotizontal-menu">
         <div class="hr-menu-item">
-            <a href="">WOMEN'S FASHION LANE</a>
+            <span>WOMEN'S FASHION LANE</span>
             <div class="hr-submenu">
                 Horizontal Submenu 1
             </div>
         </div>
         <div class="hr-menu-item">
-            <a href="">EDUCATION LANE</a>
+            <span>EDUCATION LANE</span>
             <div class="hr-submenu">
                 Horizontal Submenu 2
             </div>
         </div>
         <div class="hr-menu-item">
-            <a href="">MEN'S FASHION LANE</a>
+            <span>MEN'S FASHION LANE</span>
             <div class="hr-submenu">
                 Horizontal Submenu 3
             </div>
         </div>
         <div class="hr-menu-item">
-            <a href="">HEALTH/FITNESS/NUTRITION</a>
-            <div class="hr-submenu">
-                Horizontal Submenu 3
-            </div>
-        </div>
-        <div class="hr-menu-item">
-            <a href="">SMILINGFACES EXPOSE'</a>
-            <div class="hr-submenu">
-                Horizontal Submenu 3
-            </div>
-        </div>   
-        <div class="hr-menu-item">
-            <a href="">SMILINGFACESDATE</a>
+            <span>HEALTH/FITNESS/NUTRITION</span>
             <div class="hr-submenu">
                 Horizontal Submenu 4
             </div>
-        </div>  
+        </div>
         <div class="hr-menu-item">
-            <a href="">NETWORK4SUCCESS</a>
+            <span>SMILINGFACES EXPOSE'</span>
             <div class="hr-submenu">
                 Horizontal Submenu 5
             </div>
+        </div>   
+        <div class="hr-menu-item">
+            <span>SMILINGFACESDATE</span>
+            <div class="hr-submenu">
+                Horizontal Submenu 6
+            </div>
+        </div>  
+        <div class="hr-menu-item">
+            <span>NETWORK4SUCCESS</span>
+            <div class="hr-submenu">
+                Horizontal Submenu 6
+            </div>
         </div>                                                
     </div>
+
+    <script>
+        // control menu using jQuery
+        $(function () {
+            
+            $('.hr-menu-item').click(function(e){
+
+                // if submenu was clicked we do nothing
+                let submenu = e.target.closest('.hr-submenu')
+
+                if($(this).hasClass('selected') && !submenu){
+                    // if this menu was selected already we just close it
+                    $(this).children('.hr-submenu').slideUp(100);
+                    $(this).removeClass('selected')
+                }else{
+                    // do nothing if submenu clicked
+                    if(!submenu){
+                        // close all open menus, they could be opened before
+                        $('.selected').removeClass('selected')
+                        $('.hr-submenu').slideUp(0)   
+
+                        // open currently clicked submenu
+                        $(this).children('.hr-submenu').slideDown(100);
+                        $(this).addClass('selected')    
+                    }
+                
+                }
+
+            })           
+
+            // if user clicks outside selected menu we close submenu
+            $(window).click(function(e){
+                let clickedOutsideSelectedMenu = e.target.closest('.hr-menu-item.selected')
+                if(!clickedOutsideSelectedMenu){
+                    // close all open menus
+                    $('.selected').removeClass('selected')
+                    $('.hr-submenu').slideUp(0)                       
+                }
+            })
+
+        });      
+        
+    </script>    
 
     <div class="page-content">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, vel modi obcaecati quaerat facilis maiores expedita similique enim.
