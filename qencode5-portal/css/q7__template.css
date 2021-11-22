@@ -12585,6 +12585,12 @@ img.q7-welcome-streaming{
     left: 3px;
 }
 
+.q7-stream__player{
+    background: #F8F8FA;
+    border-radius: 8px;    
+}
+
+
 .q7-stream__player-body{
 
     height: 306px;
@@ -12772,12 +12778,13 @@ img.q7-welcome-streaming{
 
 .q7-stream-container .q7-input__label label{
     color: #363940;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
 }
 
 .q7-stream-container .q7-stream__details-header  .q7-input__label label{
     font-weight: 600;
+    margin-right: 5px;
 }
 
 
@@ -13009,6 +13016,7 @@ img.q7-welcome-streaming{
     font-size: 14px;
     line-height: 14px;
     padding: 5px 14px;
+    margin-left: 0;
 }
 
 .q7-stream-container .q7-input__field--view.q7-input__field--view-two-buttons span{
@@ -14775,8 +14783,11 @@ hr {
     text-align: right;   
     color: #6A707E; 
     font-size: 16px;
-    padding: 7px 27px;
-    border-bottom: 1px solid #E5E5ED;;    
+    padding: 15px 18px;
+}
+
+.q7-stream__details .q7-stream__details-header{
+    padding: 10px 27px;
 }
 
 .q7-stream__details-header > .q7-input-and-buttons--inline .q7-input {
@@ -14794,7 +14805,7 @@ hr {
 }
 
 .q7-stream-details-input-block{
-    border-bottom: 1px solid #E5E5ED;
+    border-bottom: 1px solid #D9D9DC;
     padding: 7px 27px;
 }
 
@@ -14820,6 +14831,18 @@ hr {
     position: relative;
 }
 
+.q7-stream__details-header .q7-button.q7-button--start-stream.q7-button--round,
+.q7-stream__details-header .q7-button.q7-button--stop-stream.q7-button--round{
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    min-width: 126px;    
+    text-decoration: none;
+}
+
+.q7-stream__details-header .q7-button.q7-button--stopping-stream.q7-button--round{
+    text-decoration: none;
+}
+
 .q7-stream__details-header .q7-button.q7-button--stopping-stream.q7-button--round > span{
     padding-left: 37px;
 }
@@ -14836,11 +14859,14 @@ hr {
     font-size: 14px;
     padding: 0;
     min-width: 0;
-    text-decoration: underline;
     line-height: 28px;
     border: none;
     height: 28px;
     font-size: 16px;
+
+    border: 1px solid #6F6F6F;
+    border-radius: 4px;
+    min-width: 126px;    
 }
 
 .q7-stream__details-header .q7-button.q7-button--delete.q7-button--round:hover {
@@ -14861,8 +14887,7 @@ hr {
 
 .q7-stream__details{
     background: #F8F8FA;
-    border: 1px solid #E5E5ED;
-    border-radius: 7px;   
+    border-radius: 8px;   
     height: fit-content;
 }
 
@@ -14918,7 +14943,7 @@ hr {
 
 .q7-stream__status-and-controls .q7-stream-status {
     padding-left: 30px;
-    margin-left: 9px;
+    margin-left: 4px;
 }
 
 .q7-stream__details-body .q7-input__field--view {
@@ -14926,7 +14951,37 @@ hr {
 }
 
 .q7-stream__details-body .q7-input-and-buttons--inline {
-    margin-bottom: 10px;
+    margin-bottom: 7px;
+}
+
+.q7-stream__details .q7-select{
+    padding: 7px 12px;
+    font-size: 14px;
+    border: 1px solid #DAE0EA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding-right: 20px;
+}
+
+.q7-stream__details .q7-custom-select:after {
+    top: calc(50% - 2px);
+    border-top: 4px solid #363940;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+
+.q7-input.q7-input--horizontal{
+    display: flex;
+    align-items: center;
+}
+
+.q7-input.q7-input--horizontal .q7-input__label{
+    margin-right: 7px;
+}
+
+.q7-input.q7-input--horizontal .q7-input__field--view{
+    line-height: initial;
 }
 
 .q7-stream__details-footer .q7-button.q7-button--back {
@@ -14975,8 +15030,12 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 27px;
+    padding: 0px 20px;
     flex-wrap: wrap;
+}
+
+.q7-stream-vertical-separator{
+    color: #c8c8c8;
 }
 
 .q7-stream__details-footer > div a {
@@ -15005,9 +15064,7 @@ hr {
     margin-left: 10px;
 }
 
-.q7-input.q7-input--callback-url .q7-input__label {
-    margin-right: 10px;
-}
+
 
 .q7-stream__details-header input[type=text].q7-input__field{
     padding: 0px 14px;
@@ -15029,10 +15086,11 @@ hr {
     height: 30px;
     line-height: 30px;
     margin-bottom: 4px;
+    margin-left: 0;
 }
 
 .q7-stream__details-header .q7-input-and-buttons--inline .q7-input + .q7-button {
-    margin-left: 7px;
+    margin-left: 18px;
 }
 
 .q7-input.q7-input--callback-url{
