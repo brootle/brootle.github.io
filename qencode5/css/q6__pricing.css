@@ -215,6 +215,17 @@ p.q6-calc-block__message{
     padding: 20px 30px;
     display: flex;
     flex: 1;
+    justify-content: space-between;
+    padding-right: 45px;
+}
+
+.q6-calc-block > div:last-of-type{
+    flex: 1;
+    justify-content: center;
+}
+
+.q6-calc-block > div + div{
+    margin-left: 20px;
 }
 
 .q6-calc-block__input{
@@ -223,10 +234,11 @@ p.q6-calc-block__message{
 
 .q6-calc-block > div > div:first-of-type{
     flex: 1;
+    min-width: 220px;
+    margin-right: 30px;
 }
 
 .q6-calc-block > div > div:last-of-type{
-    margin-left: 30px;
     min-width: 158px;
 }
 
@@ -262,6 +274,7 @@ p.q6-calc-block__message{
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;    
+    background: #F7F8FA;
 }
 
 .q6-input__multiple-checkboxes .q6-checkbox {
@@ -341,18 +354,41 @@ p.q6-calc-block__message{
 .q6-input__multiple-checkboxes .q6-checkmark{
     position: relative;
     margin-right: 20px;
+    background: #EDEEF0;
 }
 
 .q6-calc-block input[type=text].q6-input__field{
-    padding: 9px 14px;
-    font-weight: 500;
-    font-size: 16px;
+    padding: 9px 18px;
+    font-weight: normal;
+    font-size: 18px;
+    color: #363232;
+    font-family: Basis Grotesque Pro;    
+}
+
+.q7-pricing__volume-discount-image{
+    margin: 15px 0;
 }
 
 .q6-calc-block .q6-select{
-    padding: 9px 14px;
-    font-weight: 500;
-    font-size: 16px;
+    padding: 11px 18px;
+    font-weight: normal;
+    font-size: 18px;
+    color: #363232;
+    font-family: 'Basis Grotesque Pro';       
+}
+
+.q6-calc-block .q6-custom-select:after {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 3px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid #343131;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
 }
 
 .q6-calc-total-cost{
@@ -371,6 +407,7 @@ p.q6-calc-block__message{
 .q6-calculated-results td{
     padding: 6px 0;
     padding-right: 5px;
+    font-family: 'Basis Grotesque Pro';  
 }
 
 .q6-calculated-results tr td:last-of-type{
@@ -450,9 +487,11 @@ p.q6-calc-block__message{
 
 .q6-pricing__block h2 {
     color: #171717;
-    font-size: 36px;
-    line-height: 43px;
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 34px;
+    font-family: 'Basis Grotesque Pro';
+    margin: 30px 0;
 }
 
 .q6-pricing__block-content{
@@ -596,11 +635,12 @@ p.q6-calc-block__message{
 }
 
 .q6-pricing__block-content h3 {
-    color: #363940;
-    font-weight: 600;
+    color: #171717;
+    font-weight: normal;
     font-size: 18px;
     line-height: 18px;
     margin: 15px 0;
+    font-family: 'Basis Grotesque Pro';
 }
 
 .q6-pricing__block{
@@ -690,10 +730,11 @@ p.q6-calc-block__message{
     background: #F7F8FA;
     font-weight: 500;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 22px;
     color: #727272;
     padding: 9px 14px;
-    border-radius: 4px;    
+    border-radius: 4px;  
+    font-family: 'Basis Grotesque Pro';  
 }
 
 .q6-input__multiple-checkboxes-container{
@@ -708,6 +749,7 @@ p.q6-calc-block__message{
     padding-right: 20px;
     height: 38px;
     font-size: 14px;
+    font-family: 'Basis Grotesque Pro';  
 }
 
 .q6-calculated-results__buttons .q6-demo-links-buttons > a {
@@ -736,7 +778,7 @@ p.q6-calc-block__message{
 }
 
 .q6-calc-block.q6-calc-block--pricing > div > div:last-of-type {
-    max-width: 292px;
+    max-width: fit-content;
 }
 
 .q6-calc-block.q6-calc-block--pricing p{
@@ -747,7 +789,7 @@ p.q6-calc-block__message{
     margin: 10px 0;    
 }
 
-.q6-calc-block.q6-calc-block--pricing > div > div:last-of-type a{
+.q6-calc-block.q6-calc-block--pricing  a{
     color: #3270e9;
 }
 
@@ -757,8 +799,8 @@ p.q6-calc-block__message{
 }
 
 .q6-calc-block.q6-calc-block--pricing .q6-streaming-contact p{
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 24px;
     text-align: center;
 }
 
@@ -781,6 +823,7 @@ p.q6-calc-block__message{
     font-weight: 500;
     font-size: 14px;   
     line-height: 18px; 
+    font-family: 'Basis Grotesque Pro';
 }
 
 .q6-calc-block .q6-input__label > a {
@@ -788,6 +831,7 @@ p.q6-calc-block__message{
     font-weight: 500;
     font-size: 14px;    
     line-height: 18px; 
+    font-family: 'Basis Grotesque Pro';
 }
 
 .q6-calc-block__discount-icon{
@@ -1009,7 +1053,7 @@ p.q6-calc-block__message{
     }    
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1215px){
     .q6-calc-block.q6-calc-block--pricing {
         flex-direction: column;
     }
@@ -1022,6 +1066,10 @@ p.q6-calc-block__message{
         margin-left: 0;
         margin-top: 10px;
     }
+
+    .q6-calc-block > div:last-of-type {
+        justify-content: center;
+    }    
             
 }
 

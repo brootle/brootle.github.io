@@ -303,7 +303,6 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Minutes of source video</label>
-                                            <a href="">Browse formats</a>
                                         </div>
                                         <input onclick="this.select();" class="q6-input__field" type="text" id="element_03245232" value="10000">
                                         <script>
@@ -322,6 +321,7 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Format</label>
+                                            <a href="">Browse formats</a>
                                         </div>
                                         <div class="q6-custom-select">
                                             <select class="q6-select">
@@ -365,7 +365,7 @@
                                 <div>
                                     <div class="q6-input">
                                         <div class="q6-input__label">
-                                            <label>Resolutions</label>
+                                            <label>Top Resolution</label>
                                         </div>
 
                                         <div class="q6-input__multiple-checkboxes-container">
@@ -521,15 +521,14 @@
                                         </script>                                        
 
                                     </div>
-                                    <p>
-                                        Planning on budgets over $1,000/mo?
-                                        <a href="">Schedule a call </a> with us to explore additional volume discounts.
-                                    </p>
+
 
                                     <div class="q6-streaming-contact">
-                                        <div class="q6-streaming-contact__title">Create free account to receive $30 in free credits</div>
+                                        <div class="q6-streaming-contact__title">Get $30 free credits when
+                                            you create an account</div>
                                         <p>
-                                            Try Qencode for free and unlock credits to use for your video application.
+                                            Planning on budgets over $1,000/mo?
+                                            <a href="">Schedule a call </a> with us to explore additional volume discounts.
                                         </p>
                                         <div class="q6-streaming-contact__buttons">
                                             <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Create Account</span></button>                                 
@@ -545,7 +544,6 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Minutes of source video</label>
-                                            <a href="">Browse formats</a>
                                         </div>
                                         <input onclick="this.select();" class="q6-input__field" type="text" id="element_032452322" value="10000">
                                         <script>
@@ -564,13 +562,14 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Format</label>
+                                            <a href="">Browse formats</a>
                                         </div>
                                         <div class="q6-custom-select">
                                             <select class="q6-select">
                                                 <option value="mp4">MP4</option>
                                             </select>
                                         </div>     
-                                    </div>    
+                                    </div>   
 
                                     <div class="q6-input">
                                         <div class="q6-input__label">
@@ -742,35 +741,17 @@
                                             <label>Total cost:</label>
                                         </div>
 
-                                        <div id="calculated_cost" class="q6-calc-total-cost" value="9342419.00">$ 9,342,419.00</div>
-
-                                        <script>
-                                            $(function () {
-                                                // on load
-
-                                                var inputValue = document.getElementById('calculated_cost').getAttribute("value");
-                                                if(inputValue.includes(".")){
-                                                    // if number is decimal
-                                                    // format part before dot
-                                                    var integerValue = parseInt(inputValue).toString();
-                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + integerValue.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim() + '.' + inputValue.split('.')[1];
-
-                                                } else{
-                                                    // if the number is not decimal add spaces after thousands
-                                                    document.getElementById('calculated_cost').innerHTML = '$ ' + document.getElementById('calculated_cost').getAttribute("value").replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",").trim();
-                                                }
-                                            });
-                                        </script>                                        
+                                        <div class="q6-calc-total-cost" value="9342419.00">$ 9,342,419.00</div>
+                                     
 
                                     </div>
 
-
-                                    <div class="q6-streaming-contact">
-                                        <div class="q6-streaming-contact__title">Volume Discounts are available</div>
-                                        <div class="q6-streaming-contact__buttons">
-                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
-                                        </div>                                
-                                    </div>                                    
+                                    <img class="q7-pricing__volume-discount-image" src="./img/discount1.svg" alt="Volume Discount">
+                                    
+                                    <div class="q6-streaming-contact__title">Volume Discounts are available</div>
+                                    <div class="q6-streaming-contact__buttons">
+                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
+                                    </div>                                   
                                 </div>
                             </div>                            
                         </div>   
@@ -781,7 +762,6 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Minutes of source video</label>
-                                            <a href="">Browse formats</a>
                                         </div>
                                         <input onclick="this.select();" class="q6-input__field" type="text" id="element_032452323" value="10000">
                                         <script>
@@ -800,6 +780,7 @@
                                     <div class="q6-input">
                                         <div class="q6-input__label">
                                             <label>Format</label>
+                                            <a href="">Browse formats</a>
                                         </div>
                                         <div class="q6-custom-select">
                                             <select class="q6-select">
@@ -924,75 +905,21 @@
 
                             </div>
                             <div class="q6-calc-block__output">
-                                <div>
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label>Details:</label>
-                                        </div>
 
-                                        <table class="q6-calculated-results">
-                                            <tbody><tr>
-                                                <td>SD:</td>
-                                                <td>-</td>
-                                            </tr>
-                                            <tr>
-                                                <td>HD:</td>
-                                                <td>-</td>
-                                            </tr>         
-                                            <tr>
-                                                <td>144p:</td>
-                                                <td>$ 1,500.00</td>
-                                            </tr>       
-                                            <tr>
-                                                <td>4K:</td>
-                                                <td>$ 9,156,310.00</td>
-                                            </tr>        
-                                            <tr>
-                                                <td>5K:</td>
-                                                <td>-</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>6K:</td>
-                                                <td>-</td>
-                                            </tr>    
-                                            <tr>
-                                                <td>7K:</td>
-                                                <td>-</td>
-                                            </tr>    
-                                            <tr>
-                                                <td>8K:</td>
-                                                <td>-</td>
-                                            </tr>                                                                                                                                                                                                                                                                                          
-                                        </tbody></table>
-
-                                        <!-- <div class="q6-calculated-results__buttons">
-                                            <div class="q6-demo-links-buttons">
-                                                <a href="">Browse formats</a>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
                                 <div class="q6-calc-block__output-total">
 
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label>Total cost:</label>
-                                        </div>
-                                    </div>
 
-                                    <div class="q6-streaming-contact">
-                                        <img class="q6-calc-block__discount-icon" src="./img/discount_icon.png" alt="Enterprise Discount">
-                                        <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
-                                        <p>
-                                            Reach out about custom pricing
-                                        </p>
-                                        <div class="q6-streaming-contact__buttons">
-                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
-                                            <button id="showChatModal" class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
-                                        </div>           
-                                                                                                                                
-                                    </div>                                    
+                                    <img class="q7-pricing__volume-discount-image" src="./img/discount2.svg" alt="Enterprise Discount">
+                                    <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
+                                    <p>
+                                        Reach out about custom pricing
+                                    </p>
+                                    <div class="q6-streaming-contact__buttons">
+                                        <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
+                                        <button id="showChatModal" class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                    </div>                                     
                                 </div>
+
                             </div>                            
                         </div>                           
                     </div>
@@ -1093,104 +1020,292 @@
                 <div class="q6-pricing__block-content">
                     <div>
                         <h3>Live Streaming</h3>
-                        <div class="q6-streaming-calc__box">
-                            <div class="q6-streaming-calc__body">
+                        <div class="q6-calc-block q6-calc-block--pricing">
+                            <div class="q6-calc-block__input">
+                                <div class="q6-streaming-calc__body">
 
-                                <div class="q6-streaming-calc__row">
-                                    <div class="q6-streaming-calc__slider">
-                                        <div class="q6-streaming-calc__slider-title">
-                                            Minutes Streamed:
+                                    <div class="q6-streaming-calc__row">
+                                        <div class="q6-streaming-calc__slider">
+                                            <div class="q6-streaming-calc__slider-title">
+                                                Minutes Streamed:
+                                            </div>
+                                            <div class="q6-streaming-calc__slider-body">
+
+                                                <div class="q6-progress-slider-container">
+
+                                                    <input
+                                                        id="slider_01"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="1"                   
+                                                        value="500000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_01").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.015
+
+                                                                // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+                                                                $('#slider_01_value').val(`${formatedValue}`);  
+
+                                                                let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                                //$('#slider_01_cost').html(`$${formatedCost}/mo.`);    
+
+                                                                $('#001').show()
+                                                                $('#002').hide()
+                                                                $('#003').hide()                                                                 
+                                                                
+                                                                if(value > 700000 && value <= 900000){
+                                                                    //$('#slider_01_cost').html("<span>Volume discount</span>");   
+                                                                    $('#001').hide()
+                                                                    $('#002').show()
+                                                                    $('#003').hide()                                                                
+                                                                }
+
+                                                                if(value > 900000){
+                                                                    //$('#slider_01_cost').html("<span>Enterprise discount</span>");  
+                                                                    $('#001').hide()
+                                                                    $('#002').hide()
+                                                                    $('#003').show()                                                                 
+                                                                }                                                            
+                                                            },
+                                                        });
+                                                    </script>
+
+
+                                                </div> 
+
+                                            </div>
+                                            <div class="q6-streaming-calc__slider-footer">
+                                                <div>0</div>
+                                                <div>1M</div>
+                                            </div>
                                         </div>
-                                        <div class="q6-streaming-calc__slider-body">
+                                        <div class="q6-streaming-calc__value">
+                                            <div class="q6-input">
+                                                <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000'>
+                                            </div>
+                                            <script>
+                                                $(function () {
+                                                    // when user inputs value
+                                                    document.getElementById('slider_01_value').addEventListener('input', function (e) {
+                                                        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                                    });
+                                                });                 
 
-                                            <div class="q6-progress-slider-container">
+                                                $(function () {
+                                                
+                                                    //setup before functions
+                                                    var typingTimer;                //timer identifier
+                                                    var doneTypingInterval = 500;  //time in ms (0.5 seconds)
 
-                                                <input
-                                                    id="slider_01"
-                                                    type="range"
-                                                    min="0"                    
-                                                    max="1000000"                 
-                                                    step="1"                   
-                                                    value="500000"             
-                                                >
+                                                    //on keyup, start the countdown
+                                                    $('#slider_01_value').keyup(function(){
+                                                        clearTimeout(typingTimer);
+                                                        if ($('#slider_01_value').val()) {
+                                                            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                                                        }
+                                                    });
+
+                                                    //user is "finished typing," do something
+                                                    function doneTyping () {
+                                                        //do something
+
+                                                        let userInput = parseInt($('#slider_01_value').val().replace(/\s/g, "")) 
+                                                        //console.log("userInput: ", userInput)                                           
+
+                                                        // update slider
+                                                        $("#slider_01").val(userInput)
+                                                        $("#slider_01").trigger('change');                                                
+                                                    }                 
+                                                })                           
+
+                                            </script>                                        
+                                        </div>
+                                    </div>  
+
+                                    <div class="q6-streaming-calc__row">
+                                        <div class="q6-streaming-calc__slider">
+                                            <div class="q6-streaming-calc__slider-title">
+                                                GB Delivered 
+
+                                                <div class="q6-tutorial-dd-selector">
+                                                    <div class="q6-tutorial-dd-selector__selected">
+                                                        Europe 
+                                                    </div>
+                                                    <div class="q6-tutorial-dd-selector__list">
+                                                        <table class="q6-tutorial-demo-videos">
+                                                            <tbody>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Europe">
+                                                                    <td>Europe</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Southern Africa">
+                                                                    <td>Southern Africa</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="South America">
+                                                                    <td>South America</td>
+                                                                </tr>
+                    
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Australia &amp; New Zealand">
+                                                                    <td>Australia &amp; New Zealand </td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="United States">
+                                                                    <td>United States</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Latin America">
+                                                                    <td>Latin America</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia &amp; India">
+                                                                    <td>Asia &amp; India</td>
+                                                                </tr>
+                                                                <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia">
+                                                                    <td>Asia</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                                    
+    
+                                                    </div>
+                                                </div>
 
                                                 <script>
-                                                    // https://rangeslider.js.org/
-                                                    $("#slider_01").rangeslider({
-                                                        polyfill: false,
-                                                        fillClass: 'q6-rangeslider__fill',
-                                                        horizontalClass: 'q6-rangeslider--horizontal',
-                                                        rangeClass: 'q6-rangeslider',
-                                                        handleClass: 'q6-rangeslider__handle',
-
-                                                        // update input value
-                                                        onSlide: function(position, value) {      
-                                                            
-                                                            let price = 0.015
-
-                                                            // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                                                            let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-
-                                                            $('#slider_01_value').val(`${formatedValue}`);  
-
-                                                            let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
-                                                            $('#slider_01_cost').html(`$${formatedCost}/mo.`);    
-
-                                                            $('#001').show()
-                                                            $('#002').hide()
-                                                            $('#003').hide()                                                                 
-                                                            
-                                                            if(value > 700000 && value <= 900000){
-                                                                $('#slider_01_cost').html("<span>Volume discount</span>");   
-                                                                $('#001').hide()
-                                                                $('#002').show()
-                                                                $('#003').hide()                                                                
+                                                    $(function () {
+                                    
+                                                        // this is for Dropdowns
+                                                        
+                                                        // close list when hover out of the list
+                                                        $(".q6-tutorial-dd-selector").hover(                            
+                                                            function() {
+                                                                // hover in
+                                                                //$(this).find('.q6-tutorial-dd-selector__list').show();
+                                                            }, function() {
+                                                                // hover out
+                                                                $(this).find('.q6-tutorial-dd-selector__list').hide();
                                                             }
+                                                        );                                  
+                                    
+                                    
+                                                        $(".q6-tutorial-dd-selector").click(function(e){
+                                                            // toggle hide and show selector list
+                                                            // and update selected item                            
+                                                            var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
+                                                            var list = $(this).find('.q6-tutorial-dd-selector__list');
+                                                            if($(list).is(':visible')){
+                                                                $(list).hide();  
+                                    
+                                                                var selectedItem='';
+                                                                var videoURL='';
+                                    
+                                                                if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
+                                                                    // for simple dropdown
+                                                                    selectedItem = $(e.target).attr('data-item-name');
+                                                                } else{
+                                                                    // for table type dropdown
+                                                                    try {
+                                                                        selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
+                                                                        videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
+                                                                        $(e.target).closest('.q6-input').find('input').val(videoURL);  
+                                                                    }
+                                                                    catch(err) {
+                                                                        console.log(err.message);
+                                                                    }                                                                      
+                                                                }
+                                                
+                                                                $(selectedListElement).html(selectedItem);  
+                                                                // TODO - update content based on selected item  
+                                                                                                
+                                                            } else{
+                                                                $(list).show();
+                                                            }
+                                                        })
+                                                    })
+                                                </script>                                                        
 
-                                                            if(value > 900000){
-                                                                $('#slider_01_cost').html("<span>Enterprise discount</span>");  
-                                                                $('#001').hide()
-                                                                $('#002').hide()
-                                                                $('#003').show()                                                                 
-                                                            }                                                            
-                                                        },
-                                                    });
-                                                </script>
+                                            </div>
+                                            <div class="q6-streaming-calc__slider-body">
 
+                                                <div class="q6-progress-slider-container">
 
+                                                    <input
+                                                        id="slider_02"
+                                                        type="range"
+                                                        min="0"                    
+                                                        max="1000000"                 
+                                                        step="1"                   
+                                                        value="700000"             
+                                                    >
+
+                                                    <script>
+                                                        // https://rangeslider.js.org/
+                                                        $("#slider_02").rangeslider({
+                                                            polyfill: false,
+                                                            fillClass: 'q6-rangeslider__fill',
+                                                            horizontalClass: 'q6-rangeslider--horizontal',
+                                                            rangeClass: 'q6-rangeslider',
+                                                            handleClass: 'q6-rangeslider__handle',
+
+                                                            // update input value
+                                                            onSlide: function(position, value) {      
+                                                                
+                                                                let price = 0.12
+
+                                                                // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                                let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                                                                
+                                                                $('#slider_02_value').val(`${formatedValue}`);    
+
+                                                                //console.log("value: ", value)
+
+                                                                let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                                                                
+                                                                //$('#slider_02_cost').html(`$${formatedCost}/mo.`);                                                                   
+                                                            },
+                                                        });
+                                                    </script>
+
+                                                </div> 
+
+                                            </div>
+                                            <div class="q6-streaming-calc__slider-footer">
+                                                <div>0</div>
+                                                <div>1M</div>
+                                            </div>
+                                        </div>
+                                        <div class="q6-streaming-calc__value">
+                                            <div class="q6-input">
+                                                <input id="slider_02_value" class="q6-input__field q6-black-text" type="text" value='700 000'>
                                             </div> 
-
-                                        </div>
-                                        <div class="q6-streaming-calc__slider-footer">
-                                            <div>0</div>
-                                            <div>1M</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="q6-input">
-                                            <input id="slider_01_value" class="q6-input__field q6-black-text" type="text" value='500 000'>
-                                        </div>
-                                        <div class="q6-streaming-calc__cost" id="slider_01_cost">
-                                            $7,500/mo.
-                                        </div>
-                                        <script>
-                                            $(function () {
-                                                // when user inputs value
-                                                document.getElementById('slider_01_value').addEventListener('input', function (e) {
-                                                    e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                            <script>
+                                                $(function () {
+                                                    // when user inputs value
+                                                    document.getElementById('slider_02_value').addEventListener('input', function (e) {
+                                                        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
+                                                    });
                                                 });
-                                            });                 
 
-                                            $(function () {
-                                            
+
+                                                $(function () {
+                                                
                                                 //setup before functions
                                                 var typingTimer;                //timer identifier
                                                 var doneTypingInterval = 500;  //time in ms (0.5 seconds)
 
                                                 //on keyup, start the countdown
-                                                $('#slider_01_value').keyup(function(){
+                                                $('#slider_02_value').keyup(function(){
                                                     clearTimeout(typingTimer);
-                                                    if ($('#slider_01_value').val()) {
+                                                    if ($('#slider_02_value').val()) {
                                                         typingTimer = setTimeout(doneTyping, doneTypingInterval);
                                                     }
                                                 });
@@ -1199,277 +1314,100 @@
                                                 function doneTyping () {
                                                     //do something
 
-                                                    let userInput = parseInt($('#slider_01_value').val().replace(/\s/g, "")) 
+                                                    let userInput = parseInt($('#slider_02_value').val().replace(/\s/g, "")) 
                                                     //console.log("userInput: ", userInput)                                           
 
                                                     // update slider
-                                                    $("#slider_01").val(userInput)
-                                                    $("#slider_01").trigger('change');                                                
+                                                    $("#slider_02").val(userInput)
+                                                    $("#slider_02").trigger('change');                                                
                                                 }                 
                                             })                           
 
-                                        </script>                                        
-                                    </div>
-                                </div>  
-
-                                <div class="q6-streaming-calc__row">
-                                    <div class="q6-streaming-calc__slider">
-                                        <div class="q6-streaming-calc__slider-title">
-                                            GB Delivered 
-
-                                            <div class="q6-tutorial-dd-selector">
-                                                <div class="q6-tutorial-dd-selector__selected">
-                                                    Europe 
-                                                </div>
-                                                <div class="q6-tutorial-dd-selector__list">
-                                                    <table class="q6-tutorial-demo-videos">
-                                                        <tbody>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Europe">
-                                                                <td>Europe</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Southern Africa">
-                                                                <td>Southern Africa</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="South America">
-                                                                <td>South America</td>
-                                                            </tr>
-                
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Australia &amp; New Zealand">
-                                                                <td>Australia &amp; New Zealand </td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="United States">
-                                                                <td>United States</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Latin America">
-                                                                <td>Latin America</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia &amp; India">
-                                                                <td>Asia &amp; India</td>
-                                                            </tr>
-                                                            <tr class="q6-tutorial-dd-selector-item" data-video-url="http://example1.com/video/myvideo.mp4" data-item-name="Asia">
-                                                                <td>Asia</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>                                                    
- 
-                                                </div>
-                                            </div>
-
-                                            <script>
-                                                $(function () {
-                                
-                                                    // this is for Dropdowns
-                                                    
-                                                    // close list when hover out of the list
-                                                    $(".q6-tutorial-dd-selector").hover(                            
-                                                        function() {
-                                                            // hover in
-                                                            //$(this).find('.q6-tutorial-dd-selector__list').show();
-                                                        }, function() {
-                                                            // hover out
-                                                            $(this).find('.q6-tutorial-dd-selector__list').hide();
-                                                        }
-                                                    );                                  
-                                
-                                
-                                                    $(".q6-tutorial-dd-selector").click(function(e){
-                                                        // toggle hide and show selector list
-                                                        // and update selected item                            
-                                                        var selectedListElement = $(this).find('.q6-tutorial-dd-selector__selected');
-                                                        var list = $(this).find('.q6-tutorial-dd-selector__list');
-                                                        if($(list).is(':visible')){
-                                                            $(list).hide();  
-                                
-                                                            var selectedItem='';
-                                                            var videoURL='';
-                                
-                                                            if($(e.target).hasClass('q6-tutorial-dd-selector-item')){
-                                                                // for simple dropdown
-                                                                selectedItem = $(e.target).attr('data-item-name');
-                                                            } else{
-                                                                // for table type dropdown
-                                                                try {
-                                                                    selectedItem = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-item-name');
-                                                                    videoURL = $(e.target).closest('.q6-tutorial-dd-selector-item').attr('data-video-url');
-                                                                    $(e.target).closest('.q6-input').find('input').val(videoURL);  
-                                                                }
-                                                                catch(err) {
-                                                                    console.log(err.message);
-                                                                }                                                                      
-                                                            }
-                                            
-                                                            $(selectedListElement).html(selectedItem);  
-                                                            // TODO - update content based on selected item  
-                                                                                            
-                                                        } else{
-                                                            $(list).show();
-                                                        }
-                                                    })
-                                                })
-                                            </script>                                                        
-
+                                            </script>                                                                                 
                                         </div>
-                                        <div class="q6-streaming-calc__slider-body">
+                                    </div>          
 
-                                            <div class="q6-progress-slider-container">
-
-                                                <input
-                                                    id="slider_02"
-                                                    type="range"
-                                                    min="0"                    
-                                                    max="1000000"                 
-                                                    step="1"                   
-                                                    value="700000"             
-                                                >
-
-                                                <script>
-                                                    // https://rangeslider.js.org/
-                                                    $("#slider_02").rangeslider({
-                                                        polyfill: false,
-                                                        fillClass: 'q6-rangeslider__fill',
-                                                        horizontalClass: 'q6-rangeslider--horizontal',
-                                                        rangeClass: 'q6-rangeslider',
-                                                        handleClass: 'q6-rangeslider__handle',
-
-                                                        // update input value
-                                                        onSlide: function(position, value) {      
-                                                            
-                                                            let price = 0.12
-
-                                                            // let formatedValue = (value*price).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                                                            let formatedValue = (value).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-                                                            
-                                                            $('#slider_02_value').val(`${formatedValue}`);    
-
-                                                            //console.log("value: ", value)
-
-                                                            let formatedCost = (Math.round(value*price)).toString().replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
-                                                            
-                                                            $('#slider_02_cost').html(`$${formatedCost}/mo.`);                                                                   
-                                                        },
-                                                    });
-                                                </script>
-
-                                            </div> 
-
-                                        </div>
-                                        <div class="q6-streaming-calc__slider-footer">
-                                            <div>0</div>
-                                            <div>1M</div>
-                                        </div>
-                                    </div>
-                                    <div>
+                                    <div class="q6-streaming-calc__extra-row">
                                         <div class="q6-input">
-                                            <input id="slider_02_value" class="q6-input__field q6-black-text" type="text" value='700 000'>
-                                        </div>
-                                        <div class="q6-streaming-calc__cost" id="slider_02_cost">
-                                            $84,000/mo.
-                                        </div>   
-                                        <script>
-                                            $(function () {
-                                                // when user inputs value
-                                                document.getElementById('slider_02_value').addEventListener('input', function (e) {
-                                                    e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ").trim();
-                                                });
-                                            });
-
-
-                                            $(function () {
-                                            
-                                            //setup before functions
-                                            var typingTimer;                //timer identifier
-                                            var doneTypingInterval = 500;  //time in ms (0.5 seconds)
-
-                                            //on keyup, start the countdown
-                                            $('#slider_02_value').keyup(function(){
-                                                clearTimeout(typingTimer);
-                                                if ($('#slider_02_value').val()) {
-                                                    typingTimer = setTimeout(doneTyping, doneTypingInterval);
-                                                }
-                                            });
-
-                                            //user is "finished typing," do something
-                                            function doneTyping () {
-                                                //do something
-
-                                                let userInput = parseInt($('#slider_02_value').val().replace(/\s/g, "")) 
-                                                //console.log("userInput: ", userInput)                                           
-
-                                                // update slider
-                                                $("#slider_02").val(userInput)
-                                                $("#slider_02").trigger('change');                                                
-                                            }                 
-                                        })                           
-
-                                        </script>                                                                                 
+                                            <div class="q6-input__label">
+                                                <label>Output Resolution:</label>
+                                            </div>
+                                            <div class="q6-custom-select">
+                                                <select class="q6-select">
+                                                    <option value="1">1080</option>
+                                                </select>
+                                            </div>     
+                                        </div>    
+                                        <div class="q6-input">
+                                            <div class="q6-input__label">
+                                                <label>FPS:</label>
+                                            </div>
+                                            <div class="q6-custom-select">
+                                                <select class="q6-select">
+                                                    <option value="1">30</option>
+                                                </select>
+                                            </div>     
+                                        </div>                                                                             
                                     </div>
-                                </div>          
-
-                                <div class="q6-streaming-calc__extra-row">
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label>Output Resolution:</label>
-                                        </div>
-                                        <div class="q6-custom-select">
-                                            <select class="q6-select">
-                                                <option value="1">1080</option>
-                                            </select>
-                                        </div>     
-                                    </div>    
-                                    <div class="q6-input">
-                                        <div class="q6-input__label">
-                                            <label>FPS:</label>
-                                        </div>
-                                        <div class="q6-custom-select">
-                                            <select class="q6-select">
-                                                <option value="1">30</option>
-                                            </select>
-                                        </div>     
-                                    </div>                                                                             
+                                    
                                 </div>
-                                
                             </div>
-                            <div class="q6-streaming-calc__footer">
-                                <div id="001" class="q6-streaming-calc__footer-cost-block">
-                                    <div class="q6-streaming-calc__footer-title">Total Cost:</div>
-                                    <div class="q6-streaming-calc__footer-cost">$133,574/mo.</div>
-                                </div>
+                            <div class="q6-calc-block__output">
+                                <div id="001" class="q6-calc-block__output-total">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Total cost:</label>
+                                        </div>
 
-        
-                                <div id="002" class="q6-streaming-contact" style="display: none;">
+                                        <div class="q6-calc-total-cost" value="9342419.00">$ 9,342,419.00</div>                                      
+
+                                    </div>
+
+
+                                    <div class="q6-streaming-contact">
+                                        <div class="q6-streaming-contact__title">Get $30 free credits when
+                                            you create an account</div>
+                                        <p>
+                                            Planning on budgets over $1,000/mo?
+                                            <a href="">Schedule a call </a> with us to explore additional volume discounts.
+                                        </p>
+                                        <div class="q6-streaming-contact__buttons">
+                                            <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Create Account</span></button>                                 
+                                        </div>                                
+                                    </div>                                    
+                                </div>     
+                                
+                                <div id="002" class="q6-calc-block__output-total" style="display: none;">
+                                    <div class="q6-input">
+                                        <div class="q6-input__label">
+                                            <label>Total cost:</label>
+                                        </div>                                     
+
+                                    </div>
+
+                                    <img class="q7-pricing__volume-discount-image" src="./img/discount1.svg" alt="Volume Discount">
+                                    
                                     <div class="q6-streaming-contact__title">Volume Discounts are available</div>
                                     <div class="q6-streaming-contact__buttons">
                                         <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Talk to us</span></button>                                 
-                                    </div>                                
-                                </div>
-                    
+                                    </div>                                   
+                                </div>    
 
-                                <div id="003" class="q6-streaming-contact" style="display: none;">
+                                <div id="003" class="q6-calc-block__output-total" style="display: none;">
+
+
+                                    <img class="q7-pricing__volume-discount-image" src="./img/discount2.svg" alt="Enterprise Discount">
                                     <div class="q6-streaming-contact__title">Enterprise Discount are available</div>
+                                    <p>
+                                        Reach out about custom pricing
+                                    </p>
                                     <div class="q6-streaming-contact__buttons">
                                         <button class="q6-button q6-white-text q6-blue-background q6-blue-border q6-button--super-wide"><span>Schedule Meeting</span></button>      
-                                        <button class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
-                                    </div>                                
-                                </div>       
+                                        <button id="showChatModal" class="q6-button q6-black-text q6-black-border q6-button--super-wide"><span>Let's chat now</span></button>                              
+                                    </div>                                     
+                                </div>      
+                                                            
 
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Video Player & Analytics</h3>
-                        <div>
-                            <div class="q6-player-and-analytics__container">
-                                <div class="q6-player-and-analytics-title">Customizable, full feature player with detailed analytics:</div>
-                                <div class="q6-player-and-analytics__buttons">
-                                    <div class="q6-demo-links-buttons">
-                                        <a href="">Create Player</a>
-                                    </div>
-                                    <div class="q6-player-and-analytics__present">
-                                        <div class="q6-player-and-analytics__present-box"></div>
-                                        <div>Free through December 2021!</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1792,7 +1730,8 @@
 
                                 <div class="q6-streaming-costs__extra-blocks">
                                     <div class="q6-streaming-contact">
-                                        <div class="q6-streaming-contact__title">Create free account to receive $30 in free credits</div>
+                                        <div class="q6-streaming-contact__title">Get $30 free credits when
+                                            you create an account</div>
                                         <p>
                                             Try Qencode for free and unlock credits to use for your video application.
                                         </p>
