@@ -36,7 +36,7 @@ function errorMsg(msg, error) {
   const errorElement = document.querySelector('#errorMsg');
   errorElement.innerHTML += `<p>${msg}</p>`;
   if (typeof error !== 'undefined') {
-    console.error(error);
+    console.log(error);
   }
 }
 
@@ -52,6 +52,13 @@ async function init(e) {
 
 function enableStreaming(stream){
     let webSocketUrl = "wss://webrtc2.qencode.com:3334/qlive/obs?direction=send&transport=tcp"
+
+    let clientWebSocketUrl = document.getElementById('webSocketUrl').value
+    console.log("clientWebSocketUrl: ", clientWebSocketUrl)
+    
+    if(clientWebSocketUrl){
+      webSocketUrl = clientWebSocketUrl
+    }
 
     let connectBtn = document.querySelector('#connect')
     let disconnectBtn = document.querySelector('#disconect')

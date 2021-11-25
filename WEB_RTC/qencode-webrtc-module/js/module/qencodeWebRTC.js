@@ -4,6 +4,15 @@ export const QencodeWebRTC =  function (options) {
 
     let {stream, webSocketUrl} = options;
 
+    let defaultConnectionConfig = {
+        iceServers: [
+            { 
+                "urls": "stun:stun.qencode.com:3478" 
+            }
+        ],
+        iceTransportPolicy: 'relay'
+    };    
+
     let that = {};
    
     let peerConnection = null;
@@ -296,29 +305,63 @@ export const QencodeWebRTC =  function (options) {
 
     function createMainPeerConnection(id, peerId, sdp, candidates, iceServers, resolve) {
 
-        let peerConnectionConfig = {
-            iceServers: [
-                { 
-                    "urls": "stun:stun.l.google.com:19302",
-                }
-            ]
-        };
+        let peerConnectionConfig = {};
         
-        // check how it's done in OvenPlayer
-        peerConnectionConfig.iceServers.push(iceServers[0])
+        if (iceServers) {
+            // second priority using ice servers from ome and force using TCP
+            peerConnectionConfig.iceServers = [];
 
-        console.log("peerConnectionConfig: ", peerConnectionConfig)
+            for (let i = 0; i < iceServers.length; i++) {
 
-        peerConnectionConfig.iceTransportPolicy = 'relay';
+                let iceServer = iceServers[i];
 
-        //const localStream = await getUserMedia({vide: true, audio: true});
+                let regIceServer = {};
 
-        peerConnection = new RTCPeerConnection(peerConnectionConfig);
+                regIceServer.urls = iceServer.urls;
 
+                let hasWebsocketUrl = false;
+                let socketUrl = generateDomainFromUrl(webSocketUrl);
 
-        // localStream.getTracks().forEach(track => {
-        //     peerConnection.addTrack(track, localStream);
-        // });            
+                for (let j = 0; j < regIceServer.urls.length; j++) {
+
+                    let serverUrl = regIceServer.urls[j];
+
+                    if (serverUrl.indexOf(socketUrl) > -1) {
+                        hasWebsocketUrl = true;
+                        break;
+                    }
+                }
+
+                if (!hasWebsocketUrl) {
+
+                    if (regIceServer.urls.length > 0) {
+
+                        let cloneIceServer = _.clone(regIceServer.urls[0]);
+                        let ip = findIp(cloneIceServer);
+
+                        if (socketUrl && ip) {
+                            regIceServer.urls.push(cloneIceServer.replace(ip, socketUrl));
+                        }
+                    }
+                }
+
+                regIceServer.username = iceServer.username || iceServer.user_name;
+                regIceServer.credential = iceServer.credential;
+
+                peerConnectionConfig.iceServers.push(regIceServer);
+            }
+
+            peerConnectionConfig.iceTransportPolicy = 'relay';
+
+        } else {
+
+            // last priority using default ice servers.
+            peerConnectionConfig = defaultConnectionConfig;
+        }
+
+        console.log("Main Peer Connection Config : ", peerConnectionConfig);
+
+        let peerConnection = new RTCPeerConnection(peerConnectionConfig);
 
         console.log("---peerConnection---- ", peerConnection)
 
