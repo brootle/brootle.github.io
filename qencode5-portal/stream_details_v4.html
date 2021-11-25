@@ -891,7 +891,7 @@
                                                         <a>Recreate stream key</a>                                  
                                                     </div>
 
-                                                    <div class="q7-input__field--view q7-input__field--view--flexible q7-input__field--view-two-buttons q7-input__field--view-key">
+                                                    <div id="stream_key_container" class="q7-input__field--view q7-input__field--view--flexible q7-input__field--view-two-buttons q7-input__field--view-key">
                                                             
                                                         <input id="stream_key" class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="81ad55e-87e0-4278-af91-7262da3b52bb"  readonly style="display: none;">
                                                         
@@ -899,20 +899,21 @@
                                                             81ad55e-87e0-4278-af91-7262da3b52bb
                                                         </div>    
 
-                                                        <span id="hidden_key" >∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span>
+                                                        <!-- <span id="hidden_key" >∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗</span> -->
+                                                        <input id="hidden_key" class="q7-input__field--view-value  q7-input__field--view-value-limited" type="text" value="∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗" readonly="">
                                                         
-                                                        <div class="q7-inline-action-buttons">
-                                                            <div class="q7-copy-text-button">
+                                                        <div class="q7-inline-action-buttons">    
+                                                            <div id='copy_key_button' class="q7-copy-text-button">
                                                                 <div class="q7-tooltip">
                                                                     Copy
                                                                     <div class="q7-flash-message" style="opacity: 0;">Copied</div>
                                                                 </div>                                                        
-                                                            </div>      
+                                                            </div>                                                               
                                                             <div id="toggle_key_view" class="q7-hide-key-button">
                                                                 <div class="q7-tooltip">
                                                                     Show
                                                                 </div>                                                      
-                                                            </div>                                                                                                
+                                                            </div>                                                                                                                                                           
                                                         </div>                                                                                   
                                                     </div> 
 
@@ -1947,6 +1948,27 @@
 
         <script>
             $(function () {         
+                // if safary hide copy icon and show when key is visible
+
+                let userAgentString =  navigator.userAgent;
+
+                // detect Chrome
+                let chromeAgent = userAgentString.indexOf("Chrome") > -1;
+
+                // detect Safari
+                let safariAgent = userAgentString.indexOf("Safari") > -1;
+
+                if ((chromeAgent) && (safariAgent)) {
+                    safariAgent = false;
+                }
+
+                if(safariAgent){
+                    // hide copy key
+                    $('#stream_key_container').removeClass('q7-input__field--view-two-buttons')
+                    $('#stream_key_container').addClass('q7-input__field--view-with-buttons')
+                    $('#copy_key_button').hide()
+                }
+
                 // toggle key hide and show
                 $("#toggle_key_view").click(function(){
 
@@ -1955,6 +1977,19 @@
                     var keyIsVisible = $("#stream_key").is(':visible');
                     var tooltip = $(this).find(".q7-tooltip")[0];
                     keyIsVisible ? $(tooltip).text('Hide') : $(tooltip).text('Show');
+
+                    if(safariAgent && keyIsVisible){
+                        // show copy key
+                        $("#copy_key_button").show() 
+                        $('#stream_key_container').addClass('q7-input__field--view-two-buttons')
+                        $('#stream_key_container').removeClass('q7-input__field--view-with-buttons')                       
+                    }else if(safariAgent){
+                        // hide copy key
+                        $('#stream_key_container').removeClass('q7-input__field--view-two-buttons')
+                        $('#stream_key_container').addClass('q7-input__field--view-with-buttons')
+                        $('#copy_key_button').hide()                        
+                    }                    
+
                 });                
 
 
