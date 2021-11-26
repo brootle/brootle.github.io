@@ -379,6 +379,8 @@ export const QencodeWebRTC =  function (options) {
             peerConnection: peerConnection
         };
 
+        console.log('...........mainPeerConnectionInfo...............: ', mainPeerConnectionInfo)
+
         //Set remote description when I received sdp from server.
         peerConnection.setRemoteDescription(new RTCSessionDescription(sdp))
             .then(function () {
@@ -563,7 +565,9 @@ export const QencodeWebRTC =  function (options) {
         if (!error) {
             wsClosedByPlayer = true;
         }   
-        
+ 
+        let mainPeerConnectionInfoCopy = mainPeerConnectionInfo
+
         
         if (mainPeerConnectionInfo) {
 
@@ -579,7 +583,8 @@ export const QencodeWebRTC =  function (options) {
             }
 
             if (mainPeerConnectionInfo.peerConnection) {
-
+                console.log("run mainPeerConnectionInfo.peerConnection.close()")
+                console.log("mainPeerConnectionInfo: ", mainPeerConnectionInfo)
                 mainPeerConnectionInfo.peerConnection.close();
             }
 
@@ -620,12 +625,28 @@ export const QencodeWebRTC =  function (options) {
 
                 wsClosedByPlayer = true;
 
-                if (mainPeerConnectionInfo) {
+                console.log("mainPeerConnectionInfo: ", mainPeerConnectionInfo)
+
+                // if (mainPeerConnectionInfo) {
+                //     console.log("sending stop command via web socket connection")
+                //     sendMessage(ws, {
+                //         command: 'stop',
+                //         id: mainPeerConnectionInfo.id
+                //     });
+                // }
+
+                // id: 450768675
+                // peer_id: 0                
+                
+                if(mainPeerConnectionInfoCopy){
+                    console.log("sending stop command via web socket connection")
                     sendMessage(ws, {
                         command: 'stop',
-                        id: mainPeerConnectionInfo.id
+                        id: mainPeerConnectionInfoCopy.id,
+                        peer_id: mainPeerConnectionInfoCopy.peerId
                     });
                 }
+                              
 
                 console.log("Closing socket connection...")
                 ws.close();
@@ -671,6 +692,8 @@ export const QencodeWebRTC =  function (options) {
                 console.log(`[message] Data received from server: ${e.data}`)
 
                 const message = JSON.parse(e.data);
+
+                console.log(".........message.command..........: ", message.command)
 
                 if (message.error) {
                     // let tempError = ERRORS.codes[PLAYER_WEBRTC_WS_ERROR];
