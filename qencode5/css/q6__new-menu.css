@@ -1,0 +1,118 @@
+.q6-menu-item--submenu-closed .q7-menu-item__submenu {
+    display: none;
+}
+
+.q6-top-menu a.q7-submenu-box__block {
+    min-width: 270px;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-left: 5px solid transparent;
+    border-radius: 5px;
+    transition: all .2s ease;
+    cursor: pointer;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.q7-submenu-box__block h5 {
+    margin: 5px 0;
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "proxima-nova", sans-serif;
+    line-height: 19px;
+}
+
+.q7-submenu-box__block p {
+    line-height: 20px;
+    margin: 7px 0;
+    font-family: "proxima-nova", sans-serif;
+}
+
+.q6-top-menu a.q7-submenu-box__block:hover {
+    background: #f8f9fb;
+    border-left: 5px solid #3270eb;
+}
+
+.q7-menu-item__submenu{
+    position: absolute;
+    left: 0;
+    right: 0;
+    animation: fadeEffect 0.4s;
+    cursor: default;
+}
+
+.q7-menu-item__submenu-content{
+    margin-top: 20px;
+    background: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    box-shadow: 0px 7px 25px 1px rgb(105 109 112 / 20%);
+}
+
+.q7-submenu-content-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.q7-submenu-box__block{
+    min-width: 270px;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-left: 5px solid transparent;
+    border-radius: 5px;
+    transition: all .2s ease;
+    cursor: pointer;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.q7-submenu-icon-container{
+    width: 50px;
+    min-width: 50px;
+    margin-right: 20px;
+}
+
+.q7-submenu-icon{
+    height: 50px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+
+    background: red;
+}
+
+
+@media screen and (max-width: 1024px){
+
+    .q7-menu-item__submenu {
+        position: relative;
+    }
+
+    .q6-menu-item--has-submenu .q7-menu-item__submenu {
+        display: block;
+    }
+
+    .q6-menu-item--submenu-closed .q7-menu-item__submenu {
+        display: none;
+    }    
+
+    .q7-menu-item__submenu > .q6-container {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }    
+
+    .q7-menu-item__submenu-content {
+        box-shadow: none;
+        padding: 0;
+    }    
+}
