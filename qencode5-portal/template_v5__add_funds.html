@@ -673,14 +673,32 @@
                                                 <div class="q7-custom-select">
                                                     <select id="payment-amount" class="q7-select">                                                                
                                                         <option value="0">Custom</option>
-                                                        <option value="1">$20.00</option>
-                                                        <option value="2" data-bonus='5'>$100.00</option>
-                                                        <option value="3" data-bonus='7'>$500.00</option>
-                                                        <option value="4" data-bonus='10'>$2000.00</option>
-                                                        <option value="5" data-bonus='12'>$5000.00</option>                                                                                                                                                                                              
+                                                        <option value="20">$20.00</option>
+                                                        <option value="100" data-bonus='5'>$100.00</option>
+                                                        <option value="500" data-bonus='7'>$500.00</option>
+                                                        <option value="2000" data-bonus='10'>$2000.00</option>
+                                                        <option value="5000" data-bonus='12'>$5000.00</option>                                                                                                                                                                                              
                                                     </select>
                                                 </div>
-                                                <div class="q7-input__bonus">+ <span id="payment-bonus">5</span>% bonus</div>                                                            
+                                                 
+                                                <div class="q7-input__bonus">
+                                                    <div> <strong>+ <span id="payment-bonus">5</span>% bonus</strong> </div>
+                                                    <div>$<span id="payment-bonus-value">25</span> free</div>                                                    
+                                                </div>     
+                                                
+                                                <script>
+                                                    $(function () {
+                                                        // add border around bonus on focus
+                                                        $('.q7-select')
+                                                            .focus(function() {
+                                                                $(this).closest('.q7-input-with-bonus').find('.q7-input__bonus').addClass('focused');                                                            
+                                                            })
+                                                            .blur(function() {
+                                                                $(this).closest('.q7-input-with-bonus').find('.q7-input__bonus').removeClass('focused');
+                                                            });                                                        
+                                                    })
+                                                </script>
+                                                
                                             </div>
                                         </div>                                                        
     
@@ -691,17 +709,22 @@
                                             </div>
                                             <div class="q7-input-with-bonus">
                                                 <input class="q7-input__field" type="text" id="custom-funds_upgrade" value="$ 230">
-                                                <div class="q7-input__bonus">+ <span id="custom-bonus">5</span>% bonus</div>
+
+                                                <div class="q7-input__bonus">
+                                                    <div> <strong>+ <span id="custom-bonus">5</span>% bonus</strong> </div>
+                                                    <div>$<span id="custom-bonus-value">11.5</span> free</div>                                                    
+                                                </div>   
+
                                             </div>                                
                                         </div>
 
                                         <script>
                                             $(function () {
                                                 $('#payment-amount').change(function(){
-                                                    let selectedIndex = $(this).val()
-                                                    console.log("selectedIndex: ", selectedIndex)
+                                                    let selectedValue = $(this).val()
+                                                    //console.log("selectedValue: ", selectedValue)
 
-                                                    if(selectedIndex === '0'){
+                                                    if(selectedValue === '0'){
                                                         // show input for custom value
                                                         $("#custom-amount-input_upgrade").show()
                                                     }else{
@@ -709,9 +732,14 @@
                                                     }
 
                                                     let bonus = $('option:selected', this).attr('data-bonus');
-                                                    console.log("bonus: ", bonus)
+                                                    //console.log("bonus: ", bonus)
 
                                                     $("#payment-bonus").text(bonus)
+
+                                                    let bonusValue = selectedValue * (bonus/100)
+
+                                                    // payment-bonus-value
+                                                    $("#payment-bonus-value").text(bonusValue)
 
                                                     if(bonus){
                                                         // show with bonus
@@ -766,6 +794,9 @@
                                                         
                                                         // update bonus
                                                         $("#custom-bonus").text(bonus);
+
+                                                        let bonusValue = valueInNumber * (bonus/100)
+                                                        $("#custom-bonus-value").text(bonusValue)
             
                                                     }
                                                     

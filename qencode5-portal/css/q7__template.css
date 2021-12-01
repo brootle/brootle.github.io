@@ -4052,6 +4052,10 @@ textarea.q7-input__field:focus{
     border-color: #316fea;
 }
 
+input[type=text].q7-input__field:focus + .q7-input__bonus{
+    border-color: var(--blue);
+}
+
 .q7-select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -7660,6 +7664,14 @@ input[type=tel].q7-input__field:focus,
 input[type=password].q7-input__field:focus, 
 textarea:focus, select.q7-select:focus {
     border-color: #316fea;
+}
+
+.q7-custom-select:focus + .q7-input__bonus{
+    border-color: var(--blue);
+}
+
+.q7-input__bonus.focused{
+    border-color: var(--blue);
 }
 
 .q7-input__error-message {
@@ -11607,16 +11619,27 @@ td.q7-bordered-cell{
 
 .q7-input__bonus {
     white-space: nowrap;
-    background-color: #265cc5;
-    color: white;
+    background: #ECF2FF;
+    color: var(--blue);
     display: flex;
-    align-items: center;
-    padding: 8px 14px;
+    padding: 5px 14px;
     border-radius: 6px;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    flex-direction: column;
+    align-items: flex-end;    
+    justify-content: center;
+
+    border: 1px solid #e1e5ee;
+    border-left: none;
+}
+
+.q7-input__bonus > div:first-of-type{
+    font-size: 16px;
 }
 
 .q7-custom-select .q7-custom-select__view {
