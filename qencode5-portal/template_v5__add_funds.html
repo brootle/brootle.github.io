@@ -736,7 +736,7 @@
 
                                                     $("#payment-bonus").text(bonus)
 
-                                                    let bonusValue = selectedValue * (bonus/100)
+                                                    let bonusValue = Math.round(selectedValue * (bonus/100))
 
                                                     // payment-bonus-value
                                                     $("#payment-bonus-value").text(bonusValue)
@@ -795,7 +795,7 @@
                                                         // update bonus
                                                         $("#custom-bonus").text(bonus);
 
-                                                        let bonusValue = valueInNumber * (bonus/100)
+                                                        let bonusValue = Math.round(valueInNumber * (bonus/100))
                                                         $("#custom-bonus-value").text(bonusValue)
             
                                                     }
