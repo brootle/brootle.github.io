@@ -1,3 +1,7 @@
+.q6-how-it-works-container h2{
+    text-align: center;
+}
+
 .q6-features-box{
     border: 1px solid #e1e5ee;
     border-radius: 8px;
@@ -34,33 +38,34 @@
 }
 
 
-.q6-features-how-it-works{
+/* .q6-features-how-it-works{
     border: 1px solid #e1e5ee;
     border-radius: 8px;
     padding: 30px 15px;
     margin-bottom: 45px;
     display: flex;   
-}
+} */
 
-.q6-features-how-it-works__block{
-    flex: 1;
-    margin-right: 3vw;
-}
+.q6-features-how-it-works{
+    padding: 30px 15px;
+    margin-bottom: 45px;
+    display: flex;   
+    justify-content: space-between;
+} 
 
-.q6-features-how-it-works__block:last-of-type{
-    margin-right: 0;
-}
+
 
 .q6-features-how-it-works__block h5 {
-    color: #383838;
+    color: #8692A8;
     font-family: "proxima-nova";
-    font-size: 18px;
+    font-size: 16px;
     line-height: 19px;
     font-weight: 600;
     margin: 5px 0;
     text-transform: uppercase;
-    text-align: center;    
-    margin-bottom: 30px;
+    text-align: center;  
+    margin-bottom: 40px;  
+    white-space: nowrap;
 }
 
 .q6-features-how-it-works .q6-features-icon {
@@ -93,20 +98,22 @@
 
 .q6-features-storage-logo {
     background-image: url(../img/features/storage_logo.svg);
-    max-width: 170px;
-    width: 13vw;
+    width: 170px;
+    height: 105px;
     height: 105px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top center;  
     margin-top: 15px;  
+
+    position: absolute;
+    bottom: -39px;    
 }
 
 
 .q6-features-icon.q6-features-icon--device {
-    max-width: 199px;
-    width: 15vw;
-    height: 89px;
+    width: 171px;
+    height: 76px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top center;
@@ -119,17 +126,11 @@
 
 .q6-features-how-it-works__details{
     display: flex;
-    flex-direction: column;
-    align-items: center;  
 
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;   
-    
-    height: 80%;
     justify-content: center;    
 
     box-sizing: border-box;  
+    min-width: 100px;
 }
 
 
@@ -152,10 +153,7 @@
     margin: 0 auto;    
 }
 
-.q6-features-how-it-works__details--qencode-cloud > div {
-    height: 100%;
-    justify-content: center;
-}
+
 
 .q6-features-how-it-works__details--qencode-cloud .q6-green-arrow--right{
     width: 17%;
@@ -198,6 +196,15 @@
     z-index: 1;
 }
 
+.q6-gray-arrow--right{
+    margin: 0 2vw;
+    position: relative;
+    padding-top: 86px;
+}
+
+.q6-features-how-it-works__block > .q6-features-how-it-works__details .q6-gray-arrow--right{
+    padding-top: 23px;
+}
 
 .q6-green-arrow__head {
     width: 23px;
@@ -222,6 +229,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;   
+    justify-content: flex-start;
 }
 
 
@@ -230,8 +238,12 @@
     margin-bottom: 25px;
     font-weight: 500;
     font-size: 16px;    
-    text-align: center;
-    line-height: 17px;    
+    text-align: center;  
+    max-width: 134px;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: #171717;    
 }
 
 .q6-features-big-data{
@@ -563,7 +575,24 @@
     }    
 }
 
+@media screen and (max-width: 1124px){
+    .q6-gray-arrow--right {
+        margin: 0 1vw;
+    }
+
+    .q6-features-how-it-works__details {
+        min-width: 100px;
+    }    
+}
+
 @media screen and (max-width: 1024px){
+
+    .q6-gray-arrow--right {
+        margin: 0;
+        padding: 0;
+        transform: rotate(90deg);
+    }    
+
     .q6-features__footer .q6-promo-block__content p{
         text-align: left;
     }
@@ -584,20 +613,43 @@
     .q6-features-how-it-works {
         flex-direction: column;
         align-items: center;
+        margin-top: 30px;
+        margin-bottom: 10px;
     }    
+
 
     .q6-features-how-it-works__block {
         margin-right: 0;
-        margin-bottom: 30px;
         width: 100%;
+        margin-top: 40px;
+        margin-bottom: 20px;
     }    
+
+    .q6-features-how-it-works__block:first-of-type{
+        margin-top: 0;
+    }
 
     .q6-features-how-it-works__block:last-of-type {
         margin-bottom: 0;
     }      
 
+    .q6-features-how-it-works__block > .q6-features-how-it-works__details .q6-gray-arrow--right {
+        padding-top: 23px;
+        transform: rotate(0deg);
+    }    
+
+    .q6-features-storage-logo {
+        position: relative;
+        bottom: 0;
+        margin-bottom: 25px;
+    }    
+
     .q6-features-how-it-works__details--block3 {
         padding: 30px 0;
+    }    
+
+    .q6-features-how-it-works__block h5 {
+        margin-bottom: 20px;
     }    
 
     .q6-features-how-it-works__details--block2 {
