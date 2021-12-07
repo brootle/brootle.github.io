@@ -2666,18 +2666,13 @@ td.q7-table-cell--edit-mode{
 }
 
 .q7-block-title{
-    color: #4f4f4f;
-    font-size: 20px;
-    font-weight: 600;
+    color: #4F4F4F;
+    font-size: 21px;
+    font-weight: 400;
     margin: 8px 0;
-
     display: flex;
     align-items: center;
-    justify-content: space-between;    
-
-    /* font-size: 28px;
-    line-height: 27px;
-    color: #4F4F4F;     */
+    justify-content: space-between;
 }
 
 .q7-project-advanced-settings .q6-input{
@@ -4152,9 +4147,14 @@ input[type=text].q7-input__field:focus + .q7-input__bonus{
 }
 
 .q7-input__label.q7-input__label--row-title label{
-    color: #363232;
+    /* color: #363232;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 600; */
+
+    color: #171717;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Basis Grotesque Pro";    
 }
 
 input[type=password].q7-input__field.q7-input__field--error,
@@ -5397,8 +5397,10 @@ input[type=text].q7-input__field + .q7-pass-eye-button{
 .q6-switch__text{
     position: absolute;
     right: -23px;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Basis Grotesque Pro";
+    line-height: 18px;
 }
 
 
@@ -5432,6 +5434,18 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
     font-size: 15px;
 }
 
+.q7-advanced-settings__row .q7-button.q7-button--round{
+    min-width: 80px;
+    border-radius: 4px;
+}
+
+.q7-advanced-settings__row .q7-button.q7-button--round.q7-button--gradient.q7-button--upgrade {
+    height: 40px;
+    min-width: 172px;
+    margin-top: -5px;
+    margin-bottom: -5px;    
+}
+
 .q7-button.q7-button--round:hover{
     background-color: #d8e7ff;
     box-shadow: 0px 1px 6px 1px rgba(105, 109, 112, 0.1);    
@@ -5454,12 +5468,19 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
 }
 
 .q7-settings-message{
-    padding-left: 10%;
+    padding-left: 20px;
     padding-right: 20px;
     font-weight: 400;
-    font-size: 14px;  
-    color: #6e6e6e;  
+    font-size: 13px;
+    color: #858D9F;
     text-align: right;
+}
+
+.q7-advanced-settings__row .q6-input__field--view-message{
+    color: #242527;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Basis Grotesque Pro";
 }
 
 .q7-advanced-settings__row .q7-input.q7-input--in-row {
@@ -5477,11 +5498,12 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
 }
 
 .q7-advanced-settings > .q7-advanced-settings__row:first-of-type{
-    border-top: none;
+    /* border-top: none; */
 }
 
 .q7-advanced-settings__row{
-    padding: 15px 5px;
+    padding: 14px 5px;
+    padding-right: 0;
     border-top: 1px solid #e6e8eb;
 }
 
@@ -5515,8 +5537,8 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
 }
 
 .q7-advanced-settings__row .q7-input__label--with-switch input:disabled + .q6-switch__slider:before{
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     bottom: -1px;
 
     -webkit-transform: translateX(0);
@@ -5539,7 +5561,7 @@ input:not(:checked) + .q6-switch__slider + .q6-switch__text .q6-switch__text--of
 }
 
 input:disabled  + .q6-switch__slider + .q6-switch__text {
-    right: 0;
+    right: -4px;
 }
 
 .q7-flash-message {
