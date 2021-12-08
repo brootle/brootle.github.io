@@ -26,10 +26,8 @@
             <button id="disconect">Disconect</button>        
         </div>        
     </div>   
-    <!-- <script src="https://cdn.jsdelivr.net/npm/ovenlivekit@latest/dist/OvenLiveKit.min.js"></script> -->
-    <!-- <script src="./src/OvenLiveKit.min.js"></script> -->
-    <!-- <script src="./dist/OvenLiveKit.min.js"></script> -->
-    <script src="./js/OvenLiveKit.min.js"></script>
+
+    <script src="./js/QencodeWebRTC.min.js"></script>
     <script>
 
         let webSocketUrl = "wss://webrtc2.qencode.com:3334/qlive/obs?direction=send&transport=tcp"
@@ -59,24 +57,24 @@
             }
         }        
 
-        let ovenLivekit = OvenLiveKit.create(config);
+        let qencodeWebRTC = QencodeWebRTC.create(config);
 
-        ovenLivekit.attachMedia(document.getElementById('userCam'));
+        qencodeWebRTC.attachMedia(document.getElementById('userCam'));
 
         let connectBtn = document.querySelector('#connect')
         let disconnectBtn = document.querySelector('#disconect')
 
         connectBtn.addEventListener('click', () => {
-            ovenLivekit.getUserMedia({
+            qencodeWebRTC.getUserMedia({
                 audio: false,
                 video: true
             }).then(function (stream) {
-                ovenLivekit.startStreaming(webSocketUrl)            
+                qencodeWebRTC.startStreaming(webSocketUrl)            
             });
         })
 
         disconnectBtn.addEventListener('click', () => {
-            ovenLivekit.remove();
+            qencodeWebRTC.remove();
         })           
 
     </script>
