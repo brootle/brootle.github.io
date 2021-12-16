@@ -15153,6 +15153,7 @@ hr {
 .q7-stream__status-and-controls .q7-stream-status {
     padding-left: 30px;
     margin-left: 4px;
+    font-size: 15px;
 }
 
 .q7-stream__details-body .q7-input__field--view {
@@ -15793,7 +15794,6 @@ input[type=text].q7-input__field{
 }
 
 .q7-loading-cell-container{
-    border: 2px solid #eef0f3;
     width: 100%;
     height: 100%;    
 }
@@ -15947,6 +15947,408 @@ input[type=text].q7-input__field{
     position: absolute;
     right: 0;
 }
+
+
+.q7-stream-grid{
+    margin: 0 -15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.q7-stream__block{
+    margin: 15px;
+    flex: 1;
+    min-width: calc(50% - 30px);
+}
+
+.q7-stream__block-content{
+    border: 1px solid #D1D3D9;
+    border-radius: 4px;    
+}
+
+.q7-stream__block-content__header{
+    background: #EAEAEA;
+    border-bottom: 1px solid #D1D3D9;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 12px 24px;
+    font-family: Basis Grotesque Pro;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 16px;
+}
+
+.q7-stream__block-content__body-text{
+    padding: 11px 24px;
+    padding-bottom: 29px;
+}
+
+.q7-stream__block-content__footer .q7-stream__block-content__body-text{
+    padding-bottom: 11px;
+}
+
+.q7-stream__block-content__body .q7-input__label a {
+    font-size: 13px;
+}
+
+.q7-stream__block-content__body .q7-select{
+    height: 32px;
+    font-family: 'Basis Grotesque Pro Medium';
+    font-weight: normal;
+    font-size: 14px;
+    color: #363940;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0px 8px;
+    line-height: 32px;
+    padding-right: 17px;
+}
+
+.q7-stream__block-content__body .q7-custom-select:after {
+    position: absolute;
+    right: 7px;
+    top: calc(50% - 2px);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 4px solid #343131;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+}
+
+.q7-stream__block-content__body  .q7-input__label.q7-input__label--with-question > a {
+    position: relative;
+}
+
+.q7-stream__block-content__footer{
+    border-top: 1px solid #D1D3D9;    
+}
+
+.q7-stream__status .q7-input-and-buttons--inline{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.q7-stream__status .q7-button.q7-button--delete.q7-button--round {
+    color: #6F6F6F;
+    background: transparent;
+    padding: 0;
+    min-width: 0;
+    line-height: 26px;
+    border: none;
+    height: 26px;
+    font-size: 15px;
+    font-family: 'Basis Grotesque Pro Medium';
+}
+
+.q7-stream__status .q7-button.q7-button--delete.q7-button--round:hover{
+    box-shadow: none;
+}
+
+.q7-stream__status .q7-input.q7-input--horizontal {
+    margin: 0;
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view-two-buttons {
+    min-width: 315px;
+    width: max-content;
+}
+
+.q7-stream__block-content__body .q7-input__field--view {
+    color: #171717;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 16px;
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view-two-buttons span {
+    padding-right: 63px;
+}
+.q7-stream__block-content__body .q7-input__field--view span {
+    padding-right: 25px;
+    max-width: 400px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-family: 'Basis Grotesque Pro';
+
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Basis Grotesque Pro';
+    color: #383838;
+    line-height: 22px;    
+}
+
+.q7-stream__block-content__body a{
+    font-family: 'Basis Grotesque Pro Medium';
+    font-weight: normal;
+    font-size: 14px;
+    color: var(--blue);    
+    line-height: 22px;
+}
+
+.q7-stream__block-content__body .q7-stream-vertical-separator {
+    color: #dde1ef;
+    margin: 0 4px;
+}
+
+.q7-stream__block-content__body .q7-button.q7-button--back > span{
+    position: relative;
+    padding-left: 10px;
+}
+
+.q7-stream__block-content__body .q7-button.q7-button--back:after{
+    content: none;
+}
+
+.q7-stream__block-content__body .q7-button.q7-button--back.q7-button--transparent{
+    margin-top: 15px;
+}
+
+.q7-stream__block-content__body.q7-stream-container {
+    display: initial;
+    margin: initial;
+}
+
+.q7-stream__block-content__body .q7-button.q7-button--back > span:after {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: -1px;
+    top: calc(50% - 4px);
+    height: 6px;
+    width: 6px;
+    border-bottom: 1px solid #3270eb;
+    border-right: 1px solid #3270eb;
+    transform: rotate(135deg);
+    transition: all 0.2s ease;
+}
+
+
+
+.q7-stream__block-content__body .q7-input-and-buttons--inline {
+    margin-bottom: 0px;
+}
+.q7-stream__block-content__body.q7-input-and-buttons--inline {
+    justify-content: space-between;
+}
+
+
+
+.q7-stream__block-content__body  .q7-input__field--view.q7-input__field--view-with-buttons {
+    min-width: 330px;
+}
+
+.q7-stream__block-content__body  .q7-inline-action-buttons {
+    position: absolute;
+    right: -4px;
+    bottom: -8px;
+}
+
+.q7-stream__block-content__body .q7-copy-text-button {
+    filter: none;
+    opacity: 1;
+    background-image: url(../img/icon_copy_field.svg);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #EBEBF6;
+    right: initial;
+}
+
+.q7-stream__block-content__body .q7-hide-key-button {
+    width: 24px;
+    height: 24px;
+}
+
+.q7-stream__block-content__body .q7-tooltip {
+    background: #707070;
+    width: 52px;
+    text-align: center;
+    position: absolute;
+    left: calc(50% - 26px);
+    top: -25px;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 0px 0px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.q7-stream__block-content__body.q7-stream-container > div {
+    flex: initial;
+    max-width: initial;
+}
+
+.q7-stream__block-content__body .q7-hide-key-button > .q7-tooltip {
+    left: calc(50% - 9px);
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view-with-buttons .q7-copy-text-button .q7-flash-message {
+    top: 0px;
+    line-height: 18px;
+}
+
+.q7-stream__block-content__body .q7-inline-action-buttons {
+    position: absolute;
+    right: -4px;
+    bottom: -6px;
+}
+
+.q7-stream__block-content__body .q7-edit-text-button {
+    filter: none;
+    opacity: 1;
+    background-image: url(../img/profiles_edit_icon.svg);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #EBEBF6;
+    right: initial;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.q7-stream__block-content__body .q7-edit-text-button:hover {
+    background-color: transparent;
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.q7-stream__block-content__body .q7-copy-text-button:hover {
+    background-color: transparent;
+    background-image: url(../img/icon_copy_field__blue.svg);
+}
+
+.q7-stream__block-content__body .q7-delete-text-button {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../img/delete_format_icon__red.svg);
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #EBEBF6;
+    filter: grayscale(1);
+    opacity: 0.5;
+    background-size: 45%;
+}
+
+.q7-stream__block-content__body .q7-delete-text-button:hover {
+    background-color: transparent;
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.q7-stream__block-content__body .q7-delete-text-button {
+    position: relative;
+}
+
+.q7-stream__block-content__body  .q7-button.q7-button--transparent {
+    line-height: 24px;
+    height: 24px;
+    min-width: 93px;
+    padding: 0 10px;
+    border-radius: 4px;
+    font-family: 'Basis Grotesque Pro Medium';
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.q7-stream__block-content__body .q7-input.q7-input--stream-key label {
+    color: initial;
+    text-decoration: initial;
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view--flexible.q7-input__field--view-two-buttons.q7-input__field--view-key .q7-input__field--view-value.q7-input__field--invisible {
+    padding-right: 63px;
+}
+.q7-stream__block-content__body .q7-input__field--view-value.q7-input__field--invisible {
+    font-weight: initial;
+    opacity: 0;
+    pointer-events: none;
+    padding-right: 33px;
+    line-height: 27px;
+    margin-top: -27px;    
+    white-space: nowrap;
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view-with-buttons .q7-inline-action-buttons {
+    right: 30px;
+    bottom: -4px;
+    background-color: white;
+}
+
+.q7-stream__block-content__body input[type=text].q7-input__field--view-value.q7-input__field--view-value-limited {
+    padding-right: 33px;
+}
+
+.q7-stream__block-content__body  .q7-input__field--view.q7-input__field--view--flexible.q7-input__field--view-two-buttons.q7-input__field--view-key {
+    min-width: auto;
+    flex-direction: column;
+    max-width: 328px;
+}
+
+.q7-stream__block-content__body  .q7-input__field--view.q7-input__field--view--flexible.q7-input__field--view-two-buttons.q7-input__field--view-key .q7-inline-action-buttons{
+    bottom: -3px;
+}
+
+.q7-stream__block-content__body .q7-input__label {
+    justify-content: flex-start;
+}
+
+.q7-stream__block-content__body .q7-input__field--view.q7-input__field--view--flexible.q7-input__field--view-with-buttons {
+    min-width: auto;
+    flex-direction: column;
+    max-width: 430px;
+    width: max-content;
+}
+
+.q7-stream__block-content__body .q7-input__field--view input[type=text].q7-input__field--view-value {
+    line-height: 27px;
+}
+
+.q7-stream__block .q7-stream__block-content__footer .q7-input__label label {
+    font-family: 'Basis Grotesque Pro Medium';
+    font-weight: normal;
+    font-size: 15px;
+    color: #363940;
+}
+
+.q7-stream__block .q7-input__label label {
+    font-family: 'Basis Grotesque Pro Medium';
+    font-weight: normal;
+    font-size: 14px;
+    color: #363940;
+}
+
+.q7-stream__block  .q7-question-icon {
+    width: 12px;
+    min-width: 12px;
+    height: 12px;
+    background-image: url(../img/question.svg);
+    margin: 0 10px;
+    margin-bottom: 3px;    
+}
+
+
+@media screen and (max-width:1520px){
+    .q7-stream__block {
+        min-width: calc(100% - 30px);
+    }
+}
+
 
 @media screen and (max-width: 700px){
     .q7-modal.q7-modal--upgrade.q7-modal--add-funds .modal-body {
