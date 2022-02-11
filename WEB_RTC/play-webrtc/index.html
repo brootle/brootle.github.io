@@ -11,6 +11,10 @@
 </head>
 <body>
     <div id="player"></div>
+    <div>
+        <input id='url' type="text">
+        <button id='start'>Start</button>
+    </div>
     <script>
 
         let playerOption = {
@@ -20,19 +24,27 @@
             sources: []
         };        
 
-        const url = 'wss://dfasdfsd.fd'
-        const protocol = "webrtc";
 
-        const source = {
-            type: protocol,
-            file: url
-        };        
+        let startBtn = document.getElementById('start')
+        startBtn.addEventListener('click', () => {
+            console.log("load player")
 
-        playerOption.sources.push(source);
+            const url = document.getElementById('url').value
+            const protocol = "webrtc";
 
-        const options = JSON.parse(JSON.stringify(playerOption));
+            const source = {
+                type: protocol,
+                file: url
+            };        
 
-        const player = OvenPlayer.create('player', options);
+            playerOption.sources.push(source);
+
+            console.log("playerOption: ", playerOption)
+
+            const options = JSON.parse(JSON.stringify(playerOption));
+
+            const player = OvenPlayer.create('player', options);            
+        })
     </script>
 </body>
 </html>
